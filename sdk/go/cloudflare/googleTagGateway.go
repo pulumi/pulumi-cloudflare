@@ -149,6 +149,12 @@ func (GoogleTagGatewayState) ElementType() reflect.Type {
 	return reflect.TypeOf((*googleTagGatewayState)(nil)).Elem()
 }
 
+// GoogleTagGatewayExists checks whether an existing GoogleTagGateway resource with the given ID exists.
+func GoogleTagGatewayExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GoogleTagGatewayState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/googleTagGateway:GoogleTagGateway", id, state, "", opts...)
+}
+
 type googleTagGatewayArgs struct {
 	// Enables or disables Google Tag Gateway for this zone.
 	Enabled bool `pulumi:"enabled"`

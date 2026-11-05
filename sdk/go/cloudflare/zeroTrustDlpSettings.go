@@ -128,6 +128,12 @@ func (ZeroTrustDlpSettingsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zeroTrustDlpSettingsState)(nil)).Elem()
 }
 
+// ZeroTrustDlpSettingsExists checks whether an existing ZeroTrustDlpSettings resource with the given ID exists.
+func ZeroTrustDlpSettingsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustDlpSettingsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustDlpSettings:ZeroTrustDlpSettings", id, state, "", opts...)
+}
+
 type zeroTrustDlpSettingsArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// Whether AI context analysis is enabled at the account level.

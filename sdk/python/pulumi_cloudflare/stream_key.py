@@ -264,6 +264,22 @@ class StreamKey(pulumi.CustomResource):
         __props__.__dict__["pem"] = pem
         return StreamKey(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            jwk: pulumi.Input[Optional[_builtins.str]] = None,
+            key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            pem: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["created"] = created
+        __props__["jwk"] = jwk
+        __props__["keyId"] = key_id
+        __props__["pem"] = pem
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/streamKey:StreamKey', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

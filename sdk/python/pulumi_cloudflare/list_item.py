@@ -485,6 +485,32 @@ class ListItem(pulumi.CustomResource):
         __props__.__dict__["redirect"] = redirect
         return ListItem(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            asn: pulumi.Input[Optional[_builtins.int]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            hostname: pulumi.Input[Optional[Union['ListItemHostnameArgs', 'ListItemHostnameArgsDict', 'outputs.ListItemHostname']]] = None,
+            ip: pulumi.Input[Optional[_builtins.str]] = None,
+            list_id: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            operation_id: pulumi.Input[Optional[_builtins.str]] = None,
+            redirect: pulumi.Input[Optional[Union['ListItemRedirectArgs', 'ListItemRedirectArgsDict', 'outputs.ListItemRedirect']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["asn"] = asn
+        __props__["comment"] = comment
+        __props__["createdOn"] = created_on
+        __props__["hostname"] = hostname
+        __props__["ip"] = ip
+        __props__["listId"] = list_id
+        __props__["modifiedOn"] = modified_on
+        __props__["operationId"] = operation_id
+        __props__["redirect"] = redirect
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/listItem:ListItem', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

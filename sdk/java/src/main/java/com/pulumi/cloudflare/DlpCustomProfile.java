@@ -93,11 +93,10 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/dlpCustomProfile:DlpCustomProfile example &#39;&lt;account_id&gt;/&lt;profile_id&gt;&#39;
  * ```
  * 
- * @deprecated
- * cloudflare.index/dlpcustomprofile.DlpCustomProfile has been deprecated in favor of cloudflare.index/zerotrustdlpcustomprofile.ZeroTrustDlpCustomProfile
+ * @deprecated cloudflare.index/dlpcustomprofile.DlpCustomProfile has been deprecated in favor of cloudflare.index/zerotrustdlpcustomprofile.ZeroTrustDlpCustomProfile
  * 
  */
-@Deprecated /* cloudflare.index/dlpcustomprofile.DlpCustomProfile has been deprecated in favor of cloudflare.index/zerotrustdlpcustomprofile.ZeroTrustDlpCustomProfile */
+@Deprecated
 @ResourceType(type="cloudflare:index/dlpCustomProfile:DlpCustomProfile")
 public class DlpCustomProfile extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")
@@ -135,11 +134,10 @@ public class DlpCustomProfile extends com.pulumi.resources.CustomResource {
     /**
      * Scan the context of predefined entries to only return matches surrounded by keywords.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     @Export(name="contextAwareness", refs={DlpCustomProfileContextAwareness.class}, tree="[0]")
     private Output<DlpCustomProfileContextAwareness> contextAwareness;
 
@@ -210,11 +208,10 @@ public class DlpCustomProfile extends com.pulumi.resources.CustomResource {
      * Custom entries from this profile.
      * If this field is omitted, entries owned by this profile will not be changed.
      * 
-     * @deprecated
-     * This attribute will be sunset on 01/01/2026
+     * @deprecated This attribute will be sunset on 01/01/2026
      * 
      */
-    @Deprecated /* This attribute will be sunset on 01/01/2026 */
+    @Deprecated
     @Export(name="entries", refs={List.class,DlpCustomProfileEntry.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DlpCustomProfileEntry>> entries;
 

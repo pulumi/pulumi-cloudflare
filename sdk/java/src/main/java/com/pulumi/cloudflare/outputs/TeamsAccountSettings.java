@@ -58,11 +58,10 @@ public final class TeamsAccountSettings {
     /**
      * @return Specify custom certificate settings for BYO-PKI. This field is deprecated; use `certificate` instead.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     private @Nullable TeamsAccountSettingsCustomCertificate customCertificate;
     /**
      * @return Configures user email settings for firewall policies. When you enable this, the system standardizes email addresses in the identity portion of the rule to match extended email variants in firewall policies. When you disable this setting, the system matches email addresses exactly as you provide them. Enable this setting if your email uses `.` or `+` modifiers.
@@ -151,11 +150,10 @@ public final class TeamsAccountSettings {
     /**
      * @return Specify custom certificate settings for BYO-PKI. This field is deprecated; use `certificate` instead.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     public Optional<TeamsAccountSettingsCustomCertificate> customCertificate() {
         return Optional.ofNullable(this.customCertificate);
     }

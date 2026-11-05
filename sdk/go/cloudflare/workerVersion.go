@@ -437,6 +437,12 @@ func (WorkerVersionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workerVersionState)(nil)).Elem()
 }
 
+// WorkerVersionExists checks whether an existing WorkerVersion resource with the given ID exists.
+func WorkerVersionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkerVersionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/workerVersion:WorkerVersion", id, state, "", opts...)
+}
+
 type workerVersionArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`

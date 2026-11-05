@@ -146,6 +146,12 @@ func (StreamCaptionLanguageState) ElementType() reflect.Type {
 	return reflect.TypeOf((*streamCaptionLanguageState)(nil)).Elem()
 }
 
+// StreamCaptionLanguageExists checks whether an existing StreamCaptionLanguage resource with the given ID exists.
+func StreamCaptionLanguageExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StreamCaptionLanguageState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/streamCaptionLanguage:StreamCaptionLanguage", id, state, "", opts...)
+}
+
 type streamCaptionLanguageArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`

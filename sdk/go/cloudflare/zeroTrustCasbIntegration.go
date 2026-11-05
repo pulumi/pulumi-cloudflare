@@ -302,6 +302,12 @@ func (ZeroTrustCasbIntegrationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zeroTrustCasbIntegrationState)(nil)).Elem()
 }
 
+// ZeroTrustCasbIntegrationExists checks whether an existing ZeroTrustCasbIntegration resource with the given ID exists.
+func ZeroTrustCasbIntegrationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustCasbIntegrationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustCasbIntegration:ZeroTrustCasbIntegration", id, state, "", opts...)
+}
+
 type zeroTrustCasbIntegrationArgs struct {
 	// Cloudflare account identifier.
 	AccountId string `pulumi:"accountId"`

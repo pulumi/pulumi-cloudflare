@@ -884,6 +884,48 @@ class AccessPolicy(pulumi.CustomResource):
         __props__.__dict__["updated_at"] = updated_at
         return AccessPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            app_count: pulumi.Input[Optional[_builtins.int]] = None,
+            approval_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessPolicyApprovalGroupArgs', 'AccessPolicyApprovalGroupArgsDict', 'outputs.AccessPolicyApprovalGroup']]]]] = None,
+            approval_required: pulumi.Input[Optional[_builtins.bool]] = None,
+            connection_rules: pulumi.Input[Optional[Union['AccessPolicyConnectionRulesArgs', 'AccessPolicyConnectionRulesArgsDict', 'outputs.AccessPolicyConnectionRules']]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            decision: pulumi.Input[Optional[_builtins.str]] = None,
+            excludes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessPolicyExcludeArgs', 'AccessPolicyExcludeArgsDict', 'outputs.AccessPolicyExclude']]]]] = None,
+            includes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessPolicyIncludeArgs', 'AccessPolicyIncludeArgsDict', 'outputs.AccessPolicyInclude']]]]] = None,
+            isolation_required: pulumi.Input[Optional[_builtins.bool]] = None,
+            mfa_config: pulumi.Input[Optional[Union['AccessPolicyMfaConfigArgs', 'AccessPolicyMfaConfigArgsDict', 'outputs.AccessPolicyMfaConfig']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            purpose_justification_prompt: pulumi.Input[Optional[_builtins.str]] = None,
+            purpose_justification_required: pulumi.Input[Optional[_builtins.bool]] = None,
+            requires: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessPolicyRequireArgs', 'AccessPolicyRequireArgsDict', 'outputs.AccessPolicyRequire']]]]] = None,
+            reusable: pulumi.Input[Optional[_builtins.bool]] = None,
+            session_duration: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["appCount"] = app_count
+        __props__["approvalGroups"] = approval_groups
+        __props__["approvalRequired"] = approval_required
+        __props__["connectionRules"] = connection_rules
+        __props__["createdAt"] = created_at
+        __props__["decision"] = decision
+        __props__["excludes"] = excludes
+        __props__["includes"] = includes
+        __props__["isolationRequired"] = isolation_required
+        __props__["mfaConfig"] = mfa_config
+        __props__["name"] = name
+        __props__["purposeJustificationPrompt"] = purpose_justification_prompt
+        __props__["purposeJustificationRequired"] = purpose_justification_required
+        __props__["requires"] = requires
+        __props__["reusable"] = reusable
+        __props__["sessionDuration"] = session_duration
+        __props__["updatedAt"] = updated_at
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/accessPolicy:AccessPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

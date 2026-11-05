@@ -103,26 +103,21 @@ public final class GetZonesResult {
     /**
      * @return Legacy permissions based on legacy user membership information.
      * 
-     * @deprecated
-     * This has been replaced by Account memberships.
+     * @deprecated This has been replaced by Account memberships.
      * 
      */
-    @Deprecated /* This has been replaced by Account memberships. */
+    @Deprecated
     private List<String> permissions;
     /**
      * @return A Zones subscription information.
      * 
-     * @deprecated
-     * Please use the `/zones/{zone_id}/subscription` API
+     * @deprecated Please use the `/zones/{zone_id}/subscription` API
      * to update a zone&#39;s plan. Changing this value will create/cancel
      * associated subscriptions. To view available plans for this zone,
      * see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/).
      * 
      */
-    @Deprecated /* Please use the `/zones/{zone_id}/subscription` API
-to update a zone's plan. Changing this value will create/cancel
-associated subscriptions. To view available plans for this zone,
-see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/). */
+    @Deprecated
     private GetZonesResultPlan plan;
     /**
      * @return The zone status on Cloudflare.
@@ -273,28 +268,23 @@ see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresour
     /**
      * @return Legacy permissions based on legacy user membership information.
      * 
-     * @deprecated
-     * This has been replaced by Account memberships.
+     * @deprecated This has been replaced by Account memberships.
      * 
      */
-    @Deprecated /* This has been replaced by Account memberships. */
+    @Deprecated
     public List<String> permissions() {
         return this.permissions;
     }
     /**
      * @return A Zones subscription information.
      * 
-     * @deprecated
-     * Please use the `/zones/{zone_id}/subscription` API
+     * @deprecated Please use the `/zones/{zone_id}/subscription` API
      * to update a zone&#39;s plan. Changing this value will create/cancel
      * associated subscriptions. To view available plans for this zone,
      * see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/).
      * 
      */
-    @Deprecated /* Please use the `/zones/{zone_id}/subscription` API
-to update a zone's plan. Changing this value will create/cancel
-associated subscriptions. To view available plans for this zone,
-see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/). */
+    @Deprecated
     public GetZonesResultPlan plan() {
         return this.plan;
     }

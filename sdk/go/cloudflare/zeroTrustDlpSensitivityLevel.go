@@ -122,6 +122,12 @@ func (ZeroTrustDlpSensitivityLevelState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zeroTrustDlpSensitivityLevelState)(nil)).Elem()
 }
 
+// ZeroTrustDlpSensitivityLevelExists checks whether an existing ZeroTrustDlpSensitivityLevel resource with the given ID exists.
+func ZeroTrustDlpSensitivityLevelExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustDlpSensitivityLevelState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustDlpSensitivityLevel:ZeroTrustDlpSensitivityLevel", id, state, "", opts...)
+}
+
 type zeroTrustDlpSensitivityLevelArgs struct {
 	AccountId          string  `pulumi:"accountId"`
 	Description        *string `pulumi:"description"`

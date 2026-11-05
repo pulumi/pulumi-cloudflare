@@ -147,6 +147,12 @@ func (DeviceManagedNetworksState) ElementType() reflect.Type {
 	return reflect.TypeOf((*deviceManagedNetworksState)(nil)).Elem()
 }
 
+// DeviceManagedNetworksExists checks whether an existing DeviceManagedNetworks resource with the given ID exists.
+func DeviceManagedNetworksExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DeviceManagedNetworksState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/deviceManagedNetworks:DeviceManagedNetworks", id, state, "", opts...)
+}
+
 type deviceManagedNetworksArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// The configuration object containing information for the WARP client to detect the managed network.

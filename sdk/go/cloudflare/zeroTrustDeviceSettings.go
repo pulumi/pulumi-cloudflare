@@ -158,6 +158,12 @@ func (ZeroTrustDeviceSettingsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zeroTrustDeviceSettingsState)(nil)).Elem()
 }
 
+// ZeroTrustDeviceSettingsExists checks whether an existing ZeroTrustDeviceSettings resource with the given ID exists.
+func ZeroTrustDeviceSettingsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustDeviceSettingsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustDeviceSettings:ZeroTrustDeviceSettings", id, state, "", opts...)
+}
+
 type zeroTrustDeviceSettingsArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// Sets the time limit, in seconds, that a user can use an override code to bypass WARP.

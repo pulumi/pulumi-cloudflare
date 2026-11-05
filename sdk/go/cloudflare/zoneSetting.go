@@ -557,6 +557,12 @@ func (ZoneSettingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zoneSettingState)(nil)).Elem()
 }
 
+// ZoneSettingExists checks whether an existing ZoneSetting resource with the given ID exists.
+func ZoneSettingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZoneSettingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zoneSetting:ZoneSetting", id, state, "", opts...)
+}
+
 type zoneSettingArgs struct {
 	// ssl-recommender enrollment setting.
 	Enabled *bool `pulumi:"enabled"`

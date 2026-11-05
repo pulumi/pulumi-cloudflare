@@ -116,6 +116,12 @@ func (ContentScanningExpressionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*contentScanningExpressionState)(nil)).Elem()
 }
 
+// ContentScanningExpressionExists checks whether an existing ContentScanningExpression resource with the given ID exists.
+func ContentScanningExpressionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ContentScanningExpressionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/contentScanningExpression:ContentScanningExpression", id, state, "", opts...)
+}
+
 type contentScanningExpressionArgs struct {
 	Bodies []ContentScanningExpressionBody `pulumi:"bodies"`
 	// Defines the custom content extraction expression used to reach content objects in the request.

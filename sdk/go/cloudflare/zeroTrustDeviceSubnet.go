@@ -162,6 +162,12 @@ func (ZeroTrustDeviceSubnetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zeroTrustDeviceSubnetState)(nil)).Elem()
 }
 
+// ZeroTrustDeviceSubnetExists checks whether an existing ZeroTrustDeviceSubnet resource with the given ID exists.
+func ZeroTrustDeviceSubnetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustDeviceSubnetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustDeviceSubnet:ZeroTrustDeviceSubnet", id, state, "", opts...)
+}
+
 type zeroTrustDeviceSubnetArgs struct {
 	// Cloudflare account ID
 	AccountId string `pulumi:"accountId"`

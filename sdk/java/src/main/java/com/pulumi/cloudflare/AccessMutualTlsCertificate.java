@@ -71,11 +71,10 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate example &#39;&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;certificate_id&gt;&#39;
  * ```
  * 
- * @deprecated
- * cloudflare.index/accessmutualtlscertificate.AccessMutualTlsCertificate has been deprecated in favor of cloudflare.index/zerotrustaccessmtlscertificate.ZeroTrustAccessMtlsCertificate
+ * @deprecated cloudflare.index/accessmutualtlscertificate.AccessMutualTlsCertificate has been deprecated in favor of cloudflare.index/zerotrustaccessmtlscertificate.ZeroTrustAccessMtlsCertificate
  * 
  */
-@Deprecated /* cloudflare.index/accessmutualtlscertificate.AccessMutualTlsCertificate has been deprecated in favor of cloudflare.index/zerotrustaccessmtlscertificate.ZeroTrustAccessMtlsCertificate */
+@Deprecated
 @ResourceType(type="cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate")
 public class AccessMutualTlsCertificate extends com.pulumi.resources.CustomResource {
     /**

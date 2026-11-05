@@ -296,6 +296,20 @@ class TotalTls(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return TotalTls(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            certificate_authority: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            validity_period: pulumi.Input[Optional[_builtins.int]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["certificateAuthority"] = certificate_authority
+        __props__["enabled"] = enabled
+        __props__["validityPeriod"] = validity_period
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/totalTls:TotalTls', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> pulumi.Output[Optional[_builtins.str]]:

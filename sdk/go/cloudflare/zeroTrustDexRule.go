@@ -136,6 +136,12 @@ func (ZeroTrustDexRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zeroTrustDexRuleState)(nil)).Elem()
 }
 
+// ZeroTrustDexRuleExists checks whether an existing ZeroTrustDexRule resource with the given ID exists.
+func ZeroTrustDexRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustDexRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustDexRule:ZeroTrustDexRule", id, state, "", opts...)
+}
+
 type zeroTrustDexRuleArgs struct {
 	// Unique identifier linked to an account.
 	AccountId   string  `pulumi:"accountId"`

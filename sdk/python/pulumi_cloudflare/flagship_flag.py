@@ -592,6 +592,34 @@ class FlagshipFlag(pulumi.CustomResource):
         __props__.__dict__["variations"] = variations
         return FlagshipFlag(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            app_id: pulumi.Input[Optional[_builtins.str]] = None,
+            default_variation: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlagshipFlagRuleArgs', 'FlagshipFlagRuleArgsDict', 'outputs.FlagshipFlagRule']]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_by: pulumi.Input[Optional[_builtins.str]] = None,
+            variations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["appId"] = app_id
+        __props__["defaultVariation"] = default_variation
+        __props__["description"] = description
+        __props__["enabled"] = enabled
+        __props__["key"] = key
+        __props__["rules"] = rules
+        __props__["type"] = type
+        __props__["updatedAt"] = updated_at
+        __props__["updatedBy"] = updated_by
+        __props__["variations"] = variations
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/flagshipFlag:FlagshipFlag', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

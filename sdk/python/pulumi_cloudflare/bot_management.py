@@ -1143,6 +1143,60 @@ class BotManagement(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return BotManagement(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            ai_bots_migration_opt_out: pulumi.Input[Optional[_builtins.bool]] = None,
+            ai_bots_protection: pulumi.Input[Optional[_builtins.str]] = None,
+            ai_training: pulumi.Input[Optional[_builtins.str]] = None,
+            ai_user: pulumi.Input[Optional[_builtins.str]] = None,
+            aisearch: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_update_model: pulumi.Input[Optional[_builtins.bool]] = None,
+            bm_cookie_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            bot_preference_sync_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            cf_robots_variant: pulumi.Input[Optional[_builtins.str]] = None,
+            content_bots_protection: pulumi.Input[Optional[_builtins.str]] = None,
+            crawler_protection: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_js: pulumi.Input[Optional[_builtins.bool]] = None,
+            fight_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_robots_txt_managed: pulumi.Input[Optional[_builtins.bool]] = None,
+            jsd_api_results_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            optimize_wordpress: pulumi.Input[Optional[_builtins.bool]] = None,
+            sbfm_definitely_automated: pulumi.Input[Optional[_builtins.str]] = None,
+            sbfm_likely_automated: pulumi.Input[Optional[_builtins.str]] = None,
+            sbfm_static_resource_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            sbfm_verified_bots: pulumi.Input[Optional[_builtins.str]] = None,
+            stale_zone_configuration: pulumi.Input[Optional[Union['BotManagementStaleZoneConfigurationArgs', 'BotManagementStaleZoneConfigurationArgsDict', 'outputs.BotManagementStaleZoneConfiguration']]] = None,
+            suppress_session_score: pulumi.Input[Optional[_builtins.bool]] = None,
+            using_latest_model: pulumi.Input[Optional[_builtins.bool]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aiBotsMigrationOptOut"] = ai_bots_migration_opt_out
+        __props__["aiBotsProtection"] = ai_bots_protection
+        __props__["aiTraining"] = ai_training
+        __props__["aiUser"] = ai_user
+        __props__["aisearch"] = aisearch
+        __props__["autoUpdateModel"] = auto_update_model
+        __props__["bmCookieEnabled"] = bm_cookie_enabled
+        __props__["botPreferenceSyncEnabled"] = bot_preference_sync_enabled
+        __props__["cfRobotsVariant"] = cf_robots_variant
+        __props__["contentBotsProtection"] = content_bots_protection
+        __props__["crawlerProtection"] = crawler_protection
+        __props__["enableJs"] = enable_js
+        __props__["fightMode"] = fight_mode
+        __props__["isRobotsTxtManaged"] = is_robots_txt_managed
+        __props__["jsdApiResultsEnabled"] = jsd_api_results_enabled
+        __props__["optimizeWordpress"] = optimize_wordpress
+        __props__["sbfmDefinitelyAutomated"] = sbfm_definitely_automated
+        __props__["sbfmLikelyAutomated"] = sbfm_likely_automated
+        __props__["sbfmStaticResourceProtection"] = sbfm_static_resource_protection
+        __props__["sbfmVerifiedBots"] = sbfm_verified_bots
+        __props__["staleZoneConfiguration"] = stale_zone_configuration
+        __props__["suppressSessionScore"] = suppress_session_score
+        __props__["usingLatestModel"] = using_latest_model
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/botManagement:BotManagement', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aiBotsMigrationOptOut")
     def ai_bots_migration_opt_out(self) -> pulumi.Output[_builtins.bool]:

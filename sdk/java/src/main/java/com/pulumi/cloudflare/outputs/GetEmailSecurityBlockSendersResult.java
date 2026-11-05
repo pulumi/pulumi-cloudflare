@@ -26,11 +26,10 @@ public final class GetEmailSecurityBlockSendersResult {
     /**
      * @return Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
      * 
-     * @deprecated
-     * Use `modifiedAt` instead.
+     * @deprecated Use `modifiedAt` instead.
      * 
      */
-    @Deprecated /* Use `modifiedAt` instead. */
+    @Deprecated
     private String lastModified;
     private String modifiedAt;
     /**
@@ -73,11 +72,10 @@ public final class GetEmailSecurityBlockSendersResult {
     /**
      * @return Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
      * 
-     * @deprecated
-     * Use `modifiedAt` instead.
+     * @deprecated Use `modifiedAt` instead.
      * 
      */
-    @Deprecated /* Use `modifiedAt` instead. */
+    @Deprecated
     public String lastModified() {
         return this.lastModified;
     }

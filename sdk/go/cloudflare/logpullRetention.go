@@ -108,6 +108,12 @@ func (LogpullRetentionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*logpullRetentionState)(nil)).Elem()
 }
 
+// LogpullRetentionExists checks whether an existing LogpullRetention resource with the given ID exists.
+func LogpullRetentionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LogpullRetentionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/logpullRetention:LogpullRetention", id, state, "", opts...)
+}
+
 type logpullRetentionArgs struct {
 	// The log retention flag for Logpull API.
 	Flag *bool `pulumi:"flag"`

@@ -14,11 +14,10 @@ public final class GetZeroTrustDlpEntriesResultPattern {
     /**
      * @return Available values: &#34;luhn&#34;.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     private String validation;
 
     private GetZeroTrustDlpEntriesResultPattern() {}
@@ -28,11 +27,10 @@ public final class GetZeroTrustDlpEntriesResultPattern {
     /**
      * @return Available values: &#34;luhn&#34;.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     public String validation() {
         return this.validation;
     }

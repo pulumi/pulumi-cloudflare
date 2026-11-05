@@ -329,6 +329,22 @@ class RegionalHostname(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return RegionalHostname(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            hostname: pulumi.Input[Optional[_builtins.str]] = None,
+            region_key: pulumi.Input[Optional[_builtins.str]] = None,
+            routing: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createdOn"] = created_on
+        __props__["hostname"] = hostname
+        __props__["regionKey"] = region_key
+        __props__["routing"] = routing
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/regionalHostname:RegionalHostname', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createdOn")
     def created_on(self) -> pulumi.Output[_builtins.str]:

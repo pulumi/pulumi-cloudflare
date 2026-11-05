@@ -132,6 +132,12 @@ func (R2ManagedDomainState) ElementType() reflect.Type {
 	return reflect.TypeOf((*r2managedDomainState)(nil)).Elem()
 }
 
+// R2ManagedDomainExists checks whether an existing R2ManagedDomain resource with the given ID exists.
+func R2ManagedDomainExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *R2ManagedDomainState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/r2ManagedDomain:R2ManagedDomain", id, state, "", opts...)
+}
+
 type r2managedDomainArgs struct {
 	// Cloudflare account ID that owns the R2 resource.
 	AccountId string `pulumi:"accountId"`

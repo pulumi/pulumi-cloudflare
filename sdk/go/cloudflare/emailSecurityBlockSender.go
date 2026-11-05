@@ -168,6 +168,12 @@ func (EmailSecurityBlockSenderState) ElementType() reflect.Type {
 	return reflect.TypeOf((*emailSecurityBlockSenderState)(nil)).Elem()
 }
 
+// EmailSecurityBlockSenderExists checks whether an existing EmailSecurityBlockSender resource with the given ID exists.
+func EmailSecurityBlockSenderExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EmailSecurityBlockSenderState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/emailSecurityBlockSender:EmailSecurityBlockSender", id, state, "", opts...)
+}
+
 type emailSecurityBlockSenderArgs struct {
 	// Identifier.
 	AccountId string  `pulumi:"accountId"`

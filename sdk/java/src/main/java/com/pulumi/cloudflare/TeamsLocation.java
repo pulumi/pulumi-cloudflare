@@ -111,11 +111,10 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/teamsLocation:TeamsLocation example &#39;&lt;account_id&gt;/&lt;location_id&gt;&#39;
  * ```
  * 
- * @deprecated
- * cloudflare.index/teamslocation.TeamsLocation has been deprecated in favor of cloudflare.index/zerotrustdnslocation.ZeroTrustDnsLocation
+ * @deprecated cloudflare.index/teamslocation.TeamsLocation has been deprecated in favor of cloudflare.index/zerotrustdnslocation.ZeroTrustDnsLocation
  * 
  */
-@Deprecated /* cloudflare.index/teamslocation.TeamsLocation has been deprecated in favor of cloudflare.index/zerotrustdnslocation.ZeroTrustDnsLocation */
+@Deprecated
 @ResourceType(type="cloudflare:index/teamsLocation:TeamsLocation")
 public class TeamsLocation extends com.pulumi.resources.CustomResource {
     /**

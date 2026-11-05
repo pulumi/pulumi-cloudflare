@@ -815,6 +815,38 @@ class ZeroTrustCasbIntegration(pulumi.CustomResource):
         __props__.__dict__["use_cases"] = use_cases
         return ZeroTrustCasbIntegration(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            anthropic: pulumi.Input[Optional[Union['ZeroTrustCasbIntegrationAnthropicArgs', 'ZeroTrustCasbIntegrationAnthropicArgsDict', 'outputs.ZeroTrustCasbIntegrationAnthropic']]] = None,
+            aws: pulumi.Input[Optional[Union['ZeroTrustCasbIntegrationAwsArgs', 'ZeroTrustCasbIntegrationAwsArgsDict', 'outputs.ZeroTrustCasbIntegrationAws']]] = None,
+            box: pulumi.Input[Optional[Union['ZeroTrustCasbIntegrationBoxArgs', 'ZeroTrustCasbIntegrationBoxArgsDict', 'outputs.ZeroTrustCasbIntegrationBox']]] = None,
+            dlp_profiles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            google_cloud_platform: pulumi.Input[Optional[Union['ZeroTrustCasbIntegrationGoogleCloudPlatformArgs', 'ZeroTrustCasbIntegrationGoogleCloudPlatformArgsDict', 'outputs.ZeroTrustCasbIntegrationGoogleCloudPlatform']]] = None,
+            google_workspace: pulumi.Input[Optional[Union['ZeroTrustCasbIntegrationGoogleWorkspaceArgs', 'ZeroTrustCasbIntegrationGoogleWorkspaceArgsDict', 'outputs.ZeroTrustCasbIntegrationGoogleWorkspace']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            openai: pulumi.Input[Optional[Union['ZeroTrustCasbIntegrationOpenaiArgs', 'ZeroTrustCasbIntegrationOpenaiArgsDict', 'outputs.ZeroTrustCasbIntegrationOpenai']]] = None,
+            paused: pulumi.Input[Optional[_builtins.bool]] = None,
+            permissions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            secrets_digest: pulumi.Input[Optional[_builtins.str]] = None,
+            use_cases: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["anthropic"] = anthropic
+        __props__["aws"] = aws
+        __props__["box"] = box
+        __props__["dlpProfiles"] = dlp_profiles
+        __props__["googleCloudPlatform"] = google_cloud_platform
+        __props__["googleWorkspace"] = google_workspace
+        __props__["name"] = name
+        __props__["openai"] = openai
+        __props__["paused"] = paused
+        __props__["permissions"] = permissions
+        __props__["secretsDigest"] = secrets_digest
+        __props__["useCases"] = use_cases
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/zeroTrustCasbIntegration:ZeroTrustCasbIntegration', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

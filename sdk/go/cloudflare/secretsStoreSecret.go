@@ -174,6 +174,12 @@ func (SecretsStoreSecretState) ElementType() reflect.Type {
 	return reflect.TypeOf((*secretsStoreSecretState)(nil)).Elem()
 }
 
+// SecretsStoreSecretExists checks whether an existing SecretsStoreSecret resource with the given ID exists.
+func SecretsStoreSecretExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecretsStoreSecretState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/secretsStoreSecret:SecretsStoreSecret", id, state, "", opts...)
+}
+
 type secretsStoreSecretArgs struct {
 	// Account Identifier
 	AccountId string `pulumi:"accountId"`

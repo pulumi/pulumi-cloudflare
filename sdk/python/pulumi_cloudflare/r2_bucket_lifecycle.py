@@ -334,6 +334,20 @@ class R2BucketLifecycle(pulumi.CustomResource):
         __props__.__dict__["rules"] = rules
         return R2BucketLifecycle(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+            jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['R2BucketLifecycleRuleArgs', 'R2BucketLifecycleRuleArgsDict', 'outputs.R2BucketLifecycleRule']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["bucketName"] = bucket_name
+        __props__["jurisdiction"] = jurisdiction
+        __props__["rules"] = rules
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/r2BucketLifecycle:R2BucketLifecycle', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

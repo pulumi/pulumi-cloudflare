@@ -130,6 +130,12 @@ func (TotalTlsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*totalTlsState)(nil)).Elem()
 }
 
+// TotalTlsExists checks whether an existing TotalTls resource with the given ID exists.
+func TotalTlsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TotalTlsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/totalTls:TotalTls", id, state, "", opts...)
+}
+
 type totalTlsArgs struct {
 	// The Certificate Authority that Total TLS certificates will be issued through.
 	// Available values: "google", "lets*encrypt", "ssl*com".

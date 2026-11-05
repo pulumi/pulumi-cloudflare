@@ -161,6 +161,12 @@ func (AccessRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessRuleState)(nil)).Elem()
 }
 
+// AccessRuleExists checks whether an existing AccessRule resource with the given ID exists.
+func AccessRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccessRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/accessRule:AccessRule", id, state, "", opts...)
+}
+
 type accessRuleArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`

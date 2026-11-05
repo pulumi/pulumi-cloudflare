@@ -321,6 +321,20 @@ class ImageVariant(pulumi.CustomResource):
         __props__.__dict__["options"] = options
         return ImageVariant(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            image_variant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            never_require_signed_urls: pulumi.Input[Optional[_builtins.bool]] = None,
+            options: pulumi.Input[Optional[Union['ImageVariantOptionsArgs', 'ImageVariantOptionsArgsDict', 'outputs.ImageVariantOptions']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["imageVariantId"] = image_variant_id
+        __props__["neverRequireSignedUrls"] = never_require_signed_urls
+        __props__["options"] = options
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/imageVariant:ImageVariant', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

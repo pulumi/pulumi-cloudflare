@@ -21,11 +21,10 @@ public final class PagesProjectSourceConfigArgs extends com.pulumi.resources.Res
      * Whether to enable automatic deployments when pushing to the source repository.
      * When disabled, no deployments (production or preview) will be triggered automatically.
      * 
-     * @deprecated
-     * Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
+     * @deprecated Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
      * 
      */
-    @Deprecated /* Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control. */
+    @Deprecated
     @Import(name="deploymentsEnabled")
     private @Nullable Output<Boolean> deploymentsEnabled;
 
@@ -33,11 +32,10 @@ public final class PagesProjectSourceConfigArgs extends com.pulumi.resources.Res
      * @return Whether to enable automatic deployments when pushing to the source repository.
      * When disabled, no deployments (production or preview) will be triggered automatically.
      * 
-     * @deprecated
-     * Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
+     * @deprecated Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
      * 
      */
-    @Deprecated /* Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control. */
+    @Deprecated
     public Optional<Output<Boolean>> deploymentsEnabled() {
         return Optional.ofNullable(this.deploymentsEnabled);
     }
@@ -266,11 +264,10 @@ public final class PagesProjectSourceConfigArgs extends com.pulumi.resources.Res
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
+         * @deprecated Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
          * 
          */
-        @Deprecated /* Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control. */
+        @Deprecated
         public Builder deploymentsEnabled(@Nullable Output<Boolean> deploymentsEnabled) {
             $.deploymentsEnabled = deploymentsEnabled;
             return this;
@@ -282,11 +279,10 @@ public final class PagesProjectSourceConfigArgs extends com.pulumi.resources.Res
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
+         * @deprecated Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
          * 
          */
-        @Deprecated /* Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control. */
+        @Deprecated
         public Builder deploymentsEnabled(Boolean deploymentsEnabled) {
             return deploymentsEnabled(Output.of(deploymentsEnabled));
         }

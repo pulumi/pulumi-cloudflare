@@ -123,11 +123,10 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/accessOrganization:AccessOrganization example &#39;&lt;account_id&gt;&#39;
  * ```
  * 
- * @deprecated
- * cloudflare.index/accessorganization.AccessOrganization has been deprecated in favor of cloudflare.index/zerotrustorganization.ZeroTrustOrganization
+ * @deprecated cloudflare.index/accessorganization.AccessOrganization has been deprecated in favor of cloudflare.index/zerotrustorganization.ZeroTrustOrganization
  * 
  */
-@Deprecated /* cloudflare.index/accessorganization.AccessOrganization has been deprecated in favor of cloudflare.index/zerotrustorganization.ZeroTrustOrganization */
+@Deprecated
 @ResourceType(type="cloudflare:index/accessOrganization:AccessOrganization")
 public class AccessOrganization extends com.pulumi.resources.CustomResource {
     /**

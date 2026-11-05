@@ -16,11 +16,10 @@ public final class GetPagesProjectsResultCanonicalDeploymentSourceConfig {
      * @return Whether to enable automatic deployments when pushing to the source repository.
      * When disabled, no deployments (production or preview) will be triggered automatically.
      * 
-     * @deprecated
-     * Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
+     * @deprecated Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
      * 
      */
-    @Deprecated /* Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control. */
+    @Deprecated
     private Boolean deploymentsEnabled;
     /**
      * @return The owner of the repository.
@@ -89,11 +88,10 @@ public final class GetPagesProjectsResultCanonicalDeploymentSourceConfig {
      * @return Whether to enable automatic deployments when pushing to the source repository.
      * When disabled, no deployments (production or preview) will be triggered automatically.
      * 
-     * @deprecated
-     * Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
+     * @deprecated Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
      * 
      */
-    @Deprecated /* Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control. */
+    @Deprecated
     public Boolean deploymentsEnabled() {
         return this.deploymentsEnabled;
     }

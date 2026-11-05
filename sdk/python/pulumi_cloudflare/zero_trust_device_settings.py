@@ -537,6 +537,32 @@ class ZeroTrustDeviceSettings(pulumi.CustomResource):
         __props__.__dict__["use_zt_virtual_ip"] = use_zt_virtual_ip
         return ZeroTrustDeviceSettings(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_for_time: pulumi.Input[Optional[_builtins.float]] = None,
+            external_emergency_signal_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            external_emergency_signal_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            external_emergency_signal_interval: pulumi.Input[Optional[_builtins.str]] = None,
+            external_emergency_signal_url: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway_proxy_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            gateway_udp_proxy_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            root_certificate_installation_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            use_zt_virtual_ip: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["disableForTime"] = disable_for_time
+        __props__["externalEmergencySignalEnabled"] = external_emergency_signal_enabled
+        __props__["externalEmergencySignalFingerprint"] = external_emergency_signal_fingerprint
+        __props__["externalEmergencySignalInterval"] = external_emergency_signal_interval
+        __props__["externalEmergencySignalUrl"] = external_emergency_signal_url
+        __props__["gatewayProxyEnabled"] = gateway_proxy_enabled
+        __props__["gatewayUdpProxyEnabled"] = gateway_udp_proxy_enabled
+        __props__["rootCertificateInstallationEnabled"] = root_certificate_installation_enabled
+        __props__["useZtVirtualIp"] = use_zt_virtual_ip
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/zeroTrustDeviceSettings:ZeroTrustDeviceSettings', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

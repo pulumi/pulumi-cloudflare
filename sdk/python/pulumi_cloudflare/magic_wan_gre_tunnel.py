@@ -696,6 +696,42 @@ class MagicWanGreTunnel(pulumi.CustomResource):
         __props__.__dict__["ttl"] = ttl
         return MagicWanGreTunnel(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            automatic_return_routing: pulumi.Input[Optional[_builtins.bool]] = None,
+            bgp: pulumi.Input[Optional[Union['MagicWanGreTunnelBgpArgs', 'MagicWanGreTunnelBgpArgsDict', 'outputs.MagicWanGreTunnelBgp']]] = None,
+            bgp_status: pulumi.Input[Optional[Union['MagicWanGreTunnelBgpStatusArgs', 'MagicWanGreTunnelBgpStatusArgsDict', 'outputs.MagicWanGreTunnelBgpStatus']]] = None,
+            cloudflare_gre_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            customer_gre_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check: pulumi.Input[Optional[Union['MagicWanGreTunnelHealthCheckArgs', 'MagicWanGreTunnelHealthCheckArgsDict', 'outputs.MagicWanGreTunnelHealthCheck']]] = None,
+            interface_address: pulumi.Input[Optional[_builtins.str]] = None,
+            interface_address6: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            mtu: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            ttl: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["automaticReturnRouting"] = automatic_return_routing
+        __props__["bgp"] = bgp
+        __props__["bgpStatus"] = bgp_status
+        __props__["cloudflareGreEndpoint"] = cloudflare_gre_endpoint
+        __props__["createdOn"] = created_on
+        __props__["customerGreEndpoint"] = customer_gre_endpoint
+        __props__["description"] = description
+        __props__["healthCheck"] = health_check
+        __props__["interfaceAddress"] = interface_address
+        __props__["interfaceAddress6"] = interface_address6
+        __props__["modifiedOn"] = modified_on
+        __props__["mtu"] = mtu
+        __props__["name"] = name
+        __props__["ttl"] = ttl
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

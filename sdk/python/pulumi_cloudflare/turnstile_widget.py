@@ -921,6 +921,52 @@ class TurnstileWidget(pulumi.CustomResource):
         __props__.__dict__["sitekey"] = sitekey
         return TurnstileWidget(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            bot_fight_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+            clearance_level: pulumi.Input[Optional[_builtins.str]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            deployed_via: pulumi.Input[Optional[_builtins.str]] = None,
+            direction: pulumi.Input[Optional[_builtins.str]] = None,
+            domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ephemeral_id: pulumi.Input[Optional[_builtins.bool]] = None,
+            filter: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modified_via: pulumi.Input[Optional[_builtins.str]] = None,
+            mode: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            offlabel: pulumi.Input[Optional[_builtins.bool]] = None,
+            order: pulumi.Input[Optional[_builtins.str]] = None,
+            page: pulumi.Input[Optional[_builtins.float]] = None,
+            per_page: pulumi.Input[Optional[_builtins.float]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            secret: pulumi.Input[Optional[_builtins.str]] = None,
+            sitekey: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["botFightMode"] = bot_fight_mode
+        __props__["clearanceLevel"] = clearance_level
+        __props__["createdOn"] = created_on
+        __props__["deployedVia"] = deployed_via
+        __props__["direction"] = direction
+        __props__["domains"] = domains
+        __props__["ephemeralId"] = ephemeral_id
+        __props__["filter"] = filter
+        __props__["lastModifiedVia"] = last_modified_via
+        __props__["mode"] = mode
+        __props__["modifiedOn"] = modified_on
+        __props__["name"] = name
+        __props__["offlabel"] = offlabel
+        __props__["order"] = order
+        __props__["page"] = page
+        __props__["perPage"] = per_page
+        __props__["region"] = region
+        __props__["secret"] = secret
+        __props__["sitekey"] = sitekey
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/turnstileWidget:TurnstileWidget', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

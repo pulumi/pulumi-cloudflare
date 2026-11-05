@@ -583,6 +583,36 @@ class EmailSecurityImpersonationRegistry(pulumi.CustomResource):
         __props__.__dict__["provenance"] = provenance
         return EmailSecurityImpersonationRegistry(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            comments: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            directory_id: pulumi.Input[Optional[_builtins.int]] = None,
+            directory_node_id: pulumi.Input[Optional[_builtins.int]] = None,
+            email: pulumi.Input[Optional[_builtins.str]] = None,
+            external_directory_node_id: pulumi.Input[Optional[_builtins.str]] = None,
+            is_email_regex: pulumi.Input[Optional[_builtins.bool]] = None,
+            last_modified: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_at: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            provenance: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["comments"] = comments
+        __props__["createdAt"] = created_at
+        __props__["directoryId"] = directory_id
+        __props__["directoryNodeId"] = directory_node_id
+        __props__["email"] = email
+        __props__["externalDirectoryNodeId"] = external_directory_node_id
+        __props__["isEmailRegex"] = is_email_regex
+        __props__["lastModified"] = last_modified
+        __props__["modifiedAt"] = modified_at
+        __props__["name"] = name
+        __props__["provenance"] = provenance
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/emailSecurityImpersonationRegistry:EmailSecurityImpersonationRegistry', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

@@ -41,7 +41,7 @@ namespace Pulumi.Cloudflare.Outputs
         ///   * `Review` - Operation is not saved into API Shield Endpoint Management
         ///   * `Saved` - Operation is saved into API Shield Endpoint Management
         ///   * `Ignored` - Operation is marked as ignored
-        /// Available values: "review", "saved", "ignored".
+        ///     Available values: "review", "saved", "ignored".
         /// </summary>
         public readonly string State;
 

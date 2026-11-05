@@ -126,6 +126,12 @@ func (ArgoSmartRoutingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*argoSmartRoutingState)(nil)).Elem()
 }
 
+// ArgoSmartRoutingExists checks whether an existing ArgoSmartRouting resource with the given ID exists.
+func ArgoSmartRoutingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ArgoSmartRoutingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/argoSmartRouting:ArgoSmartRouting", id, state, "", opts...)
+}
+
 type argoSmartRoutingArgs struct {
 	// Specifies the enablement value of Argo Smart Routing.
 	// Available values: "on", "off".

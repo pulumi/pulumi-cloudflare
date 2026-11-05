@@ -728,6 +728,52 @@ class StreamLiveInput(pulumi.CustomResource):
         __props__.__dict__["web_rtc_playback"] = web_rtc_playback
         return StreamLiveInput(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            default_creator: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_recording_after_days: pulumi.Input[Optional[_builtins.float]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            keys_rotated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            live_input_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            meta: pulumi.Input[Optional[_builtins.str]] = None,
+            modified: pulumi.Input[Optional[_builtins.str]] = None,
+            playback: pulumi.Input[Optional[Union['StreamLiveInputPlaybackArgs', 'StreamLiveInputPlaybackArgsDict', 'outputs.StreamLiveInputPlayback']]] = None,
+            prefer_low_latency: pulumi.Input[Optional[_builtins.bool]] = None,
+            recording: pulumi.Input[Optional[Union['StreamLiveInputRecordingArgs', 'StreamLiveInputRecordingArgsDict', 'outputs.StreamLiveInputRecording']]] = None,
+            rtmps: pulumi.Input[Optional[Union['StreamLiveInputRtmpsArgs', 'StreamLiveInputRtmpsArgsDict', 'outputs.StreamLiveInputRtmps']]] = None,
+            rtmps_playback: pulumi.Input[Optional[Union['StreamLiveInputRtmpsPlaybackArgs', 'StreamLiveInputRtmpsPlaybackArgsDict', 'outputs.StreamLiveInputRtmpsPlayback']]] = None,
+            srt: pulumi.Input[Optional[Union['StreamLiveInputSrtArgs', 'StreamLiveInputSrtArgsDict', 'outputs.StreamLiveInputSrt']]] = None,
+            srt_playback: pulumi.Input[Optional[Union['StreamLiveInputSrtPlaybackArgs', 'StreamLiveInputSrtPlaybackArgsDict', 'outputs.StreamLiveInputSrtPlayback']]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            web_rtc: pulumi.Input[Optional[Union['StreamLiveInputWebRtcArgs', 'StreamLiveInputWebRtcArgsDict', 'outputs.StreamLiveInputWebRtc']]] = None,
+            web_rtc_playback: pulumi.Input[Optional[Union['StreamLiveInputWebRtcPlaybackArgs', 'StreamLiveInputWebRtcPlaybackArgsDict', 'outputs.StreamLiveInputWebRtcPlayback']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["created"] = created
+        __props__["defaultCreator"] = default_creator
+        __props__["deleteRecordingAfterDays"] = delete_recording_after_days
+        __props__["enabled"] = enabled
+        __props__["keysRotatedAt"] = keys_rotated_at
+        __props__["liveInputIdentifier"] = live_input_identifier
+        __props__["meta"] = meta
+        __props__["modified"] = modified
+        __props__["playback"] = playback
+        __props__["preferLowLatency"] = prefer_low_latency
+        __props__["recording"] = recording
+        __props__["rtmps"] = rtmps
+        __props__["rtmpsPlayback"] = rtmps_playback
+        __props__["srt"] = srt
+        __props__["srtPlayback"] = srt_playback
+        __props__["status"] = status
+        __props__["uid"] = uid
+        __props__["webRtc"] = web_rtc
+        __props__["webRtcPlayback"] = web_rtc_playback
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/streamLiveInput:StreamLiveInput', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

@@ -134,6 +134,12 @@ func (RegionalHostnameState) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionalHostnameState)(nil)).Elem()
 }
 
+// RegionalHostnameExists checks whether an existing RegionalHostname resource with the given ID exists.
+func RegionalHostnameExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegionalHostnameState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/regionalHostname:RegionalHostname", id, state, "", opts...)
+}
+
 type regionalHostnameArgs struct {
 	// DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
 	Hostname string `pulumi:"hostname"`

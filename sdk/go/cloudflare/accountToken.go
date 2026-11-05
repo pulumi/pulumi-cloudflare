@@ -245,6 +245,12 @@ func (AccountTokenState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountTokenState)(nil)).Elem()
 }
 
+// AccountTokenExists checks whether an existing AccountToken resource with the given ID exists.
+func AccountTokenExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccountTokenState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/accountToken:AccountToken", id, state, "", opts...)
+}
+
 type accountTokenArgs struct {
 	// Account identifier tag.
 	AccountId string                 `pulumi:"accountId"`

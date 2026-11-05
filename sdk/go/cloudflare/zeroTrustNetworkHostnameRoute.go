@@ -151,6 +151,12 @@ func (ZeroTrustNetworkHostnameRouteState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zeroTrustNetworkHostnameRouteState)(nil)).Elem()
 }
 
+// ZeroTrustNetworkHostnameRouteExists checks whether an existing ZeroTrustNetworkHostnameRoute resource with the given ID exists.
+func ZeroTrustNetworkHostnameRouteExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustNetworkHostnameRouteState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustNetworkHostnameRoute:ZeroTrustNetworkHostnameRoute", id, state, "", opts...)
+}
+
 type zeroTrustNetworkHostnameRouteArgs struct {
 	// Cloudflare account ID
 	AccountId string `pulumi:"accountId"`

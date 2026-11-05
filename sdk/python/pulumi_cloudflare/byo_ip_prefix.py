@@ -625,6 +625,46 @@ class ByoIpPrefix(pulumi.CustomResource):
         __props__.__dict__["rpki_validation_state"] = rpki_validation_state
         return ByoIpPrefix(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            advertised: pulumi.Input[Optional[_builtins.bool]] = None,
+            advertised_modified_at: pulumi.Input[Optional[_builtins.str]] = None,
+            approved: pulumi.Input[Optional[_builtins.str]] = None,
+            asn: pulumi.Input[Optional[_builtins.int]] = None,
+            cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            delegate_loa_creation: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            irr_validation_state: pulumi.Input[Optional[_builtins.str]] = None,
+            loa_document_id: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_at: pulumi.Input[Optional[_builtins.str]] = None,
+            on_demand_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            on_demand_locked: pulumi.Input[Optional[_builtins.bool]] = None,
+            ownership_validation_state: pulumi.Input[Optional[_builtins.str]] = None,
+            ownership_validation_token: pulumi.Input[Optional[_builtins.str]] = None,
+            rpki_validation_state: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["advertised"] = advertised
+        __props__["advertisedModifiedAt"] = advertised_modified_at
+        __props__["approved"] = approved
+        __props__["asn"] = asn
+        __props__["cidr"] = cidr
+        __props__["createdAt"] = created_at
+        __props__["delegateLoaCreation"] = delegate_loa_creation
+        __props__["description"] = description
+        __props__["irrValidationState"] = irr_validation_state
+        __props__["loaDocumentId"] = loa_document_id
+        __props__["modifiedAt"] = modified_at
+        __props__["onDemandEnabled"] = on_demand_enabled
+        __props__["onDemandLocked"] = on_demand_locked
+        __props__["ownershipValidationState"] = ownership_validation_state
+        __props__["ownershipValidationToken"] = ownership_validation_token
+        __props__["rpkiValidationState"] = rpki_validation_state
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/byoIpPrefix:ByoIpPrefix', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

@@ -70,11 +70,10 @@ public final class GetWorkerVersionResult {
     private Integer startupTimeMs;
     private List<String> urls;
     /**
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     private String usageModel;
     /**
      * @return Identifier for the version, which can be a UUID, a UUID prefix (minimum length 8), or the literal &#34;latest&#34; to operate on the most recently created version.
@@ -184,11 +183,10 @@ public final class GetWorkerVersionResult {
         return this.urls;
     }
     /**
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     public String usageModel() {
         return this.usageModel;
     }

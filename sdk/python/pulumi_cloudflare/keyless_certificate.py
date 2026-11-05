@@ -688,6 +688,36 @@ class KeylessCertificate(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return KeylessCertificate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bundle_method: pulumi.Input[Optional[_builtins.str]] = None,
+            certificate: pulumi.Input[Optional[_builtins.str]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            host: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            permissions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            port: pulumi.Input[Optional[_builtins.float]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tunnel: pulumi.Input[Optional[Union['KeylessCertificateTunnelArgs', 'KeylessCertificateTunnelArgsDict', 'outputs.KeylessCertificateTunnel']]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bundleMethod"] = bundle_method
+        __props__["certificate"] = certificate
+        __props__["createdOn"] = created_on
+        __props__["enabled"] = enabled
+        __props__["host"] = host
+        __props__["modifiedOn"] = modified_on
+        __props__["name"] = name
+        __props__["permissions"] = permissions
+        __props__["port"] = port
+        __props__["status"] = status
+        __props__["tunnel"] = tunnel
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/keylessCertificate:KeylessCertificate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="bundleMethod")
     def bundle_method(self) -> pulumi.Output[_builtins.str]:

@@ -121,6 +121,12 @@ func (StreamDownloadState) ElementType() reflect.Type {
 	return reflect.TypeOf((*streamDownloadState)(nil)).Elem()
 }
 
+// StreamDownloadExists checks whether an existing StreamDownload resource with the given ID exists.
+func StreamDownloadExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StreamDownloadState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/streamDownload:StreamDownload", id, state, "", opts...)
+}
+
 type streamDownloadArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`

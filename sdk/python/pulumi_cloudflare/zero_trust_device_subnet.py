@@ -435,6 +435,30 @@ class ZeroTrustDeviceSubnet(pulumi.CustomResource):
         __props__.__dict__["subnet_type"] = subnet_type
         return ZeroTrustDeviceSubnet(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            capacity: pulumi.Input[Optional[Union['ZeroTrustDeviceSubnetCapacityArgs', 'ZeroTrustDeviceSubnetCapacityArgsDict', 'outputs.ZeroTrustDeviceSubnetCapacity']]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            deleted_at: pulumi.Input[Optional[_builtins.str]] = None,
+            is_default_network: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            subnet_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["capacity"] = capacity
+        __props__["comment"] = comment
+        __props__["createdAt"] = created_at
+        __props__["deletedAt"] = deleted_at
+        __props__["isDefaultNetwork"] = is_default_network
+        __props__["name"] = name
+        __props__["network"] = network
+        __props__["subnetType"] = subnet_type
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/zeroTrustDeviceSubnet:ZeroTrustDeviceSubnet', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

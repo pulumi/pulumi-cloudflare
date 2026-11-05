@@ -486,6 +486,32 @@ class PipelineStream(pulumi.CustomResource):
         __props__.__dict__["worker_binding"] = worker_binding
         return PipelineStream(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            format: pulumi.Input[Optional[Union['PipelineStreamFormatArgs', 'PipelineStreamFormatArgsDict', 'outputs.PipelineStreamFormat']]] = None,
+            http: pulumi.Input[Optional[Union['PipelineStreamHttpArgs', 'PipelineStreamHttpArgsDict', 'outputs.PipelineStreamHttp']]] = None,
+            modified_at: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            schema: pulumi.Input[Optional[Union['PipelineStreamSchemaArgs', 'PipelineStreamSchemaArgsDict', 'outputs.PipelineStreamSchema']]] = None,
+            version: pulumi.Input[Optional[_builtins.int]] = None,
+            worker_binding: pulumi.Input[Optional[Union['PipelineStreamWorkerBindingArgs', 'PipelineStreamWorkerBindingArgsDict', 'outputs.PipelineStreamWorkerBinding']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["createdAt"] = created_at
+        __props__["endpoint"] = endpoint
+        __props__["format"] = format
+        __props__["http"] = http
+        __props__["modifiedAt"] = modified_at
+        __props__["name"] = name
+        __props__["schema"] = schema
+        __props__["version"] = version
+        __props__["workerBinding"] = worker_binding
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/pipelineStream:PipelineStream', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

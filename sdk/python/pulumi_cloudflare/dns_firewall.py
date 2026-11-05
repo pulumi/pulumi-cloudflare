@@ -798,6 +798,40 @@ class DnsFirewall(pulumi.CustomResource):
         __props__.__dict__["upstream_ips"] = upstream_ips
         return DnsFirewall(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            attack_mitigation: pulumi.Input[Optional[Union['DnsFirewallAttackMitigationArgs', 'DnsFirewallAttackMitigationArgsDict', 'outputs.DnsFirewallAttackMitigation']]] = None,
+            deprecate_any_requests: pulumi.Input[Optional[_builtins.bool]] = None,
+            dns_firewall_ip_count: pulumi.Input[Optional[_builtins.int]] = None,
+            dns_firewall_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ecs_fallback: pulumi.Input[Optional[_builtins.bool]] = None,
+            maximum_cache_ttl: pulumi.Input[Optional[_builtins.float]] = None,
+            minimum_cache_ttl: pulumi.Input[Optional[_builtins.float]] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            negative_cache_ttl: pulumi.Input[Optional[_builtins.float]] = None,
+            ratelimit: pulumi.Input[Optional[_builtins.float]] = None,
+            retries: pulumi.Input[Optional[_builtins.float]] = None,
+            upstream_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["attackMitigation"] = attack_mitigation
+        __props__["deprecateAnyRequests"] = deprecate_any_requests
+        __props__["dnsFirewallIpCount"] = dns_firewall_ip_count
+        __props__["dnsFirewallIps"] = dns_firewall_ips
+        __props__["ecsFallback"] = ecs_fallback
+        __props__["maximumCacheTtl"] = maximum_cache_ttl
+        __props__["minimumCacheTtl"] = minimum_cache_ttl
+        __props__["modifiedOn"] = modified_on
+        __props__["name"] = name
+        __props__["negativeCacheTtl"] = negative_cache_ttl
+        __props__["ratelimit"] = ratelimit
+        __props__["retries"] = retries
+        __props__["upstreamIps"] = upstream_ips
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/dnsFirewall:DnsFirewall', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

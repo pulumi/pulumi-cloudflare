@@ -494,6 +494,30 @@ class MagicTransitSiteWan(pulumi.CustomResource):
         __props__.__dict__["vlan_tag"] = vlan_tag
         return MagicTransitSiteWan(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_rate: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balance_inner_flows: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            physport: pulumi.Input[Optional[_builtins.int]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            static_addressing: pulumi.Input[Optional[Union['MagicTransitSiteWanStaticAddressingArgs', 'MagicTransitSiteWanStaticAddressingArgsDict', 'outputs.MagicTransitSiteWanStaticAddressing']]] = None,
+            vlan_tag: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["healthCheckRate"] = health_check_rate
+        __props__["loadBalanceInnerFlows"] = load_balance_inner_flows
+        __props__["name"] = name
+        __props__["physport"] = physport
+        __props__["priority"] = priority
+        __props__["siteId"] = site_id
+        __props__["staticAddressing"] = static_addressing
+        __props__["vlanTag"] = vlan_tag
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/magicTransitSiteWan:MagicTransitSiteWan', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

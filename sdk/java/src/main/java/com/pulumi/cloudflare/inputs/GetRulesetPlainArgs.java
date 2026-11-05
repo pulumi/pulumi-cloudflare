@@ -47,22 +47,20 @@ public final class GetRulesetPlainArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * The unique ID of the ruleset.
      * 
-     * @deprecated
-     * Configure id instead. This attribute will be removed in the next major version of the provider.
+     * @deprecated Configure id instead. This attribute will be removed in the next major version of the provider.
      * 
      */
-    @Deprecated /* Configure id instead. This attribute will be removed in the next major version of the provider. */
+    @Deprecated
     @Import(name="rulesetId")
     private @Nullable String rulesetId;
 
     /**
      * @return The unique ID of the ruleset.
      * 
-     * @deprecated
-     * Configure id instead. This attribute will be removed in the next major version of the provider.
+     * @deprecated Configure id instead. This attribute will be removed in the next major version of the provider.
      * 
      */
-    @Deprecated /* Configure id instead. This attribute will be removed in the next major version of the provider. */
+    @Deprecated
     public Optional<String> rulesetId() {
         return Optional.ofNullable(this.rulesetId);
     }
@@ -136,11 +134,10 @@ public final class GetRulesetPlainArgs extends com.pulumi.resources.InvokeArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Configure id instead. This attribute will be removed in the next major version of the provider.
+         * @deprecated Configure id instead. This attribute will be removed in the next major version of the provider.
          * 
          */
-        @Deprecated /* Configure id instead. This attribute will be removed in the next major version of the provider. */
+        @Deprecated
         public Builder rulesetId(@Nullable String rulesetId) {
             $.rulesetId = rulesetId;
             return this;

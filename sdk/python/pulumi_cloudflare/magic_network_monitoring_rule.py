@@ -610,6 +610,34 @@ class MagicNetworkMonitoringRule(pulumi.CustomResource):
         __props__.__dict__["zscore_target"] = zscore_target
         return MagicNetworkMonitoringRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            automatic_advertisement: pulumi.Input[Optional[_builtins.bool]] = None,
+            bandwidth_threshold: pulumi.Input[Optional[_builtins.float]] = None,
+            duration: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            packet_threshold: pulumi.Input[Optional[_builtins.float]] = None,
+            prefix_match: pulumi.Input[Optional[_builtins.str]] = None,
+            prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            zscore_sensitivity: pulumi.Input[Optional[_builtins.str]] = None,
+            zscore_target: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["automaticAdvertisement"] = automatic_advertisement
+        __props__["bandwidthThreshold"] = bandwidth_threshold
+        __props__["duration"] = duration
+        __props__["name"] = name
+        __props__["packetThreshold"] = packet_threshold
+        __props__["prefixMatch"] = prefix_match
+        __props__["prefixes"] = prefixes
+        __props__["type"] = type
+        __props__["zscoreSensitivity"] = zscore_sensitivity
+        __props__["zscoreTarget"] = zscore_target
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/magicNetworkMonitoringRule:MagicNetworkMonitoringRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

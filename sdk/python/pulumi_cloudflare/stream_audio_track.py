@@ -410,6 +410,28 @@ class StreamAudioTrack(pulumi.CustomResource):
         __props__.__dict__["uid"] = uid
         return StreamAudioTrack(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            audio_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            audios: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StreamAudioTrackAudioArgs', 'StreamAudioTrackAudioArgsDict', 'outputs.StreamAudioTrackAudio']]]]] = None,
+            default: pulumi.Input[Optional[_builtins.bool]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            label: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["audioIdentifier"] = audio_identifier
+        __props__["audios"] = audios
+        __props__["default"] = default
+        __props__["identifier"] = identifier
+        __props__["label"] = label
+        __props__["status"] = status
+        __props__["uid"] = uid
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/streamAudioTrack:StreamAudioTrack', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

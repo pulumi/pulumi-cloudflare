@@ -599,6 +599,32 @@ class ZoneDnsSettings(pulumi.CustomResource):
         __props__.__dict__["zone_mode"] = zone_mode
         return ZoneDnsSettings(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            flatten_all_cnames: pulumi.Input[Optional[_builtins.bool]] = None,
+            foundation_dns: pulumi.Input[Optional[_builtins.bool]] = None,
+            internal_dns: pulumi.Input[Optional[Union['ZoneDnsSettingsInternalDnsArgs', 'ZoneDnsSettingsInternalDnsArgsDict', 'outputs.ZoneDnsSettingsInternalDns']]] = None,
+            multi_provider: pulumi.Input[Optional[_builtins.bool]] = None,
+            nameservers: pulumi.Input[Optional[Union['ZoneDnsSettingsNameserversArgs', 'ZoneDnsSettingsNameserversArgsDict', 'outputs.ZoneDnsSettingsNameservers']]] = None,
+            ns_ttl: pulumi.Input[Optional[_builtins.float]] = None,
+            secondary_overrides: pulumi.Input[Optional[_builtins.bool]] = None,
+            soa: pulumi.Input[Optional[Union['ZoneDnsSettingsSoaArgs', 'ZoneDnsSettingsSoaArgsDict', 'outputs.ZoneDnsSettingsSoa']]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_mode: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["flattenAllCnames"] = flatten_all_cnames
+        __props__["foundationDns"] = foundation_dns
+        __props__["internalDns"] = internal_dns
+        __props__["multiProvider"] = multi_provider
+        __props__["nameservers"] = nameservers
+        __props__["nsTtl"] = ns_ttl
+        __props__["secondaryOverrides"] = secondary_overrides
+        __props__["soa"] = soa
+        __props__["zoneId"] = zone_id
+        __props__["zoneMode"] = zone_mode
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/zoneDnsSettings:ZoneDnsSettings', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="flattenAllCnames")
     def flatten_all_cnames(self) -> pulumi.Output[Optional[_builtins.bool]]:

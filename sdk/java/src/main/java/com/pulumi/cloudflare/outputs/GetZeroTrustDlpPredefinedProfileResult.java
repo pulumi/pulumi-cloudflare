@@ -28,11 +28,10 @@ public final class GetZeroTrustDlpPredefinedProfileResult {
     /**
      * @return This field has been deprecated for `enabledEntries`.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     private List<GetZeroTrustDlpPredefinedProfileEntry> entries;
     /**
      * @return The ID of this resource.
@@ -75,11 +74,10 @@ public final class GetZeroTrustDlpPredefinedProfileResult {
     /**
      * @return This field has been deprecated for `enabledEntries`.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     public List<GetZeroTrustDlpPredefinedProfileEntry> entries() {
         return this.entries;
     }

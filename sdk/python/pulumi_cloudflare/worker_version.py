@@ -1375,6 +1375,70 @@ class WorkerVersion(pulumi.CustomResource):
         __props__.__dict__["worker_id"] = worker_id
         return WorkerVersion(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            annotations: pulumi.Input[Optional[Union['WorkerVersionAnnotationsArgs', 'WorkerVersionAnnotationsArgsDict', 'outputs.WorkerVersionAnnotations']]] = None,
+            assets: pulumi.Input[Optional[Union['WorkerVersionAssetsArgs', 'WorkerVersionAssetsArgsDict', 'outputs.WorkerVersionAssets']]] = None,
+            author_email: pulumi.Input[Optional[_builtins.str]] = None,
+            author_id: pulumi.Input[Optional[_builtins.str]] = None,
+            bindings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionBindingArgs', 'WorkerVersionBindingArgsDict', 'outputs.WorkerVersionBinding']]]]] = None,
+            cache_options: pulumi.Input[Optional[Union['WorkerVersionCacheOptionsArgs', 'WorkerVersionCacheOptionsArgsDict', 'outputs.WorkerVersionCacheOptions']]] = None,
+            compatibility_date: pulumi.Input[Optional[_builtins.str]] = None,
+            compatibility_flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            containers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionContainerArgs', 'WorkerVersionContainerArgsDict', 'outputs.WorkerVersionContainer']]]]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            deploy: pulumi.Input[Optional[_builtins.bool]] = None,
+            exports: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['WorkerVersionExportsArgs', 'WorkerVersionExportsArgsDict', 'outputs.WorkerVersionExports']]]]] = None,
+            exports_reconciliation: pulumi.Input[Optional[Union['WorkerVersionExportsReconciliationArgs', 'WorkerVersionExportsReconciliationArgsDict', 'outputs.WorkerVersionExportsReconciliation']]] = None,
+            include: pulumi.Input[Optional[_builtins.str]] = None,
+            limits: pulumi.Input[Optional[Union['WorkerVersionLimitsArgs', 'WorkerVersionLimitsArgsDict', 'outputs.WorkerVersionLimits']]] = None,
+            main_module: pulumi.Input[Optional[_builtins.str]] = None,
+            main_script_base64: pulumi.Input[Optional[_builtins.str]] = None,
+            migration_tag: pulumi.Input[Optional[_builtins.str]] = None,
+            migrations: pulumi.Input[Optional[Union['WorkerVersionMigrationsArgs', 'WorkerVersionMigrationsArgsDict', 'outputs.WorkerVersionMigrations']]] = None,
+            modules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionModuleArgs', 'WorkerVersionModuleArgsDict', 'outputs.WorkerVersionModule']]]]] = None,
+            number: pulumi.Input[Optional[_builtins.int]] = None,
+            package_dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionPackageDependencyArgs', 'WorkerVersionPackageDependencyArgsDict', 'outputs.WorkerVersionPackageDependency']]]]] = None,
+            placement: pulumi.Input[Optional[Union['WorkerVersionPlacementArgs', 'WorkerVersionPlacementArgsDict', 'outputs.WorkerVersionPlacement']]] = None,
+            source: pulumi.Input[Optional[_builtins.str]] = None,
+            startup_time_ms: pulumi.Input[Optional[_builtins.int]] = None,
+            urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            usage_model: pulumi.Input[Optional[_builtins.str]] = None,
+            worker_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["annotations"] = annotations
+        __props__["assets"] = assets
+        __props__["authorEmail"] = author_email
+        __props__["authorId"] = author_id
+        __props__["bindings"] = bindings
+        __props__["cacheOptions"] = cache_options
+        __props__["compatibilityDate"] = compatibility_date
+        __props__["compatibilityFlags"] = compatibility_flags
+        __props__["containers"] = containers
+        __props__["createdOn"] = created_on
+        __props__["deploy"] = deploy
+        __props__["exports"] = exports
+        __props__["exportsReconciliation"] = exports_reconciliation
+        __props__["include"] = include
+        __props__["limits"] = limits
+        __props__["mainModule"] = main_module
+        __props__["mainScriptBase64"] = main_script_base64
+        __props__["migrationTag"] = migration_tag
+        __props__["migrations"] = migrations
+        __props__["modules"] = modules
+        __props__["number"] = number
+        __props__["packageDependencies"] = package_dependencies
+        __props__["placement"] = placement
+        __props__["source"] = source
+        __props__["startupTimeMs"] = startup_time_ms
+        __props__["urls"] = urls
+        __props__["usageModel"] = usage_model
+        __props__["workerId"] = worker_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/workerVersion:WorkerVersion', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

@@ -451,6 +451,26 @@ class AccessGroup(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return AccessGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            excludes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessGroupExcludeArgs', 'AccessGroupExcludeArgsDict', 'outputs.AccessGroupExclude']]]]] = None,
+            includes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessGroupIncludeArgs', 'AccessGroupIncludeArgsDict', 'outputs.AccessGroupInclude']]]]] = None,
+            is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            requires: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessGroupRequireArgs', 'AccessGroupRequireArgsDict', 'outputs.AccessGroupRequire']]]]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["excludes"] = excludes
+        __props__["includes"] = includes
+        __props__["isDefault"] = is_default
+        __props__["name"] = name
+        __props__["requires"] = requires
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/accessGroup:AccessGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:

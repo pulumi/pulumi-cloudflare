@@ -138,6 +138,12 @@ func (CustomPageAssetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*customPageAssetState)(nil)).Elem()
 }
 
+// CustomPageAssetExists checks whether an existing CustomPageAsset resource with the given ID exists.
+func CustomPageAssetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CustomPageAssetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/customPageAsset:CustomPageAsset", id, state, "", opts...)
+}
+
 type customPageAssetArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`

@@ -183,6 +183,12 @@ func (TeamsAccountState) ElementType() reflect.Type {
 	return reflect.TypeOf((*teamsAccountState)(nil)).Elem()
 }
 
+// TeamsAccountExists checks whether an existing TeamsAccount resource with the given ID exists.
+func TeamsAccountExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TeamsAccountState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/teamsAccount:TeamsAccount", id, state, "", opts...)
+}
+
 type teamsAccountArgs struct {
 	// Specify the Cloudflare account identifier.
 	AccountId string `pulumi:"accountId"`

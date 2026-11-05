@@ -128,6 +128,12 @@ func (WorkersCronTriggerState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workersCronTriggerState)(nil)).Elem()
 }
 
+// WorkersCronTriggerExists checks whether an existing WorkersCronTrigger resource with the given ID exists.
+func WorkersCronTriggerExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkersCronTriggerState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/workersCronTrigger:WorkersCronTrigger", id, state, "", opts...)
+}
+
 type workersCronTriggerArgs struct {
 	// Identifier.
 	AccountId string                       `pulumi:"accountId"`

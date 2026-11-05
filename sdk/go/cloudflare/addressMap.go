@@ -157,6 +157,12 @@ func (AddressMapState) ElementType() reflect.Type {
 	return reflect.TypeOf((*addressMapState)(nil)).Elem()
 }
 
+// AddressMapExists checks whether an existing AddressMap resource with the given ID exists.
+func AddressMapExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AddressMapState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/addressMap:AddressMap", id, state, "", opts...)
+}
+
 type addressMapArgs struct {
 	// Identifier of a Cloudflare account.
 	AccountId string `pulumi:"accountId"`

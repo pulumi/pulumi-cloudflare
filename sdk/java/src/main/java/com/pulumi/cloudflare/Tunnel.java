@@ -70,11 +70,10 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/tunnel:Tunnel example &#39;&lt;account_id&gt;/&lt;tunnel_id&gt;&#39;
  * ```
  * 
- * @deprecated
- * cloudflare.index/tunnel.Tunnel has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflared.ZeroTrustTunnelCloudflared
+ * @deprecated cloudflare.index/tunnel.Tunnel has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflared.ZeroTrustTunnelCloudflared
  * 
  */
-@Deprecated /* cloudflare.index/tunnel.Tunnel has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflared.ZeroTrustTunnelCloudflared */
+@Deprecated
 @ResourceType(type="cloudflare:index/tunnel:Tunnel")
 public class Tunnel extends com.pulumi.resources.CustomResource {
     /**
@@ -124,11 +123,10 @@ public class Tunnel extends com.pulumi.resources.CustomResource {
     /**
      * The Cloudflare Tunnel connections between your origin and Cloudflare&#39;s edge.
      * 
-     * @deprecated
-     * This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
+     * @deprecated This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
      * 
      */
-    @Deprecated /* This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections` */
+    @Deprecated
     @Export(name="connections", refs={List.class,TunnelConnection.class}, tree="[0,1]")
     private Output<List<TunnelConnection>> connections;
 
@@ -226,11 +224,10 @@ public class Tunnel extends com.pulumi.resources.CustomResource {
     /**
      * If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
      * 
-     * @deprecated
-     * Use the configSrc field instead.
+     * @deprecated Use the configSrc field instead.
      * 
      */
-    @Deprecated /* Use the configSrc field instead. */
+    @Deprecated
     @Export(name="remoteConfig", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> remoteConfig;
 

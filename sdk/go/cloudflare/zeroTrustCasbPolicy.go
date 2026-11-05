@@ -217,6 +217,12 @@ func (ZeroTrustCasbPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zeroTrustCasbPolicyState)(nil)).Elem()
 }
 
+// ZeroTrustCasbPolicyExists checks whether an existing ZeroTrustCasbPolicy resource with the given ID exists.
+func ZeroTrustCasbPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustCasbPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustCasbPolicy:ZeroTrustCasbPolicy", id, state, "", opts...)
+}
+
 type zeroTrustCasbPolicyArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// Actions to execute when this policy is triggered, grouped by action type.

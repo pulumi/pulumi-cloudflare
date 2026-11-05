@@ -628,6 +628,32 @@ class NotificationPolicy(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         return NotificationPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            alert_interval: pulumi.Input[Optional[_builtins.str]] = None,
+            alert_type: pulumi.Input[Optional[_builtins.str]] = None,
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            filters: pulumi.Input[Optional[Union['NotificationPolicyFiltersArgs', 'NotificationPolicyFiltersArgsDict', 'outputs.NotificationPolicyFilters']]] = None,
+            mechanisms: pulumi.Input[Optional[Union['NotificationPolicyMechanismsArgs', 'NotificationPolicyMechanismsArgsDict', 'outputs.NotificationPolicyMechanisms']]] = None,
+            modified: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["alertInterval"] = alert_interval
+        __props__["alertType"] = alert_type
+        __props__["created"] = created
+        __props__["description"] = description
+        __props__["enabled"] = enabled
+        __props__["filters"] = filters
+        __props__["mechanisms"] = mechanisms
+        __props__["modified"] = modified
+        __props__["name"] = name
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/notificationPolicy:NotificationPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

@@ -1120,6 +1120,58 @@ class AccessOrganization(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return AccessOrganization(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            allow_authenticate_via_warp: pulumi.Input[Optional[_builtins.bool]] = None,
+            auth_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_redirect_to_identity: pulumi.Input[Optional[_builtins.bool]] = None,
+            custom_pages: pulumi.Input[Optional[Union['AccessOrganizationCustomPagesArgs', 'AccessOrganizationCustomPagesArgsDict', 'outputs.AccessOrganizationCustomPages']]] = None,
+            deny_unmatched_requests: pulumi.Input[Optional[_builtins.bool]] = None,
+            deny_unmatched_requests_exempted_zone_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            is_ui_read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+            login_design: pulumi.Input[Optional[Union['AccessOrganizationLoginDesignArgs', 'AccessOrganizationLoginDesignArgsDict', 'outputs.AccessOrganizationLoginDesign']]] = None,
+            mfa_config: pulumi.Input[Optional[Union['AccessOrganizationMfaConfigArgs', 'AccessOrganizationMfaConfigArgsDict', 'outputs.AccessOrganizationMfaConfig']]] = None,
+            mfa_configuration_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+            mfa_piv_key_requirements: pulumi.Input[Optional[Union['AccessOrganizationMfaPivKeyRequirementsArgs', 'AccessOrganizationMfaPivKeyRequirementsArgsDict', 'outputs.AccessOrganizationMfaPivKeyRequirements']]] = None,
+            mfa_required_for_all_apps: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            service_token_inactivity: pulumi.Input[Optional[Union['AccessOrganizationServiceTokenInactivityArgs', 'AccessOrganizationServiceTokenInactivityArgsDict', 'outputs.AccessOrganizationServiceTokenInactivity']]] = None,
+            session_duration: pulumi.Input[Optional[_builtins.str]] = None,
+            strict_service_token_auth: pulumi.Input[Optional[_builtins.bool]] = None,
+            trusted_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ui_read_only_toggle_reason: pulumi.Input[Optional[_builtins.str]] = None,
+            user_seat_expiration_inactive_time: pulumi.Input[Optional[_builtins.str]] = None,
+            warp_auth_non_browser401: pulumi.Input[Optional[_builtins.bool]] = None,
+            warp_auth_session_duration: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["allowAuthenticateViaWarp"] = allow_authenticate_via_warp
+        __props__["authDomain"] = auth_domain
+        __props__["autoRedirectToIdentity"] = auto_redirect_to_identity
+        __props__["customPages"] = custom_pages
+        __props__["denyUnmatchedRequests"] = deny_unmatched_requests
+        __props__["denyUnmatchedRequestsExemptedZoneNames"] = deny_unmatched_requests_exempted_zone_names
+        __props__["isUiReadOnly"] = is_ui_read_only
+        __props__["loginDesign"] = login_design
+        __props__["mfaConfig"] = mfa_config
+        __props__["mfaConfigurationAllowed"] = mfa_configuration_allowed
+        __props__["mfaPivKeyRequirements"] = mfa_piv_key_requirements
+        __props__["mfaRequiredForAllApps"] = mfa_required_for_all_apps
+        __props__["name"] = name
+        __props__["serviceTokenInactivity"] = service_token_inactivity
+        __props__["sessionDuration"] = session_duration
+        __props__["strictServiceTokenAuth"] = strict_service_token_auth
+        __props__["trustedAccounts"] = trusted_accounts
+        __props__["uiReadOnlyToggleReason"] = ui_read_only_toggle_reason
+        __props__["userSeatExpirationInactiveTime"] = user_seat_expiration_inactive_time
+        __props__["warpAuthNonBrowser401"] = warp_auth_non_browser401
+        __props__["warpAuthSessionDuration"] = warp_auth_session_duration
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/accessOrganization:AccessOrganization', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:

@@ -45,6 +45,17 @@ export class AccessKeysConfiguration extends pulumi.CustomResource {
         return new AccessKeysConfiguration(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing AccessKeysConfiguration resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: AccessKeysConfigurationState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration';
 

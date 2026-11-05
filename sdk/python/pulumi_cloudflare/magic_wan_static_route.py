@@ -473,6 +473,30 @@ class MagicWanStaticRoute(pulumi.CustomResource):
         __props__.__dict__["weight"] = weight
         return MagicWanStaticRoute(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            nexthop: pulumi.Input[Optional[_builtins.str]] = None,
+            prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            scope: pulumi.Input[Optional[Union['MagicWanStaticRouteScopeArgs', 'MagicWanStaticRouteScopeArgsDict', 'outputs.MagicWanStaticRouteScope']]] = None,
+            weight: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["createdOn"] = created_on
+        __props__["description"] = description
+        __props__["modifiedOn"] = modified_on
+        __props__["nexthop"] = nexthop
+        __props__["prefix"] = prefix
+        __props__["priority"] = priority
+        __props__["scope"] = scope
+        __props__["weight"] = weight
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/magicWanStaticRoute:MagicWanStaticRoute', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

@@ -78,11 +78,10 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/record:Record example &#39;&lt;zone_id&gt;/&lt;dns_record_id&gt;&#39;
  * ```
  * 
- * @deprecated
- * cloudflare.index/record.Record has been deprecated in favor of cloudflare.index/dnsrecord.DnsRecord
+ * @deprecated cloudflare.index/record.Record has been deprecated in favor of cloudflare.index/dnsrecord.DnsRecord
  * 
  */
-@Deprecated /* cloudflare.index/record.Record has been deprecated in favor of cloudflare.index/dnsrecord.DnsRecord */
+@Deprecated
 @ResourceType(type="cloudflare:index/record:Record")
 public class Record extends com.pulumi.resources.CustomResource {
     /**

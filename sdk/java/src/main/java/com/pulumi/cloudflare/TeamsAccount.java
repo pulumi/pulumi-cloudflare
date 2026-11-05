@@ -140,11 +140,10 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/teamsAccount:TeamsAccount example &#39;&lt;account_id&gt;&#39;
  * ```
  * 
- * @deprecated
- * cloudflare.index/teamsaccount.TeamsAccount has been deprecated in favor of cloudflare.index/zerotrustgatewaysettings.ZeroTrustGatewaySettings
+ * @deprecated cloudflare.index/teamsaccount.TeamsAccount has been deprecated in favor of cloudflare.index/zerotrustgatewaysettings.ZeroTrustGatewaySettings
  * 
  */
-@Deprecated /* cloudflare.index/teamsaccount.TeamsAccount has been deprecated in favor of cloudflare.index/zerotrustgatewaysettings.ZeroTrustGatewaySettings */
+@Deprecated
 @ResourceType(type="cloudflare:index/teamsAccount:TeamsAccount")
 public class TeamsAccount extends com.pulumi.resources.CustomResource {
     /**

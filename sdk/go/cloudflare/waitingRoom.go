@@ -609,6 +609,12 @@ func (WaitingRoomState) ElementType() reflect.Type {
 	return reflect.TypeOf((*waitingRoomState)(nil)).Elem()
 }
 
+// WaitingRoomExists checks whether an existing WaitingRoom resource with the given ID exists.
+func WaitingRoomExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WaitingRoomState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/waitingRoom:WaitingRoom", id, state, "", opts...)
+}
+
 type waitingRoomArgs struct {
 	// Only available for the Waiting Room Advanced subscription. Additional hostname and path combinations to which this waiting room will be applied. There is an implied wildcard at the end of the path. The hostname and path combination must be unique to this and all other waiting rooms.
 	AdditionalRoutes []WaitingRoomAdditionalRoute `pulumi:"additionalRoutes"`

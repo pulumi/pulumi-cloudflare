@@ -28,22 +28,20 @@ public final class ZeroTrustAccessAiControlsMcpPortalState extends com.pulumi.re
     /**
      * Deprecated: use `codeMode` for new integrations. `true` maps to any non-off Code Mode policy; `false` maps to `code_mode: off`. If both fields are sent, they must be consistent or the request returns a 400.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     @Import(name="allowCodeMode")
     private @Nullable Output<Boolean> allowCodeMode;
 
     /**
      * @return Deprecated: use `codeMode` for new integrations. `true` maps to any non-off Code Mode policy; `false` maps to `code_mode: off`. If both fields are sent, they must be consistent or the request returns a 400.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     public Optional<Output<Boolean>> allowCodeMode() {
         return Optional.ofNullable(this.allowCodeMode);
     }
@@ -233,11 +231,10 @@ public final class ZeroTrustAccessAiControlsMcpPortalState extends com.pulumi.re
          * 
          * @return builder
          * 
-         * @deprecated
-         * This attribute is deprecated.
+         * @deprecated This attribute is deprecated.
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated
         public Builder allowCodeMode(@Nullable Output<Boolean> allowCodeMode) {
             $.allowCodeMode = allowCodeMode;
             return this;
@@ -248,11 +245,10 @@ public final class ZeroTrustAccessAiControlsMcpPortalState extends com.pulumi.re
          * 
          * @return builder
          * 
-         * @deprecated
-         * This attribute is deprecated.
+         * @deprecated This attribute is deprecated.
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated
         public Builder allowCodeMode(Boolean allowCodeMode) {
             return allowCodeMode(Output.of(allowCodeMode));
         }

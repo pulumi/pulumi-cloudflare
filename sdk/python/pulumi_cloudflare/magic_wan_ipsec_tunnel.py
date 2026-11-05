@@ -772,6 +772,48 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
         __props__.__dict__["replay_protection"] = replay_protection
         return MagicWanIpsecTunnel(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            allow_null_cipher: pulumi.Input[Optional[_builtins.bool]] = None,
+            automatic_return_routing: pulumi.Input[Optional[_builtins.bool]] = None,
+            bgp: pulumi.Input[Optional[Union['MagicWanIpsecTunnelBgpArgs', 'MagicWanIpsecTunnelBgpArgsDict', 'outputs.MagicWanIpsecTunnelBgp']]] = None,
+            bgp_status: pulumi.Input[Optional[Union['MagicWanIpsecTunnelBgpStatusArgs', 'MagicWanIpsecTunnelBgpStatusArgsDict', 'outputs.MagicWanIpsecTunnelBgpStatus']]] = None,
+            cloudflare_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_remote_identities: pulumi.Input[Optional[Union['MagicWanIpsecTunnelCustomRemoteIdentitiesArgs', 'MagicWanIpsecTunnelCustomRemoteIdentitiesArgsDict', 'outputs.MagicWanIpsecTunnelCustomRemoteIdentities']]] = None,
+            customer_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check: pulumi.Input[Optional[Union['MagicWanIpsecTunnelHealthCheckArgs', 'MagicWanIpsecTunnelHealthCheckArgsDict', 'outputs.MagicWanIpsecTunnelHealthCheck']]] = None,
+            interface_address: pulumi.Input[Optional[_builtins.str]] = None,
+            interface_address6: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            psk: pulumi.Input[Optional[_builtins.str]] = None,
+            psk_metadata: pulumi.Input[Optional[Union['MagicWanIpsecTunnelPskMetadataArgs', 'MagicWanIpsecTunnelPskMetadataArgsDict', 'outputs.MagicWanIpsecTunnelPskMetadata']]] = None,
+            replay_protection: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["allowNullCipher"] = allow_null_cipher
+        __props__["automaticReturnRouting"] = automatic_return_routing
+        __props__["bgp"] = bgp
+        __props__["bgpStatus"] = bgp_status
+        __props__["cloudflareEndpoint"] = cloudflare_endpoint
+        __props__["createdOn"] = created_on
+        __props__["customRemoteIdentities"] = custom_remote_identities
+        __props__["customerEndpoint"] = customer_endpoint
+        __props__["description"] = description
+        __props__["healthCheck"] = health_check
+        __props__["interfaceAddress"] = interface_address
+        __props__["interfaceAddress6"] = interface_address6
+        __props__["modifiedOn"] = modified_on
+        __props__["name"] = name
+        __props__["psk"] = psk
+        __props__["pskMetadata"] = psk_metadata
+        __props__["replayProtection"] = replay_protection
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

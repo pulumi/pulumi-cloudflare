@@ -44,6 +44,17 @@ export class DnsZoneTransfersTsig extends pulumi.CustomResource {
         return new DnsZoneTransfersTsig(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing DnsZoneTransfersTsig resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: DnsZoneTransfersTsigState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("cloudflare:index/dnsZoneTransfersTsig:DnsZoneTransfersTsig", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'cloudflare:index/dnsZoneTransfersTsig:DnsZoneTransfersTsig';
 

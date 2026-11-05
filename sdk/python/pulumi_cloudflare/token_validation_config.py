@@ -422,6 +422,28 @@ class TokenValidationConfig(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return TokenValidationConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            credentials: pulumi.Input[Optional[Union['TokenValidationConfigCredentialsArgs', 'TokenValidationConfigCredentialsArgsDict', 'outputs.TokenValidationConfigCredentials']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            last_updated: pulumi.Input[Optional[_builtins.str]] = None,
+            title: pulumi.Input[Optional[_builtins.str]] = None,
+            token_sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            token_type: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createdAt"] = created_at
+        __props__["credentials"] = credentials
+        __props__["description"] = description
+        __props__["lastUpdated"] = last_updated
+        __props__["title"] = title
+        __props__["tokenSources"] = token_sources
+        __props__["tokenType"] = token_type
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/tokenValidationConfig:TokenValidationConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.str]:

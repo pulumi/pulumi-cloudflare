@@ -287,6 +287,12 @@ func (OauthClientState) ElementType() reflect.Type {
 	return reflect.TypeOf((*oauthClientState)(nil)).Elem()
 }
 
+// OauthClientExists checks whether an existing OauthClient resource with the given ID exists.
+func OauthClientExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OauthClientState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/oauthClient:OauthClient", id, state, "", opts...)
+}
+
 type oauthClientArgs struct {
 	// Account identifier tag.
 	AccountId string `pulumi:"accountId"`

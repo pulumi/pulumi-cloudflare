@@ -127,6 +127,12 @@ func (PageShieldPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*pageShieldPolicyState)(nil)).Elem()
 }
 
+// PageShieldPolicyExists checks whether an existing PageShieldPolicy resource with the given ID exists.
+func PageShieldPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PageShieldPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/pageShieldPolicy:PageShieldPolicy", id, state, "", opts...)
+}
+
 type pageShieldPolicyArgs struct {
 	// The action to take if the expression matches
 	// Available values: "allow", "log", "add*reporting*directives".

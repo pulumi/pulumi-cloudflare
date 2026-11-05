@@ -144,6 +144,12 @@ func (MagicWanBgpFilterProfileState) ElementType() reflect.Type {
 	return reflect.TypeOf((*magicWanBgpFilterProfileState)(nil)).Elem()
 }
 
+// MagicWanBgpFilterProfileExists checks whether an existing MagicWanBgpFilterProfile resource with the given ID exists.
+func MagicWanBgpFilterProfileExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MagicWanBgpFilterProfileState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/magicWanBgpFilterProfile:MagicWanBgpFilterProfile", id, state, "", opts...)
+}
+
 type magicWanBgpFilterProfileArgs struct {
 	// Identifier
 	AccountId string `pulumi:"accountId"`

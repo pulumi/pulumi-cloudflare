@@ -473,6 +473,26 @@ class Account(pulumi.CustomResource):
         __props__.__dict__["unit"] = unit
         return Account(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            managed_by: pulumi.Input[Optional[Union['AccountManagedByArgs', 'AccountManagedByArgsDict', 'outputs.AccountManagedBy']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            settings: pulumi.Input[Optional[Union['AccountSettingsArgs', 'AccountSettingsArgsDict', 'outputs.AccountSettings']]] = None,
+            standalone: pulumi.Input[Optional[_builtins.bool]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            unit: pulumi.Input[Optional[Union['AccountUnitArgs', 'AccountUnitArgsDict', 'outputs.AccountUnit']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createdOn"] = created_on
+        __props__["managedBy"] = managed_by
+        __props__["name"] = name
+        __props__["settings"] = settings
+        __props__["standalone"] = standalone
+        __props__["type"] = type
+        __props__["unit"] = unit
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/account:Account', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createdOn")
     def created_on(self) -> pulumi.Output[_builtins.str]:

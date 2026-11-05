@@ -27,11 +27,10 @@ public final class GetZeroTrustTunnelCloudflaredsResult {
     /**
      * @return The Cloudflare Tunnel connections between your origin and Cloudflare&#39;s edge.
      * 
-     * @deprecated
-     * This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
+     * @deprecated This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
      * 
      */
-    @Deprecated /* This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections` */
+    @Deprecated
     private List<GetZeroTrustTunnelCloudflaredsResultConnection> connections;
     /**
      * @return Timestamp of when the tunnel established at least one connection to Cloudflare&#39;s edge. If `null`, the tunnel is inactive.
@@ -71,11 +70,10 @@ public final class GetZeroTrustTunnelCloudflaredsResult {
     /**
      * @return If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
      * 
-     * @deprecated
-     * Use the configSrc field instead.
+     * @deprecated Use the configSrc field instead.
      * 
      */
-    @Deprecated /* Use the configSrc field instead. */
+    @Deprecated
     private Boolean remoteConfig;
     /**
      * @return The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
@@ -109,11 +107,10 @@ public final class GetZeroTrustTunnelCloudflaredsResult {
     /**
      * @return The Cloudflare Tunnel connections between your origin and Cloudflare&#39;s edge.
      * 
-     * @deprecated
-     * This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
+     * @deprecated This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
      * 
      */
-    @Deprecated /* This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections` */
+    @Deprecated
     public List<GetZeroTrustTunnelCloudflaredsResultConnection> connections() {
         return this.connections;
     }
@@ -169,11 +166,10 @@ public final class GetZeroTrustTunnelCloudflaredsResult {
     /**
      * @return If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
      * 
-     * @deprecated
-     * Use the configSrc field instead.
+     * @deprecated Use the configSrc field instead.
      * 
      */
-    @Deprecated /* Use the configSrc field instead. */
+    @Deprecated
     public Boolean remoteConfig() {
         return this.remoteConfig;
     }

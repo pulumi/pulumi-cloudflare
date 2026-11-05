@@ -215,6 +215,12 @@ func (AuthenticatedOriginPullsHostnameCertificateState) ElementType() reflect.Ty
 	return reflect.TypeOf((*authenticatedOriginPullsHostnameCertificateState)(nil)).Elem()
 }
 
+// AuthenticatedOriginPullsHostnameCertificateExists checks whether an existing AuthenticatedOriginPullsHostnameCertificate resource with the given ID exists.
+func AuthenticatedOriginPullsHostnameCertificateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AuthenticatedOriginPullsHostnameCertificateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/authenticatedOriginPullsHostnameCertificate:AuthenticatedOriginPullsHostnameCertificate", id, state, "", opts...)
+}
+
 type authenticatedOriginPullsHostnameCertificateArgs struct {
 	// The hostname certificate.
 	Certificate string `pulumi:"certificate"`

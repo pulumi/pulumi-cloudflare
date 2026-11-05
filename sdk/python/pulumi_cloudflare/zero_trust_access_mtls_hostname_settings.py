@@ -326,6 +326,24 @@ class ZeroTrustAccessMtlsHostnameSettings(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return ZeroTrustAccessMtlsHostnameSettings(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            china_network: pulumi.Input[Optional[_builtins.bool]] = None,
+            client_certificate_forwarding: pulumi.Input[Optional[_builtins.bool]] = None,
+            hostname: pulumi.Input[Optional[_builtins.str]] = None,
+            settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessMtlsHostnameSettingsSettingArgs', 'ZeroTrustAccessMtlsHostnameSettingsSettingArgsDict', 'outputs.ZeroTrustAccessMtlsHostnameSettingsSetting']]]]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["chinaNetwork"] = china_network
+        __props__["clientCertificateForwarding"] = client_certificate_forwarding
+        __props__["hostname"] = hostname
+        __props__["settings"] = settings
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:

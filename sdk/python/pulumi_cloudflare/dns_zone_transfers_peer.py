@@ -372,6 +372,24 @@ class DnsZoneTransfersPeer(pulumi.CustomResource):
         __props__.__dict__["tsig_id"] = tsig_id
         return DnsZoneTransfersPeer(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ip: pulumi.Input[Optional[_builtins.str]] = None,
+            ixfr_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            port: pulumi.Input[Optional[_builtins.float]] = None,
+            tsig_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["ip"] = ip
+        __props__["ixfrEnable"] = ixfr_enable
+        __props__["name"] = name
+        __props__["port"] = port
+        __props__["tsigId"] = tsig_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/dnsZoneTransfersPeer:DnsZoneTransfersPeer', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

@@ -392,6 +392,28 @@ class ApiShieldOperation(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return ApiShieldOperation(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            features: pulumi.Input[Optional[Union['ApiShieldOperationFeaturesArgs', 'ApiShieldOperationFeaturesArgsDict', 'outputs.ApiShieldOperationFeatures']]] = None,
+            host: pulumi.Input[Optional[_builtins.str]] = None,
+            last_updated: pulumi.Input[Optional[_builtins.str]] = None,
+            method: pulumi.Input[Optional[_builtins.str]] = None,
+            operation_id: pulumi.Input[Optional[_builtins.str]] = None,
+            schemas: pulumi.Input[Optional[Union['ApiShieldOperationSchemasArgs', 'ApiShieldOperationSchemasArgsDict', 'outputs.ApiShieldOperationSchemas']]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["endpoint"] = endpoint
+        __props__["features"] = features
+        __props__["host"] = host
+        __props__["lastUpdated"] = last_updated
+        __props__["method"] = method
+        __props__["operationId"] = operation_id
+        __props__["schemas"] = schemas
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/apiShieldOperation:ApiShieldOperation', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def endpoint(self) -> pulumi.Output[_builtins.str]:

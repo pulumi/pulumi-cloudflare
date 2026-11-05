@@ -206,6 +206,12 @@ func (MagicTransitSiteLanState) ElementType() reflect.Type {
 	return reflect.TypeOf((*magicTransitSiteLanState)(nil)).Elem()
 }
 
+// MagicTransitSiteLanExists checks whether an existing MagicTransitSiteLan resource with the given ID exists.
+func MagicTransitSiteLanExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MagicTransitSiteLanState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/magicTransitSiteLan:MagicTransitSiteLan", id, state, "", opts...)
+}
+
 type magicTransitSiteLanArgs struct {
 	// Identifier
 	AccountId string `pulumi:"accountId"`

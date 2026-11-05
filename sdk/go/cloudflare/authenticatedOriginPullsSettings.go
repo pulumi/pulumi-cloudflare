@@ -111,6 +111,12 @@ func (AuthenticatedOriginPullsSettingsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*authenticatedOriginPullsSettingsState)(nil)).Elem()
 }
 
+// AuthenticatedOriginPullsSettingsExists checks whether an existing AuthenticatedOriginPullsSettings resource with the given ID exists.
+func AuthenticatedOriginPullsSettingsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AuthenticatedOriginPullsSettingsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/authenticatedOriginPullsSettings:AuthenticatedOriginPullsSettings", id, state, "", opts...)
+}
+
 type authenticatedOriginPullsSettingsArgs struct {
 	// Indicates whether zone-level authenticated origin pulls is enabled.
 	Enabled bool `pulumi:"enabled"`

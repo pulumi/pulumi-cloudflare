@@ -216,6 +216,12 @@ func (MagicWanGreTunnelState) ElementType() reflect.Type {
 	return reflect.TypeOf((*magicWanGreTunnelState)(nil)).Elem()
 }
 
+// MagicWanGreTunnelExists checks whether an existing MagicWanGreTunnel resource with the given ID exists.
+func MagicWanGreTunnelExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MagicWanGreTunnelState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel", id, state, "", opts...)
+}
+
 type magicWanGreTunnelArgs struct {
 	// Identifier
 	AccountId string `pulumi:"accountId"`

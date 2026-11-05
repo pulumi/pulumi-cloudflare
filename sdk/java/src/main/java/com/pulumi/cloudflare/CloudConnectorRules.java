@@ -41,19 +41,19 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var exampleCloudConnectorRules = new CloudConnectorRules("exampleCloudConnectorRules", CloudConnectorRulesArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .rules(CloudConnectorRulesRuleArgs.builder()
  *                 .id("95c365e17e1b46599cd99e5b231fac4e")
  *                 .description("Rule description")
  *                 .enabled(true)
- *                 .expression("http.cookie eq \"a=b\"")
+ *                 .expression("http.cookie eq }&#92;{@code "a=b}&#92;{@code "")
  *                 .parameters(CloudConnectorRulesRuleParametersArgs.builder()
  *                     .host("examplebucket.s3.eu-north-1.amazonaws.com")
  *                     .build())
@@ -61,8 +61,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

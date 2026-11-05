@@ -40,20 +40,20 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var exampleLeakedCredentialCheckRule = new LeakedCredentialCheckRule("exampleLeakedCredentialCheckRule", LeakedCredentialCheckRuleArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .password("lookup_json_string(http.request.body.raw, \"secret\")")
- *             .username("lookup_json_string(http.request.body.raw, \"user\")")
+ *             .password("lookup_json_string(http.request.body.raw, }&#92;{@code "secret}&#92;{@code ")")
+ *             .username("lookup_json_string(http.request.body.raw, }&#92;{@code "user}&#92;{@code ")")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

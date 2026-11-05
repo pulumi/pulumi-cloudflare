@@ -158,6 +158,12 @@ func (EmailRoutingSettingsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*emailRoutingSettingsState)(nil)).Elem()
 }
 
+// EmailRoutingSettingsExists checks whether an existing EmailRoutingSettings resource with the given ID exists.
+func EmailRoutingSettingsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EmailRoutingSettingsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/emailRoutingSettings:EmailRoutingSettings", id, state, "", opts...)
+}
+
 type emailRoutingSettingsArgs struct {
 	// Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
 	SupportSubaddress *bool `pulumi:"supportSubaddress"`

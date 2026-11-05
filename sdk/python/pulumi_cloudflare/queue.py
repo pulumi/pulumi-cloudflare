@@ -397,6 +397,34 @@ class Queue(pulumi.CustomResource):
         __props__.__dict__["settings"] = settings
         return Queue(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            consumers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QueueConsumerArgs', 'QueueConsumerArgsDict', 'outputs.QueueConsumer']]]]] = None,
+            consumers_total_count: pulumi.Input[Optional[_builtins.float]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            producers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QueueProducerArgs', 'QueueProducerArgsDict', 'outputs.QueueProducer']]]]] = None,
+            producers_total_count: pulumi.Input[Optional[_builtins.float]] = None,
+            queue_id: pulumi.Input[Optional[_builtins.str]] = None,
+            queue_name: pulumi.Input[Optional[_builtins.str]] = None,
+            settings: pulumi.Input[Optional[Union['QueueSettingsArgs', 'QueueSettingsArgsDict', 'outputs.QueueSettings']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["consumers"] = consumers
+        __props__["consumersTotalCount"] = consumers_total_count
+        __props__["createdOn"] = created_on
+        __props__["jurisdiction"] = jurisdiction
+        __props__["modifiedOn"] = modified_on
+        __props__["producers"] = producers
+        __props__["producersTotalCount"] = producers_total_count
+        __props__["queueId"] = queue_id
+        __props__["queueName"] = queue_name
+        __props__["settings"] = settings
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/queue:Queue', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

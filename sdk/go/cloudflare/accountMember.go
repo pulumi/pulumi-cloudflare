@@ -146,6 +146,12 @@ func (AccountMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountMemberState)(nil)).Elem()
 }
 
+// AccountMemberExists checks whether an existing AccountMember resource with the given ID exists.
+func AccountMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccountMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/accountMember:AccountMember", id, state, "", opts...)
+}
+
 type accountMemberArgs struct {
 	// Account identifier tag.
 	AccountId string `pulumi:"accountId"`

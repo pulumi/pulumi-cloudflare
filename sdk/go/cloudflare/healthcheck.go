@@ -244,6 +244,12 @@ func (HealthcheckState) ElementType() reflect.Type {
 	return reflect.TypeOf((*healthcheckState)(nil)).Elem()
 }
 
+// HealthcheckExists checks whether an existing Healthcheck resource with the given ID exists.
+func HealthcheckExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HealthcheckState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/healthcheck:Healthcheck", id, state, "", opts...)
+}
+
 type healthcheckArgs struct {
 	// The hostname or IP address of the origin server to run health checks on.
 	Address string `pulumi:"address"`

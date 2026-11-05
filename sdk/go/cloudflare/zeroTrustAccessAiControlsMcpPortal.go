@@ -206,6 +206,12 @@ func (ZeroTrustAccessAiControlsMcpPortalState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zeroTrustAccessAiControlsMcpPortalState)(nil)).Elem()
 }
 
+// ZeroTrustAccessAiControlsMcpPortalExists checks whether an existing ZeroTrustAccessAiControlsMcpPortal resource with the given ID exists.
+func ZeroTrustAccessAiControlsMcpPortalExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustAccessAiControlsMcpPortalState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustAccessAiControlsMcpPortal:ZeroTrustAccessAiControlsMcpPortal", id, state, "", opts...)
+}
+
 type zeroTrustAccessAiControlsMcpPortalArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// Deprecated: use `codeMode` for new integrations. `true` maps to any non-off Code Mode policy; `false` maps to `code_mode: off`. If both fields are sent, they must be consistent or the request returns a 400.

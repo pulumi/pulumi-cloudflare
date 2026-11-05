@@ -392,6 +392,28 @@ class AccountSubscription(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         return AccountSubscription(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            currency: pulumi.Input[Optional[_builtins.str]] = None,
+            current_period_end: pulumi.Input[Optional[_builtins.str]] = None,
+            current_period_start: pulumi.Input[Optional[_builtins.str]] = None,
+            frequency: pulumi.Input[Optional[_builtins.str]] = None,
+            price: pulumi.Input[Optional[_builtins.float]] = None,
+            rate_plan: pulumi.Input[Optional[Union['AccountSubscriptionRatePlanArgs', 'AccountSubscriptionRatePlanArgsDict', 'outputs.AccountSubscriptionRatePlan']]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["currency"] = currency
+        __props__["currentPeriodEnd"] = current_period_end
+        __props__["currentPeriodStart"] = current_period_start
+        __props__["frequency"] = frequency
+        __props__["price"] = price
+        __props__["ratePlan"] = rate_plan
+        __props__["state"] = state
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/accountSubscription:AccountSubscription', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:

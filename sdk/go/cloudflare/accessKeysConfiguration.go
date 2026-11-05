@@ -131,6 +131,12 @@ func (AccessKeysConfigurationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessKeysConfigurationState)(nil)).Elem()
 }
 
+// AccessKeysConfigurationExists checks whether an existing AccessKeysConfiguration resource with the given ID exists.
+func AccessKeysConfigurationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccessKeysConfigurationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration", id, state, "", opts...)
+}
+
 type accessKeysConfigurationArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`

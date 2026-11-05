@@ -68,11 +68,10 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/staticRoute:StaticRoute example &#39;&lt;account_id&gt;/&lt;route_id&gt;&#39;
  * ```
  * 
- * @deprecated
- * cloudflare.index/staticroute.StaticRoute has been deprecated in favor of cloudflare.index/magicwanstaticroute.MagicWanStaticRoute
+ * @deprecated cloudflare.index/staticroute.StaticRoute has been deprecated in favor of cloudflare.index/magicwanstaticroute.MagicWanStaticRoute
  * 
  */
-@Deprecated /* cloudflare.index/staticroute.StaticRoute has been deprecated in favor of cloudflare.index/magicwanstaticroute.MagicWanStaticRoute */
+@Deprecated
 @ResourceType(type="cloudflare:index/staticRoute:StaticRoute")
 public class StaticRoute extends com.pulumi.resources.CustomResource {
     /**

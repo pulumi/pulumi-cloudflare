@@ -404,6 +404,28 @@ class SsoConnector(pulumi.CustomResource):
         __props__.__dict__["verification"] = verification
         return SsoConnector(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            begin_verification: pulumi.Input[Optional[_builtins.bool]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            email_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            updated_on: pulumi.Input[Optional[_builtins.str]] = None,
+            use_fedramp_language: pulumi.Input[Optional[_builtins.bool]] = None,
+            verification: pulumi.Input[Optional[Union['SsoConnectorVerificationArgs', 'SsoConnectorVerificationArgsDict', 'outputs.SsoConnectorVerification']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["beginVerification"] = begin_verification
+        __props__["createdOn"] = created_on
+        __props__["emailDomain"] = email_domain
+        __props__["enabled"] = enabled
+        __props__["updatedOn"] = updated_on
+        __props__["useFedrampLanguage"] = use_fedramp_language
+        __props__["verification"] = verification
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/ssoConnector:SsoConnector', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

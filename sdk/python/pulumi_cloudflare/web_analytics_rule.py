@@ -386,6 +386,28 @@ class WebAnalyticsRule(pulumi.CustomResource):
         __props__.__dict__["ruleset_id"] = ruleset_id
         return WebAnalyticsRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            host: pulumi.Input[Optional[_builtins.str]] = None,
+            inclusive: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_paused: pulumi.Input[Optional[_builtins.bool]] = None,
+            paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            priority: pulumi.Input[Optional[_builtins.float]] = None,
+            ruleset_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["created"] = created
+        __props__["host"] = host
+        __props__["inclusive"] = inclusive
+        __props__["isPaused"] = is_paused
+        __props__["paths"] = paths
+        __props__["priority"] = priority
+        __props__["rulesetId"] = ruleset_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/webAnalyticsRule:WebAnalyticsRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

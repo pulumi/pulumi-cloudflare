@@ -709,11 +709,10 @@ public class WorkersScript extends com.pulumi.resources.CustomResource {
     /**
      * Available values: &#34;smart&#34;, &#34;targeted&#34;.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     @Export(name="placementMode", refs={String.class}, tree="[0]")
     private Output<String> placementMode;
 
@@ -727,11 +726,10 @@ public class WorkersScript extends com.pulumi.resources.CustomResource {
     /**
      * Available values: &#34;SUCCESS&#34;, &#34;UNSUPPORTED*APPLICATION&#34;, &#34;INSUFFICIENT*INVOCATIONS&#34;.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     @Export(name="placementStatus", refs={String.class}, tree="[0]")
     private Output<String> placementStatus;
 

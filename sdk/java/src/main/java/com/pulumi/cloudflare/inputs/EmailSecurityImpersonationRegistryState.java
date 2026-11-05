@@ -102,22 +102,20 @@ public final class EmailSecurityImpersonationRegistryState extends com.pulumi.re
     /**
      * Deprecated. External identifier of the directory node.
      * 
-     * @deprecated
-     * This field is deprecated.
+     * @deprecated This field is deprecated.
      * 
      */
-    @Deprecated /* This field is deprecated. */
+    @Deprecated
     @Import(name="externalDirectoryNodeId")
     private @Nullable Output<String> externalDirectoryNodeId;
 
     /**
      * @return Deprecated. External identifier of the directory node.
      * 
-     * @deprecated
-     * This field is deprecated.
+     * @deprecated This field is deprecated.
      * 
      */
-    @Deprecated /* This field is deprecated. */
+    @Deprecated
     public Optional<Output<String>> externalDirectoryNodeId() {
         return Optional.ofNullable(this.externalDirectoryNodeId);
     }
@@ -140,22 +138,20 @@ public final class EmailSecurityImpersonationRegistryState extends com.pulumi.re
     /**
      * Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
      * 
-     * @deprecated
-     * Use `modifiedAt` instead.
+     * @deprecated Use `modifiedAt` instead.
      * 
      */
-    @Deprecated /* Use `modifiedAt` instead. */
+    @Deprecated
     @Import(name="lastModified")
     private @Nullable Output<String> lastModified;
 
     /**
      * @return Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
      * 
-     * @deprecated
-     * Use `modifiedAt` instead.
+     * @deprecated Use `modifiedAt` instead.
      * 
      */
-    @Deprecated /* Use `modifiedAt` instead. */
+    @Deprecated
     public Optional<Output<String>> lastModified() {
         return Optional.ofNullable(this.lastModified);
     }
@@ -353,11 +349,10 @@ public final class EmailSecurityImpersonationRegistryState extends com.pulumi.re
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated.
+         * @deprecated This field is deprecated.
          * 
          */
-        @Deprecated /* This field is deprecated. */
+        @Deprecated
         public Builder externalDirectoryNodeId(@Nullable Output<String> externalDirectoryNodeId) {
             $.externalDirectoryNodeId = externalDirectoryNodeId;
             return this;
@@ -368,11 +363,10 @@ public final class EmailSecurityImpersonationRegistryState extends com.pulumi.re
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated.
+         * @deprecated This field is deprecated.
          * 
          */
-        @Deprecated /* This field is deprecated. */
+        @Deprecated
         public Builder externalDirectoryNodeId(String externalDirectoryNodeId) {
             return externalDirectoryNodeId(Output.of(externalDirectoryNodeId));
         }
@@ -403,11 +397,10 @@ public final class EmailSecurityImpersonationRegistryState extends com.pulumi.re
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use `modifiedAt` instead.
+         * @deprecated Use `modifiedAt` instead.
          * 
          */
-        @Deprecated /* Use `modifiedAt` instead. */
+        @Deprecated
         public Builder lastModified(@Nullable Output<String> lastModified) {
             $.lastModified = lastModified;
             return this;
@@ -418,11 +411,10 @@ public final class EmailSecurityImpersonationRegistryState extends com.pulumi.re
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use `modifiedAt` instead.
+         * @deprecated Use `modifiedAt` instead.
          * 
          */
-        @Deprecated /* Use `modifiedAt` instead. */
+        @Deprecated
         public Builder lastModified(String lastModified) {
             return lastModified(Output.of(lastModified));
         }

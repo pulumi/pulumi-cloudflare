@@ -156,6 +156,12 @@ func (ShareRecipientState) ElementType() reflect.Type {
 	return reflect.TypeOf((*shareRecipientState)(nil)).Elem()
 }
 
+// ShareRecipientExists checks whether an existing ShareRecipient resource with the given ID exists.
+func ShareRecipientExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ShareRecipientState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/shareRecipient:ShareRecipient", id, state, "", opts...)
+}
+
 type shareRecipientArgs struct {
 	// Account identifier.
 	AccountId string `pulumi:"accountId"`

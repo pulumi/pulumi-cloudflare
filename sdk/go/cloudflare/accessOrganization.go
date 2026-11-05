@@ -287,6 +287,12 @@ func (AccessOrganizationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessOrganizationState)(nil)).Elem()
 }
 
+// AccessOrganizationExists checks whether an existing AccessOrganization resource with the given ID exists.
+func AccessOrganizationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccessOrganizationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/accessOrganization:AccessOrganization", id, state, "", opts...)
+}
+
 type accessOrganizationArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`

@@ -42,18 +42,18 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var exampleLogpushJob = new LogpushJob("exampleLogpushJob", LogpushJobArgs.builder()
  *             .destinationConf("s3://mybucket/logs?region=us-west-2")
  *             .zoneId("zone_id")
  *             .dataset("http_requests")
  *             .enabled(false)
- *             .filter("{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"},{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}")
+ *             .filter("}{&#92;{@code "where}&#92;{@code ":}{&#92;{@code "and}&#92;{@code ":[}{&#92;{@code "key}&#92;{@code ":}&#92;{@code "ClientRequestPath}&#92;{@code ",}&#92;{@code "operator}&#92;{@code ":}&#92;{@code "contains}&#92;{@code ",}&#92;{@code "value}&#92;{@code ":}&#92;{@code "/static}&#92;{@code "}}{@code ,}{&#92;{@code "key}&#92;{@code ":}&#92;{@code "ClientRequestHost}&#92;{@code ",}&#92;{@code "operator}&#92;{@code ":}&#92;{@code "eq}&#92;{@code ",}&#92;{@code "value}&#92;{@code ":}&#92;{@code "example.com}&#92;{@code "}}{@code ]}}}{@code ")
  *             .filterAttackTraffic(true)
  *             .frequency("high")
  *             .kind("")
@@ -83,8 +83,8 @@ import javax.annotation.Nullable;
  *             .ownershipChallenge("00000000000000000000")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -201,11 +201,10 @@ public class LogpushJob extends com.pulumi.resources.CustomResource {
      * This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
      * Available values: &#34;high&#34;, &#34;low&#34;.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     @Export(name="frequency", refs={String.class}, tree="[0]")
     private Output<String> frequency;
 
@@ -264,11 +263,10 @@ public class LogpushJob extends com.pulumi.resources.CustomResource {
     /**
      * This field is deprecated. Use `outputOptions` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     @Export(name="logpullOptions", refs={String.class}, tree="[0]")
     private Output<String> logpullOptions;
 

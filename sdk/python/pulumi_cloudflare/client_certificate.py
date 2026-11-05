@@ -608,6 +608,50 @@ class ClientCertificate(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return ClientCertificate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            certificate: pulumi.Input[Optional[_builtins.str]] = None,
+            certificate_authority: pulumi.Input[Optional[Union['ClientCertificateCertificateAuthorityArgs', 'ClientCertificateCertificateAuthorityArgsDict', 'outputs.ClientCertificateCertificateAuthority']]] = None,
+            common_name: pulumi.Input[Optional[_builtins.str]] = None,
+            country: pulumi.Input[Optional[_builtins.str]] = None,
+            csr: pulumi.Input[Optional[_builtins.str]] = None,
+            expires_on: pulumi.Input[Optional[_builtins.str]] = None,
+            fingerprint_sha256: pulumi.Input[Optional[_builtins.str]] = None,
+            issued_on: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            organization: pulumi.Input[Optional[_builtins.str]] = None,
+            organizational_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            reactivate: pulumi.Input[Optional[_builtins.bool]] = None,
+            serial_number: pulumi.Input[Optional[_builtins.str]] = None,
+            signature: pulumi.Input[Optional[_builtins.str]] = None,
+            ski: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            validity_days: pulumi.Input[Optional[_builtins.int]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["certificate"] = certificate
+        __props__["certificateAuthority"] = certificate_authority
+        __props__["commonName"] = common_name
+        __props__["country"] = country
+        __props__["csr"] = csr
+        __props__["expiresOn"] = expires_on
+        __props__["fingerprintSha256"] = fingerprint_sha256
+        __props__["issuedOn"] = issued_on
+        __props__["location"] = location
+        __props__["organization"] = organization
+        __props__["organizationalUnit"] = organizational_unit
+        __props__["reactivate"] = reactivate
+        __props__["serialNumber"] = serial_number
+        __props__["signature"] = signature
+        __props__["ski"] = ski
+        __props__["state"] = state
+        __props__["status"] = status
+        __props__["validityDays"] = validity_days
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/clientCertificate:ClientCertificate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def certificate(self) -> pulumi.Output[_builtins.str]:

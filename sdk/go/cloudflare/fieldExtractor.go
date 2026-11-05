@@ -124,6 +124,12 @@ func (FieldExtractorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*fieldExtractorState)(nil)).Elem()
 }
 
+// FieldExtractorExists checks whether an existing FieldExtractor resource with the given ID exists.
+func FieldExtractorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FieldExtractorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/fieldExtractor:FieldExtractor", id, state, "", opts...)
+}
+
 type fieldExtractorArgs struct {
 	// Cloudflare account ID.
 	AccountId string `pulumi:"accountId"`

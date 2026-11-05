@@ -296,6 +296,18 @@ class Precursor(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return Precursor(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            default_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            enforcement_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrecursorEnforcementRuleArgs', 'PrecursorEnforcementRuleArgsDict', 'outputs.PrecursorEnforcementRule']]]]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["defaultMode"] = default_mode
+        __props__["enforcementRules"] = enforcement_rules
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/precursor:Precursor', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="defaultMode")
     @_utilities.deprecated("""This attribute is deprecated.""")

@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PipelineSinkConfigFileNaming {
     /**
-     * @return The prefix to use in file name. i.e prefix-\n\n.parquet
+     * @return The prefix to use in file name. i.e prefix-&#92;n&#92;n.parquet
      * 
      */
     private @Nullable String prefix;
@@ -30,7 +30,7 @@ public final class PipelineSinkConfigFileNaming {
 
     private PipelineSinkConfigFileNaming() {}
     /**
-     * @return The prefix to use in file name. i.e prefix-\n\n.parquet
+     * @return The prefix to use in file name. i.e prefix-&#92;n&#92;n.parquet
      * 
      */
     public Optional<String> prefix() {

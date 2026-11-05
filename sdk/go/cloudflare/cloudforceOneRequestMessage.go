@@ -141,6 +141,12 @@ func (CloudforceOneRequestMessageState) ElementType() reflect.Type {
 	return reflect.TypeOf((*cloudforceOneRequestMessageState)(nil)).Elem()
 }
 
+// CloudforceOneRequestMessageExists checks whether an existing CloudforceOneRequestMessage resource with the given ID exists.
+func CloudforceOneRequestMessageExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CloudforceOneRequestMessageState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage", id, state, "", opts...)
+}
+
 type cloudforceOneRequestMessageArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`

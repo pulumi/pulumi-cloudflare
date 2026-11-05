@@ -186,6 +186,12 @@ func (D1DatabaseState) ElementType() reflect.Type {
 	return reflect.TypeOf((*d1databaseState)(nil)).Elem()
 }
 
+// D1DatabaseExists checks whether an existing D1Database resource with the given ID exists.
+func D1DatabaseExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *D1DatabaseState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/d1Database:D1Database", id, state, "", opts...)
+}
+
 type d1databaseArgs struct {
 	// Account identifier tag.
 	AccountId string `pulumi:"accountId"`

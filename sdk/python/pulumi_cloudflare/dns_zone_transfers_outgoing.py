@@ -350,6 +350,26 @@ class DnsZoneTransfersOutgoing(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return DnsZoneTransfersOutgoing(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            checked_time: pulumi.Input[Optional[_builtins.str]] = None,
+            created_time: pulumi.Input[Optional[_builtins.str]] = None,
+            last_transferred_time: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            peers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            soa_serial: pulumi.Input[Optional[_builtins.float]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["checkedTime"] = checked_time
+        __props__["createdTime"] = created_time
+        __props__["lastTransferredTime"] = last_transferred_time
+        __props__["name"] = name
+        __props__["peers"] = peers
+        __props__["soaSerial"] = soa_serial
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/dnsZoneTransfersOutgoing:DnsZoneTransfersOutgoing', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="checkedTime")
     def checked_time(self) -> pulumi.Output[_builtins.str]:

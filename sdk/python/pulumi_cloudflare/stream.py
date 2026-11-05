@@ -953,6 +953,70 @@ class Stream(pulumi.CustomResource):
         __props__.__dict__["watermark"] = watermark
         return Stream(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            allowed_origins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            clipped_from: pulumi.Input[Optional[_builtins.str]] = None,
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            creator: pulumi.Input[Optional[_builtins.str]] = None,
+            direct_user: pulumi.Input[Optional[_builtins.bool]] = None,
+            duration: pulumi.Input[Optional[_builtins.float]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            input: pulumi.Input[Optional[Union['StreamInputArgs', 'StreamInputArgsDict', 'outputs.StreamInput']]] = None,
+            live_input: pulumi.Input[Optional[_builtins.str]] = None,
+            max_duration_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            max_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+            meta: pulumi.Input[Optional[_builtins.str]] = None,
+            modified: pulumi.Input[Optional[_builtins.str]] = None,
+            playback: pulumi.Input[Optional[Union['StreamPlaybackArgs', 'StreamPlaybackArgsDict', 'outputs.StreamPlayback']]] = None,
+            preview: pulumi.Input[Optional[_builtins.str]] = None,
+            public_details: pulumi.Input[Optional[Union['StreamPublicDetailsArgs', 'StreamPublicDetailsArgsDict', 'outputs.StreamPublicDetails']]] = None,
+            ready_to_stream: pulumi.Input[Optional[_builtins.bool]] = None,
+            ready_to_stream_at: pulumi.Input[Optional[_builtins.str]] = None,
+            require_signed_urls: pulumi.Input[Optional[_builtins.bool]] = None,
+            scheduled_deletion: pulumi.Input[Optional[_builtins.str]] = None,
+            size: pulumi.Input[Optional[_builtins.float]] = None,
+            status: pulumi.Input[Optional[Union['StreamStatusArgs', 'StreamStatusArgsDict', 'outputs.StreamStatus']]] = None,
+            thumbnail: pulumi.Input[Optional[_builtins.str]] = None,
+            thumbnail_timestamp_pct: pulumi.Input[Optional[_builtins.float]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            upload_expiry: pulumi.Input[Optional[_builtins.str]] = None,
+            uploaded: pulumi.Input[Optional[_builtins.str]] = None,
+            watermark: pulumi.Input[Optional[Union['StreamWatermarkArgs', 'StreamWatermarkArgsDict', 'outputs.StreamWatermark']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["allowedOrigins"] = allowed_origins
+        __props__["clippedFrom"] = clipped_from
+        __props__["created"] = created
+        __props__["creator"] = creator
+        __props__["directUser"] = direct_user
+        __props__["duration"] = duration
+        __props__["identifier"] = identifier
+        __props__["input"] = input
+        __props__["liveInput"] = live_input
+        __props__["maxDurationSeconds"] = max_duration_seconds
+        __props__["maxSizeBytes"] = max_size_bytes
+        __props__["meta"] = meta
+        __props__["modified"] = modified
+        __props__["playback"] = playback
+        __props__["preview"] = preview
+        __props__["publicDetails"] = public_details
+        __props__["readyToStream"] = ready_to_stream
+        __props__["readyToStreamAt"] = ready_to_stream_at
+        __props__["requireSignedUrls"] = require_signed_urls
+        __props__["scheduledDeletion"] = scheduled_deletion
+        __props__["size"] = size
+        __props__["status"] = status
+        __props__["thumbnail"] = thumbnail
+        __props__["thumbnailTimestampPct"] = thumbnail_timestamp_pct
+        __props__["uid"] = uid
+        __props__["uploadExpiry"] = upload_expiry
+        __props__["uploaded"] = uploaded
+        __props__["watermark"] = watermark
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/stream:Stream', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

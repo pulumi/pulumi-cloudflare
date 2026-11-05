@@ -171,6 +171,12 @@ func (ManagedHeadersState) ElementType() reflect.Type {
 	return reflect.TypeOf((*managedHeadersState)(nil)).Elem()
 }
 
+// ManagedHeadersExists checks whether an existing ManagedHeaders resource with the given ID exists.
+func ManagedHeadersExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ManagedHeadersState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/managedHeaders:ManagedHeaders", id, state, "", opts...)
+}
+
 type managedHeadersArgs struct {
 	// The list of Managed Request Transforms.
 	ManagedRequestHeaders []ManagedHeadersManagedRequestHeader `pulumi:"managedRequestHeaders"`

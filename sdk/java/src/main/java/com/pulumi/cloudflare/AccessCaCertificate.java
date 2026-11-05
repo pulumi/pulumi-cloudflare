@@ -62,11 +62,10 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example &#39;&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;app_id&gt;&#39;
  * ```
  * 
- * @deprecated
- * cloudflare.index/accesscacertificate.AccessCaCertificate has been deprecated in favor of cloudflare.index/zerotrustaccessshortlivedcertificate.ZeroTrustAccessShortLivedCertificate
+ * @deprecated cloudflare.index/accesscacertificate.AccessCaCertificate has been deprecated in favor of cloudflare.index/zerotrustaccessshortlivedcertificate.ZeroTrustAccessShortLivedCertificate
  * 
  */
-@Deprecated /* cloudflare.index/accesscacertificate.AccessCaCertificate has been deprecated in favor of cloudflare.index/zerotrustaccessshortlivedcertificate.ZeroTrustAccessShortLivedCertificate */
+@Deprecated
 @ResourceType(type="cloudflare:index/accessCaCertificate:AccessCaCertificate")
 public class AccessCaCertificate extends com.pulumi.resources.CustomResource {
     /**

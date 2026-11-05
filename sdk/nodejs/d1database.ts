@@ -52,6 +52,17 @@ export class D1Database extends pulumi.CustomResource {
         return new D1Database(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing D1Database resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: D1DatabaseState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("cloudflare:index/d1Database:D1Database", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'cloudflare:index/d1Database:D1Database';
 

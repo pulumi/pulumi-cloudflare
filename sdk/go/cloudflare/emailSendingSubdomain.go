@@ -160,6 +160,12 @@ func (EmailSendingSubdomainState) ElementType() reflect.Type {
 	return reflect.TypeOf((*emailSendingSubdomainState)(nil)).Elem()
 }
 
+// EmailSendingSubdomainExists checks whether an existing EmailSendingSubdomain resource with the given ID exists.
+func EmailSendingSubdomainExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EmailSendingSubdomainState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/emailSendingSubdomain:EmailSendingSubdomain", id, state, "", opts...)
+}
+
 type emailSendingSubdomainArgs struct {
 	// Whether a send request that includes a recipient suppressed on
 	// this subdomain drops that recipient and still delivers to the

@@ -62,11 +62,10 @@ public final class GetD1DatabaseResult {
     /**
      * @return The number of tables in the D1 database. This count is no longer accurate and should not be relied upon.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     private Double numTables;
     /**
      * @return Configuration for D1 read replication.
@@ -145,11 +144,10 @@ public final class GetD1DatabaseResult {
     /**
      * @return The number of tables in the D1 database. This count is no longer accurate and should not be relied upon.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     public Double numTables() {
         return this.numTables;
     }

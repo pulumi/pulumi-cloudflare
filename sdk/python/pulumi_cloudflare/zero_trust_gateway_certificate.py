@@ -480,6 +480,42 @@ class ZeroTrustGatewayCertificate(pulumi.CustomResource):
         __props__.__dict__["validity_period_days"] = validity_period_days
         return ZeroTrustGatewayCertificate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            activate: pulumi.Input[Optional[_builtins.bool]] = None,
+            binding_status: pulumi.Input[Optional[_builtins.str]] = None,
+            certificate: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            expires_on: pulumi.Input[Optional[_builtins.str]] = None,
+            fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            in_use: pulumi.Input[Optional[_builtins.bool]] = None,
+            issuer_org: pulumi.Input[Optional[_builtins.str]] = None,
+            issuer_raw: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            uploaded_on: pulumi.Input[Optional[_builtins.str]] = None,
+            validity_period_days: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["activate"] = activate
+        __props__["bindingStatus"] = binding_status
+        __props__["certificate"] = certificate
+        __props__["createdAt"] = created_at
+        __props__["expiresOn"] = expires_on
+        __props__["fingerprint"] = fingerprint
+        __props__["inUse"] = in_use
+        __props__["issuerOrg"] = issuer_org
+        __props__["issuerRaw"] = issuer_raw
+        __props__["region"] = region
+        __props__["type"] = type
+        __props__["updatedAt"] = updated_at
+        __props__["uploadedOn"] = uploaded_on
+        __props__["validityPeriodDays"] = validity_period_days
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

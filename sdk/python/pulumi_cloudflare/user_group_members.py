@@ -428,6 +428,26 @@ class UserGroupMembers(pulumi.CustomResource):
         __props__.__dict__["user_group_id"] = user_group_id
         return UserGroupMembers(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            direction: pulumi.Input[Optional[_builtins.str]] = None,
+            fuzzy_email: pulumi.Input[Optional[_builtins.str]] = None,
+            members: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserGroupMembersMemberArgs', 'UserGroupMembersMemberArgsDict', 'outputs.UserGroupMembersMember']]]]] = None,
+            page: pulumi.Input[Optional[_builtins.float]] = None,
+            per_page: pulumi.Input[Optional[_builtins.float]] = None,
+            user_group_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["direction"] = direction
+        __props__["fuzzyEmail"] = fuzzy_email
+        __props__["members"] = members
+        __props__["page"] = page
+        __props__["perPage"] = per_page
+        __props__["userGroupId"] = user_group_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/userGroupMembers:UserGroupMembers', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

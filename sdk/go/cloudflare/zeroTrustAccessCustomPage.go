@@ -159,6 +159,12 @@ func (ZeroTrustAccessCustomPageState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zeroTrustAccessCustomPageState)(nil)).Elem()
 }
 
+// ZeroTrustAccessCustomPageExists checks whether an existing ZeroTrustAccessCustomPage resource with the given ID exists.
+func ZeroTrustAccessCustomPageExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustAccessCustomPageState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustAccessCustomPage:ZeroTrustAccessCustomPage", id, state, "", opts...)
+}
+
 type zeroTrustAccessCustomPageArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`

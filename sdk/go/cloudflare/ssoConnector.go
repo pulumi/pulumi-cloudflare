@@ -146,6 +146,12 @@ func (SsoConnectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ssoConnectorState)(nil)).Elem()
 }
 
+// SsoConnectorExists checks whether an existing SsoConnector resource with the given ID exists.
+func SsoConnectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SsoConnectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/ssoConnector:SsoConnector", id, state, "", opts...)
+}
+
 type ssoConnectorArgs struct {
 	// Account identifier tag.
 	AccountId string `pulumi:"accountId"`

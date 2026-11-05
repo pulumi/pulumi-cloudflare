@@ -152,6 +152,12 @@ func (AccessMutualTlsCertificateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessMutualTlsCertificateState)(nil)).Elem()
 }
 
+// AccessMutualTlsCertificateExists checks whether an existing AccessMutualTlsCertificate resource with the given ID exists.
+func AccessMutualTlsCertificateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccessMutualTlsCertificateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate", id, state, "", opts...)
+}
+
 type accessMutualTlsCertificateArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`

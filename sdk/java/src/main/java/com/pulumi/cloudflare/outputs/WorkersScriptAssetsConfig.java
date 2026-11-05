@@ -48,11 +48,10 @@ public final class WorkersScriptAssetsConfig {
     /**
      * @return When true and the incoming request matches an asset, that will be served instead of invoking the Worker script. When false, requests will always invoke the Worker script.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     private @Nullable Boolean serveDirectly;
 
     private WorkersScriptAssetsConfig() {}
@@ -103,11 +102,10 @@ public final class WorkersScriptAssetsConfig {
     /**
      * @return When true and the incoming request matches an asset, that will be served instead of invoking the Worker script. When false, requests will always invoke the Worker script.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     public Optional<Boolean> serveDirectly() {
         return Optional.ofNullable(this.serveDirectly);
     }

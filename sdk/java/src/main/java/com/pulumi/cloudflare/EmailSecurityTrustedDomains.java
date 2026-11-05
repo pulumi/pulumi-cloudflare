@@ -139,11 +139,10 @@ public class EmailSecurityTrustedDomains extends com.pulumi.resources.CustomReso
     /**
      * Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
      * 
-     * @deprecated
-     * Use `modifiedAt` instead.
+     * @deprecated Use `modifiedAt` instead.
      * 
      */
-    @Deprecated /* Use `modifiedAt` instead. */
+    @Deprecated
     @Export(name="lastModified", refs={String.class}, tree="[0]")
     private Output<String> lastModified;
 

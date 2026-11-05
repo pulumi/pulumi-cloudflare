@@ -815,6 +815,50 @@ class Record(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return Record(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            comment_modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            content: pulumi.Input[Optional[_builtins.str]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            data: pulumi.Input[Optional[Union['RecordDataArgs', 'RecordDataArgsDict', 'outputs.RecordData']]] = None,
+            include_shadow_metadata: pulumi.Input[Optional[_builtins.bool]] = None,
+            meta: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            priority: pulumi.Input[Optional[_builtins.float]] = None,
+            private_routing: pulumi.Input[Optional[_builtins.bool]] = None,
+            proxiable: pulumi.Input[Optional[_builtins.bool]] = None,
+            proxied: pulumi.Input[Optional[_builtins.bool]] = None,
+            settings: pulumi.Input[Optional[Union['RecordSettingsArgs', 'RecordSettingsArgsDict', 'outputs.RecordSettings']]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tags_modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            ttl: pulumi.Input[Optional[_builtins.float]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["comment"] = comment
+        __props__["commentModifiedOn"] = comment_modified_on
+        __props__["content"] = content
+        __props__["createdOn"] = created_on
+        __props__["data"] = data
+        __props__["includeShadowMetadata"] = include_shadow_metadata
+        __props__["meta"] = meta
+        __props__["modifiedOn"] = modified_on
+        __props__["name"] = name
+        __props__["priority"] = priority
+        __props__["privateRouting"] = private_routing
+        __props__["proxiable"] = proxiable
+        __props__["proxied"] = proxied
+        __props__["settings"] = settings
+        __props__["tags"] = tags
+        __props__["tagsModifiedOn"] = tags_modified_on
+        __props__["ttl"] = ttl
+        __props__["type"] = type
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/record:Record', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def comment(self) -> pulumi.Output[Optional[_builtins.str]]:

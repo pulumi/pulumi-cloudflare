@@ -35,11 +35,10 @@ public final class ZeroTrustTunnelWarpConnectorConnection {
     /**
      * @return Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
      * 
-     * @deprecated
-     * This functionality has been removed. The isPendingReconnect field will now always report false.
+     * @deprecated This functionality has been removed. The isPendingReconnect field will now always report false.
      * 
      */
-    @Deprecated /* This functionality has been removed. The isPendingReconnect field will now always report false. */
+    @Deprecated
     private @Nullable Boolean isPendingReconnect;
     /**
      * @return Timestamp of when the connection was established.
@@ -89,11 +88,10 @@ public final class ZeroTrustTunnelWarpConnectorConnection {
     /**
      * @return Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
      * 
-     * @deprecated
-     * This functionality has been removed. The isPendingReconnect field will now always report false.
+     * @deprecated This functionality has been removed. The isPendingReconnect field will now always report false.
      * 
      */
-    @Deprecated /* This functionality has been removed. The isPendingReconnect field will now always report false. */
+    @Deprecated
     public Optional<Boolean> isPendingReconnect() {
         return Optional.ofNullable(this.isPendingReconnect);
     }

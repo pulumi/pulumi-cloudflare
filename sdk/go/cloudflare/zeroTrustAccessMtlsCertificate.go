@@ -150,6 +150,12 @@ func (ZeroTrustAccessMtlsCertificateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zeroTrustAccessMtlsCertificateState)(nil)).Elem()
 }
 
+// ZeroTrustAccessMtlsCertificateExists checks whether an existing ZeroTrustAccessMtlsCertificate resource with the given ID exists.
+func ZeroTrustAccessMtlsCertificateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustAccessMtlsCertificateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustAccessMtlsCertificate:ZeroTrustAccessMtlsCertificate", id, state, "", opts...)
+}
+
 type zeroTrustAccessMtlsCertificateArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`

@@ -240,6 +240,12 @@ func (SpectrumApplicationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*spectrumApplicationState)(nil)).Elem()
 }
 
+// SpectrumApplicationExists checks whether an existing SpectrumApplication resource with the given ID exists.
+func SpectrumApplicationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SpectrumApplicationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/spectrumApplication:SpectrumApplication", id, state, "", opts...)
+}
+
 type spectrumApplicationArgs struct {
 	// Enables Argo Smart Routing for this application.
 	// Notes: Only available for TCP or UDP applications with trafficType set to "direct".

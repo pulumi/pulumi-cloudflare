@@ -439,6 +439,30 @@ class WorkersDeployment(pulumi.CustomResource):
         __props__.__dict__["versions"] = versions
         return WorkersDeployment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            annotations: pulumi.Input[Optional[Union['WorkersDeploymentAnnotationsArgs', 'WorkersDeploymentAnnotationsArgsDict', 'outputs.WorkersDeploymentAnnotations']]] = None,
+            author_email: pulumi.Input[Optional[_builtins.str]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            force: pulumi.Input[Optional[_builtins.bool]] = None,
+            script_name: pulumi.Input[Optional[_builtins.str]] = None,
+            source: pulumi.Input[Optional[_builtins.str]] = None,
+            strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            versions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkersDeploymentVersionArgs', 'WorkersDeploymentVersionArgsDict', 'outputs.WorkersDeploymentVersion']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["annotations"] = annotations
+        __props__["authorEmail"] = author_email
+        __props__["createdOn"] = created_on
+        __props__["force"] = force
+        __props__["scriptName"] = script_name
+        __props__["source"] = source
+        __props__["strategy"] = strategy
+        __props__["versions"] = versions
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/workersDeployment:WorkersDeployment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

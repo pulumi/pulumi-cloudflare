@@ -125,6 +125,12 @@ func (ZoneCacheReserveState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zoneCacheReserveState)(nil)).Elem()
 }
 
+// ZoneCacheReserveExists checks whether an existing ZoneCacheReserve resource with the given ID exists.
+func ZoneCacheReserveExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZoneCacheReserveState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zoneCacheReserve:ZoneCacheReserve", id, state, "", opts...)
+}
+
 type zoneCacheReserveArgs struct {
 	// Value of the Cache Reserve zone setting.
 	// Available values: "on", "off".

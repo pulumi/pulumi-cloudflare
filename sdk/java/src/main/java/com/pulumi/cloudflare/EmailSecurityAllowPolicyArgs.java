@@ -72,22 +72,20 @@ public final class EmailSecurityAllowPolicyArgs extends com.pulumi.resources.Res
     /**
      * Deprecated as of July 1, 2025. Use `isExemptRecipient` instead. End of life: July 1, 2026.
      * 
-     * @deprecated
-     * Use `isExemptRecipient` instead.
+     * @deprecated Use `isExemptRecipient` instead.
      * 
      */
-    @Deprecated /* Use `isExemptRecipient` instead. */
+    @Deprecated
     @Import(name="isRecipient")
     private @Nullable Output<Boolean> isRecipient;
 
     /**
      * @return Deprecated as of July 1, 2025. Use `isExemptRecipient` instead. End of life: July 1, 2026.
      * 
-     * @deprecated
-     * Use `isExemptRecipient` instead.
+     * @deprecated Use `isExemptRecipient` instead.
      * 
      */
-    @Deprecated /* Use `isExemptRecipient` instead. */
+    @Deprecated
     public Optional<Output<Boolean>> isRecipient() {
         return Optional.ofNullable(this.isRecipient);
     }
@@ -102,22 +100,20 @@ public final class EmailSecurityAllowPolicyArgs extends com.pulumi.resources.Res
     /**
      * Deprecated as of July 1, 2025. Use `isTrustedSender` instead. End of life: July 1, 2026.
      * 
-     * @deprecated
-     * Use `isTrustedSender` instead.
+     * @deprecated Use `isTrustedSender` instead.
      * 
      */
-    @Deprecated /* Use `isTrustedSender` instead. */
+    @Deprecated
     @Import(name="isSender")
     private @Nullable Output<Boolean> isSender;
 
     /**
      * @return Deprecated as of July 1, 2025. Use `isTrustedSender` instead. End of life: July 1, 2026.
      * 
-     * @deprecated
-     * Use `isTrustedSender` instead.
+     * @deprecated Use `isTrustedSender` instead.
      * 
      */
-    @Deprecated /* Use `isTrustedSender` instead. */
+    @Deprecated
     public Optional<Output<Boolean>> isSender() {
         return Optional.ofNullable(this.isSender);
     }
@@ -125,22 +121,20 @@ public final class EmailSecurityAllowPolicyArgs extends com.pulumi.resources.Res
     /**
      * Deprecated as of July 1, 2025. Use `isAcceptableSender` instead. End of life: July 1, 2026.
      * 
-     * @deprecated
-     * Use `isAcceptableSender` instead.
+     * @deprecated Use `isAcceptableSender` instead.
      * 
      */
-    @Deprecated /* Use `isAcceptableSender` instead. */
+    @Deprecated
     @Import(name="isSpoof")
     private @Nullable Output<Boolean> isSpoof;
 
     /**
      * @return Deprecated as of July 1, 2025. Use `isAcceptableSender` instead. End of life: July 1, 2026.
      * 
-     * @deprecated
-     * Use `isAcceptableSender` instead.
+     * @deprecated Use `isAcceptableSender` instead.
      * 
      */
-    @Deprecated /* Use `isAcceptableSender` instead. */
+    @Deprecated
     public Optional<Output<Boolean>> isSpoof() {
         return Optional.ofNullable(this.isSpoof);
     }
@@ -327,11 +321,10 @@ public final class EmailSecurityAllowPolicyArgs extends com.pulumi.resources.Res
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use `isExemptRecipient` instead.
+         * @deprecated Use `isExemptRecipient` instead.
          * 
          */
-        @Deprecated /* Use `isExemptRecipient` instead. */
+        @Deprecated
         public Builder isRecipient(@Nullable Output<Boolean> isRecipient) {
             $.isRecipient = isRecipient;
             return this;
@@ -342,11 +335,10 @@ public final class EmailSecurityAllowPolicyArgs extends com.pulumi.resources.Res
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use `isExemptRecipient` instead.
+         * @deprecated Use `isExemptRecipient` instead.
          * 
          */
-        @Deprecated /* Use `isExemptRecipient` instead. */
+        @Deprecated
         public Builder isRecipient(Boolean isRecipient) {
             return isRecipient(Output.of(isRecipient));
         }
@@ -365,11 +357,10 @@ public final class EmailSecurityAllowPolicyArgs extends com.pulumi.resources.Res
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use `isTrustedSender` instead.
+         * @deprecated Use `isTrustedSender` instead.
          * 
          */
-        @Deprecated /* Use `isTrustedSender` instead. */
+        @Deprecated
         public Builder isSender(@Nullable Output<Boolean> isSender) {
             $.isSender = isSender;
             return this;
@@ -380,11 +371,10 @@ public final class EmailSecurityAllowPolicyArgs extends com.pulumi.resources.Res
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use `isTrustedSender` instead.
+         * @deprecated Use `isTrustedSender` instead.
          * 
          */
-        @Deprecated /* Use `isTrustedSender` instead. */
+        @Deprecated
         public Builder isSender(Boolean isSender) {
             return isSender(Output.of(isSender));
         }
@@ -394,11 +384,10 @@ public final class EmailSecurityAllowPolicyArgs extends com.pulumi.resources.Res
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use `isAcceptableSender` instead.
+         * @deprecated Use `isAcceptableSender` instead.
          * 
          */
-        @Deprecated /* Use `isAcceptableSender` instead. */
+        @Deprecated
         public Builder isSpoof(@Nullable Output<Boolean> isSpoof) {
             $.isSpoof = isSpoof;
             return this;
@@ -409,11 +398,10 @@ public final class EmailSecurityAllowPolicyArgs extends com.pulumi.resources.Res
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use `isAcceptableSender` instead.
+         * @deprecated Use `isAcceptableSender` instead.
          * 
          */
-        @Deprecated /* Use `isAcceptableSender` instead. */
+        @Deprecated
         public Builder isSpoof(Boolean isSpoof) {
             return isSpoof(Output.of(isSpoof));
         }

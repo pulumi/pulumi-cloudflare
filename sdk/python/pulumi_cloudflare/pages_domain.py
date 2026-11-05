@@ -391,6 +391,32 @@ class PagesDomain(pulumi.CustomResource):
         __props__.__dict__["zone_tag"] = zone_tag
         return PagesDomain(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            certificate_authority: pulumi.Input[Optional[_builtins.str]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            validation_data: pulumi.Input[Optional[Union['PagesDomainValidationDataArgs', 'PagesDomainValidationDataArgsDict', 'outputs.PagesDomainValidationData']]] = None,
+            verification_data: pulumi.Input[Optional[Union['PagesDomainVerificationDataArgs', 'PagesDomainVerificationDataArgsDict', 'outputs.PagesDomainVerificationData']]] = None,
+            zone_tag: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["certificateAuthority"] = certificate_authority
+        __props__["createdOn"] = created_on
+        __props__["domainId"] = domain_id
+        __props__["name"] = name
+        __props__["projectName"] = project_name
+        __props__["status"] = status
+        __props__["validationData"] = validation_data
+        __props__["verificationData"] = verification_data
+        __props__["zoneTag"] = zone_tag
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/pagesDomain:PagesDomain', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

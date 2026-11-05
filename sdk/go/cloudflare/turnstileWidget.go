@@ -293,6 +293,12 @@ func (TurnstileWidgetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*turnstileWidgetState)(nil)).Elem()
 }
 
+// TurnstileWidgetExists checks whether an existing TurnstileWidget resource with the given ID exists.
+func TurnstileWidgetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TurnstileWidgetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/turnstileWidget:TurnstileWidget", id, state, "", opts...)
+}
+
 type turnstileWidgetArgs struct {
 	// Identifier
 	AccountId string `pulumi:"accountId"`

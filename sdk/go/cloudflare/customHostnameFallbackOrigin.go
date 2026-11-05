@@ -138,6 +138,12 @@ func (CustomHostnameFallbackOriginState) ElementType() reflect.Type {
 	return reflect.TypeOf((*customHostnameFallbackOriginState)(nil)).Elem()
 }
 
+// CustomHostnameFallbackOriginExists checks whether an existing CustomHostnameFallbackOrigin resource with the given ID exists.
+func CustomHostnameFallbackOriginExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CustomHostnameFallbackOriginState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin", id, state, "", opts...)
+}
+
 type customHostnameFallbackOriginArgs struct {
 	// Your origin hostname that requests to your custom hostnames will be sent to.
 	Origin string `pulumi:"origin"`

@@ -185,6 +185,12 @@ func (ZoneDnsSettingsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zoneDnsSettingsState)(nil)).Elem()
 }
 
+// ZoneDnsSettingsExists checks whether an existing ZoneDnsSettings resource with the given ID exists.
+func ZoneDnsSettingsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZoneDnsSettingsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zoneDnsSettings:ZoneDnsSettings", id, state, "", opts...)
+}
+
 type zoneDnsSettingsArgs struct {
 	// Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
 	FlattenAllCnames *bool `pulumi:"flattenAllCnames"`

@@ -280,6 +280,22 @@ class Organization(pulumi.CustomResource):
         __props__.__dict__["profile"] = profile
         return Organization(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            meta: pulumi.Input[Optional[Union['OrganizationMetaArgs', 'OrganizationMetaArgsDict', 'outputs.OrganizationMeta']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[Union['OrganizationParentArgs', 'OrganizationParentArgsDict', 'outputs.OrganizationParent']]] = None,
+            profile: pulumi.Input[Optional[Union['OrganizationProfileArgs', 'OrganizationProfileArgsDict', 'outputs.OrganizationProfile']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["meta"] = meta
+        __props__["name"] = name
+        __props__["parent"] = parent
+        __props__["profile"] = profile
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/organization:Organization', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

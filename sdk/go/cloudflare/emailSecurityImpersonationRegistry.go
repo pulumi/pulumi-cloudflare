@@ -193,6 +193,12 @@ func (EmailSecurityImpersonationRegistryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*emailSecurityImpersonationRegistryState)(nil)).Elem()
 }
 
+// EmailSecurityImpersonationRegistryExists checks whether an existing EmailSecurityImpersonationRegistry resource with the given ID exists.
+func EmailSecurityImpersonationRegistryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EmailSecurityImpersonationRegistryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/emailSecurityImpersonationRegistry:EmailSecurityImpersonationRegistry", id, state, "", opts...)
+}
+
 type emailSecurityImpersonationRegistryArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`

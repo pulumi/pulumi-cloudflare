@@ -276,6 +276,22 @@ class FlagshipApp(pulumi.CustomResource):
         __props__.__dict__["updated_by"] = updated_by
         return FlagshipApp(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_by: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["createdAt"] = created_at
+        __props__["name"] = name
+        __props__["updatedAt"] = updated_at
+        __props__["updatedBy"] = updated_by
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/flagshipApp:FlagshipApp', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

@@ -360,6 +360,28 @@ class Pipeline(pulumi.CustomResource):
         __props__.__dict__["tables"] = tables
         return Pipeline(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            failure_reason: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_at: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            sql: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineTableArgs', 'PipelineTableArgsDict', 'outputs.PipelineTable']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["createdAt"] = created_at
+        __props__["failureReason"] = failure_reason
+        __props__["modifiedAt"] = modified_at
+        __props__["name"] = name
+        __props__["sql"] = sql
+        __props__["status"] = status
+        __props__["tables"] = tables
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/pipeline:Pipeline', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

@@ -183,6 +183,12 @@ func (ShareResourceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*shareResourceState)(nil)).Elem()
 }
 
+// ShareResourceExists checks whether an existing ShareResource resource with the given ID exists.
+func ShareResourceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ShareResourceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/shareResource:ShareResource", id, state, "", opts...)
+}
+
 type shareResourceArgs struct {
 	// Account identifier.
 	AccountId string `pulumi:"accountId"`

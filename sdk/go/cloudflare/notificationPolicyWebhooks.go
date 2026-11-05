@@ -165,6 +165,12 @@ func (NotificationPolicyWebhooksState) ElementType() reflect.Type {
 	return reflect.TypeOf((*notificationPolicyWebhooksState)(nil)).Elem()
 }
 
+// NotificationPolicyWebhooksExists checks whether an existing NotificationPolicyWebhooks resource with the given ID exists.
+func NotificationPolicyWebhooksExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NotificationPolicyWebhooksState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks", id, state, "", opts...)
+}
+
 type notificationPolicyWebhooksArgs struct {
 	// The account id
 	AccountId string `pulumi:"accountId"`

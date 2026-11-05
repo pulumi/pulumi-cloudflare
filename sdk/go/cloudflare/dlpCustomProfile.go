@@ -241,6 +241,12 @@ func (DlpCustomProfileState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dlpCustomProfileState)(nil)).Elem()
 }
 
+// DlpCustomProfileExists checks whether an existing DlpCustomProfile resource with the given ID exists.
+func DlpCustomProfileExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DlpCustomProfileState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/dlpCustomProfile:DlpCustomProfile", id, state, "", opts...)
+}
+
 type dlpCustomProfileArgs struct {
 	AccountId        string `pulumi:"accountId"`
 	AiContextEnabled *bool  `pulumi:"aiContextEnabled"`

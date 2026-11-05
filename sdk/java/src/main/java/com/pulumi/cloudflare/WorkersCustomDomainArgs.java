@@ -34,22 +34,20 @@ public final class WorkersCustomDomainArgs extends com.pulumi.resources.Resource
     /**
      * Worker environment associated with the domain.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     @Import(name="environment")
     private @Nullable Output<String> environment;
 
     /**
      * @return Worker environment associated with the domain.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     public Optional<Output<String>> environment() {
         return Optional.ofNullable(this.environment);
     }
@@ -169,11 +167,10 @@ public final class WorkersCustomDomainArgs extends com.pulumi.resources.Resource
          * 
          * @return builder
          * 
-         * @deprecated
-         * This attribute is deprecated.
+         * @deprecated This attribute is deprecated.
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated
         public Builder environment(@Nullable Output<String> environment) {
             $.environment = environment;
             return this;
@@ -184,11 +181,10 @@ public final class WorkersCustomDomainArgs extends com.pulumi.resources.Resource
          * 
          * @return builder
          * 
-         * @deprecated
-         * This attribute is deprecated.
+         * @deprecated This attribute is deprecated.
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated
         public Builder environment(String environment) {
             return environment(Output.of(environment));
         }

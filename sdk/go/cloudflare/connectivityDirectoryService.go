@@ -160,6 +160,12 @@ func (ConnectivityDirectoryServiceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*connectivityDirectoryServiceState)(nil)).Elem()
 }
 
+// ConnectivityDirectoryServiceExists checks whether an existing ConnectivityDirectoryService resource with the given ID exists.
+func ConnectivityDirectoryServiceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConnectivityDirectoryServiceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/connectivityDirectoryService:ConnectivityDirectoryService", id, state, "", opts...)
+}
+
 type connectivityDirectoryServiceArgs struct {
 	// Account identifier
 	AccountId string `pulumi:"accountId"`

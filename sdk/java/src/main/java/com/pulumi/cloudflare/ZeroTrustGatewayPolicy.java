@@ -70,14 +70,14 @@ import javax.annotation.Nullable;
  *             .action("allow")
  *             .name("block bad websites")
  *             .description("Block bad websites based on their host name.")
- *             .devicePosture("any(device_posture.checks.passed[*] in }{{@code \"1308749e-fcfb-4ebc-b051-fe022b632644\"}}{@code )")
+ *             .devicePosture("any(device_posture.checks.passed[*] in }{&#92;{@code "1308749e-fcfb-4ebc-b051-fe022b632644}&#92;{@code "}}{@code )")
  *             .enabled(true)
  *             .expiration(ZeroTrustGatewayPolicyExpirationArgs.builder()
  *                 .expiresAt("2014-01-01T05:20:20Z")
  *                 .duration(10)
  *                 .build())
  *             .filters("http")
- *             .identity("any(identity.groups.name[*] in }{{@code \"finance\"}}{@code )")
+ *             .identity("any(identity.groups.name[*] in }{&#92;{@code "finance}&#92;{@code "}}{@code )")
  *             .precedence(0)
  *             .ruleSettings(ZeroTrustGatewayPolicyRuleSettingsArgs.builder()
  *                 .addHeaders(Map.ofEntries(
@@ -190,7 +190,7 @@ import javax.annotation.Nullable;
  *                 .tue("08:00-12:30,13:30-17:00")
  *                 .wed("08:00-12:30,13:30-17:00")
  *                 .build())
- *             .traffic("http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10")
+ *             .traffic("http.request.uri matches }&#92;{@code ".*a/partial/uri.*}&#92;{@code " and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10")
  *             .build());
  * 
  *     }}{@code

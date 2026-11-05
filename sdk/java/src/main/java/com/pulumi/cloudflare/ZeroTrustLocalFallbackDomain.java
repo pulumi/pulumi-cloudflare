@@ -67,11 +67,10 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zeroTrustLocalFallbackDomain:ZeroTrustLocalFallbackDomain example &#39;&lt;account_id&gt;/&lt;policy_id&gt;&#39;
  * ```
  * 
- * @deprecated
- * cloudflare.index/zerotrustlocalfallbackdomain.ZeroTrustLocalFallbackDomain has been deprecated in favor of cloudflare.index/zerotrustdevicecustomprofilelocaldomainfallback.ZeroTrustDeviceCustomProfileLocalDomainFallback
+ * @deprecated cloudflare.index/zerotrustlocalfallbackdomain.ZeroTrustLocalFallbackDomain has been deprecated in favor of cloudflare.index/zerotrustdevicecustomprofilelocaldomainfallback.ZeroTrustDeviceCustomProfileLocalDomainFallback
  * 
  */
-@Deprecated /* cloudflare.index/zerotrustlocalfallbackdomain.ZeroTrustLocalFallbackDomain has been deprecated in favor of cloudflare.index/zerotrustdevicecustomprofilelocaldomainfallback.ZeroTrustDeviceCustomProfileLocalDomainFallback */
+@Deprecated
 @ResourceType(type="cloudflare:index/zeroTrustLocalFallbackDomain:ZeroTrustLocalFallbackDomain")
 public class ZeroTrustLocalFallbackDomain extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")

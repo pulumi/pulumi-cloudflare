@@ -134,6 +134,12 @@ func (AccessCaCertificateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessCaCertificateState)(nil)).Elem()
 }
 
+// AccessCaCertificateExists checks whether an existing AccessCaCertificate resource with the given ID exists.
+func AccessCaCertificateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccessCaCertificateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/accessCaCertificate:AccessCaCertificate", id, state, "", opts...)
+}
+
 type accessCaCertificateArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`

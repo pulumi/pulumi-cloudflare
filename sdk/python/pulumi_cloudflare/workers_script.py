@@ -1763,6 +1763,92 @@ class WorkersScript(pulumi.CustomResource):
         __props__.__dict__["usage_model"] = usage_model
         return WorkersScript(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            annotations: pulumi.Input[Optional[Union['WorkersScriptAnnotationsArgs', 'WorkersScriptAnnotationsArgsDict', 'outputs.WorkersScriptAnnotations']]] = None,
+            assets: pulumi.Input[Optional[Union['WorkersScriptAssetsArgs', 'WorkersScriptAssetsArgsDict', 'outputs.WorkersScriptAssets']]] = None,
+            bindings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkersScriptBindingArgs', 'WorkersScriptBindingArgsDict', 'outputs.WorkersScriptBinding']]]]] = None,
+            bindings_inherit: pulumi.Input[Optional[_builtins.str]] = None,
+            body_part: pulumi.Input[Optional[_builtins.str]] = None,
+            cache_options: pulumi.Input[Optional[Union['WorkersScriptCacheOptionsArgs', 'WorkersScriptCacheOptionsArgsDict', 'outputs.WorkersScriptCacheOptions']]] = None,
+            compatibility_date: pulumi.Input[Optional[_builtins.str]] = None,
+            compatibility_flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            content: pulumi.Input[Optional[_builtins.str]] = None,
+            content_file: pulumi.Input[Optional[_builtins.str]] = None,
+            content_sha256: pulumi.Input[Optional[_builtins.str]] = None,
+            content_type: pulumi.Input[Optional[_builtins.str]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            exports: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['WorkersScriptExportsArgs', 'WorkersScriptExportsArgsDict', 'outputs.WorkersScriptExports']]]]] = None,
+            files: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['WorkersScriptFilesArgs', 'WorkersScriptFilesArgsDict', 'outputs.WorkersScriptFiles']]]]] = None,
+            force: pulumi.Input[Optional[_builtins.bool]] = None,
+            handlers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            has_assets: pulumi.Input[Optional[_builtins.bool]] = None,
+            has_modules: pulumi.Input[Optional[_builtins.bool]] = None,
+            keep_assets: pulumi.Input[Optional[_builtins.bool]] = None,
+            keep_bindings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            last_deployed_from: pulumi.Input[Optional[_builtins.str]] = None,
+            limits: pulumi.Input[Optional[Union['WorkersScriptLimitsArgs', 'WorkersScriptLimitsArgsDict', 'outputs.WorkersScriptLimits']]] = None,
+            logpush: pulumi.Input[Optional[_builtins.bool]] = None,
+            main_module: pulumi.Input[Optional[_builtins.str]] = None,
+            migration_tag: pulumi.Input[Optional[_builtins.str]] = None,
+            migrations: pulumi.Input[Optional[Union['WorkersScriptMigrationsArgs', 'WorkersScriptMigrationsArgsDict', 'outputs.WorkersScriptMigrations']]] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            named_handlers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkersScriptNamedHandlerArgs', 'WorkersScriptNamedHandlerArgsDict', 'outputs.WorkersScriptNamedHandler']]]]] = None,
+            observability: pulumi.Input[Optional[Union['WorkersScriptObservabilityArgs', 'WorkersScriptObservabilityArgsDict', 'outputs.WorkersScriptObservability']]] = None,
+            package_dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkersScriptPackageDependencyArgs', 'WorkersScriptPackageDependencyArgsDict', 'outputs.WorkersScriptPackageDependency']]]]] = None,
+            placement: pulumi.Input[Optional[Union['WorkersScriptPlacementArgs', 'WorkersScriptPlacementArgsDict', 'outputs.WorkersScriptPlacement']]] = None,
+            placement_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            placement_status: pulumi.Input[Optional[_builtins.str]] = None,
+            script_name: pulumi.Input[Optional[_builtins.str]] = None,
+            startup_time_ms: pulumi.Input[Optional[_builtins.int]] = None,
+            tail_consumers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkersScriptTailConsumerArgs', 'WorkersScriptTailConsumerArgsDict', 'outputs.WorkersScriptTailConsumer']]]]] = None,
+            usage_model: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["annotations"] = annotations
+        __props__["assets"] = assets
+        __props__["bindings"] = bindings
+        __props__["bindingsInherit"] = bindings_inherit
+        __props__["bodyPart"] = body_part
+        __props__["cacheOptions"] = cache_options
+        __props__["compatibilityDate"] = compatibility_date
+        __props__["compatibilityFlags"] = compatibility_flags
+        __props__["content"] = content
+        __props__["contentFile"] = content_file
+        __props__["contentSha256"] = content_sha256
+        __props__["contentType"] = content_type
+        __props__["createdOn"] = created_on
+        __props__["etag"] = etag
+        __props__["exports"] = exports
+        __props__["files"] = files
+        __props__["force"] = force
+        __props__["handlers"] = handlers
+        __props__["hasAssets"] = has_assets
+        __props__["hasModules"] = has_modules
+        __props__["keepAssets"] = keep_assets
+        __props__["keepBindings"] = keep_bindings
+        __props__["lastDeployedFrom"] = last_deployed_from
+        __props__["limits"] = limits
+        __props__["logpush"] = logpush
+        __props__["mainModule"] = main_module
+        __props__["migrationTag"] = migration_tag
+        __props__["migrations"] = migrations
+        __props__["modifiedOn"] = modified_on
+        __props__["namedHandlers"] = named_handlers
+        __props__["observability"] = observability
+        __props__["packageDependencies"] = package_dependencies
+        __props__["placement"] = placement
+        __props__["placementMode"] = placement_mode
+        __props__["placementStatus"] = placement_status
+        __props__["scriptName"] = script_name
+        __props__["startupTimeMs"] = startup_time_ms
+        __props__["tailConsumers"] = tail_consumers
+        __props__["usageModel"] = usage_model
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/workersScript:WorkersScript', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

@@ -110,6 +110,12 @@ func (LeakedCredentialCheckState) ElementType() reflect.Type {
 	return reflect.TypeOf((*leakedCredentialCheckState)(nil)).Elem()
 }
 
+// LeakedCredentialCheckExists checks whether an existing LeakedCredentialCheck resource with the given ID exists.
+func LeakedCredentialCheckExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LeakedCredentialCheckState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/leakedCredentialCheck:LeakedCredentialCheck", id, state, "", opts...)
+}
+
 type leakedCredentialCheckArgs struct {
 	// Determines whether or not Leaked Credential Checks are enabled.
 	Enabled *bool `pulumi:"enabled"`

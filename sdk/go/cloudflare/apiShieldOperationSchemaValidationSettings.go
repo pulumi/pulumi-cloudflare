@@ -142,6 +142,12 @@ func (ApiShieldOperationSchemaValidationSettingsState) ElementType() reflect.Typ
 	return reflect.TypeOf((*apiShieldOperationSchemaValidationSettingsState)(nil)).Elem()
 }
 
+// ApiShieldOperationSchemaValidationSettingsExists checks whether an existing ApiShieldOperationSchemaValidationSettings resource with the given ID exists.
+func ApiShieldOperationSchemaValidationSettingsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApiShieldOperationSchemaValidationSettingsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/apiShieldOperationSchemaValidationSettings:ApiShieldOperationSchemaValidationSettings", id, state, "", opts...)
+}
+
 type apiShieldOperationSchemaValidationSettingsArgs struct {
 	// When set, this applies a mitigation action to this operation
 	//

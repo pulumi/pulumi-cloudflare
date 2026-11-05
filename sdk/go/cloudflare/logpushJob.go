@@ -272,6 +272,12 @@ func (LogpushJobState) ElementType() reflect.Type {
 	return reflect.TypeOf((*logpushJobState)(nil)).Elem()
 }
 
+// LogpushJobExists checks whether an existing LogpushJob resource with the given ID exists.
+func LogpushJobExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LogpushJobState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/logpushJob:LogpushJob", id, state, "", opts...)
+}
+
 type logpushJobArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`

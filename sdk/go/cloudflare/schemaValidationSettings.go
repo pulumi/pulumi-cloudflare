@@ -148,6 +148,12 @@ func (SchemaValidationSettingsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*schemaValidationSettingsState)(nil)).Elem()
 }
 
+// SchemaValidationSettingsExists checks whether an existing SchemaValidationSettings resource with the given ID exists.
+func SchemaValidationSettingsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SchemaValidationSettingsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/schemaValidationSettings:SchemaValidationSettings", id, state, "", opts...)
+}
+
 type schemaValidationSettingsArgs struct {
 	// The default mitigation action used
 	// Mitigation actions are as follows:

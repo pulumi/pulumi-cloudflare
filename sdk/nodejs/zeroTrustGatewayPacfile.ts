@@ -45,6 +45,17 @@ export class ZeroTrustGatewayPacfile extends pulumi.CustomResource {
         return new ZeroTrustGatewayPacfile(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing ZeroTrustGatewayPacfile resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: ZeroTrustGatewayPacfileState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("cloudflare:index/zeroTrustGatewayPacfile:ZeroTrustGatewayPacfile", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'cloudflare:index/zeroTrustGatewayPacfile:ZeroTrustGatewayPacfile';
 

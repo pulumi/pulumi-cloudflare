@@ -100,7 +100,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .lanAllowMinutes(30.0)
  *             .lanAllowSubnetSize(24.0)
- *             .match("identity.email == \"test}{@literal @}{@code cloudflare.com\"")
+ *             .match("identity.email == }&#92;{@code "test}{@literal @}{@code cloudflare.com}&#92;{@code "")
  *             .precedence(100.0)
  *             .profileType("warp")
  *             .registerInterfaceIpWithDns(true)
@@ -516,11 +516,10 @@ public class ZeroTrustDeviceCustomProfile extends com.pulumi.resources.CustomRes
         return this.switchLocked;
     }
     /**
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     @Export(name="targetTests", refs={List.class,ZeroTrustDeviceCustomProfileTargetTest.class}, tree="[0,1]")
     private Output<List<ZeroTrustDeviceCustomProfileTargetTest>> targetTests;
 

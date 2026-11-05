@@ -147,6 +147,12 @@ func (R2DataCatalogState) ElementType() reflect.Type {
 	return reflect.TypeOf((*r2dataCatalogState)(nil)).Elem()
 }
 
+// R2DataCatalogExists checks whether an existing R2DataCatalog resource with the given ID exists.
+func R2DataCatalogExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *R2DataCatalogState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/r2DataCatalog:R2DataCatalog", id, state, "", opts...)
+}
+
 type r2dataCatalogArgs struct {
 	// Use this to identify the account.
 	AccountId string `pulumi:"accountId"`

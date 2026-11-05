@@ -56,20 +56,18 @@ public final class DlpPredefinedProfileArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * @deprecated
-     * This attribute is deprecated. Use enabledEntries instead.
+     * @deprecated This attribute is deprecated. Use enabledEntries instead.
      * 
      */
-    @Deprecated /* This attribute is deprecated. Use enabledEntries instead. */
+    @Deprecated
     @Import(name="entries")
     private @Nullable Output<List<DlpPredefinedProfileEntryArgs>> entries;
 
     /**
-     * @deprecated
-     * This attribute is deprecated. Use enabledEntries instead.
+     * @deprecated This attribute is deprecated. Use enabledEntries instead.
      * 
      */
-    @Deprecated /* This attribute is deprecated. Use enabledEntries instead. */
+    @Deprecated
     public Optional<Output<List<DlpPredefinedProfileEntryArgs>>> entries() {
         return Optional.ofNullable(this.entries);
     }
@@ -171,11 +169,10 @@ public final class DlpPredefinedProfileArgs extends com.pulumi.resources.Resourc
         /**
          * @return builder
          * 
-         * @deprecated
-         * This attribute is deprecated. Use enabledEntries instead.
+         * @deprecated This attribute is deprecated. Use enabledEntries instead.
          * 
          */
-        @Deprecated /* This attribute is deprecated. Use enabledEntries instead. */
+        @Deprecated
         public Builder entries(@Nullable Output<List<DlpPredefinedProfileEntryArgs>> entries) {
             $.entries = entries;
             return this;
@@ -184,11 +181,10 @@ public final class DlpPredefinedProfileArgs extends com.pulumi.resources.Resourc
         /**
          * @return builder
          * 
-         * @deprecated
-         * This attribute is deprecated. Use enabledEntries instead.
+         * @deprecated This attribute is deprecated. Use enabledEntries instead.
          * 
          */
-        @Deprecated /* This attribute is deprecated. Use enabledEntries instead. */
+        @Deprecated
         public Builder entries(List<DlpPredefinedProfileEntryArgs> entries) {
             return entries(Output.of(entries));
         }
@@ -196,11 +192,10 @@ public final class DlpPredefinedProfileArgs extends com.pulumi.resources.Resourc
         /**
          * @return builder
          * 
-         * @deprecated
-         * This attribute is deprecated. Use enabledEntries instead.
+         * @deprecated This attribute is deprecated. Use enabledEntries instead.
          * 
          */
-        @Deprecated /* This attribute is deprecated. Use enabledEntries instead. */
+        @Deprecated
         public Builder entries(DlpPredefinedProfileEntryArgs... entries) {
             return entries(List.of(entries));
         }

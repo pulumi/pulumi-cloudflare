@@ -180,11 +180,10 @@ public class KeylessCertificate extends com.pulumi.resources.CustomResource {
     /**
      * Whether or not the Keyless SSL is on or off.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 

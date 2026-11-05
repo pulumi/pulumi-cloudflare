@@ -170,6 +170,12 @@ func (ZoneCacheVariantsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zoneCacheVariantsState)(nil)).Elem()
 }
 
+// ZoneCacheVariantsExists checks whether an existing ZoneCacheVariants resource with the given ID exists.
+func ZoneCacheVariantsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZoneCacheVariantsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zoneCacheVariants:ZoneCacheVariants", id, state, "", opts...)
+}
+
 type zoneCacheVariantsArgs struct {
 	// Value of the zone setting.
 	Value ZoneCacheVariantsValue `pulumi:"value"`

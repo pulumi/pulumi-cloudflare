@@ -441,6 +441,30 @@ class AccessRule(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return AccessRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            allowed_modes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            configuration: pulumi.Input[Optional[Union['AccessRuleConfigurationArgs', 'AccessRuleConfigurationArgsDict', 'outputs.AccessRuleConfiguration']]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            mode: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            notes: pulumi.Input[Optional[_builtins.str]] = None,
+            scope: pulumi.Input[Optional[Union['AccessRuleScopeArgs', 'AccessRuleScopeArgsDict', 'outputs.AccessRuleScope']]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["allowedModes"] = allowed_modes
+        __props__["configuration"] = configuration
+        __props__["createdOn"] = created_on
+        __props__["mode"] = mode
+        __props__["modifiedOn"] = modified_on
+        __props__["notes"] = notes
+        __props__["scope"] = scope
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/accessRule:AccessRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:

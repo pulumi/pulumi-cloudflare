@@ -41,21 +41,21 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var exampleContentScanningExpression = new ContentScanningExpression("exampleContentScanningExpression", ContentScanningExpressionArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .bodies(ContentScanningExpressionBodyArgs.builder()
- *                 .payload("lookup_json_string(http.request.body.raw, \"file\")")
+ *                 .payload("lookup_json_string(http.request.body.raw, }&#92;{@code "file}&#92;{@code ")")
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

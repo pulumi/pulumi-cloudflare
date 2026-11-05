@@ -65,11 +65,10 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace example &#39;&lt;account_id&gt;/&lt;dispatch_namespace&gt;&#39;
  * ```
  * 
- * @deprecated
- * cloudflare.index/workersforplatformsnamespace.WorkersForPlatformsNamespace has been deprecated in favor of cloudflare.index/workersforplatformsdispatchnamespace.WorkersForPlatformsDispatchNamespace
+ * @deprecated cloudflare.index/workersforplatformsnamespace.WorkersForPlatformsNamespace has been deprecated in favor of cloudflare.index/workersforplatformsdispatchnamespace.WorkersForPlatformsDispatchNamespace
  * 
  */
-@Deprecated /* cloudflare.index/workersforplatformsnamespace.WorkersForPlatformsNamespace has been deprecated in favor of cloudflare.index/workersforplatformsdispatchnamespace.WorkersForPlatformsDispatchNamespace */
+@Deprecated
 @ResourceType(type="cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace")
 public class WorkersForPlatformsNamespace extends com.pulumi.resources.CustomResource {
     /**

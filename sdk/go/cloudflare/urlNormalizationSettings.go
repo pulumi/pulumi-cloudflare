@@ -165,6 +165,12 @@ func (UrlNormalizationSettingsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*urlNormalizationSettingsState)(nil)).Elem()
 }
 
+// UrlNormalizationSettingsExists checks whether an existing UrlNormalizationSettings resource with the given ID exists.
+func UrlNormalizationSettingsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UrlNormalizationSettingsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/urlNormalizationSettings:UrlNormalizationSettings", id, state, "", opts...)
+}
+
 type urlNormalizationSettingsArgs struct {
 	// The scope of the URL normalization.
 	// Available values: "incoming", "both", "none".

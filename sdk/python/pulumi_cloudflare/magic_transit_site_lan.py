@@ -652,6 +652,36 @@ class MagicTransitSiteLan(pulumi.CustomResource):
         __props__.__dict__["vlan_tag"] = vlan_tag
         return MagicTransitSiteLan(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            bond_id: pulumi.Input[Optional[_builtins.int]] = None,
+            ha_link: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_breakout: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_prioritized: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            nat: pulumi.Input[Optional[Union['MagicTransitSiteLanNatArgs', 'MagicTransitSiteLanNatArgsDict', 'outputs.MagicTransitSiteLanNat']]] = None,
+            physport: pulumi.Input[Optional[_builtins.int]] = None,
+            routed_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MagicTransitSiteLanRoutedSubnetArgs', 'MagicTransitSiteLanRoutedSubnetArgsDict', 'outputs.MagicTransitSiteLanRoutedSubnet']]]]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            static_addressing: pulumi.Input[Optional[Union['MagicTransitSiteLanStaticAddressingArgs', 'MagicTransitSiteLanStaticAddressingArgsDict', 'outputs.MagicTransitSiteLanStaticAddressing']]] = None,
+            vlan_tag: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["bondId"] = bond_id
+        __props__["haLink"] = ha_link
+        __props__["isBreakout"] = is_breakout
+        __props__["isPrioritized"] = is_prioritized
+        __props__["name"] = name
+        __props__["nat"] = nat
+        __props__["physport"] = physport
+        __props__["routedSubnets"] = routed_subnets
+        __props__["siteId"] = site_id
+        __props__["staticAddressing"] = static_addressing
+        __props__["vlanTag"] = vlan_tag
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/magicTransitSiteLan:MagicTransitSiteLan', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

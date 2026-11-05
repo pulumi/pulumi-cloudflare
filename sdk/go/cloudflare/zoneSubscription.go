@@ -164,6 +164,12 @@ func (ZoneSubscriptionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zoneSubscriptionState)(nil)).Elem()
 }
 
+// ZoneSubscriptionExists checks whether an existing ZoneSubscription resource with the given ID exists.
+func ZoneSubscriptionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZoneSubscriptionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zoneSubscription:ZoneSubscription", id, state, "", opts...)
+}
+
 type zoneSubscriptionArgs struct {
 	// How often the subscription is renewed automatically.
 	// Available values: "weekly", "monthly", "quarterly", "yearly".

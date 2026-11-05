@@ -188,6 +188,12 @@ func (ZeroTrustDlpIntegrationEntryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zeroTrustDlpIntegrationEntryState)(nil)).Elem()
 }
 
+// ZeroTrustDlpIntegrationEntryExists checks whether an existing ZeroTrustDlpIntegrationEntry resource with the given ID exists.
+func ZeroTrustDlpIntegrationEntryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustDlpIntegrationEntryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustDlpIntegrationEntry:ZeroTrustDlpIntegrationEntry", id, state, "", opts...)
+}
+
 type zeroTrustDlpIntegrationEntryArgs struct {
 	AccountId string `pulumi:"accountId"`
 	Enabled   bool   `pulumi:"enabled"`

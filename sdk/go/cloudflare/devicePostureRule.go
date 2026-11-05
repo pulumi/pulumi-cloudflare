@@ -176,6 +176,12 @@ func (DevicePostureRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*devicePostureRuleState)(nil)).Elem()
 }
 
+// DevicePostureRuleExists checks whether an existing DevicePostureRule resource with the given ID exists.
+func DevicePostureRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DevicePostureRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/devicePostureRule:DevicePostureRule", id, state, "", opts...)
+}
+
 type devicePostureRuleArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// The description of the device posture rule.

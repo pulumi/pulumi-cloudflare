@@ -124,6 +124,12 @@ func (R2BucketLockState) ElementType() reflect.Type {
 	return reflect.TypeOf((*r2bucketLockState)(nil)).Elem()
 }
 
+// R2BucketLockExists checks whether an existing R2BucketLock resource with the given ID exists.
+func R2BucketLockExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *R2BucketLockState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/r2BucketLock:R2BucketLock", id, state, "", opts...)
+}
+
 type r2bucketLockArgs struct {
 	// Cloudflare account ID that owns the R2 resource.
 	AccountId string `pulumi:"accountId"`

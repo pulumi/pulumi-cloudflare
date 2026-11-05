@@ -128,11 +128,10 @@ public final class GetPagesProjectDeploymentConfigsPreview {
      * @return The usage model for Pages Functions.
      * Available values: &#34;standard&#34;, &#34;bundled&#34;, &#34;unbound&#34;.
      * 
-     * @deprecated
-     * All new projects now use the Standard usage model.
+     * @deprecated All new projects now use the Standard usage model.
      * 
      */
-    @Deprecated /* All new projects now use the Standard usage model. */
+    @Deprecated
     private String usageModel;
     /**
      * @return Vectorize bindings used for Pages Functions.
@@ -283,11 +282,10 @@ public final class GetPagesProjectDeploymentConfigsPreview {
      * @return The usage model for Pages Functions.
      * Available values: &#34;standard&#34;, &#34;bundled&#34;, &#34;unbound&#34;.
      * 
-     * @deprecated
-     * All new projects now use the Standard usage model.
+     * @deprecated All new projects now use the Standard usage model.
      * 
      */
-    @Deprecated /* All new projects now use the Standard usage model. */
+    @Deprecated
     public String usageModel() {
         return this.usageModel;
     }

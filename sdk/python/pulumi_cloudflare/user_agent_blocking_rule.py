@@ -354,6 +354,22 @@ class UserAgentBlockingRule(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return UserAgentBlockingRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            configuration: pulumi.Input[Optional[Union['UserAgentBlockingRuleConfigurationArgs', 'UserAgentBlockingRuleConfigurationArgsDict', 'outputs.UserAgentBlockingRuleConfiguration']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            mode: pulumi.Input[Optional[_builtins.str]] = None,
+            paused: pulumi.Input[Optional[_builtins.bool]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["configuration"] = configuration
+        __props__["description"] = description
+        __props__["mode"] = mode
+        __props__["paused"] = paused
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def configuration(self) -> pulumi.Output['outputs.UserAgentBlockingRuleConfiguration']:

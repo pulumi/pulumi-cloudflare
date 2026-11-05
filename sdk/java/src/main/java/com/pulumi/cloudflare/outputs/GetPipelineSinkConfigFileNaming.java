@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetPipelineSinkConfigFileNaming {
     /**
-     * @return The prefix to use in file name. i.e prefix-\n\n.parquet
+     * @return The prefix to use in file name. i.e prefix-&#92;n&#92;n.parquet
      * 
      */
     private String prefix;
@@ -29,7 +29,7 @@ public final class GetPipelineSinkConfigFileNaming {
 
     private GetPipelineSinkConfigFileNaming() {}
     /**
-     * @return The prefix to use in file name. i.e prefix-\n\n.parquet
+     * @return The prefix to use in file name. i.e prefix-&#92;n&#92;n.parquet
      * 
      */
     public String prefix() {

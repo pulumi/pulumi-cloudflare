@@ -125,6 +125,12 @@ func (RegionalTieredCacheState) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionalTieredCacheState)(nil)).Elem()
 }
 
+// RegionalTieredCacheExists checks whether an existing RegionalTieredCache resource with the given ID exists.
+func RegionalTieredCacheExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegionalTieredCacheState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/regionalTieredCache:RegionalTieredCache", id, state, "", opts...)
+}
+
 type regionalTieredCacheArgs struct {
 	// Value of the Regional Tiered Cache zone setting.
 	// Available values: "on", "off".

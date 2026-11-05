@@ -157,6 +157,12 @@ func (AccountSubscriptionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountSubscriptionState)(nil)).Elem()
 }
 
+// AccountSubscriptionExists checks whether an existing AccountSubscription resource with the given ID exists.
+func AccountSubscriptionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccountSubscriptionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/accountSubscription:AccountSubscription", id, state, "", opts...)
+}
+
 type accountSubscriptionArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`

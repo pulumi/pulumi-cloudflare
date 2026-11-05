@@ -376,6 +376,32 @@ class AiGatewayDynamicRouting(pulumi.CustomResource):
         __props__.__dict__["version"] = version
         return AiGatewayDynamicRouting(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            deployment: pulumi.Input[Optional[Union['AiGatewayDynamicRoutingDeploymentArgs', 'AiGatewayDynamicRoutingDeploymentArgsDict', 'outputs.AiGatewayDynamicRoutingDeployment']]] = None,
+            elements: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiGatewayDynamicRoutingElementArgs', 'AiGatewayDynamicRoutingElementArgsDict', 'outputs.AiGatewayDynamicRoutingElement']]]]] = None,
+            gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_at: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            route: pulumi.Input[Optional[Union['AiGatewayDynamicRoutingRouteArgs', 'AiGatewayDynamicRoutingRouteArgsDict', 'outputs.AiGatewayDynamicRoutingRoute']]] = None,
+            success: pulumi.Input[Optional[_builtins.bool]] = None,
+            version: pulumi.Input[Optional[Union['AiGatewayDynamicRoutingVersionArgs', 'AiGatewayDynamicRoutingVersionArgsDict', 'outputs.AiGatewayDynamicRoutingVersion']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["createdAt"] = created_at
+        __props__["deployment"] = deployment
+        __props__["elements"] = elements
+        __props__["gatewayId"] = gateway_id
+        __props__["modifiedAt"] = modified_at
+        __props__["name"] = name
+        __props__["route"] = route
+        __props__["success"] = success
+        __props__["version"] = version
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/aiGatewayDynamicRouting:AiGatewayDynamicRouting', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

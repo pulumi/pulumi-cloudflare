@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// descending (newest first); `Name` defaults to ascending.
         ///   * `Asc` — ascending.
         ///   * `Desc` — descending.
-        /// Available values: "asc", "desc".
+        ///     Available values: "asc", "desc".
         /// </summary>
         public readonly string? Direction;
         /// <summary>
@@ -45,7 +45,7 @@ namespace Pulumi.Cloudflare.Outputs
         ///   * `Name` — sort alphabetically by location name.
         ///   * `CreatedAt` — sort by creation time; defaults to descending unless `Direction` is set.
         ///   * `UpdatedAt` — sort by last-modified time; defaults to descending unless `Direction` is set.
-        /// Available values: "name", "CreatedAt", "UpdatedAt".
+        ///     Available values: "name", "CreatedAt", "UpdatedAt".
         /// </summary>
         public readonly string? OrderBy;
         /// <summary>

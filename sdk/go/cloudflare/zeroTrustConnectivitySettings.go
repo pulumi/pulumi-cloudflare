@@ -116,6 +116,12 @@ func (ZeroTrustConnectivitySettingsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zeroTrustConnectivitySettingsState)(nil)).Elem()
 }
 
+// ZeroTrustConnectivitySettingsExists checks whether an existing ZeroTrustConnectivitySettings resource with the given ID exists.
+func ZeroTrustConnectivitySettingsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustConnectivitySettingsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustConnectivitySettings:ZeroTrustConnectivitySettings", id, state, "", opts...)
+}
+
 type zeroTrustConnectivitySettingsArgs struct {
 	// Cloudflare account ID
 	AccountId string `pulumi:"accountId"`

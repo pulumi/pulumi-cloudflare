@@ -151,6 +151,12 @@ func (R2BucketEventNotificationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*r2bucketEventNotificationState)(nil)).Elem()
 }
 
+// R2BucketEventNotificationExists checks whether an existing R2BucketEventNotification resource with the given ID exists.
+func R2BucketEventNotificationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *R2BucketEventNotificationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/r2BucketEventNotification:R2BucketEventNotification", id, state, "", opts...)
+}
+
 type r2bucketEventNotificationArgs struct {
 	// Cloudflare account ID that owns the R2 resource.
 	AccountId string `pulumi:"accountId"`

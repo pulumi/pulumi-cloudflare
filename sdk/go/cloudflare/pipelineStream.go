@@ -177,6 +177,12 @@ func (PipelineStreamState) ElementType() reflect.Type {
 	return reflect.TypeOf((*pipelineStreamState)(nil)).Elem()
 }
 
+// PipelineStreamExists checks whether an existing PipelineStream resource with the given ID exists.
+func PipelineStreamExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PipelineStreamState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/pipelineStream:PipelineStream", id, state, "", opts...)
+}
+
 type pipelineStreamArgs struct {
 	// Specifies the public ID of the account.
 	AccountId string `pulumi:"accountId"`

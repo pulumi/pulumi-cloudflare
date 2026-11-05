@@ -19,11 +19,10 @@ public final class GetPageShieldScriptsVersion {
     /**
      * @return The dataflow score of the JavaScript content. This field has been deprecated in favour of js*integrity*score.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     private Integer dataflowScore;
     /**
      * @return The timestamp of when the script was last fetched.
@@ -53,11 +52,10 @@ public final class GetPageShieldScriptsVersion {
     /**
      * @return The obfuscation score of the JavaScript content. This field has been deprecated in favour of js*integrity*score.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     private Integer obfuscationScore;
 
     private GetPageShieldScriptsVersion() {}
@@ -71,11 +69,10 @@ public final class GetPageShieldScriptsVersion {
     /**
      * @return The dataflow score of the JavaScript content. This field has been deprecated in favour of js*integrity*score.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     public Integer dataflowScore() {
         return this.dataflowScore;
     }
@@ -117,11 +114,10 @@ public final class GetPageShieldScriptsVersion {
     /**
      * @return The obfuscation score of the JavaScript content. This field has been deprecated in favour of js*integrity*score.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     public Integer obfuscationScore() {
         return this.obfuscationScore;
     }

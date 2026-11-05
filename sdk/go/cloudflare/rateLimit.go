@@ -183,6 +183,12 @@ func (RateLimitState) ElementType() reflect.Type {
 	return reflect.TypeOf((*rateLimitState)(nil)).Elem()
 }
 
+// RateLimitExists checks whether an existing RateLimit resource with the given ID exists.
+func RateLimitExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RateLimitState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/rateLimit:RateLimit", id, state, "", opts...)
+}
+
 type rateLimitArgs struct {
 	// The action to perform when the threshold of matched traffic within the configured period is exceeded.
 	Action RateLimitAction `pulumi:"action"`

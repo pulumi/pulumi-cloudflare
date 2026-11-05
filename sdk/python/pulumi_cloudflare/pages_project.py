@@ -1005,6 +1005,46 @@ class PagesProject(pulumi.CustomResource):
         __props__.__dict__["uses_functions"] = uses_functions
         return PagesProject(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            build_config: pulumi.Input[Optional[Union['PagesProjectBuildConfigArgs', 'PagesProjectBuildConfigArgsDict', 'outputs.PagesProjectBuildConfig']]] = None,
+            build_image_auto_upgrade: pulumi.Input[Optional[Union['PagesProjectBuildImageAutoUpgradeArgs', 'PagesProjectBuildImageAutoUpgradeArgsDict', 'outputs.PagesProjectBuildImageAutoUpgrade']]] = None,
+            canonical_deployment: pulumi.Input[Optional[Union['PagesProjectCanonicalDeploymentArgs', 'PagesProjectCanonicalDeploymentArgsDict', 'outputs.PagesProjectCanonicalDeployment']]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            deployment_configs: pulumi.Input[Optional[Union['PagesProjectDeploymentConfigsArgs', 'PagesProjectDeploymentConfigsArgsDict', 'outputs.PagesProjectDeploymentConfigs']]] = None,
+            domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            framework: pulumi.Input[Optional[_builtins.str]] = None,
+            framework_version: pulumi.Input[Optional[_builtins.str]] = None,
+            latest_deployment: pulumi.Input[Optional[Union['PagesProjectLatestDeploymentArgs', 'PagesProjectLatestDeploymentArgsDict', 'outputs.PagesProjectLatestDeployment']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            preview_script_name: pulumi.Input[Optional[_builtins.str]] = None,
+            production_branch: pulumi.Input[Optional[_builtins.str]] = None,
+            production_script_name: pulumi.Input[Optional[_builtins.str]] = None,
+            source: pulumi.Input[Optional[Union['PagesProjectSourceArgs', 'PagesProjectSourceArgsDict', 'outputs.PagesProjectSource']]] = None,
+            subdomain: pulumi.Input[Optional[_builtins.str]] = None,
+            uses_functions: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["buildConfig"] = build_config
+        __props__["buildImageAutoUpgrade"] = build_image_auto_upgrade
+        __props__["canonicalDeployment"] = canonical_deployment
+        __props__["createdOn"] = created_on
+        __props__["deploymentConfigs"] = deployment_configs
+        __props__["domains"] = domains
+        __props__["framework"] = framework
+        __props__["frameworkVersion"] = framework_version
+        __props__["latestDeployment"] = latest_deployment
+        __props__["name"] = name
+        __props__["previewScriptName"] = preview_script_name
+        __props__["productionBranch"] = production_branch
+        __props__["productionScriptName"] = production_script_name
+        __props__["source"] = source
+        __props__["subdomain"] = subdomain
+        __props__["usesFunctions"] = uses_functions
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/pagesProject:PagesProject', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

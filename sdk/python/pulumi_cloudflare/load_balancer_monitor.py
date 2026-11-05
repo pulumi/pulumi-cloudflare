@@ -882,6 +882,50 @@ class LoadBalancerMonitor(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return LoadBalancerMonitor(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            allow_insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+            consecutive_down: pulumi.Input[Optional[_builtins.int]] = None,
+            consecutive_up: pulumi.Input[Optional[_builtins.int]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            expected_body: pulumi.Input[Optional[_builtins.str]] = None,
+            expected_codes: pulumi.Input[Optional[_builtins.str]] = None,
+            follow_redirects: pulumi.Input[Optional[_builtins.bool]] = None,
+            header: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
+            interval: pulumi.Input[Optional[_builtins.int]] = None,
+            method: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            path: pulumi.Input[Optional[_builtins.str]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            probe_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            retries: pulumi.Input[Optional[_builtins.int]] = None,
+            timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["allowInsecure"] = allow_insecure
+        __props__["consecutiveDown"] = consecutive_down
+        __props__["consecutiveUp"] = consecutive_up
+        __props__["createdOn"] = created_on
+        __props__["description"] = description
+        __props__["expectedBody"] = expected_body
+        __props__["expectedCodes"] = expected_codes
+        __props__["followRedirects"] = follow_redirects
+        __props__["header"] = header
+        __props__["interval"] = interval
+        __props__["method"] = method
+        __props__["modifiedOn"] = modified_on
+        __props__["path"] = path
+        __props__["port"] = port
+        __props__["probeZone"] = probe_zone
+        __props__["retries"] = retries
+        __props__["timeout"] = timeout
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

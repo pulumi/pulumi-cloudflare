@@ -516,6 +516,30 @@ class MagicTransitSiteAcl(pulumi.CustomResource):
         __props__.__dict__["unidirectional"] = unidirectional
         return MagicTransitSiteAcl(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            forward_locally: pulumi.Input[Optional[_builtins.bool]] = None,
+            lan1: pulumi.Input[Optional[Union['MagicTransitSiteAclLan1Args', 'MagicTransitSiteAclLan1ArgsDict', 'outputs.MagicTransitSiteAclLan1']]] = None,
+            lan2: pulumi.Input[Optional[Union['MagicTransitSiteAclLan2Args', 'MagicTransitSiteAclLan2ArgsDict', 'outputs.MagicTransitSiteAclLan2']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            unidirectional: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["description"] = description
+        __props__["forwardLocally"] = forward_locally
+        __props__["lan1"] = lan1
+        __props__["lan2"] = lan2
+        __props__["name"] = name
+        __props__["protocols"] = protocols
+        __props__["siteId"] = site_id
+        __props__["unidirectional"] = unidirectional
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/magicTransitSiteAcl:MagicTransitSiteAcl', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

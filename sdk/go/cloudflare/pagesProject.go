@@ -417,6 +417,12 @@ func (PagesProjectState) ElementType() reflect.Type {
 	return reflect.TypeOf((*pagesProjectState)(nil)).Elem()
 }
 
+// PagesProjectExists checks whether an existing PagesProject resource with the given ID exists.
+func PagesProjectExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PagesProjectState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/pagesProject:PagesProject", id, state, "", opts...)
+}
+
 type pagesProjectArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`

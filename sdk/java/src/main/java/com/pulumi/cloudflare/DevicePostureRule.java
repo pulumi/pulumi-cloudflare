@@ -80,11 +80,10 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/devicePostureRule:DevicePostureRule example &#39;&lt;account_id&gt;/&lt;rule_id&gt;&#39;
  * ```
  * 
- * @deprecated
- * cloudflare.index/deviceposturerule.DevicePostureRule has been deprecated in favor of cloudflare.index/zerotrustdeviceposturerule.ZeroTrustDevicePostureRule
+ * @deprecated cloudflare.index/deviceposturerule.DevicePostureRule has been deprecated in favor of cloudflare.index/zerotrustdeviceposturerule.ZeroTrustDevicePostureRule
  * 
  */
-@Deprecated /* cloudflare.index/deviceposturerule.DevicePostureRule has been deprecated in favor of cloudflare.index/zerotrustdeviceposturerule.ZeroTrustDevicePostureRule */
+@Deprecated
 @ResourceType(type="cloudflare:index/devicePostureRule:DevicePostureRule")
 public class DevicePostureRule extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")

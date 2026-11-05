@@ -274,6 +274,20 @@ class AccessKeysConfiguration(pulumi.CustomResource):
         __props__.__dict__["last_key_rotation_at"] = last_key_rotation_at
         return AccessKeysConfiguration(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            days_until_next_rotation: pulumi.Input[Optional[_builtins.float]] = None,
+            key_rotation_interval_days: pulumi.Input[Optional[_builtins.float]] = None,
+            last_key_rotation_at: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["daysUntilNextRotation"] = days_until_next_rotation
+        __props__["keyRotationIntervalDays"] = key_rotation_interval_days
+        __props__["lastKeyRotationAt"] = last_key_rotation_at
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

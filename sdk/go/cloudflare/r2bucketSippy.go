@@ -144,6 +144,12 @@ func (R2BucketSippyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*r2bucketSippyState)(nil)).Elem()
 }
 
+// R2BucketSippyExists checks whether an existing R2BucketSippy resource with the given ID exists.
+func R2BucketSippyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *R2BucketSippyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/r2BucketSippy:R2BucketSippy", id, state, "", opts...)
+}
+
 type r2bucketSippyArgs struct {
 	// Cloudflare account ID that owns the R2 resource.
 	AccountId string `pulumi:"accountId"`

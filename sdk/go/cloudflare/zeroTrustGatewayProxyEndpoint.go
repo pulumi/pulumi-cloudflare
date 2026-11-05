@@ -140,6 +140,12 @@ func (ZeroTrustGatewayProxyEndpointState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zeroTrustGatewayProxyEndpointState)(nil)).Elem()
 }
 
+// ZeroTrustGatewayProxyEndpointExists checks whether an existing ZeroTrustGatewayProxyEndpoint resource with the given ID exists.
+func ZeroTrustGatewayProxyEndpointExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustGatewayProxyEndpointState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustGatewayProxyEndpoint:ZeroTrustGatewayProxyEndpoint", id, state, "", opts...)
+}
+
 type zeroTrustGatewayProxyEndpointArgs struct {
 	// Specify the Cloudflare account identifier.
 	AccountId string `pulumi:"accountId"`

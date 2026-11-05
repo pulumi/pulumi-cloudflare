@@ -66,11 +66,10 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork example &#39;&lt;account_id&gt;/&lt;virtual_network_id&gt;&#39;
  * ```
  * 
- * @deprecated
- * cloudflare.index/tunnelvirtualnetwork.TunnelVirtualNetwork has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflaredvirtualnetwork.ZeroTrustTunnelCloudflaredVirtualNetwork
+ * @deprecated cloudflare.index/tunnelvirtualnetwork.TunnelVirtualNetwork has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflaredvirtualnetwork.ZeroTrustTunnelCloudflaredVirtualNetwork
  * 
  */
-@Deprecated /* cloudflare.index/tunnelvirtualnetwork.TunnelVirtualNetwork has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflaredvirtualnetwork.ZeroTrustTunnelCloudflaredVirtualNetwork */
+@Deprecated
 @ResourceType(type="cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork")
 public class TunnelVirtualNetwork extends com.pulumi.resources.CustomResource {
     /**
@@ -132,11 +131,10 @@ public class TunnelVirtualNetwork extends com.pulumi.resources.CustomResource {
     /**
      * If `true`, this virtual network is the default for the account.
      * 
-     * @deprecated
-     * Use the isDefaultNetwork property instead.
+     * @deprecated Use the isDefaultNetwork property instead.
      * 
      */
-    @Deprecated /* Use the isDefaultNetwork property instead. */
+    @Deprecated
     @Export(name="isDefault", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isDefault;
 

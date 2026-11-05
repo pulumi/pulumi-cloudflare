@@ -323,11 +323,10 @@ public final class PagesProjectDeploymentConfigsProductionArgs extends com.pulum
      * The usage model for Pages Functions.
      * Available values: &#34;standard&#34;, &#34;bundled&#34;, &#34;unbound&#34;.
      * 
-     * @deprecated
-     * All new projects now use the Standard usage model.
+     * @deprecated All new projects now use the Standard usage model.
      * 
      */
-    @Deprecated /* All new projects now use the Standard usage model. */
+    @Deprecated
     @Import(name="usageModel")
     private @Nullable Output<String> usageModel;
 
@@ -335,11 +334,10 @@ public final class PagesProjectDeploymentConfigsProductionArgs extends com.pulum
      * @return The usage model for Pages Functions.
      * Available values: &#34;standard&#34;, &#34;bundled&#34;, &#34;unbound&#34;.
      * 
-     * @deprecated
-     * All new projects now use the Standard usage model.
+     * @deprecated All new projects now use the Standard usage model.
      * 
      */
-    @Deprecated /* All new projects now use the Standard usage model. */
+    @Deprecated
     public Optional<Output<String>> usageModel() {
         return Optional.ofNullable(this.usageModel);
     }
@@ -834,11 +832,10 @@ public final class PagesProjectDeploymentConfigsProductionArgs extends com.pulum
          * 
          * @return builder
          * 
-         * @deprecated
-         * All new projects now use the Standard usage model.
+         * @deprecated All new projects now use the Standard usage model.
          * 
          */
-        @Deprecated /* All new projects now use the Standard usage model. */
+        @Deprecated
         public Builder usageModel(@Nullable Output<String> usageModel) {
             $.usageModel = usageModel;
             return this;
@@ -850,11 +847,10 @@ public final class PagesProjectDeploymentConfigsProductionArgs extends com.pulum
          * 
          * @return builder
          * 
-         * @deprecated
-         * All new projects now use the Standard usage model.
+         * @deprecated All new projects now use the Standard usage model.
          * 
          */
-        @Deprecated /* All new projects now use the Standard usage model. */
+        @Deprecated
         public Builder usageModel(String usageModel) {
             return usageModel(Output.of(usageModel));
         }

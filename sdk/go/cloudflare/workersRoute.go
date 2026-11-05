@@ -118,6 +118,12 @@ func (WorkersRouteState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workersRouteState)(nil)).Elem()
 }
 
+// WorkersRouteExists checks whether an existing WorkersRoute resource with the given ID exists.
+func WorkersRouteExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkersRouteState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/workersRoute:WorkersRoute", id, state, "", opts...)
+}
+
 type workersRouteArgs struct {
 	// Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
 	Pattern string `pulumi:"pattern"`

@@ -121,6 +121,12 @@ func (ArgoTieredCachingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*argoTieredCachingState)(nil)).Elem()
 }
 
+// ArgoTieredCachingExists checks whether an existing ArgoTieredCaching resource with the given ID exists.
+func ArgoTieredCachingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ArgoTieredCachingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/argoTieredCaching:ArgoTieredCaching", id, state, "", opts...)
+}
+
 type argoTieredCachingArgs struct {
 	// Enables Tiered Caching.
 	// Available values: "on", "off".

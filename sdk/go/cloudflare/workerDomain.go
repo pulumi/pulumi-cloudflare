@@ -161,6 +161,12 @@ func (WorkerDomainState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workerDomainState)(nil)).Elem()
 }
 
+// WorkerDomainExists checks whether an existing WorkerDomain resource with the given ID exists.
+func WorkerDomainExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkerDomainState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/workerDomain:WorkerDomain", id, state, "", opts...)
+}
+
 type workerDomainArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`

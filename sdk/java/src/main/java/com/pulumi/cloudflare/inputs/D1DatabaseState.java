@@ -115,22 +115,20 @@ public final class D1DatabaseState extends com.pulumi.resources.ResourceArgs {
     /**
      * The number of tables in the D1 database. This count is no longer accurate and should not be relied upon.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     @Import(name="numTables")
     private @Nullable Output<Double> numTables;
 
     /**
      * @return The number of tables in the D1 database. This count is no longer accurate and should not be relied upon.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     public Optional<Output<Double>> numTables() {
         return Optional.ofNullable(this.numTables);
     }
@@ -369,11 +367,10 @@ public final class D1DatabaseState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This attribute is deprecated.
+         * @deprecated This attribute is deprecated.
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated
         public Builder numTables(@Nullable Output<Double> numTables) {
             $.numTables = numTables;
             return this;
@@ -384,11 +381,10 @@ public final class D1DatabaseState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This attribute is deprecated.
+         * @deprecated This attribute is deprecated.
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated
         public Builder numTables(Double numTables) {
             return numTables(Output.of(numTables));
         }

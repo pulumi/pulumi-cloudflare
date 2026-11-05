@@ -209,6 +209,12 @@ func (AuthenticatedOriginPullsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*authenticatedOriginPullsState)(nil)).Elem()
 }
 
+// AuthenticatedOriginPullsExists checks whether an existing AuthenticatedOriginPulls resource with the given ID exists.
+func AuthenticatedOriginPullsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AuthenticatedOriginPullsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls", id, state, "", opts...)
+}
+
 type authenticatedOriginPullsArgs struct {
 	Configs []AuthenticatedOriginPullsConfig `pulumi:"configs"`
 	// Identifier.

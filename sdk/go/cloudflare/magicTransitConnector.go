@@ -143,6 +143,12 @@ func (MagicTransitConnectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*magicTransitConnectorState)(nil)).Elem()
 }
 
+// MagicTransitConnectorExists checks whether an existing MagicTransitConnector resource with the given ID exists.
+func MagicTransitConnectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MagicTransitConnectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/magicTransitConnector:MagicTransitConnector", id, state, "", opts...)
+}
+
 type magicTransitConnectorArgs struct {
 	// Account identifier
 	AccountId                    string                      `pulumi:"accountId"`

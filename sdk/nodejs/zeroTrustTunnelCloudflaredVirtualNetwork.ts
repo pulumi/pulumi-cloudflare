@@ -45,6 +45,17 @@ export class ZeroTrustTunnelCloudflaredVirtualNetwork extends pulumi.CustomResou
         return new ZeroTrustTunnelCloudflaredVirtualNetwork(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing ZeroTrustTunnelCloudflaredVirtualNetwork resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: ZeroTrustTunnelCloudflaredVirtualNetworkState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("cloudflare:index/zeroTrustTunnelCloudflaredVirtualNetwork:ZeroTrustTunnelCloudflaredVirtualNetwork", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'cloudflare:index/zeroTrustTunnelCloudflaredVirtualNetwork:ZeroTrustTunnelCloudflaredVirtualNetwork';
 

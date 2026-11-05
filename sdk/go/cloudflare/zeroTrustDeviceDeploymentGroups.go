@@ -139,6 +139,12 @@ func (ZeroTrustDeviceDeploymentGroupsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zeroTrustDeviceDeploymentGroupsState)(nil)).Elem()
 }
 
+// ZeroTrustDeviceDeploymentGroupsExists checks whether an existing ZeroTrustDeviceDeploymentGroups resource with the given ID exists.
+func ZeroTrustDeviceDeploymentGroupsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustDeviceDeploymentGroupsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustDeviceDeploymentGroups:ZeroTrustDeviceDeploymentGroups", id, state, "", opts...)
+}
+
 type zeroTrustDeviceDeploymentGroupsArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// A user-friendly name for the deployment group.

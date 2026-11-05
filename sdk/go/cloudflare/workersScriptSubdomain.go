@@ -131,6 +131,12 @@ func (WorkersScriptSubdomainState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workersScriptSubdomainState)(nil)).Elem()
 }
 
+// WorkersScriptSubdomainExists checks whether an existing WorkersScriptSubdomain resource with the given ID exists.
+func WorkersScriptSubdomainExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkersScriptSubdomainState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/workersScriptSubdomain:WorkersScriptSubdomain", id, state, "", opts...)
+}
+
 type workersScriptSubdomainArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`

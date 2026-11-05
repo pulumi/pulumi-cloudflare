@@ -51,22 +51,20 @@ public final class ZeroTrustTunnelWarpConnectorState extends com.pulumi.resource
     /**
      * The Cloudflare Tunnel connections between your origin and Cloudflare&#39;s edge.
      * 
-     * @deprecated
-     * This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
+     * @deprecated This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
      * 
      */
-    @Deprecated /* This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections` */
+    @Deprecated
     @Import(name="connections")
     private @Nullable Output<List<ZeroTrustTunnelWarpConnectorConnectionArgs>> connections;
 
     /**
      * @return The Cloudflare Tunnel connections between your origin and Cloudflare&#39;s edge.
      * 
-     * @deprecated
-     * This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
+     * @deprecated This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
      * 
      */
-    @Deprecated /* This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections` */
+    @Deprecated
     public Optional<Output<List<ZeroTrustTunnelWarpConnectorConnectionArgs>>> connections() {
         return Optional.ofNullable(this.connections);
     }
@@ -308,11 +306,10 @@ public final class ZeroTrustTunnelWarpConnectorState extends com.pulumi.resource
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
+         * @deprecated This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
          * 
          */
-        @Deprecated /* This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections` */
+        @Deprecated
         public Builder connections(@Nullable Output<List<ZeroTrustTunnelWarpConnectorConnectionArgs>> connections) {
             $.connections = connections;
             return this;
@@ -323,11 +320,10 @@ public final class ZeroTrustTunnelWarpConnectorState extends com.pulumi.resource
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
+         * @deprecated This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
          * 
          */
-        @Deprecated /* This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections` */
+        @Deprecated
         public Builder connections(List<ZeroTrustTunnelWarpConnectorConnectionArgs> connections) {
             return connections(Output.of(connections));
         }
@@ -337,11 +333,10 @@ public final class ZeroTrustTunnelWarpConnectorState extends com.pulumi.resource
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
+         * @deprecated This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
          * 
          */
-        @Deprecated /* This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections` */
+        @Deprecated
         public Builder connections(ZeroTrustTunnelWarpConnectorConnectionArgs... connections) {
             return connections(List.of(connections));
         }

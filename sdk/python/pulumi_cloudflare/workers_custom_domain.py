@@ -419,6 +419,26 @@ class WorkersCustomDomain(pulumi.CustomResource):
         __props__.__dict__["zone_name"] = zone_name
         return WorkersCustomDomain(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cert_id: pulumi.Input[Optional[_builtins.str]] = None,
+            environment: pulumi.Input[Optional[_builtins.str]] = None,
+            hostname: pulumi.Input[Optional[_builtins.str]] = None,
+            service: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["certId"] = cert_id
+        __props__["environment"] = environment
+        __props__["hostname"] = hostname
+        __props__["service"] = service
+        __props__["zoneId"] = zone_id
+        __props__["zoneName"] = zone_name
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/workersCustomDomain:WorkersCustomDomain', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

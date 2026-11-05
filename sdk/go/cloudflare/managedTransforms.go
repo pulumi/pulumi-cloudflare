@@ -169,6 +169,12 @@ func (ManagedTransformsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*managedTransformsState)(nil)).Elem()
 }
 
+// ManagedTransformsExists checks whether an existing ManagedTransforms resource with the given ID exists.
+func ManagedTransformsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ManagedTransformsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/managedTransforms:ManagedTransforms", id, state, "", opts...)
+}
+
 type managedTransformsArgs struct {
 	// The list of Managed Request Transforms.
 	ManagedRequestHeaders []ManagedTransformsManagedRequestHeader `pulumi:"managedRequestHeaders"`

@@ -474,6 +474,34 @@ class MtlsCertificate(pulumi.CustomResource):
         __props__.__dict__["uploaded_on"] = uploaded_on
         return MtlsCertificate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ca: pulumi.Input[Optional[_builtins.bool]] = None,
+            certificates: pulumi.Input[Optional[_builtins.str]] = None,
+            expires_on: pulumi.Input[Optional[_builtins.str]] = None,
+            issuer: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            private_key: pulumi.Input[Optional[_builtins.str]] = None,
+            serial_number: pulumi.Input[Optional[_builtins.str]] = None,
+            signature: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            uploaded_on: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["ca"] = ca
+        __props__["certificates"] = certificates
+        __props__["expiresOn"] = expires_on
+        __props__["issuer"] = issuer
+        __props__["name"] = name
+        __props__["privateKey"] = private_key
+        __props__["serialNumber"] = serial_number
+        __props__["signature"] = signature
+        __props__["updatedAt"] = updated_at
+        __props__["uploadedOn"] = uploaded_on
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/mtlsCertificate:MtlsCertificate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

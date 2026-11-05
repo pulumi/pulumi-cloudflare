@@ -437,6 +437,30 @@ class EmailSecurityTrustedDomains(pulumi.CustomResource):
         __props__.__dict__["pattern"] = pattern
         return EmailSecurityTrustedDomains(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            comments: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            is_recent: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_regex: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_similarity: pulumi.Input[Optional[_builtins.bool]] = None,
+            last_modified: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_at: pulumi.Input[Optional[_builtins.str]] = None,
+            pattern: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["comments"] = comments
+        __props__["createdAt"] = created_at
+        __props__["isRecent"] = is_recent
+        __props__["isRegex"] = is_regex
+        __props__["isSimilarity"] = is_similarity
+        __props__["lastModified"] = last_modified
+        __props__["modifiedAt"] = modified_at
+        __props__["pattern"] = pattern
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/emailSecurityTrustedDomains:EmailSecurityTrustedDomains', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

@@ -59,11 +59,10 @@ public final class GetAiSearchInstancesResult {
     /**
      * @return Deprecated — use indexMethod instead.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     private Boolean hybridSearchEnabled;
     /**
      * @return AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
@@ -182,11 +181,10 @@ public final class GetAiSearchInstancesResult {
     /**
      * @return Deprecated — use indexMethod instead.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     public Boolean hybridSearchEnabled() {
         return this.hybridSearchEnabled;
     }

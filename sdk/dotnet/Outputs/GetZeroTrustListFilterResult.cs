@@ -23,7 +23,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// compatibility).
         ///   * `Asc` — ascending.
         ///   * `Desc` — descending.
-        /// Available values: "asc", "desc".
+        ///     Available values: "asc", "desc".
         /// </summary>
         public readonly string? Direction;
         /// <summary>
@@ -52,7 +52,7 @@ namespace Pulumi.Cloudflare.Outputs
         ///   * `CreatedAt` — sort by creation time; defaults to descending unless `Direction` is set.
         ///   * `UpdatedAt` — sort by last-modified time; defaults to descending unless `Direction` is set.
         ///   * `ItemCount` — sort by number of items in the list.
-        /// Available values: "name", "CreatedAt", "UpdatedAt", "ItemCount".
+        ///     Available values: "name", "CreatedAt", "UpdatedAt", "ItemCount".
         /// </summary>
         public readonly string? OrderBy;
         /// <summary>

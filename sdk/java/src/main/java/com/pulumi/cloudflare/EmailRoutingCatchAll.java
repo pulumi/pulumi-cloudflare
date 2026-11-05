@@ -174,11 +174,10 @@ public class EmailRoutingCatchAll extends com.pulumi.resources.CustomResource {
     /**
      * Routing rule tag. (Deprecated, replaced by routing rule identifier)
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     @Export(name="tag", refs={String.class}, tree="[0]")
     private Output<String> tag;
 

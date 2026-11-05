@@ -162,6 +162,12 @@ func (DlpPredefinedProfileState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dlpPredefinedProfileState)(nil)).Elem()
 }
 
+// DlpPredefinedProfileExists checks whether an existing DlpPredefinedProfile resource with the given ID exists.
+func DlpPredefinedProfileExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DlpPredefinedProfileState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/dlpPredefinedProfile:DlpPredefinedProfile", id, state, "", opts...)
+}
+
 type dlpPredefinedProfileArgs struct {
 	AccountId           string   `pulumi:"accountId"`
 	AiContextEnabled    *bool    `pulumi:"aiContextEnabled"`

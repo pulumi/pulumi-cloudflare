@@ -238,6 +238,12 @@ func (MagicWanIpsecTunnelState) ElementType() reflect.Type {
 	return reflect.TypeOf((*magicWanIpsecTunnelState)(nil)).Elem()
 }
 
+// MagicWanIpsecTunnelExists checks whether an existing MagicWanIpsecTunnel resource with the given ID exists.
+func MagicWanIpsecTunnelExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MagicWanIpsecTunnelState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel", id, state, "", opts...)
+}
+
 type magicWanIpsecTunnelArgs struct {
 	// Identifier
 	AccountId string `pulumi:"accountId"`

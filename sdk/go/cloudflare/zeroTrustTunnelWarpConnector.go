@@ -199,6 +199,12 @@ func (ZeroTrustTunnelWarpConnectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zeroTrustTunnelWarpConnectorState)(nil)).Elem()
 }
 
+// ZeroTrustTunnelWarpConnectorExists checks whether an existing ZeroTrustTunnelWarpConnector resource with the given ID exists.
+func ZeroTrustTunnelWarpConnectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustTunnelWarpConnectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustTunnelWarpConnector:ZeroTrustTunnelWarpConnector", id, state, "", opts...)
+}
+
 type zeroTrustTunnelWarpConnectorArgs struct {
 	// Cloudflare account ID
 	AccountId string `pulumi:"accountId"`

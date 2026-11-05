@@ -141,6 +141,12 @@ func (ZeroTrustAccessMtlsHostnameSettingsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zeroTrustAccessMtlsHostnameSettingsState)(nil)).Elem()
 }
 
+// ZeroTrustAccessMtlsHostnameSettingsExists checks whether an existing ZeroTrustAccessMtlsHostnameSettings resource with the given ID exists.
+func ZeroTrustAccessMtlsHostnameSettingsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustAccessMtlsHostnameSettingsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings", id, state, "", opts...)
+}
+
 type zeroTrustAccessMtlsHostnameSettingsArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string                                      `pulumi:"accountId"`

@@ -558,6 +558,46 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
         __props__.__dict__["word_lists"] = word_lists
         return ZeroTrustDlpEntry(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            case_sensitive: pulumi.Input[Optional[_builtins.bool]] = None,
+            confidence: pulumi.Input[Optional[Union['ZeroTrustDlpEntryConfidenceArgs', 'ZeroTrustDlpEntryConfidenceArgsDict', 'outputs.ZeroTrustDlpEntryConfidence']]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            deprecated: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            pattern: pulumi.Input[Optional[Union['ZeroTrustDlpEntryPatternArgs', 'ZeroTrustDlpEntryPatternArgsDict', 'outputs.ZeroTrustDlpEntryPattern']]] = None,
+            profile_id: pulumi.Input[Optional[_builtins.str]] = None,
+            profiles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDlpEntryProfileArgs', 'ZeroTrustDlpEntryProfileArgsDict', 'outputs.ZeroTrustDlpEntryProfile']]]]] = None,
+            secret: pulumi.Input[Optional[_builtins.bool]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            upload_status: pulumi.Input[Optional[_builtins.str]] = None,
+            variant: pulumi.Input[Optional[Union['ZeroTrustDlpEntryVariantArgs', 'ZeroTrustDlpEntryVariantArgsDict', 'outputs.ZeroTrustDlpEntryVariant']]] = None,
+            word_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["caseSensitive"] = case_sensitive
+        __props__["confidence"] = confidence
+        __props__["createdAt"] = created_at
+        __props__["deprecated"] = deprecated
+        __props__["description"] = description
+        __props__["enabled"] = enabled
+        __props__["name"] = name
+        __props__["pattern"] = pattern
+        __props__["profileId"] = profile_id
+        __props__["profiles"] = profiles
+        __props__["secret"] = secret
+        __props__["type"] = type
+        __props__["updatedAt"] = updated_at
+        __props__["uploadStatus"] = upload_status
+        __props__["variant"] = variant
+        __props__["wordLists"] = word_lists
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/zeroTrustDlpEntry:ZeroTrustDlpEntry', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

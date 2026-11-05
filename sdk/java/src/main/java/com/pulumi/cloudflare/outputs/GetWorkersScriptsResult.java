@@ -115,20 +115,18 @@ public final class GetWorkersScriptsResult {
     /**
      * @return Available values: &#34;smart&#34;, &#34;targeted&#34;.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     private String placementMode;
     /**
      * @return Available values: &#34;SUCCESS&#34;, &#34;UNSUPPORTED*APPLICATION&#34;, &#34;INSUFFICIENT*INVOCATIONS&#34;.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     private String placementStatus;
     /**
      * @return Routes associated with the Worker.
@@ -287,22 +285,20 @@ public final class GetWorkersScriptsResult {
     /**
      * @return Available values: &#34;smart&#34;, &#34;targeted&#34;.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     public String placementMode() {
         return this.placementMode;
     }
     /**
      * @return Available values: &#34;SUCCESS&#34;, &#34;UNSUPPORTED*APPLICATION&#34;, &#34;INSUFFICIENT*INVOCATIONS&#34;.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     public String placementStatus() {
         return this.placementStatus;
     }

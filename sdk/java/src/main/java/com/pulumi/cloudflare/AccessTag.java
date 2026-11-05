@@ -56,11 +56,10 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/accessTag:AccessTag example &#39;&lt;account_id&gt;/&lt;tag_name&gt;&#39;
  * ```
  * 
- * @deprecated
- * cloudflare.index/accesstag.AccessTag has been deprecated in favor of cloudflare.index/zerotrustaccesstag.ZeroTrustAccessTag
+ * @deprecated cloudflare.index/accesstag.AccessTag has been deprecated in favor of cloudflare.index/zerotrustaccesstag.ZeroTrustAccessTag
  * 
  */
-@Deprecated /* cloudflare.index/accesstag.AccessTag has been deprecated in favor of cloudflare.index/zerotrustaccesstag.ZeroTrustAccessTag */
+@Deprecated
 @ResourceType(type="cloudflare:index/accessTag:AccessTag")
 public class AccessTag extends com.pulumi.resources.CustomResource {
     /**

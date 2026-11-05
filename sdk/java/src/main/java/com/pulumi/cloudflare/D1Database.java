@@ -166,11 +166,10 @@ public class D1Database extends com.pulumi.resources.CustomResource {
     /**
      * The number of tables in the D1 database. This count is no longer accurate and should not be relied upon.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     @Export(name="numTables", refs={Double.class}, tree="[0]")
     private Output<Double> numTables;
 

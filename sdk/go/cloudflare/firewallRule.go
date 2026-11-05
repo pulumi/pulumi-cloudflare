@@ -164,6 +164,12 @@ func (FirewallRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*firewallRuleState)(nil)).Elem()
 }
 
+// FirewallRuleExists checks whether an existing FirewallRule resource with the given ID exists.
+func FirewallRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FirewallRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/firewallRule:FirewallRule", id, state, "", opts...)
+}
+
 type firewallRuleArgs struct {
 	// The action to perform when the threshold of matched traffic within the configured period is exceeded.
 	Action FirewallRuleAction `pulumi:"action"`

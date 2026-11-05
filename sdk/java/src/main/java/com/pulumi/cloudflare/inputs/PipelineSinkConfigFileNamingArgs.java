@@ -16,14 +16,14 @@ public final class PipelineSinkConfigFileNamingArgs extends com.pulumi.resources
     public static final PipelineSinkConfigFileNamingArgs Empty = new PipelineSinkConfigFileNamingArgs();
 
     /**
-     * The prefix to use in file name. i.e prefix-\n\n.parquet
+     * The prefix to use in file name. i.e prefix-&#92;n&#92;n.parquet
      * 
      */
     @Import(name="prefix")
     private @Nullable Output<String> prefix;
 
     /**
-     * @return The prefix to use in file name. i.e prefix-\n\n.parquet
+     * @return The prefix to use in file name. i.e prefix-&#92;n&#92;n.parquet
      * 
      */
     public Optional<Output<String>> prefix() {
@@ -89,7 +89,7 @@ public final class PipelineSinkConfigFileNamingArgs extends com.pulumi.resources
         }
 
         /**
-         * @param prefix The prefix to use in file name. i.e prefix-\n\n.parquet
+         * @param prefix The prefix to use in file name. i.e prefix-&#92;n&#92;n.parquet
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class PipelineSinkConfigFileNamingArgs extends com.pulumi.resources
         }
 
         /**
-         * @param prefix The prefix to use in file name. i.e prefix-\n\n.parquet
+         * @param prefix The prefix to use in file name. i.e prefix-&#92;n&#92;n.parquet
          * 
          * @return builder
          * 

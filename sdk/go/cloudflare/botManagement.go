@@ -288,6 +288,12 @@ func (BotManagementState) ElementType() reflect.Type {
 	return reflect.TypeOf((*botManagementState)(nil)).Elem()
 }
 
+// BotManagementExists checks whether an existing BotManagement resource with the given ID exists.
+func BotManagementExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BotManagementState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/botManagement:BotManagement", id, state, "", opts...)
+}
+
 type botManagementArgs struct {
 	// Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
 	AiBotsMigrationOptOut *bool `pulumi:"aiBotsMigrationOptOut"`

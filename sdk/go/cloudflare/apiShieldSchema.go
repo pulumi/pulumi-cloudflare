@@ -165,6 +165,12 @@ func (ApiShieldSchemaState) ElementType() reflect.Type {
 	return reflect.TypeOf((*apiShieldSchemaState)(nil)).Elem()
 }
 
+// ApiShieldSchemaExists checks whether an existing ApiShieldSchema resource with the given ID exists.
+func ApiShieldSchemaExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApiShieldSchemaState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/apiShieldSchema:ApiShieldSchema", id, state, "", opts...)
+}
+
 type apiShieldSchemaArgs struct {
 	// Schema file bytes
 	File string `pulumi:"file"`

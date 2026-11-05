@@ -364,6 +364,12 @@ func (ZeroTrustDeviceCustomProfileState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zeroTrustDeviceCustomProfileState)(nil)).Elem()
 }
 
+// ZeroTrustDeviceCustomProfileExists checks whether an existing ZeroTrustDeviceCustomProfile resource with the given ID exists.
+func ZeroTrustDeviceCustomProfileExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustDeviceCustomProfileState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustDeviceCustomProfile:ZeroTrustDeviceCustomProfile", id, state, "", opts...)
+}
+
 type zeroTrustDeviceCustomProfileArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// Whether to allow the user to switch WARP between modes.

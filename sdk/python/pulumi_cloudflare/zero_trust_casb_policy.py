@@ -586,6 +586,36 @@ class ZeroTrustCasbPolicy(pulumi.CustomResource):
         __props__.__dict__["updated_at"] = updated_at
         return ZeroTrustCasbPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            actions: pulumi.Input[Optional[Union['ZeroTrustCasbPolicyActionsArgs', 'ZeroTrustCasbPolicyActionsArgsDict', 'outputs.ZeroTrustCasbPolicyActions']]] = None,
+            applies_to_all_integrations: pulumi.Input[Optional[_builtins.bool]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled_at: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            finding_type_id: pulumi.Input[Optional[_builtins.str]] = None,
+            integration_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            last_triggered_at: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["actions"] = actions
+        __props__["appliesToAllIntegrations"] = applies_to_all_integrations
+        __props__["createdAt"] = created_at
+        __props__["description"] = description
+        __props__["disabledAt"] = disabled_at
+        __props__["displayName"] = display_name
+        __props__["enabled"] = enabled
+        __props__["findingTypeId"] = finding_type_id
+        __props__["integrationIds"] = integration_ids
+        __props__["lastTriggeredAt"] = last_triggered_at
+        __props__["updatedAt"] = updated_at
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/zeroTrustCasbPolicy:ZeroTrustCasbPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

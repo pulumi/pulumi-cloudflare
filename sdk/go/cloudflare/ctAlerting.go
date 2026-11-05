@@ -121,6 +121,12 @@ func (CtAlertingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ctAlertingState)(nil)).Elem()
 }
 
+// CtAlertingExists checks whether an existing CtAlerting resource with the given ID exists.
+func CtAlertingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CtAlertingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/ctAlerting:CtAlerting", id, state, "", opts...)
+}
+
 type ctAlertingArgs struct {
 	// Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma.
 	Emails []string `pulumi:"emails"`

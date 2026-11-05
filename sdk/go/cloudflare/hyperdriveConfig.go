@@ -180,6 +180,12 @@ func (HyperdriveConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hyperdriveConfigState)(nil)).Elem()
 }
 
+// HyperdriveConfigExists checks whether an existing HyperdriveConfig resource with the given ID exists.
+func HyperdriveConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HyperdriveConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/hyperdriveConfig:HyperdriveConfig", id, state, "", opts...)
+}
+
 type hyperdriveConfigArgs struct {
 	// Define configurations using a unique string identifier.
 	AccountId   string                   `pulumi:"accountId"`

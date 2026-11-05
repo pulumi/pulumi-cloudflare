@@ -114,22 +114,20 @@ public final class WorkerScriptAssetsConfigArgs extends com.pulumi.resources.Res
     /**
      * When true and the incoming request matches an asset, that will be served instead of invoking the Worker script. When false, requests will always invoke the Worker script.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     @Import(name="serveDirectly")
     private @Nullable Output<Boolean> serveDirectly;
 
     /**
      * @return When true and the incoming request matches an asset, that will be served instead of invoking the Worker script. When false, requests will always invoke the Worker script.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     public Optional<Output<Boolean>> serveDirectly() {
         return Optional.ofNullable(this.serveDirectly);
     }
@@ -299,11 +297,10 @@ public final class WorkerScriptAssetsConfigArgs extends com.pulumi.resources.Res
          * 
          * @return builder
          * 
-         * @deprecated
-         * This attribute is deprecated.
+         * @deprecated This attribute is deprecated.
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated
         public Builder serveDirectly(@Nullable Output<Boolean> serveDirectly) {
             $.serveDirectly = serveDirectly;
             return this;
@@ -314,11 +311,10 @@ public final class WorkerScriptAssetsConfigArgs extends com.pulumi.resources.Res
          * 
          * @return builder
          * 
-         * @deprecated
-         * This attribute is deprecated.
+         * @deprecated This attribute is deprecated.
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated
         public Builder serveDirectly(Boolean serveDirectly) {
             return serveDirectly(Output.of(serveDirectly));
         }

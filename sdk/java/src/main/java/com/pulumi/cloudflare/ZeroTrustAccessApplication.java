@@ -486,11 +486,10 @@ public class ZeroTrustAccessApplication extends com.pulumi.resources.CustomResou
     /**
      * List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     @Export(name="selfHostedDomains", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> selfHostedDomains;
 

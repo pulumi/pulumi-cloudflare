@@ -187,11 +187,10 @@ public final class GetZeroTrustAccessApplicationResult {
     /**
      * @return List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     private List<String> selfHostedDomains;
     /**
      * @return Returns a 401 status code when the request is blocked by a Service Auth policy.
@@ -463,11 +462,10 @@ public final class GetZeroTrustAccessApplicationResult {
     /**
      * @return List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     public List<String> selfHostedDomains() {
         return this.selfHostedDomains;
     }

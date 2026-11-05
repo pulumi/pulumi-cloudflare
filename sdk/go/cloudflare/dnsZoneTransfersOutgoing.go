@@ -148,6 +148,12 @@ func (DnsZoneTransfersOutgoingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dnsZoneTransfersOutgoingState)(nil)).Elem()
 }
 
+// DnsZoneTransfersOutgoingExists checks whether an existing DnsZoneTransfersOutgoing resource with the given ID exists.
+func DnsZoneTransfersOutgoingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DnsZoneTransfersOutgoingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/dnsZoneTransfersOutgoing:DnsZoneTransfersOutgoing", id, state, "", opts...)
+}
+
 type dnsZoneTransfersOutgoingArgs struct {
 	// Zone name.
 	Name string `pulumi:"name"`

@@ -70,11 +70,10 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/devicePostureIntegration:DevicePostureIntegration example &#39;&lt;account_id&gt;/&lt;integration_id&gt;&#39;
  * ```
  * 
- * @deprecated
- * cloudflare.index/devicepostureintegration.DevicePostureIntegration has been deprecated in favor of cloudflare.index/zerotrustdevicepostureintegration.ZeroTrustDevicePostureIntegration
+ * @deprecated cloudflare.index/devicepostureintegration.DevicePostureIntegration has been deprecated in favor of cloudflare.index/zerotrustdevicepostureintegration.ZeroTrustDevicePostureIntegration
  * 
  */
-@Deprecated /* cloudflare.index/devicepostureintegration.DevicePostureIntegration has been deprecated in favor of cloudflare.index/zerotrustdevicepostureintegration.ZeroTrustDevicePostureIntegration */
+@Deprecated
 @ResourceType(type="cloudflare:index/devicePostureIntegration:DevicePostureIntegration")
 public class DevicePostureIntegration extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")

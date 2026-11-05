@@ -172,6 +172,12 @@ func (MagicWanStaticRouteState) ElementType() reflect.Type {
 	return reflect.TypeOf((*magicWanStaticRouteState)(nil)).Elem()
 }
 
+// MagicWanStaticRouteExists checks whether an existing MagicWanStaticRoute resource with the given ID exists.
+func MagicWanStaticRouteExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MagicWanStaticRouteState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/magicWanStaticRoute:MagicWanStaticRoute", id, state, "", opts...)
+}
+
 type magicWanStaticRouteArgs struct {
 	// Identifier
 	AccountId string `pulumi:"accountId"`

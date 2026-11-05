@@ -929,6 +929,50 @@ class LogpushJob(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return LogpushJob(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            dataset: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_conf: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            error_message: pulumi.Input[Optional[_builtins.str]] = None,
+            filter: pulumi.Input[Optional[_builtins.str]] = None,
+            filter_attack_traffic: pulumi.Input[Optional[_builtins.bool]] = None,
+            frequency: pulumi.Input[Optional[_builtins.str]] = None,
+            kind: pulumi.Input[Optional[_builtins.str]] = None,
+            last_complete: pulumi.Input[Optional[_builtins.str]] = None,
+            last_error: pulumi.Input[Optional[_builtins.str]] = None,
+            logpull_options: pulumi.Input[Optional[_builtins.str]] = None,
+            max_upload_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+            max_upload_interval_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            max_upload_records: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            output_options: pulumi.Input[Optional[Union['LogpushJobOutputOptionsArgs', 'LogpushJobOutputOptionsArgsDict', 'outputs.LogpushJobOutputOptions']]] = None,
+            ownership_challenge: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["dataset"] = dataset
+        __props__["destinationConf"] = destination_conf
+        __props__["enabled"] = enabled
+        __props__["errorMessage"] = error_message
+        __props__["filter"] = filter
+        __props__["filterAttackTraffic"] = filter_attack_traffic
+        __props__["frequency"] = frequency
+        __props__["kind"] = kind
+        __props__["lastComplete"] = last_complete
+        __props__["lastError"] = last_error
+        __props__["logpullOptions"] = logpull_options
+        __props__["maxUploadBytes"] = max_upload_bytes
+        __props__["maxUploadIntervalSeconds"] = max_upload_interval_seconds
+        __props__["maxUploadRecords"] = max_upload_records
+        __props__["name"] = name
+        __props__["outputOptions"] = output_options
+        __props__["ownershipChallenge"] = ownership_challenge
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/logpushJob:LogpushJob', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:

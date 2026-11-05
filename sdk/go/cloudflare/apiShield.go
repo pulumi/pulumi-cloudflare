@@ -127,6 +127,12 @@ func (ApiShieldState) ElementType() reflect.Type {
 	return reflect.TypeOf((*apiShieldState)(nil)).Elem()
 }
 
+// ApiShieldExists checks whether an existing ApiShield resource with the given ID exists.
+func ApiShieldExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApiShieldState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/apiShield:ApiShield", id, state, "", opts...)
+}
+
 type apiShieldArgs struct {
 	AuthIdCharacteristics []ApiShieldAuthIdCharacteristic `pulumi:"authIdCharacteristics"`
 	// Ensures that the configuration is written or retrieved in normalized fashion

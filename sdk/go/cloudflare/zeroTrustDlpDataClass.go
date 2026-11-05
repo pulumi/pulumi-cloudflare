@@ -143,6 +143,12 @@ func (ZeroTrustDlpDataClassState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zeroTrustDlpDataClassState)(nil)).Elem()
 }
 
+// ZeroTrustDlpDataClassExists checks whether an existing ZeroTrustDlpDataClass resource with the given ID exists.
+func ZeroTrustDlpDataClassExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustDlpDataClassState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustDlpDataClass:ZeroTrustDlpDataClass", id, state, "", opts...)
+}
+
 type zeroTrustDlpDataClassArgs struct {
 	AccountId         string                                  `pulumi:"accountId"`
 	DataTags          []string                                `pulumi:"dataTags"`

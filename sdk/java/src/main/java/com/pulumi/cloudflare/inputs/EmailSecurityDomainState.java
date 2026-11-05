@@ -181,22 +181,20 @@ public final class EmailSecurityDomainState extends com.pulumi.resources.Resourc
     /**
      * Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
      * 
-     * @deprecated
-     * Use `modifiedAt` instead.
+     * @deprecated Use `modifiedAt` instead.
      * 
      */
-    @Deprecated /* Use `modifiedAt` instead. */
+    @Deprecated
     @Import(name="lastModified")
     private @Nullable Output<String> lastModified;
 
     /**
      * @return Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
      * 
-     * @deprecated
-     * Use `modifiedAt` instead.
+     * @deprecated Use `modifiedAt` instead.
      * 
      */
-    @Deprecated /* Use `modifiedAt` instead. */
+    @Deprecated
     public Optional<Output<String>> lastModified() {
         return Optional.ofNullable(this.lastModified);
     }
@@ -618,11 +616,10 @@ public final class EmailSecurityDomainState extends com.pulumi.resources.Resourc
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use `modifiedAt` instead.
+         * @deprecated Use `modifiedAt` instead.
          * 
          */
-        @Deprecated /* Use `modifiedAt` instead. */
+        @Deprecated
         public Builder lastModified(@Nullable Output<String> lastModified) {
             $.lastModified = lastModified;
             return this;
@@ -633,11 +630,10 @@ public final class EmailSecurityDomainState extends com.pulumi.resources.Resourc
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use `modifiedAt` instead.
+         * @deprecated Use `modifiedAt` instead.
          * 
          */
-        @Deprecated /* Use `modifiedAt` instead. */
+        @Deprecated
         public Builder lastModified(String lastModified) {
             return lastModified(Output.of(lastModified));
         }

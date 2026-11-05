@@ -35,25 +35,25 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var examplePrecursor = new Precursor("examplePrecursor", PrecursorArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .defaultMode("min-friction")
  *             .enforcementRules(PrecursorEnforcementRuleArgs.builder()
- *                 .expression("http.request.uri.path eq \"/login\"")
+ *                 .expression("http.request.uri.path eq }&#92;{@code "/login}&#92;{@code "")
  *                 .mode("max-security")
  *                 .description("Ease friction on the login path")
  *                 .enabled(true)
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -71,11 +71,10 @@ public class Precursor extends com.pulumi.resources.CustomResource {
      * not match a more specific enforcement rule.
      * Available values: &#34;off&#34;, &#34;min-friction&#34;, &#34;max-security&#34;.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     @Export(name="defaultMode", refs={String.class}, tree="[0]")
     private Output<String> defaultMode;
 
@@ -91,11 +90,10 @@ public class Precursor extends com.pulumi.resources.CustomResource {
     /**
      * The ordered list of enforcement rules for the zone.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     @Export(name="enforcementRules", refs={List.class,PrecursorEnforcementRule.class}, tree="[0,1]")
     private Output<List<PrecursorEnforcementRule>> enforcementRules;
 

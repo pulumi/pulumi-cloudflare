@@ -135,6 +135,12 @@ func (OriginCloudRegionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*originCloudRegionState)(nil)).Elem()
 }
 
+// OriginCloudRegionExists checks whether an existing OriginCloudRegion resource with the given ID exists.
+func OriginCloudRegionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OriginCloudRegionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/originCloudRegion:OriginCloudRegion", id, state, "", opts...)
+}
+
 type originCloudRegionArgs struct {
 	// Origin IP address (IPv4 or IPv6). For the single PUT endpoint (`PUT /origin/cloud_regions/{origin_ip}`), this field must match the path parameter or the request will be rejected with a 400 error. For the batch PUT endpoint, this field identifies which mapping to upsert.
 	OriginIp string `pulumi:"originIp"`

@@ -110,6 +110,12 @@ func (AiSearchTokenState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiSearchTokenState)(nil)).Elem()
 }
 
+// AiSearchTokenExists checks whether an existing AiSearchToken resource with the given ID exists.
+func AiSearchTokenExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiSearchTokenState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/aiSearchToken:AiSearchToken", id, state, "", opts...)
+}
+
 type aiSearchTokenArgs struct {
 	AccountId string `pulumi:"accountId"`
 	CfApiId   string `pulumi:"cfApiId"`

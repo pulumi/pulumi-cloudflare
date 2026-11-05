@@ -156,6 +156,12 @@ func (ZeroTrustListState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zeroTrustListState)(nil)).Elem()
 }
 
+// ZeroTrustListExists checks whether an existing ZeroTrustList resource with the given ID exists.
+func ZeroTrustListExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustListState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustList:ZeroTrustList", id, state, "", opts...)
+}
+
 type zeroTrustListArgs struct {
 	// Specify the Cloudflare account identifier.
 	AccountId string `pulumi:"accountId"`

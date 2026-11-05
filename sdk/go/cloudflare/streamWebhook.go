@@ -122,6 +122,12 @@ func (StreamWebhookState) ElementType() reflect.Type {
 	return reflect.TypeOf((*streamWebhookState)(nil)).Elem()
 }
 
+// StreamWebhookExists checks whether an existing StreamWebhook resource with the given ID exists.
+func StreamWebhookExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StreamWebhookState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/streamWebhook:StreamWebhook", id, state, "", opts...)
+}
+
 type streamWebhookArgs struct {
 	// The account identifier tag.
 	AccountId string `pulumi:"accountId"`

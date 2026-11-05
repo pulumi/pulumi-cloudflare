@@ -503,6 +503,28 @@ class PipelineSink(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return PipelineSink(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            config: pulumi.Input[Optional[Union['PipelineSinkConfigArgs', 'PipelineSinkConfigArgsDict', 'outputs.PipelineSinkConfig']]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            format: pulumi.Input[Optional[Union['PipelineSinkFormatArgs', 'PipelineSinkFormatArgsDict', 'outputs.PipelineSinkFormat']]] = None,
+            modified_at: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            schema: pulumi.Input[Optional[Union['PipelineSinkSchemaArgs', 'PipelineSinkSchemaArgsDict', 'outputs.PipelineSinkSchema']]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["config"] = config
+        __props__["createdAt"] = created_at
+        __props__["format"] = format
+        __props__["modifiedAt"] = modified_at
+        __props__["name"] = name
+        __props__["schema"] = schema
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/pipelineSink:PipelineSink', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

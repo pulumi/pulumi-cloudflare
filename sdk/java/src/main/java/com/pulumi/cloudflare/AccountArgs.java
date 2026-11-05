@@ -83,22 +83,20 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Available values: &#34;standard&#34;, &#34;enterprise&#34;.
      * 
-     * @deprecated
-     * The &#39;type&#39; field should no longer be set through the API.
+     * @deprecated The &#39;type&#39; field should no longer be set through the API.
      * 
      */
-    @Deprecated /* The 'type' field should no longer be set through the API. */
+    @Deprecated
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
      * @return Available values: &#34;standard&#34;, &#34;enterprise&#34;.
      * 
-     * @deprecated
-     * The &#39;type&#39; field should no longer be set through the API.
+     * @deprecated The &#39;type&#39; field should no longer be set through the API.
      * 
      */
-    @Deprecated /* The 'type' field should no longer be set through the API. */
+    @Deprecated
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
@@ -236,11 +234,10 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * The &#39;type&#39; field should no longer be set through the API.
+         * @deprecated The &#39;type&#39; field should no longer be set through the API.
          * 
          */
-        @Deprecated /* The 'type' field should no longer be set through the API. */
+        @Deprecated
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
@@ -251,11 +248,10 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * The &#39;type&#39; field should no longer be set through the API.
+         * @deprecated The &#39;type&#39; field should no longer be set through the API.
          * 
          */
-        @Deprecated /* The 'type' field should no longer be set through the API. */
+        @Deprecated
         public Builder type(String type) {
             return type(Output.of(type));
         }

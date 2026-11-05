@@ -43,12 +43,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var exampleTokenValidationConfig = new TokenValidationConfig("exampleTokenValidationConfig", TokenValidationConfigArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .credentials(TokenValidationConfigCredentialsArgs.builder()
@@ -63,13 +63,13 @@ import javax.annotation.Nullable;
  *             .description("Long description for Token Validation Configuration")
  *             .title("Example Token Validation Configuration")
  *             .tokenSources(            
- *                 "http.request.headers[\"x-auth\"][0]",
- *                 "http.request.cookies[\"Authorization\"][0]")
+ *                 "http.request.headers[}&#92;{@code "x-auth}&#92;{@code "][0]",
+ *                 "http.request.cookies[}&#92;{@code "Authorization}&#92;{@code "][0]")
  *             .tokenType("JWT")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

@@ -520,6 +520,12 @@ func (WorkerScriptState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workerScriptState)(nil)).Elem()
 }
 
+// WorkerScriptExists checks whether an existing WorkerScript resource with the given ID exists.
+func WorkerScriptExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkerScriptState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/workerScript:WorkerScript", id, state, "", opts...)
+}
+
 type workerScriptArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`

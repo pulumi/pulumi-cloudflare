@@ -68,22 +68,20 @@ public final class ZeroTrustTunnelCloudflaredState extends com.pulumi.resources.
     /**
      * The Cloudflare Tunnel connections between your origin and Cloudflare&#39;s edge.
      * 
-     * @deprecated
-     * This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
+     * @deprecated This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
      * 
      */
-    @Deprecated /* This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections` */
+    @Deprecated
     @Import(name="connections")
     private @Nullable Output<List<ZeroTrustTunnelCloudflaredConnectionArgs>> connections;
 
     /**
      * @return The Cloudflare Tunnel connections between your origin and Cloudflare&#39;s edge.
      * 
-     * @deprecated
-     * This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
+     * @deprecated This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
      * 
      */
-    @Deprecated /* This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections` */
+    @Deprecated
     public Optional<Output<List<ZeroTrustTunnelCloudflaredConnectionArgs>>> connections() {
         return Optional.ofNullable(this.connections);
     }
@@ -181,22 +179,20 @@ public final class ZeroTrustTunnelCloudflaredState extends com.pulumi.resources.
     /**
      * If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
      * 
-     * @deprecated
-     * Use the configSrc field instead.
+     * @deprecated Use the configSrc field instead.
      * 
      */
-    @Deprecated /* Use the configSrc field instead. */
+    @Deprecated
     @Import(name="remoteConfig")
     private @Nullable Output<Boolean> remoteConfig;
 
     /**
      * @return If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
      * 
-     * @deprecated
-     * Use the configSrc field instead.
+     * @deprecated Use the configSrc field instead.
      * 
      */
-    @Deprecated /* Use the configSrc field instead. */
+    @Deprecated
     public Optional<Output<Boolean>> remoteConfig() {
         return Optional.ofNullable(this.remoteConfig);
     }
@@ -357,11 +353,10 @@ public final class ZeroTrustTunnelCloudflaredState extends com.pulumi.resources.
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
+         * @deprecated This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
          * 
          */
-        @Deprecated /* This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections` */
+        @Deprecated
         public Builder connections(@Nullable Output<List<ZeroTrustTunnelCloudflaredConnectionArgs>> connections) {
             $.connections = connections;
             return this;
@@ -372,11 +367,10 @@ public final class ZeroTrustTunnelCloudflaredState extends com.pulumi.resources.
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
+         * @deprecated This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
          * 
          */
-        @Deprecated /* This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections` */
+        @Deprecated
         public Builder connections(List<ZeroTrustTunnelCloudflaredConnectionArgs> connections) {
             return connections(Output.of(connections));
         }
@@ -386,11 +380,10 @@ public final class ZeroTrustTunnelCloudflaredState extends com.pulumi.resources.
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
+         * @deprecated This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
          * 
          */
-        @Deprecated /* This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections` */
+        @Deprecated
         public Builder connections(ZeroTrustTunnelCloudflaredConnectionArgs... connections) {
             return connections(List.of(connections));
         }
@@ -526,11 +519,10 @@ public final class ZeroTrustTunnelCloudflaredState extends com.pulumi.resources.
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use the configSrc field instead.
+         * @deprecated Use the configSrc field instead.
          * 
          */
-        @Deprecated /* Use the configSrc field instead. */
+        @Deprecated
         public Builder remoteConfig(@Nullable Output<Boolean> remoteConfig) {
             $.remoteConfig = remoteConfig;
             return this;
@@ -541,11 +533,10 @@ public final class ZeroTrustTunnelCloudflaredState extends com.pulumi.resources.
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use the configSrc field instead.
+         * @deprecated Use the configSrc field instead.
          * 
          */
-        @Deprecated /* Use the configSrc field instead. */
+        @Deprecated
         public Builder remoteConfig(Boolean remoteConfig) {
             return remoteConfig(Output.of(remoteConfig));
         }

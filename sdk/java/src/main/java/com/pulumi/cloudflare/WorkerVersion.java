@@ -596,11 +596,10 @@ public class WorkerVersion extends com.pulumi.resources.CustomResource {
      * Usage model for the version.
      * Available values: &#34;standard&#34;, &#34;bundled&#34;, &#34;unbound&#34;.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     @Export(name="usageModel", refs={String.class}, tree="[0]")
     private Output<String> usageModel;
 

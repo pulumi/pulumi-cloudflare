@@ -89,11 +89,10 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/accessIdentityProvider:AccessIdentityProvider example &#39;&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;identity_provider_id&gt;&#39;
  * ```
  * 
- * @deprecated
- * cloudflare.index/accessidentityprovider.AccessIdentityProvider has been deprecated in favor of cloudflare.index/zerotrustaccessidentityprovider.ZeroTrustAccessIdentityProvider
+ * @deprecated cloudflare.index/accessidentityprovider.AccessIdentityProvider has been deprecated in favor of cloudflare.index/zerotrustaccessidentityprovider.ZeroTrustAccessIdentityProvider
  * 
  */
-@Deprecated /* cloudflare.index/accessidentityprovider.AccessIdentityProvider has been deprecated in favor of cloudflare.index/zerotrustaccessidentityprovider.ZeroTrustAccessIdentityProvider */
+@Deprecated
 @ResourceType(type="cloudflare:index/accessIdentityProvider:AccessIdentityProvider")
 public class AccessIdentityProvider extends com.pulumi.resources.CustomResource {
     /**

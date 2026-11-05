@@ -132,6 +132,12 @@ func (ZeroTrustAccessShortLivedCertificateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zeroTrustAccessShortLivedCertificateState)(nil)).Elem()
 }
 
+// ZeroTrustAccessShortLivedCertificateExists checks whether an existing ZeroTrustAccessShortLivedCertificate resource with the given ID exists.
+func ZeroTrustAccessShortLivedCertificateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustAccessShortLivedCertificateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustAccessShortLivedCertificate:ZeroTrustAccessShortLivedCertificate", id, state, "", opts...)
+}
+
 type zeroTrustAccessShortLivedCertificateArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`

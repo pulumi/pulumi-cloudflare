@@ -150,6 +150,12 @@ func (UserGroupMembersState) ElementType() reflect.Type {
 	return reflect.TypeOf((*userGroupMembersState)(nil)).Elem()
 }
 
+// UserGroupMembersExists checks whether an existing UserGroupMembers resource with the given ID exists.
+func UserGroupMembersExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UserGroupMembersState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/userGroupMembers:UserGroupMembers", id, state, "", opts...)
+}
+
 type userGroupMembersArgs struct {
 	// Account identifier tag.
 	AccountId string `pulumi:"accountId"`

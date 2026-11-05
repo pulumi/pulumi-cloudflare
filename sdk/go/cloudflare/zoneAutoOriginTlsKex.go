@@ -109,6 +109,12 @@ func (ZoneAutoOriginTlsKexState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zoneAutoOriginTlsKexState)(nil)).Elem()
 }
 
+// ZoneAutoOriginTlsKexExists checks whether an existing ZoneAutoOriginTlsKex resource with the given ID exists.
+func ZoneAutoOriginTlsKexExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZoneAutoOriginTlsKexState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zoneAutoOriginTlsKex:ZoneAutoOriginTlsKex", id, state, "", opts...)
+}
+
 type zoneAutoOriginTlsKexArgs struct {
 	// Controls enablement of Auto-Origin TLS KEX selection for the zone.
 	Enabled bool   `pulumi:"enabled"`

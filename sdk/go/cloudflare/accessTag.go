@@ -114,6 +114,12 @@ func (AccessTagState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessTagState)(nil)).Elem()
 }
 
+// AccessTagExists checks whether an existing AccessTag resource with the given ID exists.
+func AccessTagExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccessTagState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/accessTag:AccessTag", id, state, "", opts...)
+}
+
 type accessTagArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`

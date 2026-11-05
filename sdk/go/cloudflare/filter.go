@@ -146,6 +146,12 @@ func (FilterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*filterState)(nil)).Elem()
 }
 
+// FilterExists checks whether an existing Filter resource with the given ID exists.
+func FilterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FilterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/filter:Filter", id, state, "", opts...)
+}
+
 type filterArgs struct {
 	Bodies []FilterBody `pulumi:"bodies"`
 	// An informative summary of the filter.

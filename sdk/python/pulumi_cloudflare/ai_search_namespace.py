@@ -270,6 +270,24 @@ class AiSearchNamespace(pulumi.CustomResource):
         __props__.__dict__["public_endpoint_params"] = public_endpoint_params
         return AiSearchNamespace(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            public_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            public_endpoint_params: pulumi.Input[Optional[Union['AiSearchNamespacePublicEndpointParamsArgs', 'AiSearchNamespacePublicEndpointParamsArgsDict', 'outputs.AiSearchNamespacePublicEndpointParams']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["createdAt"] = created_at
+        __props__["description"] = description
+        __props__["name"] = name
+        __props__["publicEndpointId"] = public_endpoint_id
+        __props__["publicEndpointParams"] = public_endpoint_params
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/aiSearchNamespace:AiSearchNamespace', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

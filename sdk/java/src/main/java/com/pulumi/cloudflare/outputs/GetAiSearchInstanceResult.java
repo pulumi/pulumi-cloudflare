@@ -60,11 +60,10 @@ public final class GetAiSearchInstanceResult {
     /**
      * @return Deprecated — use indexMethod instead. Defaults to true for new instances; set false to create a vector-only instance.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     private Boolean hybridSearchEnabled;
     /**
      * @return The ID of this resource.
@@ -182,11 +181,10 @@ public final class GetAiSearchInstanceResult {
     /**
      * @return Deprecated — use indexMethod instead. Defaults to true for new instances; set false to create a vector-only instance.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     public Boolean hybridSearchEnabled() {
         return this.hybridSearchEnabled;
     }

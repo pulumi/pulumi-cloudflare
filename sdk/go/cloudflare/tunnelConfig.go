@@ -202,6 +202,12 @@ func (TunnelConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tunnelConfigState)(nil)).Elem()
 }
 
+// TunnelConfigExists checks whether an existing TunnelConfig resource with the given ID exists.
+func TunnelConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TunnelConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/tunnelConfig:TunnelConfig", id, state, "", opts...)
+}
+
 type tunnelConfigArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`

@@ -165,6 +165,12 @@ func (AccessGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessGroupState)(nil)).Elem()
 }
 
+// AccessGroupExists checks whether an existing AccessGroup resource with the given ID exists.
+func AccessGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccessGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/accessGroup:AccessGroup", id, state, "", opts...)
+}
+
 type accessGroupArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`

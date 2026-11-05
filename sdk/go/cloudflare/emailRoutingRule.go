@@ -193,6 +193,12 @@ func (EmailRoutingRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*emailRoutingRuleState)(nil)).Elem()
 }
 
+// EmailRoutingRuleExists checks whether an existing EmailRoutingRule resource with the given ID exists.
+func EmailRoutingRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EmailRoutingRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/emailRoutingRule:EmailRoutingRule", id, state, "", opts...)
+}
+
 type emailRoutingRuleArgs struct {
 	// List actions patterns.
 	Actions []EmailRoutingRuleAction `pulumi:"actions"`

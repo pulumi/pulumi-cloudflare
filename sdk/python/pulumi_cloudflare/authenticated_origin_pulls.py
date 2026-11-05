@@ -524,6 +524,46 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return AuthenticatedOriginPulls(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cert_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cert_status: pulumi.Input[Optional[_builtins.str]] = None,
+            cert_updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            cert_uploaded_on: pulumi.Input[Optional[_builtins.str]] = None,
+            certificate: pulumi.Input[Optional[_builtins.str]] = None,
+            configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AuthenticatedOriginPullsConfigArgs', 'AuthenticatedOriginPullsConfigArgsDict', 'outputs.AuthenticatedOriginPullsConfig']]]]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            expires_on: pulumi.Input[Optional[_builtins.str]] = None,
+            hostname: pulumi.Input[Optional[_builtins.str]] = None,
+            issuer: pulumi.Input[Optional[_builtins.str]] = None,
+            private_key: pulumi.Input[Optional[_builtins.str]] = None,
+            serial_number: pulumi.Input[Optional[_builtins.str]] = None,
+            signature: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["certId"] = cert_id
+        __props__["certStatus"] = cert_status
+        __props__["certUpdatedAt"] = cert_updated_at
+        __props__["certUploadedOn"] = cert_uploaded_on
+        __props__["certificate"] = certificate
+        __props__["configs"] = configs
+        __props__["createdAt"] = created_at
+        __props__["enabled"] = enabled
+        __props__["expiresOn"] = expires_on
+        __props__["hostname"] = hostname
+        __props__["issuer"] = issuer
+        __props__["privateKey"] = private_key
+        __props__["serialNumber"] = serial_number
+        __props__["signature"] = signature
+        __props__["status"] = status
+        __props__["updatedAt"] = updated_at
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="certId")
     def cert_id(self) -> pulumi.Output[_builtins.str]:

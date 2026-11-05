@@ -68,11 +68,10 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/accessServiceToken:AccessServiceToken example &#39;&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;service_token_id&gt;&#39;
  * ```
  * 
- * @deprecated
- * cloudflare.index/accessservicetoken.AccessServiceToken has been deprecated in favor of cloudflare.index/zerotrustaccessservicetoken.ZeroTrustAccessServiceToken
+ * @deprecated cloudflare.index/accessservicetoken.AccessServiceToken has been deprecated in favor of cloudflare.index/zerotrustaccessservicetoken.ZeroTrustAccessServiceToken
  * 
  */
-@Deprecated /* cloudflare.index/accessservicetoken.AccessServiceToken has been deprecated in favor of cloudflare.index/zerotrustaccessservicetoken.ZeroTrustAccessServiceToken */
+@Deprecated
 @ResourceType(type="cloudflare:index/accessServiceToken:AccessServiceToken")
 public class AccessServiceToken extends com.pulumi.resources.CustomResource {
     /**

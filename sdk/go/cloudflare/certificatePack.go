@@ -219,6 +219,12 @@ func (CertificatePackState) ElementType() reflect.Type {
 	return reflect.TypeOf((*certificatePackState)(nil)).Elem()
 }
 
+// CertificatePackExists checks whether an existing CertificatePack resource with the given ID exists.
+func CertificatePackExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CertificatePackState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/certificatePack:CertificatePack", id, state, "", opts...)
+}
+
 type certificatePackArgs struct {
 	// Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities).
 	// Available values: "google", "lets*encrypt", "ssl*com".

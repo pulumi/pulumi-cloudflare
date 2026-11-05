@@ -435,6 +435,30 @@ class QueueConsumer(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return QueueConsumer(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            consumer_id: pulumi.Input[Optional[_builtins.str]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            dead_letter_queue: pulumi.Input[Optional[_builtins.str]] = None,
+            queue_id: pulumi.Input[Optional[_builtins.str]] = None,
+            queue_name: pulumi.Input[Optional[_builtins.str]] = None,
+            script_name: pulumi.Input[Optional[_builtins.str]] = None,
+            settings: pulumi.Input[Optional[Union['QueueConsumerSettingsArgs', 'QueueConsumerSettingsArgsDict', 'outputs.QueueConsumerSettings']]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["consumerId"] = consumer_id
+        __props__["createdOn"] = created_on
+        __props__["deadLetterQueue"] = dead_letter_queue
+        __props__["queueId"] = queue_id
+        __props__["queueName"] = queue_name
+        __props__["scriptName"] = script_name
+        __props__["settings"] = settings
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/queueConsumer:QueueConsumer', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:
