@@ -12,34 +12,20 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class FlagshipFlagRuleConditionClauseClauseClauseClauseClauseGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("attribute")]
-        public Input<string>? Attribute { get; set; }
-
-        [Input("clauses")]
-        private InputList<string>? _clauses;
-        public InputList<string> Clauses
-        {
-            get => _clauses ?? (_clauses = new InputList<string>());
-            set => _clauses = value;
-        }
-
-        /// <summary>
-        /// Available values: "AND", "OR".
-        /// </summary>
-        [Input("logicalOperator")]
-        public Input<string>? LogicalOperator { get; set; }
+        [Input("attribute", required: true)]
+        public Input<string> Attribute { get; set; } = null!;
 
         /// <summary>
         /// Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "NotHas".
         /// </summary>
-        [Input("operator")]
-        public Input<string>? Operator { get; set; }
+        [Input("operator", required: true)]
+        public Input<string> Operator { get; set; } = null!;
 
         /// <summary>
         /// Value to compare against the context attribute. Must be an array for `In` and `NotIn`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
         /// </summary>
-        [Input("value")]
-        public Input<string>? Value { get; set; }
+        [Input("value", required: true)]
+        public Input<string> Value { get; set; } = null!;
 
         public FlagshipFlagRuleConditionClauseClauseClauseClauseClauseGetArgs()
         {

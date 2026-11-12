@@ -36,6 +36,7 @@ import * as utilities from "./utilities";
  *         suffix: "internal.corp",
  *         description: "Example internal domains",
  *     }],
+ *     enableDeviceCredentialAuthentication: false,
  *     enabled: true,
  *     excludes: [{
  *         address: "192.0.2.0/24",
@@ -47,6 +48,8 @@ import * as utilities from "./utilities";
  *         enabled: true,
  *         masqueEndpoints: ["198.51.100.1:443"],
  *         wireguardEndpoints: ["198.51.100.1:2408"],
+ *         allowManualOverride: true,
+ *         autoswitch: true,
  *     },
  *     includes: [{
  *         address: "192.0.2.0/24",
@@ -161,6 +164,10 @@ export class ZeroTrustDeviceCustomProfile extends pulumi.CustomResource {
      */
     declare public readonly dnsSearchSuffixes: pulumi.Output<outputs.ZeroTrustDeviceCustomProfileDnsSearchSuffix[]>;
     /**
+     * Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.
+     */
+    declare public readonly enableDeviceCredentialAuthentication: pulumi.Output<boolean>;
+    /**
      * Whether the policy will be applied to matching devices.
      */
     declare public readonly enabled: pulumi.Output<boolean>;
@@ -266,6 +273,7 @@ export class ZeroTrustDeviceCustomProfile extends pulumi.CustomResource {
             resourceInputs["description"] = state?.description;
             resourceInputs["disableAutoFallback"] = state?.disableAutoFallback;
             resourceInputs["dnsSearchSuffixes"] = state?.dnsSearchSuffixes;
+            resourceInputs["enableDeviceCredentialAuthentication"] = state?.enableDeviceCredentialAuthentication;
             resourceInputs["enabled"] = state?.enabled;
             resourceInputs["excludeOfficeIps"] = state?.excludeOfficeIps;
             resourceInputs["excludes"] = state?.excludes;
@@ -307,6 +315,7 @@ export class ZeroTrustDeviceCustomProfile extends pulumi.CustomResource {
             resourceInputs["description"] = args?.description;
             resourceInputs["disableAutoFallback"] = args?.disableAutoFallback;
             resourceInputs["dnsSearchSuffixes"] = args?.dnsSearchSuffixes;
+            resourceInputs["enableDeviceCredentialAuthentication"] = args?.enableDeviceCredentialAuthentication;
             resourceInputs["enabled"] = args?.enabled;
             resourceInputs["excludeOfficeIps"] = args?.excludeOfficeIps;
             resourceInputs["excludes"] = args?.excludes;
@@ -384,6 +393,10 @@ export interface ZeroTrustDeviceCustomProfileState {
      * List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
      */
     dnsSearchSuffixes?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDeviceCustomProfileDnsSearchSuffix>[] | undefined>;
+    /**
+     * Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.
+     */
+    enableDeviceCredentialAuthentication?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the policy will be applied to matching devices.
      */
@@ -508,6 +521,10 @@ export interface ZeroTrustDeviceCustomProfileArgs {
      * List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
      */
     dnsSearchSuffixes?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDeviceCustomProfileDnsSearchSuffix>[] | undefined>;
+    /**
+     * Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.
+     */
+    enableDeviceCredentialAuthentication?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the policy will be applied to matching devices.
      */

@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -63,14 +64,14 @@ public final class AccessServiceTokenState extends com.pulumi.resources.Resource
     }
 
     /**
-     * A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`.
+     * A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`. If the service token was reported as leaked, `previousClientSecretExpiresAt` is not required, may not be in the future, and the previous secret is discarded immediately.
      * 
      */
     @Import(name="clientSecretVersion")
     private @Nullable Output<Double> clientSecretVersion;
 
     /**
-     * @return A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`.
+     * @return A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`. If the service token was reported as leaked, `previousClientSecretExpiresAt` is not required, may not be in the future, and the previous secret is discarded immediately.
      * 
      */
     public Optional<Output<Double>> clientSecretVersion() {
@@ -93,14 +94,14 @@ public final class AccessServiceTokenState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+     * Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled. A service token reported as leaked is disabled automatically and cannot be re-enabled until its secret is rotated; attempting to do so returns a 409. Defaults to enabled when omitted on create.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+     * @return Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled. A service token reported as leaked is disabled automatically and cannot be re-enabled until its secret is rotated; attempting to do so returns a 409. Defaults to enabled when omitted on create.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -112,6 +113,51 @@ public final class AccessServiceTokenState extends com.pulumi.resources.Resource
 
     public Optional<Output<String>> expiresAt() {
         return Optional.ofNullable(this.expiresAt);
+    }
+
+    /**
+     * Where the leaked `clientSecret` was found, if provided by the reporter. Omitted if the token has not been reported as leaked.
+     * 
+     */
+    @Import(name="leakReportUrl")
+    private @Nullable Output<String> leakReportUrl;
+
+    /**
+     * @return Where the leaked `clientSecret` was found, if provided by the reporter. Omitted if the token has not been reported as leaked.
+     * 
+     */
+    public Optional<Output<String>> leakReportUrl() {
+        return Optional.ofNullable(this.leakReportUrl);
+    }
+
+    /**
+     * When a secret scanning partner reported this service token&#39;s `clientSecret` as leaked. A leaked service token is disabled and must be rotated before it can be re-enabled. Cleared once the secret is rotated. Omitted if the token has not been reported as leaked.
+     * 
+     */
+    @Import(name="leakReportedAt")
+    private @Nullable Output<String> leakReportedAt;
+
+    /**
+     * @return When a secret scanning partner reported this service token&#39;s `clientSecret` as leaked. A leaked service token is disabled and must be rotated before it can be re-enabled. Cleared once the secret is rotated. Omitted if the token has not been reported as leaked.
+     * 
+     */
+    public Optional<Output<String>> leakReportedAt() {
+        return Optional.ofNullable(this.leakReportedAt);
+    }
+
+    /**
+     * The secret scanning partner that reported the leak. Omitted if the token has not been reported as leaked.
+     * 
+     */
+    @Import(name="leakReporter")
+    private @Nullable Output<String> leakReporter;
+
+    /**
+     * @return The secret scanning partner that reported the leak. Omitted if the token has not been reported as leaked.
+     * 
+     */
+    public Optional<Output<String>> leakReporter() {
+        return Optional.ofNullable(this.leakReporter);
     }
 
     /**
@@ -130,18 +176,33 @@ public final class AccessServiceTokenState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+     * The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise. Rotating a service token that was reported as leaked discards the previous secret entirely, so no grace period can be set.
      * 
      */
     @Import(name="previousClientSecretExpiresAt")
     private @Nullable Output<String> previousClientSecretExpiresAt;
 
     /**
-     * @return The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+     * @return The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise. Rotating a service token that was reported as leaked discards the previous secret entirely, so no grace period can be set.
      * 
      */
     public Optional<Output<String>> previousClientSecretExpiresAt() {
         return Optional.ofNullable(this.previousClientSecretExpiresAt);
+    }
+
+    /**
+     * Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
     }
 
     /**
@@ -169,8 +230,12 @@ public final class AccessServiceTokenState extends com.pulumi.resources.Resource
         this.duration = $.duration;
         this.enabled = $.enabled;
         this.expiresAt = $.expiresAt;
+        this.leakReportUrl = $.leakReportUrl;
+        this.leakReportedAt = $.leakReportedAt;
+        this.leakReporter = $.leakReporter;
         this.name = $.name;
         this.previousClientSecretExpiresAt = $.previousClientSecretExpiresAt;
+        this.tags = $.tags;
         this.zoneId = $.zoneId;
     }
 
@@ -256,7 +321,7 @@ public final class AccessServiceTokenState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param clientSecretVersion A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`.
+         * @param clientSecretVersion A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`. If the service token was reported as leaked, `previousClientSecretExpiresAt` is not required, may not be in the future, and the previous secret is discarded immediately.
          * 
          * @return builder
          * 
@@ -267,7 +332,7 @@ public final class AccessServiceTokenState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param clientSecretVersion A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`.
+         * @param clientSecretVersion A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`. If the service token was reported as leaked, `previousClientSecretExpiresAt` is not required, may not be in the future, and the previous secret is discarded immediately.
          * 
          * @return builder
          * 
@@ -298,7 +363,7 @@ public final class AccessServiceTokenState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param enabled Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+         * @param enabled Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled. A service token reported as leaked is disabled automatically and cannot be re-enabled until its secret is rotated; attempting to do so returns a 409. Defaults to enabled when omitted on create.
          * 
          * @return builder
          * 
@@ -309,7 +374,7 @@ public final class AccessServiceTokenState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param enabled Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+         * @param enabled Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled. A service token reported as leaked is disabled automatically and cannot be re-enabled until its secret is rotated; attempting to do so returns a 409. Defaults to enabled when omitted on create.
          * 
          * @return builder
          * 
@@ -325,6 +390,69 @@ public final class AccessServiceTokenState extends com.pulumi.resources.Resource
 
         public Builder expiresAt(String expiresAt) {
             return expiresAt(Output.of(expiresAt));
+        }
+
+        /**
+         * @param leakReportUrl Where the leaked `clientSecret` was found, if provided by the reporter. Omitted if the token has not been reported as leaked.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder leakReportUrl(@Nullable Output<String> leakReportUrl) {
+            $.leakReportUrl = leakReportUrl;
+            return this;
+        }
+
+        /**
+         * @param leakReportUrl Where the leaked `clientSecret` was found, if provided by the reporter. Omitted if the token has not been reported as leaked.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder leakReportUrl(String leakReportUrl) {
+            return leakReportUrl(Output.of(leakReportUrl));
+        }
+
+        /**
+         * @param leakReportedAt When a secret scanning partner reported this service token&#39;s `clientSecret` as leaked. A leaked service token is disabled and must be rotated before it can be re-enabled. Cleared once the secret is rotated. Omitted if the token has not been reported as leaked.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder leakReportedAt(@Nullable Output<String> leakReportedAt) {
+            $.leakReportedAt = leakReportedAt;
+            return this;
+        }
+
+        /**
+         * @param leakReportedAt When a secret scanning partner reported this service token&#39;s `clientSecret` as leaked. A leaked service token is disabled and must be rotated before it can be re-enabled. Cleared once the secret is rotated. Omitted if the token has not been reported as leaked.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder leakReportedAt(String leakReportedAt) {
+            return leakReportedAt(Output.of(leakReportedAt));
+        }
+
+        /**
+         * @param leakReporter The secret scanning partner that reported the leak. Omitted if the token has not been reported as leaked.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder leakReporter(@Nullable Output<String> leakReporter) {
+            $.leakReporter = leakReporter;
+            return this;
+        }
+
+        /**
+         * @param leakReporter The secret scanning partner that reported the leak. Omitted if the token has not been reported as leaked.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder leakReporter(String leakReporter) {
+            return leakReporter(Output.of(leakReporter));
         }
 
         /**
@@ -349,7 +477,7 @@ public final class AccessServiceTokenState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param previousClientSecretExpiresAt The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+         * @param previousClientSecretExpiresAt The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise. Rotating a service token that was reported as leaked discards the previous secret entirely, so no grace period can be set.
          * 
          * @return builder
          * 
@@ -360,13 +488,34 @@ public final class AccessServiceTokenState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param previousClientSecretExpiresAt The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+         * @param previousClientSecretExpiresAt The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise. Rotating a service token that was reported as leaked discards the previous secret entirely, so no grace period can be set.
          * 
          * @return builder
          * 
          */
         public Builder previousClientSecretExpiresAt(String previousClientSecretExpiresAt) {
             return previousClientSecretExpiresAt(Output.of(previousClientSecretExpiresAt));
+        }
+
+        /**
+         * @param tags Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
         }
 
         /**

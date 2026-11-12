@@ -17,7 +17,7 @@ public final class AccountDnsSettingsZoneDefaultsNameserversArgs extends com.pul
 
     /**
      * Nameserver type
-     * Available values: &#34;cloudflare.standard&#34;, &#34;cloudflare.standard.random&#34;, &#34;custom.account&#34;, &#34;custom.tenant&#34;.
+     * Available values: &#34;cloudflare.standard&#34;, &#34;cloudflare.advanced&#34;, &#34;cloudflare.standard.random&#34;, &#34;custom.account&#34;, &#34;custom.tenant&#34;.
      * 
      */
     @Import(name="type")
@@ -25,7 +25,7 @@ public final class AccountDnsSettingsZoneDefaultsNameserversArgs extends com.pul
 
     /**
      * @return Nameserver type
-     * Available values: &#34;cloudflare.standard&#34;, &#34;cloudflare.standard.random&#34;, &#34;custom.account&#34;, &#34;custom.tenant&#34;.
+     * Available values: &#34;cloudflare.standard&#34;, &#34;cloudflare.advanced&#34;, &#34;cloudflare.standard.random&#34;, &#34;custom.account&#34;, &#34;custom.tenant&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -58,7 +58,7 @@ public final class AccountDnsSettingsZoneDefaultsNameserversArgs extends com.pul
 
         /**
          * @param type Nameserver type
-         * Available values: &#34;cloudflare.standard&#34;, &#34;cloudflare.standard.random&#34;, &#34;custom.account&#34;, &#34;custom.tenant&#34;.
+         * Available values: &#34;cloudflare.standard&#34;, &#34;cloudflare.advanced&#34;, &#34;cloudflare.standard.random&#34;, &#34;custom.account&#34;, &#34;custom.tenant&#34;.
          * 
          * @return builder
          * 
@@ -70,7 +70,7 @@ public final class AccountDnsSettingsZoneDefaultsNameserversArgs extends com.pul
 
         /**
          * @param type Nameserver type
-         * Available values: &#34;cloudflare.standard&#34;, &#34;cloudflare.standard.random&#34;, &#34;custom.account&#34;, &#34;custom.tenant&#34;.
+         * Available values: &#34;cloudflare.standard&#34;, &#34;cloudflare.advanced&#34;, &#34;cloudflare.standard.random&#34;, &#34;custom.account&#34;, &#34;custom.tenant&#34;.
          * 
          * @return builder
          * 

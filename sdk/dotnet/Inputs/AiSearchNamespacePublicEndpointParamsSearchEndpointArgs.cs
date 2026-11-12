@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class AiSearchNamespacePublicEndpointParamsSearchEndpointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Disable search endpoint for this public endpoint
+        /// Disable search endpoint for this public endpoint.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }

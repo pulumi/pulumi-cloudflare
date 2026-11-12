@@ -24,6 +24,18 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("parentOrgName")]
         public Input<string>? ParentOrgName { get; set; }
 
+        /// <summary>
+        /// ID of the root Organization, if one exists
+        /// </summary>
+        [Input("rootOrgId")]
+        public Input<string>? RootOrgId { get; set; }
+
+        /// <summary>
+        /// Indicates whether the parent Organization hierarchy should be displayed
+        /// </summary>
+        [Input("shouldDisplayParentOrgs")]
+        public Input<bool>? ShouldDisplayParentOrgs { get; set; }
+
         public AccountManagedByArgs()
         {
         }

@@ -3,13 +3,13 @@
 
 package com.pulumi.cloudflare.outputs;
 
-import com.pulumi.cloudflare.outputs.ZeroTrustGatewayPolicyRuleSettingsAuditSsh;
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls;
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewayPolicyRuleSettingsBlockPage;
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewayPolicyRuleSettingsCheckSession;
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewayPolicyRuleSettingsDnsResolvers;
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewayPolicyRuleSettingsEgress;
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewayPolicyRuleSettingsForensicCopy;
+import com.pulumi.cloudflare.outputs.ZeroTrustGatewayPolicyRuleSettingsForward;
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewayPolicyRuleSettingsL4override;
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewayPolicyRuleSettingsNotificationSettings;
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewayPolicyRuleSettingsPayloadLog;
@@ -38,11 +38,6 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
      * 
      */
     private @Nullable Boolean allowChildBypass;
-    /**
-     * @return Define the settings for the Audit SSH action. Settable only for `l4` rules with `auditSsh` action.
-     * 
-     */
-    private @Nullable ZeroTrustGatewayPolicyRuleSettingsAuditSsh auditSsh;
     /**
      * @return Configure browser isolation behavior. Settable only for `http` rules with the action set to `isolate`.
      * 
@@ -93,6 +88,11 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
      * 
      */
     private @Nullable ZeroTrustGatewayPolicyRuleSettingsForensicCopy forensicCopy;
+    /**
+     * @return Forward matching HTTP requests to a Worker. Required for `http` rules with the action set to `forward`.
+     * 
+     */
+    private @Nullable ZeroTrustGatewayPolicyRuleSettingsForward forward;
     /**
      * @return Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dnsResolver` rules.
      * 
@@ -185,13 +185,6 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
         return Optional.ofNullable(this.allowChildBypass);
     }
     /**
-     * @return Define the settings for the Audit SSH action. Settable only for `l4` rules with `auditSsh` action.
-     * 
-     */
-    public Optional<ZeroTrustGatewayPolicyRuleSettingsAuditSsh> auditSsh() {
-        return Optional.ofNullable(this.auditSsh);
-    }
-    /**
      * @return Configure browser isolation behavior. Settable only for `http` rules with the action set to `isolate`.
      * 
      */
@@ -260,6 +253,13 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
      */
     public Optional<ZeroTrustGatewayPolicyRuleSettingsForensicCopy> forensicCopy() {
         return Optional.ofNullable(this.forensicCopy);
+    }
+    /**
+     * @return Forward matching HTTP requests to a Worker. Required for `http` rules with the action set to `forward`.
+     * 
+     */
+    public Optional<ZeroTrustGatewayPolicyRuleSettingsForward> forward() {
+        return Optional.ofNullable(this.forward);
     }
     /**
      * @return Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dnsResolver` rules.
@@ -378,7 +378,6 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
     public static final class Builder {
         private @Nullable Map<String,List<String>> addHeaders;
         private @Nullable Boolean allowChildBypass;
-        private @Nullable ZeroTrustGatewayPolicyRuleSettingsAuditSsh auditSsh;
         private @Nullable ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls bisoAdminControls;
         private @Nullable ZeroTrustGatewayPolicyRuleSettingsBlockPage blockPage;
         private @Nullable Boolean blockPageEnabled;
@@ -389,6 +388,7 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
         private @Nullable ZeroTrustGatewayPolicyRuleSettingsDnsResolvers dnsResolvers;
         private @Nullable ZeroTrustGatewayPolicyRuleSettingsEgress egress;
         private @Nullable ZeroTrustGatewayPolicyRuleSettingsForensicCopy forensicCopy;
+        private @Nullable ZeroTrustGatewayPolicyRuleSettingsForward forward;
         private @Nullable Boolean ignoreCnameCategoryMatches;
         private @Nullable Boolean insecureDisableDnssecValidation;
         private @Nullable Boolean ipCategories;
@@ -409,7 +409,6 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
     	      Objects.requireNonNull(defaults);
     	      this.addHeaders = defaults.addHeaders;
     	      this.allowChildBypass = defaults.allowChildBypass;
-    	      this.auditSsh = defaults.auditSsh;
     	      this.bisoAdminControls = defaults.bisoAdminControls;
     	      this.blockPage = defaults.blockPage;
     	      this.blockPageEnabled = defaults.blockPageEnabled;
@@ -420,6 +419,7 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
     	      this.dnsResolvers = defaults.dnsResolvers;
     	      this.egress = defaults.egress;
     	      this.forensicCopy = defaults.forensicCopy;
+    	      this.forward = defaults.forward;
     	      this.ignoreCnameCategoryMatches = defaults.ignoreCnameCategoryMatches;
     	      this.insecureDisableDnssecValidation = defaults.insecureDisableDnssecValidation;
     	      this.ipCategories = defaults.ipCategories;
@@ -447,12 +447,6 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
         public Builder allowChildBypass(@Nullable Boolean allowChildBypass) {
 
             this.allowChildBypass = allowChildBypass;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder auditSsh(@Nullable ZeroTrustGatewayPolicyRuleSettingsAuditSsh auditSsh) {
-
-            this.auditSsh = auditSsh;
             return this;
         }
         @CustomType.Setter
@@ -516,6 +510,12 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
         public Builder forensicCopy(@Nullable ZeroTrustGatewayPolicyRuleSettingsForensicCopy forensicCopy) {
 
             this.forensicCopy = forensicCopy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder forward(@Nullable ZeroTrustGatewayPolicyRuleSettingsForward forward) {
+
+            this.forward = forward;
             return this;
         }
         @CustomType.Setter
@@ -615,7 +615,6 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
             final var _resultValue = new ZeroTrustGatewayPolicyRuleSettings();
             _resultValue.addHeaders = addHeaders;
             _resultValue.allowChildBypass = allowChildBypass;
-            _resultValue.auditSsh = auditSsh;
             _resultValue.bisoAdminControls = bisoAdminControls;
             _resultValue.blockPage = blockPage;
             _resultValue.blockPageEnabled = blockPageEnabled;
@@ -626,6 +625,7 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
             _resultValue.dnsResolvers = dnsResolvers;
             _resultValue.egress = egress;
             _resultValue.forensicCopy = forensicCopy;
+            _resultValue.forward = forward;
             _resultValue.ignoreCnameCategoryMatches = ignoreCnameCategoryMatches;
             _resultValue.insecureDisableDnssecValidation = insecureDisableDnssecValidation;
             _resultValue.ipCategories = ipCategories;

@@ -33,6 +33,12 @@ import javax.annotation.Nullable;
 /**
  * Accepted Permissions
  * 
+ * - `Individual Workers Admin`
+ * - `Individual Workers Content Read-Only`
+ * - `Individual Workers Editor`
+ * - `Workers Admin`
+ * - `Workers Content Read-Only`
+ * - `Workers Editor`
  * - `Workers Scripts Read`
  * - `Workers Scripts Write`
  * - `Workers Tail Read`
@@ -303,14 +309,18 @@ public class WorkerVersion extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.compatibilityDate);
     }
     /**
-     * Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
+     * Enables or disables specific Workers runtime features, such as upcoming features or changes outside the `compatibilityDate`.
+     * 
+     * Responses list only the flags this version sets explicitly and exclude behavior that `compatibilityDate` enables. Responses omit the field when the list is empty, so a missing field means the version sets zero flags.
      * 
      */
     @Export(name="compatibilityFlags", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> compatibilityFlags;
 
     /**
-     * @return Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
+     * @return Enables or disables specific Workers runtime features, such as upcoming features or changes outside the `compatibilityDate`.
+     * 
+     * Responses list only the flags this version sets explicitly and exclude behavior that `compatibilityDate` enables. Responses omit the field when the list is empty, so a missing field means the version sets zero flags.
      * 
      */
     public Output<List<String>> compatibilityFlags() {
@@ -397,16 +407,16 @@ public class WorkerVersion extends com.pulumi.resources.CustomResource {
         return this.exportsReconciliation;
     }
     /**
-     * Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
-     * Available values: &#34;modules&#34;.
+     * Optional properties to include in the response. `modules` includes the `modules` property, which contains code and may add several megabytes to the response size. `modules,sourcemaps` also includes the version&#39;s source maps in `modules`.
+     * Available values: &#34;modules&#34;, &#34;modules,sourcemaps&#34;.
      * 
      */
     @Export(name="include", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> include;
 
     /**
-     * @return Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
-     * Available values: &#34;modules&#34;.
+     * @return Optional properties to include in the response. `modules` includes the `modules` property, which contains code and may add several megabytes to the response size. `modules,sourcemaps` also includes the version&#39;s source maps in `modules`.
+     * Available values: &#34;modules&#34;, &#34;modules,sourcemaps&#34;.
      * 
      */
     public Output<Optional<String>> include() {
@@ -485,6 +495,10 @@ public class WorkerVersion extends com.pulumi.resources.CustomResource {
     /**
      * Code, sourcemaps, and other content used at runtime.
      * 
+     * Source maps use content type `application/source-map`. Responses include them only when requested with
+     * `include=modules,sourcemaps`. Workers stores the source map fields used to remap stack traces, so a returned
+     * source map is equivalent to the uploaded file but not byte-identical.
+     * 
      * This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
      * [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
      * [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be
@@ -496,6 +510,10 @@ public class WorkerVersion extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Code, sourcemaps, and other content used at runtime.
+     * 
+     * Source maps use content type `application/source-map`. Responses include them only when requested with
+     * `include=modules,sourcemaps`. Workers stores the source map fields used to remap stack traces, so a returned
+     * source map is equivalent to the uploaded file but not byte-identical.
      * 
      * This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
      * [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure

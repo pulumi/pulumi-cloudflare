@@ -33,6 +33,7 @@ namespace Pulumi.Cloudflare
     /// | `AlwaysUseHttps` | `"on"` / `"off"` | Reply to all requests for URLs that use "http" with a 301 redirect to the equ... |
     /// | `AutomaticHttpsRewrites` | `"on"` / `"off"` | Enable the Automatic HTTPS Rewrites feature for this zone. |
     /// | `AutomaticPlatformOptimization` | Object | [Automatic Platform Optimization for WordPress](https://developers.cloudflare... |
+    /// | `Avif` | `"on"` / `"off"` | When the client requesting the image supports the AVIF image codec, and AVIF ... |
     /// | `Brotli` | `"on"` / `"off"` | When the client requesting an asset supports the Brotli compression algorithm... |
     /// | `BrowserCacheTtl` | Number | Browser Cache TTL (in seconds) specifies how long Cloudflare-cached resources... |
     /// | `BrowserCheck` | `"on"` / `"off"` | Browser Integrity Check is similar to Bad Behavior and looks for common HTTP ... |
@@ -399,7 +400,7 @@ namespace Pulumi.Cloudflare
     public partial class ZoneSetting : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).
+        /// For `id: 0rtt` or `id: AdvancedDdos` or `id: AlwaysOnline` or `id: AlwaysUseHttps` or `id: AutomaticHttpsRewrites` or `id: brotli` or `id: BrowserCacheTtl` or `id: BrowserCheck` or `id: CacheLevel` or `id: ChallengeTtl` or `id: ChinaNetworkEnabled` or `id: ContentConverter` or `id: ciphers` or `id: CnameFlattening` or `id: DevelopmentMode` or `id: EarlyHints` or `id: EdgeCacheTtl` or `id: EmailObfuscation` or `id: H2Prioritization` or `id: HotlinkProtection` or `id: http2` or `id: http3` or `id: ImageResizing` or `id: IpGeolocation` or `id: ipv6` or `id: MaxUpload` or `id: MinTlsVersion` or `id: mirage` or `id: nel` or `id: OpportunisticEncryption` or `id: OpportunisticOnion` or `id: OrangeToOrange` or `id: OriginErrorPagePassThru` or `id: polish` or `id: PrefetchPreload` or `id: PreRender` or `id: PrivacyPass` or `id: ProxyReadTimeout` or `id: PseudoIpv4` or `id: RedirectsForAiTraining` or `id: ReplaceInsecureJs` or `id: ResponseBuffering` or `id: RocketLoader` or `id: AutomaticPlatformOptimization` or `id: SearchForAgents` or `id: SecurityHeader` or `id: SecurityLevel` or `id: ServerSideExclude` or `id: Sha1Support` or `id: SortQueryStringForCache` or `id: ssl` or `id: Tls12Only` or `id: Tls13` or `id: TlsClientAuth` or `id: transformations` or `id: TransformationsAllowedOrigins` or `id: TrueClientIpHeader` or `id: waf` or `id: WebmcpEnabled` or `id: WebmcpMcpUrl` or `id: WebmcpPacks` or `id: webp` or `id: avif` or `id: websockets`: Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).
         /// </summary>
         [Output("editable")]
         public Output<bool> Editable { get; private set; } = null!;
@@ -411,7 +412,7 @@ namespace Pulumi.Cloudflare
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// last time this setting was modified.
+        /// For `id: 0rtt` or `id: AdvancedDdos` or `id: AlwaysOnline` or `id: AlwaysUseHttps` or `id: AutomaticHttpsRewrites` or `id: brotli` or `id: BrowserCacheTtl` or `id: BrowserCheck` or `id: CacheLevel` or `id: ChallengeTtl` or `id: ChinaNetworkEnabled` or `id: ContentConverter` or `id: ciphers` or `id: CnameFlattening` or `id: DevelopmentMode` or `id: EarlyHints` or `id: EdgeCacheTtl` or `id: EmailObfuscation` or `id: H2Prioritization` or `id: HotlinkProtection` or `id: http2` or `id: http3` or `id: ImageResizing` or `id: IpGeolocation` or `id: ipv6` or `id: MaxUpload` or `id: MinTlsVersion` or `id: mirage` or `id: nel` or `id: OpportunisticEncryption` or `id: OpportunisticOnion` or `id: OrangeToOrange` or `id: OriginErrorPagePassThru` or `id: polish` or `id: PrefetchPreload` or `id: PreRender` or `id: PrivacyPass` or `id: ProxyReadTimeout` or `id: PseudoIpv4` or `id: RedirectsForAiTraining` or `id: ReplaceInsecureJs` or `id: ResponseBuffering` or `id: RocketLoader` or `id: AutomaticPlatformOptimization` or `id: SearchForAgents` or `id: SecurityHeader` or `id: SecurityLevel` or `id: ServerSideExclude` or `id: Sha1Support` or `id: SortQueryStringForCache` or `id: ssl` or `id: Tls12Only` or `id: Tls13` or `id: TlsClientAuth` or `id: transformations` or `id: TransformationsAllowedOrigins` or `id: TrueClientIpHeader` or `id: waf` or `id: WebmcpEnabled` or `id: WebmcpMcpUrl` or `id: WebmcpPacks` or `id: webp` or `id: avif` or `id: websockets`: last time this setting was modified.
         /// </summary>
         [Output("modifiedOn")]
         public Output<string> ModifiedOn { get; private set; } = null!;
@@ -423,7 +424,7 @@ namespace Pulumi.Cloudflare
         public Output<string> SettingId { get; private set; } = null!;
 
         /// <summary>
-        /// Value of the zone setting.
+        /// For `id: DevelopmentMode`: Value of the zone setting.
         /// Notes: The interval (in seconds) from when development mode expires (positive integer) or last expired (negative integer) for the domain. If development mode has never been enabled, this value is false.
         /// </summary>
         [Output("timeRemaining")]
@@ -520,7 +521,7 @@ namespace Pulumi.Cloudflare
     public sealed class ZoneSettingState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).
+        /// For `id: 0rtt` or `id: AdvancedDdos` or `id: AlwaysOnline` or `id: AlwaysUseHttps` or `id: AutomaticHttpsRewrites` or `id: brotli` or `id: BrowserCacheTtl` or `id: BrowserCheck` or `id: CacheLevel` or `id: ChallengeTtl` or `id: ChinaNetworkEnabled` or `id: ContentConverter` or `id: ciphers` or `id: CnameFlattening` or `id: DevelopmentMode` or `id: EarlyHints` or `id: EdgeCacheTtl` or `id: EmailObfuscation` or `id: H2Prioritization` or `id: HotlinkProtection` or `id: http2` or `id: http3` or `id: ImageResizing` or `id: IpGeolocation` or `id: ipv6` or `id: MaxUpload` or `id: MinTlsVersion` or `id: mirage` or `id: nel` or `id: OpportunisticEncryption` or `id: OpportunisticOnion` or `id: OrangeToOrange` or `id: OriginErrorPagePassThru` or `id: polish` or `id: PrefetchPreload` or `id: PreRender` or `id: PrivacyPass` or `id: ProxyReadTimeout` or `id: PseudoIpv4` or `id: RedirectsForAiTraining` or `id: ReplaceInsecureJs` or `id: ResponseBuffering` or `id: RocketLoader` or `id: AutomaticPlatformOptimization` or `id: SearchForAgents` or `id: SecurityHeader` or `id: SecurityLevel` or `id: ServerSideExclude` or `id: Sha1Support` or `id: SortQueryStringForCache` or `id: ssl` or `id: Tls12Only` or `id: Tls13` or `id: TlsClientAuth` or `id: transformations` or `id: TransformationsAllowedOrigins` or `id: TrueClientIpHeader` or `id: waf` or `id: WebmcpEnabled` or `id: WebmcpMcpUrl` or `id: WebmcpPacks` or `id: webp` or `id: avif` or `id: websockets`: Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).
         /// </summary>
         [Input("editable")]
         public Input<bool>? Editable { get; set; }
@@ -532,7 +533,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// last time this setting was modified.
+        /// For `id: 0rtt` or `id: AdvancedDdos` or `id: AlwaysOnline` or `id: AlwaysUseHttps` or `id: AutomaticHttpsRewrites` or `id: brotli` or `id: BrowserCacheTtl` or `id: BrowserCheck` or `id: CacheLevel` or `id: ChallengeTtl` or `id: ChinaNetworkEnabled` or `id: ContentConverter` or `id: ciphers` or `id: CnameFlattening` or `id: DevelopmentMode` or `id: EarlyHints` or `id: EdgeCacheTtl` or `id: EmailObfuscation` or `id: H2Prioritization` or `id: HotlinkProtection` or `id: http2` or `id: http3` or `id: ImageResizing` or `id: IpGeolocation` or `id: ipv6` or `id: MaxUpload` or `id: MinTlsVersion` or `id: mirage` or `id: nel` or `id: OpportunisticEncryption` or `id: OpportunisticOnion` or `id: OrangeToOrange` or `id: OriginErrorPagePassThru` or `id: polish` or `id: PrefetchPreload` or `id: PreRender` or `id: PrivacyPass` or `id: ProxyReadTimeout` or `id: PseudoIpv4` or `id: RedirectsForAiTraining` or `id: ReplaceInsecureJs` or `id: ResponseBuffering` or `id: RocketLoader` or `id: AutomaticPlatformOptimization` or `id: SearchForAgents` or `id: SecurityHeader` or `id: SecurityLevel` or `id: ServerSideExclude` or `id: Sha1Support` or `id: SortQueryStringForCache` or `id: ssl` or `id: Tls12Only` or `id: Tls13` or `id: TlsClientAuth` or `id: transformations` or `id: TransformationsAllowedOrigins` or `id: TrueClientIpHeader` or `id: waf` or `id: WebmcpEnabled` or `id: WebmcpMcpUrl` or `id: WebmcpPacks` or `id: webp` or `id: avif` or `id: websockets`: last time this setting was modified.
         /// </summary>
         [Input("modifiedOn")]
         public Input<string>? ModifiedOn { get; set; }
@@ -544,7 +545,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? SettingId { get; set; }
 
         /// <summary>
-        /// Value of the zone setting.
+        /// For `id: DevelopmentMode`: Value of the zone setting.
         /// Notes: The interval (in seconds) from when development mode expires (positive integer) or last expired (negative integer) for the domain. If development mode has never been enabled, this value is false.
         /// </summary>
         [Input("timeRemaining")]

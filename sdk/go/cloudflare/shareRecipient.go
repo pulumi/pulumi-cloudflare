@@ -29,7 +29,6 @@ import (
 //			_, err := cloudflare.NewShareRecipient(ctx, "example_share_recipient", &cloudflare.ShareRecipientArgs{
 //				AccountId:          pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				ShareId:            pulumi.String("3fd85f74b32742f1bff64a85009dda07"),
-//				OrganizationId:     pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				RecipientAccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //			})
 //			if err != nil {
@@ -56,14 +55,12 @@ type ShareRecipient struct {
 	// target state set by the API; the background reconciliation workflow
 	// drives `currentAssociationStatus` toward it.
 	AssociationStatus pulumi.StringOutput `pulumi:"associationStatus"`
-	// When the share was created.
+	// When the object was created.
 	Created pulumi.StringOutput `pulumi:"created"`
 	// Include resources in the response.
 	IncludeResources pulumi.BoolPtrOutput `pulumi:"includeResources"`
-	// When the share was modified.
+	// When the object was last modified.
 	Modified pulumi.StringOutput `pulumi:"modified"`
-	// Organization identifier.
-	OrganizationId pulumi.StringPtrOutput `pulumi:"organizationId"`
 	// The account that will receive the share.
 	RecipientAccountId pulumi.StringPtrOutput            `pulumi:"recipientAccountId"`
 	Resources          ShareRecipientResourceArrayOutput `pulumi:"resources"`
@@ -114,14 +111,12 @@ type shareRecipientState struct {
 	// target state set by the API; the background reconciliation workflow
 	// drives `currentAssociationStatus` toward it.
 	AssociationStatus *string `pulumi:"associationStatus"`
-	// When the share was created.
+	// When the object was created.
 	Created *string `pulumi:"created"`
 	// Include resources in the response.
 	IncludeResources *bool `pulumi:"includeResources"`
-	// When the share was modified.
+	// When the object was last modified.
 	Modified *string `pulumi:"modified"`
-	// Organization identifier.
-	OrganizationId *string `pulumi:"organizationId"`
 	// The account that will receive the share.
 	RecipientAccountId *string                  `pulumi:"recipientAccountId"`
 	Resources          []ShareRecipientResource `pulumi:"resources"`
@@ -137,14 +132,12 @@ type ShareRecipientState struct {
 	// target state set by the API; the background reconciliation workflow
 	// drives `currentAssociationStatus` toward it.
 	AssociationStatus pulumi.StringPtrInput
-	// When the share was created.
+	// When the object was created.
 	Created pulumi.StringPtrInput
 	// Include resources in the response.
 	IncludeResources pulumi.BoolPtrInput
-	// When the share was modified.
+	// When the object was last modified.
 	Modified pulumi.StringPtrInput
-	// Organization identifier.
-	OrganizationId pulumi.StringPtrInput
 	// The account that will receive the share.
 	RecipientAccountId pulumi.StringPtrInput
 	Resources          ShareRecipientResourceArrayInput
@@ -167,8 +160,6 @@ type shareRecipientArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// Include resources in the response.
 	IncludeResources *bool `pulumi:"includeResources"`
-	// Organization identifier.
-	OrganizationId *string `pulumi:"organizationId"`
 	// The account that will receive the share.
 	RecipientAccountId *string `pulumi:"recipientAccountId"`
 	// Share identifier tag.
@@ -181,8 +172,6 @@ type ShareRecipientArgs struct {
 	AccountId pulumi.StringInput
 	// Include resources in the response.
 	IncludeResources pulumi.BoolPtrInput
-	// Organization identifier.
-	OrganizationId pulumi.StringPtrInput
 	// The account that will receive the share.
 	RecipientAccountId pulumi.StringPtrInput
 	// Share identifier tag.
@@ -289,7 +278,7 @@ func (o ShareRecipientOutput) AssociationStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *ShareRecipient) pulumi.StringOutput { return v.AssociationStatus }).(pulumi.StringOutput)
 }
 
-// When the share was created.
+// When the object was created.
 func (o ShareRecipientOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v *ShareRecipient) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)
 }
@@ -299,14 +288,9 @@ func (o ShareRecipientOutput) IncludeResources() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ShareRecipient) pulumi.BoolPtrOutput { return v.IncludeResources }).(pulumi.BoolPtrOutput)
 }
 
-// When the share was modified.
+// When the object was last modified.
 func (o ShareRecipientOutput) Modified() pulumi.StringOutput {
 	return o.ApplyT(func(v *ShareRecipient) pulumi.StringOutput { return v.Modified }).(pulumi.StringOutput)
-}
-
-// Organization identifier.
-func (o ShareRecipientOutput) OrganizationId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ShareRecipient) pulumi.StringPtrOutput { return v.OrganizationId }).(pulumi.StringPtrOutput)
 }
 
 // The account that will receive the share.

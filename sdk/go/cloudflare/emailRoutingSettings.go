@@ -64,8 +64,8 @@ type EmailRoutingSettings struct {
 	// Show the state of your account, and the type or configuration error.
 	// Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
 	Status pulumi.StringOutput `pulumi:"status"`
-	// Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
-	SupportSubaddress pulumi.BoolPtrOutput `pulumi:"supportSubaddress"`
+	// Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. When omitted, preserves the existing setting.
+	SupportSubaddress pulumi.BoolOutput `pulumi:"supportSubaddress"`
 	// Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
 	//
 	// Deprecated: This attribute is deprecated.
@@ -120,7 +120,7 @@ type emailRoutingSettingsState struct {
 	// Show the state of your account, and the type or configuration error.
 	// Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
 	Status *string `pulumi:"status"`
-	// Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+	// Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. When omitted, preserves the existing setting.
 	SupportSubaddress *bool `pulumi:"supportSubaddress"`
 	// Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
 	//
@@ -144,7 +144,7 @@ type EmailRoutingSettingsState struct {
 	// Show the state of your account, and the type or configuration error.
 	// Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
 	Status pulumi.StringPtrInput
-	// Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+	// Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. When omitted, preserves the existing setting.
 	SupportSubaddress pulumi.BoolPtrInput
 	// Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
 	//
@@ -165,7 +165,7 @@ func EmailRoutingSettingsExists(ctx *pulumi.Context,
 }
 
 type emailRoutingSettingsArgs struct {
-	// Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+	// Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. When omitted, preserves the existing setting.
 	SupportSubaddress *bool `pulumi:"supportSubaddress"`
 	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
@@ -173,7 +173,7 @@ type emailRoutingSettingsArgs struct {
 
 // The set of arguments for constructing a EmailRoutingSettings resource.
 type EmailRoutingSettingsArgs struct {
-	// Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+	// Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. When omitted, preserves the existing setting.
 	SupportSubaddress pulumi.BoolPtrInput
 	// Identifier.
 	ZoneId pulumi.StringInput
@@ -297,9 +297,9 @@ func (o EmailRoutingSettingsOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailRoutingSettings) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
-func (o EmailRoutingSettingsOutput) SupportSubaddress() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *EmailRoutingSettings) pulumi.BoolPtrOutput { return v.SupportSubaddress }).(pulumi.BoolPtrOutput)
+// Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. When omitted, preserves the existing setting.
+func (o EmailRoutingSettingsOutput) SupportSubaddress() pulumi.BoolOutput {
+	return o.ApplyT(func(v *EmailRoutingSettings) pulumi.BoolOutput { return v.SupportSubaddress }).(pulumi.BoolOutput)
 }
 
 // Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)

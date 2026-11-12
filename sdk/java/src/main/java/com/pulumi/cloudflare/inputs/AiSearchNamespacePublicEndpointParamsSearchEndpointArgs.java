@@ -16,14 +16,14 @@ public final class AiSearchNamespacePublicEndpointParamsSearchEndpointArgs exten
     public static final AiSearchNamespacePublicEndpointParamsSearchEndpointArgs Empty = new AiSearchNamespacePublicEndpointParamsSearchEndpointArgs();
 
     /**
-     * Disable search endpoint for this public endpoint
+     * Disable search endpoint for this public endpoint.
      * 
      */
     @Import(name="disabled")
     private @Nullable Output<Boolean> disabled;
 
     /**
-     * @return Disable search endpoint for this public endpoint
+     * @return Disable search endpoint for this public endpoint.
      * 
      */
     public Optional<Output<Boolean>> disabled() {
@@ -55,7 +55,7 @@ public final class AiSearchNamespacePublicEndpointParamsSearchEndpointArgs exten
         }
 
         /**
-         * @param disabled Disable search endpoint for this public endpoint
+         * @param disabled Disable search endpoint for this public endpoint.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class AiSearchNamespacePublicEndpointParamsSearchEndpointArgs exten
         }
 
         /**
-         * @param disabled Disable search endpoint for this public endpoint
+         * @param disabled Disable search endpoint for this public endpoint.
          * 
          * @return builder
          * 

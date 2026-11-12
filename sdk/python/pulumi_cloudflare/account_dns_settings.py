@@ -158,7 +158,6 @@ class AccountDnsSettings(pulumi.CustomResource):
             enforce_dns_only=False,
             zone_defaults={
                 "flatten_all_cnames": False,
-                "foundation_dns": False,
                 "internal_dns": {
                     "reference_zone_id": "reference_zone_id",
                 },
@@ -215,7 +214,6 @@ class AccountDnsSettings(pulumi.CustomResource):
             enforce_dns_only=False,
             zone_defaults={
                 "flatten_all_cnames": False,
-                "foundation_dns": False,
                 "internal_dns": {
                     "reference_zone_id": "reference_zone_id",
                 },

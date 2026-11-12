@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.ShareArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.ShareState;
+import com.pulumi.cloudflare.outputs.ShareExcludedRecipient;
 import com.pulumi.cloudflare.outputs.ShareRecipient;
 import com.pulumi.cloudflare.outputs.ShareResource;
 import com.pulumi.core.Output;
@@ -16,10 +17,15 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Resource Sharing Read`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -31,6 +37,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.Share;
  * import com.pulumi.cloudflare.ShareArgs;
+ * import com.pulumi.cloudflare.inputs.ShareExcludedRecipientArgs;
  * import com.pulumi.cloudflare.inputs.ShareRecipientArgs;
  * import com.pulumi.cloudflare.inputs.ShareResourceArgs;
  * import static com.pulumi.codegen.internal.Serialization.*;
@@ -50,6 +57,9 @@ import javax.annotation.Nullable;
  *         var exampleShare = new Share("exampleShare", ShareArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .name("My Shared WAF Managed Rule")
+ *             .excludedRecipients(ShareExcludedRecipientArgs.builder()
+ *                 .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *                 .build())
  *             .recipients(ShareRecipientArgs.builder()
  *                 .organizationId("023e105f4ecef8ad9ca31a8372d0c353")
  *                 .recipientAccountId("023e105f4ecef8ad9ca31a8372d0c353")
@@ -60,9 +70,10 @@ import javax.annotation.Nullable;
  * 
  *                     )))
  *                 .resourceAccountId("023e105f4ecef8ad9ca31a8372d0c353")
- *                 .resourceId("023e105f4ecef8ad9ca31a8372d0c353")
+ *                 .resourceId("0a679032-bbb2-4b7e-9acc-dd5c5cb27a17")
  *                 .resourceType("custom-ruleset")
  *                 .build())
+ *             .tags(Map.of("foo", "string"))
  *             .build());
  * 
  *     }
@@ -136,14 +147,14 @@ public class Share extends com.pulumi.resources.CustomResource {
         return this.associatingRecipientCount;
     }
     /**
-     * When the share was created.
+     * When the object was created.
      * 
      */
     @Export(name="created", refs={String.class}, tree="[0]")
     private Output<String> created;
 
     /**
-     * @return When the share was created.
+     * @return When the object was created.
      * 
      */
     public Output<String> created() {
@@ -178,6 +189,20 @@ public class Share extends com.pulumi.resources.CustomResource {
         return this.disassociatingRecipientCount;
     }
     /**
+     * Accounts to exclude from an organization-targeted share. Only allowed when `recipients` contains no account entries. The share owner cannot be excluded. Duplicate entries are ignored.
+     * 
+     */
+    @Export(name="excludedRecipients", refs={List.class,ShareExcludedRecipient.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ShareExcludedRecipient>> excludedRecipients;
+
+    /**
+     * @return Accounts to exclude from an organization-targeted share. Only allowed when `recipients` contains no account entries. The share owner cannot be excluded. Duplicate entries are ignored.
+     * 
+     */
+    public Output<Optional<List<ShareExcludedRecipient>>> excludedRecipients() {
+        return Codegen.optional(this.excludedRecipients);
+    }
+    /**
      * Include recipient counts in the response.
      * 
      */
@@ -206,6 +231,22 @@ public class Share extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.includeResources);
     }
     /**
+     * Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+     * Available values: &#34;api&#34;, &#34;mirror&#34;.
+     * 
+     */
+    @Export(name="includeTagsFrom", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> includeTagsFrom;
+
+    /**
+     * @return Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+     * Available values: &#34;api&#34;, &#34;mirror&#34;.
+     * 
+     */
+    public Output<Optional<String>> includeTagsFrom() {
+        return Codegen.optional(this.includeTagsFrom);
+    }
+    /**
      * Available values: &#34;sent&#34;, &#34;received&#34;.
      * 
      */
@@ -220,14 +261,14 @@ public class Share extends com.pulumi.resources.CustomResource {
         return this.kind;
     }
     /**
-     * When the share was modified.
+     * When the object was last modified.
      * 
      */
     @Export(name="modified", refs={String.class}, tree="[0]")
     private Output<String> modified;
 
     /**
-     * @return When the share was modified.
+     * @return When the object was last modified.
      * 
      */
     public Output<String> modified() {
@@ -262,16 +303,16 @@ public class Share extends com.pulumi.resources.CustomResource {
         return this.organizationId;
     }
     @Export(name="recipients", refs={List.class,ShareRecipient.class}, tree="[0,1]")
-    private Output<List<ShareRecipient>> recipients;
+    private Output</* @Nullable */ List<ShareRecipient>> recipients;
 
-    public Output<List<ShareRecipient>> recipients() {
-        return this.recipients;
+    public Output<Optional<List<ShareRecipient>>> recipients() {
+        return Codegen.optional(this.recipients);
     }
     @Export(name="resources", refs={List.class,ShareResource.class}, tree="[0,1]")
-    private Output<List<ShareResource>> resources;
+    private Output</* @Nullable */ List<ShareResource>> resources;
 
-    public Output<List<ShareResource>> resources() {
-        return this.resources;
+    public Output<Optional<List<ShareResource>>> resources() {
+        return Codegen.optional(this.resources);
     }
     /**
      * Available values: &#34;active&#34;, &#34;deleting&#34;, &#34;deleted&#34;.
@@ -286,6 +327,20 @@ public class Share extends com.pulumi.resources.CustomResource {
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * Tags associated with the share.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return Tags associated with the share.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
     }
     /**
      * Available values: &#34;account&#34;, &#34;organization&#34;.

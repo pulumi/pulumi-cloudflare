@@ -27,6 +27,11 @@ public final class MagicTransitSiteWanStaticAddressing {
      * 
      */
     private @Nullable String secondaryAddress;
+    /**
+     * @return Gateway address for the secondary connector of a high availability site.
+     * 
+     */
+    private @Nullable String secondaryGatewayAddress;
 
     private MagicTransitSiteWanStaticAddressing() {}
     /**
@@ -50,6 +55,13 @@ public final class MagicTransitSiteWanStaticAddressing {
     public Optional<String> secondaryAddress() {
         return Optional.ofNullable(this.secondaryAddress);
     }
+    /**
+     * @return Gateway address for the secondary connector of a high availability site.
+     * 
+     */
+    public Optional<String> secondaryGatewayAddress() {
+        return Optional.ofNullable(this.secondaryGatewayAddress);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -63,12 +75,14 @@ public final class MagicTransitSiteWanStaticAddressing {
         private String address;
         private String gatewayAddress;
         private @Nullable String secondaryAddress;
+        private @Nullable String secondaryGatewayAddress;
         public Builder() {}
         public Builder(MagicTransitSiteWanStaticAddressing defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.address = defaults.address;
     	      this.gatewayAddress = defaults.gatewayAddress;
     	      this.secondaryAddress = defaults.secondaryAddress;
+    	      this.secondaryGatewayAddress = defaults.secondaryGatewayAddress;
         }
 
         @CustomType.Setter
@@ -93,11 +107,18 @@ public final class MagicTransitSiteWanStaticAddressing {
             this.secondaryAddress = secondaryAddress;
             return this;
         }
+        @CustomType.Setter
+        public Builder secondaryGatewayAddress(@Nullable String secondaryGatewayAddress) {
+
+            this.secondaryGatewayAddress = secondaryGatewayAddress;
+            return this;
+        }
         public MagicTransitSiteWanStaticAddressing build() {
             final var _resultValue = new MagicTransitSiteWanStaticAddressing();
             _resultValue.address = address;
             _resultValue.gatewayAddress = gatewayAddress;
             _resultValue.secondaryAddress = secondaryAddress;
+            _resultValue.secondaryGatewayAddress = secondaryGatewayAddress;
             return _resultValue;
         }
     }

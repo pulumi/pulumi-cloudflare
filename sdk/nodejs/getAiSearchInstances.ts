@@ -26,16 +26,13 @@ export function getAiSearchInstances(args?: GetAiSearchInstancesArgs, opts?: pul
 export interface GetAiSearchInstancesArgs {
     accountId?: string;
     /**
-     * Filter by exact Search for Agents hostname (case-insensitive).
+     * Return only instances with this exact Search for Agents hostname (case-insensitive).
      */
     hostname?: string;
     /**
      * Max items to fetch, default: 1000
      */
     maxItems?: number;
-    /**
-     * Filter by namespace.
-     */
     namespace?: string;
     /**
      * Field to order results by.
@@ -59,17 +56,14 @@ export interface GetAiSearchInstancesArgs {
 export interface GetAiSearchInstancesResult {
     readonly accountId?: string;
     /**
-     * Filter by exact Search for Agents hostname (case-insensitive).
+     * Return only instances with this exact Search for Agents hostname (case-insensitive).
      */
     readonly hostname?: string;
     /**
      * Max items to fetch, default: 1000
      */
     readonly maxItems?: number;
-    /**
-     * Filter by namespace.
-     */
-    readonly namespace?: string;
+    readonly namespace: string;
     /**
      * Field to order results by.
      * Available values: "createdAt".
@@ -109,16 +103,13 @@ export function getAiSearchInstancesOutput(args?: GetAiSearchInstancesOutputArgs
 export interface GetAiSearchInstancesOutputArgs {
     accountId?: pulumi.Input<string | undefined>;
     /**
-     * Filter by exact Search for Agents hostname (case-insensitive).
+     * Return only instances with this exact Search for Agents hostname (case-insensitive).
      */
     hostname?: pulumi.Input<string | undefined>;
     /**
      * Max items to fetch, default: 1000
      */
     maxItems?: pulumi.Input<number | undefined>;
-    /**
-     * Filter by namespace.
-     */
     namespace?: pulumi.Input<string | undefined>;
     /**
      * Field to order results by.

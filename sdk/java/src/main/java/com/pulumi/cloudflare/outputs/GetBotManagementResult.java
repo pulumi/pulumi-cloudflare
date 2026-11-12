@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetBotManagementAiAgents;
 import com.pulumi.cloudflare.outputs.GetBotManagementStaleZoneConfiguration;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -14,6 +15,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetBotManagementResult {
+    /**
+     * @return Configure blocking behavior for supported personal AI agents.
+     * 
+     */
+    private GetBotManagementAiAgents aiAgents;
     /**
      * @return Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
      * 
@@ -153,6 +159,13 @@ public final class GetBotManagementResult {
     private @Nullable String zoneId;
 
     private GetBotManagementResult() {}
+    /**
+     * @return Configure blocking behavior for supported personal AI agents.
+     * 
+     */
+    public GetBotManagementAiAgents aiAgents() {
+        return this.aiAgents;
+    }
     /**
      * @return Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
      * 
@@ -350,6 +363,7 @@ public final class GetBotManagementResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private GetBotManagementAiAgents aiAgents;
         private Boolean aiBotsMigrationOptOut;
         private String aiBotsProtection;
         private String aiTraining;
@@ -378,6 +392,7 @@ public final class GetBotManagementResult {
         public Builder() {}
         public Builder(GetBotManagementResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.aiAgents = defaults.aiAgents;
     	      this.aiBotsMigrationOptOut = defaults.aiBotsMigrationOptOut;
     	      this.aiBotsProtection = defaults.aiBotsProtection;
     	      this.aiTraining = defaults.aiTraining;
@@ -405,6 +420,14 @@ public final class GetBotManagementResult {
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
+        public Builder aiAgents(GetBotManagementAiAgents aiAgents) {
+            if (aiAgents == null) {
+              throw new MissingRequiredPropertyException("GetBotManagementResult", "aiAgents");
+            }
+            this.aiAgents = aiAgents;
+            return this;
+        }
         @CustomType.Setter
         public Builder aiBotsMigrationOptOut(Boolean aiBotsMigrationOptOut) {
             if (aiBotsMigrationOptOut == null) {
@@ -605,6 +628,7 @@ public final class GetBotManagementResult {
         }
         public GetBotManagementResult build() {
             final var _resultValue = new GetBotManagementResult();
+            _resultValue.aiAgents = aiAgents;
             _resultValue.aiBotsMigrationOptOut = aiBotsMigrationOptOut;
             _resultValue.aiBotsProtection = aiBotsProtection;
             _resultValue.aiTraining = aiTraining;

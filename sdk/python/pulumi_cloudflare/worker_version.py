@@ -53,7 +53,9 @@ class WorkerVersionArgs:
                A `type: worker` entry in the `exports` map can override this
                value for a single entrypoint.
         :param pulumi.Input[_builtins.str] compatibility_date: Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compatibility_flags: Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compatibility_flags: Enables or disables specific Workers runtime features, such as upcoming features or changes outside the `compatibility_date`.
+               
+               Responses list only the flags this version sets explicitly and exclude behavior that `compatibility_date` enables. Responses omit the field when the list is empty, so a missing field means the version sets zero flags.
         :param pulumi.Input[Sequence[pulumi.Input['WorkerVersionContainerArgs']]] containers: List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
         :param pulumi.Input[_builtins.bool] deploy: If true, a deployment will be created that sends 100% of traffic to the new version.
         :param pulumi.Input[Mapping[str, pulumi.Input['WorkerVersionExportsArgs']]] exports: Declarative exports for the version, including Durable Object
@@ -62,12 +64,16 @@ class WorkerVersionArgs:
                omitted, so only live exports (`created` and
                `expecting-transfer`) are returned. `exports` and `migrations`
                are mutually exclusive on upload.
-        :param pulumi.Input[_builtins.str] include: Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
-               Available values: "modules".
+        :param pulumi.Input[_builtins.str] include: Optional properties to include in the response. `modules` includes the `modules` property, which contains code and may add several megabytes to the response size. `modules,sourcemaps` also includes the version's source maps in `modules`.
+               Available values: "modules", "modules,sourcemaps".
         :param pulumi.Input['WorkerVersionLimitsArgs'] limits: Resource limits enforced at runtime.
         :param pulumi.Input[_builtins.str] main_module: The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
         :param pulumi.Input['WorkerVersionMigrationsArgs'] migrations: Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
         :param pulumi.Input[Sequence[pulumi.Input['WorkerVersionModuleArgs']]] modules: Code, sourcemaps, and other content used at runtime.
+               
+               Source maps use content type `application/source-map`. Responses include them only when requested with
+               `include=modules,sourcemaps`. Workers stores the source map fields used to remap stack traces, so a returned
+               source map is equivalent to the uploaded file but not byte-identical.
                
                This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
                [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
@@ -210,7 +216,9 @@ class WorkerVersionArgs:
     @pulumi.getter(name="compatibilityFlags")
     def compatibility_flags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+        Enables or disables specific Workers runtime features, such as upcoming features or changes outside the `compatibility_date`.
+
+        Responses list only the flags this version sets explicitly and exclude behavior that `compatibility_date` enables. Responses omit the field when the list is empty, so a missing field means the version sets zero flags.
         """
         return pulumi.get(self, "compatibility_flags")
 
@@ -263,8 +271,8 @@ class WorkerVersionArgs:
     @pulumi.getter
     def include(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
-        Available values: "modules".
+        Optional properties to include in the response. `modules` includes the `modules` property, which contains code and may add several megabytes to the response size. `modules,sourcemaps` also includes the version's source maps in `modules`.
+        Available values: "modules", "modules,sourcemaps".
         """
         return pulumi.get(self, "include")
 
@@ -313,6 +321,10 @@ class WorkerVersionArgs:
     def modules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionModuleArgs']]]]:
         """
         Code, sourcemaps, and other content used at runtime.
+
+        Source maps use content type `application/source-map`. Responses include them only when requested with
+        `include=modules,sourcemaps`. Workers stores the source map fields used to remap stack traces, so a returned
+        source map is equivalent to the uploaded file but not byte-identical.
 
         This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
         [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
@@ -411,7 +423,9 @@ class _WorkerVersionState:
                A `type: worker` entry in the `exports` map can override this
                value for a single entrypoint.
         :param pulumi.Input[_builtins.str] compatibility_date: Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compatibility_flags: Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compatibility_flags: Enables or disables specific Workers runtime features, such as upcoming features or changes outside the `compatibility_date`.
+               
+               Responses list only the flags this version sets explicitly and exclude behavior that `compatibility_date` enables. Responses omit the field when the list is empty, so a missing field means the version sets zero flags.
         :param pulumi.Input[Sequence[pulumi.Input['WorkerVersionContainerArgs']]] containers: List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
         :param pulumi.Input[_builtins.str] created_on: When the version was created.
         :param pulumi.Input[_builtins.bool] deploy: If true, a deployment will be created that sends 100% of traffic to the new version.
@@ -422,14 +436,18 @@ class _WorkerVersionState:
                `expecting-transfer`) are returned. `exports` and `migrations`
                are mutually exclusive on upload.
         :param pulumi.Input['WorkerVersionExportsReconciliationArgs'] exports_reconciliation: Summary of the declarative exports reconciliation that ran on this upload. Populated only when the uploaded metadata included an `exports` block. Durable Object entries drive reconciliation; `type: worker` entries do not contribute to this summary.
-        :param pulumi.Input[_builtins.str] include: Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
-               Available values: "modules".
+        :param pulumi.Input[_builtins.str] include: Optional properties to include in the response. `modules` includes the `modules` property, which contains code and may add several megabytes to the response size. `modules,sourcemaps` also includes the version's source maps in `modules`.
+               Available values: "modules", "modules,sourcemaps".
         :param pulumi.Input['WorkerVersionLimitsArgs'] limits: Resource limits enforced at runtime.
         :param pulumi.Input[_builtins.str] main_module: The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
         :param pulumi.Input[_builtins.str] main_script_base64: The base64-encoded main script content. This is only returned for service worker syntax workers (not ES modules). Used when importing existing workers that use the older service worker syntax.
         :param pulumi.Input[_builtins.str] migration_tag: Durable Object migration tag. Set when the version is deployed. Omitted if the version has not been deployed or the Worker does not use Durable Objects.
         :param pulumi.Input['WorkerVersionMigrationsArgs'] migrations: Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
         :param pulumi.Input[Sequence[pulumi.Input['WorkerVersionModuleArgs']]] modules: Code, sourcemaps, and other content used at runtime.
+               
+               Source maps use content type `application/source-map`. Responses include them only when requested with
+               `include=modules,sourcemaps`. Workers stores the source map fields used to remap stack traces, so a returned
+               source map is equivalent to the uploaded file but not byte-identical.
                
                This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
                [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
@@ -611,7 +629,9 @@ class _WorkerVersionState:
     @pulumi.getter(name="compatibilityFlags")
     def compatibility_flags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+        Enables or disables specific Workers runtime features, such as upcoming features or changes outside the `compatibility_date`.
+
+        Responses list only the flags this version sets explicitly and exclude behavior that `compatibility_date` enables. Responses omit the field when the list is empty, so a missing field means the version sets zero flags.
         """
         return pulumi.get(self, "compatibility_flags")
 
@@ -688,8 +708,8 @@ class _WorkerVersionState:
     @pulumi.getter
     def include(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
-        Available values: "modules".
+        Optional properties to include in the response. `modules` includes the `modules` property, which contains code and may add several megabytes to the response size. `modules,sourcemaps` also includes the version's source maps in `modules`.
+        Available values: "modules", "modules,sourcemaps".
         """
         return pulumi.get(self, "include")
 
@@ -762,6 +782,10 @@ class _WorkerVersionState:
     def modules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionModuleArgs']]]]:
         """
         Code, sourcemaps, and other content used at runtime.
+
+        Source maps use content type `application/source-map`. Responses include them only when requested with
+        `include=modules,sourcemaps`. Workers stores the source map fields used to remap stack traces, so a returned
+        source map is equivalent to the uploaded file but not byte-identical.
 
         This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
         [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
@@ -903,6 +927,12 @@ class WorkerVersion(pulumi.CustomResource):
         """
         Accepted Permissions
 
+        - `Individual Workers Admin`
+        - `Individual Workers Content Read-Only`
+        - `Individual Workers Editor`
+        - `Workers Admin`
+        - `Workers Content Read-Only`
+        - `Workers Editor`
         - `Workers Scripts Read`
         - `Workers Scripts Write`
         - `Workers Tail Read`
@@ -1025,7 +1055,9 @@ class WorkerVersion(pulumi.CustomResource):
                A `type: worker` entry in the `exports` map can override this
                value for a single entrypoint.
         :param pulumi.Input[_builtins.str] compatibility_date: Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compatibility_flags: Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compatibility_flags: Enables or disables specific Workers runtime features, such as upcoming features or changes outside the `compatibility_date`.
+               
+               Responses list only the flags this version sets explicitly and exclude behavior that `compatibility_date` enables. Responses omit the field when the list is empty, so a missing field means the version sets zero flags.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionContainerArgs', 'WorkerVersionContainerArgsDict', 'outputs.WorkerVersionContainer']]]] containers: List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
         :param pulumi.Input[_builtins.bool] deploy: If true, a deployment will be created that sends 100% of traffic to the new version.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['WorkerVersionExportsArgs', 'WorkerVersionExportsArgsDict', 'outputs.WorkerVersionExports']]]] exports: Declarative exports for the version, including Durable Object
@@ -1034,12 +1066,16 @@ class WorkerVersion(pulumi.CustomResource):
                omitted, so only live exports (`created` and
                `expecting-transfer`) are returned. `exports` and `migrations`
                are mutually exclusive on upload.
-        :param pulumi.Input[_builtins.str] include: Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
-               Available values: "modules".
+        :param pulumi.Input[_builtins.str] include: Optional properties to include in the response. `modules` includes the `modules` property, which contains code and may add several megabytes to the response size. `modules,sourcemaps` also includes the version's source maps in `modules`.
+               Available values: "modules", "modules,sourcemaps".
         :param pulumi.Input[Union['WorkerVersionLimitsArgs', 'WorkerVersionLimitsArgsDict', 'outputs.WorkerVersionLimits']] limits: Resource limits enforced at runtime.
         :param pulumi.Input[_builtins.str] main_module: The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
         :param pulumi.Input[Union['WorkerVersionMigrationsArgs', 'WorkerVersionMigrationsArgsDict', 'outputs.WorkerVersionMigrations']] migrations: Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionModuleArgs', 'WorkerVersionModuleArgsDict', 'outputs.WorkerVersionModule']]]] modules: Code, sourcemaps, and other content used at runtime.
+               
+               Source maps use content type `application/source-map`. Responses include them only when requested with
+               `include=modules,sourcemaps`. Workers stores the source map fields used to remap stack traces, so a returned
+               source map is equivalent to the uploaded file but not byte-identical.
                
                This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
                [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
@@ -1061,6 +1097,12 @@ class WorkerVersion(pulumi.CustomResource):
         """
         Accepted Permissions
 
+        - `Individual Workers Admin`
+        - `Individual Workers Content Read-Only`
+        - `Individual Workers Editor`
+        - `Workers Admin`
+        - `Workers Content Read-Only`
+        - `Workers Editor`
         - `Workers Scripts Read`
         - `Workers Scripts Write`
         - `Workers Tail Read`
@@ -1305,7 +1347,9 @@ class WorkerVersion(pulumi.CustomResource):
                A `type: worker` entry in the `exports` map can override this
                value for a single entrypoint.
         :param pulumi.Input[_builtins.str] compatibility_date: Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compatibility_flags: Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compatibility_flags: Enables or disables specific Workers runtime features, such as upcoming features or changes outside the `compatibility_date`.
+               
+               Responses list only the flags this version sets explicitly and exclude behavior that `compatibility_date` enables. Responses omit the field when the list is empty, so a missing field means the version sets zero flags.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionContainerArgs', 'WorkerVersionContainerArgsDict', 'outputs.WorkerVersionContainer']]]] containers: List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
         :param pulumi.Input[_builtins.str] created_on: When the version was created.
         :param pulumi.Input[_builtins.bool] deploy: If true, a deployment will be created that sends 100% of traffic to the new version.
@@ -1316,14 +1360,18 @@ class WorkerVersion(pulumi.CustomResource):
                `expecting-transfer`) are returned. `exports` and `migrations`
                are mutually exclusive on upload.
         :param pulumi.Input[Union['WorkerVersionExportsReconciliationArgs', 'WorkerVersionExportsReconciliationArgsDict', 'outputs.WorkerVersionExportsReconciliation']] exports_reconciliation: Summary of the declarative exports reconciliation that ran on this upload. Populated only when the uploaded metadata included an `exports` block. Durable Object entries drive reconciliation; `type: worker` entries do not contribute to this summary.
-        :param pulumi.Input[_builtins.str] include: Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
-               Available values: "modules".
+        :param pulumi.Input[_builtins.str] include: Optional properties to include in the response. `modules` includes the `modules` property, which contains code and may add several megabytes to the response size. `modules,sourcemaps` also includes the version's source maps in `modules`.
+               Available values: "modules", "modules,sourcemaps".
         :param pulumi.Input[Union['WorkerVersionLimitsArgs', 'WorkerVersionLimitsArgsDict', 'outputs.WorkerVersionLimits']] limits: Resource limits enforced at runtime.
         :param pulumi.Input[_builtins.str] main_module: The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
         :param pulumi.Input[_builtins.str] main_script_base64: The base64-encoded main script content. This is only returned for service worker syntax workers (not ES modules). Used when importing existing workers that use the older service worker syntax.
         :param pulumi.Input[_builtins.str] migration_tag: Durable Object migration tag. Set when the version is deployed. Omitted if the version has not been deployed or the Worker does not use Durable Objects.
         :param pulumi.Input[Union['WorkerVersionMigrationsArgs', 'WorkerVersionMigrationsArgsDict', 'outputs.WorkerVersionMigrations']] migrations: Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionModuleArgs', 'WorkerVersionModuleArgsDict', 'outputs.WorkerVersionModule']]]] modules: Code, sourcemaps, and other content used at runtime.
+               
+               Source maps use content type `application/source-map`. Responses include them only when requested with
+               `include=modules,sourcemaps`. Workers stores the source map fields used to remap stack traces, so a returned
+               source map is equivalent to the uploaded file but not byte-identical.
                
                This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
                [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
@@ -1510,7 +1558,9 @@ class WorkerVersion(pulumi.CustomResource):
     @pulumi.getter(name="compatibilityFlags")
     def compatibility_flags(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+        Enables or disables specific Workers runtime features, such as upcoming features or changes outside the `compatibility_date`.
+
+        Responses list only the flags this version sets explicitly and exclude behavior that `compatibility_date` enables. Responses omit the field when the list is empty, so a missing field means the version sets zero flags.
         """
         return pulumi.get(self, "compatibility_flags")
 
@@ -1563,8 +1613,8 @@ class WorkerVersion(pulumi.CustomResource):
     @pulumi.getter
     def include(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
-        Available values: "modules".
+        Optional properties to include in the response. `modules` includes the `modules` property, which contains code and may add several megabytes to the response size. `modules,sourcemaps` also includes the version's source maps in `modules`.
+        Available values: "modules", "modules,sourcemaps".
         """
         return pulumi.get(self, "include")
 
@@ -1613,6 +1663,10 @@ class WorkerVersion(pulumi.CustomResource):
     def modules(self) -> pulumi.Output[Optional[Sequence['outputs.WorkerVersionModule']]]:
         """
         Code, sourcemaps, and other content used at runtime.
+
+        Source maps use content type `application/source-map`. Responses include them only when requested with
+        `include=modules,sourcemaps`. Workers stores the source map fields used to remap stack traces, so a returned
+        source map is equivalent to the uploaded file but not byte-identical.
 
         This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
         [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure

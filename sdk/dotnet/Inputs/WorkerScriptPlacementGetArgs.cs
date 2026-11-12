@@ -32,7 +32,6 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-        /// Available values: "smart", "targeted".
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -45,7 +44,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-        /// Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
+        /// Available values: "SUCCESS", "UNSUPPORTED_APPLICATION", "INSUFFICIENT_INVOCATIONS".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

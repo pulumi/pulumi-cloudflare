@@ -138,6 +138,7 @@ namespace Pulumi.Cloudflare
         public readonly string AccountId;
         public readonly string Comments;
         public readonly string CreatedAt;
+        public readonly string ExpiresAt;
         public readonly Outputs.GetEmailSecurityBlockSenderFilterResult? Filter;
         public readonly string Id;
         public readonly bool IsRegex;
@@ -154,6 +155,8 @@ namespace Pulumi.Cloudflare
             string comments,
 
             string createdAt,
+
+            string expiresAt,
 
             Outputs.GetEmailSecurityBlockSenderFilterResult? filter,
 
@@ -174,6 +177,7 @@ namespace Pulumi.Cloudflare
             AccountId = accountId;
             Comments = comments;
             CreatedAt = createdAt;
+            ExpiresAt = expiresAt;
             Filter = filter;
             Id = id;
             IsRegex = isRegex;

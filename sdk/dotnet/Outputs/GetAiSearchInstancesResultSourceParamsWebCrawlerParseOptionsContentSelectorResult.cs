@@ -13,13 +13,7 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptionsContentSelectorResult
     {
-        /// <summary>
-        /// Glob pattern to match against the page URL path. Uses standard glob syntax: * matches within a segment, ** crosses directories.
-        /// </summary>
         public readonly string Path;
-        /// <summary>
-        /// CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, ). Must target a single element; if multiple elements match, the selector is ignored and the full page is used.
-        /// </summary>
         public readonly string Selector;
 
         [OutputConstructor]

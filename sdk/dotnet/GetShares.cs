@@ -12,6 +12,10 @@ namespace Pulumi.Cloudflare
     public static class GetShares
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Resource Sharing Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -27,6 +31,7 @@ namespace Pulumi.Cloudflare
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         IncludeRecipientCounts = true,
         ///         IncludeResources = true,
+        ///         IncludeTagsFrom = "api",
         ///         Kind = "sent",
         ///         ResourceTypes = new[]
         ///         {
@@ -47,6 +52,10 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSharesResult>("cloudflare:index/getShares:getShares", args ?? new GetSharesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Resource Sharing Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -62,6 +71,7 @@ namespace Pulumi.Cloudflare
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         IncludeRecipientCounts = true,
         ///         IncludeResources = true,
+        ///         IncludeTagsFrom = "api",
         ///         Kind = "sent",
         ///         ResourceTypes = new[]
         ///         {
@@ -82,6 +92,10 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetSharesResult>("cloudflare:index/getShares:getShares", args ?? new GetSharesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Resource Sharing Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -97,6 +111,7 @@ namespace Pulumi.Cloudflare
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         IncludeRecipientCounts = true,
         ///         IncludeResources = true,
+        ///         IncludeTagsFrom = "api",
         ///         Kind = "sent",
         ///         ResourceTypes = new[]
         ///         {
@@ -144,6 +159,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("includeResources")]
         public bool? IncludeResources { get; set; }
+
+        /// <summary>
+        /// Include share tags in the response. `Api` reads tags from the tag service; `Mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `Tags`.
+        /// Available values: "api", "mirror".
+        /// </summary>
+        [Input("includeTagsFrom")]
+        public string? IncludeTagsFrom { get; set; }
 
         /// <summary>
         /// Filter shares by kind.
@@ -237,6 +259,13 @@ namespace Pulumi.Cloudflare
         public Input<bool>? IncludeResources { get; set; }
 
         /// <summary>
+        /// Include share tags in the response. `Api` reads tags from the tag service; `Mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `Tags`.
+        /// Available values: "api", "mirror".
+        /// </summary>
+        [Input("includeTagsFrom")]
+        public Input<string>? IncludeTagsFrom { get; set; }
+
+        /// <summary>
         /// Filter shares by kind.
         /// Available values: "sent", "received".
         /// </summary>
@@ -322,6 +351,11 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool? IncludeResources;
         /// <summary>
+        /// Include share tags in the response. `Api` reads tags from the tag service; `Mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `Tags`.
+        /// Available values: "api", "mirror".
+        /// </summary>
+        public readonly string? IncludeTagsFrom;
+        /// <summary>
         /// Filter shares by kind.
         /// Available values: "sent", "received".
         /// </summary>
@@ -368,6 +402,8 @@ namespace Pulumi.Cloudflare
 
             bool? includeResources,
 
+            string? includeTagsFrom,
+
             string? kind,
 
             int? maxItems,
@@ -388,6 +424,7 @@ namespace Pulumi.Cloudflare
             Direction = direction;
             IncludeRecipientCounts = includeRecipientCounts;
             IncludeResources = includeResources;
+            IncludeTagsFrom = includeTagsFrom;
             Kind = kind;
             MaxItems = maxItems;
             Order = order;

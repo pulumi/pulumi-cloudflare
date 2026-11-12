@@ -51,6 +51,11 @@ public final class GetZeroTrustOrganizationResult {
      */
     private List<String> denyUnmatchedRequestsExemptedZoneNames;
     /**
+     * @return Whether creation of end user applications is disabled for this organization.
+     * 
+     */
+    private Boolean disableEndUserAppCreation;
+    /**
      * @return Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
      * 
      */
@@ -167,6 +172,13 @@ public final class GetZeroTrustOrganizationResult {
      */
     public List<String> denyUnmatchedRequestsExemptedZoneNames() {
         return this.denyUnmatchedRequestsExemptedZoneNames;
+    }
+    /**
+     * @return Whether creation of end user applications is disabled for this organization.
+     * 
+     */
+    public Boolean disableEndUserAppCreation() {
+        return this.disableEndUserAppCreation;
     }
     /**
      * @return Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
@@ -286,6 +298,7 @@ public final class GetZeroTrustOrganizationResult {
         private GetZeroTrustOrganizationCustomPages customPages;
         private Boolean denyUnmatchedRequests;
         private List<String> denyUnmatchedRequestsExemptedZoneNames;
+        private Boolean disableEndUserAppCreation;
         private Boolean isUiReadOnly;
         private GetZeroTrustOrganizationLoginDesign loginDesign;
         private GetZeroTrustOrganizationMfaConfig mfaConfig;
@@ -311,6 +324,7 @@ public final class GetZeroTrustOrganizationResult {
     	      this.customPages = defaults.customPages;
     	      this.denyUnmatchedRequests = defaults.denyUnmatchedRequests;
     	      this.denyUnmatchedRequestsExemptedZoneNames = defaults.denyUnmatchedRequestsExemptedZoneNames;
+    	      this.disableEndUserAppCreation = defaults.disableEndUserAppCreation;
     	      this.isUiReadOnly = defaults.isUiReadOnly;
     	      this.loginDesign = defaults.loginDesign;
     	      this.mfaConfig = defaults.mfaConfig;
@@ -384,6 +398,14 @@ public final class GetZeroTrustOrganizationResult {
         }
         public Builder denyUnmatchedRequestsExemptedZoneNames(String... denyUnmatchedRequestsExemptedZoneNames) {
             return denyUnmatchedRequestsExemptedZoneNames(List.of(denyUnmatchedRequestsExemptedZoneNames));
+        }
+        @CustomType.Setter
+        public Builder disableEndUserAppCreation(Boolean disableEndUserAppCreation) {
+            if (disableEndUserAppCreation == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustOrganizationResult", "disableEndUserAppCreation");
+            }
+            this.disableEndUserAppCreation = disableEndUserAppCreation;
+            return this;
         }
         @CustomType.Setter
         public Builder isUiReadOnly(Boolean isUiReadOnly) {
@@ -515,6 +537,7 @@ public final class GetZeroTrustOrganizationResult {
             _resultValue.customPages = customPages;
             _resultValue.denyUnmatchedRequests = denyUnmatchedRequests;
             _resultValue.denyUnmatchedRequestsExemptedZoneNames = denyUnmatchedRequestsExemptedZoneNames;
+            _resultValue.disableEndUserAppCreation = disableEndUserAppCreation;
             _resultValue.isUiReadOnly = isUiReadOnly;
             _resultValue.loginDesign = loginDesign;
             _resultValue.mfaConfig = mfaConfig;

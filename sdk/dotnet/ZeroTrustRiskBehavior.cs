@@ -33,7 +33,7 @@ namespace Pulumi.Cloudflare
     ///             { "foo", new Cloudflare.Inputs.ZeroTrustRiskBehaviorBehaviorsArgs
     ///             {
     ///                 Enabled = true,
-    ///                 RiskLevel = "low",
+    ///                 RiskLevel = "info",
     ///             } },
     ///         },
     ///     });

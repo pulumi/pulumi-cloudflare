@@ -74,8 +74,14 @@ import javax.annotation.Nullable;
  *                 .virtualNetworkId("a5624d4e-044a-4ff0-b3e1-e2465353d4b4")
  *                 .weight(0.6)
  *                 .build())
+ *             .checkRegions(            
+ *                 "WEU",
+ *                 "ENAM")
  *             .description("Primary data center - Provider XYZ")
  *             .enabled(false)
+ *             .healthSources(            
+ *                 "regional",
+ *                 "global")
  *             .latitude(0.0)
  *             .loadShedding(LoadBalancerPoolLoadSheddingArgs.builder()
  *                 .defaultPercent(0.0)
@@ -87,6 +93,9 @@ import javax.annotation.Nullable;
  *             .minimumOrigins(0)
  *             .monitor("monitor")
  *             .monitorGroup("monitor_group")
+ *             .networks(Arrays.asList(            
+ *                 "cloudflare",
+ *                 "jdcloud"))
  *             .notificationEmail("someone}{@literal @}{@code example.com,sometwo}{@literal @}{@code example.com")
  *             .notificationFilter(LoadBalancerPoolNotificationFilterArgs.builder()
  *                 .origin(LoadBalancerPoolNotificationFilterOriginArgs.builder()

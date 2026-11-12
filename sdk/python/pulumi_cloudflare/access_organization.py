@@ -28,6 +28,7 @@ class AccessOrganizationArgs:
                  custom_pages: pulumi.Input[Optional['AccessOrganizationCustomPagesArgs']] = None,
                  deny_unmatched_requests: pulumi.Input[Optional[_builtins.bool]] = None,
                  deny_unmatched_requests_exempted_zone_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 disable_end_user_app_creation: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_ui_read_only: pulumi.Input[Optional[_builtins.bool]] = None,
                  login_design: pulumi.Input[Optional['AccessOrganizationLoginDesignArgs']] = None,
                  mfa_config: pulumi.Input[Optional['AccessOrganizationMfaConfigArgs']] = None,
@@ -52,6 +53,7 @@ class AccessOrganizationArgs:
         :param pulumi.Input[_builtins.bool] auto_redirect_to_identity: When set to `true`, users skip the identity provider selection step during login.
         :param pulumi.Input[_builtins.bool] deny_unmatched_requests: Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `deny_unmatched_requests_exempted_zone_names` array.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] deny_unmatched_requests_exempted_zone_names: Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
+        :param pulumi.Input[_builtins.bool] disable_end_user_app_creation: Whether creation of end user applications is disabled for this organization.
         :param pulumi.Input[_builtins.bool] is_ui_read_only: Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
         :param pulumi.Input['AccessOrganizationMfaConfigArgs'] mfa_config: Configures multi-factor authentication (MFA) settings for an organization.
         :param pulumi.Input[_builtins.bool] mfa_configuration_allowed: Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
@@ -81,6 +83,8 @@ class AccessOrganizationArgs:
             pulumi.set(__self__, "deny_unmatched_requests", deny_unmatched_requests)
         if deny_unmatched_requests_exempted_zone_names is not None:
             pulumi.set(__self__, "deny_unmatched_requests_exempted_zone_names", deny_unmatched_requests_exempted_zone_names)
+        if disable_end_user_app_creation is not None:
+            pulumi.set(__self__, "disable_end_user_app_creation", disable_end_user_app_creation)
         if is_ui_read_only is not None:
             pulumi.set(__self__, "is_ui_read_only", is_ui_read_only)
         if login_design is not None:
@@ -192,6 +196,18 @@ class AccessOrganizationArgs:
     @deny_unmatched_requests_exempted_zone_names.setter
     def deny_unmatched_requests_exempted_zone_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "deny_unmatched_requests_exempted_zone_names", value)
+
+    @_builtins.property
+    @pulumi.getter(name="disableEndUserAppCreation")
+    def disable_end_user_app_creation(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether creation of end user applications is disabled for this organization.
+        """
+        return pulumi.get(self, "disable_end_user_app_creation")
+
+    @disable_end_user_app_creation.setter
+    def disable_end_user_app_creation(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "disable_end_user_app_creation", value)
 
     @_builtins.property
     @pulumi.getter(name="isUiReadOnly")
@@ -381,6 +397,7 @@ class _AccessOrganizationState:
                  custom_pages: pulumi.Input[Optional['AccessOrganizationCustomPagesArgs']] = None,
                  deny_unmatched_requests: pulumi.Input[Optional[_builtins.bool]] = None,
                  deny_unmatched_requests_exempted_zone_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 disable_end_user_app_creation: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_ui_read_only: pulumi.Input[Optional[_builtins.bool]] = None,
                  login_design: pulumi.Input[Optional['AccessOrganizationLoginDesignArgs']] = None,
                  mfa_config: pulumi.Input[Optional['AccessOrganizationMfaConfigArgs']] = None,
@@ -406,6 +423,7 @@ class _AccessOrganizationState:
         :param pulumi.Input[_builtins.bool] auto_redirect_to_identity: When set to `true`, users skip the identity provider selection step during login.
         :param pulumi.Input[_builtins.bool] deny_unmatched_requests: Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `deny_unmatched_requests_exempted_zone_names` array.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] deny_unmatched_requests_exempted_zone_names: Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
+        :param pulumi.Input[_builtins.bool] disable_end_user_app_creation: Whether creation of end user applications is disabled for this organization.
         :param pulumi.Input[_builtins.bool] is_ui_read_only: Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
         :param pulumi.Input['AccessOrganizationMfaConfigArgs'] mfa_config: Configures multi-factor authentication (MFA) settings for an organization.
         :param pulumi.Input[_builtins.bool] mfa_configuration_allowed: Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
@@ -436,6 +454,8 @@ class _AccessOrganizationState:
             pulumi.set(__self__, "deny_unmatched_requests", deny_unmatched_requests)
         if deny_unmatched_requests_exempted_zone_names is not None:
             pulumi.set(__self__, "deny_unmatched_requests_exempted_zone_names", deny_unmatched_requests_exempted_zone_names)
+        if disable_end_user_app_creation is not None:
+            pulumi.set(__self__, "disable_end_user_app_creation", disable_end_user_app_creation)
         if is_ui_read_only is not None:
             pulumi.set(__self__, "is_ui_read_only", is_ui_read_only)
         if login_design is not None:
@@ -549,6 +569,18 @@ class _AccessOrganizationState:
     @deny_unmatched_requests_exempted_zone_names.setter
     def deny_unmatched_requests_exempted_zone_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "deny_unmatched_requests_exempted_zone_names", value)
+
+    @_builtins.property
+    @pulumi.getter(name="disableEndUserAppCreation")
+    def disable_end_user_app_creation(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether creation of end user applications is disabled for this organization.
+        """
+        return pulumi.get(self, "disable_end_user_app_creation")
+
+    @disable_end_user_app_creation.setter
+    def disable_end_user_app_creation(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "disable_end_user_app_creation", value)
 
     @_builtins.property
     @pulumi.getter(name="isUiReadOnly")
@@ -758,6 +790,7 @@ class AccessOrganization(pulumi.CustomResource):
                  custom_pages: pulumi.Input[Optional[Union['AccessOrganizationCustomPagesArgs', 'AccessOrganizationCustomPagesArgsDict', 'outputs.AccessOrganizationCustomPages']]] = None,
                  deny_unmatched_requests: pulumi.Input[Optional[_builtins.bool]] = None,
                  deny_unmatched_requests_exempted_zone_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 disable_end_user_app_creation: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_ui_read_only: pulumi.Input[Optional[_builtins.bool]] = None,
                  login_design: pulumi.Input[Optional[Union['AccessOrganizationLoginDesignArgs', 'AccessOrganizationLoginDesignArgsDict', 'outputs.AccessOrganizationLoginDesign']]] = None,
                  mfa_config: pulumi.Input[Optional[Union['AccessOrganizationMfaConfigArgs', 'AccessOrganizationMfaConfigArgsDict', 'outputs.AccessOrganizationMfaConfig']]] = None,
@@ -798,6 +831,7 @@ class AccessOrganization(pulumi.CustomResource):
             },
             deny_unmatched_requests=True,
             deny_unmatched_requests_exempted_zone_names=["example.com"],
+            disable_end_user_app_creation=False,
             is_ui_read_only=True,
             login_design={
                 "background_color": "#c5ed1b",
@@ -859,6 +893,7 @@ class AccessOrganization(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] auto_redirect_to_identity: When set to `true`, users skip the identity provider selection step during login.
         :param pulumi.Input[_builtins.bool] deny_unmatched_requests: Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `deny_unmatched_requests_exempted_zone_names` array.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] deny_unmatched_requests_exempted_zone_names: Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
+        :param pulumi.Input[_builtins.bool] disable_end_user_app_creation: Whether creation of end user applications is disabled for this organization.
         :param pulumi.Input[_builtins.bool] is_ui_read_only: Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
         :param pulumi.Input[Union['AccessOrganizationMfaConfigArgs', 'AccessOrganizationMfaConfigArgsDict', 'outputs.AccessOrganizationMfaConfig']] mfa_config: Configures multi-factor authentication (MFA) settings for an organization.
         :param pulumi.Input[_builtins.bool] mfa_configuration_allowed: Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
@@ -904,6 +939,7 @@ class AccessOrganization(pulumi.CustomResource):
             },
             deny_unmatched_requests=True,
             deny_unmatched_requests_exempted_zone_names=["example.com"],
+            disable_end_user_app_creation=False,
             is_ui_read_only=True,
             login_design={
                 "background_color": "#c5ed1b",
@@ -979,6 +1015,7 @@ class AccessOrganization(pulumi.CustomResource):
                  custom_pages: pulumi.Input[Optional[Union['AccessOrganizationCustomPagesArgs', 'AccessOrganizationCustomPagesArgsDict', 'outputs.AccessOrganizationCustomPages']]] = None,
                  deny_unmatched_requests: pulumi.Input[Optional[_builtins.bool]] = None,
                  deny_unmatched_requests_exempted_zone_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 disable_end_user_app_creation: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_ui_read_only: pulumi.Input[Optional[_builtins.bool]] = None,
                  login_design: pulumi.Input[Optional[Union['AccessOrganizationLoginDesignArgs', 'AccessOrganizationLoginDesignArgsDict', 'outputs.AccessOrganizationLoginDesign']]] = None,
                  mfa_config: pulumi.Input[Optional[Union['AccessOrganizationMfaConfigArgs', 'AccessOrganizationMfaConfigArgsDict', 'outputs.AccessOrganizationMfaConfig']]] = None,
@@ -1011,6 +1048,7 @@ class AccessOrganization(pulumi.CustomResource):
             __props__.__dict__["custom_pages"] = custom_pages
             __props__.__dict__["deny_unmatched_requests"] = deny_unmatched_requests
             __props__.__dict__["deny_unmatched_requests_exempted_zone_names"] = deny_unmatched_requests_exempted_zone_names
+            __props__.__dict__["disable_end_user_app_creation"] = disable_end_user_app_creation
             __props__.__dict__["is_ui_read_only"] = is_ui_read_only
             __props__.__dict__["login_design"] = login_design
             __props__.__dict__["mfa_config"] = mfa_config
@@ -1046,6 +1084,7 @@ class AccessOrganization(pulumi.CustomResource):
             custom_pages: pulumi.Input[Optional[Union['AccessOrganizationCustomPagesArgs', 'AccessOrganizationCustomPagesArgsDict', 'outputs.AccessOrganizationCustomPages']]] = None,
             deny_unmatched_requests: pulumi.Input[Optional[_builtins.bool]] = None,
             deny_unmatched_requests_exempted_zone_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            disable_end_user_app_creation: pulumi.Input[Optional[_builtins.bool]] = None,
             is_ui_read_only: pulumi.Input[Optional[_builtins.bool]] = None,
             login_design: pulumi.Input[Optional[Union['AccessOrganizationLoginDesignArgs', 'AccessOrganizationLoginDesignArgsDict', 'outputs.AccessOrganizationLoginDesign']]] = None,
             mfa_config: pulumi.Input[Optional[Union['AccessOrganizationMfaConfigArgs', 'AccessOrganizationMfaConfigArgsDict', 'outputs.AccessOrganizationMfaConfig']]] = None,
@@ -1075,6 +1114,7 @@ class AccessOrganization(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] auto_redirect_to_identity: When set to `true`, users skip the identity provider selection step during login.
         :param pulumi.Input[_builtins.bool] deny_unmatched_requests: Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `deny_unmatched_requests_exempted_zone_names` array.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] deny_unmatched_requests_exempted_zone_names: Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
+        :param pulumi.Input[_builtins.bool] disable_end_user_app_creation: Whether creation of end user applications is disabled for this organization.
         :param pulumi.Input[_builtins.bool] is_ui_read_only: Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
         :param pulumi.Input[Union['AccessOrganizationMfaConfigArgs', 'AccessOrganizationMfaConfigArgsDict', 'outputs.AccessOrganizationMfaConfig']] mfa_config: Configures multi-factor authentication (MFA) settings for an organization.
         :param pulumi.Input[_builtins.bool] mfa_configuration_allowed: Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
@@ -1102,6 +1142,7 @@ class AccessOrganization(pulumi.CustomResource):
         __props__.__dict__["custom_pages"] = custom_pages
         __props__.__dict__["deny_unmatched_requests"] = deny_unmatched_requests
         __props__.__dict__["deny_unmatched_requests_exempted_zone_names"] = deny_unmatched_requests_exempted_zone_names
+        __props__.__dict__["disable_end_user_app_creation"] = disable_end_user_app_creation
         __props__.__dict__["is_ui_read_only"] = is_ui_read_only
         __props__.__dict__["login_design"] = login_design
         __props__.__dict__["mfa_config"] = mfa_config
@@ -1130,6 +1171,7 @@ class AccessOrganization(pulumi.CustomResource):
             custom_pages: pulumi.Input[Optional[Union['AccessOrganizationCustomPagesArgs', 'AccessOrganizationCustomPagesArgsDict', 'outputs.AccessOrganizationCustomPages']]] = None,
             deny_unmatched_requests: pulumi.Input[Optional[_builtins.bool]] = None,
             deny_unmatched_requests_exempted_zone_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            disable_end_user_app_creation: pulumi.Input[Optional[_builtins.bool]] = None,
             is_ui_read_only: pulumi.Input[Optional[_builtins.bool]] = None,
             login_design: pulumi.Input[Optional[Union['AccessOrganizationLoginDesignArgs', 'AccessOrganizationLoginDesignArgsDict', 'outputs.AccessOrganizationLoginDesign']]] = None,
             mfa_config: pulumi.Input[Optional[Union['AccessOrganizationMfaConfigArgs', 'AccessOrganizationMfaConfigArgsDict', 'outputs.AccessOrganizationMfaConfig']]] = None,
@@ -1154,6 +1196,7 @@ class AccessOrganization(pulumi.CustomResource):
         __props__["customPages"] = custom_pages
         __props__["denyUnmatchedRequests"] = deny_unmatched_requests
         __props__["denyUnmatchedRequestsExemptedZoneNames"] = deny_unmatched_requests_exempted_zone_names
+        __props__["disableEndUserAppCreation"] = disable_end_user_app_creation
         __props__["isUiReadOnly"] = is_ui_read_only
         __props__["loginDesign"] = login_design
         __props__["mfaConfig"] = mfa_config
@@ -1224,6 +1267,14 @@ class AccessOrganization(pulumi.CustomResource):
         Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
         """
         return pulumi.get(self, "deny_unmatched_requests_exempted_zone_names")
+
+    @_builtins.property
+    @pulumi.getter(name="disableEndUserAppCreation")
+    def disable_end_user_app_creation(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether creation of end user applications is disabled for this organization.
+        """
+        return pulumi.get(self, "disable_end_user_app_creation")
 
     @_builtins.property
     @pulumi.getter(name="isUiReadOnly")

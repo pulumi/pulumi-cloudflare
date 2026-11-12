@@ -23,14 +23,6 @@ public final class GetZoneDnsSettingsResult {
      */
     private Boolean flattenAllCnames;
     /**
-     * @return Deprecated. Use nameservers.type to configure Advanced Nameservers.
-     * 
-     * @deprecated foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
-     * 
-     */
-    @Deprecated
-    private Boolean foundationDns;
-    /**
      * @return Settings for this internal zone.
      * 
      */
@@ -79,16 +71,6 @@ public final class GetZoneDnsSettingsResult {
      */
     public Boolean flattenAllCnames() {
         return this.flattenAllCnames;
-    }
-    /**
-     * @return Deprecated. Use nameservers.type to configure Advanced Nameservers.
-     * 
-     * @deprecated foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
-     * 
-     */
-    @Deprecated
-    public Boolean foundationDns() {
-        return this.foundationDns;
     }
     /**
      * @return Settings for this internal zone.
@@ -158,7 +140,6 @@ public final class GetZoneDnsSettingsResult {
     @CustomType.Builder
     public static final class Builder {
         private Boolean flattenAllCnames;
-        private Boolean foundationDns;
         private GetZoneDnsSettingsInternalDns internalDns;
         private Boolean multiProvider;
         private GetZoneDnsSettingsNameservers nameservers;
@@ -171,7 +152,6 @@ public final class GetZoneDnsSettingsResult {
         public Builder(GetZoneDnsSettingsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.flattenAllCnames = defaults.flattenAllCnames;
-    	      this.foundationDns = defaults.foundationDns;
     	      this.internalDns = defaults.internalDns;
     	      this.multiProvider = defaults.multiProvider;
     	      this.nameservers = defaults.nameservers;
@@ -188,14 +168,6 @@ public final class GetZoneDnsSettingsResult {
               throw new MissingRequiredPropertyException("GetZoneDnsSettingsResult", "flattenAllCnames");
             }
             this.flattenAllCnames = flattenAllCnames;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder foundationDns(Boolean foundationDns) {
-            if (foundationDns == null) {
-              throw new MissingRequiredPropertyException("GetZoneDnsSettingsResult", "foundationDns");
-            }
-            this.foundationDns = foundationDns;
             return this;
         }
         @CustomType.Setter
@@ -263,7 +235,6 @@ public final class GetZoneDnsSettingsResult {
         public GetZoneDnsSettingsResult build() {
             final var _resultValue = new GetZoneDnsSettingsResult();
             _resultValue.flattenAllCnames = flattenAllCnames;
-            _resultValue.foundationDns = foundationDns;
             _resultValue.internalDns = internalDns;
             _resultValue.multiProvider = multiProvider;
             _resultValue.nameservers = nameservers;

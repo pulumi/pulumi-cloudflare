@@ -20,6 +20,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Direction { get; set; }
 
         /// <summary>
+        /// Filter to return only expired patterns (`True`) or only patterns that still apply (`False`). Omit to return both.
+        /// </summary>
+        [Input("expired")]
+        public Input<bool>? Expired { get; set; }
+
+        /// <summary>
         /// Field to sort by.
         /// Available values: "pattern", "CreatedAt".
         /// </summary>

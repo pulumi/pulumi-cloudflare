@@ -187,6 +187,8 @@ public final class GetDnsRecordData {
     /**
      * @return Value of the record. This field&#39;s semantics depend on the chosen tag.
      * 
+     * Value.
+     * 
      */
     private String value;
     /**
@@ -438,6 +440,8 @@ public final class GetDnsRecordData {
     }
     /**
      * @return Value of the record. This field&#39;s semantics depend on the chosen tag.
+     * 
+     * Value.
      * 
      */
     public String value() {

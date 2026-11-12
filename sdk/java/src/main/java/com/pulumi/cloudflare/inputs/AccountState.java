@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.AccountLegacyFlagsArgs;
 import com.pulumi.cloudflare.inputs.AccountManagedByArgs;
 import com.pulumi.cloudflare.inputs.AccountSettingsArgs;
 import com.pulumi.cloudflare.inputs.AccountUnitArgs;
@@ -35,6 +36,21 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Legacy account flags.
+     * 
+     */
+    @Import(name="legacyFlags")
+    private @Nullable Output<AccountLegacyFlagsArgs> legacyFlags;
+
+    /**
+     * @return Legacy account flags.
+     * 
+     */
+    public Optional<Output<AccountLegacyFlagsArgs>> legacyFlags() {
+        return Optional.ofNullable(this.legacyFlags);
+    }
+
+    /**
      * Parent container details
      * 
      */
@@ -50,14 +66,14 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Account name
+     * Account name, limited to 65 UTF-8 bytes.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Account name
+     * @return Account name, limited to 65 UTF-8 bytes.
      * 
      */
     public Optional<Output<String>> name() {
@@ -95,6 +111,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
      * Available values: &#34;standard&#34;, &#34;enterprise&#34;.
      * 
      * @deprecated The &#39;type&#39; field should no longer be set through the API.
@@ -105,7 +122,8 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> type;
 
     /**
-     * @return Available values: &#34;standard&#34;, &#34;enterprise&#34;.
+     * @return the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
+     * Available values: &#34;standard&#34;, &#34;enterprise&#34;.
      * 
      * @deprecated The &#39;type&#39; field should no longer be set through the API.
      * 
@@ -134,6 +152,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
 
     private AccountState(AccountState $) {
         this.createdOn = $.createdOn;
+        this.legacyFlags = $.legacyFlags;
         this.managedBy = $.managedBy;
         this.name = $.name;
         this.settings = $.settings;
@@ -182,6 +201,27 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param legacyFlags Legacy account flags.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder legacyFlags(@Nullable Output<AccountLegacyFlagsArgs> legacyFlags) {
+            $.legacyFlags = legacyFlags;
+            return this;
+        }
+
+        /**
+         * @param legacyFlags Legacy account flags.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder legacyFlags(AccountLegacyFlagsArgs legacyFlags) {
+            return legacyFlags(Output.of(legacyFlags));
+        }
+
+        /**
          * @param managedBy Parent container details
          * 
          * @return builder
@@ -203,7 +243,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Account name
+         * @param name Account name, limited to 65 UTF-8 bytes.
          * 
          * @return builder
          * 
@@ -214,7 +254,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Account name
+         * @param name Account name, limited to 65 UTF-8 bytes.
          * 
          * @return builder
          * 
@@ -266,7 +306,8 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Available values: &#34;standard&#34;, &#34;enterprise&#34;.
+         * @param type the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
+         * Available values: &#34;standard&#34;, &#34;enterprise&#34;.
          * 
          * @return builder
          * 
@@ -280,7 +321,8 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Available values: &#34;standard&#34;, &#34;enterprise&#34;.
+         * @param type the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
+         * Available values: &#34;standard&#34;, &#34;enterprise&#34;.
          * 
          * @return builder
          * 

@@ -18,6 +18,7 @@ import javax.annotation.Nullable;
 public final class GetEmailSecurityAllowPoliciesInvokeResult {
     private String accountId;
     private @Nullable String direction;
+    private @Nullable Boolean expired;
     private @Nullable Boolean isAcceptableSender;
     private @Nullable Boolean isExemptRecipient;
     private @Nullable Boolean isTrustedSender;
@@ -35,6 +36,9 @@ public final class GetEmailSecurityAllowPoliciesInvokeResult {
     }
     public Optional<String> direction() {
         return Optional.ofNullable(this.direction);
+    }
+    public Optional<Boolean> expired() {
+        return Optional.ofNullable(this.expired);
     }
     public Optional<Boolean> isAcceptableSender() {
         return Optional.ofNullable(this.isAcceptableSender);
@@ -78,6 +82,7 @@ public final class GetEmailSecurityAllowPoliciesInvokeResult {
     public static final class Builder {
         private String accountId;
         private @Nullable String direction;
+        private @Nullable Boolean expired;
         private @Nullable Boolean isAcceptableSender;
         private @Nullable Boolean isExemptRecipient;
         private @Nullable Boolean isTrustedSender;
@@ -93,6 +98,7 @@ public final class GetEmailSecurityAllowPoliciesInvokeResult {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.direction = defaults.direction;
+    	      this.expired = defaults.expired;
     	      this.isAcceptableSender = defaults.isAcceptableSender;
     	      this.isExemptRecipient = defaults.isExemptRecipient;
     	      this.isTrustedSender = defaults.isTrustedSender;
@@ -117,6 +123,12 @@ public final class GetEmailSecurityAllowPoliciesInvokeResult {
         public Builder direction(@Nullable String direction) {
 
             this.direction = direction;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder expired(@Nullable Boolean expired) {
+
+            this.expired = expired;
             return this;
         }
         @CustomType.Setter
@@ -188,6 +200,7 @@ public final class GetEmailSecurityAllowPoliciesInvokeResult {
             final var _resultValue = new GetEmailSecurityAllowPoliciesInvokeResult();
             _resultValue.accountId = accountId;
             _resultValue.direction = direction;
+            _resultValue.expired = expired;
             _resultValue.isAcceptableSender = isAcceptableSender;
             _resultValue.isExemptRecipient = isExemptRecipient;
             _resultValue.isTrustedSender = isTrustedSender;

@@ -18,14 +18,14 @@ public final class LoadBalancerRuleOverridesRandomSteeringArgs extends com.pulum
     public static final LoadBalancerRuleOverridesRandomSteeringArgs Empty = new LoadBalancerRuleOverridesRandomSteeringArgs();
 
     /**
-     * The default weight for pools in the load balancer that are not specified in the poolWeights map.
+     * The default weight for pools in the load balancer that are not specified in the poolWeights map. An omitted value inherits the load balancer&#39;s default weight.
      * 
      */
     @Import(name="defaultWeight")
     private @Nullable Output<Double> defaultWeight;
 
     /**
-     * @return The default weight for pools in the load balancer that are not specified in the poolWeights map.
+     * @return The default weight for pools in the load balancer that are not specified in the poolWeights map. An omitted value inherits the load balancer&#39;s default weight.
      * 
      */
     public Optional<Output<Double>> defaultWeight() {
@@ -73,7 +73,7 @@ public final class LoadBalancerRuleOverridesRandomSteeringArgs extends com.pulum
         }
 
         /**
-         * @param defaultWeight The default weight for pools in the load balancer that are not specified in the poolWeights map.
+         * @param defaultWeight The default weight for pools in the load balancer that are not specified in the poolWeights map. An omitted value inherits the load balancer&#39;s default weight.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class LoadBalancerRuleOverridesRandomSteeringArgs extends com.pulum
         }
 
         /**
-         * @param defaultWeight The default weight for pools in the load balancer that are not specified in the poolWeights map.
+         * @param defaultWeight The default weight for pools in the load balancer that are not specified in the poolWeights map. An omitted value inherits the load balancer&#39;s default weight.
          * 
          * @return builder
          * 

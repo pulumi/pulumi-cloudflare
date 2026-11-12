@@ -32,6 +32,7 @@ import (
 // | `alwaysUseHttps` | `"on"` / `"off"` | Reply to all requests for URLs that use "http" with a 301 redirect to the equ... |
 // | `automaticHttpsRewrites` | `"on"` / `"off"` | Enable the Automatic HTTPS Rewrites feature for this zone. |
 // | `automaticPlatformOptimization` | Object | [Automatic Platform Optimization for WordPress](https://developers.cloudflare... |
+// | `avif` | `"on"` / `"off"` | When the client requesting the image supports the AVIF image codec, and AVIF ... |
 // | `brotli` | `"on"` / `"off"` | When the client requesting an asset supports the Brotli compression algorithm... |
 // | `browserCacheTtl` | Number | Browser Cache TTL (in seconds) specifies how long Cloudflare-cached resources... |
 // | `browserCheck` | `"on"` / `"off"` | Browser Integrity Check is similar to Bad Behavior and looks for common HTTP ... |
@@ -140,22 +141,18 @@ type LookupZoneSettingArgs struct {
 
 // A collection of values returned by getZoneSetting.
 type LookupZoneSettingResult struct {
-	// Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).
+	// For `id: 0rtt` or `id: advancedDdos` or `id: alwaysOnline` or `id: alwaysUseHttps` or `id: automaticHttpsRewrites` or `id: brotli` or `id: browserCacheTtl` or `id: browserCheck` or `id: cacheLevel` or `id: challengeTtl` or `id: chinaNetworkEnabled` or `id: contentConverter` or `id: ciphers` or `id: cnameFlattening` or `id: developmentMode` or `id: earlyHints` or `id: edgeCacheTtl` or `id: emailObfuscation` or `id: h2Prioritization` or `id: hotlinkProtection` or `id: http2` or `id: http3` or `id: imageResizing` or `id: ipGeolocation` or `id: ipv6` or `id: maxUpload` or `id: minTlsVersion` or `id: mirage` or `id: nel` or `id: opportunisticEncryption` or `id: opportunisticOnion` or `id: orangeToOrange` or `id: originErrorPagePassThru` or `id: polish` or `id: prefetchPreload` or `id: preRender` or `id: privacyPass` or `id: proxyReadTimeout` or `id: pseudoIpv4` or `id: redirectsForAiTraining` or `id: replaceInsecureJs` or `id: responseBuffering` or `id: rocketLoader` or `id: automaticPlatformOptimization` or `id: searchForAgents` or `id: securityHeader` or `id: securityLevel` or `id: serverSideExclude` or `id: sha1Support` or `id: sortQueryStringForCache` or `id: ssl` or `id: tls12Only` or `id: tls13` or `id: tlsClientAuth` or `id: transformations` or `id: transformationsAllowedOrigins` or `id: trueClientIpHeader` or `id: waf` or `id: webmcpEnabled` or `id: webmcpMcpUrl` or `id: webmcpPacks` or `id: webp` or `id: avif` or `id: websockets`: Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).
 	Editable bool `pulumi:"editable"`
-	// ssl-recommender enrollment setting.
+	// For `id: sslRecommender`: ssl-recommender enrollment setting.
 	Enabled bool `pulumi:"enabled"`
 	// Setting name
 	Id string `pulumi:"id"`
-	// last time this setting was modified.
+	// For `id: 0rtt` or `id: advancedDdos` or `id: alwaysOnline` or `id: alwaysUseHttps` or `id: automaticHttpsRewrites` or `id: brotli` or `id: browserCacheTtl` or `id: browserCheck` or `id: cacheLevel` or `id: challengeTtl` or `id: chinaNetworkEnabled` or `id: contentConverter` or `id: ciphers` or `id: cnameFlattening` or `id: developmentMode` or `id: earlyHints` or `id: edgeCacheTtl` or `id: emailObfuscation` or `id: h2Prioritization` or `id: hotlinkProtection` or `id: http2` or `id: http3` or `id: imageResizing` or `id: ipGeolocation` or `id: ipv6` or `id: maxUpload` or `id: minTlsVersion` or `id: mirage` or `id: nel` or `id: opportunisticEncryption` or `id: opportunisticOnion` or `id: orangeToOrange` or `id: originErrorPagePassThru` or `id: polish` or `id: prefetchPreload` or `id: preRender` or `id: privacyPass` or `id: proxyReadTimeout` or `id: pseudoIpv4` or `id: redirectsForAiTraining` or `id: replaceInsecureJs` or `id: responseBuffering` or `id: rocketLoader` or `id: automaticPlatformOptimization` or `id: searchForAgents` or `id: securityHeader` or `id: securityLevel` or `id: serverSideExclude` or `id: sha1Support` or `id: sortQueryStringForCache` or `id: ssl` or `id: tls12Only` or `id: tls13` or `id: tlsClientAuth` or `id: transformations` or `id: transformationsAllowedOrigins` or `id: trueClientIpHeader` or `id: waf` or `id: webmcpEnabled` or `id: webmcpMcpUrl` or `id: webmcpPacks` or `id: webp` or `id: avif` or `id: websockets`: last time this setting was modified.
 	ModifiedOn string `pulumi:"modifiedOn"`
 	// Setting name
-	SettingId string `pulumi:"settingId"`
-	// Value of the zone setting.
-	// Notes: The interval (in seconds) from when development mode expires (positive integer) or last expired (negative integer) for the domain. If development mode has never been enabled, this value is false.
+	SettingId     string  `pulumi:"settingId"`
 	TimeRemaining float64 `pulumi:"timeRemaining"`
-	// Current value of the zone setting.
-	// Available values: "on", "off".
-	Value string `pulumi:"value"`
+	Value         string  `pulumi:"value"`
 	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -192,12 +189,12 @@ func (o LookupZoneSettingResultOutput) ToLookupZoneSettingResultOutputWithContex
 	return o
 }
 
-// Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).
+// For `id: 0rtt` or `id: advancedDdos` or `id: alwaysOnline` or `id: alwaysUseHttps` or `id: automaticHttpsRewrites` or `id: brotli` or `id: browserCacheTtl` or `id: browserCheck` or `id: cacheLevel` or `id: challengeTtl` or `id: chinaNetworkEnabled` or `id: contentConverter` or `id: ciphers` or `id: cnameFlattening` or `id: developmentMode` or `id: earlyHints` or `id: edgeCacheTtl` or `id: emailObfuscation` or `id: h2Prioritization` or `id: hotlinkProtection` or `id: http2` or `id: http3` or `id: imageResizing` or `id: ipGeolocation` or `id: ipv6` or `id: maxUpload` or `id: minTlsVersion` or `id: mirage` or `id: nel` or `id: opportunisticEncryption` or `id: opportunisticOnion` or `id: orangeToOrange` or `id: originErrorPagePassThru` or `id: polish` or `id: prefetchPreload` or `id: preRender` or `id: privacyPass` or `id: proxyReadTimeout` or `id: pseudoIpv4` or `id: redirectsForAiTraining` or `id: replaceInsecureJs` or `id: responseBuffering` or `id: rocketLoader` or `id: automaticPlatformOptimization` or `id: searchForAgents` or `id: securityHeader` or `id: securityLevel` or `id: serverSideExclude` or `id: sha1Support` or `id: sortQueryStringForCache` or `id: ssl` or `id: tls12Only` or `id: tls13` or `id: tlsClientAuth` or `id: transformations` or `id: transformationsAllowedOrigins` or `id: trueClientIpHeader` or `id: waf` or `id: webmcpEnabled` or `id: webmcpMcpUrl` or `id: webmcpPacks` or `id: webp` or `id: avif` or `id: websockets`: Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).
 func (o LookupZoneSettingResultOutput) Editable() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupZoneSettingResult) bool { return v.Editable }).(pulumi.BoolOutput)
 }
 
-// ssl-recommender enrollment setting.
+// For `id: sslRecommender`: ssl-recommender enrollment setting.
 func (o LookupZoneSettingResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupZoneSettingResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -207,7 +204,7 @@ func (o LookupZoneSettingResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneSettingResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// last time this setting was modified.
+// For `id: 0rtt` or `id: advancedDdos` or `id: alwaysOnline` or `id: alwaysUseHttps` or `id: automaticHttpsRewrites` or `id: brotli` or `id: browserCacheTtl` or `id: browserCheck` or `id: cacheLevel` or `id: challengeTtl` or `id: chinaNetworkEnabled` or `id: contentConverter` or `id: ciphers` or `id: cnameFlattening` or `id: developmentMode` or `id: earlyHints` or `id: edgeCacheTtl` or `id: emailObfuscation` or `id: h2Prioritization` or `id: hotlinkProtection` or `id: http2` or `id: http3` or `id: imageResizing` or `id: ipGeolocation` or `id: ipv6` or `id: maxUpload` or `id: minTlsVersion` or `id: mirage` or `id: nel` or `id: opportunisticEncryption` or `id: opportunisticOnion` or `id: orangeToOrange` or `id: originErrorPagePassThru` or `id: polish` or `id: prefetchPreload` or `id: preRender` or `id: privacyPass` or `id: proxyReadTimeout` or `id: pseudoIpv4` or `id: redirectsForAiTraining` or `id: replaceInsecureJs` or `id: responseBuffering` or `id: rocketLoader` or `id: automaticPlatformOptimization` or `id: searchForAgents` or `id: securityHeader` or `id: securityLevel` or `id: serverSideExclude` or `id: sha1Support` or `id: sortQueryStringForCache` or `id: ssl` or `id: tls12Only` or `id: tls13` or `id: tlsClientAuth` or `id: transformations` or `id: transformationsAllowedOrigins` or `id: trueClientIpHeader` or `id: waf` or `id: webmcpEnabled` or `id: webmcpMcpUrl` or `id: webmcpPacks` or `id: webp` or `id: avif` or `id: websockets`: last time this setting was modified.
 func (o LookupZoneSettingResultOutput) ModifiedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneSettingResult) string { return v.ModifiedOn }).(pulumi.StringOutput)
 }
@@ -217,14 +214,10 @@ func (o LookupZoneSettingResultOutput) SettingId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneSettingResult) string { return v.SettingId }).(pulumi.StringOutput)
 }
 
-// Value of the zone setting.
-// Notes: The interval (in seconds) from when development mode expires (positive integer) or last expired (negative integer) for the domain. If development mode has never been enabled, this value is false.
 func (o LookupZoneSettingResultOutput) TimeRemaining() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupZoneSettingResult) float64 { return v.TimeRemaining }).(pulumi.Float64Output)
 }
 
-// Current value of the zone setting.
-// Available values: "on", "off".
 func (o LookupZoneSettingResultOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneSettingResult) string { return v.Value }).(pulumi.StringOutput)
 }

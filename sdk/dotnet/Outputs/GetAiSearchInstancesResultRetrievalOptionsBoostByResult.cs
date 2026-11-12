@@ -14,21 +14,24 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetAiSearchInstancesResultRetrievalOptionsBoostByResult
     {
         /// <summary>
-        /// Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not*exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields.
-        /// Available values: "asc", "desc", "exists", "not*exists".
+        /// Available values: "number", "datetime", "text", "boolean".
+        /// </summary>
+        public readonly string DataType;
+        /// <summary>
+        /// Available values: "asc", "desc", "exists", "NotExists".
         /// </summary>
         public readonly string Direction;
-        /// <summary>
-        /// Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom*metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not*exists); text/boolean fields only support exists/not_exists.
-        /// </summary>
         public readonly string Field;
 
         [OutputConstructor]
         private GetAiSearchInstancesResultRetrievalOptionsBoostByResult(
+            string dataType,
+
             string direction,
 
             string field)
         {
+            DataType = dataType;
             Direction = direction;
             Field = field;
         }

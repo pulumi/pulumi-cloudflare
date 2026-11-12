@@ -31,6 +31,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Direction = "asc",
+        ///         Expired = true,
         ///         Order = "pattern",
         ///         Pattern = "pattern",
         ///         PatternType = "EMAIL",
@@ -63,6 +64,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Direction = "asc",
+        ///         Expired = true,
         ///         Order = "pattern",
         ///         Pattern = "pattern",
         ///         PatternType = "EMAIL",
@@ -95,6 +97,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Direction = "asc",
+        ///         Expired = true,
         ///         Order = "pattern",
         ///         Pattern = "pattern",
         ///         PatternType = "EMAIL",
@@ -116,6 +119,9 @@ namespace Pulumi.Cloudflare
 
         [Input("direction")]
         public string? Direction { get; set; }
+
+        [Input("expired")]
+        public bool? Expired { get; set; }
 
         [Input("maxItems")]
         public int? MaxItems { get; set; }
@@ -146,6 +152,9 @@ namespace Pulumi.Cloudflare
         [Input("direction")]
         public Input<string>? Direction { get; set; }
 
+        [Input("expired")]
+        public Input<bool>? Expired { get; set; }
+
         [Input("maxItems")]
         public Input<int>? MaxItems { get; set; }
 
@@ -173,6 +182,7 @@ namespace Pulumi.Cloudflare
     {
         public readonly string AccountId;
         public readonly string? Direction;
+        public readonly bool? Expired;
         public readonly int? MaxItems;
         public readonly string? Order;
         public readonly string? Pattern;
@@ -185,6 +195,8 @@ namespace Pulumi.Cloudflare
             string accountId,
 
             string? direction,
+
+            bool? expired,
 
             int? maxItems,
 
@@ -200,6 +212,7 @@ namespace Pulumi.Cloudflare
         {
             AccountId = accountId;
             Direction = direction;
+            Expired = expired;
             MaxItems = maxItems;
             Order = order;
             Pattern = pattern;

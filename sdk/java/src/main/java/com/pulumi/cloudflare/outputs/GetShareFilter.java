@@ -20,6 +20,12 @@ public final class GetShareFilter {
      */
     private String direction;
     /**
+     * @return Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+     * Available values: &#34;api&#34;, &#34;mirror&#34;.
+     * 
+     */
+    private @Nullable String includeTagsFrom;
+    /**
      * @return Filter shares by kind.
      * Available values: &#34;sent&#34;, &#34;received&#34;.
      * 
@@ -62,6 +68,14 @@ public final class GetShareFilter {
      */
     public String direction() {
         return this.direction;
+    }
+    /**
+     * @return Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+     * Available values: &#34;api&#34;, &#34;mirror&#34;.
+     * 
+     */
+    public Optional<String> includeTagsFrom() {
+        return Optional.ofNullable(this.includeTagsFrom);
     }
     /**
      * @return Filter shares by kind.
@@ -120,6 +134,7 @@ public final class GetShareFilter {
     @CustomType.Builder
     public static final class Builder {
         private String direction;
+        private @Nullable String includeTagsFrom;
         private @Nullable String kind;
         private String order;
         private @Nullable List<String> resourceTypes;
@@ -130,6 +145,7 @@ public final class GetShareFilter {
         public Builder(GetShareFilter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.direction = defaults.direction;
+    	      this.includeTagsFrom = defaults.includeTagsFrom;
     	      this.kind = defaults.kind;
     	      this.order = defaults.order;
     	      this.resourceTypes = defaults.resourceTypes;
@@ -144,6 +160,12 @@ public final class GetShareFilter {
               throw new MissingRequiredPropertyException("GetShareFilter", "direction");
             }
             this.direction = direction;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder includeTagsFrom(@Nullable String includeTagsFrom) {
+
+            this.includeTagsFrom = includeTagsFrom;
             return this;
         }
         @CustomType.Setter
@@ -193,6 +215,7 @@ public final class GetShareFilter {
         public GetShareFilter build() {
             final var _resultValue = new GetShareFilter();
             _resultValue.direction = direction;
+            _resultValue.includeTagsFrom = includeTagsFrom;
             _resultValue.kind = kind;
             _resultValue.order = order;
             _resultValue.resourceTypes = resourceTypes;

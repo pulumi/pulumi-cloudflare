@@ -106,6 +106,15 @@ export interface GetSpectrumApplicationResult {
      */
     readonly originWorkerId: string;
     /**
+     * Name of the Worker origin. Omitted when the Worker is not found or its name cannot be resolved.
+     */
+    readonly originWorkerName: string;
+    /**
+     * Lookup status of the Worker origin. Unknown indicates that its name could not be resolved. Only returned for Worker origins.
+     * Available values: "available", "notFound", "unknown".
+     */
+    readonly originWorkerStatus: string;
+    /**
      * The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`.
      */
     readonly protocol: string;

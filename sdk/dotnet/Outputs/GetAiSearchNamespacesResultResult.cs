@@ -18,6 +18,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// Optional description for the namespace. Max 256 characters.
         /// </summary>
         public readonly string Description;
+        public readonly string Id;
         public readonly string Name;
         public readonly string PublicEndpointId;
         public readonly Outputs.GetAiSearchNamespacesResultPublicEndpointParamsResult PublicEndpointParams;
@@ -28,6 +29,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string description,
 
+            string id,
+
             string name,
 
             string publicEndpointId,
@@ -36,6 +39,7 @@ namespace Pulumi.Cloudflare.Outputs
         {
             CreatedAt = createdAt;
             Description = description;
+            Id = id;
             Name = name;
             PublicEndpointId = publicEndpointId;
             PublicEndpointParams = publicEndpointParams;

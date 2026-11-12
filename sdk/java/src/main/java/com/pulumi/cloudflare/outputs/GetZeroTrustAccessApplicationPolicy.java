@@ -62,7 +62,7 @@ public final class GetZeroTrustAccessApplicationPolicy {
      */
     private Boolean isolationRequired;
     /**
-     * @return Configures multi-factor authentication (MFA) settings for this policy.
+     * @return Configures multi-factor authentication (MFA) settings for this policy. For infrastructure applications, supported authenticators are `pivKey` and `sshFido2Key`; for other application types use `totp`, `biometrics`, or `securityKey`.
      * 
      */
     private GetZeroTrustAccessApplicationPolicyMfaConfig mfaConfig;
@@ -160,7 +160,7 @@ public final class GetZeroTrustAccessApplicationPolicy {
         return this.isolationRequired;
     }
     /**
-     * @return Configures multi-factor authentication (MFA) settings for this policy.
+     * @return Configures multi-factor authentication (MFA) settings for this policy. For infrastructure applications, supported authenticators are `pivKey` and `sshFido2Key`; for other application types use `totp`, `biometrics`, or `securityKey`.
      * 
      */
     public GetZeroTrustAccessApplicationPolicyMfaConfig mfaConfig() {

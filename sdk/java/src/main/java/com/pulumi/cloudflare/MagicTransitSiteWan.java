@@ -58,10 +58,13 @@ import javax.annotation.Nullable;
  *             .loadBalanceInnerFlows(true)
  *             .name("name")
  *             .priority(0)
+ *             .provisionedDownloadKbps(500)
+ *             .provisionedUploadKbps(100)
  *             .staticAddressing(MagicTransitSiteWanStaticAddressingArgs.builder()
  *                 .address("192.0.2.0/24")
  *                 .gatewayAddress("192.0.2.1")
  *                 .secondaryAddress("192.0.2.0/24")
+ *                 .secondaryGatewayAddress("192.0.2.1")
  *                 .build())
  *             .vlanTag(42)
  *             .build());
@@ -135,6 +138,34 @@ public class MagicTransitSiteWan extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.priority);
     }
     /**
+     * Provisioned download rate of the WAN circuit in kilobits per second.
+     * 
+     */
+    @Export(name="provisionedDownloadKbps", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> provisionedDownloadKbps;
+
+    /**
+     * @return Provisioned download rate of the WAN circuit in kilobits per second.
+     * 
+     */
+    public Output<Optional<Integer>> provisionedDownloadKbps() {
+        return Codegen.optional(this.provisionedDownloadKbps);
+    }
+    /**
+     * Provisioned upload rate of the WAN circuit in kilobits per second.
+     * 
+     */
+    @Export(name="provisionedUploadKbps", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> provisionedUploadKbps;
+
+    /**
+     * @return Provisioned upload rate of the WAN circuit in kilobits per second.
+     * 
+     */
+    public Output<Optional<Integer>> provisionedUploadKbps() {
+        return Codegen.optional(this.provisionedUploadKbps);
+    }
+    /**
      * Identifier
      * 
      */
@@ -149,14 +180,14 @@ public class MagicTransitSiteWan extends com.pulumi.resources.CustomResource {
         return this.siteId;
     }
     /**
-     * (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
+     * Static addressing configuration for a WAN. Omit to use DHCP. Submit secondary*address when the site is in high availability mode.
      * 
      */
     @Export(name="staticAddressing", refs={MagicTransitSiteWanStaticAddressing.class}, tree="[0]")
     private Output</* @Nullable */ MagicTransitSiteWanStaticAddressing> staticAddressing;
 
     /**
-     * @return (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
+     * @return Static addressing configuration for a WAN. Omit to use DHCP. Submit secondary*address when the site is in high availability mode.
      * 
      */
     public Output<Optional<MagicTransitSiteWanStaticAddressing>> staticAddressing() {

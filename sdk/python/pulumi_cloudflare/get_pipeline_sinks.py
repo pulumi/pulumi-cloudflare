@@ -27,16 +27,22 @@ class GetPipelineSinksResult:
     """
     A collection of values returned by getPipelineSinks.
     """
-    def __init__(__self__, account_id=None, max_items=None, name=None, pipeline_id=None, results=None):
+    def __init__(__self__, account_id=None, direction=None, max_items=None, name=None, order_by=None, pipeline_id=None, results=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
+        if direction and not isinstance(direction, str):
+            raise TypeError("Expected argument 'direction' to be a str")
+        pulumi.set(__self__, "direction", direction)
         if max_items and not isinstance(max_items, int):
             raise TypeError("Expected argument 'max_items' to be a int")
         pulumi.set(__self__, "max_items", max_items)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if order_by and not isinstance(order_by, str):
+            raise TypeError("Expected argument 'order_by' to be a str")
+        pulumi.set(__self__, "order_by", order_by)
         if pipeline_id and not isinstance(pipeline_id, str):
             raise TypeError("Expected argument 'pipeline_id' to be a str")
         pulumi.set(__self__, "pipeline_id", pipeline_id)
@@ -53,6 +59,15 @@ class GetPipelineSinksResult:
         return pulumi.get(self, "account_id")
 
     @_builtins.property
+    @pulumi.getter
+    def direction(self) -> _builtins.str:
+        """
+        Sort direction.
+        Available values: "asc", "desc".
+        """
+        return pulumi.get(self, "direction")
+
+    @_builtins.property
     @pulumi.getter(name="maxItems")
     def max_items(self) -> Optional[_builtins.int]:
         """
@@ -67,6 +82,15 @@ class GetPipelineSinksResult:
         Filters sinks by name (case-insensitive substring).
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="orderBy")
+    def order_by(self) -> Optional[_builtins.str]:
+        """
+        Sorts sinks by this field. Defaults to `created_at`.
+        Available values: "name", "created_at".
+        """
+        return pulumi.get(self, "order_by")
 
     @_builtins.property
     @pulumi.getter(name="pipelineId")
@@ -89,15 +113,19 @@ class AwaitableGetPipelineSinksResult(GetPipelineSinksResult):
             yield self
         return GetPipelineSinksResult(
             account_id=self.account_id,
+            direction=self.direction,
             max_items=self.max_items,
             name=self.name,
+            order_by=self.order_by,
             pipeline_id=self.pipeline_id,
             results=self.results)
 
 
 def get_pipeline_sinks(account_id: Optional[_builtins.str] = None,
+                       direction: Optional[_builtins.str] = None,
                        max_items: Optional[_builtins.int] = None,
                        name: Optional[_builtins.str] = None,
+                       order_by: Optional[_builtins.str] = None,
                        pipeline_id: Optional[_builtins.str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPipelineSinksResult:
     """
@@ -114,31 +142,42 @@ def get_pipeline_sinks(account_id: Optional[_builtins.str] = None,
 
     example_pipeline_sinks = cloudflare.get_pipeline_sinks(account_id="0123105f4ecef8ad9ca31a8372d0c353",
         name="x",
+        order_by="name",
         pipeline_id="pipeline_id")
     ```
 
 
     :param _builtins.str account_id: Specifies the public ID of the account.
+    :param _builtins.str direction: Sort direction.
+           Available values: "asc", "desc".
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str name: Filters sinks by name (case-insensitive substring).
+    :param _builtins.str order_by: Sorts sinks by this field. Defaults to `created_at`.
+           Available values: "name", "created_at".
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['direction'] = direction
     __args__['maxItems'] = max_items
     __args__['name'] = name
+    __args__['orderBy'] = order_by
     __args__['pipelineId'] = pipeline_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getPipelineSinks:getPipelineSinks', __args__, opts=opts, typ=GetPipelineSinksResult).value
 
     return AwaitableGetPipelineSinksResult(
         account_id=pulumi.get(__ret__, 'account_id'),
+        direction=pulumi.get(__ret__, 'direction'),
         max_items=pulumi.get(__ret__, 'max_items'),
         name=pulumi.get(__ret__, 'name'),
+        order_by=pulumi.get(__ret__, 'order_by'),
         pipeline_id=pulumi.get(__ret__, 'pipeline_id'),
         results=pulumi.get(__ret__, 'results'))
 def get_pipeline_sinks_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              direction: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                               name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               pipeline_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPipelineSinksResult]:
     """
@@ -155,24 +194,33 @@ def get_pipeline_sinks_output(account_id: pulumi.Input[Optional[Optional[_builti
 
     example_pipeline_sinks = cloudflare.get_pipeline_sinks(account_id="0123105f4ecef8ad9ca31a8372d0c353",
         name="x",
+        order_by="name",
         pipeline_id="pipeline_id")
     ```
 
 
     :param _builtins.str account_id: Specifies the public ID of the account.
+    :param _builtins.str direction: Sort direction.
+           Available values: "asc", "desc".
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str name: Filters sinks by name (case-insensitive substring).
+    :param _builtins.str order_by: Sorts sinks by this field. Defaults to `created_at`.
+           Available values: "name", "created_at".
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['direction'] = direction
     __args__['maxItems'] = max_items
     __args__['name'] = name
+    __args__['orderBy'] = order_by
     __args__['pipelineId'] = pipeline_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getPipelineSinks:getPipelineSinks', __args__, opts=opts, typ=GetPipelineSinksResult)
     return __ret__.apply(lambda __response__: GetPipelineSinksResult(
         account_id=pulumi.get(__response__, 'account_id'),
+        direction=pulumi.get(__response__, 'direction'),
         max_items=pulumi.get(__response__, 'max_items'),
         name=pulumi.get(__response__, 'name'),
+        order_by=pulumi.get(__response__, 'order_by'),
         pipeline_id=pulumi.get(__response__, 'pipeline_id'),
         results=pulumi.get(__response__, 'results')))

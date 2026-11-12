@@ -31,6 +31,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "0123105f4ecef8ad9ca31a8372d0c353",
         ///         Name = "x",
+        ///         OrderBy = "name",
         ///         PipelineId = "043e105f4ecef8ad9ca31a8372d0c353",
         ///     });
         /// 
@@ -60,6 +61,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "0123105f4ecef8ad9ca31a8372d0c353",
         ///         Name = "x",
+        ///         OrderBy = "name",
         ///         PipelineId = "043e105f4ecef8ad9ca31a8372d0c353",
         ///     });
         /// 
@@ -89,6 +91,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "0123105f4ecef8ad9ca31a8372d0c353",
         ///         Name = "x",
+        ///         OrderBy = "name",
         ///         PipelineId = "043e105f4ecef8ad9ca31a8372d0c353",
         ///     });
         /// 
@@ -109,6 +112,13 @@ namespace Pulumi.Cloudflare
         public string? AccountId { get; set; }
 
         /// <summary>
+        /// Sort direction.
+        /// Available values: "asc", "desc".
+        /// </summary>
+        [Input("direction")]
+        public string? Direction { get; set; }
+
+        /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         [Input("maxItems")]
@@ -119,6 +129,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
+
+        /// <summary>
+        /// Sorts streams by this field. Defaults to `CreatedAt`.
+        /// Available values: "name", "CreatedAt".
+        /// </summary>
+        [Input("orderBy")]
+        public string? OrderBy { get; set; }
 
         /// <summary>
         /// Specifies the public ID of the pipeline.
@@ -141,6 +158,13 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
+        /// Sort direction.
+        /// Available values: "asc", "desc".
+        /// </summary>
+        [Input("direction")]
+        public Input<string>? Direction { get; set; }
+
+        /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         [Input("maxItems")]
@@ -151,6 +175,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Sorts streams by this field. Defaults to `CreatedAt`.
+        /// Available values: "name", "CreatedAt".
+        /// </summary>
+        [Input("orderBy")]
+        public Input<string>? OrderBy { get; set; }
 
         /// <summary>
         /// Specifies the public ID of the pipeline.
@@ -173,6 +204,11 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string? AccountId;
         /// <summary>
+        /// Sort direction.
+        /// Available values: "asc", "desc".
+        /// </summary>
+        public readonly string Direction;
+        /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         public readonly int? MaxItems;
@@ -180,6 +216,11 @@ namespace Pulumi.Cloudflare
         /// Filters streams by name (case-insensitive substring).
         /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// Sorts streams by this field. Defaults to `CreatedAt`.
+        /// Available values: "name", "CreatedAt".
+        /// </summary>
+        public readonly string? OrderBy;
         /// <summary>
         /// Specifies the public ID of the pipeline.
         /// </summary>
@@ -193,17 +234,23 @@ namespace Pulumi.Cloudflare
         private GetPipelineStreamsResult(
             string? accountId,
 
+            string direction,
+
             int? maxItems,
 
             string? name,
+
+            string? orderBy,
 
             string? pipelineId,
 
             ImmutableArray<Outputs.GetPipelineStreamsResultResult> results)
         {
             AccountId = accountId;
+            Direction = direction;
             MaxItems = maxItems;
             Name = name;
+            OrderBy = orderBy;
             PipelineId = pipelineId;
             Results = results;
         }

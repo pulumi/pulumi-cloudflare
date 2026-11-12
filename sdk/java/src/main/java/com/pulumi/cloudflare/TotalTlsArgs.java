@@ -18,7 +18,7 @@ public final class TotalTlsArgs extends com.pulumi.resources.ResourceArgs {
     public static final TotalTlsArgs Empty = new TotalTlsArgs();
 
     /**
-     * The Certificate Authority that Total TLS certificates will be issued through.
+     * The Certificate Authority that Total TLS certificates will be issued through. Not returned in responses when Total TLS is disabled.
      * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
      * 
      */
@@ -26,7 +26,7 @@ public final class TotalTlsArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> certificateAuthority;
 
     /**
-     * @return The Certificate Authority that Total TLS certificates will be issued through.
+     * @return The Certificate Authority that Total TLS certificates will be issued through. Not returned in responses when Total TLS is disabled.
      * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
      * 
      */
@@ -91,7 +91,7 @@ public final class TotalTlsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificateAuthority The Certificate Authority that Total TLS certificates will be issued through.
+         * @param certificateAuthority The Certificate Authority that Total TLS certificates will be issued through. Not returned in responses when Total TLS is disabled.
          * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
          * 
          * @return builder
@@ -103,7 +103,7 @@ public final class TotalTlsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificateAuthority The Certificate Authority that Total TLS certificates will be issued through.
+         * @param certificateAuthority The Certificate Authority that Total TLS certificates will be issued through. Not returned in responses when Total TLS is disabled.
          * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
          * 
          * @return builder

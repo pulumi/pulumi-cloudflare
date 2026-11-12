@@ -76,39 +76,39 @@ export class ZeroTrustDeviceSettings extends pulumi.CustomResource {
     /**
      * Sets the time limit, in seconds, that a user can use an override code to bypass WARP.
      */
-    declare public readonly disableForTime: pulumi.Output<number | undefined>;
+    declare public readonly disableForTime: pulumi.Output<number>;
     /**
      * Controls whether the external emergency disconnect feature is enabled.
      */
-    declare public readonly externalEmergencySignalEnabled: pulumi.Output<boolean | undefined>;
+    declare public readonly externalEmergencySignalEnabled: pulumi.Output<boolean>;
     /**
      * The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external*emergency*signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.
      */
-    declare public readonly externalEmergencySignalFingerprint: pulumi.Output<string | undefined>;
+    declare public readonly externalEmergencySignalFingerprint: pulumi.Output<string>;
     /**
      * The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., "5m", "2m30s", "1h"). Minimum 30 seconds.
      */
-    declare public readonly externalEmergencySignalInterval: pulumi.Output<string | undefined>;
+    declare public readonly externalEmergencySignalInterval: pulumi.Output<string>;
     /**
      * The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.
      */
-    declare public readonly externalEmergencySignalUrl: pulumi.Output<string | undefined>;
+    declare public readonly externalEmergencySignalUrl: pulumi.Output<string>;
     /**
      * Enable gateway proxy filtering on TCP.
      */
-    declare public readonly gatewayProxyEnabled: pulumi.Output<boolean | undefined>;
+    declare public readonly gatewayProxyEnabled: pulumi.Output<boolean>;
     /**
      * Enable gateway proxy filtering on UDP.
      */
-    declare public readonly gatewayUdpProxyEnabled: pulumi.Output<boolean | undefined>;
+    declare public readonly gatewayUdpProxyEnabled: pulumi.Output<boolean>;
     /**
      * Enable installation of cloudflare managed root certificate.
      */
-    declare public readonly rootCertificateInstallationEnabled: pulumi.Output<boolean | undefined>;
+    declare public readonly rootCertificateInstallationEnabled: pulumi.Output<boolean>;
     /**
      * Enable using CGNAT virtual IPv4.
      */
-    declare public readonly useZtVirtualIp: pulumi.Output<boolean | undefined>;
+    declare public readonly useZtVirtualIp: pulumi.Output<boolean>;
 
     /**
      * Create a ZeroTrustDeviceSettings resource with the given unique name, arguments, and options.

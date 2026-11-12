@@ -12,6 +12,10 @@ import * as utilities from "./utilities";
  * - `User Details Read`
  * - `User Details Write`
  *
+ * User API tokens can list and create Organizations, but reading, updating, or deleting an Organization requires a Global API key and your registered email address. The `cloudflare.Organization` Terraform resource therefore requires a Global API key for its full lifecycle.
+ *
+ * See [Organizations authentication limitations](https://developers.cloudflare.com/fundamentals/organizations/limitations/#api-authentication) for credential compatibility by operation. Each endpoint’s **Security** section lists its supported authentication methods, with **Accepted Permissions** where applicable.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -25,11 +29,16 @@ import * as utilities from "./utilities";
  *         organization: "organization",
  *         user: "user",
  *     },
+ *     direction: "asc",
+ *     member: {
+ *         email: "email",
+ *     },
  *     name: {
  *         contains: "contains",
  *         endsWith: "endsWith",
  *         startsWith: "startsWith",
  *     },
+ *     orderBy: "name",
  *     pageSize: 0,
  *     pageToken: "page_token",
  *     parent: {
@@ -43,9 +52,12 @@ export function getOrganizations(args?: GetOrganizationsArgs, opts?: pulumi.Invo
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getOrganizations:getOrganizations", {
         "containing": args.containing,
+        "direction": args.direction,
         "ids": args.ids,
         "maxItems": args.maxItems,
+        "member": args.member,
         "name": args.name,
+        "orderBy": args.orderBy,
         "pageSize": args.pageSize,
         "pageToken": args.pageToken,
         "parent": args.parent,
@@ -58,6 +70,12 @@ export function getOrganizations(args?: GetOrganizationsArgs, opts?: pulumi.Invo
 export interface GetOrganizationsArgs {
     containing?: inputs.GetOrganizationsContaining;
     /**
+     * Sort direction for the `orderBy` field. Defaults to `asc` when `orderBy` is
+     * specified.
+     * Available values: "asc", "desc".
+     */
+    direction?: string;
+    /**
      * Only return organizations with the specified IDs (ex. id=foo&id=bar). Send multiple elements
      * by repeating the query value.
      */
@@ -66,7 +84,14 @@ export interface GetOrganizationsArgs {
      * Max items to fetch, default: 1000
      */
     maxItems?: number;
+    member?: inputs.GetOrganizationsMember;
     name?: inputs.GetOrganizationsName;
+    /**
+     * Field to order results by. Currently supported values: `name`.
+     * When not specified, results are ordered by hierarchy.
+     * Available values: "name".
+     */
+    orderBy?: string;
     /**
      * The amount of items to return. Defaults to 10.
      */
@@ -85,6 +110,12 @@ export interface GetOrganizationsArgs {
 export interface GetOrganizationsResult {
     readonly containing?: outputs.GetOrganizationsContaining;
     /**
+     * Sort direction for the `orderBy` field. Defaults to `asc` when `orderBy` is
+     * specified.
+     * Available values: "asc", "desc".
+     */
+    readonly direction?: string;
+    /**
      * Only return organizations with the specified IDs (ex. id=foo&id=bar). Send multiple elements
      * by repeating the query value.
      */
@@ -93,7 +124,14 @@ export interface GetOrganizationsResult {
      * Max items to fetch, default: 1000
      */
     readonly maxItems?: number;
+    readonly member?: outputs.GetOrganizationsMember;
     readonly name?: outputs.GetOrganizationsName;
+    /**
+     * Field to order results by. Currently supported values: `name`.
+     * When not specified, results are ordered by hierarchy.
+     * Available values: "name".
+     */
+    readonly orderBy?: string;
     /**
      * The amount of items to return. Defaults to 10.
      */
@@ -112,6 +150,10 @@ export interface GetOrganizationsResult {
  * - `User Details Read`
  * - `User Details Write`
  *
+ * User API tokens can list and create Organizations, but reading, updating, or deleting an Organization requires a Global API key and your registered email address. The `cloudflare.Organization` Terraform resource therefore requires a Global API key for its full lifecycle.
+ *
+ * See [Organizations authentication limitations](https://developers.cloudflare.com/fundamentals/organizations/limitations/#api-authentication) for credential compatibility by operation. Each endpoint’s **Security** section lists its supported authentication methods, with **Accepted Permissions** where applicable.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -125,11 +167,16 @@ export interface GetOrganizationsResult {
  *         organization: "organization",
  *         user: "user",
  *     },
+ *     direction: "asc",
+ *     member: {
+ *         email: "email",
+ *     },
  *     name: {
  *         contains: "contains",
  *         endsWith: "endsWith",
  *         startsWith: "startsWith",
  *     },
+ *     orderBy: "name",
  *     pageSize: 0,
  *     pageToken: "page_token",
  *     parent: {
@@ -143,9 +190,12 @@ export function getOrganizationsOutput(args?: GetOrganizationsOutputArgs, opts?:
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getOrganizations:getOrganizations", {
         "containing": args.containing,
+        "direction": args.direction,
         "ids": args.ids,
         "maxItems": args.maxItems,
+        "member": args.member,
         "name": args.name,
+        "orderBy": args.orderBy,
         "pageSize": args.pageSize,
         "pageToken": args.pageToken,
         "parent": args.parent,
@@ -158,6 +208,12 @@ export function getOrganizationsOutput(args?: GetOrganizationsOutputArgs, opts?:
 export interface GetOrganizationsOutputArgs {
     containing?: pulumi.Input<inputs.GetOrganizationsContainingArgs | undefined>;
     /**
+     * Sort direction for the `orderBy` field. Defaults to `asc` when `orderBy` is
+     * specified.
+     * Available values: "asc", "desc".
+     */
+    direction?: pulumi.Input<string | undefined>;
+    /**
      * Only return organizations with the specified IDs (ex. id=foo&id=bar). Send multiple elements
      * by repeating the query value.
      */
@@ -166,7 +222,14 @@ export interface GetOrganizationsOutputArgs {
      * Max items to fetch, default: 1000
      */
     maxItems?: pulumi.Input<number | undefined>;
+    member?: pulumi.Input<inputs.GetOrganizationsMemberArgs | undefined>;
     name?: pulumi.Input<inputs.GetOrganizationsNameArgs | undefined>;
+    /**
+     * Field to order results by. Currently supported values: `name`.
+     * When not specified, results are ordered by hierarchy.
+     * Available values: "name".
+     */
+    orderBy?: pulumi.Input<string | undefined>;
     /**
      * The amount of items to return. Defaults to 10.
      */

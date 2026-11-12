@@ -64,11 +64,11 @@ export class OrganizationProfile extends pulumi.CustomResource {
         return obj['__pulumiType'] === OrganizationProfile.__pulumiType;
     }
 
-    declare public readonly businessAddress: pulumi.Output<string>;
-    declare public readonly businessEmail: pulumi.Output<string>;
-    declare public readonly businessName: pulumi.Output<string>;
-    declare public readonly businessPhone: pulumi.Output<string>;
-    declare public readonly externalMetadata: pulumi.Output<string>;
+    declare public readonly businessAddress: pulumi.Output<string | undefined>;
+    declare public readonly businessEmail: pulumi.Output<string | undefined>;
+    declare public readonly businessName: pulumi.Output<string | undefined>;
+    declare public readonly businessPhone: pulumi.Output<string | undefined>;
+    declare public readonly externalMetadata: pulumi.Output<string | undefined>;
     declare public readonly organizationId: pulumi.Output<string>;
 
     /**
@@ -92,21 +92,6 @@ export class OrganizationProfile extends pulumi.CustomResource {
             resourceInputs["organizationId"] = state?.organizationId;
         } else {
             const args = argsOrState as OrganizationProfileArgs | undefined;
-            if (args?.businessAddress === undefined && !opts.urn) {
-                throw new Error("Missing required property 'businessAddress'");
-            }
-            if (args?.businessEmail === undefined && !opts.urn) {
-                throw new Error("Missing required property 'businessEmail'");
-            }
-            if (args?.businessName === undefined && !opts.urn) {
-                throw new Error("Missing required property 'businessName'");
-            }
-            if (args?.businessPhone === undefined && !opts.urn) {
-                throw new Error("Missing required property 'businessPhone'");
-            }
-            if (args?.externalMetadata === undefined && !opts.urn) {
-                throw new Error("Missing required property 'externalMetadata'");
-            }
             if (args?.organizationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
@@ -138,10 +123,10 @@ export interface OrganizationProfileState {
  * The set of arguments for constructing a OrganizationProfile resource.
  */
 export interface OrganizationProfileArgs {
-    businessAddress: pulumi.Input<string>;
-    businessEmail: pulumi.Input<string>;
-    businessName: pulumi.Input<string>;
-    businessPhone: pulumi.Input<string>;
-    externalMetadata: pulumi.Input<string>;
+    businessAddress?: pulumi.Input<string | undefined>;
+    businessEmail?: pulumi.Input<string | undefined>;
+    businessName?: pulumi.Input<string | undefined>;
+    businessPhone?: pulumi.Input<string | undefined>;
+    externalMetadata?: pulumi.Input<string | undefined>;
     organizationId: pulumi.Input<string>;
 }

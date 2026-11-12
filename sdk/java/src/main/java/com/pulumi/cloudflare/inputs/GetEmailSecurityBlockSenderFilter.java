@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -29,6 +30,21 @@ public final class GetEmailSecurityBlockSenderFilter extends com.pulumi.resource
      */
     public Optional<String> direction() {
         return Optional.ofNullable(this.direction);
+    }
+
+    /**
+     * Filter to return only expired patterns (`true`) or only patterns that still apply (`false`). Omit to return both.
+     * 
+     */
+    @Import(name="expired")
+    private @Nullable Boolean expired;
+
+    /**
+     * @return Filter to return only expired patterns (`true`) or only patterns that still apply (`false`). Omit to return both.
+     * 
+     */
+    public Optional<Boolean> expired() {
+        return Optional.ofNullable(this.expired);
     }
 
     /**
@@ -99,6 +115,7 @@ public final class GetEmailSecurityBlockSenderFilter extends com.pulumi.resource
 
     private GetEmailSecurityBlockSenderFilter(GetEmailSecurityBlockSenderFilter $) {
         this.direction = $.direction;
+        this.expired = $.expired;
         this.order = $.order;
         this.pattern = $.pattern;
         this.patternType = $.patternType;
@@ -132,6 +149,17 @@ public final class GetEmailSecurityBlockSenderFilter extends com.pulumi.resource
          */
         public Builder direction(@Nullable String direction) {
             $.direction = direction;
+            return this;
+        }
+
+        /**
+         * @param expired Filter to return only expired patterns (`true`) or only patterns that still apply (`false`). Omit to return both.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expired(@Nullable Boolean expired) {
+            $.expired = expired;
             return this;
         }
 

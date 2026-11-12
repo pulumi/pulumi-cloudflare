@@ -57,6 +57,23 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.defaultRetention);
     }
 
+    /**
+     * Jurisdiction where instances of this workflow run and store data. Can only be set when the workflow is created and cannot be changed afterwards; omit it to keep the existing jurisdiction.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;us&#34;.
+     * 
+     */
+    @Import(name="jurisdiction")
+    private @Nullable Output<String> jurisdiction;
+
+    /**
+     * @return Jurisdiction where instances of this workflow run and store data. Can only be set when the workflow is created and cannot be changed afterwards; omit it to keep the existing jurisdiction.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;us&#34;.
+     * 
+     */
+    public Optional<Output<String>> jurisdiction() {
+        return Optional.ofNullable(this.jurisdiction);
+    }
+
     @Import(name="limits")
     private @Nullable Output<WorkflowLimitsArgs> limits;
 
@@ -92,6 +109,7 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
         this.className = $.className;
         this.concurrency = $.concurrency;
         this.defaultRetention = $.defaultRetention;
+        this.jurisdiction = $.jurisdiction;
         this.limits = $.limits;
         this.schedules = $.schedules;
         this.scriptName = $.scriptName;
@@ -162,6 +180,29 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder defaultRetention(WorkflowDefaultRetentionArgs defaultRetention) {
             return defaultRetention(Output.of(defaultRetention));
+        }
+
+        /**
+         * @param jurisdiction Jurisdiction where instances of this workflow run and store data. Can only be set when the workflow is created and cannot be changed afterwards; omit it to keep the existing jurisdiction.
+         * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;us&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jurisdiction(@Nullable Output<String> jurisdiction) {
+            $.jurisdiction = jurisdiction;
+            return this;
+        }
+
+        /**
+         * @param jurisdiction Jurisdiction where instances of this workflow run and store data. Can only be set when the workflow is created and cannot be changed afterwards; omit it to keep the existing jurisdiction.
+         * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;us&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jurisdiction(String jurisdiction) {
+            return jurisdiction(Output.of(jurisdiction));
         }
 
         public Builder limits(@Nullable Output<WorkflowLimitsArgs> limits) {

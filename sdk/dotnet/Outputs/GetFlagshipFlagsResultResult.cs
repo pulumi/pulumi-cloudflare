@@ -34,6 +34,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Key;
         /// <summary>
+        /// Key-value metadata associated with the flag. Returned only when the flag has metadata.
+        /// </summary>
+        public readonly object Metadata;
+        /// <summary>
         /// Targeting rules evaluated in ascending `Priority`; the first matching rule wins. An empty array means the flag always serves `DefaultVariation`.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetFlagshipFlagsResultRuleResult> Rules;
@@ -61,6 +65,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string key,
 
+            object metadata,
+
             ImmutableArray<Outputs.GetFlagshipFlagsResultRuleResult> rules,
 
             string type,
@@ -76,6 +82,7 @@ namespace Pulumi.Cloudflare.Outputs
             Enabled = enabled;
             Id = id;
             Key = key;
+            Metadata = metadata;
             Rules = rules;
             Type = type;
             UpdatedAt = updatedAt;

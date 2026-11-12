@@ -16,12 +16,12 @@ public final class ShareResource {
      */
     private String meta;
     /**
-     * @return Account identifier.
+     * @return The account that owns the resource. Must match the `accountId` in the path.
      * 
      */
     private String resourceAccountId;
     /**
-     * @return Share Resource identifier.
+     * @return Identifier assigned by the service that owns the shared resource.
      * 
      */
     private String resourceId;
@@ -41,14 +41,14 @@ public final class ShareResource {
         return this.meta;
     }
     /**
-     * @return Account identifier.
+     * @return The account that owns the resource. Must match the `accountId` in the path.
      * 
      */
     public String resourceAccountId() {
         return this.resourceAccountId;
     }
     /**
-     * @return Share Resource identifier.
+     * @return Identifier assigned by the service that owns the shared resource.
      * 
      */
     public String resourceId() {

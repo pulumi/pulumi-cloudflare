@@ -12,6 +12,9 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class OrganizationMetaGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("areChildAccountsAccessibleByOrgMembers")]
+        public Input<bool>? AreChildAccountsAccessibleByOrgMembers { get; set; }
+
         [Input("hierarchyTags")]
         private InputList<string>? _hierarchyTags;
 
@@ -37,6 +40,9 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("tenantFlags")]
         public Input<Inputs.OrganizationMetaTenantFlagsGetArgs>? TenantFlags { get; set; }
+
+        [Input("tenantType")]
+        public Input<string>? TenantType { get; set; }
 
         public OrganizationMetaGetArgs()
         {

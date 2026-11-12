@@ -19,66 +19,26 @@ __all__ = ['OrganizationProfileInitArgs', 'OrganizationProfile']
 @pulumi.input_type
 class OrganizationProfileInitArgs:
     def __init__(__self__, *,
-                 business_address: pulumi.Input[_builtins.str],
-                 business_email: pulumi.Input[_builtins.str],
-                 business_name: pulumi.Input[_builtins.str],
-                 business_phone: pulumi.Input[_builtins.str],
-                 external_metadata: pulumi.Input[_builtins.str],
-                 organization_id: pulumi.Input[_builtins.str]):
+                 organization_id: pulumi.Input[_builtins.str],
+                 business_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 business_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 business_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 business_phone: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_metadata: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a OrganizationProfile resource.
         """
-        pulumi.set(__self__, "business_address", business_address)
-        pulumi.set(__self__, "business_email", business_email)
-        pulumi.set(__self__, "business_name", business_name)
-        pulumi.set(__self__, "business_phone", business_phone)
-        pulumi.set(__self__, "external_metadata", external_metadata)
         pulumi.set(__self__, "organization_id", organization_id)
-
-    @_builtins.property
-    @pulumi.getter(name="businessAddress")
-    def business_address(self) -> pulumi.Input[_builtins.str]:
-        return pulumi.get(self, "business_address")
-
-    @business_address.setter
-    def business_address(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "business_address", value)
-
-    @_builtins.property
-    @pulumi.getter(name="businessEmail")
-    def business_email(self) -> pulumi.Input[_builtins.str]:
-        return pulumi.get(self, "business_email")
-
-    @business_email.setter
-    def business_email(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "business_email", value)
-
-    @_builtins.property
-    @pulumi.getter(name="businessName")
-    def business_name(self) -> pulumi.Input[_builtins.str]:
-        return pulumi.get(self, "business_name")
-
-    @business_name.setter
-    def business_name(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "business_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="businessPhone")
-    def business_phone(self) -> pulumi.Input[_builtins.str]:
-        return pulumi.get(self, "business_phone")
-
-    @business_phone.setter
-    def business_phone(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "business_phone", value)
-
-    @_builtins.property
-    @pulumi.getter(name="externalMetadata")
-    def external_metadata(self) -> pulumi.Input[_builtins.str]:
-        return pulumi.get(self, "external_metadata")
-
-    @external_metadata.setter
-    def external_metadata(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "external_metadata", value)
+        if business_address is not None:
+            pulumi.set(__self__, "business_address", business_address)
+        if business_email is not None:
+            pulumi.set(__self__, "business_email", business_email)
+        if business_name is not None:
+            pulumi.set(__self__, "business_name", business_name)
+        if business_phone is not None:
+            pulumi.set(__self__, "business_phone", business_phone)
+        if external_metadata is not None:
+            pulumi.set(__self__, "external_metadata", external_metadata)
 
     @_builtins.property
     @pulumi.getter(name="organizationId")
@@ -88,6 +48,51 @@ class OrganizationProfileInitArgs:
     @organization_id.setter
     def organization_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "organization_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="businessAddress")
+    def business_address(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "business_address")
+
+    @business_address.setter
+    def business_address(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "business_address", value)
+
+    @_builtins.property
+    @pulumi.getter(name="businessEmail")
+    def business_email(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "business_email")
+
+    @business_email.setter
+    def business_email(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "business_email", value)
+
+    @_builtins.property
+    @pulumi.getter(name="businessName")
+    def business_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "business_name")
+
+    @business_name.setter
+    def business_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "business_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="businessPhone")
+    def business_phone(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "business_phone")
+
+    @business_phone.setter
+    def business_phone(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "business_phone", value)
+
+    @_builtins.property
+    @pulumi.getter(name="externalMetadata")
+    def external_metadata(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "external_metadata")
+
+    @external_metadata.setter
+    def external_metadata(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "external_metadata", value)
 
 
 @pulumi.input_type
@@ -264,20 +269,10 @@ class OrganizationProfile(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OrganizationProfileInitArgs.__new__(OrganizationProfileInitArgs)
 
-            if business_address is None and not opts.urn:
-                raise TypeError("Missing required property 'business_address'")
             __props__.__dict__["business_address"] = business_address
-            if business_email is None and not opts.urn:
-                raise TypeError("Missing required property 'business_email'")
             __props__.__dict__["business_email"] = business_email
-            if business_name is None and not opts.urn:
-                raise TypeError("Missing required property 'business_name'")
             __props__.__dict__["business_name"] = business_name
-            if business_phone is None and not opts.urn:
-                raise TypeError("Missing required property 'business_phone'")
             __props__.__dict__["business_phone"] = business_phone
-            if external_metadata is None and not opts.urn:
-                raise TypeError("Missing required property 'external_metadata'")
             __props__.__dict__["external_metadata"] = external_metadata
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")
@@ -338,27 +333,27 @@ class OrganizationProfile(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="businessAddress")
-    def business_address(self) -> pulumi.Output[_builtins.str]:
+    def business_address(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "business_address")
 
     @_builtins.property
     @pulumi.getter(name="businessEmail")
-    def business_email(self) -> pulumi.Output[_builtins.str]:
+    def business_email(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "business_email")
 
     @_builtins.property
     @pulumi.getter(name="businessName")
-    def business_name(self) -> pulumi.Output[_builtins.str]:
+    def business_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "business_name")
 
     @_builtins.property
     @pulumi.getter(name="businessPhone")
-    def business_phone(self) -> pulumi.Output[_builtins.str]:
+    def business_phone(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "business_phone")
 
     @_builtins.property
     @pulumi.getter(name="externalMetadata")
-    def external_metadata(self) -> pulumi.Output[_builtins.str]:
+    def external_metadata(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "external_metadata")
 
     @_builtins.property

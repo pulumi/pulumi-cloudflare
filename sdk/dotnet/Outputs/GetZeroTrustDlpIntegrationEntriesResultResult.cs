@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZeroTrustDlpIntegrationEntriesResultResult
     {
         /// <summary>
-        /// Only applies to custom word lists.
+        /// For `type: ExactData`: Only applies to custom word lists.
         /// Determines if the words should be matched in a case-sensitive manner
         /// Cannot be set to false if secret is true
         /// </summary>
@@ -22,10 +22,13 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly Outputs.GetZeroTrustDlpIntegrationEntriesResultConfidenceResult Confidence;
         public readonly string CreatedAt;
         /// <summary>
-        /// Whether this entry is deprecated for new use. This is computed from the static catalog and
+        /// For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
         /// emitted only when true.
         /// </summary>
         public readonly bool Deprecated;
+        /// <summary>
+        /// For `type: CustomPromptTopic`: The optional description of the custom prompt topic entry.
+        /// </summary>
         public readonly string Description;
         public readonly bool Enabled;
         public readonly string Id;
@@ -34,7 +37,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string ProfileId;
         public readonly bool Secret;
         /// <summary>
-        /// Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "WordList".
+        /// Available values: "custom", "CustomPromptTopic", "predefined", "integration", "ExactData", "DocumentFingerprint", "WordList".
         /// </summary>
         public readonly string Type;
         public readonly string UpdatedAt;
@@ -43,7 +46,15 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string UploadStatus;
         /// <summary>
-        /// A Predefined AI prompt classification topic entry.
+        /// For `type: custom`: Validators this entry references, by id, at most 10. An empty list means the entry
+        /// references none.
+        /// 
+        /// Returned by the entry endpoints. Not returned on entries embedded in other responses, such
+        /// as profiles.
+        /// </summary>
+        public readonly ImmutableArray<string> ValidatorIds;
+        /// <summary>
+        /// For `type: predefined`: A Predefined AI prompt classification topic entry.
         /// </summary>
         public readonly Outputs.GetZeroTrustDlpIntegrationEntriesResultVariantResult Variant;
         public readonly ImmutableArray<string> WordLists;
@@ -78,6 +89,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string uploadStatus,
 
+            ImmutableArray<string> validatorIds,
+
             Outputs.GetZeroTrustDlpIntegrationEntriesResultVariantResult variant,
 
             ImmutableArray<string> wordLists)
@@ -96,6 +109,7 @@ namespace Pulumi.Cloudflare.Outputs
             Type = type;
             UpdatedAt = updatedAt;
             UploadStatus = uploadStatus;
+            ValidatorIds = validatorIds;
             Variant = variant;
             WordLists = wordLists;
         }

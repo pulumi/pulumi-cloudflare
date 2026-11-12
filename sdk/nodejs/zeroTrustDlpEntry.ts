@@ -28,6 +28,7 @@ import * as utilities from "./utilities";
  *     },
  *     description: "description",
  *     profileId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+ *     validatorIds: ["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
  * });
  * ```
  *
@@ -78,7 +79,7 @@ export class ZeroTrustDlpEntry extends pulumi.CustomResource {
 
     declare public readonly accountId: pulumi.Output<string>;
     /**
-     * Only applies to custom word lists.
+     * For `type: exactData`: Only applies to custom word lists.
      * Determines if the words should be matched in a case-sensitive manner
      * Cannot be set to false if secret is true
      */
@@ -86,7 +87,7 @@ export class ZeroTrustDlpEntry extends pulumi.CustomResource {
     declare public /*out*/ readonly confidence: pulumi.Output<outputs.ZeroTrustDlpEntryConfidence>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
-     * Whether this entry is deprecated for new use. This is computed from the static catalog and
+     * For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
      * emitted only when true.
      */
     declare public /*out*/ readonly deprecated: pulumi.Output<boolean>;
@@ -107,7 +108,11 @@ export class ZeroTrustDlpEntry extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly uploadStatus: pulumi.Output<string>;
     /**
-     * A Predefined AI prompt classification topic entry.
+     * Validators the new entry should reference, by id, at most 10.
+     */
+    declare public readonly validatorIds: pulumi.Output<string[]>;
+    /**
+     * For `type: predefined`: A Predefined AI prompt classification topic entry.
      */
     declare public /*out*/ readonly variant: pulumi.Output<outputs.ZeroTrustDlpEntryVariant>;
     declare public /*out*/ readonly wordLists: pulumi.Output<string[]>;
@@ -140,6 +145,7 @@ export class ZeroTrustDlpEntry extends pulumi.CustomResource {
             resourceInputs["type"] = state?.type;
             resourceInputs["updatedAt"] = state?.updatedAt;
             resourceInputs["uploadStatus"] = state?.uploadStatus;
+            resourceInputs["validatorIds"] = state?.validatorIds;
             resourceInputs["variant"] = state?.variant;
             resourceInputs["wordLists"] = state?.wordLists;
         } else {
@@ -163,6 +169,7 @@ export class ZeroTrustDlpEntry extends pulumi.CustomResource {
             resourceInputs["pattern"] = args?.pattern;
             resourceInputs["profileId"] = args?.profileId;
             resourceInputs["type"] = args?.type;
+            resourceInputs["validatorIds"] = args?.validatorIds;
             resourceInputs["caseSensitive"] = undefined /*out*/;
             resourceInputs["confidence"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
@@ -185,7 +192,7 @@ export class ZeroTrustDlpEntry extends pulumi.CustomResource {
 export interface ZeroTrustDlpEntryState {
     accountId?: pulumi.Input<string | undefined>;
     /**
-     * Only applies to custom word lists.
+     * For `type: exactData`: Only applies to custom word lists.
      * Determines if the words should be matched in a case-sensitive manner
      * Cannot be set to false if secret is true
      */
@@ -193,7 +200,7 @@ export interface ZeroTrustDlpEntryState {
     confidence?: pulumi.Input<inputs.ZeroTrustDlpEntryConfidence | undefined>;
     createdAt?: pulumi.Input<string | undefined>;
     /**
-     * Whether this entry is deprecated for new use. This is computed from the static catalog and
+     * For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
      * emitted only when true.
      */
     deprecated?: pulumi.Input<boolean | undefined>;
@@ -214,7 +221,11 @@ export interface ZeroTrustDlpEntryState {
      */
     uploadStatus?: pulumi.Input<string | undefined>;
     /**
-     * A Predefined AI prompt classification topic entry.
+     * Validators the new entry should reference, by id, at most 10.
+     */
+    validatorIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * For `type: predefined`: A Predefined AI prompt classification topic entry.
      */
     variant?: pulumi.Input<inputs.ZeroTrustDlpEntryVariant | undefined>;
     wordLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -234,4 +245,8 @@ export interface ZeroTrustDlpEntryArgs {
      * Available values: "custom", "predefined", "integration".
      */
     type?: pulumi.Input<string | undefined>;
+    /**
+     * Validators the new entry should reference, by id, at most 10.
+     */
+    validatorIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

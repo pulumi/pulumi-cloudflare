@@ -36,7 +36,6 @@ import (
 //			_, err := cloudflare.NewZoneDnsSettings(ctx, "example_zone_dns_settings", &cloudflare.ZoneDnsSettingsArgs{
 //				ZoneId:           pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				FlattenAllCnames: pulumi.Bool(false),
-//				FoundationDns:    pulumi.Bool(false),
 //				InternalDns: &cloudflare.ZoneDnsSettingsInternalDnsArgs{
 //					ReferenceZoneId: pulumi.String("reference_zone_id"),
 //				},
@@ -74,10 +73,6 @@ type ZoneDnsSettings struct {
 
 	// Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
 	FlattenAllCnames pulumi.BoolPtrOutput `pulumi:"flattenAllCnames"`
-	// Deprecated. Use nameservers.type to configure Advanced Nameservers.
-	//
-	// Deprecated: foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
-	FoundationDns pulumi.BoolPtrOutput `pulumi:"foundationDns"`
 	// Settings for this internal zone.
 	InternalDns ZoneDnsSettingsInternalDnsOutput `pulumi:"internalDns"`
 	// Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
@@ -132,10 +127,6 @@ func GetZoneDnsSettings(ctx *pulumi.Context,
 type zoneDnsSettingsState struct {
 	// Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
 	FlattenAllCnames *bool `pulumi:"flattenAllCnames"`
-	// Deprecated. Use nameservers.type to configure Advanced Nameservers.
-	//
-	// Deprecated: foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
-	FoundationDns *bool `pulumi:"foundationDns"`
 	// Settings for this internal zone.
 	InternalDns *ZoneDnsSettingsInternalDns `pulumi:"internalDns"`
 	// Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
@@ -158,10 +149,6 @@ type zoneDnsSettingsState struct {
 type ZoneDnsSettingsState struct {
 	// Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
 	FlattenAllCnames pulumi.BoolPtrInput
-	// Deprecated. Use nameservers.type to configure Advanced Nameservers.
-	//
-	// Deprecated: foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
-	FoundationDns pulumi.BoolPtrInput
 	// Settings for this internal zone.
 	InternalDns ZoneDnsSettingsInternalDnsPtrInput
 	// Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
@@ -194,10 +181,6 @@ func ZoneDnsSettingsExists(ctx *pulumi.Context,
 type zoneDnsSettingsArgs struct {
 	// Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
 	FlattenAllCnames *bool `pulumi:"flattenAllCnames"`
-	// Deprecated. Use nameservers.type to configure Advanced Nameservers.
-	//
-	// Deprecated: foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
-	FoundationDns *bool `pulumi:"foundationDns"`
 	// Settings for this internal zone.
 	InternalDns *ZoneDnsSettingsInternalDns `pulumi:"internalDns"`
 	// Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
@@ -221,10 +204,6 @@ type zoneDnsSettingsArgs struct {
 type ZoneDnsSettingsArgs struct {
 	// Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
 	FlattenAllCnames pulumi.BoolPtrInput
-	// Deprecated. Use nameservers.type to configure Advanced Nameservers.
-	//
-	// Deprecated: foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
-	FoundationDns pulumi.BoolPtrInput
 	// Settings for this internal zone.
 	InternalDns ZoneDnsSettingsInternalDnsPtrInput
 	// Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
@@ -334,13 +313,6 @@ func (o ZoneDnsSettingsOutput) ToZoneDnsSettingsOutputWithContext(ctx context.Co
 // Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
 func (o ZoneDnsSettingsOutput) FlattenAllCnames() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ZoneDnsSettings) pulumi.BoolPtrOutput { return v.FlattenAllCnames }).(pulumi.BoolPtrOutput)
-}
-
-// Deprecated. Use nameservers.type to configure Advanced Nameservers.
-//
-// Deprecated: foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
-func (o ZoneDnsSettingsOutput) FoundationDns() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZoneDnsSettings) pulumi.BoolPtrOutput { return v.FoundationDns }).(pulumi.BoolPtrOutput)
 }
 
 // Settings for this internal zone.

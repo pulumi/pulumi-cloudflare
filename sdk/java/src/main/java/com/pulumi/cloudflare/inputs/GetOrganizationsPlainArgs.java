@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.GetOrganizationsContaining;
+import com.pulumi.cloudflare.inputs.GetOrganizationsMember;
 import com.pulumi.cloudflare.inputs.GetOrganizationsName;
 import com.pulumi.cloudflare.inputs.GetOrganizationsParent;
 import com.pulumi.core.annotations.Import;
@@ -24,6 +25,25 @@ public final class GetOrganizationsPlainArgs extends com.pulumi.resources.Invoke
 
     public Optional<GetOrganizationsContaining> containing() {
         return Optional.ofNullable(this.containing);
+    }
+
+    /**
+     * Sort direction for the `orderBy` field. Defaults to `asc` when `orderBy` is
+     * specified.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    @Import(name="direction")
+    private @Nullable String direction;
+
+    /**
+     * @return Sort direction for the `orderBy` field. Defaults to `asc` when `orderBy` is
+     * specified.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    public Optional<String> direction() {
+        return Optional.ofNullable(this.direction);
     }
 
     /**
@@ -58,11 +78,37 @@ public final class GetOrganizationsPlainArgs extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.maxItems);
     }
 
+    @Import(name="member")
+    private @Nullable GetOrganizationsMember member;
+
+    public Optional<GetOrganizationsMember> member() {
+        return Optional.ofNullable(this.member);
+    }
+
     @Import(name="name")
     private @Nullable GetOrganizationsName name;
 
     public Optional<GetOrganizationsName> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * Field to order results by. Currently supported values: `name`.
+     * When not specified, results are ordered by hierarchy.
+     * Available values: &#34;name&#34;.
+     * 
+     */
+    @Import(name="orderBy")
+    private @Nullable String orderBy;
+
+    /**
+     * @return Field to order results by. Currently supported values: `name`.
+     * When not specified, results are ordered by hierarchy.
+     * Available values: &#34;name&#34;.
+     * 
+     */
+    public Optional<String> orderBy() {
+        return Optional.ofNullable(this.orderBy);
     }
 
     /**
@@ -108,9 +154,12 @@ public final class GetOrganizationsPlainArgs extends com.pulumi.resources.Invoke
 
     private GetOrganizationsPlainArgs(GetOrganizationsPlainArgs $) {
         this.containing = $.containing;
+        this.direction = $.direction;
         this.ids = $.ids;
         this.maxItems = $.maxItems;
+        this.member = $.member;
         this.name = $.name;
+        this.orderBy = $.orderBy;
         this.pageSize = $.pageSize;
         this.pageToken = $.pageToken;
         this.parent = $.parent;
@@ -136,6 +185,19 @@ public final class GetOrganizationsPlainArgs extends com.pulumi.resources.Invoke
 
         public Builder containing(@Nullable GetOrganizationsContaining containing) {
             $.containing = containing;
+            return this;
+        }
+
+        /**
+         * @param direction Sort direction for the `orderBy` field. Defaults to `asc` when `orderBy` is
+         * specified.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder direction(@Nullable String direction) {
+            $.direction = direction;
             return this;
         }
 
@@ -173,8 +235,26 @@ public final class GetOrganizationsPlainArgs extends com.pulumi.resources.Invoke
             return this;
         }
 
+        public Builder member(@Nullable GetOrganizationsMember member) {
+            $.member = member;
+            return this;
+        }
+
         public Builder name(@Nullable GetOrganizationsName name) {
             $.name = name;
+            return this;
+        }
+
+        /**
+         * @param orderBy Field to order results by. Currently supported values: `name`.
+         * When not specified, results are ordered by hierarchy.
+         * Available values: &#34;name&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orderBy(@Nullable String orderBy) {
+            $.orderBy = orderBy;
             return this;
         }
 

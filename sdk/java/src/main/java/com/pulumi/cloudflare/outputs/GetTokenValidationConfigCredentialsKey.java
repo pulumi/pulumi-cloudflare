@@ -17,13 +17,13 @@ public final class GetTokenValidationConfigCredentialsKey {
      */
     private String alg;
     /**
-     * @return Curve
+     * @return For `alg: ES256` or `alg: ES384`: Curve
      * Available values: &#34;P-256&#34;, &#34;P-384&#34;.
      * 
      */
     private String crv;
     /**
-     * @return RSA exponent
+     * @return For `alg: RS256` or `alg: RS384` or `alg: RS512` or `alg: PS256` or `alg: PS384` or `alg: PS512`: RSA exponent
      * 
      */
     private String e;
@@ -39,17 +39,17 @@ public final class GetTokenValidationConfigCredentialsKey {
      */
     private String kty;
     /**
-     * @return RSA modulus
+     * @return For `alg: RS256` or `alg: RS384` or `alg: RS512` or `alg: PS256` or `alg: PS384` or `alg: PS512`: RSA modulus
      * 
      */
     private String n;
     /**
-     * @return X EC coordinate
+     * @return For `alg: ES256` or `alg: ES384`: X EC coordinate
      * 
      */
     private String x;
     /**
-     * @return Y EC coordinate
+     * @return For `alg: ES256` or `alg: ES384`: Y EC coordinate
      * 
      */
     private String y;
@@ -64,7 +64,7 @@ public final class GetTokenValidationConfigCredentialsKey {
         return this.alg;
     }
     /**
-     * @return Curve
+     * @return For `alg: ES256` or `alg: ES384`: Curve
      * Available values: &#34;P-256&#34;, &#34;P-384&#34;.
      * 
      */
@@ -72,7 +72,7 @@ public final class GetTokenValidationConfigCredentialsKey {
         return this.crv;
     }
     /**
-     * @return RSA exponent
+     * @return For `alg: RS256` or `alg: RS384` or `alg: RS512` or `alg: PS256` or `alg: PS384` or `alg: PS512`: RSA exponent
      * 
      */
     public String e() {
@@ -94,21 +94,21 @@ public final class GetTokenValidationConfigCredentialsKey {
         return this.kty;
     }
     /**
-     * @return RSA modulus
+     * @return For `alg: RS256` or `alg: RS384` or `alg: RS512` or `alg: PS256` or `alg: PS384` or `alg: PS512`: RSA modulus
      * 
      */
     public String n() {
         return this.n;
     }
     /**
-     * @return X EC coordinate
+     * @return For `alg: ES256` or `alg: ES384`: X EC coordinate
      * 
      */
     public String x() {
         return this.x;
     }
     /**
-     * @return Y EC coordinate
+     * @return For `alg: ES256` or `alg: ES384`: Y EC coordinate
      * 
      */
     public String y() {

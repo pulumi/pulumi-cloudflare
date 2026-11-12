@@ -134,6 +134,8 @@ class _ApiTokenState:
                  provisioner_id: pulumi.Input[Optional[_builtins.str]] = None,
                  provisioner_type: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_suffix: pulumi.Input[Optional[_builtins.str]] = None,
                  value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApiToken resources.
@@ -156,6 +158,12 @@ class _ApiTokenState:
                provisioned Account Owned API Tokens.
         :param pulumi.Input[_builtins.str] status: Status of the token.
                Available values: "active", "disabled", "expired".
+        :param pulumi.Input[_builtins.str] token_prefix: The prefix of the token value, before the first underscore. Use it with
+               `token_suffix` to identify a token. Only present for tokens created or
+               rolled after this field was added.
+        :param pulumi.Input[_builtins.str] token_suffix: The last 4 characters of the token value. Use it with `token_prefix` to
+               identify a token. It is not unique. Only present for tokens created or
+               rolled after this field was added.
         :param pulumi.Input[_builtins.str] value: The token value.
         """
         if condition is not None:
@@ -182,6 +190,10 @@ class _ApiTokenState:
             pulumi.set(__self__, "provisioner_type", provisioner_type)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if token_prefix is not None:
+            pulumi.set(__self__, "token_prefix", token_prefix)
+        if token_suffix is not None:
+            pulumi.set(__self__, "token_suffix", token_suffix)
         if value is not None:
             pulumi.set(__self__, "value", value)
 
@@ -332,6 +344,34 @@ class _ApiTokenState:
     @status.setter
     def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tokenPrefix")
+    def token_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The prefix of the token value, before the first underscore. Use it with
+        `token_suffix` to identify a token. Only present for tokens created or
+        rolled after this field was added.
+        """
+        return pulumi.get(self, "token_prefix")
+
+    @token_prefix.setter
+    def token_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "token_prefix", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tokenSuffix")
+    def token_suffix(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The last 4 characters of the token value. Use it with `token_prefix` to
+        identify a token. It is not unique. Only present for tokens created or
+        rolled after this field was added.
+        """
+        return pulumi.get(self, "token_suffix")
+
+    @token_suffix.setter
+    def token_suffix(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "token_suffix", value)
 
     @_builtins.property
     @pulumi.getter
@@ -524,6 +564,8 @@ class ApiToken(pulumi.CustomResource):
             __props__.__dict__["modified_on"] = None
             __props__.__dict__["provisioner_id"] = None
             __props__.__dict__["provisioner_type"] = None
+            __props__.__dict__["token_prefix"] = None
+            __props__.__dict__["token_suffix"] = None
             __props__.__dict__["value"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["value"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
@@ -549,6 +591,8 @@ class ApiToken(pulumi.CustomResource):
             provisioner_id: pulumi.Input[Optional[_builtins.str]] = None,
             provisioner_type: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
+            token_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            token_suffix: pulumi.Input[Optional[_builtins.str]] = None,
             value: pulumi.Input[Optional[_builtins.str]] = None) -> 'ApiToken':
         """
         Get an existing ApiToken resource's state with the given name, id, and optional extra
@@ -575,6 +619,12 @@ class ApiToken(pulumi.CustomResource):
                provisioned Account Owned API Tokens.
         :param pulumi.Input[_builtins.str] status: Status of the token.
                Available values: "active", "disabled", "expired".
+        :param pulumi.Input[_builtins.str] token_prefix: The prefix of the token value, before the first underscore. Use it with
+               `token_suffix` to identify a token. Only present for tokens created or
+               rolled after this field was added.
+        :param pulumi.Input[_builtins.str] token_suffix: The last 4 characters of the token value. Use it with `token_prefix` to
+               identify a token. It is not unique. Only present for tokens created or
+               rolled after this field was added.
         :param pulumi.Input[_builtins.str] value: The token value.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -593,6 +643,8 @@ class ApiToken(pulumi.CustomResource):
         __props__.__dict__["provisioner_id"] = provisioner_id
         __props__.__dict__["provisioner_type"] = provisioner_type
         __props__.__dict__["status"] = status
+        __props__.__dict__["token_prefix"] = token_prefix
+        __props__.__dict__["token_suffix"] = token_suffix
         __props__.__dict__["value"] = value
         return ApiToken(resource_name, opts=opts, __props__=__props__)
 
@@ -611,6 +663,8 @@ class ApiToken(pulumi.CustomResource):
             provisioner_id: pulumi.Input[Optional[_builtins.str]] = None,
             provisioner_type: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
+            token_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            token_suffix: pulumi.Input[Optional[_builtins.str]] = None,
             value: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
         __props__["condition"] = condition
@@ -625,6 +679,8 @@ class ApiToken(pulumi.CustomResource):
         __props__["provisionerId"] = provisioner_id
         __props__["provisionerType"] = provisioner_type
         __props__["status"] = status
+        __props__["tokenPrefix"] = token_prefix
+        __props__["tokenSuffix"] = token_suffix
         __props__["value"] = value
         return pulumi.runtime.exists_resource(None, 'cloudflare:index/apiToken:ApiToken', id, __props__, opts or pulumi.ResourceOptions())
 
@@ -727,6 +783,26 @@ class ApiToken(pulumi.CustomResource):
         Available values: "active", "disabled", "expired".
         """
         return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="tokenPrefix")
+    def token_prefix(self) -> pulumi.Output[_builtins.str]:
+        """
+        The prefix of the token value, before the first underscore. Use it with
+        `token_suffix` to identify a token. Only present for tokens created or
+        rolled after this field was added.
+        """
+        return pulumi.get(self, "token_prefix")
+
+    @_builtins.property
+    @pulumi.getter(name="tokenSuffix")
+    def token_suffix(self) -> pulumi.Output[_builtins.str]:
+        """
+        The last 4 characters of the token value. Use it with `token_prefix` to
+        identify a token. It is not unique. Only present for tokens created or
+        rolled after this field was added.
+        """
+        return pulumi.get(self, "token_suffix")
 
     @_builtins.property
     @pulumi.getter

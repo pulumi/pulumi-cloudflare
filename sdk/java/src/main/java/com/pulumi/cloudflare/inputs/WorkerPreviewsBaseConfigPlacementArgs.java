@@ -49,7 +49,6 @@ public final class WorkerPreviewsBaseConfigPlacementArgs extends com.pulumi.reso
 
     /**
      * Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: &#34;smart&#34;, &#34;targeted&#34;.
      * 
      */
     @Import(name="mode")
@@ -57,7 +56,6 @@ public final class WorkerPreviewsBaseConfigPlacementArgs extends com.pulumi.reso
 
     /**
      * @return Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: &#34;smart&#34;, &#34;targeted&#34;.
      * 
      */
     public Optional<Output<String>> mode() {
@@ -166,7 +164,6 @@ public final class WorkerPreviewsBaseConfigPlacementArgs extends com.pulumi.reso
 
         /**
          * @param mode Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-         * Available values: &#34;smart&#34;, &#34;targeted&#34;.
          * 
          * @return builder
          * 
@@ -178,7 +175,6 @@ public final class WorkerPreviewsBaseConfigPlacementArgs extends com.pulumi.reso
 
         /**
          * @param mode Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-         * Available values: &#34;smart&#34;, &#34;targeted&#34;.
          * 
          * @return builder
          * 

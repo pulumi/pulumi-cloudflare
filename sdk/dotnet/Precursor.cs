@@ -23,17 +23,18 @@ namespace Pulumi.Cloudflare
     ///     var examplePrecursor = new Cloudflare.Precursor("example_precursor", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-    ///         DefaultMode = "min-friction",
-    ///         EnforcementRules = new[]
+    ///         Mode = "monitor",
+    ///         Rules = new[]
     ///         {
-    ///             new Cloudflare.Inputs.PrecursorEnforcementRuleArgs
+    ///             new Cloudflare.Inputs.PrecursorRuleArgs
     ///             {
     ///                 Expression = "http.request.uri.path eq \"/login\"",
-    ///                 Mode = "max-security",
-    ///                 Description = "Ease friction on the login path",
+    ///                 ShowInterstitial = true,
+    ///                 Description = "Show an interstitial on the login path",
     ///                 Enabled = true,
     ///             },
     ///         },
+    ///         ShowInterstitial = true,
     ///     });
     /// 
     /// });
@@ -42,25 +43,33 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/precursor:Precursor example '&lt;zone_id&gt;'
+    /// $ pulumi import cloudflare:index/precursor:Precursor example '&lt;zone_id&gt;/&lt;cloudflare_version&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/precursor:Precursor")]
     public partial class Precursor : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The zone-level Precursor enforcement mode applied to requests that do
-        /// not match a more specific enforcement rule.
-        /// Available values: "off", "min-friction", "max-security".
+        /// Controls Precursor detection for the zone. `Off` disables detection,
+        /// `Monitor` records detections without affecting bot scores, and `Arm`
+        /// allows detections to affect bot scores.
+        /// Available values: "off", "monitor", "arm".
         /// </summary>
-        [Output("defaultMode")]
-        public Output<string> DefaultMode { get; private set; } = null!;
+        [Output("mode")]
+        public Output<string> Mode { get; private set; } = null!;
 
         /// <summary>
-        /// The ordered list of enforcement rules for the zone.
+        /// The ordered list of Precursor rules for the zone.
         /// </summary>
-        [Output("enforcementRules")]
-        public Output<ImmutableArray<Outputs.PrecursorEnforcementRule>> EnforcementRules { get; private set; } = null!;
+        [Output("rules")]
+        public Output<ImmutableArray<Outputs.PrecursorRule>> Rules { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether Precursor shows an interstitial when it takes action on a
+        /// request.
+        /// </summary>
+        [Output("showInterstitial")]
+        public Output<bool?> ShowInterstitial { get; private set; } = null!;
 
         /// <summary>
         /// Identifier.
@@ -115,25 +124,32 @@ namespace Pulumi.Cloudflare
     public sealed class PrecursorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The zone-level Precursor enforcement mode applied to requests that do
-        /// not match a more specific enforcement rule.
-        /// Available values: "off", "min-friction", "max-security".
+        /// Controls Precursor detection for the zone. `Off` disables detection,
+        /// `Monitor` records detections without affecting bot scores, and `Arm`
+        /// allows detections to affect bot scores.
+        /// Available values: "off", "monitor", "arm".
         /// </summary>
-        [Input("defaultMode")]
-        public Input<string>? DefaultMode { get; set; }
+        [Input("mode")]
+        public Input<string>? Mode { get; set; }
 
-        [Input("enforcementRules")]
-        private InputList<Inputs.PrecursorEnforcementRuleArgs>? _enforcementRules;
+        [Input("rules")]
+        private InputList<Inputs.PrecursorRuleArgs>? _rules;
 
         /// <summary>
-        /// The ordered list of enforcement rules for the zone.
+        /// The ordered list of Precursor rules for the zone.
         /// </summary>
-        [Obsolete(@"This attribute is deprecated.")]
-        public InputList<Inputs.PrecursorEnforcementRuleArgs> EnforcementRules
+        public InputList<Inputs.PrecursorRuleArgs> Rules
         {
-            get => _enforcementRules ?? (_enforcementRules = new InputList<Inputs.PrecursorEnforcementRuleArgs>());
-            set => _enforcementRules = value;
+            get => _rules ?? (_rules = new InputList<Inputs.PrecursorRuleArgs>());
+            set => _rules = value;
         }
+
+        /// <summary>
+        /// Whether Precursor shows an interstitial when it takes action on a
+        /// request.
+        /// </summary>
+        [Input("showInterstitial")]
+        public Input<bool>? ShowInterstitial { get; set; }
 
         /// <summary>
         /// Identifier.
@@ -150,25 +166,32 @@ namespace Pulumi.Cloudflare
     public sealed class PrecursorState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The zone-level Precursor enforcement mode applied to requests that do
-        /// not match a more specific enforcement rule.
-        /// Available values: "off", "min-friction", "max-security".
+        /// Controls Precursor detection for the zone. `Off` disables detection,
+        /// `Monitor` records detections without affecting bot scores, and `Arm`
+        /// allows detections to affect bot scores.
+        /// Available values: "off", "monitor", "arm".
         /// </summary>
-        [Input("defaultMode")]
-        public Input<string>? DefaultMode { get; set; }
+        [Input("mode")]
+        public Input<string>? Mode { get; set; }
 
-        [Input("enforcementRules")]
-        private InputList<Inputs.PrecursorEnforcementRuleGetArgs>? _enforcementRules;
+        [Input("rules")]
+        private InputList<Inputs.PrecursorRuleGetArgs>? _rules;
 
         /// <summary>
-        /// The ordered list of enforcement rules for the zone.
+        /// The ordered list of Precursor rules for the zone.
         /// </summary>
-        [Obsolete(@"This attribute is deprecated.")]
-        public InputList<Inputs.PrecursorEnforcementRuleGetArgs> EnforcementRules
+        public InputList<Inputs.PrecursorRuleGetArgs> Rules
         {
-            get => _enforcementRules ?? (_enforcementRules = new InputList<Inputs.PrecursorEnforcementRuleGetArgs>());
-            set => _enforcementRules = value;
+            get => _rules ?? (_rules = new InputList<Inputs.PrecursorRuleGetArgs>());
+            set => _rules = value;
         }
+
+        /// <summary>
+        /// Whether Precursor shows an interstitial when it takes action on a
+        /// request.
+        /// </summary>
+        [Input("showInterstitial")]
+        public Input<bool>? ShowInterstitial { get; set; }
 
         /// <summary>
         /// Identifier.

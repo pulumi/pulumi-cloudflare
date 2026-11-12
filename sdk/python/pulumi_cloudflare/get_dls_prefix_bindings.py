@@ -78,6 +78,11 @@ def get_dls_prefix_bindings(account_id: Optional[_builtins.str] = None,
                             max_items: Optional[_builtins.int] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDlsPrefixBindingsResult:
     """
+    Accepted Permissions
+
+    - `DLS: Read`
+    - `DLS: Write`
+
     ## Example Usage
 
     ```python
@@ -105,6 +110,11 @@ def get_dls_prefix_bindings_output(account_id: pulumi.Input[Optional[_builtins.s
                                    max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDlsPrefixBindingsResult]:
     """
+    Accepted Permissions
+
+    - `DLS: Read`
+    - `DLS: Write`
+
     ## Example Usage
 
     ```python

@@ -27,7 +27,7 @@ class CtAlertingArgs:
 
         :param pulumi.Input[_builtins.bool] enabled: Whether CT alerting is enabled for the zone.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] emails: Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] emails: Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. Omitted from responses when no addresses are configured.
         """
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "zone_id", zone_id)
@@ -62,7 +62,7 @@ class CtAlertingArgs:
     @pulumi.getter
     def emails(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma.
+        Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. Omitted from responses when no addresses are configured.
         """
         return pulumi.get(self, "emails")
 
@@ -80,7 +80,7 @@ class _CtAlertingState:
         """
         Input properties used for looking up and filtering CtAlerting resources.
 
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] emails: Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] emails: Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. Omitted from responses when no addresses are configured.
         :param pulumi.Input[_builtins.bool] enabled: Whether CT alerting is enabled for the zone.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
@@ -95,7 +95,7 @@ class _CtAlertingState:
     @pulumi.getter
     def emails(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma.
+        Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. Omitted from responses when no addresses are configured.
         """
         return pulumi.get(self, "emails")
 
@@ -168,7 +168,7 @@ class CtAlerting(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] emails: Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] emails: Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. Omitted from responses when no addresses are configured.
         :param pulumi.Input[_builtins.bool] enabled: Whether CT alerting is enabled for the zone.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
@@ -260,7 +260,7 @@ class CtAlerting(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] emails: Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] emails: Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. Omitted from responses when no addresses are configured.
         :param pulumi.Input[_builtins.bool] enabled: Whether CT alerting is enabled for the zone.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
@@ -289,7 +289,7 @@ class CtAlerting(pulumi.CustomResource):
     @pulumi.getter
     def emails(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma.
+        Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. Omitted from responses when no addresses are configured.
         """
         return pulumi.get(self, "emails")
 

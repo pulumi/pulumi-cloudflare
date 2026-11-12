@@ -27,7 +27,6 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? LastAnalyzedAt;
         /// <summary>
         /// Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-        /// Available values: "smart", "targeted".
         /// </summary>
         public readonly string? Mode;
         /// <summary>
@@ -36,7 +35,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? Region;
         /// <summary>
         /// Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-        /// Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
+        /// Available values: "SUCCESS", "UNSUPPORTED_APPLICATION", "INSUFFICIENT_INVOCATIONS".
         /// </summary>
         public readonly string? Status;
         /// <summary>

@@ -111,7 +111,7 @@ class RiskBehavior(pulumi.CustomResource):
             behaviors={
                 "foo": {
                     "enabled": True,
-                    "risk_level": "low",
+                    "risk_level": "info",
                 },
             })
         ```
@@ -147,7 +147,7 @@ class RiskBehavior(pulumi.CustomResource):
             behaviors={
                 "foo": {
                     "enabled": True,
-                    "risk_level": "low",
+                    "risk_level": "info",
                 },
             })
         ```

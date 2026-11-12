@@ -4,59 +4,41 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class FlagshipFlagRuleConditionClauseClauseClauseClauseClause {
-    private @Nullable String attribute;
-    private @Nullable List<String> clauses;
-    /**
-     * @return Available values: &#34;AND&#34;, &#34;OR&#34;.
-     * 
-     */
-    private @Nullable String logicalOperator;
+    private String attribute;
     /**
      * @return Available values: &#34;equals&#34;, &#34;not*equals&#34;, &#34;greater*than&#34;, &#34;less*than&#34;, &#34;greater*than*or*equals&#34;, &#34;less*than*or*equals&#34;, &#34;contains&#34;, &#34;starts*with&#34;, &#34;ends*with&#34;, &#34;in&#34;, &#34;not*in&#34;, &#34;has&#34;, &#34;notHas&#34;.
      * 
      */
-    private @Nullable String operator;
+    private String operator;
     /**
      * @return Value to compare against the context attribute. Must be an array for `in` and `notIn`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
      * 
      */
-    private @Nullable String value;
+    private String value;
 
     private FlagshipFlagRuleConditionClauseClauseClauseClauseClause() {}
-    public Optional<String> attribute() {
-        return Optional.ofNullable(this.attribute);
-    }
-    public List<String> clauses() {
-        return this.clauses == null ? List.of() : this.clauses;
-    }
-    /**
-     * @return Available values: &#34;AND&#34;, &#34;OR&#34;.
-     * 
-     */
-    public Optional<String> logicalOperator() {
-        return Optional.ofNullable(this.logicalOperator);
+    public String attribute() {
+        return this.attribute;
     }
     /**
      * @return Available values: &#34;equals&#34;, &#34;not*equals&#34;, &#34;greater*than&#34;, &#34;less*than&#34;, &#34;greater*than*or*equals&#34;, &#34;less*than*or*equals&#34;, &#34;contains&#34;, &#34;starts*with&#34;, &#34;ends*with&#34;, &#34;in&#34;, &#34;not*in&#34;, &#34;has&#34;, &#34;notHas&#34;.
      * 
      */
-    public Optional<String> operator() {
-        return Optional.ofNullable(this.operator);
+    public String operator() {
+        return this.operator;
     }
     /**
      * @return Value to compare against the context attribute. Must be an array for `in` and `notIn`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
      * 
      */
-    public Optional<String> value() {
-        return Optional.ofNullable(this.value);
+    public String value() {
+        return this.value;
     }
 
     public static Builder builder() {
@@ -68,59 +50,44 @@ public final class FlagshipFlagRuleConditionClauseClauseClauseClauseClause {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String attribute;
-        private @Nullable List<String> clauses;
-        private @Nullable String logicalOperator;
-        private @Nullable String operator;
-        private @Nullable String value;
+        private String attribute;
+        private String operator;
+        private String value;
         public Builder() {}
         public Builder(FlagshipFlagRuleConditionClauseClauseClauseClauseClause defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.attribute = defaults.attribute;
-    	      this.clauses = defaults.clauses;
-    	      this.logicalOperator = defaults.logicalOperator;
     	      this.operator = defaults.operator;
     	      this.value = defaults.value;
         }
 
         @CustomType.Setter
-        public Builder attribute(@Nullable String attribute) {
-
+        public Builder attribute(String attribute) {
+            if (attribute == null) {
+              throw new MissingRequiredPropertyException("FlagshipFlagRuleConditionClauseClauseClauseClauseClause", "attribute");
+            }
             this.attribute = attribute;
             return this;
         }
         @CustomType.Setter
-        public Builder clauses(@Nullable List<String> clauses) {
-
-            this.clauses = clauses;
-            return this;
-        }
-        public Builder clauses(String... clauses) {
-            return clauses(List.of(clauses));
-        }
-        @CustomType.Setter
-        public Builder logicalOperator(@Nullable String logicalOperator) {
-
-            this.logicalOperator = logicalOperator;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder operator(@Nullable String operator) {
-
+        public Builder operator(String operator) {
+            if (operator == null) {
+              throw new MissingRequiredPropertyException("FlagshipFlagRuleConditionClauseClauseClauseClauseClause", "operator");
+            }
             this.operator = operator;
             return this;
         }
         @CustomType.Setter
-        public Builder value(@Nullable String value) {
-
+        public Builder value(String value) {
+            if (value == null) {
+              throw new MissingRequiredPropertyException("FlagshipFlagRuleConditionClauseClauseClauseClauseClause", "value");
+            }
             this.value = value;
             return this;
         }
         public FlagshipFlagRuleConditionClauseClauseClauseClauseClause build() {
             final var _resultValue = new FlagshipFlagRuleConditionClauseClauseClauseClauseClause();
             _resultValue.attribute = attribute;
-            _resultValue.clauses = clauses;
-            _resultValue.logicalOperator = logicalOperator;
             _resultValue.operator = operator;
             _resultValue.value = value;
             return _resultValue;

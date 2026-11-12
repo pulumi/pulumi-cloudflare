@@ -12,6 +12,7 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -72,6 +73,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .variations(Map.of("foo", "string"))
  *             .description("description")
+ *             .metadata(Map.of("foo", true))
  *             .type("boolean")
  *             .build());
  * 
@@ -172,6 +174,20 @@ public class FlagshipFlag extends com.pulumi.resources.CustomResource {
      */
     public Output<String> key() {
         return this.key;
+    }
+    /**
+     * Key-value metadata associated with the flag. `null` or an empty object clears existing metadata; omission semantics depend on the endpoint (PUT clears it, PATCH preserves it).
+     * 
+     */
+    @Export(name="metadata", refs={Object.class}, tree="[0]")
+    private Output</* @Nullable */ Object> metadata;
+
+    /**
+     * @return Key-value metadata associated with the flag. `null` or an empty object clears existing metadata; omission semantics depend on the endpoint (PUT clears it, PATCH preserves it).
+     * 
+     */
+    public Output<Optional<Object>> metadata() {
+        return Codegen.optional(this.metadata);
     }
     /**
      * Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `defaultVariation`.

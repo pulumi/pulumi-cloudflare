@@ -73,14 +73,14 @@ public final class AiSearchNamespacePublicEndpointParamsArgs extends com.pulumi.
     }
 
     /**
-     * Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account&#39;s multi-instance search limit.
+     * Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must reference an existing instance in this namespace, and the list must stay within the account&#39;s multi-instance search limit.
      * 
      */
     @Import(name="instancesAlloweds")
     private @Nullable Output<List<String>> instancesAlloweds;
 
     /**
-     * @return Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account&#39;s multi-instance search limit.
+     * @return Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must reference an existing instance in this namespace, and the list must stay within the account&#39;s multi-instance search limit.
      * 
      */
     public Optional<Output<List<String>>> instancesAlloweds() {
@@ -224,7 +224,7 @@ public final class AiSearchNamespacePublicEndpointParamsArgs extends com.pulumi.
         }
 
         /**
-         * @param instancesAlloweds Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account&#39;s multi-instance search limit.
+         * @param instancesAlloweds Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must reference an existing instance in this namespace, and the list must stay within the account&#39;s multi-instance search limit.
          * 
          * @return builder
          * 
@@ -235,7 +235,7 @@ public final class AiSearchNamespacePublicEndpointParamsArgs extends com.pulumi.
         }
 
         /**
-         * @param instancesAlloweds Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account&#39;s multi-instance search limit.
+         * @param instancesAlloweds Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must reference an existing instance in this namespace, and the list must stay within the account&#39;s multi-instance search limit.
          * 
          * @return builder
          * 
@@ -245,7 +245,7 @@ public final class AiSearchNamespacePublicEndpointParamsArgs extends com.pulumi.
         }
 
         /**
-         * @param instancesAlloweds Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account&#39;s multi-instance search limit.
+         * @param instancesAlloweds Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must reference an existing instance in this namespace, and the list must stay within the account&#39;s multi-instance search limit.
          * 
          * @return builder
          * 

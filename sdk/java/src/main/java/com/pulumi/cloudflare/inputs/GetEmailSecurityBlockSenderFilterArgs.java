@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -30,6 +31,21 @@ public final class GetEmailSecurityBlockSenderFilterArgs extends com.pulumi.reso
      */
     public Optional<Output<String>> direction() {
         return Optional.ofNullable(this.direction);
+    }
+
+    /**
+     * Filter to return only expired patterns (`true`) or only patterns that still apply (`false`). Omit to return both.
+     * 
+     */
+    @Import(name="expired")
+    private @Nullable Output<Boolean> expired;
+
+    /**
+     * @return Filter to return only expired patterns (`true`) or only patterns that still apply (`false`). Omit to return both.
+     * 
+     */
+    public Optional<Output<Boolean>> expired() {
+        return Optional.ofNullable(this.expired);
     }
 
     /**
@@ -100,6 +116,7 @@ public final class GetEmailSecurityBlockSenderFilterArgs extends com.pulumi.reso
 
     private GetEmailSecurityBlockSenderFilterArgs(GetEmailSecurityBlockSenderFilterArgs $) {
         this.direction = $.direction;
+        this.expired = $.expired;
         this.order = $.order;
         this.pattern = $.pattern;
         this.patternType = $.patternType;
@@ -145,6 +162,27 @@ public final class GetEmailSecurityBlockSenderFilterArgs extends com.pulumi.reso
          */
         public Builder direction(String direction) {
             return direction(Output.of(direction));
+        }
+
+        /**
+         * @param expired Filter to return only expired patterns (`true`) or only patterns that still apply (`false`). Omit to return both.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expired(@Nullable Output<Boolean> expired) {
+            $.expired = expired;
+            return this;
+        }
+
+        /**
+         * @param expired Filter to return only expired patterns (`true`) or only patterns that still apply (`false`). Omit to return both.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expired(Boolean expired) {
+            return expired(Output.of(expired));
         }
 
         /**

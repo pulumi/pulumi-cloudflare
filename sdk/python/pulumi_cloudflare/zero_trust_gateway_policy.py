@@ -39,7 +39,7 @@ class ZeroTrustGatewayPolicyArgs:
 
         :param pulumi.Input[_builtins.str] account_id: Specify the Cloudflare account identifier.
         :param pulumi.Input[_builtins.str] action: Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
-               Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
+               Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect", "forward".
         :param pulumi.Input[_builtins.str] name: Specify the rule name.
         :param pulumi.Input[_builtins.str] description: Specify the rule description.
         :param pulumi.Input[_builtins.str] device_posture: Specify the wirefilter expression used for device posture check. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
@@ -93,7 +93,7 @@ class ZeroTrustGatewayPolicyArgs:
     def action(self) -> pulumi.Input[_builtins.str]:
         """
         Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
-        Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
+        Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect", "forward".
         """
         return pulumi.get(self, "action")
 
@@ -263,7 +263,7 @@ class _ZeroTrustGatewayPolicyState:
 
         :param pulumi.Input[_builtins.str] account_id: Specify the Cloudflare account identifier.
         :param pulumi.Input[_builtins.str] action: Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
-               Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
+               Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect", "forward".
         :param pulumi.Input[_builtins.str] deleted_at: Indicate the date of deletion, if any.
         :param pulumi.Input[_builtins.str] description: Specify the rule description.
         :param pulumi.Input[_builtins.str] device_posture: Specify the wirefilter expression used for device posture check. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
@@ -342,7 +342,7 @@ class _ZeroTrustGatewayPolicyState:
     def action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
-        Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
+        Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect", "forward".
         """
         return pulumi.get(self, "action")
 
@@ -623,9 +623,6 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
                     "X-Custom-Header-Name": ["somecustomvalue"],
                 },
                 "allow_child_bypass": False,
-                "audit_ssh": {
-                    "command_logging": False,
-                },
                 "biso_admin_controls": {
                     "copy": "remote_only",
                     "dcp": True,
@@ -677,6 +674,9 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
                 },
                 "forensic_copy": {
                     "enabled": True,
+                },
+                "forward": {
+                    "worker_id": "0123456789abcdef0123456789abcdef",
                 },
                 "ignore_cname_category_matches": True,
                 "insecure_disable_dnssec_validation": False,
@@ -744,7 +744,7 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Specify the Cloudflare account identifier.
         :param pulumi.Input[_builtins.str] action: Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
-               Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
+               Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect", "forward".
         :param pulumi.Input[_builtins.str] description: Specify the rule description.
         :param pulumi.Input[_builtins.str] device_posture: Specify the wirefilter expression used for device posture check. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
         :param pulumi.Input[_builtins.bool] enabled: Specify whether the rule is enabled.
@@ -793,9 +793,6 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
                     "X-Custom-Header-Name": ["somecustomvalue"],
                 },
                 "allow_child_bypass": False,
-                "audit_ssh": {
-                    "command_logging": False,
-                },
                 "biso_admin_controls": {
                     "copy": "remote_only",
                     "dcp": True,
@@ -847,6 +844,9 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
                 },
                 "forensic_copy": {
                     "enabled": True,
+                },
+                "forward": {
+                    "worker_id": "0123456789abcdef0123456789abcdef",
                 },
                 "ignore_cname_category_matches": True,
                 "insecure_disable_dnssec_validation": False,
@@ -1016,7 +1016,7 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Specify the Cloudflare account identifier.
         :param pulumi.Input[_builtins.str] action: Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
-               Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
+               Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect", "forward".
         :param pulumi.Input[_builtins.str] deleted_at: Indicate the date of deletion, if any.
         :param pulumi.Input[_builtins.str] description: Specify the rule description.
         :param pulumi.Input[_builtins.str] device_posture: Specify the wirefilter expression used for device posture check. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
@@ -1123,7 +1123,7 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
     def action(self) -> pulumi.Output[_builtins.str]:
         """
         Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
-        Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
+        Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect", "forward".
         """
         return pulumi.get(self, "action")
 

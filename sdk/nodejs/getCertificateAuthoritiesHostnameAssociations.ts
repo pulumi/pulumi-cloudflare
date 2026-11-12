@@ -49,6 +49,9 @@ export interface GetCertificateAuthoritiesHostnameAssociationsArgs {
  * A collection of values returned by getCertificateAuthoritiesHostnameAssociations.
  */
 export interface GetCertificateAuthoritiesHostnameAssociationsResult {
+    /**
+     * Hostnames are returned in lowercase punycode, in no particular order. Null when there are no associations.
+     */
     readonly hostnames: string[];
     /**
      * Identifier.

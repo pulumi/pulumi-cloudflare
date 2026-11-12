@@ -24,6 +24,7 @@ import * as utilities from "./utilities";
  *     name: "Austin Office Location",
  *     clientDefault: false,
  *     dnsDestinationIpsId: "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
+ *     dns64Enabled: false,
  *     ecsSupport: false,
  *     endpoints: {
  *         doh: {
@@ -114,6 +115,10 @@ export class ZeroTrustDnsLocation extends pulumi.CustomResource {
     declare public readonly clientDefault: pulumi.Output<boolean>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
+     * Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.
+     */
+    declare public readonly dns64Enabled: pulumi.Output<boolean | undefined>;
+    /**
      * Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.
      */
     declare public readonly dnsDestinationIpsId: pulumi.Output<string>;
@@ -175,6 +180,7 @@ export class ZeroTrustDnsLocation extends pulumi.CustomResource {
             resourceInputs["accountId"] = state?.accountId;
             resourceInputs["clientDefault"] = state?.clientDefault;
             resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["dns64Enabled"] = state?.dns64Enabled;
             resourceInputs["dnsDestinationIpsId"] = state?.dnsDestinationIpsId;
             resourceInputs["dnsDestinationIpv6BlockId"] = state?.dnsDestinationIpv6BlockId;
             resourceInputs["dohSubdomain"] = state?.dohSubdomain;
@@ -197,6 +203,7 @@ export class ZeroTrustDnsLocation extends pulumi.CustomResource {
             }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["clientDefault"] = args?.clientDefault;
+            resourceInputs["dns64Enabled"] = args?.dns64Enabled;
             resourceInputs["dnsDestinationIpsId"] = args?.dnsDestinationIpsId;
             resourceInputs["ecsSupport"] = args?.ecsSupport;
             resourceInputs["endpoints"] = args?.endpoints;
@@ -231,6 +238,10 @@ export interface ZeroTrustDnsLocationState {
      */
     clientDefault?: pulumi.Input<boolean | undefined>;
     createdAt?: pulumi.Input<string | undefined>;
+    /**
+     * Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.
+     */
+    dns64Enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.
      */
@@ -290,6 +301,10 @@ export interface ZeroTrustDnsLocationArgs {
      * Indicate whether this location is the default location.
      */
     clientDefault?: pulumi.Input<boolean | undefined>;
+    /**
+     * Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.
+     */
+    dns64Enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.
      */

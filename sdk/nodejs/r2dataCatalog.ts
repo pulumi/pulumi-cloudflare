@@ -21,6 +21,9 @@ import * as utilities from "./utilities";
  * const exampleR2DataCatalog = new cloudflare.R2DataCatalog("example_r2_data_catalog", {
  *     accountId: "0123456789abcdef0123456789abcdef",
  *     bucketName: "my-data-bucket",
+ *     credential: {
+ *         token: "your-cloudflare-api-token-here",
+ *     },
  * });
  * ```
  *
@@ -82,10 +85,18 @@ export class R2DataCatalog extends pulumi.CustomResource {
      */
     declare public readonly bucketName: pulumi.Output<string>;
     /**
+     * Contains request to store catalog credentials.
+     */
+    declare public readonly credential: pulumi.Output<outputs.R2DataCatalogCredential | undefined>;
+    /**
      * Shows the credential configuration status.
      * Available values: "present", "absent".
      */
     declare public /*out*/ readonly credentialStatus: pulumi.Output<string>;
+    /**
+     * Specifies the data-locality jurisdiction of the catalog. The first enable sets it, and it cannot change. Currently always `default`.
+     */
+    declare public /*out*/ readonly jurisdiction: pulumi.Output<string>;
     /**
      * Configures maintenance for the catalog.
      */
@@ -116,7 +127,9 @@ export class R2DataCatalog extends pulumi.CustomResource {
             resourceInputs["accountId"] = state?.accountId;
             resourceInputs["bucket"] = state?.bucket;
             resourceInputs["bucketName"] = state?.bucketName;
+            resourceInputs["credential"] = state?.credential;
             resourceInputs["credentialStatus"] = state?.credentialStatus;
+            resourceInputs["jurisdiction"] = state?.jurisdiction;
             resourceInputs["maintenanceConfig"] = state?.maintenanceConfig;
             resourceInputs["name"] = state?.name;
             resourceInputs["status"] = state?.status;
@@ -130,8 +143,10 @@ export class R2DataCatalog extends pulumi.CustomResource {
             }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["bucketName"] = args?.bucketName;
+            resourceInputs["credential"] = args?.credential;
             resourceInputs["bucket"] = undefined /*out*/;
             resourceInputs["credentialStatus"] = undefined /*out*/;
+            resourceInputs["jurisdiction"] = undefined /*out*/;
             resourceInputs["maintenanceConfig"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
@@ -158,10 +173,18 @@ export interface R2DataCatalogState {
      */
     bucketName?: pulumi.Input<string | undefined>;
     /**
+     * Contains request to store catalog credentials.
+     */
+    credential?: pulumi.Input<inputs.R2DataCatalogCredential | undefined>;
+    /**
      * Shows the credential configuration status.
      * Available values: "present", "absent".
      */
     credentialStatus?: pulumi.Input<string | undefined>;
+    /**
+     * Specifies the data-locality jurisdiction of the catalog. The first enable sets it, and it cannot change. Currently always `default`.
+     */
+    jurisdiction?: pulumi.Input<string | undefined>;
     /**
      * Configures maintenance for the catalog.
      */
@@ -189,4 +212,8 @@ export interface R2DataCatalogArgs {
      * Specifies the R2 bucket name.
      */
     bucketName: pulumi.Input<string>;
+    /**
+     * Contains request to store catalog credentials.
+     */
+    credential?: pulumi.Input<inputs.R2DataCatalogCredential | undefined>;
 }

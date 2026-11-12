@@ -28,7 +28,7 @@ class GetAccountTokenResult:
     """
     A collection of values returned by getAccountToken.
     """
-    def __init__(__self__, account_id=None, condition=None, creator_email_at_creation=None, expires_on=None, filter=None, id=None, issued_on=None, last_used_on=None, modified_on=None, name=None, not_before=None, policies=None, provisioner_id=None, provisioner_type=None, status=None, token_id=None):
+    def __init__(__self__, account_id=None, condition=None, creator_email_at_creation=None, expires_on=None, filter=None, id=None, issued_on=None, last_used_on=None, modified_on=None, name=None, not_before=None, policies=None, provisioner_id=None, provisioner_type=None, status=None, token_id=None, token_prefix=None, token_suffix=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -77,6 +77,12 @@ class GetAccountTokenResult:
         if token_id and not isinstance(token_id, str):
             raise TypeError("Expected argument 'token_id' to be a str")
         pulumi.set(__self__, "token_id", token_id)
+        if token_prefix and not isinstance(token_prefix, str):
+            raise TypeError("Expected argument 'token_prefix' to be a str")
+        pulumi.set(__self__, "token_prefix", token_prefix)
+        if token_suffix and not isinstance(token_suffix, str):
+            raise TypeError("Expected argument 'token_suffix' to be a str")
+        pulumi.set(__self__, "token_suffix", token_suffix)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -207,6 +213,26 @@ class GetAccountTokenResult:
         """
         return pulumi.get(self, "token_id")
 
+    @_builtins.property
+    @pulumi.getter(name="tokenPrefix")
+    def token_prefix(self) -> _builtins.str:
+        """
+        The prefix of the token value, before the first underscore. Use it with
+        `token_suffix` to identify a token. Only present for tokens created or
+        rolled after this field was added.
+        """
+        return pulumi.get(self, "token_prefix")
+
+    @_builtins.property
+    @pulumi.getter(name="tokenSuffix")
+    def token_suffix(self) -> _builtins.str:
+        """
+        The last 4 characters of the token value. Use it with `token_prefix` to
+        identify a token. It is not unique. Only present for tokens created or
+        rolled after this field was added.
+        """
+        return pulumi.get(self, "token_suffix")
+
 
 class AwaitableGetAccountTokenResult(GetAccountTokenResult):
     # pylint: disable=using-constant-test
@@ -229,7 +255,9 @@ class AwaitableGetAccountTokenResult(GetAccountTokenResult):
             provisioner_id=self.provisioner_id,
             provisioner_type=self.provisioner_type,
             status=self.status,
-            token_id=self.token_id)
+            token_id=self.token_id,
+            token_prefix=self.token_prefix,
+            token_suffix=self.token_suffix)
 
 
 def get_account_token(account_id: Optional[_builtins.str] = None,
@@ -279,7 +307,9 @@ def get_account_token(account_id: Optional[_builtins.str] = None,
         provisioner_id=pulumi.get(__ret__, 'provisioner_id'),
         provisioner_type=pulumi.get(__ret__, 'provisioner_type'),
         status=pulumi.get(__ret__, 'status'),
-        token_id=pulumi.get(__ret__, 'token_id'))
+        token_id=pulumi.get(__ret__, 'token_id'),
+        token_prefix=pulumi.get(__ret__, 'token_prefix'),
+        token_suffix=pulumi.get(__ret__, 'token_suffix'))
 def get_account_token_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              filter: pulumi.Input[Optional[Optional[Union['GetAccountTokenFilterArgs', 'GetAccountTokenFilterArgsDict', 'outputs.GetAccountTokenFilterResult']]]] = None,
                              token_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -326,4 +356,6 @@ def get_account_token_output(account_id: pulumi.Input[Optional[Optional[_builtin
         provisioner_id=pulumi.get(__response__, 'provisioner_id'),
         provisioner_type=pulumi.get(__response__, 'provisioner_type'),
         status=pulumi.get(__response__, 'status'),
-        token_id=pulumi.get(__response__, 'token_id')))
+        token_id=pulumi.get(__response__, 'token_id'),
+        token_prefix=pulumi.get(__response__, 'token_prefix'),
+        token_suffix=pulumi.get(__response__, 'token_suffix')))

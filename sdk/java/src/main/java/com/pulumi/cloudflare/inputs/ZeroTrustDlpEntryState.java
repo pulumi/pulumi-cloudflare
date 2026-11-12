@@ -29,7 +29,7 @@ public final class ZeroTrustDlpEntryState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Only applies to custom word lists.
+     * For `type: exactData`: Only applies to custom word lists.
      * Determines if the words should be matched in a case-sensitive manner
      * Cannot be set to false if secret is true
      * 
@@ -38,7 +38,7 @@ public final class ZeroTrustDlpEntryState extends com.pulumi.resources.ResourceA
     private @Nullable Output<Boolean> caseSensitive;
 
     /**
-     * @return Only applies to custom word lists.
+     * @return For `type: exactData`: Only applies to custom word lists.
      * Determines if the words should be matched in a case-sensitive manner
      * Cannot be set to false if secret is true
      * 
@@ -62,7 +62,7 @@ public final class ZeroTrustDlpEntryState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Whether this entry is deprecated for new use. This is computed from the static catalog and
+     * For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
      * emitted only when true.
      * 
      */
@@ -70,7 +70,7 @@ public final class ZeroTrustDlpEntryState extends com.pulumi.resources.ResourceA
     private @Nullable Output<Boolean> deprecated;
 
     /**
-     * @return Whether this entry is deprecated for new use. This is computed from the static catalog and
+     * @return For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
      * emitted only when true.
      * 
      */
@@ -165,14 +165,29 @@ public final class ZeroTrustDlpEntryState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * A Predefined AI prompt classification topic entry.
+     * Validators the new entry should reference, by id, at most 10.
+     * 
+     */
+    @Import(name="validatorIds")
+    private @Nullable Output<List<String>> validatorIds;
+
+    /**
+     * @return Validators the new entry should reference, by id, at most 10.
+     * 
+     */
+    public Optional<Output<List<String>>> validatorIds() {
+        return Optional.ofNullable(this.validatorIds);
+    }
+
+    /**
+     * For `type: predefined`: A Predefined AI prompt classification topic entry.
      * 
      */
     @Import(name="variant")
     private @Nullable Output<ZeroTrustDlpEntryVariantArgs> variant;
 
     /**
-     * @return A Predefined AI prompt classification topic entry.
+     * @return For `type: predefined`: A Predefined AI prompt classification topic entry.
      * 
      */
     public Optional<Output<ZeroTrustDlpEntryVariantArgs>> variant() {
@@ -204,6 +219,7 @@ public final class ZeroTrustDlpEntryState extends com.pulumi.resources.ResourceA
         this.type = $.type;
         this.updatedAt = $.updatedAt;
         this.uploadStatus = $.uploadStatus;
+        this.validatorIds = $.validatorIds;
         this.variant = $.variant;
         this.wordLists = $.wordLists;
     }
@@ -236,7 +252,7 @@ public final class ZeroTrustDlpEntryState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param caseSensitive Only applies to custom word lists.
+         * @param caseSensitive For `type: exactData`: Only applies to custom word lists.
          * Determines if the words should be matched in a case-sensitive manner
          * Cannot be set to false if secret is true
          * 
@@ -249,7 +265,7 @@ public final class ZeroTrustDlpEntryState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param caseSensitive Only applies to custom word lists.
+         * @param caseSensitive For `type: exactData`: Only applies to custom word lists.
          * Determines if the words should be matched in a case-sensitive manner
          * Cannot be set to false if secret is true
          * 
@@ -279,7 +295,7 @@ public final class ZeroTrustDlpEntryState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param deprecated Whether this entry is deprecated for new use. This is computed from the static catalog and
+         * @param deprecated For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
          * emitted only when true.
          * 
          * @return builder
@@ -291,7 +307,7 @@ public final class ZeroTrustDlpEntryState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param deprecated Whether this entry is deprecated for new use. This is computed from the static catalog and
+         * @param deprecated For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
          * emitted only when true.
          * 
          * @return builder
@@ -420,7 +436,38 @@ public final class ZeroTrustDlpEntryState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param variant A Predefined AI prompt classification topic entry.
+         * @param validatorIds Validators the new entry should reference, by id, at most 10.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder validatorIds(@Nullable Output<List<String>> validatorIds) {
+            $.validatorIds = validatorIds;
+            return this;
+        }
+
+        /**
+         * @param validatorIds Validators the new entry should reference, by id, at most 10.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder validatorIds(List<String> validatorIds) {
+            return validatorIds(Output.of(validatorIds));
+        }
+
+        /**
+         * @param validatorIds Validators the new entry should reference, by id, at most 10.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder validatorIds(String... validatorIds) {
+            return validatorIds(List.of(validatorIds));
+        }
+
+        /**
+         * @param variant For `type: predefined`: A Predefined AI prompt classification topic entry.
          * 
          * @return builder
          * 
@@ -431,7 +478,7 @@ public final class ZeroTrustDlpEntryState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param variant A Predefined AI prompt classification topic entry.
+         * @param variant For `type: predefined`: A Predefined AI prompt classification topic entry.
          * 
          * @return builder
          * 

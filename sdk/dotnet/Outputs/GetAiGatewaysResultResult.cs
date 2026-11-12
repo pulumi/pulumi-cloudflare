@@ -13,6 +13,9 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetAiGatewaysResultResult
     {
+        /// <summary>
+        /// Require authentication for gateway access. New gateways must have authentication enabled. Once enabled, authentication cannot be disabled.
+        /// </summary>
         public readonly bool Authentication;
         /// <summary>
         /// Requires customer-provided provider credentials and prevents fallback to Unified Billing.
@@ -23,6 +26,16 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly bool CollectLogs;
         public readonly string CreatedAt;
         public readonly Outputs.GetAiGatewaysResultDlpResult Dlp;
+        /// <summary>
+        /// FedRAMP compliance level: fedramp-medium or fedramp-high.
+        /// Available values: "fedramp-medium", "fedramp-high".
+        /// </summary>
+        public readonly string FedrampLevel;
+        /// <summary>
+        /// FedRAMP enforcement mode. "prefer" prioritizes compliant connectors but allows fallback. "require" strictly filters.
+        /// Available values: "prefer", "require".
+        /// </summary>
+        public readonly string FedrampMode;
         public readonly Outputs.GetAiGatewaysResultGuardrailsResult Guardrails;
         /// <summary>
         /// Unique identifier of the AI Gateway within the account.
@@ -59,6 +72,9 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly int RetryMaxAttempts;
         public readonly Outputs.GetAiGatewaysResultSpendLimitsResult SpendLimits;
+        /// <summary>
+        /// Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it.
+        /// </summary>
         public readonly string StoreId;
         public readonly Outputs.GetAiGatewaysResultStripeResult Stripe;
         /// <summary>
@@ -83,6 +99,10 @@ namespace Pulumi.Cloudflare.Outputs
             string createdAt,
 
             Outputs.GetAiGatewaysResultDlpResult dlp,
+
+            string fedrampLevel,
+
+            string fedrampMode,
 
             Outputs.GetAiGatewaysResultGuardrailsResult guardrails,
 
@@ -133,6 +153,8 @@ namespace Pulumi.Cloudflare.Outputs
             CollectLogs = collectLogs;
             CreatedAt = createdAt;
             Dlp = dlp;
+            FedrampLevel = fedrampLevel;
+            FedrampMode = fedrampMode;
             Guardrails = guardrails;
             Id = id;
             IsDefault = isDefault;

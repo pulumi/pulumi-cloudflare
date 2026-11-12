@@ -29,6 +29,7 @@ class ZeroTrustDeviceDefaultProfileArgs:
                  captive_portal: pulumi.Input[Optional[_builtins.float]] = None,
                  disable_auto_fallback: pulumi.Input[Optional[_builtins.bool]] = None,
                  dns_search_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs']]]] = None,
+                 enable_device_credential_authentication: pulumi.Input[Optional[_builtins.bool]] = None,
                  exclude_office_ips: pulumi.Input[Optional[_builtins.bool]] = None,
                  excludes: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileExcludeArgs']]]] = None,
                  global_acceleration: pulumi.Input[Optional['ZeroTrustDeviceDefaultProfileGlobalAccelerationArgs']] = None,
@@ -53,6 +54,7 @@ class ZeroTrustDeviceDefaultProfileArgs:
         :param pulumi.Input[_builtins.float] captive_portal: Turn on the captive portal after the specified amount of time.
         :param pulumi.Input[_builtins.bool] disable_auto_fallback: If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs']]] dns_search_suffixes: List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+        :param pulumi.Input[_builtins.bool] enable_device_credential_authentication: Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.
         :param pulumi.Input[_builtins.bool] exclude_office_ips: Whether to add Microsoft IPs to Split Tunnel exclusions.
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileExcludeArgs']]] excludes: List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
         :param pulumi.Input['ZeroTrustDeviceDefaultProfileGlobalAccelerationArgs'] global_acceleration: Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
@@ -82,6 +84,8 @@ class ZeroTrustDeviceDefaultProfileArgs:
             pulumi.set(__self__, "disable_auto_fallback", disable_auto_fallback)
         if dns_search_suffixes is not None:
             pulumi.set(__self__, "dns_search_suffixes", dns_search_suffixes)
+        if enable_device_credential_authentication is not None:
+            pulumi.set(__self__, "enable_device_credential_authentication", enable_device_credential_authentication)
         if exclude_office_ips is not None:
             pulumi.set(__self__, "exclude_office_ips", exclude_office_ips)
         if excludes is not None:
@@ -203,6 +207,18 @@ class ZeroTrustDeviceDefaultProfileArgs:
     @dns_search_suffixes.setter
     def dns_search_suffixes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs']]]]):
         pulumi.set(self, "dns_search_suffixes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableDeviceCredentialAuthentication")
+    def enable_device_credential_authentication(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.
+        """
+        return pulumi.get(self, "enable_device_credential_authentication")
+
+    @enable_device_credential_authentication.setter
+    def enable_device_credential_authentication(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_device_credential_authentication", value)
 
     @_builtins.property
     @pulumi.getter(name="excludeOfficeIps")
@@ -382,6 +398,7 @@ class _ZeroTrustDeviceDefaultProfileState:
                  default: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_auto_fallback: pulumi.Input[Optional[_builtins.bool]] = None,
                  dns_search_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs']]]] = None,
+                 enable_device_credential_authentication: pulumi.Input[Optional[_builtins.bool]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  exclude_office_ips: pulumi.Input[Optional[_builtins.bool]] = None,
                  excludes: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileExcludeArgs']]]] = None,
@@ -412,6 +429,7 @@ class _ZeroTrustDeviceDefaultProfileState:
         :param pulumi.Input[_builtins.bool] default: Whether the policy will be applied to matching devices.
         :param pulumi.Input[_builtins.bool] disable_auto_fallback: If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs']]] dns_search_suffixes: List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+        :param pulumi.Input[_builtins.bool] enable_device_credential_authentication: Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.
         :param pulumi.Input[_builtins.bool] enabled: Whether the policy will be applied to matching devices.
         :param pulumi.Input[_builtins.bool] exclude_office_ips: Whether to add Microsoft IPs to Split Tunnel exclusions.
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileExcludeArgs']]] excludes: List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
@@ -447,6 +465,8 @@ class _ZeroTrustDeviceDefaultProfileState:
             pulumi.set(__self__, "disable_auto_fallback", disable_auto_fallback)
         if dns_search_suffixes is not None:
             pulumi.set(__self__, "dns_search_suffixes", dns_search_suffixes)
+        if enable_device_credential_authentication is not None:
+            pulumi.set(__self__, "enable_device_credential_authentication", enable_device_credential_authentication)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if exclude_office_ips is not None:
@@ -590,6 +610,18 @@ class _ZeroTrustDeviceDefaultProfileState:
     @dns_search_suffixes.setter
     def dns_search_suffixes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs']]]]):
         pulumi.set(self, "dns_search_suffixes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableDeviceCredentialAuthentication")
+    def enable_device_credential_authentication(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.
+        """
+        return pulumi.get(self, "enable_device_credential_authentication")
+
+    @enable_device_credential_authentication.setter
+    def enable_device_credential_authentication(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_device_credential_authentication", value)
 
     @_builtins.property
     @pulumi.getter
@@ -823,6 +855,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
                  captive_portal: pulumi.Input[Optional[_builtins.float]] = None,
                  disable_auto_fallback: pulumi.Input[Optional[_builtins.bool]] = None,
                  dns_search_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs', 'ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgsDict', 'outputs.ZeroTrustDeviceDefaultProfileDnsSearchSuffix']]]]] = None,
+                 enable_device_credential_authentication: pulumi.Input[Optional[_builtins.bool]] = None,
                  exclude_office_ips: pulumi.Input[Optional[_builtins.bool]] = None,
                  excludes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileExcludeArgs', 'ZeroTrustDeviceDefaultProfileExcludeArgsDict', 'outputs.ZeroTrustDeviceDefaultProfileExclude']]]]] = None,
                  global_acceleration: pulumi.Input[Optional[Union['ZeroTrustDeviceDefaultProfileGlobalAccelerationArgs', 'ZeroTrustDeviceDefaultProfileGlobalAccelerationArgsDict', 'outputs.ZeroTrustDeviceDefaultProfileGlobalAcceleration']]] = None,
@@ -861,6 +894,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
                 "suffix": "internal.corp",
                 "description": "Example internal domains",
             }],
+            enable_device_credential_authentication=False,
             excludes=[{
                 "address": "192.0.2.0/24",
                 "description": "Exclude testing domains from the tunnel",
@@ -871,6 +905,8 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
                 "enabled": True,
                 "masque_endpoints": ["198.51.100.1:443"],
                 "wireguard_endpoints": ["198.51.100.1:2408"],
+                "allow_manual_override": True,
+                "autoswitch": True,
             },
             includes=[{
                 "address": "192.0.2.0/24",
@@ -910,6 +946,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
         :param pulumi.Input[_builtins.float] captive_portal: Turn on the captive portal after the specified amount of time.
         :param pulumi.Input[_builtins.bool] disable_auto_fallback: If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs', 'ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgsDict', 'outputs.ZeroTrustDeviceDefaultProfileDnsSearchSuffix']]]] dns_search_suffixes: List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+        :param pulumi.Input[_builtins.bool] enable_device_credential_authentication: Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.
         :param pulumi.Input[_builtins.bool] exclude_office_ips: Whether to add Microsoft IPs to Split Tunnel exclusions.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileExcludeArgs', 'ZeroTrustDeviceDefaultProfileExcludeArgsDict', 'outputs.ZeroTrustDeviceDefaultProfileExclude']]]] excludes: List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
         :param pulumi.Input[Union['ZeroTrustDeviceDefaultProfileGlobalAccelerationArgs', 'ZeroTrustDeviceDefaultProfileGlobalAccelerationArgsDict', 'outputs.ZeroTrustDeviceDefaultProfileGlobalAcceleration']] global_acceleration: Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
@@ -953,6 +990,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
                 "suffix": "internal.corp",
                 "description": "Example internal domains",
             }],
+            enable_device_credential_authentication=False,
             excludes=[{
                 "address": "192.0.2.0/24",
                 "description": "Exclude testing domains from the tunnel",
@@ -963,6 +1001,8 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
                 "enabled": True,
                 "masque_endpoints": ["198.51.100.1:443"],
                 "wireguard_endpoints": ["198.51.100.1:2408"],
+                "allow_manual_override": True,
+                "autoswitch": True,
             },
             includes=[{
                 "address": "192.0.2.0/24",
@@ -1016,6 +1056,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
                  captive_portal: pulumi.Input[Optional[_builtins.float]] = None,
                  disable_auto_fallback: pulumi.Input[Optional[_builtins.bool]] = None,
                  dns_search_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs', 'ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgsDict', 'outputs.ZeroTrustDeviceDefaultProfileDnsSearchSuffix']]]]] = None,
+                 enable_device_credential_authentication: pulumi.Input[Optional[_builtins.bool]] = None,
                  exclude_office_ips: pulumi.Input[Optional[_builtins.bool]] = None,
                  excludes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileExcludeArgs', 'ZeroTrustDeviceDefaultProfileExcludeArgsDict', 'outputs.ZeroTrustDeviceDefaultProfileExclude']]]]] = None,
                  global_acceleration: pulumi.Input[Optional[Union['ZeroTrustDeviceDefaultProfileGlobalAccelerationArgs', 'ZeroTrustDeviceDefaultProfileGlobalAccelerationArgsDict', 'outputs.ZeroTrustDeviceDefaultProfileGlobalAcceleration']]] = None,
@@ -1049,6 +1090,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
             __props__.__dict__["captive_portal"] = captive_portal
             __props__.__dict__["disable_auto_fallback"] = disable_auto_fallback
             __props__.__dict__["dns_search_suffixes"] = dns_search_suffixes
+            __props__.__dict__["enable_device_credential_authentication"] = enable_device_credential_authentication
             __props__.__dict__["exclude_office_ips"] = exclude_office_ips
             __props__.__dict__["excludes"] = excludes
             __props__.__dict__["global_acceleration"] = global_acceleration
@@ -1090,6 +1132,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
             default: pulumi.Input[Optional[_builtins.bool]] = None,
             disable_auto_fallback: pulumi.Input[Optional[_builtins.bool]] = None,
             dns_search_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs', 'ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgsDict', 'outputs.ZeroTrustDeviceDefaultProfileDnsSearchSuffix']]]]] = None,
+            enable_device_credential_authentication: pulumi.Input[Optional[_builtins.bool]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             exclude_office_ips: pulumi.Input[Optional[_builtins.bool]] = None,
             excludes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileExcludeArgs', 'ZeroTrustDeviceDefaultProfileExcludeArgsDict', 'outputs.ZeroTrustDeviceDefaultProfileExclude']]]]] = None,
@@ -1124,6 +1167,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] default: Whether the policy will be applied to matching devices.
         :param pulumi.Input[_builtins.bool] disable_auto_fallback: If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs', 'ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgsDict', 'outputs.ZeroTrustDeviceDefaultProfileDnsSearchSuffix']]]] dns_search_suffixes: List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+        :param pulumi.Input[_builtins.bool] enable_device_credential_authentication: Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.
         :param pulumi.Input[_builtins.bool] enabled: Whether the policy will be applied to matching devices.
         :param pulumi.Input[_builtins.bool] exclude_office_ips: Whether to add Microsoft IPs to Split Tunnel exclusions.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileExcludeArgs', 'ZeroTrustDeviceDefaultProfileExcludeArgsDict', 'outputs.ZeroTrustDeviceDefaultProfileExclude']]]] excludes: List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
@@ -1154,6 +1198,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
         __props__.__dict__["default"] = default
         __props__.__dict__["disable_auto_fallback"] = disable_auto_fallback
         __props__.__dict__["dns_search_suffixes"] = dns_search_suffixes
+        __props__.__dict__["enable_device_credential_authentication"] = enable_device_credential_authentication
         __props__.__dict__["enabled"] = enabled
         __props__.__dict__["exclude_office_ips"] = exclude_office_ips
         __props__.__dict__["excludes"] = excludes
@@ -1187,6 +1232,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
             default: pulumi.Input[Optional[_builtins.bool]] = None,
             disable_auto_fallback: pulumi.Input[Optional[_builtins.bool]] = None,
             dns_search_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs', 'ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgsDict', 'outputs.ZeroTrustDeviceDefaultProfileDnsSearchSuffix']]]]] = None,
+            enable_device_credential_authentication: pulumi.Input[Optional[_builtins.bool]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             exclude_office_ips: pulumi.Input[Optional[_builtins.bool]] = None,
             excludes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileExcludeArgs', 'ZeroTrustDeviceDefaultProfileExcludeArgsDict', 'outputs.ZeroTrustDeviceDefaultProfileExclude']]]]] = None,
@@ -1216,6 +1262,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
         __props__["default"] = default
         __props__["disableAutoFallback"] = disable_auto_fallback
         __props__["dnsSearchSuffixes"] = dns_search_suffixes
+        __props__["enableDeviceCredentialAuthentication"] = enable_device_credential_authentication
         __props__["enabled"] = enabled
         __props__["excludeOfficeIps"] = exclude_office_ips
         __props__["excludes"] = excludes
@@ -1305,6 +1352,14 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
         List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
         """
         return pulumi.get(self, "dns_search_suffixes")
+
+    @_builtins.property
+    @pulumi.getter(name="enableDeviceCredentialAuthentication")
+    def enable_device_credential_authentication(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.
+        """
+        return pulumi.get(self, "enable_device_credential_authentication")
 
     @_builtins.property
     @pulumi.getter

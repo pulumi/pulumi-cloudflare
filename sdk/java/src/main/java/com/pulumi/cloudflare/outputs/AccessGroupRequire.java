@@ -28,6 +28,7 @@ import com.pulumi.cloudflare.outputs.AccessGroupRequireOidc;
 import com.pulumi.cloudflare.outputs.AccessGroupRequireOkta;
 import com.pulumi.cloudflare.outputs.AccessGroupRequireSaml;
 import com.pulumi.cloudflare.outputs.AccessGroupRequireServiceToken;
+import com.pulumi.cloudflare.outputs.AccessGroupRequireServiceTokenTag;
 import com.pulumi.cloudflare.outputs.AccessGroupRequireUserRiskScore;
 import com.pulumi.core.annotations.CustomType;
 import java.util.Objects;
@@ -69,6 +70,7 @@ public final class AccessGroupRequire {
     private @Nullable AccessGroupRequireOkta okta;
     private @Nullable AccessGroupRequireSaml saml;
     private @Nullable AccessGroupRequireServiceToken serviceToken;
+    private @Nullable AccessGroupRequireServiceTokenTag serviceTokenTag;
     private @Nullable AccessGroupRequireUserRiskScore userRiskScore;
 
     private AccessGroupRequire() {}
@@ -155,6 +157,9 @@ public final class AccessGroupRequire {
     public Optional<AccessGroupRequireServiceToken> serviceToken() {
         return Optional.ofNullable(this.serviceToken);
     }
+    public Optional<AccessGroupRequireServiceTokenTag> serviceTokenTag() {
+        return Optional.ofNullable(this.serviceTokenTag);
+    }
     public Optional<AccessGroupRequireUserRiskScore> userRiskScore() {
         return Optional.ofNullable(this.userRiskScore);
     }
@@ -193,6 +198,7 @@ public final class AccessGroupRequire {
         private @Nullable AccessGroupRequireOkta okta;
         private @Nullable AccessGroupRequireSaml saml;
         private @Nullable AccessGroupRequireServiceToken serviceToken;
+        private @Nullable AccessGroupRequireServiceTokenTag serviceTokenTag;
         private @Nullable AccessGroupRequireUserRiskScore userRiskScore;
         public Builder() {}
         public Builder(AccessGroupRequire defaults) {
@@ -222,6 +228,7 @@ public final class AccessGroupRequire {
     	      this.okta = defaults.okta;
     	      this.saml = defaults.saml;
     	      this.serviceToken = defaults.serviceToken;
+    	      this.serviceTokenTag = defaults.serviceTokenTag;
     	      this.userRiskScore = defaults.userRiskScore;
         }
 
@@ -376,6 +383,12 @@ public final class AccessGroupRequire {
             return this;
         }
         @CustomType.Setter
+        public Builder serviceTokenTag(@Nullable AccessGroupRequireServiceTokenTag serviceTokenTag) {
+
+            this.serviceTokenTag = serviceTokenTag;
+            return this;
+        }
+        @CustomType.Setter
         public Builder userRiskScore(@Nullable AccessGroupRequireUserRiskScore userRiskScore) {
 
             this.userRiskScore = userRiskScore;
@@ -408,6 +421,7 @@ public final class AccessGroupRequire {
             _resultValue.okta = okta;
             _resultValue.saml = saml;
             _resultValue.serviceToken = serviceToken;
+            _resultValue.serviceTokenTag = serviceTokenTag;
             _resultValue.userRiskScore = userRiskScore;
             return _resultValue;
         }

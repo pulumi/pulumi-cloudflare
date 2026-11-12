@@ -14,7 +14,7 @@ import java.util.Objects;
 public final class GetZeroTrustAccessApplicationPolicyMfaConfig {
     /**
      * @return The authenticators allowed for MFA.
-     * Available values: &#34;totp&#34;, &#34;biometrics&#34;, &#34;security*key&#34;, &#34;ssh*piv_key&#34;.
+     * Available values: &#34;totp&#34;, &#34;biometrics&#34;, &#34;security*key&#34;, &#34;piv*key&#34;, &#34;ssh*fido2*key&#34;.
      * 
      */
     private List<String> allowedAuthenticators;
@@ -32,7 +32,7 @@ public final class GetZeroTrustAccessApplicationPolicyMfaConfig {
     private GetZeroTrustAccessApplicationPolicyMfaConfig() {}
     /**
      * @return The authenticators allowed for MFA.
-     * Available values: &#34;totp&#34;, &#34;biometrics&#34;, &#34;security*key&#34;, &#34;ssh*piv_key&#34;.
+     * Available values: &#34;totp&#34;, &#34;biometrics&#34;, &#34;security*key&#34;, &#34;piv*key&#34;, &#34;ssh*fido2*key&#34;.
      * 
      */
     public List<String> allowedAuthenticators() {

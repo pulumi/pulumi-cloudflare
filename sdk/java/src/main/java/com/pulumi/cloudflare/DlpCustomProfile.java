@@ -149,14 +149,14 @@ public class DlpCustomProfile extends com.pulumi.resources.CustomResource {
         return this.contextAwareness;
     }
     /**
-     * When the profile was created.
+     * For `type: custom`: When the profile was created.
      * 
      */
     @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
-     * @return When the profile was created.
+     * @return For `type: custom`: When the profile was created.
      * 
      */
     public Output<String> createdAt() {
@@ -242,14 +242,14 @@ public class DlpCustomProfile extends com.pulumi.resources.CustomResource {
         return this.ocrEnabled;
     }
     /**
-     * Whether this profile can be accessed by anyone.
+     * For `type: predefined`: Whether this profile can be accessed by anyone.
      * 
      */
     @Export(name="openAccess", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> openAccess;
 
     /**
-     * @return Whether this profile can be accessed by anyone.
+     * @return For `type: predefined`: Whether this profile can be accessed by anyone.
      * 
      */
     public Output<Boolean> openAccess() {
@@ -298,14 +298,14 @@ public class DlpCustomProfile extends com.pulumi.resources.CustomResource {
         return this.type;
     }
     /**
-     * When the profile was lasted updated.
+     * For `type: custom`: When the profile was lasted updated.
      * 
      */
     @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;
 
     /**
-     * @return When the profile was lasted updated.
+     * @return For `type: custom`: When the profile was lasted updated.
      * 
      */
     public Output<String> updatedAt() {

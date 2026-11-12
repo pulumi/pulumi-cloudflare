@@ -11,6 +11,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Resource Sharing Read`
+//
 // ## Example Usage
 //
 // ```go
@@ -30,6 +34,7 @@ import (
 //				ShareId:                pulumi.StringRef("3fd85f74b32742f1bff64a85009dda07"),
 //				IncludeRecipientCounts: pulumi.BoolRef(true),
 //				IncludeResources:       pulumi.BoolRef(true),
+//				IncludeTagsFrom:        pulumi.StringRef("api"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -58,6 +63,9 @@ type LookupShareArgs struct {
 	IncludeRecipientCounts *bool `pulumi:"includeRecipientCounts"`
 	// Include resources in the response.
 	IncludeResources *bool `pulumi:"includeResources"`
+	// Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+	// Available values: "api", "mirror".
+	IncludeTagsFrom *string `pulumi:"includeTagsFrom"`
 	// Share identifier tag.
 	ShareId *string `pulumi:"shareId"`
 }
@@ -72,7 +80,7 @@ type LookupShareResult struct {
 	AssociatedRecipientCount int `pulumi:"associatedRecipientCount"`
 	// The number of recipients in the 'associating' state. This field is only included when requested via the 'include*recipient*counts' parameter.
 	AssociatingRecipientCount int `pulumi:"associatingRecipientCount"`
-	// When the share was created.
+	// When the object was created.
 	Created string `pulumi:"created"`
 	// The number of recipients in the 'disassociated' state. This field is only included when requested via the 'include*recipient*counts' parameter.
 	DisassociatedRecipientCount int `pulumi:"disassociatedRecipientCount"`
@@ -85,9 +93,12 @@ type LookupShareResult struct {
 	IncludeRecipientCounts *bool `pulumi:"includeRecipientCounts"`
 	// Include resources in the response.
 	IncludeResources *bool `pulumi:"includeResources"`
+	// Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+	// Available values: "api", "mirror".
+	IncludeTagsFrom *string `pulumi:"includeTagsFrom"`
 	// Available values: "sent", "received".
 	Kind string `pulumi:"kind"`
-	// When the share was modified.
+	// When the object was last modified.
 	Modified string `pulumi:"modified"`
 	// The name of the share.
 	Name string `pulumi:"name"`
@@ -99,6 +110,8 @@ type LookupShareResult struct {
 	ShareId *string `pulumi:"shareId"`
 	// Available values: "active", "deleting", "deleted".
 	Status string `pulumi:"status"`
+	// Tags associated with the share. Included in create and update responses when tags are supplied, and in read responses when the `includeTagsFrom` parameter is set.
+	Tags map[string]string `pulumi:"tags"`
 	// Available values: "account", "organization".
 	TargetType string `pulumi:"targetType"`
 }
@@ -117,6 +130,9 @@ type LookupShareOutputArgs struct {
 	IncludeRecipientCounts pulumi.BoolPtrInput `pulumi:"includeRecipientCounts"`
 	// Include resources in the response.
 	IncludeResources pulumi.BoolPtrInput `pulumi:"includeResources"`
+	// Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+	// Available values: "api", "mirror".
+	IncludeTagsFrom pulumi.StringPtrInput `pulumi:"includeTagsFrom"`
 	// Share identifier tag.
 	ShareId pulumi.StringPtrInput `pulumi:"shareId"`
 }
@@ -160,7 +176,7 @@ func (o LookupShareResultOutput) AssociatingRecipientCount() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupShareResult) int { return v.AssociatingRecipientCount }).(pulumi.IntOutput)
 }
 
-// When the share was created.
+// When the object was created.
 func (o LookupShareResultOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupShareResult) string { return v.Created }).(pulumi.StringOutput)
 }
@@ -194,12 +210,18 @@ func (o LookupShareResultOutput) IncludeResources() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupShareResult) *bool { return v.IncludeResources }).(pulumi.BoolPtrOutput)
 }
 
+// Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+// Available values: "api", "mirror".
+func (o LookupShareResultOutput) IncludeTagsFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupShareResult) *string { return v.IncludeTagsFrom }).(pulumi.StringPtrOutput)
+}
+
 // Available values: "sent", "received".
 func (o LookupShareResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupShareResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
-// When the share was modified.
+// When the object was last modified.
 func (o LookupShareResultOutput) Modified() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupShareResult) string { return v.Modified }).(pulumi.StringOutput)
 }
@@ -227,6 +249,11 @@ func (o LookupShareResultOutput) ShareId() pulumi.StringPtrOutput {
 // Available values: "active", "deleting", "deleted".
 func (o LookupShareResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupShareResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Tags associated with the share. Included in create and update responses when tags are supplied, and in read responses when the `includeTagsFrom` parameter is set.
+func (o LookupShareResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupShareResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Available values: "account", "organization".

@@ -5,48 +5,49 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class OrganizationProfileArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final OrganizationProfileArgs Empty = new OrganizationProfileArgs();
 
-    @Import(name="businessAddress", required=true)
-    private Output<String> businessAddress;
+    @Import(name="businessAddress")
+    private @Nullable Output<String> businessAddress;
 
-    public Output<String> businessAddress() {
-        return this.businessAddress;
+    public Optional<Output<String>> businessAddress() {
+        return Optional.ofNullable(this.businessAddress);
     }
 
-    @Import(name="businessEmail", required=true)
-    private Output<String> businessEmail;
+    @Import(name="businessEmail")
+    private @Nullable Output<String> businessEmail;
 
-    public Output<String> businessEmail() {
-        return this.businessEmail;
+    public Optional<Output<String>> businessEmail() {
+        return Optional.ofNullable(this.businessEmail);
     }
 
-    @Import(name="businessName", required=true)
-    private Output<String> businessName;
+    @Import(name="businessName")
+    private @Nullable Output<String> businessName;
 
-    public Output<String> businessName() {
-        return this.businessName;
+    public Optional<Output<String>> businessName() {
+        return Optional.ofNullable(this.businessName);
     }
 
-    @Import(name="businessPhone", required=true)
-    private Output<String> businessPhone;
+    @Import(name="businessPhone")
+    private @Nullable Output<String> businessPhone;
 
-    public Output<String> businessPhone() {
-        return this.businessPhone;
+    public Optional<Output<String>> businessPhone() {
+        return Optional.ofNullable(this.businessPhone);
     }
 
-    @Import(name="externalMetadata", required=true)
-    private Output<String> externalMetadata;
+    @Import(name="externalMetadata")
+    private @Nullable Output<String> externalMetadata;
 
-    public Output<String> externalMetadata() {
-        return this.externalMetadata;
+    public Optional<Output<String>> externalMetadata() {
+        return Optional.ofNullable(this.externalMetadata);
     }
 
     private OrganizationProfileArgs() {}
@@ -77,7 +78,7 @@ public final class OrganizationProfileArgs extends com.pulumi.resources.Resource
             $ = new OrganizationProfileArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder businessAddress(Output<String> businessAddress) {
+        public Builder businessAddress(@Nullable Output<String> businessAddress) {
             $.businessAddress = businessAddress;
             return this;
         }
@@ -86,7 +87,7 @@ public final class OrganizationProfileArgs extends com.pulumi.resources.Resource
             return businessAddress(Output.of(businessAddress));
         }
 
-        public Builder businessEmail(Output<String> businessEmail) {
+        public Builder businessEmail(@Nullable Output<String> businessEmail) {
             $.businessEmail = businessEmail;
             return this;
         }
@@ -95,7 +96,7 @@ public final class OrganizationProfileArgs extends com.pulumi.resources.Resource
             return businessEmail(Output.of(businessEmail));
         }
 
-        public Builder businessName(Output<String> businessName) {
+        public Builder businessName(@Nullable Output<String> businessName) {
             $.businessName = businessName;
             return this;
         }
@@ -104,7 +105,7 @@ public final class OrganizationProfileArgs extends com.pulumi.resources.Resource
             return businessName(Output.of(businessName));
         }
 
-        public Builder businessPhone(Output<String> businessPhone) {
+        public Builder businessPhone(@Nullable Output<String> businessPhone) {
             $.businessPhone = businessPhone;
             return this;
         }
@@ -113,7 +114,7 @@ public final class OrganizationProfileArgs extends com.pulumi.resources.Resource
             return businessPhone(Output.of(businessPhone));
         }
 
-        public Builder externalMetadata(Output<String> externalMetadata) {
+        public Builder externalMetadata(@Nullable Output<String> externalMetadata) {
             $.externalMetadata = externalMetadata;
             return this;
         }
@@ -123,21 +124,6 @@ public final class OrganizationProfileArgs extends com.pulumi.resources.Resource
         }
 
         public OrganizationProfileArgs build() {
-            if ($.businessAddress == null) {
-                throw new MissingRequiredPropertyException("OrganizationProfileArgs", "businessAddress");
-            }
-            if ($.businessEmail == null) {
-                throw new MissingRequiredPropertyException("OrganizationProfileArgs", "businessEmail");
-            }
-            if ($.businessName == null) {
-                throw new MissingRequiredPropertyException("OrganizationProfileArgs", "businessName");
-            }
-            if ($.businessPhone == null) {
-                throw new MissingRequiredPropertyException("OrganizationProfileArgs", "businessPhone");
-            }
-            if ($.externalMetadata == null) {
-                throw new MissingRequiredPropertyException("OrganizationProfileArgs", "externalMetadata");
-            }
             return $;
         }
     }

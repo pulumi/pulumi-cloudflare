@@ -22,6 +22,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// Legacy account flags.
+        /// </summary>
+        public readonly Outputs.GetAccountsResultLegacyFlagsResult LegacyFlags;
+        /// <summary>
         /// Parent container details
         /// </summary>
         public readonly Outputs.GetAccountsResultManagedByResult ManagedBy;
@@ -44,6 +48,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string id,
 
+            Outputs.GetAccountsResultLegacyFlagsResult legacyFlags,
+
             Outputs.GetAccountsResultManagedByResult managedBy,
 
             string name,
@@ -54,6 +60,7 @@ namespace Pulumi.Cloudflare.Outputs
         {
             CreatedOn = createdOn;
             Id = id;
+            LegacyFlags = legacyFlags;
             ManagedBy = managedBy;
             Name = name;
             Settings = settings;

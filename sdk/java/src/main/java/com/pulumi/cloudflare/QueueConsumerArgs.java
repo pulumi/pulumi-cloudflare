@@ -55,14 +55,14 @@ public final class QueueConsumerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of a Worker
+     * For `type: worker`: Name of a Worker
      * 
      */
     @Import(name="scriptName")
     private @Nullable Output<String> scriptName;
 
     /**
-     * @return Name of a Worker
+     * @return For `type: worker`: Name of a Worker
      * 
      */
     public Optional<Output<String>> scriptName() {
@@ -172,7 +172,7 @@ public final class QueueConsumerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scriptName Name of a Worker
+         * @param scriptName For `type: worker`: Name of a Worker
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class QueueConsumerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scriptName Name of a Worker
+         * @param scriptName For `type: worker`: Name of a Worker
          * 
          * @return builder
          * 

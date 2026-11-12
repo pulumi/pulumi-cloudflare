@@ -22,6 +22,11 @@ public final class GetZeroTrustDnsLocationsResult {
     private Boolean clientDefault;
     private String createdAt;
     /**
+     * @return Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.
+     * 
+     */
+    private Boolean dns64Enabled;
+    /**
      * @return Indicate the identifier of the pair of IPv4 addresses assigned to this location.
      * 
      */
@@ -89,6 +94,13 @@ public final class GetZeroTrustDnsLocationsResult {
     }
     public String createdAt() {
         return this.createdAt;
+    }
+    /**
+     * @return Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.
+     * 
+     */
+    public Boolean dns64Enabled() {
+        return this.dns64Enabled;
     }
     /**
      * @return Indicate the identifier of the pair of IPv4 addresses assigned to this location.
@@ -185,6 +197,7 @@ public final class GetZeroTrustDnsLocationsResult {
     public static final class Builder {
         private Boolean clientDefault;
         private String createdAt;
+        private Boolean dns64Enabled;
         private String dnsDestinationIpsId;
         private String dnsDestinationIpv6BlockId;
         private String dohSubdomain;
@@ -203,6 +216,7 @@ public final class GetZeroTrustDnsLocationsResult {
     	      Objects.requireNonNull(defaults);
     	      this.clientDefault = defaults.clientDefault;
     	      this.createdAt = defaults.createdAt;
+    	      this.dns64Enabled = defaults.dns64Enabled;
     	      this.dnsDestinationIpsId = defaults.dnsDestinationIpsId;
     	      this.dnsDestinationIpv6BlockId = defaults.dnsDestinationIpv6BlockId;
     	      this.dohSubdomain = defaults.dohSubdomain;
@@ -232,6 +246,14 @@ public final class GetZeroTrustDnsLocationsResult {
               throw new MissingRequiredPropertyException("GetZeroTrustDnsLocationsResult", "createdAt");
             }
             this.createdAt = createdAt;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dns64Enabled(Boolean dns64Enabled) {
+            if (dns64Enabled == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDnsLocationsResult", "dns64Enabled");
+            }
+            this.dns64Enabled = dns64Enabled;
             return this;
         }
         @CustomType.Setter
@@ -345,6 +367,7 @@ public final class GetZeroTrustDnsLocationsResult {
             final var _resultValue = new GetZeroTrustDnsLocationsResult();
             _resultValue.clientDefault = clientDefault;
             _resultValue.createdAt = createdAt;
+            _resultValue.dns64Enabled = dns64Enabled;
             _resultValue.dnsDestinationIpsId = dnsDestinationIpsId;
             _resultValue.dnsDestinationIpv6BlockId = dnsDestinationIpv6BlockId;
             _resultValue.dohSubdomain = dohSubdomain;

@@ -12,6 +12,13 @@ namespace Pulumi.Cloudflare
     public static class GetZeroTrustResourceLibraryCategories
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Resource Library Read`
+        /// - `Resource Library Write`
+        /// - `Zero Trust Read`
+        /// - `Zero Trust Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -34,6 +41,13 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustResourceLibraryCategoriesResult>("cloudflare:index/getZeroTrustResourceLibraryCategories:getZeroTrustResourceLibraryCategories", args ?? new GetZeroTrustResourceLibraryCategoriesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Resource Library Read`
+        /// - `Resource Library Write`
+        /// - `Zero Trust Read`
+        /// - `Zero Trust Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -56,6 +70,13 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustResourceLibraryCategoriesResult>("cloudflare:index/getZeroTrustResourceLibraryCategories:getZeroTrustResourceLibraryCategories", args ?? new GetZeroTrustResourceLibraryCategoriesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Resource Library Read`
+        /// - `Resource Library Write`
+        /// - `Zero Trust Read`
+        /// - `Zero Trust Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -97,7 +118,7 @@ namespace Pulumi.Cloudflare
         public int? MaxItems { get; set; }
 
         /// <summary>
-        /// Number of results to skip. Defaults to 0; negative values are clamped to 0.
+        /// Number of results to skip. Defaults to 0; negative values are clamped to 0. Ignored when `Cursor` is provided.
         /// </summary>
         [Input("offset")]
         public int? Offset { get; set; }
@@ -126,7 +147,7 @@ namespace Pulumi.Cloudflare
         public Input<int>? MaxItems { get; set; }
 
         /// <summary>
-        /// Number of results to skip. Defaults to 0; negative values are clamped to 0.
+        /// Number of results to skip. Defaults to 0; negative values are clamped to 0. Ignored when `Cursor` is provided.
         /// </summary>
         [Input("offset")]
         public Input<int>? Offset { get; set; }
@@ -151,7 +172,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly int? MaxItems;
         /// <summary>
-        /// Number of results to skip. Defaults to 0; negative values are clamped to 0.
+        /// Number of results to skip. Defaults to 0; negative values are clamped to 0. Ignored when `Cursor` is provided.
         /// </summary>
         public readonly int Offset;
         /// <summary>

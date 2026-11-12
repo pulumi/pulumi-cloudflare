@@ -32,6 +32,10 @@ import * as utilities from "./utilities";
  *         staticPrefix: "192.0.2.0/24",
  *     },
  *     physport: 1,
+ *     remoteSubnets: [{
+ *         localAliasPrefix: "192.0.2.0/24",
+ *         remotePrefix: "192.0.2.0/24",
+ *     }],
  *     routedSubnets: [{
  *         nextHop: "192.0.2.1",
  *         prefix: "192.0.2.0/24",
@@ -131,6 +135,7 @@ export class MagicTransitSiteLan extends pulumi.CustomResource {
     declare public readonly name: pulumi.Output<string | undefined>;
     declare public readonly nat: pulumi.Output<outputs.MagicTransitSiteLanNat | undefined>;
     declare public readonly physport: pulumi.Output<number | undefined>;
+    declare public readonly remoteSubnets: pulumi.Output<outputs.MagicTransitSiteLanRemoteSubnet[] | undefined>;
     declare public readonly routedSubnets: pulumi.Output<outputs.MagicTransitSiteLanRoutedSubnet[] | undefined>;
     /**
      * Identifier
@@ -166,6 +171,7 @@ export class MagicTransitSiteLan extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["nat"] = state?.nat;
             resourceInputs["physport"] = state?.physport;
+            resourceInputs["remoteSubnets"] = state?.remoteSubnets;
             resourceInputs["routedSubnets"] = state?.routedSubnets;
             resourceInputs["siteId"] = state?.siteId;
             resourceInputs["staticAddressing"] = state?.staticAddressing;
@@ -186,6 +192,7 @@ export class MagicTransitSiteLan extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["nat"] = args?.nat;
             resourceInputs["physport"] = args?.physport;
+            resourceInputs["remoteSubnets"] = args?.remoteSubnets;
             resourceInputs["routedSubnets"] = args?.routedSubnets;
             resourceInputs["siteId"] = args?.siteId;
             resourceInputs["staticAddressing"] = args?.staticAddressing;
@@ -220,6 +227,7 @@ export interface MagicTransitSiteLanState {
     name?: pulumi.Input<string | undefined>;
     nat?: pulumi.Input<inputs.MagicTransitSiteLanNat | undefined>;
     physport?: pulumi.Input<number | undefined>;
+    remoteSubnets?: pulumi.Input<pulumi.Input<inputs.MagicTransitSiteLanRemoteSubnet>[] | undefined>;
     routedSubnets?: pulumi.Input<pulumi.Input<inputs.MagicTransitSiteLanRoutedSubnet>[] | undefined>;
     /**
      * Identifier
@@ -259,6 +267,7 @@ export interface MagicTransitSiteLanArgs {
     name?: pulumi.Input<string | undefined>;
     nat?: pulumi.Input<inputs.MagicTransitSiteLanNat | undefined>;
     physport?: pulumi.Input<number | undefined>;
+    remoteSubnets?: pulumi.Input<pulumi.Input<inputs.MagicTransitSiteLanRemoteSubnet>[] | undefined>;
     routedSubnets?: pulumi.Input<pulumi.Input<inputs.MagicTransitSiteLanRoutedSubnet>[] | undefined>;
     /**
      * Identifier

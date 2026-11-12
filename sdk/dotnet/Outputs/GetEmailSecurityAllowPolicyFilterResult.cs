@@ -19,6 +19,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Direction;
         /// <summary>
+        /// Filter to return only expired policies (`True`) or only policies that still apply (`False`). Omit to return both.
+        /// </summary>
+        public readonly bool? Expired;
+        /// <summary>
         /// Filter to show only policies where messages from the sender are exempted from Spam, Spoof, and Bulk dispositions (not Malicious or Suspicious).
         /// </summary>
         public readonly bool? IsAcceptableSender;
@@ -57,6 +61,8 @@ namespace Pulumi.Cloudflare.Outputs
         private GetEmailSecurityAllowPolicyFilterResult(
             string? direction,
 
+            bool? expired,
+
             bool? isAcceptableSender,
 
             bool? isExemptRecipient,
@@ -74,6 +80,7 @@ namespace Pulumi.Cloudflare.Outputs
             bool? verifySender)
         {
             Direction = direction;
+            Expired = expired;
             IsAcceptableSender = isAcceptableSender;
             IsExemptRecipient = isExemptRecipient;
             IsTrustedSender = isTrustedSender;

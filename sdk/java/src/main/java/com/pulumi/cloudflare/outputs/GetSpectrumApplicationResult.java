@@ -84,6 +84,17 @@ public final class GetSpectrumApplicationResult {
      */
     private String originWorkerId;
     /**
+     * @return Name of the Worker origin. Omitted when the Worker is not found or its name cannot be resolved.
+     * 
+     */
+    private String originWorkerName;
+    /**
+     * @return Lookup status of the Worker origin. Unknown indicates that its name could not be resolved. Only returned for Worker origins.
+     * Available values: &#34;available&#34;, &#34;notFound&#34;, &#34;unknown&#34;.
+     * 
+     */
+    private String originWorkerStatus;
+    /**
      * @return The port configuration at Cloudflare&#39;s edge. May specify a single port, for example `&#34;tcp/1000&#34;`, or a range of ports, for example `&#34;tcp/1000-2000&#34;`.
      * 
      */
@@ -209,6 +220,21 @@ public final class GetSpectrumApplicationResult {
         return this.originWorkerId;
     }
     /**
+     * @return Name of the Worker origin. Omitted when the Worker is not found or its name cannot be resolved.
+     * 
+     */
+    public String originWorkerName() {
+        return this.originWorkerName;
+    }
+    /**
+     * @return Lookup status of the Worker origin. Unknown indicates that its name could not be resolved. Only returned for Worker origins.
+     * Available values: &#34;available&#34;, &#34;notFound&#34;, &#34;unknown&#34;.
+     * 
+     */
+    public String originWorkerStatus() {
+        return this.originWorkerStatus;
+    }
+    /**
      * @return The port configuration at Cloudflare&#39;s edge. May specify a single port, for example `&#34;tcp/1000&#34;`, or a range of ports, for example `&#34;tcp/1000-2000&#34;`.
      * 
      */
@@ -276,6 +302,8 @@ public final class GetSpectrumApplicationResult {
         private GetSpectrumApplicationOriginDns originDns;
         private Object originPort;
         private String originWorkerId;
+        private String originWorkerName;
+        private String originWorkerStatus;
         private String protocol;
         private String proxyProtocol;
         private String tls;
@@ -298,6 +326,8 @@ public final class GetSpectrumApplicationResult {
     	      this.originDns = defaults.originDns;
     	      this.originPort = defaults.originPort;
     	      this.originWorkerId = defaults.originWorkerId;
+    	      this.originWorkerName = defaults.originWorkerName;
+    	      this.originWorkerStatus = defaults.originWorkerStatus;
     	      this.protocol = defaults.protocol;
     	      this.proxyProtocol = defaults.proxyProtocol;
     	      this.tls = defaults.tls;
@@ -410,6 +440,22 @@ public final class GetSpectrumApplicationResult {
             return this;
         }
         @CustomType.Setter
+        public Builder originWorkerName(String originWorkerName) {
+            if (originWorkerName == null) {
+              throw new MissingRequiredPropertyException("GetSpectrumApplicationResult", "originWorkerName");
+            }
+            this.originWorkerName = originWorkerName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder originWorkerStatus(String originWorkerStatus) {
+            if (originWorkerStatus == null) {
+              throw new MissingRequiredPropertyException("GetSpectrumApplicationResult", "originWorkerStatus");
+            }
+            this.originWorkerStatus = originWorkerStatus;
+            return this;
+        }
+        @CustomType.Setter
         public Builder protocol(String protocol) {
             if (protocol == null) {
               throw new MissingRequiredPropertyException("GetSpectrumApplicationResult", "protocol");
@@ -470,6 +516,8 @@ public final class GetSpectrumApplicationResult {
             _resultValue.originDns = originDns;
             _resultValue.originPort = originPort;
             _resultValue.originWorkerId = originWorkerId;
+            _resultValue.originWorkerName = originWorkerName;
+            _resultValue.originWorkerStatus = originWorkerStatus;
             _resultValue.protocol = protocol;
             _resultValue.proxyProtocol = proxyProtocol;
             _resultValue.tls = tls;

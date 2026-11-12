@@ -16,6 +16,10 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string Comments;
         public readonly string CreatedAt;
         /// <summary>
+        /// Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `Null` to clear the expiration.
+        /// </summary>
+        public readonly string ExpiresAt;
+        /// <summary>
         /// Allow policy identifier.
         /// </summary>
         public readonly string Id;
@@ -50,7 +54,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string LastModified;
         public readonly string ModifiedAt;
         /// <summary>
-        /// The pattern value to match. The format depends on `PatternType`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+        /// The pattern value to match. The format depends on `PatternType`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents. The API also rejects a pattern that equals a domain onboarded to the account, ignoring case.
         /// </summary>
         public readonly string Pattern;
         /// <summary>
@@ -72,6 +76,8 @@ namespace Pulumi.Cloudflare.Outputs
             string comments,
 
             string createdAt,
+
+            string expiresAt,
 
             string id,
 
@@ -101,6 +107,7 @@ namespace Pulumi.Cloudflare.Outputs
         {
             Comments = comments;
             CreatedAt = createdAt;
+            ExpiresAt = expiresAt;
             Id = id;
             IsAcceptableSender = isAcceptableSender;
             IsExemptRecipient = isExemptRecipient;

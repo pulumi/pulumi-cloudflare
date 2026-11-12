@@ -82,7 +82,7 @@ namespace Pulumi.Cloudflare
         public Output<string> QueueName { get; private set; } = null!;
 
         /// <summary>
-        /// Name of a Worker
+        /// For `type: worker`: Name of a Worker
         /// </summary>
         [Output("scriptName")]
         public Output<string> ScriptName { get; private set; } = null!;
@@ -158,7 +158,7 @@ namespace Pulumi.Cloudflare
         public Input<string> QueueId { get; set; } = null!;
 
         /// <summary>
-        /// Name of a Worker
+        /// For `type: worker`: Name of a Worker
         /// </summary>
         [Input("scriptName")]
         public Input<string>? ScriptName { get; set; }
@@ -208,7 +208,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? QueueName { get; set; }
 
         /// <summary>
-        /// Name of a Worker
+        /// For `type: worker`: Name of a Worker
         /// </summary>
         [Input("scriptName")]
         public Input<string>? ScriptName { get; set; }

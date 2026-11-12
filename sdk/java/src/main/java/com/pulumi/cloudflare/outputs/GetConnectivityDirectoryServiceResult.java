@@ -40,6 +40,10 @@ public final class GetConnectivityDirectoryServiceResult {
      * 
      */
     private GetConnectivityDirectoryServiceTlsSettings tlsSettings;
+    /**
+     * @return Available values: &#34;tcp&#34;, &#34;http&#34;.
+     * 
+     */
     private String type;
     private String updatedAt;
 
@@ -92,6 +96,10 @@ public final class GetConnectivityDirectoryServiceResult {
     public GetConnectivityDirectoryServiceTlsSettings tlsSettings() {
         return this.tlsSettings;
     }
+    /**
+     * @return Available values: &#34;tcp&#34;, &#34;http&#34;.
+     * 
+     */
     public String type() {
         return this.type;
     }

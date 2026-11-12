@@ -273,6 +273,8 @@ class _SpectrumApplicationState:
                  origin_dns: pulumi.Input[Optional['SpectrumApplicationOriginDnsArgs']] = None,
                  origin_port: Optional[Any] = None,
                  origin_worker_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 origin_worker_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 origin_worker_status: pulumi.Input[Optional[_builtins.str]] = None,
                  protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  proxy_protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  tls: pulumi.Input[Optional[_builtins.str]] = None,
@@ -295,6 +297,9 @@ class _SpectrumApplicationState:
         :param Any origin_port: The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `"1000-2000"`.
                Notes: If specifying a port range, the number of ports in the range must match the number of ports specified in the "protocol" field.
         :param pulumi.Input[_builtins.str] origin_worker_id: Optional Worker script tag (worker ID) to use as the application's origin. Only supported for TCP applications with traffic*type "worker"; mutually exclusive with origin*direct, origin*dns, origin*port, proxy*protocol, and argo*smart_routing. tls may only be "off" or "flexible".
+        :param pulumi.Input[_builtins.str] origin_worker_name: Name of the Worker origin. Omitted when the Worker is not found or its name cannot be resolved.
+        :param pulumi.Input[_builtins.str] origin_worker_status: Lookup status of the Worker origin. Unknown indicates that its name could not be resolved. Only returned for Worker origins.
+               Available values: "available", "not_found", "unknown".
         :param pulumi.Input[_builtins.str] protocol: The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`.
         :param pulumi.Input[_builtins.str] proxy_protocol: Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
                Available values: "off", "v1", "v2", "simple".
@@ -325,6 +330,10 @@ class _SpectrumApplicationState:
             pulumi.set(__self__, "origin_port", origin_port)
         if origin_worker_id is not None:
             pulumi.set(__self__, "origin_worker_id", origin_worker_id)
+        if origin_worker_name is not None:
+            pulumi.set(__self__, "origin_worker_name", origin_worker_name)
+        if origin_worker_status is not None:
+            pulumi.set(__self__, "origin_worker_status", origin_worker_status)
         if protocol is not None:
             pulumi.set(__self__, "protocol", protocol)
         if proxy_protocol is not None:
@@ -460,6 +469,31 @@ class _SpectrumApplicationState:
     @origin_worker_id.setter
     def origin_worker_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "origin_worker_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="originWorkerName")
+    def origin_worker_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Name of the Worker origin. Omitted when the Worker is not found or its name cannot be resolved.
+        """
+        return pulumi.get(self, "origin_worker_name")
+
+    @origin_worker_name.setter
+    def origin_worker_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "origin_worker_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="originWorkerStatus")
+    def origin_worker_status(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Lookup status of the Worker origin. Unknown indicates that its name could not be resolved. Only returned for Worker origins.
+        Available values: "available", "not_found", "unknown".
+        """
+        return pulumi.get(self, "origin_worker_status")
+
+    @origin_worker_status.setter
+    def origin_worker_status(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "origin_worker_status", value)
 
     @_builtins.property
     @pulumi.getter
@@ -739,6 +773,8 @@ class SpectrumApplication(pulumi.CustomResource):
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["created_on"] = None
             __props__.__dict__["modified_on"] = None
+            __props__.__dict__["origin_worker_name"] = None
+            __props__.__dict__["origin_worker_status"] = None
         super(SpectrumApplication, __self__).__init__(
             'cloudflare:index/spectrumApplication:SpectrumApplication',
             resource_name,
@@ -759,6 +795,8 @@ class SpectrumApplication(pulumi.CustomResource):
             origin_dns: pulumi.Input[Optional[Union['SpectrumApplicationOriginDnsArgs', 'SpectrumApplicationOriginDnsArgsDict', 'outputs.SpectrumApplicationOriginDns']]] = None,
             origin_port: Optional[Any] = None,
             origin_worker_id: pulumi.Input[Optional[_builtins.str]] = None,
+            origin_worker_name: pulumi.Input[Optional[_builtins.str]] = None,
+            origin_worker_status: pulumi.Input[Optional[_builtins.str]] = None,
             protocol: pulumi.Input[Optional[_builtins.str]] = None,
             proxy_protocol: pulumi.Input[Optional[_builtins.str]] = None,
             tls: pulumi.Input[Optional[_builtins.str]] = None,
@@ -785,6 +823,9 @@ class SpectrumApplication(pulumi.CustomResource):
         :param Any origin_port: The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `"1000-2000"`.
                Notes: If specifying a port range, the number of ports in the range must match the number of ports specified in the "protocol" field.
         :param pulumi.Input[_builtins.str] origin_worker_id: Optional Worker script tag (worker ID) to use as the application's origin. Only supported for TCP applications with traffic*type "worker"; mutually exclusive with origin*direct, origin*dns, origin*port, proxy*protocol, and argo*smart_routing. tls may only be "off" or "flexible".
+        :param pulumi.Input[_builtins.str] origin_worker_name: Name of the Worker origin. Omitted when the Worker is not found or its name cannot be resolved.
+        :param pulumi.Input[_builtins.str] origin_worker_status: Lookup status of the Worker origin. Unknown indicates that its name could not be resolved. Only returned for Worker origins.
+               Available values: "available", "not_found", "unknown".
         :param pulumi.Input[_builtins.str] protocol: The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`.
         :param pulumi.Input[_builtins.str] proxy_protocol: Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
                Available values: "off", "v1", "v2", "simple".
@@ -809,6 +850,8 @@ class SpectrumApplication(pulumi.CustomResource):
         __props__.__dict__["origin_dns"] = origin_dns
         __props__.__dict__["origin_port"] = origin_port
         __props__.__dict__["origin_worker_id"] = origin_worker_id
+        __props__.__dict__["origin_worker_name"] = origin_worker_name
+        __props__.__dict__["origin_worker_status"] = origin_worker_status
         __props__.__dict__["protocol"] = protocol
         __props__.__dict__["proxy_protocol"] = proxy_protocol
         __props__.__dict__["tls"] = tls
@@ -830,6 +873,8 @@ class SpectrumApplication(pulumi.CustomResource):
             origin_dns: pulumi.Input[Optional[Union['SpectrumApplicationOriginDnsArgs', 'SpectrumApplicationOriginDnsArgsDict', 'outputs.SpectrumApplicationOriginDns']]] = None,
             origin_port: Optional[Any] = None,
             origin_worker_id: pulumi.Input[Optional[_builtins.str]] = None,
+            origin_worker_name: pulumi.Input[Optional[_builtins.str]] = None,
+            origin_worker_status: pulumi.Input[Optional[_builtins.str]] = None,
             protocol: pulumi.Input[Optional[_builtins.str]] = None,
             proxy_protocol: pulumi.Input[Optional[_builtins.str]] = None,
             tls: pulumi.Input[Optional[_builtins.str]] = None,
@@ -847,6 +892,8 @@ class SpectrumApplication(pulumi.CustomResource):
         __props__["originDns"] = origin_dns
         __props__["originPort"] = origin_port
         __props__["originWorkerId"] = origin_worker_id
+        __props__["originWorkerName"] = origin_worker_name
+        __props__["originWorkerStatus"] = origin_worker_status
         __props__["protocol"] = protocol
         __props__["proxyProtocol"] = proxy_protocol
         __props__["tls"] = tls
@@ -937,6 +984,23 @@ class SpectrumApplication(pulumi.CustomResource):
         Optional Worker script tag (worker ID) to use as the application's origin. Only supported for TCP applications with traffic*type "worker"; mutually exclusive with origin*direct, origin*dns, origin*port, proxy*protocol, and argo*smart_routing. tls may only be "off" or "flexible".
         """
         return pulumi.get(self, "origin_worker_id")
+
+    @_builtins.property
+    @pulumi.getter(name="originWorkerName")
+    def origin_worker_name(self) -> pulumi.Output[_builtins.str]:
+        """
+        Name of the Worker origin. Omitted when the Worker is not found or its name cannot be resolved.
+        """
+        return pulumi.get(self, "origin_worker_name")
+
+    @_builtins.property
+    @pulumi.getter(name="originWorkerStatus")
+    def origin_worker_status(self) -> pulumi.Output[_builtins.str]:
+        """
+        Lookup status of the Worker origin. Unknown indicates that its name could not be resolved. Only returned for Worker origins.
+        Available values: "available", "not_found", "unknown".
+        """
+        return pulumi.get(self, "origin_worker_status")
 
     @_builtins.property
     @pulumi.getter

@@ -44,6 +44,11 @@ public final class GetAiGatewaysResultGuardrailsResponse {
      * @return Available values: &#34;FLAG&#34;, &#34;BLOCK&#34;.
      * 
      */
+    private String s14;
+    /**
+     * @return Available values: &#34;FLAG&#34;, &#34;BLOCK&#34;.
+     * 
+     */
     private String s2;
     /**
      * @return Available values: &#34;FLAG&#34;, &#34;BLOCK&#34;.
@@ -128,6 +133,13 @@ public final class GetAiGatewaysResultGuardrailsResponse {
      * @return Available values: &#34;FLAG&#34;, &#34;BLOCK&#34;.
      * 
      */
+    public String s14() {
+        return this.s14;
+    }
+    /**
+     * @return Available values: &#34;FLAG&#34;, &#34;BLOCK&#34;.
+     * 
+     */
     public String s2() {
         return this.s2;
     }
@@ -196,6 +208,7 @@ public final class GetAiGatewaysResultGuardrailsResponse {
         private String s11;
         private String s12;
         private String s13;
+        private String s14;
         private String s2;
         private String s3;
         private String s4;
@@ -213,6 +226,7 @@ public final class GetAiGatewaysResultGuardrailsResponse {
     	      this.s11 = defaults.s11;
     	      this.s12 = defaults.s12;
     	      this.s13 = defaults.s13;
+    	      this.s14 = defaults.s14;
     	      this.s2 = defaults.s2;
     	      this.s3 = defaults.s3;
     	      this.s4 = defaults.s4;
@@ -269,6 +283,14 @@ public final class GetAiGatewaysResultGuardrailsResponse {
               throw new MissingRequiredPropertyException("GetAiGatewaysResultGuardrailsResponse", "s13");
             }
             this.s13 = s13;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder s14(String s14) {
+            if (s14 == null) {
+              throw new MissingRequiredPropertyException("GetAiGatewaysResultGuardrailsResponse", "s14");
+            }
+            this.s14 = s14;
             return this;
         }
         @CustomType.Setter
@@ -343,6 +365,7 @@ public final class GetAiGatewaysResultGuardrailsResponse {
             _resultValue.s11 = s11;
             _resultValue.s12 = s12;
             _resultValue.s13 = s13;
+            _resultValue.s14 = s14;
             _resultValue.s2 = s2;
             _resultValue.s3 = s3;
             _resultValue.s4 = s4;

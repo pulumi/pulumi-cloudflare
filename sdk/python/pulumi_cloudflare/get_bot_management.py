@@ -27,7 +27,10 @@ class GetBotManagementResult:
     """
     A collection of values returned by getBotManagement.
     """
-    def __init__(__self__, ai_bots_migration_opt_out=None, ai_bots_protection=None, ai_training=None, ai_user=None, aisearch=None, auto_update_model=None, bm_cookie_enabled=None, bot_preference_sync_enabled=None, cf_robots_variant=None, content_bots_protection=None, crawler_protection=None, enable_js=None, fight_mode=None, id=None, is_robots_txt_managed=None, jsd_api_results_enabled=None, optimize_wordpress=None, sbfm_definitely_automated=None, sbfm_likely_automated=None, sbfm_static_resource_protection=None, sbfm_verified_bots=None, stale_zone_configuration=None, suppress_session_score=None, using_latest_model=None, zone_id=None):
+    def __init__(__self__, ai_agents=None, ai_bots_migration_opt_out=None, ai_bots_protection=None, ai_training=None, ai_user=None, aisearch=None, auto_update_model=None, bm_cookie_enabled=None, bot_preference_sync_enabled=None, cf_robots_variant=None, content_bots_protection=None, crawler_protection=None, enable_js=None, fight_mode=None, id=None, is_robots_txt_managed=None, jsd_api_results_enabled=None, optimize_wordpress=None, sbfm_definitely_automated=None, sbfm_likely_automated=None, sbfm_static_resource_protection=None, sbfm_verified_bots=None, stale_zone_configuration=None, suppress_session_score=None, using_latest_model=None, zone_id=None):
+        if ai_agents and not isinstance(ai_agents, dict):
+            raise TypeError("Expected argument 'ai_agents' to be a dict")
+        pulumi.set(__self__, "ai_agents", ai_agents)
         if ai_bots_migration_opt_out and not isinstance(ai_bots_migration_opt_out, bool):
             raise TypeError("Expected argument 'ai_bots_migration_opt_out' to be a bool")
         pulumi.set(__self__, "ai_bots_migration_opt_out", ai_bots_migration_opt_out)
@@ -103,6 +106,14 @@ class GetBotManagementResult:
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         pulumi.set(__self__, "zone_id", zone_id)
+
+    @_builtins.property
+    @pulumi.getter(name="aiAgents")
+    def ai_agents(self) -> 'outputs.GetBotManagementAiAgentsResult':
+        """
+        Configure blocking behavior for supported personal AI agents.
+        """
+        return pulumi.get(self, "ai_agents")
 
     @_builtins.property
     @pulumi.getter(name="aiBotsMigrationOptOut")
@@ -323,6 +334,7 @@ class AwaitableGetBotManagementResult(GetBotManagementResult):
         if False:
             yield self
         return GetBotManagementResult(
+            ai_agents=self.ai_agents,
             ai_bots_migration_opt_out=self.ai_bots_migration_opt_out,
             ai_bots_protection=self.ai_bots_protection,
             ai_training=self.ai_training,
@@ -376,6 +388,7 @@ def get_bot_management(zone_id: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getBotManagement:getBotManagement', __args__, opts=opts, typ=GetBotManagementResult).value
 
     return AwaitableGetBotManagementResult(
+        ai_agents=pulumi.get(__ret__, 'ai_agents'),
         ai_bots_migration_opt_out=pulumi.get(__ret__, 'ai_bots_migration_opt_out'),
         ai_bots_protection=pulumi.get(__ret__, 'ai_bots_protection'),
         ai_training=pulumi.get(__ret__, 'ai_training'),
@@ -426,6 +439,7 @@ def get_bot_management_output(zone_id: pulumi.Input[Optional[Optional[_builtins.
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getBotManagement:getBotManagement', __args__, opts=opts, typ=GetBotManagementResult)
     return __ret__.apply(lambda __response__: GetBotManagementResult(
+        ai_agents=pulumi.get(__response__, 'ai_agents'),
         ai_bots_migration_opt_out=pulumi.get(__response__, 'ai_bots_migration_opt_out'),
         ai_bots_protection=pulumi.get(__response__, 'ai_bots_protection'),
         ai_training=pulumi.get(__response__, 'ai_training'),

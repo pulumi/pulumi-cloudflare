@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Zone Observability Read`
+// - `Zone Observability Write`
+//
 // ## Example Usage
 //
 // ```go

@@ -67,7 +67,7 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// Configures pool weights.
+        /// Configures pool weights for a rule override. An omitted DefaultWeight inherits the load balancer's default weight.
         /// </summary>
         [Input("randomSteering")]
         public Input<Inputs.LoadBalancerRuleOverridesRandomSteeringArgs>? RandomSteering { get; set; }

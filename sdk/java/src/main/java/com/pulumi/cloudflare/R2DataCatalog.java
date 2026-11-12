@@ -6,12 +6,14 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.R2DataCatalogArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.R2DataCatalogState;
+import com.pulumi.cloudflare.outputs.R2DataCatalogCredential;
 import com.pulumi.cloudflare.outputs.R2DataCatalogMaintenanceConfig;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -31,6 +33,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.R2DataCatalog;
  * import com.pulumi.cloudflare.R2DataCatalogArgs;
+ * import com.pulumi.cloudflare.inputs.R2DataCatalogCredentialArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -47,6 +50,9 @@ import javax.annotation.Nullable;
  *         var exampleR2DataCatalog = new R2DataCatalog("exampleR2DataCatalog", R2DataCatalogArgs.builder()
  *             .accountId("0123456789abcdef0123456789abcdef")
  *             .bucketName("my-data-bucket")
+ *             .credential(R2DataCatalogCredentialArgs.builder()
+ *                 .token("your-cloudflare-api-token-here")
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -106,6 +112,20 @@ public class R2DataCatalog extends com.pulumi.resources.CustomResource {
         return this.bucketName;
     }
     /**
+     * Contains request to store catalog credentials.
+     * 
+     */
+    @Export(name="credential", refs={R2DataCatalogCredential.class}, tree="[0]")
+    private Output</* @Nullable */ R2DataCatalogCredential> credential;
+
+    /**
+     * @return Contains request to store catalog credentials.
+     * 
+     */
+    public Output<Optional<R2DataCatalogCredential>> credential() {
+        return Codegen.optional(this.credential);
+    }
+    /**
      * Shows the credential configuration status.
      * Available values: &#34;present&#34;, &#34;absent&#34;.
      * 
@@ -120,6 +140,20 @@ public class R2DataCatalog extends com.pulumi.resources.CustomResource {
      */
     public Output<String> credentialStatus() {
         return this.credentialStatus;
+    }
+    /**
+     * Specifies the data-locality jurisdiction of the catalog. The first enable sets it, and it cannot change. Currently always `default`.
+     * 
+     */
+    @Export(name="jurisdiction", refs={String.class}, tree="[0]")
+    private Output<String> jurisdiction;
+
+    /**
+     * @return Specifies the data-locality jurisdiction of the catalog. The first enable sets it, and it cannot change. Currently always `default`.
+     * 
+     */
+    public Output<String> jurisdiction() {
+        return this.jurisdiction;
     }
     /**
      * Configures maintenance for the catalog.

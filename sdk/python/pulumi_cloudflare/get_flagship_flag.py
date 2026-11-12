@@ -28,7 +28,7 @@ class GetFlagshipFlagResult:
     """
     A collection of values returned by getFlagshipFlag.
     """
-    def __init__(__self__, account_id=None, app_id=None, default_variation=None, description=None, enabled=None, filter=None, flag_key=None, id=None, key=None, rules=None, type=None, updated_at=None, updated_by=None, variations=None):
+    def __init__(__self__, account_id=None, app_id=None, default_variation=None, description=None, enabled=None, filter=None, flag_key=None, id=None, key=None, metadata=None, rules=None, type=None, updated_at=None, updated_by=None, variations=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -56,6 +56,9 @@ class GetFlagshipFlagResult:
         if key and not isinstance(key, str):
             raise TypeError("Expected argument 'key' to be a str")
         pulumi.set(__self__, "key", key)
+        if metadata and not isinstance(metadata, dict):
+            raise TypeError("Expected argument 'metadata' to be a dict")
+        pulumi.set(__self__, "metadata", metadata)
         if rules and not isinstance(rules, list):
             raise TypeError("Expected argument 'rules' to be a list")
         pulumi.set(__self__, "rules", rules)
@@ -143,6 +146,14 @@ class GetFlagshipFlagResult:
 
     @_builtins.property
     @pulumi.getter
+    def metadata(self) -> Any:
+        """
+        Key-value metadata associated with the flag. Returned only when the flag has metadata.
+        """
+        return pulumi.get(self, "metadata")
+
+    @_builtins.property
+    @pulumi.getter
     def rules(self) -> Sequence['outputs.GetFlagshipFlagRuleResult']:
         """
         Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`.
@@ -192,6 +203,7 @@ class AwaitableGetFlagshipFlagResult(GetFlagshipFlagResult):
             flag_key=self.flag_key,
             id=self.id,
             key=self.key,
+            metadata=self.metadata,
             rules=self.rules,
             type=self.type,
             updated_at=self.updated_at,
@@ -243,6 +255,7 @@ def get_flagship_flag(account_id: Optional[_builtins.str] = None,
         flag_key=pulumi.get(__ret__, 'flag_key'),
         id=pulumi.get(__ret__, 'id'),
         key=pulumi.get(__ret__, 'key'),
+        metadata=pulumi.get(__ret__, 'metadata'),
         rules=pulumi.get(__ret__, 'rules'),
         type=pulumi.get(__ret__, 'type'),
         updated_at=pulumi.get(__ret__, 'updated_at'),
@@ -291,6 +304,7 @@ def get_flagship_flag_output(account_id: pulumi.Input[Optional[_builtins.str]] =
         flag_key=pulumi.get(__response__, 'flag_key'),
         id=pulumi.get(__response__, 'id'),
         key=pulumi.get(__response__, 'key'),
+        metadata=pulumi.get(__response__, 'metadata'),
         rules=pulumi.get(__response__, 'rules'),
         type=pulumi.get(__response__, 'type'),
         updated_at=pulumi.get(__response__, 'updated_at'),

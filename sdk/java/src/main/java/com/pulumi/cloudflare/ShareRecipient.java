@@ -45,7 +45,6 @@ import javax.annotation.Nullable;
  *         var exampleShareRecipient = new ShareRecipient("exampleShareRecipient", ShareRecipientArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .shareId("3fd85f74b32742f1bff64a85009dda07")
- *             .organizationId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .recipientAccountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .build());
  * 
@@ -98,14 +97,14 @@ public class ShareRecipient extends com.pulumi.resources.CustomResource {
         return this.associationStatus;
     }
     /**
-     * When the share was created.
+     * When the object was created.
      * 
      */
     @Export(name="created", refs={String.class}, tree="[0]")
     private Output<String> created;
 
     /**
-     * @return When the share was created.
+     * @return When the object was created.
      * 
      */
     public Output<String> created() {
@@ -126,32 +125,18 @@ public class ShareRecipient extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.includeResources);
     }
     /**
-     * When the share was modified.
+     * When the object was last modified.
      * 
      */
     @Export(name="modified", refs={String.class}, tree="[0]")
     private Output<String> modified;
 
     /**
-     * @return When the share was modified.
+     * @return When the object was last modified.
      * 
      */
     public Output<String> modified() {
         return this.modified;
-    }
-    /**
-     * Organization identifier.
-     * 
-     */
-    @Export(name="organizationId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> organizationId;
-
-    /**
-     * @return Organization identifier.
-     * 
-     */
-    public Output<Optional<String>> organizationId() {
-        return Codegen.optional(this.organizationId);
     }
     /**
      * The account that will receive the share.

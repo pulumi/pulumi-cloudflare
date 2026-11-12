@@ -137,6 +137,11 @@ class AwaitableGetZoneTracingResult(GetZoneTracingResult):
 def get_zone_tracing(zone_id: Optional[_builtins.str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZoneTracingResult:
     """
+    Accepted Permissions
+
+    - `Zone Observability Read`
+    - `Zone Observability Write`
+
     ## Example Usage
 
     ```python
@@ -166,6 +171,11 @@ def get_zone_tracing(zone_id: Optional[_builtins.str] = None,
 def get_zone_tracing_output(zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZoneTracingResult]:
     """
+    Accepted Permissions
+
+    - `Zone Observability Read`
+    - `Zone Observability Write`
+
     ## Example Usage
 
     ```python

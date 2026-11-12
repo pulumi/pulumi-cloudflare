@@ -22,11 +22,6 @@ public final class AccountDnsSettingsZoneDefaults {
      */
     private @Nullable Boolean flattenAllCnames;
     /**
-     * @return Whether to enable Foundation DNS Advanced Nameservers on the zone.
-     * 
-     */
-    private @Nullable Boolean foundationDns;
-    /**
      * @return Settings for this internal zone.
      * 
      */
@@ -70,13 +65,6 @@ public final class AccountDnsSettingsZoneDefaults {
      */
     public Optional<Boolean> flattenAllCnames() {
         return Optional.ofNullable(this.flattenAllCnames);
-    }
-    /**
-     * @return Whether to enable Foundation DNS Advanced Nameservers on the zone.
-     * 
-     */
-    public Optional<Boolean> foundationDns() {
-        return Optional.ofNullable(this.foundationDns);
     }
     /**
      * @return Settings for this internal zone.
@@ -139,7 +127,6 @@ public final class AccountDnsSettingsZoneDefaults {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean flattenAllCnames;
-        private @Nullable Boolean foundationDns;
         private @Nullable AccountDnsSettingsZoneDefaultsInternalDns internalDns;
         private @Nullable Boolean multiProvider;
         private @Nullable AccountDnsSettingsZoneDefaultsNameservers nameservers;
@@ -151,7 +138,6 @@ public final class AccountDnsSettingsZoneDefaults {
         public Builder(AccountDnsSettingsZoneDefaults defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.flattenAllCnames = defaults.flattenAllCnames;
-    	      this.foundationDns = defaults.foundationDns;
     	      this.internalDns = defaults.internalDns;
     	      this.multiProvider = defaults.multiProvider;
     	      this.nameservers = defaults.nameservers;
@@ -165,12 +151,6 @@ public final class AccountDnsSettingsZoneDefaults {
         public Builder flattenAllCnames(@Nullable Boolean flattenAllCnames) {
 
             this.flattenAllCnames = flattenAllCnames;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder foundationDns(@Nullable Boolean foundationDns) {
-
-            this.foundationDns = foundationDns;
             return this;
         }
         @CustomType.Setter
@@ -218,7 +198,6 @@ public final class AccountDnsSettingsZoneDefaults {
         public AccountDnsSettingsZoneDefaults build() {
             final var _resultValue = new AccountDnsSettingsZoneDefaults();
             _resultValue.flattenAllCnames = flattenAllCnames;
-            _resultValue.foundationDns = foundationDns;
             _resultValue.internalDns = internalDns;
             _resultValue.multiProvider = multiProvider;
             _resultValue.nameservers = nameservers;

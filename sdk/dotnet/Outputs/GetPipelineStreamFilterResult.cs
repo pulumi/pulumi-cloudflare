@@ -14,9 +14,19 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetPipelineStreamFilterResult
     {
         /// <summary>
+        /// Sort direction.
+        /// Available values: "asc", "desc".
+        /// </summary>
+        public readonly string Direction;
+        /// <summary>
         /// Filters streams by name (case-insensitive substring).
         /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// Sorts streams by this field. Defaults to `CreatedAt`.
+        /// Available values: "name", "CreatedAt".
+        /// </summary>
+        public readonly string? OrderBy;
         /// <summary>
         /// Specifies the public ID of the pipeline.
         /// </summary>
@@ -24,11 +34,17 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private GetPipelineStreamFilterResult(
+            string direction,
+
             string? name,
+
+            string? orderBy,
 
             string? pipelineId)
         {
+            Direction = direction;
             Name = name;
+            OrderBy = orderBy;
             PipelineId = pipelineId;
         }
     }

@@ -48,21 +48,6 @@ public final class ShareRecipientArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Organization identifier.
-     * 
-     */
-    @Import(name="organizationId")
-    private @Nullable Output<String> organizationId;
-
-    /**
-     * @return Organization identifier.
-     * 
-     */
-    public Optional<Output<String>> organizationId() {
-        return Optional.ofNullable(this.organizationId);
-    }
-
-    /**
      * The account that will receive the share.
      * 
      */
@@ -97,7 +82,6 @@ public final class ShareRecipientArgs extends com.pulumi.resources.ResourceArgs 
     private ShareRecipientArgs(ShareRecipientArgs $) {
         this.accountId = $.accountId;
         this.includeResources = $.includeResources;
-        this.organizationId = $.organizationId;
         this.recipientAccountId = $.recipientAccountId;
         this.shareId = $.shareId;
     }
@@ -160,27 +144,6 @@ public final class ShareRecipientArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder includeResources(Boolean includeResources) {
             return includeResources(Output.of(includeResources));
-        }
-
-        /**
-         * @param organizationId Organization identifier.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder organizationId(@Nullable Output<String> organizationId) {
-            $.organizationId = organizationId;
-            return this;
-        }
-
-        /**
-         * @param organizationId Organization identifier.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder organizationId(String organizationId) {
-            return organizationId(Output.of(organizationId));
         }
 
         /**

@@ -19,6 +19,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Direction;
         /// <summary>
+        /// Include share tags in the response. `Api` reads tags from the tag service; `Mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `Tags`.
+        /// Available values: "api", "mirror".
+        /// </summary>
+        public readonly string? IncludeTagsFrom;
+        /// <summary>
         /// Filter shares by kind.
         /// Available values: "sent", "received".
         /// </summary>
@@ -51,6 +56,8 @@ namespace Pulumi.Cloudflare.Outputs
         private GetShareFilterResult(
             string direction,
 
+            string? includeTagsFrom,
+
             string? kind,
 
             string order,
@@ -64,6 +71,7 @@ namespace Pulumi.Cloudflare.Outputs
             string? targetType)
         {
             Direction = direction;
+            IncludeTagsFrom = includeTagsFrom;
             Kind = kind;
             Order = order;
             ResourceTypes = resourceTypes;

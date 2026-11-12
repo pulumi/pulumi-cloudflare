@@ -41,6 +41,14 @@ namespace Pulumi.Cloudflare
     ///             StaticPrefix = "192.0.2.0/24",
     ///         },
     ///         Physport = 1,
+    ///         RemoteSubnets = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.MagicTransitSiteLanRemoteSubnetArgs
+    ///             {
+    ///                 LocalAliasPrefix = "192.0.2.0/24",
+    ///                 RemotePrefix = "192.0.2.0/24",
+    ///             },
+    ///         },
     ///         RoutedSubnets = new[]
     ///         {
     ///             new Cloudflare.Inputs.MagicTransitSiteLanRoutedSubnetArgs
@@ -140,6 +148,9 @@ namespace Pulumi.Cloudflare
 
         [Output("physport")]
         public Output<int?> Physport { get; private set; } = null!;
+
+        [Output("remoteSubnets")]
+        public Output<ImmutableArray<Outputs.MagicTransitSiteLanRemoteSubnet>> RemoteSubnets { get; private set; } = null!;
 
         [Output("routedSubnets")]
         public Output<ImmutableArray<Outputs.MagicTransitSiteLanRoutedSubnet>> RoutedSubnets { get; private set; } = null!;
@@ -244,6 +255,14 @@ namespace Pulumi.Cloudflare
         [Input("physport")]
         public Input<int>? Physport { get; set; }
 
+        [Input("remoteSubnets")]
+        private InputList<Inputs.MagicTransitSiteLanRemoteSubnetArgs>? _remoteSubnets;
+        public InputList<Inputs.MagicTransitSiteLanRemoteSubnetArgs> RemoteSubnets
+        {
+            get => _remoteSubnets ?? (_remoteSubnets = new InputList<Inputs.MagicTransitSiteLanRemoteSubnetArgs>());
+            set => _remoteSubnets = value;
+        }
+
         [Input("routedSubnets")]
         private InputList<Inputs.MagicTransitSiteLanRoutedSubnetArgs>? _routedSubnets;
         public InputList<Inputs.MagicTransitSiteLanRoutedSubnetArgs> RoutedSubnets
@@ -313,6 +332,14 @@ namespace Pulumi.Cloudflare
 
         [Input("physport")]
         public Input<int>? Physport { get; set; }
+
+        [Input("remoteSubnets")]
+        private InputList<Inputs.MagicTransitSiteLanRemoteSubnetGetArgs>? _remoteSubnets;
+        public InputList<Inputs.MagicTransitSiteLanRemoteSubnetGetArgs> RemoteSubnets
+        {
+            get => _remoteSubnets ?? (_remoteSubnets = new InputList<Inputs.MagicTransitSiteLanRemoteSubnetGetArgs>());
+            set => _remoteSubnets = value;
+        }
 
         [Input("routedSubnets")]
         private InputList<Inputs.MagicTransitSiteLanRoutedSubnetGetArgs>? _routedSubnets;

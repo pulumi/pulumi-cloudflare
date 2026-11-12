@@ -13,19 +13,19 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ShareRecipientResourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Share Recipient error message.
+        /// Error from the most recent attempt to apply the resource to the recipient. Empty string when no error has been recorded.
         /// </summary>
         [Input("error")]
         public Input<string>? Error { get; set; }
 
         /// <summary>
-        /// Share Resource identifier.
+        /// Identifier assigned by the service that owns the shared resource.
         /// </summary>
         [Input("resourceId")]
         public Input<string>? ResourceId { get; set; }
 
         /// <summary>
-        /// Resource Version.
+        /// Resource version applied to the recipient, if reconciliation has occurred.
         /// </summary>
         [Input("resourceVersion")]
         public Input<int>? ResourceVersion { get; set; }

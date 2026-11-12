@@ -170,6 +170,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly ImmutableArray<string> DenyUnmatchedRequestsExemptedZoneNames;
         /// <summary>
+        /// Whether creation of end user applications is disabled for this organization.
+        /// </summary>
+        public readonly bool DisableEndUserAppCreation;
+        /// <summary>
         /// Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
         /// </summary>
         public readonly bool IsUiReadOnly;
@@ -243,6 +247,8 @@ namespace Pulumi.Cloudflare
 
             ImmutableArray<string> denyUnmatchedRequestsExemptedZoneNames,
 
+            bool disableEndUserAppCreation,
+
             bool isUiReadOnly,
 
             Outputs.GetZeroTrustOrganizationLoginDesignResult loginDesign,
@@ -280,6 +286,7 @@ namespace Pulumi.Cloudflare
             CustomPages = customPages;
             DenyUnmatchedRequests = denyUnmatchedRequests;
             DenyUnmatchedRequestsExemptedZoneNames = denyUnmatchedRequestsExemptedZoneNames;
+            DisableEndUserAppCreation = disableEndUserAppCreation;
             IsUiReadOnly = isUiReadOnly;
             LoginDesign = loginDesign;
             MfaConfig = mfaConfig;

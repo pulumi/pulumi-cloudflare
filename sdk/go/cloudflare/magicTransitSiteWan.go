@@ -34,17 +34,20 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewMagicTransitSiteWan(ctx, "example_magic_transit_site_wan", &cloudflare.MagicTransitSiteWanArgs{
-//				AccountId:             pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				SiteId:                pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				Physport:              pulumi.Int(1),
-//				HealthCheckRate:       pulumi.String("low"),
-//				LoadBalanceInnerFlows: pulumi.Bool(true),
-//				Name:                  pulumi.String("name"),
-//				Priority:              pulumi.Int(0),
+//				AccountId:               pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				SiteId:                  pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Physport:                pulumi.Int(1),
+//				HealthCheckRate:         pulumi.String("low"),
+//				LoadBalanceInnerFlows:   pulumi.Bool(true),
+//				Name:                    pulumi.String("name"),
+//				Priority:                pulumi.Int(0),
+//				ProvisionedDownloadKbps: pulumi.Int(500),
+//				ProvisionedUploadKbps:   pulumi.Int(100),
 //				StaticAddressing: &cloudflare.MagicTransitSiteWanStaticAddressingArgs{
-//					Address:          pulumi.String("192.0.2.0/24"),
-//					GatewayAddress:   pulumi.String("192.0.2.1"),
-//					SecondaryAddress: pulumi.String("192.0.2.0/24"),
+//					Address:                 pulumi.String("192.0.2.0/24"),
+//					GatewayAddress:          pulumi.String("192.0.2.1"),
+//					SecondaryAddress:        pulumi.String("192.0.2.0/24"),
+//					SecondaryGatewayAddress: pulumi.String("192.0.2.1"),
 //				},
 //				VlanTag: pulumi.Int(42),
 //			})
@@ -74,9 +77,13 @@ type MagicTransitSiteWan struct {
 	Name                  pulumi.StringPtrOutput `pulumi:"name"`
 	Physport              pulumi.IntOutput       `pulumi:"physport"`
 	Priority              pulumi.IntPtrOutput    `pulumi:"priority"`
+	// Provisioned download rate of the WAN circuit in kilobits per second.
+	ProvisionedDownloadKbps pulumi.IntPtrOutput `pulumi:"provisionedDownloadKbps"`
+	// Provisioned upload rate of the WAN circuit in kilobits per second.
+	ProvisionedUploadKbps pulumi.IntPtrOutput `pulumi:"provisionedUploadKbps"`
 	// Identifier
 	SiteId pulumi.StringOutput `pulumi:"siteId"`
-	// (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
+	// Static addressing configuration for a WAN. Omit to use DHCP. Submit secondary*address when the site is in high availability mode.
 	StaticAddressing MagicTransitSiteWanStaticAddressingPtrOutput `pulumi:"staticAddressing"`
 	// VLAN ID. Use zero for untagged.
 	VlanTag pulumi.IntPtrOutput `pulumi:"vlanTag"`
@@ -130,9 +137,13 @@ type magicTransitSiteWanState struct {
 	Name                  *string `pulumi:"name"`
 	Physport              *int    `pulumi:"physport"`
 	Priority              *int    `pulumi:"priority"`
+	// Provisioned download rate of the WAN circuit in kilobits per second.
+	ProvisionedDownloadKbps *int `pulumi:"provisionedDownloadKbps"`
+	// Provisioned upload rate of the WAN circuit in kilobits per second.
+	ProvisionedUploadKbps *int `pulumi:"provisionedUploadKbps"`
 	// Identifier
 	SiteId *string `pulumi:"siteId"`
-	// (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
+	// Static addressing configuration for a WAN. Omit to use DHCP. Submit secondary*address when the site is in high availability mode.
 	StaticAddressing *MagicTransitSiteWanStaticAddressing `pulumi:"staticAddressing"`
 	// VLAN ID. Use zero for untagged.
 	VlanTag *int `pulumi:"vlanTag"`
@@ -148,9 +159,13 @@ type MagicTransitSiteWanState struct {
 	Name                  pulumi.StringPtrInput
 	Physport              pulumi.IntPtrInput
 	Priority              pulumi.IntPtrInput
+	// Provisioned download rate of the WAN circuit in kilobits per second.
+	ProvisionedDownloadKbps pulumi.IntPtrInput
+	// Provisioned upload rate of the WAN circuit in kilobits per second.
+	ProvisionedUploadKbps pulumi.IntPtrInput
 	// Identifier
 	SiteId pulumi.StringPtrInput
-	// (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
+	// Static addressing configuration for a WAN. Omit to use DHCP. Submit secondary*address when the site is in high availability mode.
 	StaticAddressing MagicTransitSiteWanStaticAddressingPtrInput
 	// VLAN ID. Use zero for untagged.
 	VlanTag pulumi.IntPtrInput
@@ -176,9 +191,13 @@ type magicTransitSiteWanArgs struct {
 	Name                  *string `pulumi:"name"`
 	Physport              int     `pulumi:"physport"`
 	Priority              *int    `pulumi:"priority"`
+	// Provisioned download rate of the WAN circuit in kilobits per second.
+	ProvisionedDownloadKbps *int `pulumi:"provisionedDownloadKbps"`
+	// Provisioned upload rate of the WAN circuit in kilobits per second.
+	ProvisionedUploadKbps *int `pulumi:"provisionedUploadKbps"`
 	// Identifier
 	SiteId string `pulumi:"siteId"`
-	// (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
+	// Static addressing configuration for a WAN. Omit to use DHCP. Submit secondary*address when the site is in high availability mode.
 	StaticAddressing *MagicTransitSiteWanStaticAddressing `pulumi:"staticAddressing"`
 	// VLAN ID. Use zero for untagged.
 	VlanTag *int `pulumi:"vlanTag"`
@@ -195,9 +214,13 @@ type MagicTransitSiteWanArgs struct {
 	Name                  pulumi.StringPtrInput
 	Physport              pulumi.IntInput
 	Priority              pulumi.IntPtrInput
+	// Provisioned download rate of the WAN circuit in kilobits per second.
+	ProvisionedDownloadKbps pulumi.IntPtrInput
+	// Provisioned upload rate of the WAN circuit in kilobits per second.
+	ProvisionedUploadKbps pulumi.IntPtrInput
 	// Identifier
 	SiteId pulumi.StringInput
-	// (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
+	// Static addressing configuration for a WAN. Omit to use DHCP. Submit secondary*address when the site is in high availability mode.
 	StaticAddressing MagicTransitSiteWanStaticAddressingPtrInput
 	// VLAN ID. Use zero for untagged.
 	VlanTag pulumi.IntPtrInput
@@ -317,12 +340,22 @@ func (o MagicTransitSiteWanOutput) Priority() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *MagicTransitSiteWan) pulumi.IntPtrOutput { return v.Priority }).(pulumi.IntPtrOutput)
 }
 
+// Provisioned download rate of the WAN circuit in kilobits per second.
+func (o MagicTransitSiteWanOutput) ProvisionedDownloadKbps() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MagicTransitSiteWan) pulumi.IntPtrOutput { return v.ProvisionedDownloadKbps }).(pulumi.IntPtrOutput)
+}
+
+// Provisioned upload rate of the WAN circuit in kilobits per second.
+func (o MagicTransitSiteWanOutput) ProvisionedUploadKbps() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MagicTransitSiteWan) pulumi.IntPtrOutput { return v.ProvisionedUploadKbps }).(pulumi.IntPtrOutput)
+}
+
 // Identifier
 func (o MagicTransitSiteWanOutput) SiteId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MagicTransitSiteWan) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
 
-// (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
+// Static addressing configuration for a WAN. Omit to use DHCP. Submit secondary*address when the site is in high availability mode.
 func (o MagicTransitSiteWanOutput) StaticAddressing() MagicTransitSiteWanStaticAddressingPtrOutput {
 	return o.ApplyT(func(v *MagicTransitSiteWan) MagicTransitSiteWanStaticAddressingPtrOutput { return v.StaticAddressing }).(MagicTransitSiteWanStaticAddressingPtrOutput)
 }

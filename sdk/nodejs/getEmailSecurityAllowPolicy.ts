@@ -49,6 +49,7 @@ export interface GetEmailSecurityAllowPolicyResult {
     readonly accountId: string;
     readonly comments: string;
     readonly createdAt: string;
+    readonly expiresAt: string;
     readonly filter?: outputs.GetEmailSecurityAllowPolicyFilter;
     readonly id: string;
     readonly isAcceptableSender: boolean;

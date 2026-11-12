@@ -37,6 +37,7 @@ import (
 //				Pattern:     pulumi.String("test@example.com"),
 //				PatternType: pulumi.String("EMAIL"),
 //				Comments:    pulumi.String("Block sender with email test@example.com"),
+//				ExpiresAt:   pulumi.String("2027-01-01T00:00:00Z"),
 //			})
 //			if err != nil {
 //				return err
@@ -59,6 +60,8 @@ type EmailSecurityBlockSender struct {
 	AccountId pulumi.StringOutput    `pulumi:"accountId"`
 	Comments  pulumi.StringPtrOutput `pulumi:"comments"`
 	CreatedAt pulumi.StringOutput    `pulumi:"createdAt"`
+	// Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration.
+	ExpiresAt pulumi.StringPtrOutput `pulumi:"expiresAt"`
 	// Whether `pattern` is a regular expression instead of a literal value.
 	IsRegex pulumi.BoolOutput `pulumi:"isRegex"`
 	// Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
@@ -123,6 +126,8 @@ type emailSecurityBlockSenderState struct {
 	AccountId *string `pulumi:"accountId"`
 	Comments  *string `pulumi:"comments"`
 	CreatedAt *string `pulumi:"createdAt"`
+	// Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration.
+	ExpiresAt *string `pulumi:"expiresAt"`
 	// Whether `pattern` is a regular expression instead of a literal value.
 	IsRegex *bool `pulumi:"isRegex"`
 	// Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
@@ -146,6 +151,8 @@ type EmailSecurityBlockSenderState struct {
 	AccountId pulumi.StringPtrInput
 	Comments  pulumi.StringPtrInput
 	CreatedAt pulumi.StringPtrInput
+	// Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration.
+	ExpiresAt pulumi.StringPtrInput
 	// Whether `pattern` is a regular expression instead of a literal value.
 	IsRegex pulumi.BoolPtrInput
 	// Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
@@ -178,6 +185,8 @@ type emailSecurityBlockSenderArgs struct {
 	// Identifier.
 	AccountId string  `pulumi:"accountId"`
 	Comments  *string `pulumi:"comments"`
+	// Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration.
+	ExpiresAt *string `pulumi:"expiresAt"`
 	// Whether `pattern` is a regular expression instead of a literal value.
 	IsRegex bool `pulumi:"isRegex"`
 	// The pattern value to match. The format depends on `patternType`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
@@ -196,6 +205,8 @@ type EmailSecurityBlockSenderArgs struct {
 	// Identifier.
 	AccountId pulumi.StringInput
 	Comments  pulumi.StringPtrInput
+	// Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration.
+	ExpiresAt pulumi.StringPtrInput
 	// Whether `pattern` is a regular expression instead of a literal value.
 	IsRegex pulumi.BoolInput
 	// The pattern value to match. The format depends on `patternType`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
@@ -307,6 +318,11 @@ func (o EmailSecurityBlockSenderOutput) Comments() pulumi.StringPtrOutput {
 
 func (o EmailSecurityBlockSenderOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailSecurityBlockSender) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration.
+func (o EmailSecurityBlockSenderOutput) ExpiresAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EmailSecurityBlockSender) pulumi.StringPtrOutput { return v.ExpiresAt }).(pulumi.StringPtrOutput)
 }
 
 // Whether `pattern` is a regular expression instead of a literal value.

@@ -79,7 +79,7 @@ type LookupSecretsStoreSecretResult struct {
 	Modified string `pulumi:"modified"`
 	// The name of the secret.
 	Name string `pulumi:"name"`
-	// The list of services that can use this secret.
+	// The list of services that can use this secret, or null when the secret inherits its store's scopes. Set it to null in a patch to inherit again. An empty list lets no service use the secret.
 	Scopes []string `pulumi:"scopes"`
 	// Secret identifier tag.
 	SecretId *string `pulumi:"secretId"`
@@ -158,7 +158,7 @@ func (o LookupSecretsStoreSecretResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretsStoreSecretResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The list of services that can use this secret.
+// The list of services that can use this secret, or null when the secret inherits its store's scopes. Set it to null in a patch to inherit again. An empty list lets no service use the secret.
 func (o LookupSecretsStoreSecretResultOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupSecretsStoreSecretResult) []string { return v.Scopes }).(pulumi.StringArrayOutput)
 }

@@ -12,6 +12,10 @@ namespace Pulumi.Cloudflare
     public static class GetShare
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Resource Sharing Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -28,6 +32,7 @@ namespace Pulumi.Cloudflare
         ///         ShareId = "3fd85f74b32742f1bff64a85009dda07",
         ///         IncludeRecipientCounts = true,
         ///         IncludeResources = true,
+        ///         IncludeTagsFrom = "api",
         ///     });
         /// 
         /// });
@@ -37,6 +42,10 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetShareResult>("cloudflare:index/getShare:getShare", args ?? new GetShareArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Resource Sharing Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -53,6 +62,7 @@ namespace Pulumi.Cloudflare
         ///         ShareId = "3fd85f74b32742f1bff64a85009dda07",
         ///         IncludeRecipientCounts = true,
         ///         IncludeResources = true,
+        ///         IncludeTagsFrom = "api",
         ///     });
         /// 
         /// });
@@ -62,6 +72,10 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetShareResult>("cloudflare:index/getShare:getShare", args ?? new GetShareInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Resource Sharing Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -78,6 +92,7 @@ namespace Pulumi.Cloudflare
         ///         ShareId = "3fd85f74b32742f1bff64a85009dda07",
         ///         IncludeRecipientCounts = true,
         ///         IncludeResources = true,
+        ///         IncludeTagsFrom = "api",
         ///     });
         /// 
         /// });
@@ -110,6 +125,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("includeResources")]
         public bool? IncludeResources { get; set; }
+
+        /// <summary>
+        /// Include share tags in the response. `Api` reads tags from the tag service; `Mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `Tags`.
+        /// Available values: "api", "mirror".
+        /// </summary>
+        [Input("includeTagsFrom")]
+        public string? IncludeTagsFrom { get; set; }
 
         /// <summary>
         /// Share identifier tag.
@@ -147,6 +169,13 @@ namespace Pulumi.Cloudflare
         public Input<bool>? IncludeResources { get; set; }
 
         /// <summary>
+        /// Include share tags in the response. `Api` reads tags from the tag service; `Mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `Tags`.
+        /// Available values: "api", "mirror".
+        /// </summary>
+        [Input("includeTagsFrom")]
+        public Input<string>? IncludeTagsFrom { get; set; }
+
+        /// <summary>
         /// Share identifier tag.
         /// </summary>
         [Input("shareId")]
@@ -179,7 +208,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly int AssociatingRecipientCount;
         /// <summary>
-        /// When the share was created.
+        /// When the object was created.
         /// </summary>
         public readonly string Created;
         /// <summary>
@@ -204,11 +233,16 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool? IncludeResources;
         /// <summary>
+        /// Include share tags in the response. `Api` reads tags from the tag service; `Mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `Tags`.
+        /// Available values: "api", "mirror".
+        /// </summary>
+        public readonly string? IncludeTagsFrom;
+        /// <summary>
         /// Available values: "sent", "received".
         /// </summary>
         public readonly string Kind;
         /// <summary>
-        /// When the share was modified.
+        /// When the object was last modified.
         /// </summary>
         public readonly string Modified;
         /// <summary>
@@ -231,6 +265,10 @@ namespace Pulumi.Cloudflare
         /// Available values: "active", "deleting", "deleted".
         /// </summary>
         public readonly string Status;
+        /// <summary>
+        /// Tags associated with the share. Included in create and update responses when tags are supplied, and in read responses when the `IncludeTagsFrom` parameter is set.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// Available values: "account", "organization".
         /// </summary>
@@ -260,6 +298,8 @@ namespace Pulumi.Cloudflare
 
             bool? includeResources,
 
+            string? includeTagsFrom,
+
             string kind,
 
             string modified,
@@ -274,6 +314,8 @@ namespace Pulumi.Cloudflare
 
             string status,
 
+            ImmutableDictionary<string, string> tags,
+
             string targetType)
         {
             AccountId = accountId;
@@ -287,6 +329,7 @@ namespace Pulumi.Cloudflare
             Id = id;
             IncludeRecipientCounts = includeRecipientCounts;
             IncludeResources = includeResources;
+            IncludeTagsFrom = includeTagsFrom;
             Kind = kind;
             Modified = modified;
             Name = name;
@@ -294,6 +337,7 @@ namespace Pulumi.Cloudflare
             Resources = resources;
             ShareId = shareId;
             Status = status;
+            Tags = tags;
             TargetType = targetType;
         }
     }

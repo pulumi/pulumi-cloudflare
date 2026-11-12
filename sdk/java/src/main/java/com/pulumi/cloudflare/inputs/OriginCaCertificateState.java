@@ -113,6 +113,36 @@ public final class OriginCaCertificateState extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.requestedValidity);
     }
 
+    /**
+     * When the certificate was revoked.
+     * 
+     */
+    @Import(name="revokedAt")
+    private @Nullable Output<String> revokedAt;
+
+    /**
+     * @return When the certificate was revoked.
+     * 
+     */
+    public Optional<Output<String>> revokedAt() {
+        return Optional.ofNullable(this.revokedAt);
+    }
+
+    /**
+     * Identifier of the zone whose keyless servers the certificate is for. Required when `requestType` is `keyless-certificate`; ignored otherwise.
+     * 
+     */
+    @Import(name="zoneId")
+    private @Nullable Output<String> zoneId;
+
+    /**
+     * @return Identifier of the zone whose keyless servers the certificate is for. Required when `requestType` is `keyless-certificate`; ignored otherwise.
+     * 
+     */
+    public Optional<Output<String>> zoneId() {
+        return Optional.ofNullable(this.zoneId);
+    }
+
     private OriginCaCertificateState() {}
 
     private OriginCaCertificateState(OriginCaCertificateState $) {
@@ -122,6 +152,8 @@ public final class OriginCaCertificateState extends com.pulumi.resources.Resourc
         this.hostnames = $.hostnames;
         this.requestType = $.requestType;
         this.requestedValidity = $.requestedValidity;
+        this.revokedAt = $.revokedAt;
+        this.zoneId = $.zoneId;
     }
 
     public static Builder builder() {
@@ -283,6 +315,48 @@ public final class OriginCaCertificateState extends com.pulumi.resources.Resourc
          */
         public Builder requestedValidity(Double requestedValidity) {
             return requestedValidity(Output.of(requestedValidity));
+        }
+
+        /**
+         * @param revokedAt When the certificate was revoked.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder revokedAt(@Nullable Output<String> revokedAt) {
+            $.revokedAt = revokedAt;
+            return this;
+        }
+
+        /**
+         * @param revokedAt When the certificate was revoked.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder revokedAt(String revokedAt) {
+            return revokedAt(Output.of(revokedAt));
+        }
+
+        /**
+         * @param zoneId Identifier of the zone whose keyless servers the certificate is for. Required when `requestType` is `keyless-certificate`; ignored otherwise.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneId(@Nullable Output<String> zoneId) {
+            $.zoneId = zoneId;
+            return this;
+        }
+
+        /**
+         * @param zoneId Identifier of the zone whose keyless servers the certificate is for. Required when `requestType` is `keyless-certificate`; ignored otherwise.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneId(String zoneId) {
+            return zoneId(Output.of(zoneId));
         }
 
         public OriginCaCertificateState build() {

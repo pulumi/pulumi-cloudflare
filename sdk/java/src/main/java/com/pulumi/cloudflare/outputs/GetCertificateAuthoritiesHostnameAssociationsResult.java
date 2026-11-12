@@ -13,6 +13,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCertificateAuthoritiesHostnameAssociationsResult {
+    /**
+     * @return Hostnames are returned in lowercase punycode, in no particular order. Null when there are no associations.
+     * 
+     */
     private List<String> hostnames;
     /**
      * @return Identifier.
@@ -31,6 +35,10 @@ public final class GetCertificateAuthoritiesHostnameAssociationsResult {
     private @Nullable String zoneId;
 
     private GetCertificateAuthoritiesHostnameAssociationsResult() {}
+    /**
+     * @return Hostnames are returned in lowercase punycode, in no particular order. Null when there are no associations.
+     * 
+     */
     public List<String> hostnames() {
         return this.hostnames;
     }

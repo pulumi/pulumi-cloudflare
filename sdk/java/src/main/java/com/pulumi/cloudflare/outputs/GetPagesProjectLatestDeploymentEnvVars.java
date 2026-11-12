@@ -16,7 +16,7 @@ public final class GetPagesProjectLatestDeploymentEnvVars {
      */
     private String type;
     /**
-     * @return Environment variable value.
+     * @return For `type: plainText`: Environment variable value.
      * 
      */
     private String value;
@@ -30,7 +30,7 @@ public final class GetPagesProjectLatestDeploymentEnvVars {
         return this.type;
     }
     /**
-     * @return Environment variable value.
+     * @return For `type: plainText`: Environment variable value.
      * 
      */
     public String value() {

@@ -79,7 +79,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// When the certificate was last modified.
+        /// When the certificate was last modified. Only returned when uploading a certificate.
         /// </summary>
         [Output("updatedAt")]
         public Output<string> UpdatedAt { get; private set; } = null!;
@@ -194,7 +194,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// When the certificate was last modified.
+        /// When the certificate was last modified. Only returned when uploading a certificate.
         /// </summary>
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }

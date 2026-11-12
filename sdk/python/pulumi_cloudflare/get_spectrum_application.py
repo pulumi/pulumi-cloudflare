@@ -28,7 +28,7 @@ class GetSpectrumApplicationResult:
     """
     A collection of values returned by getSpectrumApplication.
     """
-    def __init__(__self__, app_id=None, argo_smart_routing=None, created_on=None, dns=None, edge_ips=None, filter=None, id=None, ip_firewall=None, modified_on=None, origin_directs=None, origin_dns=None, origin_port=None, origin_worker_id=None, protocol=None, proxy_protocol=None, tls=None, traffic_type=None, virtual_network_id=None, zone_id=None):
+    def __init__(__self__, app_id=None, argo_smart_routing=None, created_on=None, dns=None, edge_ips=None, filter=None, id=None, ip_firewall=None, modified_on=None, origin_directs=None, origin_dns=None, origin_port=None, origin_worker_id=None, origin_worker_name=None, origin_worker_status=None, protocol=None, proxy_protocol=None, tls=None, traffic_type=None, virtual_network_id=None, zone_id=None):
         if app_id and not isinstance(app_id, str):
             raise TypeError("Expected argument 'app_id' to be a str")
         pulumi.set(__self__, "app_id", app_id)
@@ -68,6 +68,12 @@ class GetSpectrumApplicationResult:
         if origin_worker_id and not isinstance(origin_worker_id, str):
             raise TypeError("Expected argument 'origin_worker_id' to be a str")
         pulumi.set(__self__, "origin_worker_id", origin_worker_id)
+        if origin_worker_name and not isinstance(origin_worker_name, str):
+            raise TypeError("Expected argument 'origin_worker_name' to be a str")
+        pulumi.set(__self__, "origin_worker_name", origin_worker_name)
+        if origin_worker_status and not isinstance(origin_worker_status, str):
+            raise TypeError("Expected argument 'origin_worker_status' to be a str")
+        pulumi.set(__self__, "origin_worker_status", origin_worker_status)
         if protocol and not isinstance(protocol, str):
             raise TypeError("Expected argument 'protocol' to be a str")
         pulumi.set(__self__, "protocol", protocol)
@@ -192,6 +198,23 @@ class GetSpectrumApplicationResult:
         return pulumi.get(self, "origin_worker_id")
 
     @_builtins.property
+    @pulumi.getter(name="originWorkerName")
+    def origin_worker_name(self) -> _builtins.str:
+        """
+        Name of the Worker origin. Omitted when the Worker is not found or its name cannot be resolved.
+        """
+        return pulumi.get(self, "origin_worker_name")
+
+    @_builtins.property
+    @pulumi.getter(name="originWorkerStatus")
+    def origin_worker_status(self) -> _builtins.str:
+        """
+        Lookup status of the Worker origin. Unknown indicates that its name could not be resolved. Only returned for Worker origins.
+        Available values: "available", "not_found", "unknown".
+        """
+        return pulumi.get(self, "origin_worker_status")
+
+    @_builtins.property
     @pulumi.getter
     def protocol(self) -> _builtins.str:
         """
@@ -262,6 +285,8 @@ class AwaitableGetSpectrumApplicationResult(GetSpectrumApplicationResult):
             origin_dns=self.origin_dns,
             origin_port=self.origin_port,
             origin_worker_id=self.origin_worker_id,
+            origin_worker_name=self.origin_worker_name,
+            origin_worker_status=self.origin_worker_status,
             protocol=self.protocol,
             proxy_protocol=self.proxy_protocol,
             tls=self.tls,
@@ -315,6 +340,8 @@ def get_spectrum_application(app_id: Optional[_builtins.str] = None,
         origin_dns=pulumi.get(__ret__, 'origin_dns'),
         origin_port=pulumi.get(__ret__, 'origin_port'),
         origin_worker_id=pulumi.get(__ret__, 'origin_worker_id'),
+        origin_worker_name=pulumi.get(__ret__, 'origin_worker_name'),
+        origin_worker_status=pulumi.get(__ret__, 'origin_worker_status'),
         protocol=pulumi.get(__ret__, 'protocol'),
         proxy_protocol=pulumi.get(__ret__, 'proxy_protocol'),
         tls=pulumi.get(__ret__, 'tls'),
@@ -365,6 +392,8 @@ def get_spectrum_application_output(app_id: pulumi.Input[Optional[Optional[_buil
         origin_dns=pulumi.get(__response__, 'origin_dns'),
         origin_port=pulumi.get(__response__, 'origin_port'),
         origin_worker_id=pulumi.get(__response__, 'origin_worker_id'),
+        origin_worker_name=pulumi.get(__response__, 'origin_worker_name'),
+        origin_worker_status=pulumi.get(__response__, 'origin_worker_status'),
         protocol=pulumi.get(__response__, 'protocol'),
         proxy_protocol=pulumi.get(__response__, 'proxy_protocol'),
         tls=pulumi.get(__response__, 'tls'),

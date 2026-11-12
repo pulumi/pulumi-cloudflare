@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.MagicTransitSiteLanArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.MagicTransitSiteLanState;
 import com.pulumi.cloudflare.outputs.MagicTransitSiteLanNat;
+import com.pulumi.cloudflare.outputs.MagicTransitSiteLanRemoteSubnet;
 import com.pulumi.cloudflare.outputs.MagicTransitSiteLanRoutedSubnet;
 import com.pulumi.cloudflare.outputs.MagicTransitSiteLanStaticAddressing;
 import com.pulumi.core.Output;
@@ -40,6 +41,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.MagicTransitSiteLan;
  * import com.pulumi.cloudflare.MagicTransitSiteLanArgs;
  * import com.pulumi.cloudflare.inputs.MagicTransitSiteLanNatArgs;
+ * import com.pulumi.cloudflare.inputs.MagicTransitSiteLanRemoteSubnetArgs;
  * import com.pulumi.cloudflare.inputs.MagicTransitSiteLanRoutedSubnetArgs;
  * import com.pulumi.cloudflare.inputs.MagicTransitSiteLanRoutedSubnetNatArgs;
  * import com.pulumi.cloudflare.inputs.MagicTransitSiteLanStaticAddressingArgs;
@@ -71,6 +73,10 @@ import javax.annotation.Nullable;
  *                 .staticPrefix("192.0.2.0/24")
  *                 .build())
  *             .physport(1)
+ *             .remoteSubnets(MagicTransitSiteLanRemoteSubnetArgs.builder()
+ *                 .localAliasPrefix("192.0.2.0/24")
+ *                 .remotePrefix("192.0.2.0/24")
+ *                 .build())
  *             .routedSubnets(MagicTransitSiteLanRoutedSubnetArgs.builder()
  *                 .nextHop("192.0.2.1")
  *                 .prefix("192.0.2.0/24")
@@ -197,6 +203,12 @@ public class MagicTransitSiteLan extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<Integer>> physport() {
         return Codegen.optional(this.physport);
+    }
+    @Export(name="remoteSubnets", refs={List.class,MagicTransitSiteLanRemoteSubnet.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<MagicTransitSiteLanRemoteSubnet>> remoteSubnets;
+
+    public Output<Optional<List<MagicTransitSiteLanRemoteSubnet>>> remoteSubnets() {
+        return Codegen.optional(this.remoteSubnets);
     }
     @Export(name="routedSubnets", refs={List.class,MagicTransitSiteLanRoutedSubnet.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MagicTransitSiteLanRoutedSubnet>> routedSubnets;

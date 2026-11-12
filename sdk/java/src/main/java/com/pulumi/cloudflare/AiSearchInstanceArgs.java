@@ -182,14 +182,14 @@ public final class AiSearchInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
+     * Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances. When set, both vector and keyword are required.
      * 
      */
     @Import(name="indexMethod")
     private @Nullable Output<AiSearchInstanceIndexMethodArgs> indexMethod;
 
     /**
-     * @return Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
+     * @return Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances. When set, both vector and keyword are required.
      * 
      */
     public Optional<Output<AiSearchInstanceIndexMethodArgs>> indexMethod() {
@@ -215,6 +215,13 @@ public final class AiSearchInstanceArgs extends com.pulumi.resources.ResourceArg
 
     public Optional<Output<AiSearchInstanceMetadataArgs>> metadata() {
         return Optional.ofNullable(this.metadata);
+    }
+
+    @Import(name="namespace")
+    private @Nullable Output<String> namespace;
+
+    public Optional<Output<String>> namespace() {
+        return Optional.ofNullable(this.namespace);
     }
 
     @Import(name="paused")
@@ -274,9 +281,17 @@ public final class AiSearchInstanceArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.rewriteQuery);
     }
 
+    /**
+     * Minimum similarity score a chunk must reach to be returned. Defaults to 0.4.
+     * 
+     */
     @Import(name="scoreThreshold")
     private @Nullable Output<Double> scoreThreshold;
 
+    /**
+     * @return Minimum similarity score a chunk must reach to be returned. Defaults to 0.4.
+     * 
+     */
     public Optional<Output<Double>> scoreThreshold() {
         return Optional.ofNullable(this.scoreThreshold);
     }
@@ -310,7 +325,7 @@ public final class AiSearchInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+     * Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). Defaults to 86400 (24h).
      * Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
      * 
      */
@@ -318,7 +333,7 @@ public final class AiSearchInstanceArgs extends com.pulumi.resources.ResourceArg
     private @Nullable Output<Double> syncInterval;
 
     /**
-     * @return Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+     * @return Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). Defaults to 86400 (24h).
      * Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
      * 
      */
@@ -392,6 +407,7 @@ public final class AiSearchInstanceArgs extends com.pulumi.resources.ResourceArg
         this.indexingOptions = $.indexingOptions;
         this.maxNumResults = $.maxNumResults;
         this.metadata = $.metadata;
+        this.namespace = $.namespace;
         this.paused = $.paused;
         this.publicEndpointParams = $.publicEndpointParams;
         this.reranking = $.reranking;
@@ -641,7 +657,7 @@ public final class AiSearchInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param indexMethod Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
+         * @param indexMethod Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances. When set, both vector and keyword are required.
          * 
          * @return builder
          * 
@@ -652,7 +668,7 @@ public final class AiSearchInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param indexMethod Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
+         * @param indexMethod Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances. When set, both vector and keyword are required.
          * 
          * @return builder
          * 
@@ -686,6 +702,15 @@ public final class AiSearchInstanceArgs extends com.pulumi.resources.ResourceArg
 
         public Builder metadata(AiSearchInstanceMetadataArgs metadata) {
             return metadata(Output.of(metadata));
+        }
+
+        public Builder namespace(@Nullable Output<String> namespace) {
+            $.namespace = namespace;
+            return this;
+        }
+
+        public Builder namespace(String namespace) {
+            return namespace(Output.of(namespace));
         }
 
         public Builder paused(@Nullable Output<Boolean> paused) {
@@ -763,11 +788,23 @@ public final class AiSearchInstanceArgs extends com.pulumi.resources.ResourceArg
             return rewriteQuery(Output.of(rewriteQuery));
         }
 
+        /**
+         * @param scoreThreshold Minimum similarity score a chunk must reach to be returned. Defaults to 0.4.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scoreThreshold(@Nullable Output<Double> scoreThreshold) {
             $.scoreThreshold = scoreThreshold;
             return this;
         }
 
+        /**
+         * @param scoreThreshold Minimum similarity score a chunk must reach to be returned. Defaults to 0.4.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scoreThreshold(Double scoreThreshold) {
             return scoreThreshold(Output.of(scoreThreshold));
         }
@@ -809,7 +846,7 @@ public final class AiSearchInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param syncInterval Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+         * @param syncInterval Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). Defaults to 86400 (24h).
          * Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
          * 
          * @return builder
@@ -821,7 +858,7 @@ public final class AiSearchInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param syncInterval Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+         * @param syncInterval Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). Defaults to 86400 (24h).
          * Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
          * 
          * @return builder

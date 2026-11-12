@@ -11,6 +11,7 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -60,34 +61,34 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/organizationProfile:OrganizationProfile")
 public class OrganizationProfile extends com.pulumi.resources.CustomResource {
     @Export(name="businessAddress", refs={String.class}, tree="[0]")
-    private Output<String> businessAddress;
+    private Output</* @Nullable */ String> businessAddress;
 
-    public Output<String> businessAddress() {
-        return this.businessAddress;
+    public Output<Optional<String>> businessAddress() {
+        return Codegen.optional(this.businessAddress);
     }
     @Export(name="businessEmail", refs={String.class}, tree="[0]")
-    private Output<String> businessEmail;
+    private Output</* @Nullable */ String> businessEmail;
 
-    public Output<String> businessEmail() {
-        return this.businessEmail;
+    public Output<Optional<String>> businessEmail() {
+        return Codegen.optional(this.businessEmail);
     }
     @Export(name="businessName", refs={String.class}, tree="[0]")
-    private Output<String> businessName;
+    private Output</* @Nullable */ String> businessName;
 
-    public Output<String> businessName() {
-        return this.businessName;
+    public Output<Optional<String>> businessName() {
+        return Codegen.optional(this.businessName);
     }
     @Export(name="businessPhone", refs={String.class}, tree="[0]")
-    private Output<String> businessPhone;
+    private Output</* @Nullable */ String> businessPhone;
 
-    public Output<String> businessPhone() {
-        return this.businessPhone;
+    public Output<Optional<String>> businessPhone() {
+        return Codegen.optional(this.businessPhone);
     }
     @Export(name="externalMetadata", refs={String.class}, tree="[0]")
-    private Output<String> externalMetadata;
+    private Output</* @Nullable */ String> externalMetadata;
 
-    public Output<String> externalMetadata() {
-        return this.externalMetadata;
+    public Output<Optional<String>> externalMetadata() {
+        return Codegen.optional(this.externalMetadata);
     }
     @Export(name="organizationId", refs={String.class}, tree="[0]")
     private Output<String> organizationId;

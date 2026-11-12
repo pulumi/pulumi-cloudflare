@@ -22,15 +22,19 @@ __all__ = ['R2DataCatalogArgs', 'R2DataCatalog']
 class R2DataCatalogArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[_builtins.str],
-                 bucket_name: pulumi.Input[_builtins.str]):
+                 bucket_name: pulumi.Input[_builtins.str],
+                 credential: pulumi.Input[Optional['R2DataCatalogCredentialArgs']] = None):
         """
         The set of arguments for constructing a R2DataCatalog resource.
 
         :param pulumi.Input[_builtins.str] account_id: Use this to identify the account.
         :param pulumi.Input[_builtins.str] bucket_name: Specifies the R2 bucket name.
+        :param pulumi.Input['R2DataCatalogCredentialArgs'] credential: Contains request to store catalog credentials.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "bucket_name", bucket_name)
+        if credential is not None:
+            pulumi.set(__self__, "credential", credential)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -56,6 +60,18 @@ class R2DataCatalogArgs:
     def bucket_name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "bucket_name", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def credential(self) -> pulumi.Input[Optional['R2DataCatalogCredentialArgs']]:
+        """
+        Contains request to store catalog credentials.
+        """
+        return pulumi.get(self, "credential")
+
+    @credential.setter
+    def credential(self, value: pulumi.Input[Optional['R2DataCatalogCredentialArgs']]):
+        pulumi.set(self, "credential", value)
+
 
 @pulumi.input_type
 class _R2DataCatalogState:
@@ -63,7 +79,9 @@ class _R2DataCatalogState:
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  bucket: pulumi.Input[Optional[_builtins.str]] = None,
                  bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 credential: pulumi.Input[Optional['R2DataCatalogCredentialArgs']] = None,
                  credential_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
                  maintenance_config: pulumi.Input[Optional['R2DataCatalogMaintenanceConfigArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None):
@@ -73,8 +91,10 @@ class _R2DataCatalogState:
         :param pulumi.Input[_builtins.str] account_id: Use this to identify the account.
         :param pulumi.Input[_builtins.str] bucket: Specifies the associated R2 bucket name.
         :param pulumi.Input[_builtins.str] bucket_name: Specifies the R2 bucket name.
+        :param pulumi.Input['R2DataCatalogCredentialArgs'] credential: Contains request to store catalog credentials.
         :param pulumi.Input[_builtins.str] credential_status: Shows the credential configuration status.
                Available values: "present", "absent".
+        :param pulumi.Input[_builtins.str] jurisdiction: Specifies the data-locality jurisdiction of the catalog. The first enable sets it, and it cannot change. Currently always `default`.
         :param pulumi.Input['R2DataCatalogMaintenanceConfigArgs'] maintenance_config: Configures maintenance for the catalog.
         :param pulumi.Input[_builtins.str] name: Specifies the catalog name (generated from account and bucket name).
         :param pulumi.Input[_builtins.str] status: Indicates the status of the catalog.
@@ -86,8 +106,12 @@ class _R2DataCatalogState:
             pulumi.set(__self__, "bucket", bucket)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
+        if credential is not None:
+            pulumi.set(__self__, "credential", credential)
         if credential_status is not None:
             pulumi.set(__self__, "credential_status", credential_status)
+        if jurisdiction is not None:
+            pulumi.set(__self__, "jurisdiction", jurisdiction)
         if maintenance_config is not None:
             pulumi.set(__self__, "maintenance_config", maintenance_config)
         if name is not None:
@@ -132,6 +156,18 @@ class _R2DataCatalogState:
         pulumi.set(self, "bucket_name", value)
 
     @_builtins.property
+    @pulumi.getter
+    def credential(self) -> pulumi.Input[Optional['R2DataCatalogCredentialArgs']]:
+        """
+        Contains request to store catalog credentials.
+        """
+        return pulumi.get(self, "credential")
+
+    @credential.setter
+    def credential(self, value: pulumi.Input[Optional['R2DataCatalogCredentialArgs']]):
+        pulumi.set(self, "credential", value)
+
+    @_builtins.property
     @pulumi.getter(name="credentialStatus")
     def credential_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -143,6 +179,18 @@ class _R2DataCatalogState:
     @credential_status.setter
     def credential_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "credential_status", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def jurisdiction(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Specifies the data-locality jurisdiction of the catalog. The first enable sets it, and it cannot change. Currently always `default`.
+        """
+        return pulumi.get(self, "jurisdiction")
+
+    @jurisdiction.setter
+    def jurisdiction(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "jurisdiction", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenanceConfig")
@@ -190,6 +238,7 @@ class R2DataCatalog(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 credential: pulumi.Input[Optional[Union['R2DataCatalogCredentialArgs', 'R2DataCatalogCredentialArgsDict', 'outputs.R2DataCatalogCredential']]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -205,7 +254,10 @@ class R2DataCatalog(pulumi.CustomResource):
 
         example_r2_data_catalog = cloudflare.R2DataCatalog("example_r2_data_catalog",
             account_id="0123456789abcdef0123456789abcdef",
-            bucket_name="my-data-bucket")
+            bucket_name="my-data-bucket",
+            credential={
+                "token": "your-cloudflare-api-token-here",
+            })
         ```
 
         ## Import
@@ -219,6 +271,7 @@ class R2DataCatalog(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Use this to identify the account.
         :param pulumi.Input[_builtins.str] bucket_name: Specifies the R2 bucket name.
+        :param pulumi.Input[Union['R2DataCatalogCredentialArgs', 'R2DataCatalogCredentialArgsDict', 'outputs.R2DataCatalogCredential']] credential: Contains request to store catalog credentials.
         """
         ...
     @overload
@@ -240,7 +293,10 @@ class R2DataCatalog(pulumi.CustomResource):
 
         example_r2_data_catalog = cloudflare.R2DataCatalog("example_r2_data_catalog",
             account_id="0123456789abcdef0123456789abcdef",
-            bucket_name="my-data-bucket")
+            bucket_name="my-data-bucket",
+            credential={
+                "token": "your-cloudflare-api-token-here",
+            })
         ```
 
         ## Import
@@ -267,6 +323,7 @@ class R2DataCatalog(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 credential: pulumi.Input[Optional[Union['R2DataCatalogCredentialArgs', 'R2DataCatalogCredentialArgsDict', 'outputs.R2DataCatalogCredential']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -282,8 +339,10 @@ class R2DataCatalog(pulumi.CustomResource):
             if bucket_name is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket_name'")
             __props__.__dict__["bucket_name"] = bucket_name
+            __props__.__dict__["credential"] = credential
             __props__.__dict__["bucket"] = None
             __props__.__dict__["credential_status"] = None
+            __props__.__dict__["jurisdiction"] = None
             __props__.__dict__["maintenance_config"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["status"] = None
@@ -300,7 +359,9 @@ class R2DataCatalog(pulumi.CustomResource):
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             bucket: pulumi.Input[Optional[_builtins.str]] = None,
             bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+            credential: pulumi.Input[Optional[Union['R2DataCatalogCredentialArgs', 'R2DataCatalogCredentialArgsDict', 'outputs.R2DataCatalogCredential']]] = None,
             credential_status: pulumi.Input[Optional[_builtins.str]] = None,
+            jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
             maintenance_config: pulumi.Input[Optional[Union['R2DataCatalogMaintenanceConfigArgs', 'R2DataCatalogMaintenanceConfigArgsDict', 'outputs.R2DataCatalogMaintenanceConfig']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None) -> 'R2DataCatalog':
@@ -314,8 +375,10 @@ class R2DataCatalog(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: Use this to identify the account.
         :param pulumi.Input[_builtins.str] bucket: Specifies the associated R2 bucket name.
         :param pulumi.Input[_builtins.str] bucket_name: Specifies the R2 bucket name.
+        :param pulumi.Input[Union['R2DataCatalogCredentialArgs', 'R2DataCatalogCredentialArgsDict', 'outputs.R2DataCatalogCredential']] credential: Contains request to store catalog credentials.
         :param pulumi.Input[_builtins.str] credential_status: Shows the credential configuration status.
                Available values: "present", "absent".
+        :param pulumi.Input[_builtins.str] jurisdiction: Specifies the data-locality jurisdiction of the catalog. The first enable sets it, and it cannot change. Currently always `default`.
         :param pulumi.Input[Union['R2DataCatalogMaintenanceConfigArgs', 'R2DataCatalogMaintenanceConfigArgsDict', 'outputs.R2DataCatalogMaintenanceConfig']] maintenance_config: Configures maintenance for the catalog.
         :param pulumi.Input[_builtins.str] name: Specifies the catalog name (generated from account and bucket name).
         :param pulumi.Input[_builtins.str] status: Indicates the status of the catalog.
@@ -328,7 +391,9 @@ class R2DataCatalog(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["bucket"] = bucket
         __props__.__dict__["bucket_name"] = bucket_name
+        __props__.__dict__["credential"] = credential
         __props__.__dict__["credential_status"] = credential_status
+        __props__.__dict__["jurisdiction"] = jurisdiction
         __props__.__dict__["maintenance_config"] = maintenance_config
         __props__.__dict__["name"] = name
         __props__.__dict__["status"] = status
@@ -340,7 +405,9 @@ class R2DataCatalog(pulumi.CustomResource):
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             bucket: pulumi.Input[Optional[_builtins.str]] = None,
             bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+            credential: pulumi.Input[Optional[Union['R2DataCatalogCredentialArgs', 'R2DataCatalogCredentialArgsDict', 'outputs.R2DataCatalogCredential']]] = None,
             credential_status: pulumi.Input[Optional[_builtins.str]] = None,
+            jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
             maintenance_config: pulumi.Input[Optional[Union['R2DataCatalogMaintenanceConfigArgs', 'R2DataCatalogMaintenanceConfigArgsDict', 'outputs.R2DataCatalogMaintenanceConfig']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
@@ -348,7 +415,9 @@ class R2DataCatalog(pulumi.CustomResource):
         __props__["accountId"] = account_id
         __props__["bucket"] = bucket
         __props__["bucketName"] = bucket_name
+        __props__["credential"] = credential
         __props__["credentialStatus"] = credential_status
+        __props__["jurisdiction"] = jurisdiction
         __props__["maintenanceConfig"] = maintenance_config
         __props__["name"] = name
         __props__["status"] = status
@@ -379,6 +448,14 @@ class R2DataCatalog(pulumi.CustomResource):
         return pulumi.get(self, "bucket_name")
 
     @_builtins.property
+    @pulumi.getter
+    def credential(self) -> pulumi.Output[Optional['outputs.R2DataCatalogCredential']]:
+        """
+        Contains request to store catalog credentials.
+        """
+        return pulumi.get(self, "credential")
+
+    @_builtins.property
     @pulumi.getter(name="credentialStatus")
     def credential_status(self) -> pulumi.Output[_builtins.str]:
         """
@@ -386,6 +463,14 @@ class R2DataCatalog(pulumi.CustomResource):
         Available values: "present", "absent".
         """
         return pulumi.get(self, "credential_status")
+
+    @_builtins.property
+    @pulumi.getter
+    def jurisdiction(self) -> pulumi.Output[_builtins.str]:
+        """
+        Specifies the data-locality jurisdiction of the catalog. The first enable sets it, and it cannot change. Currently always `default`.
+        """
+        return pulumi.get(self, "jurisdiction")
 
     @_builtins.property
     @pulumi.getter(name="maintenanceConfig")

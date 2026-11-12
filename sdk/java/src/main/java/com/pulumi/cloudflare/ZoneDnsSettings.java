@@ -57,7 +57,6 @@ import javax.annotation.Nullable;
  *         var exampleZoneDnsSettings = new ZoneDnsSettings("exampleZoneDnsSettings", ZoneDnsSettingsArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .flattenAllCnames(false)
- *             .foundationDns(false)
  *             .internalDns(ZoneDnsSettingsInternalDnsArgs.builder()
  *                 .referenceZoneId("reference_zone_id")
  *                 .build())
@@ -104,23 +103,6 @@ public class ZoneDnsSettings extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> flattenAllCnames() {
         return Codegen.optional(this.flattenAllCnames);
-    }
-    /**
-     * Deprecated. Use nameservers.type to configure Advanced Nameservers.
-     * 
-     * @deprecated foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
-     * 
-     */
-    @Deprecated
-    @Export(name="foundationDns", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> foundationDns;
-
-    /**
-     * @return Deprecated. Use nameservers.type to configure Advanced Nameservers.
-     * 
-     */
-    public Output<Optional<Boolean>> foundationDns() {
-        return Codegen.optional(this.foundationDns);
     }
     /**
      * Settings for this internal zone.

@@ -14,6 +14,11 @@ public final class GetEmailSecurityBlockSendersResult {
     private String comments;
     private String createdAt;
     /**
+     * @return Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration.
+     * 
+     */
+    private String expiresAt;
+    /**
      * @return Blocked sender pattern identifier.
      * 
      */
@@ -54,6 +59,13 @@ public final class GetEmailSecurityBlockSendersResult {
     }
     public String createdAt() {
         return this.createdAt;
+    }
+    /**
+     * @return Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration.
+     * 
+     */
+    public String expiresAt() {
+        return this.expiresAt;
     }
     /**
      * @return Blocked sender pattern identifier.
@@ -113,6 +125,7 @@ public final class GetEmailSecurityBlockSendersResult {
     public static final class Builder {
         private String comments;
         private String createdAt;
+        private String expiresAt;
         private String id;
         private Boolean isRegex;
         private String lastModified;
@@ -124,6 +137,7 @@ public final class GetEmailSecurityBlockSendersResult {
     	      Objects.requireNonNull(defaults);
     	      this.comments = defaults.comments;
     	      this.createdAt = defaults.createdAt;
+    	      this.expiresAt = defaults.expiresAt;
     	      this.id = defaults.id;
     	      this.isRegex = defaults.isRegex;
     	      this.lastModified = defaults.lastModified;
@@ -146,6 +160,14 @@ public final class GetEmailSecurityBlockSendersResult {
               throw new MissingRequiredPropertyException("GetEmailSecurityBlockSendersResult", "createdAt");
             }
             this.createdAt = createdAt;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder expiresAt(String expiresAt) {
+            if (expiresAt == null) {
+              throw new MissingRequiredPropertyException("GetEmailSecurityBlockSendersResult", "expiresAt");
+            }
+            this.expiresAt = expiresAt;
             return this;
         }
         @CustomType.Setter
@@ -200,6 +222,7 @@ public final class GetEmailSecurityBlockSendersResult {
             final var _resultValue = new GetEmailSecurityBlockSendersResult();
             _resultValue.comments = comments;
             _resultValue.createdAt = createdAt;
+            _resultValue.expiresAt = expiresAt;
             _resultValue.id = id;
             _resultValue.isRegex = isRegex;
             _resultValue.lastModified = lastModified;

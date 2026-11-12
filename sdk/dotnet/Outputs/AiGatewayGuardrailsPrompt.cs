@@ -40,6 +40,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// Available values: "FLAG", "BLOCK".
         /// </summary>
+        public readonly string? S14;
+        /// <summary>
+        /// Available values: "FLAG", "BLOCK".
+        /// </summary>
         public readonly string? S2;
         /// <summary>
         /// Available values: "FLAG", "BLOCK".
@@ -84,6 +88,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? s13,
 
+            string? s14,
+
             string? s2,
 
             string? s3,
@@ -106,6 +112,7 @@ namespace Pulumi.Cloudflare.Outputs
             S11 = s11;
             S12 = s12;
             S13 = s13;
+            S14 = s14;
             S2 = s2;
             S3 = s3;
             S4 = s4;

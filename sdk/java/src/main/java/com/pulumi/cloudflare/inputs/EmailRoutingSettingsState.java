@@ -109,14 +109,14 @@ public final class EmailRoutingSettingsState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+     * Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. When omitted, preserves the existing setting.
      * 
      */
     @Import(name="supportSubaddress")
     private @Nullable Output<Boolean> supportSubaddress;
 
     /**
-     * @return Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+     * @return Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. When omitted, preserves the existing setting.
      * 
      */
     public Optional<Output<Boolean>> supportSubaddress() {
@@ -320,7 +320,7 @@ public final class EmailRoutingSettingsState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param supportSubaddress Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+         * @param supportSubaddress Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. When omitted, preserves the existing setting.
          * 
          * @return builder
          * 
@@ -331,7 +331,7 @@ public final class EmailRoutingSettingsState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param supportSubaddress Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+         * @param supportSubaddress Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. When omitted, preserves the existing setting.
          * 
          * @return builder
          * 

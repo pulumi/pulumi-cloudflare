@@ -88,6 +88,10 @@ export interface GetAccountResult {
      */
     readonly id: string;
     /**
+     * Legacy account flags.
+     */
+    readonly legacyFlags: outputs.GetAccountLegacyFlags;
+    /**
      * Parent container details
      */
     readonly managedBy: outputs.GetAccountManagedBy;

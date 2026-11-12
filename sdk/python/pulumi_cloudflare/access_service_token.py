@@ -25,16 +25,18 @@ class AccessServiceTokenArgs:
                  duration: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  previous_client_secret_expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccessServiceToken resource.
 
         :param pulumi.Input[_builtins.str] name: The name of the service token.
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
-        :param pulumi.Input[_builtins.float] client_secret_version: A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`.
+        :param pulumi.Input[_builtins.float] client_secret_version: A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`. If the service token was reported as leaked, `previous_client_secret_expires_at` is not required, may not be in the future, and the previous secret is discarded immediately.
         :param pulumi.Input[_builtins.str] duration: The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
-        :param pulumi.Input[_builtins.bool] enabled: Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `client_secret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
-        :param pulumi.Input[_builtins.str] previous_client_secret_expires_at: The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+        :param pulumi.Input[_builtins.bool] enabled: Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `client_secret` stop being accepted, but the token itself is preserved and can be re-enabled. A service token reported as leaked is disabled automatically and cannot be re-enabled until its secret is rotated; attempting to do so returns a 409. Defaults to enabled when omitted on create.
+        :param pulumi.Input[_builtins.str] previous_client_secret_expires_at: The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise. Rotating a service token that was reported as leaked discards the previous secret entirely, so no grace period can be set.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.
         :param pulumi.Input[_builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         pulumi.set(__self__, "name", name)
@@ -48,6 +50,8 @@ class AccessServiceTokenArgs:
             pulumi.set(__self__, "enabled", enabled)
         if previous_client_secret_expires_at is not None:
             pulumi.set(__self__, "previous_client_secret_expires_at", previous_client_secret_expires_at)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -79,7 +83,7 @@ class AccessServiceTokenArgs:
     @pulumi.getter(name="clientSecretVersion")
     def client_secret_version(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
-        A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`.
+        A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`. If the service token was reported as leaked, `previous_client_secret_expires_at` is not required, may not be in the future, and the previous secret is discarded immediately.
         """
         return pulumi.get(self, "client_secret_version")
 
@@ -103,7 +107,7 @@ class AccessServiceTokenArgs:
     @pulumi.getter
     def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `client_secret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+        Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `client_secret` stop being accepted, but the token itself is preserved and can be re-enabled. A service token reported as leaked is disabled automatically and cannot be re-enabled until its secret is rotated; attempting to do so returns a 409. Defaults to enabled when omitted on create.
         """
         return pulumi.get(self, "enabled")
 
@@ -115,13 +119,25 @@ class AccessServiceTokenArgs:
     @pulumi.getter(name="previousClientSecretExpiresAt")
     def previous_client_secret_expires_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+        The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise. Rotating a service token that was reported as leaked discards the previous secret entirely, so no grace period can be set.
         """
         return pulumi.get(self, "previous_client_secret_expires_at")
 
     @previous_client_secret_expires_at.setter
     def previous_client_secret_expires_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "previous_client_secret_expires_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
@@ -146,8 +162,12 @@ class _AccessServiceTokenState:
                  duration: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 leak_report_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 leak_reported_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 leak_reporter: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  previous_client_secret_expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessServiceToken resources.
@@ -155,11 +175,15 @@ class _AccessServiceTokenState:
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[_builtins.str] client_id: The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.
         :param pulumi.Input[_builtins.str] client_secret: The Client Secret for the service token. Access will check for this value in the `CF-Access-Client-Secret` request header.
-        :param pulumi.Input[_builtins.float] client_secret_version: A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`.
+        :param pulumi.Input[_builtins.float] client_secret_version: A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`. If the service token was reported as leaked, `previous_client_secret_expires_at` is not required, may not be in the future, and the previous secret is discarded immediately.
         :param pulumi.Input[_builtins.str] duration: The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
-        :param pulumi.Input[_builtins.bool] enabled: Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `client_secret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+        :param pulumi.Input[_builtins.bool] enabled: Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `client_secret` stop being accepted, but the token itself is preserved and can be re-enabled. A service token reported as leaked is disabled automatically and cannot be re-enabled until its secret is rotated; attempting to do so returns a 409. Defaults to enabled when omitted on create.
+        :param pulumi.Input[_builtins.str] leak_report_url: Where the leaked `client_secret` was found, if provided by the reporter. Omitted if the token has not been reported as leaked.
+        :param pulumi.Input[_builtins.str] leak_reported_at: When a secret scanning partner reported this service token's `client_secret` as leaked. A leaked service token is disabled and must be rotated before it can be re-enabled. Cleared once the secret is rotated. Omitted if the token has not been reported as leaked.
+        :param pulumi.Input[_builtins.str] leak_reporter: The secret scanning partner that reported the leak. Omitted if the token has not been reported as leaked.
         :param pulumi.Input[_builtins.str] name: The name of the service token.
-        :param pulumi.Input[_builtins.str] previous_client_secret_expires_at: The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+        :param pulumi.Input[_builtins.str] previous_client_secret_expires_at: The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise. Rotating a service token that was reported as leaked discards the previous secret entirely, so no grace period can be set.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.
         :param pulumi.Input[_builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         if account_id is not None:
@@ -176,10 +200,18 @@ class _AccessServiceTokenState:
             pulumi.set(__self__, "enabled", enabled)
         if expires_at is not None:
             pulumi.set(__self__, "expires_at", expires_at)
+        if leak_report_url is not None:
+            pulumi.set(__self__, "leak_report_url", leak_report_url)
+        if leak_reported_at is not None:
+            pulumi.set(__self__, "leak_reported_at", leak_reported_at)
+        if leak_reporter is not None:
+            pulumi.set(__self__, "leak_reporter", leak_reporter)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if previous_client_secret_expires_at is not None:
             pulumi.set(__self__, "previous_client_secret_expires_at", previous_client_secret_expires_at)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -223,7 +255,7 @@ class _AccessServiceTokenState:
     @pulumi.getter(name="clientSecretVersion")
     def client_secret_version(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
-        A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`.
+        A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`. If the service token was reported as leaked, `previous_client_secret_expires_at` is not required, may not be in the future, and the previous secret is discarded immediately.
         """
         return pulumi.get(self, "client_secret_version")
 
@@ -247,7 +279,7 @@ class _AccessServiceTokenState:
     @pulumi.getter
     def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `client_secret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+        Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `client_secret` stop being accepted, but the token itself is preserved and can be re-enabled. A service token reported as leaked is disabled automatically and cannot be re-enabled until its secret is rotated; attempting to do so returns a 409. Defaults to enabled when omitted on create.
         """
         return pulumi.get(self, "enabled")
 
@@ -265,6 +297,42 @@ class _AccessServiceTokenState:
         pulumi.set(self, "expires_at", value)
 
     @_builtins.property
+    @pulumi.getter(name="leakReportUrl")
+    def leak_report_url(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Where the leaked `client_secret` was found, if provided by the reporter. Omitted if the token has not been reported as leaked.
+        """
+        return pulumi.get(self, "leak_report_url")
+
+    @leak_report_url.setter
+    def leak_report_url(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "leak_report_url", value)
+
+    @_builtins.property
+    @pulumi.getter(name="leakReportedAt")
+    def leak_reported_at(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        When a secret scanning partner reported this service token's `client_secret` as leaked. A leaked service token is disabled and must be rotated before it can be re-enabled. Cleared once the secret is rotated. Omitted if the token has not been reported as leaked.
+        """
+        return pulumi.get(self, "leak_reported_at")
+
+    @leak_reported_at.setter
+    def leak_reported_at(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "leak_reported_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="leakReporter")
+    def leak_reporter(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The secret scanning partner that reported the leak. Omitted if the token has not been reported as leaked.
+        """
+        return pulumi.get(self, "leak_reporter")
+
+    @leak_reporter.setter
+    def leak_reporter(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "leak_reporter", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -280,13 +348,25 @@ class _AccessServiceTokenState:
     @pulumi.getter(name="previousClientSecretExpiresAt")
     def previous_client_secret_expires_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+        The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise. Rotating a service token that was reported as leaked discards the previous secret entirely, so no grace period can be set.
         """
         return pulumi.get(self, "previous_client_secret_expires_at")
 
     @previous_client_secret_expires_at.setter
     def previous_client_secret_expires_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "previous_client_secret_expires_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
@@ -318,6 +398,7 @@ class AccessServiceToken(pulumi.CustomResource):
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  previous_client_secret_expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -338,7 +419,10 @@ class AccessServiceToken(pulumi.CustomResource):
             client_secret_version=float(0),
             duration="60m",
             enabled=True,
-            previous_client_secret_expires_at="2014-01-01T05:20:00.12345Z")
+            previous_client_secret_expires_at="2014-01-01T05:20:00.12345Z",
+            tags={
+                "environment": "production",
+            })
         ```
 
         ## Import
@@ -351,11 +435,12 @@ class AccessServiceToken(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
-        :param pulumi.Input[_builtins.float] client_secret_version: A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`.
+        :param pulumi.Input[_builtins.float] client_secret_version: A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`. If the service token was reported as leaked, `previous_client_secret_expires_at` is not required, may not be in the future, and the previous secret is discarded immediately.
         :param pulumi.Input[_builtins.str] duration: The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
-        :param pulumi.Input[_builtins.bool] enabled: Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `client_secret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+        :param pulumi.Input[_builtins.bool] enabled: Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `client_secret` stop being accepted, but the token itself is preserved and can be re-enabled. A service token reported as leaked is disabled automatically and cannot be re-enabled until its secret is rotated; attempting to do so returns a 409. Defaults to enabled when omitted on create.
         :param pulumi.Input[_builtins.str] name: The name of the service token.
-        :param pulumi.Input[_builtins.str] previous_client_secret_expires_at: The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+        :param pulumi.Input[_builtins.str] previous_client_secret_expires_at: The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise. Rotating a service token that was reported as leaked discards the previous secret entirely, so no grace period can be set.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.
         :param pulumi.Input[_builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         ...
@@ -382,7 +467,10 @@ class AccessServiceToken(pulumi.CustomResource):
             client_secret_version=float(0),
             duration="60m",
             enabled=True,
-            previous_client_secret_expires_at="2014-01-01T05:20:00.12345Z")
+            previous_client_secret_expires_at="2014-01-01T05:20:00.12345Z",
+            tags={
+                "environment": "production",
+            })
         ```
 
         ## Import
@@ -413,6 +501,7 @@ class AccessServiceToken(pulumi.CustomResource):
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  previous_client_secret_expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         pulumi.log.warn("""AccessServiceToken is deprecated: cloudflare.index/accessservicetoken.AccessServiceToken has been deprecated in favor of cloudflare.index/zerotrustaccessservicetoken.ZeroTrustAccessServiceToken""")
@@ -432,10 +521,14 @@ class AccessServiceToken(pulumi.CustomResource):
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["previous_client_secret_expires_at"] = previous_client_secret_expires_at
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["client_id"] = None
             __props__.__dict__["client_secret"] = None
             __props__.__dict__["expires_at"] = None
+            __props__.__dict__["leak_report_url"] = None
+            __props__.__dict__["leak_reported_at"] = None
+            __props__.__dict__["leak_reporter"] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/accessServiceToken:AccessServiceToken")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["clientSecret"])
@@ -457,8 +550,12 @@ class AccessServiceToken(pulumi.CustomResource):
             duration: pulumi.Input[Optional[_builtins.str]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+            leak_report_url: pulumi.Input[Optional[_builtins.str]] = None,
+            leak_reported_at: pulumi.Input[Optional[_builtins.str]] = None,
+            leak_reporter: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             previous_client_secret_expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccessServiceToken':
         """
         Get an existing AccessServiceToken resource's state with the given name, id, and optional extra
@@ -470,11 +567,15 @@ class AccessServiceToken(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[_builtins.str] client_id: The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.
         :param pulumi.Input[_builtins.str] client_secret: The Client Secret for the service token. Access will check for this value in the `CF-Access-Client-Secret` request header.
-        :param pulumi.Input[_builtins.float] client_secret_version: A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`.
+        :param pulumi.Input[_builtins.float] client_secret_version: A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`. If the service token was reported as leaked, `previous_client_secret_expires_at` is not required, may not be in the future, and the previous secret is discarded immediately.
         :param pulumi.Input[_builtins.str] duration: The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
-        :param pulumi.Input[_builtins.bool] enabled: Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `client_secret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+        :param pulumi.Input[_builtins.bool] enabled: Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `client_secret` stop being accepted, but the token itself is preserved and can be re-enabled. A service token reported as leaked is disabled automatically and cannot be re-enabled until its secret is rotated; attempting to do so returns a 409. Defaults to enabled when omitted on create.
+        :param pulumi.Input[_builtins.str] leak_report_url: Where the leaked `client_secret` was found, if provided by the reporter. Omitted if the token has not been reported as leaked.
+        :param pulumi.Input[_builtins.str] leak_reported_at: When a secret scanning partner reported this service token's `client_secret` as leaked. A leaked service token is disabled and must be rotated before it can be re-enabled. Cleared once the secret is rotated. Omitted if the token has not been reported as leaked.
+        :param pulumi.Input[_builtins.str] leak_reporter: The secret scanning partner that reported the leak. Omitted if the token has not been reported as leaked.
         :param pulumi.Input[_builtins.str] name: The name of the service token.
-        :param pulumi.Input[_builtins.str] previous_client_secret_expires_at: The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+        :param pulumi.Input[_builtins.str] previous_client_secret_expires_at: The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise. Rotating a service token that was reported as leaked discards the previous secret entirely, so no grace period can be set.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.
         :param pulumi.Input[_builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -488,8 +589,12 @@ class AccessServiceToken(pulumi.CustomResource):
         __props__.__dict__["duration"] = duration
         __props__.__dict__["enabled"] = enabled
         __props__.__dict__["expires_at"] = expires_at
+        __props__.__dict__["leak_report_url"] = leak_report_url
+        __props__.__dict__["leak_reported_at"] = leak_reported_at
+        __props__.__dict__["leak_reporter"] = leak_reporter
         __props__.__dict__["name"] = name
         __props__.__dict__["previous_client_secret_expires_at"] = previous_client_secret_expires_at
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["zone_id"] = zone_id
         return AccessServiceToken(resource_name, opts=opts, __props__=__props__)
 
@@ -503,8 +608,12 @@ class AccessServiceToken(pulumi.CustomResource):
             duration: pulumi.Input[Optional[_builtins.str]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+            leak_report_url: pulumi.Input[Optional[_builtins.str]] = None,
+            leak_reported_at: pulumi.Input[Optional[_builtins.str]] = None,
+            leak_reporter: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             previous_client_secret_expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
         __props__["accountId"] = account_id
@@ -514,8 +623,12 @@ class AccessServiceToken(pulumi.CustomResource):
         __props__["duration"] = duration
         __props__["enabled"] = enabled
         __props__["expiresAt"] = expires_at
+        __props__["leakReportUrl"] = leak_report_url
+        __props__["leakReportedAt"] = leak_reported_at
+        __props__["leakReporter"] = leak_reporter
         __props__["name"] = name
         __props__["previousClientSecretExpiresAt"] = previous_client_secret_expires_at
+        __props__["tags"] = tags
         __props__["zoneId"] = zone_id
         return pulumi.runtime.exists_resource(None, 'cloudflare:index/accessServiceToken:AccessServiceToken', id, __props__, opts or pulumi.ResourceOptions())
 
@@ -547,7 +660,7 @@ class AccessServiceToken(pulumi.CustomResource):
     @pulumi.getter(name="clientSecretVersion")
     def client_secret_version(self) -> pulumi.Output[_builtins.float]:
         """
-        A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`.
+        A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`. If the service token was reported as leaked, `previous_client_secret_expires_at` is not required, may not be in the future, and the previous secret is discarded immediately.
         """
         return pulumi.get(self, "client_secret_version")
 
@@ -563,7 +676,7 @@ class AccessServiceToken(pulumi.CustomResource):
     @pulumi.getter
     def enabled(self) -> pulumi.Output[_builtins.bool]:
         """
-        Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `client_secret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+        Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `client_secret` stop being accepted, but the token itself is preserved and can be re-enabled. A service token reported as leaked is disabled automatically and cannot be re-enabled until its secret is rotated; attempting to do so returns a 409. Defaults to enabled when omitted on create.
         """
         return pulumi.get(self, "enabled")
 
@@ -571,6 +684,30 @@ class AccessServiceToken(pulumi.CustomResource):
     @pulumi.getter(name="expiresAt")
     def expires_at(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "expires_at")
+
+    @_builtins.property
+    @pulumi.getter(name="leakReportUrl")
+    def leak_report_url(self) -> pulumi.Output[_builtins.str]:
+        """
+        Where the leaked `client_secret` was found, if provided by the reporter. Omitted if the token has not been reported as leaked.
+        """
+        return pulumi.get(self, "leak_report_url")
+
+    @_builtins.property
+    @pulumi.getter(name="leakReportedAt")
+    def leak_reported_at(self) -> pulumi.Output[_builtins.str]:
+        """
+        When a secret scanning partner reported this service token's `client_secret` as leaked. A leaked service token is disabled and must be rotated before it can be re-enabled. Cleared once the secret is rotated. Omitted if the token has not been reported as leaked.
+        """
+        return pulumi.get(self, "leak_reported_at")
+
+    @_builtins.property
+    @pulumi.getter(name="leakReporter")
+    def leak_reporter(self) -> pulumi.Output[_builtins.str]:
+        """
+        The secret scanning partner that reported the leak. Omitted if the token has not been reported as leaked.
+        """
+        return pulumi.get(self, "leak_reporter")
 
     @_builtins.property
     @pulumi.getter
@@ -584,9 +721,17 @@ class AccessServiceToken(pulumi.CustomResource):
     @pulumi.getter(name="previousClientSecretExpiresAt")
     def previous_client_secret_expires_at(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+        The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise. Rotating a service token that was reported as leaked discards the previous secret entirely, so no grace period can be set.
         """
         return pulumi.get(self, "previous_client_secret_expires_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.
+        """
+        return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="zoneId")

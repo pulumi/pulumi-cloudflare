@@ -108,6 +108,11 @@ class ZoneTracingRules(pulumi.CustomResource):
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Zone Observability Read`
+        - `Zone Observability Write`
+
         ## Example Usage
 
         ```python
@@ -146,6 +151,11 @@ class ZoneTracingRules(pulumi.CustomResource):
                  args: ZoneTracingRulesArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Zone Observability Read`
+        - `Zone Observability Write`
+
         ## Example Usage
 
         ```python

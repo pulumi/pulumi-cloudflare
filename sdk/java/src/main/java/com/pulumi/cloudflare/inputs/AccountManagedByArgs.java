@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -45,11 +46,43 @@ public final class AccountManagedByArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.parentOrgName);
     }
 
+    /**
+     * ID of the root Organization, if one exists
+     * 
+     */
+    @Import(name="rootOrgId")
+    private @Nullable Output<String> rootOrgId;
+
+    /**
+     * @return ID of the root Organization, if one exists
+     * 
+     */
+    public Optional<Output<String>> rootOrgId() {
+        return Optional.ofNullable(this.rootOrgId);
+    }
+
+    /**
+     * Indicates whether the parent Organization hierarchy should be displayed
+     * 
+     */
+    @Import(name="shouldDisplayParentOrgs")
+    private @Nullable Output<Boolean> shouldDisplayParentOrgs;
+
+    /**
+     * @return Indicates whether the parent Organization hierarchy should be displayed
+     * 
+     */
+    public Optional<Output<Boolean>> shouldDisplayParentOrgs() {
+        return Optional.ofNullable(this.shouldDisplayParentOrgs);
+    }
+
     private AccountManagedByArgs() {}
 
     private AccountManagedByArgs(AccountManagedByArgs $) {
         this.parentOrgId = $.parentOrgId;
         this.parentOrgName = $.parentOrgName;
+        this.rootOrgId = $.rootOrgId;
+        this.shouldDisplayParentOrgs = $.shouldDisplayParentOrgs;
     }
 
     public static Builder builder() {
@@ -110,6 +143,48 @@ public final class AccountManagedByArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder parentOrgName(String parentOrgName) {
             return parentOrgName(Output.of(parentOrgName));
+        }
+
+        /**
+         * @param rootOrgId ID of the root Organization, if one exists
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rootOrgId(@Nullable Output<String> rootOrgId) {
+            $.rootOrgId = rootOrgId;
+            return this;
+        }
+
+        /**
+         * @param rootOrgId ID of the root Organization, if one exists
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rootOrgId(String rootOrgId) {
+            return rootOrgId(Output.of(rootOrgId));
+        }
+
+        /**
+         * @param shouldDisplayParentOrgs Indicates whether the parent Organization hierarchy should be displayed
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shouldDisplayParentOrgs(@Nullable Output<Boolean> shouldDisplayParentOrgs) {
+            $.shouldDisplayParentOrgs = shouldDisplayParentOrgs;
+            return this;
+        }
+
+        /**
+         * @param shouldDisplayParentOrgs Indicates whether the parent Organization hierarchy should be displayed
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shouldDisplayParentOrgs(Boolean shouldDisplayParentOrgs) {
+            return shouldDisplayParentOrgs(Output.of(shouldDisplayParentOrgs));
         }
 
         public AccountManagedByArgs build() {

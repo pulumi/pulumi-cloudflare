@@ -44,12 +44,20 @@ public final class GetAiSearchInstancePlainArgs extends com.pulumi.resources.Inv
         return Optional.ofNullable(this.id);
     }
 
+    @Import(name="namespace")
+    private @Nullable String namespace;
+
+    public Optional<String> namespace() {
+        return Optional.ofNullable(this.namespace);
+    }
+
     private GetAiSearchInstancePlainArgs() {}
 
     private GetAiSearchInstancePlainArgs(GetAiSearchInstancePlainArgs $) {
         this.accountId = $.accountId;
         this.filter = $.filter;
         this.id = $.id;
+        this.namespace = $.namespace;
     }
 
     public static Builder builder() {
@@ -88,6 +96,11 @@ public final class GetAiSearchInstancePlainArgs extends com.pulumi.resources.Inv
          */
         public Builder id(@Nullable String id) {
             $.id = id;
+            return this;
+        }
+
+        public Builder namespace(@Nullable String namespace) {
+            $.namespace = namespace;
             return this;
         }
 

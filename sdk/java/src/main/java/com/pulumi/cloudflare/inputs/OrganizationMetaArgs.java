@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.OrganizationMetaTenantFlagsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -16,6 +17,13 @@ import javax.annotation.Nullable;
 public final class OrganizationMetaArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final OrganizationMetaArgs Empty = new OrganizationMetaArgs();
+
+    @Import(name="areChildAccountsAccessibleByOrgMembers")
+    private @Nullable Output<Boolean> areChildAccountsAccessibleByOrgMembers;
+
+    public Optional<Output<Boolean>> areChildAccountsAccessibleByOrgMembers() {
+        return Optional.ofNullable(this.areChildAccountsAccessibleByOrgMembers);
+    }
 
     /**
      * Ordered chain of organization tags from the root organization down to
@@ -64,12 +72,21 @@ public final class OrganizationMetaArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.tenantFlags);
     }
 
+    @Import(name="tenantType")
+    private @Nullable Output<String> tenantType;
+
+    public Optional<Output<String>> tenantType() {
+        return Optional.ofNullable(this.tenantType);
+    }
+
     private OrganizationMetaArgs() {}
 
     private OrganizationMetaArgs(OrganizationMetaArgs $) {
+        this.areChildAccountsAccessibleByOrgMembers = $.areChildAccountsAccessibleByOrgMembers;
         this.hierarchyTags = $.hierarchyTags;
         this.managedBy = $.managedBy;
         this.tenantFlags = $.tenantFlags;
+        this.tenantType = $.tenantType;
     }
 
     public static Builder builder() {
@@ -88,6 +105,15 @@ public final class OrganizationMetaArgs extends com.pulumi.resources.ResourceArg
 
         public Builder(OrganizationMetaArgs defaults) {
             $ = new OrganizationMetaArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder areChildAccountsAccessibleByOrgMembers(@Nullable Output<Boolean> areChildAccountsAccessibleByOrgMembers) {
+            $.areChildAccountsAccessibleByOrgMembers = areChildAccountsAccessibleByOrgMembers;
+            return this;
+        }
+
+        public Builder areChildAccountsAccessibleByOrgMembers(Boolean areChildAccountsAccessibleByOrgMembers) {
+            return areChildAccountsAccessibleByOrgMembers(Output.of(areChildAccountsAccessibleByOrgMembers));
         }
 
         /**
@@ -164,6 +190,15 @@ public final class OrganizationMetaArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder tenantFlags(OrganizationMetaTenantFlagsArgs tenantFlags) {
             return tenantFlags(Output.of(tenantFlags));
+        }
+
+        public Builder tenantType(@Nullable Output<String> tenantType) {
+            $.tenantType = tenantType;
+            return this;
+        }
+
+        public Builder tenantType(String tenantType) {
+            return tenantType(Output.of(tenantType));
         }
 
         public OrganizationMetaArgs build() {

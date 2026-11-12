@@ -30,6 +30,8 @@ namespace Pulumi.Cloudflare
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Hostname = "app.example.com",
     ///         Service = "my-worker",
+    ///         Enabled = true,
+    ///         PreviewsEnabled = false,
     ///         ZoneId = "593c9c94de529bbbfaac7c53ced0447d",
     ///         ZoneName = "example.com",
     ///     });
@@ -59,6 +61,12 @@ namespace Pulumi.Cloudflare
         public Output<string> CertId { get; private set; } = null!;
 
         /// <summary>
+        /// Whether the configured hostname is routable for the domain. If disabled, then requests to the configured hostname will not be routed to the configured Worker. If disabled, then preview routing must be enabled, and only subdomains of the configured hostname will be routable.
+        /// </summary>
+        [Output("enabled")]
+        public Output<bool> Enabled { get; private set; } = null!;
+
+        /// <summary>
         /// Worker environment associated with the domain.
         /// </summary>
         [Output("environment")]
@@ -69,6 +77,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("hostname")]
         public Output<string> Hostname { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether previews are routable for the domain. If enabled, previews will be routable as subdomains of the configured hostname. For example, if the configured hostname is `app.example.com`, then requests to `my-feature.app.example.com` will be routed to the preview with slug `my-feature`, if such a preview exists. If preview routing is disabled, then hostname routing must be enabled.
+        /// </summary>
+        [Output("previewsEnabled")]
+        public Output<bool> PreviewsEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
@@ -145,6 +159,12 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
+        /// Whether the configured hostname is routable for the domain. If disabled, then requests to the configured hostname will not be routed to the configured Worker. If disabled, then preview routing must be enabled, and only subdomains of the configured hostname will be routable.
+        /// </summary>
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
         /// Worker environment associated with the domain.
         /// </summary>
         [Input("environment")]
@@ -155,6 +175,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("hostname", required: true)]
         public Input<string> Hostname { get; set; } = null!;
+
+        /// <summary>
+        /// Whether previews are routable for the domain. If enabled, previews will be routable as subdomains of the configured hostname. For example, if the configured hostname is `app.example.com`, then requests to `my-feature.app.example.com` will be routed to the preview with slug `my-feature`, if such a preview exists. If preview routing is disabled, then hostname routing must be enabled.
+        /// </summary>
+        [Input("previewsEnabled")]
+        public Input<bool>? PreviewsEnabled { get; set; }
 
         /// <summary>
         /// Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
@@ -195,6 +221,12 @@ namespace Pulumi.Cloudflare
         public Input<string>? CertId { get; set; }
 
         /// <summary>
+        /// Whether the configured hostname is routable for the domain. If disabled, then requests to the configured hostname will not be routed to the configured Worker. If disabled, then preview routing must be enabled, and only subdomains of the configured hostname will be routable.
+        /// </summary>
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
         /// Worker environment associated with the domain.
         /// </summary>
         [Input("environment")]
@@ -205,6 +237,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
+
+        /// <summary>
+        /// Whether previews are routable for the domain. If enabled, previews will be routable as subdomains of the configured hostname. For example, if the configured hostname is `app.example.com`, then requests to `my-feature.app.example.com` will be routed to the preview with slug `my-feature`, if such a preview exists. If preview routing is disabled, then hostname routing must be enabled.
+        /// </summary>
+        [Input("previewsEnabled")]
+        public Input<bool>? PreviewsEnabled { get; set; }
 
         /// <summary>
         /// Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.

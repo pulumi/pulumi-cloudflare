@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,6 +18,11 @@ public final class GetEmailSecurityBlockSenderFilter {
      * 
      */
     private @Nullable String direction;
+    /**
+     * @return Filter to return only expired patterns (`true`) or only patterns that still apply (`false`). Omit to return both.
+     * 
+     */
+    private @Nullable Boolean expired;
     /**
      * @return Field to sort by.
      * Available values: &#34;pattern&#34;, &#34;createdAt&#34;.
@@ -48,6 +54,13 @@ public final class GetEmailSecurityBlockSenderFilter {
      */
     public Optional<String> direction() {
         return Optional.ofNullable(this.direction);
+    }
+    /**
+     * @return Filter to return only expired patterns (`true`) or only patterns that still apply (`false`). Omit to return both.
+     * 
+     */
+    public Optional<Boolean> expired() {
+        return Optional.ofNullable(this.expired);
     }
     /**
      * @return Field to sort by.
@@ -90,6 +103,7 @@ public final class GetEmailSecurityBlockSenderFilter {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String direction;
+        private @Nullable Boolean expired;
         private @Nullable String order;
         private @Nullable String pattern;
         private @Nullable String patternType;
@@ -98,6 +112,7 @@ public final class GetEmailSecurityBlockSenderFilter {
         public Builder(GetEmailSecurityBlockSenderFilter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.direction = defaults.direction;
+    	      this.expired = defaults.expired;
     	      this.order = defaults.order;
     	      this.pattern = defaults.pattern;
     	      this.patternType = defaults.patternType;
@@ -108,6 +123,12 @@ public final class GetEmailSecurityBlockSenderFilter {
         public Builder direction(@Nullable String direction) {
 
             this.direction = direction;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder expired(@Nullable Boolean expired) {
+
+            this.expired = expired;
             return this;
         }
         @CustomType.Setter
@@ -137,6 +158,7 @@ public final class GetEmailSecurityBlockSenderFilter {
         public GetEmailSecurityBlockSenderFilter build() {
             final var _resultValue = new GetEmailSecurityBlockSenderFilter();
             _resultValue.direction = direction;
+            _resultValue.expired = expired;
             _resultValue.order = order;
             _resultValue.pattern = pattern;
             _resultValue.patternType = patternType;

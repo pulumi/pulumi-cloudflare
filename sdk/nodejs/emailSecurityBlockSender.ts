@@ -22,6 +22,7 @@ import * as utilities from "./utilities";
  *     pattern: "test@example.com",
  *     patternType: "EMAIL",
  *     comments: "Block sender with email test@example.com",
+ *     expiresAt: "2027-01-01T00:00:00Z",
  * });
  * ```
  *
@@ -77,6 +78,10 @@ export class EmailSecurityBlockSender extends pulumi.CustomResource {
     declare public readonly comments: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
+     * Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration.
+     */
+    declare public readonly expiresAt: pulumi.Output<string | undefined>;
+    /**
      * Whether `pattern` is a regular expression instead of a literal value.
      */
     declare public readonly isRegex: pulumi.Output<boolean>;
@@ -117,6 +122,7 @@ export class EmailSecurityBlockSender extends pulumi.CustomResource {
             resourceInputs["accountId"] = state?.accountId;
             resourceInputs["comments"] = state?.comments;
             resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["expiresAt"] = state?.expiresAt;
             resourceInputs["isRegex"] = state?.isRegex;
             resourceInputs["lastModified"] = state?.lastModified;
             resourceInputs["modifiedAt"] = state?.modifiedAt;
@@ -138,6 +144,7 @@ export class EmailSecurityBlockSender extends pulumi.CustomResource {
             }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["comments"] = args?.comments;
+            resourceInputs["expiresAt"] = args?.expiresAt;
             resourceInputs["isRegex"] = args?.isRegex;
             resourceInputs["pattern"] = args?.pattern;
             resourceInputs["patternType"] = args?.patternType;
@@ -160,6 +167,10 @@ export interface EmailSecurityBlockSenderState {
     accountId?: pulumi.Input<string | undefined>;
     comments?: pulumi.Input<string | undefined>;
     createdAt?: pulumi.Input<string | undefined>;
+    /**
+     * Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration.
+     */
+    expiresAt?: pulumi.Input<string | undefined>;
     /**
      * Whether `pattern` is a regular expression instead of a literal value.
      */
@@ -195,6 +206,10 @@ export interface EmailSecurityBlockSenderArgs {
      */
     accountId: pulumi.Input<string>;
     comments?: pulumi.Input<string | undefined>;
+    /**
+     * Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration.
+     */
+    expiresAt?: pulumi.Input<string | undefined>;
     /**
      * Whether `pattern` is a regular expression instead of a literal value.
      */

@@ -77,7 +77,7 @@ public class ZeroTrustDlpPredefinedEntry extends com.pulumi.resources.CustomReso
         return this.accountId;
     }
     /**
-     * Only applies to custom word lists.
+     * For `type: exactData`: Only applies to custom word lists.
      * Determines if the words should be matched in a case-sensitive manner
      * Cannot be set to false if secret is true
      * 
@@ -86,7 +86,7 @@ public class ZeroTrustDlpPredefinedEntry extends com.pulumi.resources.CustomReso
     private Output<Boolean> caseSensitive;
 
     /**
-     * @return Only applies to custom word lists.
+     * @return For `type: exactData`: Only applies to custom word lists.
      * Determines if the words should be matched in a case-sensitive manner
      * Cannot be set to false if secret is true
      * 
@@ -107,7 +107,7 @@ public class ZeroTrustDlpPredefinedEntry extends com.pulumi.resources.CustomReso
         return this.createdAt;
     }
     /**
-     * Whether this entry is deprecated for new use. This is computed from the static catalog and
+     * For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
      * emitted only when true.
      * 
      */
@@ -115,16 +115,24 @@ public class ZeroTrustDlpPredefinedEntry extends com.pulumi.resources.CustomReso
     private Output<Boolean> deprecated;
 
     /**
-     * @return Whether this entry is deprecated for new use. This is computed from the static catalog and
+     * @return For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
      * emitted only when true.
      * 
      */
     public Output<Boolean> deprecated() {
         return this.deprecated;
     }
+    /**
+     * For `type: customPromptTopic`: The optional description of the custom prompt topic entry.
+     * 
+     */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
+    /**
+     * @return For `type: customPromptTopic`: The optional description of the custom prompt topic entry.
+     * 
+     */
     public Output<String> description() {
         return this.description;
     }
@@ -181,14 +189,14 @@ public class ZeroTrustDlpPredefinedEntry extends com.pulumi.resources.CustomReso
         return this.secret;
     }
     /**
-     * Available values: &#34;custom&#34;, &#34;custom*prompt*topic&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;, &#34;wordList&#34;.
+     * Available values: &#34;custom&#34;, &#34;customPromptTopic&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exactData&#34;, &#34;documentFingerprint&#34;, &#34;wordList&#34;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Available values: &#34;custom&#34;, &#34;custom*prompt*topic&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;, &#34;wordList&#34;.
+     * @return Available values: &#34;custom&#34;, &#34;customPromptTopic&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exactData&#34;, &#34;documentFingerprint&#34;, &#34;wordList&#34;.
      * 
      */
     public Output<String> type() {
@@ -215,14 +223,36 @@ public class ZeroTrustDlpPredefinedEntry extends com.pulumi.resources.CustomReso
         return this.uploadStatus;
     }
     /**
-     * A Predefined AI prompt classification topic entry.
+     * For `type: custom`: Validators this entry references, by id, at most 10. An empty list means the entry
+     * references none.
+     * 
+     * Returned by the entry endpoints. Not returned on entries embedded in other responses, such
+     * as profiles.
+     * 
+     */
+    @Export(name="validatorIds", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> validatorIds;
+
+    /**
+     * @return For `type: custom`: Validators this entry references, by id, at most 10. An empty list means the entry
+     * references none.
+     * 
+     * Returned by the entry endpoints. Not returned on entries embedded in other responses, such
+     * as profiles.
+     * 
+     */
+    public Output<List<String>> validatorIds() {
+        return this.validatorIds;
+    }
+    /**
+     * For `type: predefined`: A Predefined AI prompt classification topic entry.
      * 
      */
     @Export(name="variant", refs={ZeroTrustDlpPredefinedEntryVariant.class}, tree="[0]")
     private Output<ZeroTrustDlpPredefinedEntryVariant> variant;
 
     /**
-     * @return A Predefined AI prompt classification topic entry.
+     * @return For `type: predefined`: A Predefined AI prompt classification topic entry.
      * 
      */
     public Output<ZeroTrustDlpPredefinedEntryVariant> variant() {

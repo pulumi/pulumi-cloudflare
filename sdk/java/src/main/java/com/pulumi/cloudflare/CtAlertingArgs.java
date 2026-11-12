@@ -19,14 +19,14 @@ public final class CtAlertingArgs extends com.pulumi.resources.ResourceArgs {
     public static final CtAlertingArgs Empty = new CtAlertingArgs();
 
     /**
-     * Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma.
+     * Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. Omitted from responses when no addresses are configured.
      * 
      */
     @Import(name="emails")
     private @Nullable Output<List<String>> emails;
 
     /**
-     * @return Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma.
+     * @return Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. Omitted from responses when no addresses are configured.
      * 
      */
     public Optional<Output<List<String>>> emails() {
@@ -90,7 +90,7 @@ public final class CtAlertingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param emails Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma.
+         * @param emails Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. Omitted from responses when no addresses are configured.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class CtAlertingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param emails Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma.
+         * @param emails Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. Omitted from responses when no addresses are configured.
          * 
          * @return builder
          * 
@@ -111,7 +111,7 @@ public final class CtAlertingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param emails Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma.
+         * @param emails Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. Omitted from responses when no addresses are configured.
          * 
          * @return builder
          * 

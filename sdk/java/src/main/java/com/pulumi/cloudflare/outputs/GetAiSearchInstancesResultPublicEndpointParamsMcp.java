@@ -12,20 +12,12 @@ import java.util.Objects;
 @CustomType
 public final class GetAiSearchInstancesResultPublicEndpointParamsMcp {
     private String description;
-    /**
-     * @return Disable MCP endpoint for this public endpoint
-     * 
-     */
     private Boolean disabled;
 
     private GetAiSearchInstancesResultPublicEndpointParamsMcp() {}
     public String description() {
         return this.description;
     }
-    /**
-     * @return Disable MCP endpoint for this public endpoint
-     * 
-     */
     public Boolean disabled() {
         return this.disabled;
     }

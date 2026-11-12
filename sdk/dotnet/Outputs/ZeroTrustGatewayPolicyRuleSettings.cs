@@ -22,10 +22,6 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool? AllowChildBypass;
         /// <summary>
-        /// Define the settings for the Audit SSH action. Settable only for `L4` rules with `AuditSsh` action.
-        /// </summary>
-        public readonly Outputs.ZeroTrustGatewayPolicyRuleSettingsAuditSsh? AuditSsh;
-        /// <summary>
         /// Configure browser isolation behavior. Settable only for `Http` rules with the action set to `Isolate`.
         /// </summary>
         public readonly Outputs.ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls? BisoAdminControls;
@@ -65,6 +61,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// Configure whether a copy of the HTTP request will be sent to storage when the rule matches.
         /// </summary>
         public readonly Outputs.ZeroTrustGatewayPolicyRuleSettingsForensicCopy? ForensicCopy;
+        /// <summary>
+        /// Forward matching HTTP requests to a Worker. Required for `Http` rules with the action set to `Forward`.
+        /// </summary>
+        public readonly Outputs.ZeroTrustGatewayPolicyRuleSettingsForward? Forward;
         /// <summary>
         /// Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `Dns` and `DnsResolver` rules.
         /// </summary>
@@ -132,8 +132,6 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool? allowChildBypass,
 
-            Outputs.ZeroTrustGatewayPolicyRuleSettingsAuditSsh? auditSsh,
-
             Outputs.ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls? bisoAdminControls,
 
             Outputs.ZeroTrustGatewayPolicyRuleSettingsBlockPage? blockPage,
@@ -153,6 +151,8 @@ namespace Pulumi.Cloudflare.Outputs
             Outputs.ZeroTrustGatewayPolicyRuleSettingsEgress? egress,
 
             Outputs.ZeroTrustGatewayPolicyRuleSettingsForensicCopy? forensicCopy,
+
+            Outputs.ZeroTrustGatewayPolicyRuleSettingsForward? forward,
 
             bool? ignoreCnameCategoryMatches,
 
@@ -186,7 +186,6 @@ namespace Pulumi.Cloudflare.Outputs
         {
             AddHeaders = addHeaders;
             AllowChildBypass = allowChildBypass;
-            AuditSsh = auditSsh;
             BisoAdminControls = bisoAdminControls;
             BlockPage = blockPage;
             BlockPageEnabled = blockPageEnabled;
@@ -197,6 +196,7 @@ namespace Pulumi.Cloudflare.Outputs
             DnsResolvers = dnsResolvers;
             Egress = egress;
             ForensicCopy = forensicCopy;
+            Forward = forward;
             IgnoreCnameCategoryMatches = ignoreCnameCategoryMatches;
             InsecureDisableDnssecValidation = insecureDisableDnssecValidation;
             IpCategories = ipCategories;

@@ -19,6 +19,12 @@ public final class GetWorkflowsResult {
     private String createdOn;
     private String id;
     private Map<String,Double> instances;
+    /**
+     * @return Jurisdiction where instances of this workflow run and store data. Set when the workflow is created and cannot be changed.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;us&#34;.
+     * 
+     */
+    private String jurisdiction;
     private String modifiedOn;
     private String name;
     private List<GetWorkflowsResultSchedule> schedules;
@@ -42,6 +48,14 @@ public final class GetWorkflowsResult {
     }
     public Map<String,Double> instances() {
         return this.instances;
+    }
+    /**
+     * @return Jurisdiction where instances of this workflow run and store data. Set when the workflow is created and cannot be changed.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;us&#34;.
+     * 
+     */
+    public String jurisdiction() {
+        return this.jurisdiction;
     }
     public String modifiedOn() {
         return this.modifiedOn;
@@ -79,6 +93,7 @@ public final class GetWorkflowsResult {
         private String createdOn;
         private String id;
         private Map<String,Double> instances;
+        private String jurisdiction;
         private String modifiedOn;
         private String name;
         private List<GetWorkflowsResultSchedule> schedules;
@@ -92,6 +107,7 @@ public final class GetWorkflowsResult {
     	      this.createdOn = defaults.createdOn;
     	      this.id = defaults.id;
     	      this.instances = defaults.instances;
+    	      this.jurisdiction = defaults.jurisdiction;
     	      this.modifiedOn = defaults.modifiedOn;
     	      this.name = defaults.name;
     	      this.schedules = defaults.schedules;
@@ -130,6 +146,14 @@ public final class GetWorkflowsResult {
               throw new MissingRequiredPropertyException("GetWorkflowsResult", "instances");
             }
             this.instances = instances;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder jurisdiction(String jurisdiction) {
+            if (jurisdiction == null) {
+              throw new MissingRequiredPropertyException("GetWorkflowsResult", "jurisdiction");
+            }
+            this.jurisdiction = jurisdiction;
             return this;
         }
         @CustomType.Setter
@@ -189,6 +213,7 @@ public final class GetWorkflowsResult {
             _resultValue.createdOn = createdOn;
             _resultValue.id = id;
             _resultValue.instances = instances;
+            _resultValue.jurisdiction = jurisdiction;
             _resultValue.modifiedOn = modifiedOn;
             _resultValue.name = name;
             _resultValue.schedules = schedules;

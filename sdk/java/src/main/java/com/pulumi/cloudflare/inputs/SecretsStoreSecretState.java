@@ -92,14 +92,14 @@ public final class SecretsStoreSecretState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The list of services that can use this secret. Valid values are `workers`, `aiGateway`, `dex`, and `access`. Must be listed in alphabetical order.
+     * The list of services that can use this secret, or null when the secret inherits its store&#39;s scopes. Set it to null in a patch to inherit again. An empty list lets no service use the secret. Explicit scopes must be listed in alphabetical order.
      * 
      */
     @Import(name="scopes")
     private @Nullable Output<List<String>> scopes;
 
     /**
-     * @return The list of services that can use this secret. Valid values are `workers`, `aiGateway`, `dex`, and `access`. Must be listed in alphabetical order.
+     * @return The list of services that can use this secret, or null when the secret inherits its store&#39;s scopes. Set it to null in a patch to inherit again. An empty list lets no service use the secret. Explicit scopes must be listed in alphabetical order.
      * 
      */
     public Optional<Output<List<String>>> scopes() {
@@ -289,7 +289,7 @@ public final class SecretsStoreSecretState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param scopes The list of services that can use this secret. Valid values are `workers`, `aiGateway`, `dex`, and `access`. Must be listed in alphabetical order.
+         * @param scopes The list of services that can use this secret, or null when the secret inherits its store&#39;s scopes. Set it to null in a patch to inherit again. An empty list lets no service use the secret. Explicit scopes must be listed in alphabetical order.
          * 
          * @return builder
          * 
@@ -300,7 +300,7 @@ public final class SecretsStoreSecretState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param scopes The list of services that can use this secret. Valid values are `workers`, `aiGateway`, `dex`, and `access`. Must be listed in alphabetical order.
+         * @param scopes The list of services that can use this secret, or null when the secret inherits its store&#39;s scopes. Set it to null in a patch to inherit again. An empty list lets no service use the secret. Explicit scopes must be listed in alphabetical order.
          * 
          * @return builder
          * 
@@ -310,7 +310,7 @@ public final class SecretsStoreSecretState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param scopes The list of services that can use this secret. Valid values are `workers`, `aiGateway`, `dex`, and `access`. Must be listed in alphabetical order.
+         * @param scopes The list of services that can use this secret, or null when the secret inherits its store&#39;s scopes. Set it to null in a patch to inherit again. An empty list lets no service use the secret. Explicit scopes must be listed in alphabetical order.
          * 
          * @return builder
          * 

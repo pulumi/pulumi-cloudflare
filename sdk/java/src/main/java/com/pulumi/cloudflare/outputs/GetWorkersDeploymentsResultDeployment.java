@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetWorkersDeploymentsResultDeploymentAnnotations;
+import com.pulumi.cloudflare.outputs.GetWorkersDeploymentsResultDeploymentCodeUpdateStrategy;
 import com.pulumi.cloudflare.outputs.GetWorkersDeploymentsResultDeploymentVersion;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -13,13 +14,23 @@ import java.util.Objects;
 
 @CustomType
 public final class GetWorkersDeploymentsResultDeployment {
+    /**
+     * @return Metadata attached to the deployment.
+     * 
+     */
     private GetWorkersDeploymentsResultDeploymentAnnotations annotations;
     private String authorEmail;
+    /**
+     * @return Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+     * 
+     */
+    private GetWorkersDeploymentsResultDeploymentCodeUpdateStrategy codeUpdateStrategy;
     private String createdOn;
     private String id;
     private String source;
     /**
-     * @return Available values: &#34;percentage&#34;.
+     * @return Strategy for routing traffic across the listed versions. `percentage` splits traffic according to each version&#39;s `percentage`.
+     * Available values: &#34;percentage&#34;.
      * 
      */
     private String strategy;
@@ -30,11 +41,22 @@ public final class GetWorkersDeploymentsResultDeployment {
     private List<GetWorkersDeploymentsResultDeploymentVersion> versions;
 
     private GetWorkersDeploymentsResultDeployment() {}
+    /**
+     * @return Metadata attached to the deployment.
+     * 
+     */
     public GetWorkersDeploymentsResultDeploymentAnnotations annotations() {
         return this.annotations;
     }
     public String authorEmail() {
         return this.authorEmail;
+    }
+    /**
+     * @return Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+     * 
+     */
+    public GetWorkersDeploymentsResultDeploymentCodeUpdateStrategy codeUpdateStrategy() {
+        return this.codeUpdateStrategy;
     }
     public String createdOn() {
         return this.createdOn;
@@ -46,7 +68,8 @@ public final class GetWorkersDeploymentsResultDeployment {
         return this.source;
     }
     /**
-     * @return Available values: &#34;percentage&#34;.
+     * @return Strategy for routing traffic across the listed versions. `percentage` splits traffic according to each version&#39;s `percentage`.
+     * Available values: &#34;percentage&#34;.
      * 
      */
     public String strategy() {
@@ -71,6 +94,7 @@ public final class GetWorkersDeploymentsResultDeployment {
     public static final class Builder {
         private GetWorkersDeploymentsResultDeploymentAnnotations annotations;
         private String authorEmail;
+        private GetWorkersDeploymentsResultDeploymentCodeUpdateStrategy codeUpdateStrategy;
         private String createdOn;
         private String id;
         private String source;
@@ -81,6 +105,7 @@ public final class GetWorkersDeploymentsResultDeployment {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
     	      this.authorEmail = defaults.authorEmail;
+    	      this.codeUpdateStrategy = defaults.codeUpdateStrategy;
     	      this.createdOn = defaults.createdOn;
     	      this.id = defaults.id;
     	      this.source = defaults.source;
@@ -102,6 +127,14 @@ public final class GetWorkersDeploymentsResultDeployment {
               throw new MissingRequiredPropertyException("GetWorkersDeploymentsResultDeployment", "authorEmail");
             }
             this.authorEmail = authorEmail;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder codeUpdateStrategy(GetWorkersDeploymentsResultDeploymentCodeUpdateStrategy codeUpdateStrategy) {
+            if (codeUpdateStrategy == null) {
+              throw new MissingRequiredPropertyException("GetWorkersDeploymentsResultDeployment", "codeUpdateStrategy");
+            }
+            this.codeUpdateStrategy = codeUpdateStrategy;
             return this;
         }
         @CustomType.Setter
@@ -151,6 +184,7 @@ public final class GetWorkersDeploymentsResultDeployment {
             final var _resultValue = new GetWorkersDeploymentsResultDeployment();
             _resultValue.annotations = annotations;
             _resultValue.authorEmail = authorEmail;
+            _resultValue.codeUpdateStrategy = codeUpdateStrategy;
             _resultValue.createdOn = createdOn;
             _resultValue.id = id;
             _resultValue.source = source;

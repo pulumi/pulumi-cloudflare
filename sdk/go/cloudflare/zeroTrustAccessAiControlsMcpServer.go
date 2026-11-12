@@ -94,7 +94,7 @@ type ZeroTrustAccessAiControlsMcpServer struct {
 	// Whether administrative authentication is required before capabilities can be synced. Manual OAuth is user-managed and has no administrative authentication flow.
 	// Available values: "notRequired", "required", "connected", "stale", "manual".
 	AuthenticationStatus pulumi.StringOutput `pulumi:"authenticationStatus"`
-	// Pre-registered OAuth client*secret. Write-only - accepted on create/update when auth*credentials.auth*mode is 'manual'. Required when creating a manual OAuth server or converting an existing server to manual mode. Omit it on update to preserve the existing secret; provide it to rotate the secret. Stored AES-GCM-encrypted in server*oauth_secrets; never returned by read endpoints.
+	// Provides 'client*secret' for a pre-registered OAuth client. This field is accepted on create or update only when 'auth*credentials.auth*mode' is 'manual'. It is required when creating an MCP server with manual OAuth credentials or changing an existing server to use manual OAuth credentials. Omit 'client*secret' on update to preserve the existing secret. Provide a new 'client_secret' to rotate the secret. The secret is never returned by read, create, or update requests.
 	ClientSecret pulumi.StringPtrOutput `pulumi:"clientSecret"`
 	CreatedAt    pulumi.StringOutput    `pulumi:"createdAt"`
 	CreatedBy    pulumi.StringOutput    `pulumi:"createdBy"`
@@ -104,7 +104,7 @@ type ZeroTrustAccessAiControlsMcpServer struct {
 	ErrorDetails ZeroTrustAccessAiControlsMcpServerErrorDetailsOutput `pulumi:"errorDetails"`
 	// URL of the upstream MCP endpoint.
 	Hostname pulumi.StringOutput `pulumi:"hostname"`
-	// When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true.
+	// When true, per-user authorization uses the shared Cloudflare callback URL as the 'redirect*uri' instead of the portal callback URL. The default is false. Set 'is*shared*oauth*callback_enabled' to true to enable the shared Cloudflare callback URL for this MCP server.
 	IsSharedOauthCallbackEnabled pulumi.BoolOutput   `pulumi:"isSharedOauthCallbackEnabled"`
 	LastSuccessfulSync           pulumi.StringOutput `pulumi:"lastSuccessfulSync"`
 	LastSynced                   pulumi.StringOutput `pulumi:"lastSynced"`
@@ -113,6 +113,8 @@ type ZeroTrustAccessAiControlsMcpServer struct {
 	// Display name for the MCP server.
 	Name    pulumi.StringOutput         `pulumi:"name"`
 	Prompts pulumi.StringMapArrayOutput `pulumi:"prompts"`
+	// Timestamp of the most recent successful admin OAuth registration.
+	RegisteredAt pulumi.StringOutput `pulumi:"registeredAt"`
 	// Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
 	SecureWebGateway pulumi.BoolOutput           `pulumi:"secureWebGateway"`
 	Status           pulumi.StringOutput         `pulumi:"status"`
@@ -192,7 +194,7 @@ type zeroTrustAccessAiControlsMcpServerState struct {
 	// Whether administrative authentication is required before capabilities can be synced. Manual OAuth is user-managed and has no administrative authentication flow.
 	// Available values: "notRequired", "required", "connected", "stale", "manual".
 	AuthenticationStatus *string `pulumi:"authenticationStatus"`
-	// Pre-registered OAuth client*secret. Write-only - accepted on create/update when auth*credentials.auth*mode is 'manual'. Required when creating a manual OAuth server or converting an existing server to manual mode. Omit it on update to preserve the existing secret; provide it to rotate the secret. Stored AES-GCM-encrypted in server*oauth_secrets; never returned by read endpoints.
+	// Provides 'client*secret' for a pre-registered OAuth client. This field is accepted on create or update only when 'auth*credentials.auth*mode' is 'manual'. It is required when creating an MCP server with manual OAuth credentials or changing an existing server to use manual OAuth credentials. Omit 'client*secret' on update to preserve the existing secret. Provide a new 'client_secret' to rotate the secret. The secret is never returned by read, create, or update requests.
 	ClientSecret *string `pulumi:"clientSecret"`
 	CreatedAt    *string `pulumi:"createdAt"`
 	CreatedBy    *string `pulumi:"createdBy"`
@@ -202,7 +204,7 @@ type zeroTrustAccessAiControlsMcpServerState struct {
 	ErrorDetails *ZeroTrustAccessAiControlsMcpServerErrorDetails `pulumi:"errorDetails"`
 	// URL of the upstream MCP endpoint.
 	Hostname *string `pulumi:"hostname"`
-	// When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true.
+	// When true, per-user authorization uses the shared Cloudflare callback URL as the 'redirect*uri' instead of the portal callback URL. The default is false. Set 'is*shared*oauth*callback_enabled' to true to enable the shared Cloudflare callback URL for this MCP server.
 	IsSharedOauthCallbackEnabled *bool   `pulumi:"isSharedOauthCallbackEnabled"`
 	LastSuccessfulSync           *string `pulumi:"lastSuccessfulSync"`
 	LastSynced                   *string `pulumi:"lastSynced"`
@@ -211,6 +213,8 @@ type zeroTrustAccessAiControlsMcpServerState struct {
 	// Display name for the MCP server.
 	Name    *string             `pulumi:"name"`
 	Prompts []map[string]string `pulumi:"prompts"`
+	// Timestamp of the most recent successful admin OAuth registration.
+	RegisteredAt *string `pulumi:"registeredAt"`
 	// Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
 	SecureWebGateway *bool               `pulumi:"secureWebGateway"`
 	Status           *string             `pulumi:"status"`
@@ -235,7 +239,7 @@ type ZeroTrustAccessAiControlsMcpServerState struct {
 	// Whether administrative authentication is required before capabilities can be synced. Manual OAuth is user-managed and has no administrative authentication flow.
 	// Available values: "notRequired", "required", "connected", "stale", "manual".
 	AuthenticationStatus pulumi.StringPtrInput
-	// Pre-registered OAuth client*secret. Write-only - accepted on create/update when auth*credentials.auth*mode is 'manual'. Required when creating a manual OAuth server or converting an existing server to manual mode. Omit it on update to preserve the existing secret; provide it to rotate the secret. Stored AES-GCM-encrypted in server*oauth_secrets; never returned by read endpoints.
+	// Provides 'client*secret' for a pre-registered OAuth client. This field is accepted on create or update only when 'auth*credentials.auth*mode' is 'manual'. It is required when creating an MCP server with manual OAuth credentials or changing an existing server to use manual OAuth credentials. Omit 'client*secret' on update to preserve the existing secret. Provide a new 'client_secret' to rotate the secret. The secret is never returned by read, create, or update requests.
 	ClientSecret pulumi.StringPtrInput
 	CreatedAt    pulumi.StringPtrInput
 	CreatedBy    pulumi.StringPtrInput
@@ -245,7 +249,7 @@ type ZeroTrustAccessAiControlsMcpServerState struct {
 	ErrorDetails ZeroTrustAccessAiControlsMcpServerErrorDetailsPtrInput
 	// URL of the upstream MCP endpoint.
 	Hostname pulumi.StringPtrInput
-	// When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true.
+	// When true, per-user authorization uses the shared Cloudflare callback URL as the 'redirect*uri' instead of the portal callback URL. The default is false. Set 'is*shared*oauth*callback_enabled' to true to enable the shared Cloudflare callback URL for this MCP server.
 	IsSharedOauthCallbackEnabled pulumi.BoolPtrInput
 	LastSuccessfulSync           pulumi.StringPtrInput
 	LastSynced                   pulumi.StringPtrInput
@@ -254,6 +258,8 @@ type ZeroTrustAccessAiControlsMcpServerState struct {
 	// Display name for the MCP server.
 	Name    pulumi.StringPtrInput
 	Prompts pulumi.StringMapArrayInput
+	// Timestamp of the most recent successful admin OAuth registration.
+	RegisteredAt pulumi.StringPtrInput
 	// Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
 	SecureWebGateway pulumi.BoolPtrInput
 	Status           pulumi.StringPtrInput
@@ -283,13 +289,13 @@ type zeroTrustAccessAiControlsMcpServerArgs struct {
 	// Authentication method used to connect to the upstream MCP server.
 	// Available values: "oauth", "bearer", "unauthenticated".
 	AuthType string `pulumi:"authType"`
-	// Pre-registered OAuth client*secret. Write-only - accepted on create/update when auth*credentials.auth*mode is 'manual'. Required when creating a manual OAuth server or converting an existing server to manual mode. Omit it on update to preserve the existing secret; provide it to rotate the secret. Stored AES-GCM-encrypted in server*oauth_secrets; never returned by read endpoints.
+	// Provides 'client*secret' for a pre-registered OAuth client. This field is accepted on create or update only when 'auth*credentials.auth*mode' is 'manual'. It is required when creating an MCP server with manual OAuth credentials or changing an existing server to use manual OAuth credentials. Omit 'client*secret' on update to preserve the existing secret. Provide a new 'client_secret' to rotate the secret. The secret is never returned by read, create, or update requests.
 	ClientSecret *string `pulumi:"clientSecret"`
 	// Optional description of the MCP server.
 	Description *string `pulumi:"description"`
 	// URL of the upstream MCP endpoint.
 	Hostname string `pulumi:"hostname"`
-	// When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true.
+	// When true, per-user authorization uses the shared Cloudflare callback URL as the 'redirect*uri' instead of the portal callback URL. The default is false. Set 'is*shared*oauth*callback_enabled' to true to enable the shared Cloudflare callback URL for this MCP server.
 	IsSharedOauthCallbackEnabled *bool `pulumi:"isSharedOauthCallbackEnabled"`
 	// Display name for the MCP server.
 	Name string `pulumi:"name"`
@@ -311,13 +317,13 @@ type ZeroTrustAccessAiControlsMcpServerArgs struct {
 	// Authentication method used to connect to the upstream MCP server.
 	// Available values: "oauth", "bearer", "unauthenticated".
 	AuthType pulumi.StringInput
-	// Pre-registered OAuth client*secret. Write-only - accepted on create/update when auth*credentials.auth*mode is 'manual'. Required when creating a manual OAuth server or converting an existing server to manual mode. Omit it on update to preserve the existing secret; provide it to rotate the secret. Stored AES-GCM-encrypted in server*oauth_secrets; never returned by read endpoints.
+	// Provides 'client*secret' for a pre-registered OAuth client. This field is accepted on create or update only when 'auth*credentials.auth*mode' is 'manual'. It is required when creating an MCP server with manual OAuth credentials or changing an existing server to use manual OAuth credentials. Omit 'client*secret' on update to preserve the existing secret. Provide a new 'client_secret' to rotate the secret. The secret is never returned by read, create, or update requests.
 	ClientSecret pulumi.StringPtrInput
 	// Optional description of the MCP server.
 	Description pulumi.StringPtrInput
 	// URL of the upstream MCP endpoint.
 	Hostname pulumi.StringInput
-	// When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true.
+	// When true, per-user authorization uses the shared Cloudflare callback URL as the 'redirect*uri' instead of the portal callback URL. The default is false. Set 'is*shared*oauth*callback_enabled' to true to enable the shared Cloudflare callback URL for this MCP server.
 	IsSharedOauthCallbackEnabled pulumi.BoolPtrInput
 	// Display name for the MCP server.
 	Name pulumi.StringInput
@@ -446,7 +452,7 @@ func (o ZeroTrustAccessAiControlsMcpServerOutput) AuthenticationStatus() pulumi.
 	return o.ApplyT(func(v *ZeroTrustAccessAiControlsMcpServer) pulumi.StringOutput { return v.AuthenticationStatus }).(pulumi.StringOutput)
 }
 
-// Pre-registered OAuth client*secret. Write-only - accepted on create/update when auth*credentials.auth*mode is 'manual'. Required when creating a manual OAuth server or converting an existing server to manual mode. Omit it on update to preserve the existing secret; provide it to rotate the secret. Stored AES-GCM-encrypted in server*oauth_secrets; never returned by read endpoints.
+// Provides 'client*secret' for a pre-registered OAuth client. This field is accepted on create or update only when 'auth*credentials.auth*mode' is 'manual'. It is required when creating an MCP server with manual OAuth credentials or changing an existing server to use manual OAuth credentials. Omit 'client*secret' on update to preserve the existing secret. Provide a new 'client_secret' to rotate the secret. The secret is never returned by read, create, or update requests.
 func (o ZeroTrustAccessAiControlsMcpServerOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessAiControlsMcpServer) pulumi.StringPtrOutput { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }
@@ -479,7 +485,7 @@ func (o ZeroTrustAccessAiControlsMcpServerOutput) Hostname() pulumi.StringOutput
 	return o.ApplyT(func(v *ZeroTrustAccessAiControlsMcpServer) pulumi.StringOutput { return v.Hostname }).(pulumi.StringOutput)
 }
 
-// When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true.
+// When true, per-user authorization uses the shared Cloudflare callback URL as the 'redirect*uri' instead of the portal callback URL. The default is false. Set 'is*shared*oauth*callback_enabled' to true to enable the shared Cloudflare callback URL for this MCP server.
 func (o ZeroTrustAccessAiControlsMcpServerOutput) IsSharedOauthCallbackEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessAiControlsMcpServer) pulumi.BoolOutput { return v.IsSharedOauthCallbackEnabled }).(pulumi.BoolOutput)
 }
@@ -507,6 +513,11 @@ func (o ZeroTrustAccessAiControlsMcpServerOutput) Name() pulumi.StringOutput {
 
 func (o ZeroTrustAccessAiControlsMcpServerOutput) Prompts() pulumi.StringMapArrayOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessAiControlsMcpServer) pulumi.StringMapArrayOutput { return v.Prompts }).(pulumi.StringMapArrayOutput)
+}
+
+// Timestamp of the most recent successful admin OAuth registration.
+func (o ZeroTrustAccessAiControlsMcpServerOutput) RegisteredAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessAiControlsMcpServer) pulumi.StringOutput { return v.RegisteredAt }).(pulumi.StringOutput)
 }
 
 // Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.

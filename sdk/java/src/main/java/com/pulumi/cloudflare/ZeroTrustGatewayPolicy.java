@@ -35,7 +35,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.ZeroTrustGatewayPolicyArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyExpirationArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsAuditSshArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsBlockPageArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsCheckSessionArgs;
@@ -44,6 +43,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6Args;
  * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsEgressArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsForensicCopyArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsForwardArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsL4overrideArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsPayloadLogArgs;
@@ -87,9 +87,6 @@ import javax.annotation.Nullable;
  *                     Map.entry("X-Custom-Header-Name", Arrays.asList("somecustomvalue"))
  *                 ))
  *                 .allowChildBypass(false)
- *                 .auditSsh(ZeroTrustGatewayPolicyRuleSettingsAuditSshArgs.builder()
- *                     .commandLogging(false)
- *                     .build())
  *                 .bisoAdminControls(ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs.builder()
  *                     .copy("remote_only")
  *                     .dcp(true)
@@ -140,6 +137,9 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .forensicCopy(ZeroTrustGatewayPolicyRuleSettingsForensicCopyArgs.builder()
  *                     .enabled(true)
+ *                     .build())
+ *                 .forward(ZeroTrustGatewayPolicyRuleSettingsForwardArgs.builder()
+ *                     .workerId("0123456789abcdef0123456789abcdef")
  *                     .build())
  *                 .ignoreCnameCategoryMatches(true)
  *                 .insecureDisableDnssecValidation(false)
@@ -223,7 +223,7 @@ public class ZeroTrustGatewayPolicy extends com.pulumi.resources.CustomResource 
     }
     /**
      * Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
-     * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4Override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;, &#34;redirect&#34;.
+     * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4Override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;, &#34;redirect&#34;, &#34;forward&#34;.
      * 
      */
     @Export(name="action", refs={String.class}, tree="[0]")
@@ -231,7 +231,7 @@ public class ZeroTrustGatewayPolicy extends com.pulumi.resources.CustomResource 
 
     /**
      * @return Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
-     * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4Override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;, &#34;redirect&#34;.
+     * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4Override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;, &#34;redirect&#34;, &#34;forward&#34;.
      * 
      */
     public Output<String> action() {

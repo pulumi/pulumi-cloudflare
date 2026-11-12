@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class ApiShieldAuthIdCharacteristic {
     /**
-     * @return The name of the characteristic field, i.e., the header or cookie name.
+     * @return For `type: header` or `type: cookie`: The name of the characteristic field, i.e., the header or cookie name.
      * 
      */
     private String name;
@@ -24,7 +24,7 @@ public final class ApiShieldAuthIdCharacteristic {
 
     private ApiShieldAuthIdCharacteristic() {}
     /**
-     * @return The name of the characteristic field, i.e., the header or cookie name.
+     * @return For `type: header` or `type: cookie`: The name of the characteristic field, i.e., the header or cookie name.
      * 
      */
     public String name() {

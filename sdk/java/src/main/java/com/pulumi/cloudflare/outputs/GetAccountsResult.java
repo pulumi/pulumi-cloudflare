@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetAccountsResultLegacyFlags;
 import com.pulumi.cloudflare.outputs.GetAccountsResultManagedBy;
 import com.pulumi.cloudflare.outputs.GetAccountsResultSettings;
 import com.pulumi.core.annotations.CustomType;
@@ -22,6 +23,11 @@ public final class GetAccountsResult {
      * 
      */
     private String id;
+    /**
+     * @return Legacy account flags.
+     * 
+     */
+    private GetAccountsResultLegacyFlags legacyFlags;
     /**
      * @return Parent container details
      * 
@@ -57,6 +63,13 @@ public final class GetAccountsResult {
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return Legacy account flags.
+     * 
+     */
+    public GetAccountsResultLegacyFlags legacyFlags() {
+        return this.legacyFlags;
     }
     /**
      * @return Parent container details
@@ -98,6 +111,7 @@ public final class GetAccountsResult {
     public static final class Builder {
         private String createdOn;
         private String id;
+        private GetAccountsResultLegacyFlags legacyFlags;
         private GetAccountsResultManagedBy managedBy;
         private String name;
         private GetAccountsResultSettings settings;
@@ -107,6 +121,7 @@ public final class GetAccountsResult {
     	      Objects.requireNonNull(defaults);
     	      this.createdOn = defaults.createdOn;
     	      this.id = defaults.id;
+    	      this.legacyFlags = defaults.legacyFlags;
     	      this.managedBy = defaults.managedBy;
     	      this.name = defaults.name;
     	      this.settings = defaults.settings;
@@ -127,6 +142,14 @@ public final class GetAccountsResult {
               throw new MissingRequiredPropertyException("GetAccountsResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder legacyFlags(GetAccountsResultLegacyFlags legacyFlags) {
+            if (legacyFlags == null) {
+              throw new MissingRequiredPropertyException("GetAccountsResult", "legacyFlags");
+            }
+            this.legacyFlags = legacyFlags;
             return this;
         }
         @CustomType.Setter
@@ -165,6 +188,7 @@ public final class GetAccountsResult {
             final var _resultValue = new GetAccountsResult();
             _resultValue.createdOn = createdOn;
             _resultValue.id = id;
+            _resultValue.legacyFlags = legacyFlags;
             _resultValue.managedBy = managedBy;
             _resultValue.name = name;
             _resultValue.settings = settings;

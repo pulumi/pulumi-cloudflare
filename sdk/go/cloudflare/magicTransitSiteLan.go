@@ -45,6 +45,12 @@ import (
 //					StaticPrefix: pulumi.String("192.0.2.0/24"),
 //				},
 //				Physport: pulumi.Int(1),
+//				RemoteSubnets: cloudflare.MagicTransitSiteLanRemoteSubnetArray{
+//					&cloudflare.MagicTransitSiteLanRemoteSubnetArgs{
+//						LocalAliasPrefix: pulumi.String("192.0.2.0/24"),
+//						RemotePrefix:     pulumi.String("192.0.2.0/24"),
+//					},
+//				},
 //				RoutedSubnets: cloudflare.MagicTransitSiteLanRoutedSubnetArray{
 //					&cloudflare.MagicTransitSiteLanRoutedSubnetArgs{
 //						NextHop: pulumi.String("192.0.2.1"),
@@ -114,6 +120,7 @@ type MagicTransitSiteLan struct {
 	Name          pulumi.StringPtrOutput                     `pulumi:"name"`
 	Nat           MagicTransitSiteLanNatPtrOutput            `pulumi:"nat"`
 	Physport      pulumi.IntPtrOutput                        `pulumi:"physport"`
+	RemoteSubnets MagicTransitSiteLanRemoteSubnetArrayOutput `pulumi:"remoteSubnets"`
 	RoutedSubnets MagicTransitSiteLanRoutedSubnetArrayOutput `pulumi:"routedSubnets"`
 	// Identifier
 	SiteId pulumi.StringOutput `pulumi:"siteId"`
@@ -171,6 +178,7 @@ type magicTransitSiteLanState struct {
 	Name          *string                           `pulumi:"name"`
 	Nat           *MagicTransitSiteLanNat           `pulumi:"nat"`
 	Physport      *int                              `pulumi:"physport"`
+	RemoteSubnets []MagicTransitSiteLanRemoteSubnet `pulumi:"remoteSubnets"`
 	RoutedSubnets []MagicTransitSiteLanRoutedSubnet `pulumi:"routedSubnets"`
 	// Identifier
 	SiteId *string `pulumi:"siteId"`
@@ -193,6 +201,7 @@ type MagicTransitSiteLanState struct {
 	Name          pulumi.StringPtrInput
 	Nat           MagicTransitSiteLanNatPtrInput
 	Physport      pulumi.IntPtrInput
+	RemoteSubnets MagicTransitSiteLanRemoteSubnetArrayInput
 	RoutedSubnets MagicTransitSiteLanRoutedSubnetArrayInput
 	// Identifier
 	SiteId pulumi.StringPtrInput
@@ -225,6 +234,7 @@ type magicTransitSiteLanArgs struct {
 	Name          *string                           `pulumi:"name"`
 	Nat           *MagicTransitSiteLanNat           `pulumi:"nat"`
 	Physport      *int                              `pulumi:"physport"`
+	RemoteSubnets []MagicTransitSiteLanRemoteSubnet `pulumi:"remoteSubnets"`
 	RoutedSubnets []MagicTransitSiteLanRoutedSubnet `pulumi:"routedSubnets"`
 	// Identifier
 	SiteId string `pulumi:"siteId"`
@@ -248,6 +258,7 @@ type MagicTransitSiteLanArgs struct {
 	Name          pulumi.StringPtrInput
 	Nat           MagicTransitSiteLanNatPtrInput
 	Physport      pulumi.IntPtrInput
+	RemoteSubnets MagicTransitSiteLanRemoteSubnetArrayInput
 	RoutedSubnets MagicTransitSiteLanRoutedSubnetArrayInput
 	// Identifier
 	SiteId pulumi.StringInput
@@ -378,6 +389,10 @@ func (o MagicTransitSiteLanOutput) Nat() MagicTransitSiteLanNatPtrOutput {
 
 func (o MagicTransitSiteLanOutput) Physport() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *MagicTransitSiteLan) pulumi.IntPtrOutput { return v.Physport }).(pulumi.IntPtrOutput)
+}
+
+func (o MagicTransitSiteLanOutput) RemoteSubnets() MagicTransitSiteLanRemoteSubnetArrayOutput {
+	return o.ApplyT(func(v *MagicTransitSiteLan) MagicTransitSiteLanRemoteSubnetArrayOutput { return v.RemoteSubnets }).(MagicTransitSiteLanRemoteSubnetArrayOutput)
 }
 
 func (o MagicTransitSiteLanOutput) RoutedSubnets() MagicTransitSiteLanRoutedSubnetArrayOutput {

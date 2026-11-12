@@ -76,6 +76,8 @@ type LookupZeroTrustOrganizationResult struct {
 	DenyUnmatchedRequests bool `pulumi:"denyUnmatchedRequests"`
 	// Contains zone names to exempt from the `denyUnmatchedRequests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
 	DenyUnmatchedRequestsExemptedZoneNames []string `pulumi:"denyUnmatchedRequestsExemptedZoneNames"`
+	// Whether creation of end user applications is disabled for this organization.
+	DisableEndUserAppCreation bool `pulumi:"disableEndUserAppCreation"`
 	// Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
 	IsUiReadOnly bool                                `pulumi:"isUiReadOnly"`
 	LoginDesign  GetZeroTrustOrganizationLoginDesign `pulumi:"loginDesign"`
@@ -171,6 +173,11 @@ func (o LookupZeroTrustOrganizationResultOutput) DenyUnmatchedRequests() pulumi.
 // Contains zone names to exempt from the `denyUnmatchedRequests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
 func (o LookupZeroTrustOrganizationResultOutput) DenyUnmatchedRequestsExemptedZoneNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupZeroTrustOrganizationResult) []string { return v.DenyUnmatchedRequestsExemptedZoneNames }).(pulumi.StringArrayOutput)
+}
+
+// Whether creation of end user applications is disabled for this organization.
+func (o LookupZeroTrustOrganizationResultOutput) DisableEndUserAppCreation() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupZeroTrustOrganizationResult) bool { return v.DisableEndUserAppCreation }).(pulumi.BoolOutput)
 }
 
 // Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.

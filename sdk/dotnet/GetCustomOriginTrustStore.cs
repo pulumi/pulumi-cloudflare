@@ -178,7 +178,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// When the certificate was last modified.
+        /// When the certificate was last modified. Only returned when uploading a certificate.
         /// </summary>
         public readonly string UpdatedAt;
         /// <summary>

@@ -80,7 +80,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The list of services that can use this secret. Valid values are `Workers`, `AiGateway`, `Dex`, and `Access`. Must be listed in alphabetical order.
+        /// The list of services that can use this secret, or null when the secret inherits its store's scopes. Set it to null in a patch to inherit again. An empty list lets no service use the secret. Explicit scopes must be listed in alphabetical order.
         /// </summary>
         [Output("scopes")]
         public Output<ImmutableArray<string>> Scopes { get; private set; } = null!;
@@ -171,11 +171,11 @@ namespace Pulumi.Cloudflare
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        [Input("scopes", required: true)]
+        [Input("scopes")]
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// The list of services that can use this secret. Valid values are `Workers`, `AiGateway`, `Dex`, and `Access`. Must be listed in alphabetical order.
+        /// The list of services that can use this secret, or null when the secret inherits its store's scopes. Set it to null in a patch to inherit again. An empty list lets no service use the secret. Explicit scopes must be listed in alphabetical order.
         /// </summary>
         public InputList<string> Scopes
         {
@@ -247,7 +247,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// The list of services that can use this secret. Valid values are `Workers`, `AiGateway`, `Dex`, and `Access`. Must be listed in alphabetical order.
+        /// The list of services that can use this secret, or null when the secret inherits its store's scopes. Set it to null in a patch to inherit again. An empty list lets no service use the secret. Explicit scopes must be listed in alphabetical order.
         /// </summary>
         public InputList<string> Scopes
         {

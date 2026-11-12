@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string AssociationStatus;
         /// <summary>
-        /// When the share was created.
+        /// When the object was created.
         /// </summary>
         public readonly string Created;
         /// <summary>
@@ -33,7 +33,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// When the share was modified.
+        /// When the object was last modified.
         /// </summary>
         public readonly string Modified;
         public readonly ImmutableArray<Outputs.GetShareRecipientsResultResourceResult> Resources;

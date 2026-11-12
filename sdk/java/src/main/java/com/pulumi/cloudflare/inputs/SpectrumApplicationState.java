@@ -178,6 +178,38 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Name of the Worker origin. Omitted when the Worker is not found or its name cannot be resolved.
+     * 
+     */
+    @Import(name="originWorkerName")
+    private @Nullable Output<String> originWorkerName;
+
+    /**
+     * @return Name of the Worker origin. Omitted when the Worker is not found or its name cannot be resolved.
+     * 
+     */
+    public Optional<Output<String>> originWorkerName() {
+        return Optional.ofNullable(this.originWorkerName);
+    }
+
+    /**
+     * Lookup status of the Worker origin. Unknown indicates that its name could not be resolved. Only returned for Worker origins.
+     * Available values: &#34;available&#34;, &#34;notFound&#34;, &#34;unknown&#34;.
+     * 
+     */
+    @Import(name="originWorkerStatus")
+    private @Nullable Output<String> originWorkerStatus;
+
+    /**
+     * @return Lookup status of the Worker origin. Unknown indicates that its name could not be resolved. Only returned for Worker origins.
+     * Available values: &#34;available&#34;, &#34;notFound&#34;, &#34;unknown&#34;.
+     * 
+     */
+    public Optional<Output<String>> originWorkerStatus() {
+        return Optional.ofNullable(this.originWorkerStatus);
+    }
+
+    /**
      * The port configuration at Cloudflare&#39;s edge. May specify a single port, for example `&#34;tcp/1000&#34;`, or a range of ports, for example `&#34;tcp/1000-2000&#34;`.
      * 
      */
@@ -286,6 +318,8 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
         this.originDns = $.originDns;
         this.originPort = $.originPort;
         this.originWorkerId = $.originWorkerId;
+        this.originWorkerName = $.originWorkerName;
+        this.originWorkerStatus = $.originWorkerStatus;
         this.protocol = $.protocol;
         this.proxyProtocol = $.proxyProtocol;
         this.tls = $.tls;
@@ -536,6 +570,50 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
          */
         public Builder originWorkerId(String originWorkerId) {
             return originWorkerId(Output.of(originWorkerId));
+        }
+
+        /**
+         * @param originWorkerName Name of the Worker origin. Omitted when the Worker is not found or its name cannot be resolved.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder originWorkerName(@Nullable Output<String> originWorkerName) {
+            $.originWorkerName = originWorkerName;
+            return this;
+        }
+
+        /**
+         * @param originWorkerName Name of the Worker origin. Omitted when the Worker is not found or its name cannot be resolved.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder originWorkerName(String originWorkerName) {
+            return originWorkerName(Output.of(originWorkerName));
+        }
+
+        /**
+         * @param originWorkerStatus Lookup status of the Worker origin. Unknown indicates that its name could not be resolved. Only returned for Worker origins.
+         * Available values: &#34;available&#34;, &#34;notFound&#34;, &#34;unknown&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder originWorkerStatus(@Nullable Output<String> originWorkerStatus) {
+            $.originWorkerStatus = originWorkerStatus;
+            return this;
+        }
+
+        /**
+         * @param originWorkerStatus Lookup status of the Worker origin. Unknown indicates that its name could not be resolved. Only returned for Worker origins.
+         * Available values: &#34;available&#34;, &#34;notFound&#34;, &#34;unknown&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder originWorkerStatus(String originWorkerStatus) {
+            return originWorkerStatus(Output.of(originWorkerStatus));
         }
 
         /**

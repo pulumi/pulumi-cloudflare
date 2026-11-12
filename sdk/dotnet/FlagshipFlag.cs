@@ -59,6 +59,10 @@ namespace Pulumi.Cloudflare
     ///             { "foo", "string" },
     ///         },
     ///         Description = "description",
+    ///         Metadata = new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["foo"] = true,
+    ///         },
     ///         Type = "boolean",
     ///     });
     /// 
@@ -109,6 +113,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("key")]
         public Output<string> Key { get; private set; } = null!;
+
+        /// <summary>
+        /// Key-value metadata associated with the flag. `Null` or an empty object clears existing metadata; omission semantics depend on the endpoint (PUT clears it, PATCH preserves it).
+        /// </summary>
+        [Output("metadata")]
+        public Output<object?> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// Targeting rules evaluated in ascending `Priority`; the first matching rule wins. An empty array means the flag always serves `DefaultVariation`.
@@ -217,6 +227,12 @@ namespace Pulumi.Cloudflare
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
+        /// <summary>
+        /// Key-value metadata associated with the flag. `Null` or an empty object clears existing metadata; omission semantics depend on the endpoint (PUT clears it, PATCH preserves it).
+        /// </summary>
+        [Input("metadata")]
+        public Input<object>? Metadata { get; set; }
+
         [Input("rules", required: true)]
         private InputList<Inputs.FlagshipFlagRuleArgs>? _rules;
 
@@ -291,6 +307,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
+
+        /// <summary>
+        /// Key-value metadata associated with the flag. `Null` or an empty object clears existing metadata; omission semantics depend on the endpoint (PUT clears it, PATCH preserves it).
+        /// </summary>
+        [Input("metadata")]
+        public Input<object>? Metadata { get; set; }
 
         [Input("rules")]
         private InputList<Inputs.FlagshipFlagRuleGetArgs>? _rules;

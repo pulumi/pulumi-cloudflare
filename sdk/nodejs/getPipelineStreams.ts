@@ -21,6 +21,7 @@ import * as utilities from "./utilities";
  * const examplePipelineStreams = cloudflare.getPipelineStreams({
  *     accountId: "0123105f4ecef8ad9ca31a8372d0c353",
  *     name: "x",
+ *     orderBy: "name",
  *     pipelineId: "043e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
@@ -30,8 +31,10 @@ export function getPipelineStreams(args?: GetPipelineStreamsArgs, opts?: pulumi.
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getPipelineStreams:getPipelineStreams", {
         "accountId": args.accountId,
+        "direction": args.direction,
         "maxItems": args.maxItems,
         "name": args.name,
+        "orderBy": args.orderBy,
         "pipelineId": args.pipelineId,
     }, opts);
 }
@@ -45,6 +48,11 @@ export interface GetPipelineStreamsArgs {
      */
     accountId?: string;
     /**
+     * Sort direction.
+     * Available values: "asc", "desc".
+     */
+    direction?: string;
+    /**
      * Max items to fetch, default: 1000
      */
     maxItems?: number;
@@ -52,6 +60,11 @@ export interface GetPipelineStreamsArgs {
      * Filters streams by name (case-insensitive substring).
      */
     name?: string;
+    /**
+     * Sorts streams by this field. Defaults to `createdAt`.
+     * Available values: "name", "createdAt".
+     */
+    orderBy?: string;
     /**
      * Specifies the public ID of the pipeline.
      */
@@ -67,6 +80,11 @@ export interface GetPipelineStreamsResult {
      */
     readonly accountId?: string;
     /**
+     * Sort direction.
+     * Available values: "asc", "desc".
+     */
+    readonly direction: string;
+    /**
      * Max items to fetch, default: 1000
      */
     readonly maxItems?: number;
@@ -74,6 +92,11 @@ export interface GetPipelineStreamsResult {
      * Filters streams by name (case-insensitive substring).
      */
     readonly name?: string;
+    /**
+     * Sorts streams by this field. Defaults to `createdAt`.
+     * Available values: "name", "createdAt".
+     */
+    readonly orderBy?: string;
     /**
      * Specifies the public ID of the pipeline.
      */
@@ -98,6 +121,7 @@ export interface GetPipelineStreamsResult {
  * const examplePipelineStreams = cloudflare.getPipelineStreams({
  *     accountId: "0123105f4ecef8ad9ca31a8372d0c353",
  *     name: "x",
+ *     orderBy: "name",
  *     pipelineId: "043e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
@@ -107,8 +131,10 @@ export function getPipelineStreamsOutput(args?: GetPipelineStreamsOutputArgs, op
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getPipelineStreams:getPipelineStreams", {
         "accountId": args.accountId,
+        "direction": args.direction,
         "maxItems": args.maxItems,
         "name": args.name,
+        "orderBy": args.orderBy,
         "pipelineId": args.pipelineId,
     }, opts);
 }
@@ -122,6 +148,11 @@ export interface GetPipelineStreamsOutputArgs {
      */
     accountId?: pulumi.Input<string | undefined>;
     /**
+     * Sort direction.
+     * Available values: "asc", "desc".
+     */
+    direction?: pulumi.Input<string | undefined>;
+    /**
      * Max items to fetch, default: 1000
      */
     maxItems?: pulumi.Input<number | undefined>;
@@ -129,6 +160,11 @@ export interface GetPipelineStreamsOutputArgs {
      * Filters streams by name (case-insensitive substring).
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Sorts streams by this field. Defaults to `createdAt`.
+     * Available values: "name", "createdAt".
+     */
+    orderBy?: pulumi.Input<string | undefined>;
     /**
      * Specifies the public ID of the pipeline.
      */

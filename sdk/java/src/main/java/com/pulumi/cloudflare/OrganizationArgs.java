@@ -18,9 +18,17 @@ public final class OrganizationArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final OrganizationArgs Empty = new OrganizationArgs();
 
+    /**
+     * The Organization name, limited to 65 UTF-8 bytes.
+     * 
+     */
     @Import(name="name", required=true)
     private Output<String> name;
 
+    /**
+     * @return The Organization name, limited to 65 UTF-8 bytes.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
@@ -32,9 +40,32 @@ public final class OrganizationArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.parent);
     }
 
+    /**
+     * The current parent Organization ID. A different value is rejected; this endpoint cannot move an Organization.
+     * 
+     */
+    @Import(name="parentId")
+    private @Nullable Output<String> parentId;
+
+    /**
+     * @return The current parent Organization ID. A different value is rejected; this endpoint cannot move an Organization.
+     * 
+     */
+    public Optional<Output<String>> parentId() {
+        return Optional.ofNullable(this.parentId);
+    }
+
+    /**
+     * Optional profile fields, each limited to 1,000 UTF-8 bytes. An empty profile is ignored.
+     * 
+     */
     @Import(name="profile")
     private @Nullable Output<OrganizationProfileArgs> profile;
 
+    /**
+     * @return Optional profile fields, each limited to 1,000 UTF-8 bytes. An empty profile is ignored.
+     * 
+     */
     public Optional<Output<OrganizationProfileArgs>> profile() {
         return Optional.ofNullable(this.profile);
     }
@@ -44,6 +75,7 @@ public final class OrganizationArgs extends com.pulumi.resources.ResourceArgs {
     private OrganizationArgs(OrganizationArgs $) {
         this.name = $.name;
         this.parent = $.parent;
+        this.parentId = $.parentId;
         this.profile = $.profile;
     }
 
@@ -65,11 +97,23 @@ public final class OrganizationArgs extends com.pulumi.resources.ResourceArgs {
             $ = new OrganizationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param name The Organization name, limited to 65 UTF-8 bytes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name The Organization name, limited to 65 UTF-8 bytes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -83,11 +127,44 @@ public final class OrganizationArgs extends com.pulumi.resources.ResourceArgs {
             return parent(Output.of(parent));
         }
 
+        /**
+         * @param parentId The current parent Organization ID. A different value is rejected; this endpoint cannot move an Organization.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parentId(@Nullable Output<String> parentId) {
+            $.parentId = parentId;
+            return this;
+        }
+
+        /**
+         * @param parentId The current parent Organization ID. A different value is rejected; this endpoint cannot move an Organization.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parentId(String parentId) {
+            return parentId(Output.of(parentId));
+        }
+
+        /**
+         * @param profile Optional profile fields, each limited to 1,000 UTF-8 bytes. An empty profile is ignored.
+         * 
+         * @return builder
+         * 
+         */
         public Builder profile(@Nullable Output<OrganizationProfileArgs> profile) {
             $.profile = profile;
             return this;
         }
 
+        /**
+         * @param profile Optional profile fields, each limited to 1,000 UTF-8 bytes. An empty profile is ignored.
+         * 
+         * @return builder
+         * 
+         */
         public Builder profile(OrganizationProfileArgs profile) {
             return profile(Output.of(profile));
         }

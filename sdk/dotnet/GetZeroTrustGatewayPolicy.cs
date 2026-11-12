@@ -138,7 +138,7 @@ namespace Pulumi.Cloudflare
         public readonly string? AccountId;
         /// <summary>
         /// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `True`.
-        /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "L4Override", "egress", "resolve", "quarantine", "redirect".
+        /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "L4Override", "egress", "resolve", "quarantine", "redirect", "forward".
         /// </summary>
         public readonly string Action;
         public readonly string CreatedAt;

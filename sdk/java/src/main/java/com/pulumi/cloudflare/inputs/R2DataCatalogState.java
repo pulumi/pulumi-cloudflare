@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.R2DataCatalogCredentialArgs;
 import com.pulumi.cloudflare.inputs.R2DataCatalogMaintenanceConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -62,6 +63,21 @@ public final class R2DataCatalogState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Contains request to store catalog credentials.
+     * 
+     */
+    @Import(name="credential")
+    private @Nullable Output<R2DataCatalogCredentialArgs> credential;
+
+    /**
+     * @return Contains request to store catalog credentials.
+     * 
+     */
+    public Optional<Output<R2DataCatalogCredentialArgs>> credential() {
+        return Optional.ofNullable(this.credential);
+    }
+
+    /**
      * Shows the credential configuration status.
      * Available values: &#34;present&#34;, &#34;absent&#34;.
      * 
@@ -76,6 +92,21 @@ public final class R2DataCatalogState extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<String>> credentialStatus() {
         return Optional.ofNullable(this.credentialStatus);
+    }
+
+    /**
+     * Specifies the data-locality jurisdiction of the catalog. The first enable sets it, and it cannot change. Currently always `default`.
+     * 
+     */
+    @Import(name="jurisdiction")
+    private @Nullable Output<String> jurisdiction;
+
+    /**
+     * @return Specifies the data-locality jurisdiction of the catalog. The first enable sets it, and it cannot change. Currently always `default`.
+     * 
+     */
+    public Optional<Output<String>> jurisdiction() {
+        return Optional.ofNullable(this.jurisdiction);
     }
 
     /**
@@ -131,7 +162,9 @@ public final class R2DataCatalogState extends com.pulumi.resources.ResourceArgs 
         this.accountId = $.accountId;
         this.bucket = $.bucket;
         this.bucketName = $.bucketName;
+        this.credential = $.credential;
         this.credentialStatus = $.credentialStatus;
+        this.jurisdiction = $.jurisdiction;
         this.maintenanceConfig = $.maintenanceConfig;
         this.name = $.name;
         this.status = $.status;
@@ -219,6 +252,27 @@ public final class R2DataCatalogState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
+         * @param credential Contains request to store catalog credentials.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder credential(@Nullable Output<R2DataCatalogCredentialArgs> credential) {
+            $.credential = credential;
+            return this;
+        }
+
+        /**
+         * @param credential Contains request to store catalog credentials.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder credential(R2DataCatalogCredentialArgs credential) {
+            return credential(Output.of(credential));
+        }
+
+        /**
          * @param credentialStatus Shows the credential configuration status.
          * Available values: &#34;present&#34;, &#34;absent&#34;.
          * 
@@ -239,6 +293,27 @@ public final class R2DataCatalogState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder credentialStatus(String credentialStatus) {
             return credentialStatus(Output.of(credentialStatus));
+        }
+
+        /**
+         * @param jurisdiction Specifies the data-locality jurisdiction of the catalog. The first enable sets it, and it cannot change. Currently always `default`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jurisdiction(@Nullable Output<String> jurisdiction) {
+            $.jurisdiction = jurisdiction;
+            return this;
+        }
+
+        /**
+         * @param jurisdiction Specifies the data-locality jurisdiction of the catalog. The first enable sets it, and it cannot change. Currently always `default`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jurisdiction(String jurisdiction) {
+            return jurisdiction(Output.of(jurisdiction));
         }
 
         /**

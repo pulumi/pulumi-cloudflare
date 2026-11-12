@@ -24,7 +24,6 @@ namespace Pulumi.Cloudflare
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         ShareId = "3fd85f74b32742f1bff64a85009dda07",
-    ///         OrganizationId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         RecipientAccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///     });
     /// 
@@ -56,7 +55,7 @@ namespace Pulumi.Cloudflare
         public Output<string> AssociationStatus { get; private set; } = null!;
 
         /// <summary>
-        /// When the share was created.
+        /// When the object was created.
         /// </summary>
         [Output("created")]
         public Output<string> Created { get; private set; } = null!;
@@ -68,16 +67,10 @@ namespace Pulumi.Cloudflare
         public Output<bool?> IncludeResources { get; private set; } = null!;
 
         /// <summary>
-        /// When the share was modified.
+        /// When the object was last modified.
         /// </summary>
         [Output("modified")]
         public Output<string> Modified { get; private set; } = null!;
-
-        /// <summary>
-        /// Organization identifier.
-        /// </summary>
-        [Output("organizationId")]
-        public Output<string?> OrganizationId { get; private set; } = null!;
 
         /// <summary>
         /// The account that will receive the share.
@@ -153,12 +146,6 @@ namespace Pulumi.Cloudflare
         public Input<bool>? IncludeResources { get; set; }
 
         /// <summary>
-        /// Organization identifier.
-        /// </summary>
-        [Input("organizationId")]
-        public Input<string>? OrganizationId { get; set; }
-
-        /// <summary>
         /// The account that will receive the share.
         /// </summary>
         [Input("recipientAccountId")]
@@ -194,7 +181,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? AssociationStatus { get; set; }
 
         /// <summary>
-        /// When the share was created.
+        /// When the object was created.
         /// </summary>
         [Input("created")]
         public Input<string>? Created { get; set; }
@@ -206,16 +193,10 @@ namespace Pulumi.Cloudflare
         public Input<bool>? IncludeResources { get; set; }
 
         /// <summary>
-        /// When the share was modified.
+        /// When the object was last modified.
         /// </summary>
         [Input("modified")]
         public Input<string>? Modified { get; set; }
-
-        /// <summary>
-        /// Organization identifier.
-        /// </summary>
-        [Input("organizationId")]
-        public Input<string>? OrganizationId { get; set; }
 
         /// <summary>
         /// The account that will receive the share.

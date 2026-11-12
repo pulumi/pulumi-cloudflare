@@ -123,6 +123,10 @@ def get_organization(filter: Optional[Union['GetOrganizationFilterArgs', 'GetOrg
     - `User Details Read`
     - `User Details Write`
 
+    User API tokens can list and create Organizations, but reading, updating, or deleting an Organization requires a Global API key and your registered email address. The `Organization` Terraform resource therefore requires a Global API key for its full lifecycle.
+
+    See [Organizations authentication limitations](https://developers.cloudflare.com/fundamentals/organizations/limitations/#api-authentication) for credential compatibility by operation. Each endpoint’s **Security** section lists its supported authentication methods, with **Accepted Permissions** where applicable.
+
     ## Example Usage
 
     ```python
@@ -155,6 +159,10 @@ def get_organization_output(filter: pulumi.Input[Optional[Optional[Union['GetOrg
 
     - `User Details Read`
     - `User Details Write`
+
+    User API tokens can list and create Organizations, but reading, updating, or deleting an Organization requires a Global API key and your registered email address. The `Organization` Terraform resource therefore requires a Global API key for its full lifecycle.
+
+    See [Organizations authentication limitations](https://developers.cloudflare.com/fundamentals/organizations/limitations/#api-authentication) for credential compatibility by operation. Each endpoint’s **Security** section lists its supported authentication methods, with **Accepted Permissions** where applicable.
 
     ## Example Usage
 

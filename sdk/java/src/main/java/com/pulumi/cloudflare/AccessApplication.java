@@ -343,14 +343,14 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.logoUrl);
     }
     /**
-     * Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+     * Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, rdp, and infrastructure application types. For infrastructure applications, supported authenticators are `pivKey` and `sshFido2Key`; for other application types use `totp`, `biometrics`, or `securityKey`.
      * 
      */
     @Export(name="mfaConfig", refs={AccessApplicationMfaConfig.class}, tree="[0]")
     private Output</* @Nullable */ AccessApplicationMfaConfig> mfaConfig;
 
     /**
-     * @return Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+     * @return Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, rdp, and infrastructure application types. For infrastructure applications, supported authenticators are `pivKey` and `sshFido2Key`; for other application types use `totp`, `biometrics`, or `securityKey`.
      * 
      */
     public Output<Optional<AccessApplicationMfaConfig>> mfaConfig() {

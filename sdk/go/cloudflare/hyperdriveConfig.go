@@ -83,7 +83,8 @@ type HyperdriveConfig struct {
 	AccountId pulumi.StringOutput              `pulumi:"accountId"`
 	Caching   HyperdriveConfigCachingPtrOutput `pulumi:"caching"`
 	// Defines the creation time of the Hyperdrive configuration.
-	CreatedOn   pulumi.StringOutput    `pulumi:"createdOn"`
+	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
+	// Selects a PlanetScale database and provisions credentials managed by Cloudflare when creating a Hyperdrive configuration. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. The selection is returned as read-only metadata and cannot be changed with replace or update operations.
 	Integration pulumi.StringPtrOutput `pulumi:"integration"`
 	// Defines the last modified time of the Hyperdrive configuration.
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
@@ -139,7 +140,8 @@ type hyperdriveConfigState struct {
 	AccountId *string                  `pulumi:"accountId"`
 	Caching   *HyperdriveConfigCaching `pulumi:"caching"`
 	// Defines the creation time of the Hyperdrive configuration.
-	CreatedOn   *string `pulumi:"createdOn"`
+	CreatedOn *string `pulumi:"createdOn"`
+	// Selects a PlanetScale database and provisions credentials managed by Cloudflare when creating a Hyperdrive configuration. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. The selection is returned as read-only metadata and cannot be changed with replace or update operations.
 	Integration *string `pulumi:"integration"`
 	// Defines the last modified time of the Hyperdrive configuration.
 	ModifiedOn *string `pulumi:"modifiedOn"`
@@ -160,7 +162,8 @@ type HyperdriveConfigState struct {
 	AccountId pulumi.StringPtrInput
 	Caching   HyperdriveConfigCachingPtrInput
 	// Defines the creation time of the Hyperdrive configuration.
-	CreatedOn   pulumi.StringPtrInput
+	CreatedOn pulumi.StringPtrInput
+	// Selects a PlanetScale database and provisions credentials managed by Cloudflare when creating a Hyperdrive configuration. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. The selection is returned as read-only metadata and cannot be changed with replace or update operations.
 	Integration pulumi.StringPtrInput
 	// Defines the last modified time of the Hyperdrive configuration.
 	ModifiedOn pulumi.StringPtrInput
@@ -188,9 +191,10 @@ func HyperdriveConfigExists(ctx *pulumi.Context,
 
 type hyperdriveConfigArgs struct {
 	// Define configurations using a unique string identifier.
-	AccountId   string                   `pulumi:"accountId"`
-	Caching     *HyperdriveConfigCaching `pulumi:"caching"`
-	Integration *string                  `pulumi:"integration"`
+	AccountId string                   `pulumi:"accountId"`
+	Caching   *HyperdriveConfigCaching `pulumi:"caching"`
+	// Selects a PlanetScale database and provisions credentials managed by Cloudflare when creating a Hyperdrive configuration. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. The selection is returned as read-only metadata and cannot be changed with replace or update operations.
+	Integration *string `pulumi:"integration"`
 	// mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
 	Mtls *HyperdriveConfigMtls `pulumi:"mtls"`
 	// The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
@@ -204,8 +208,9 @@ type hyperdriveConfigArgs struct {
 // The set of arguments for constructing a HyperdriveConfig resource.
 type HyperdriveConfigArgs struct {
 	// Define configurations using a unique string identifier.
-	AccountId   pulumi.StringInput
-	Caching     HyperdriveConfigCachingPtrInput
+	AccountId pulumi.StringInput
+	Caching   HyperdriveConfigCachingPtrInput
+	// Selects a PlanetScale database and provisions credentials managed by Cloudflare when creating a Hyperdrive configuration. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. The selection is returned as read-only metadata and cannot be changed with replace or update operations.
 	Integration pulumi.StringPtrInput
 	// mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
 	Mtls HyperdriveConfigMtlsPtrInput
@@ -318,6 +323,7 @@ func (o HyperdriveConfigOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *HyperdriveConfig) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
+// Selects a PlanetScale database and provisions credentials managed by Cloudflare when creating a Hyperdrive configuration. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. The selection is returned as read-only metadata and cannot be changed with replace or update operations.
 func (o HyperdriveConfigOutput) Integration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HyperdriveConfig) pulumi.StringPtrOutput { return v.Integration }).(pulumi.StringPtrOutput)
 }

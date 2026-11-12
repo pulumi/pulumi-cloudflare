@@ -75,7 +75,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Enables Gateway identity for the binding. Requires network*id to be "cf1:network" and cannot be combined with tunnel*id.
+        /// Enables Gateway identity for the binding. Requires network*id to be "cf1:network" and cannot be combined with tunnel*id or an explicit "cf1:vnet:\n\n" network_id.
         /// Available values: "runtime-email-alpha".
         /// </summary>
         public readonly string Identity;
@@ -117,7 +117,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string NamespaceId;
         /// <summary>
-        /// Identifier of the network to bind to. Only "cf1:network" is currently supported. Mutually exclusive with tunnel_id.
+        /// Identifier of the network to bind to. Use "cf1:network" to select the account's default virtual network at runtime, or "cf1:vnet:\n\n" to select an explicit virtual network in the Worker's account. Mutually exclusive with tunnel_id.
         /// </summary>
         public readonly string NetworkId;
         /// <summary>
@@ -140,10 +140,6 @@ namespace Pulumi.Cloudflare.Outputs
         /// Name of the Queue to bind to.
         /// </summary>
         public readonly string QueueName;
-        /// <summary>
-        /// Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
-        /// </summary>
-        public readonly Outputs.GetWorkerVersionBindingRetryResult Retry;
         /// <summary>
         /// The script where the Durable Object is defined, if it is external to this Worker.
         /// </summary>
@@ -190,7 +186,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Usages;
         /// <summary>
-        /// Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version.
+        /// Identifier for the version to inherit the binding from. This can be a version ID, or the literal "latest" to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to "latest". Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only "latest" and reject a version ID with error 10057.
         /// </summary>
         public readonly string VersionId;
         /// <summary>
@@ -262,8 +258,6 @@ namespace Pulumi.Cloudflare.Outputs
 
             string queueName,
 
-            Outputs.GetWorkerVersionBindingRetryResult retry,
-
             string scriptName,
 
             string secretName,
@@ -321,7 +315,6 @@ namespace Pulumi.Cloudflare.Outputs
             Part = part;
             Pipeline = pipeline;
             QueueName = queueName;
-            Retry = retry;
             ScriptName = scriptName;
             SecretName = secretName;
             Service = service;

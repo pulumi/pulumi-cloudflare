@@ -204,7 +204,7 @@ namespace Pulumi.Cloudflare
         public readonly Outputs.GetZeroTrustAccessIdentityProviderScimConfigResult ScimConfig;
         /// <summary>
         /// The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-        /// Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex", "cloudflare", "passkeys".
+        /// Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "duo", "okta", "onelogin", "pingone", "yandex", "cloudflare", "passkeys".
         /// </summary>
         public readonly string Type;
         /// <summary>

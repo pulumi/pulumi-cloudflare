@@ -16,14 +16,14 @@ public final class AiSearchInstancePublicEndpointParamsChatCompletionsEndpointAr
     public static final AiSearchInstancePublicEndpointParamsChatCompletionsEndpointArgs Empty = new AiSearchInstancePublicEndpointParamsChatCompletionsEndpointArgs();
 
     /**
-     * Disable chat completions endpoint for this public endpoint
+     * Disable chat completions endpoint for this public endpoint.
      * 
      */
     @Import(name="disabled")
     private @Nullable Output<Boolean> disabled;
 
     /**
-     * @return Disable chat completions endpoint for this public endpoint
+     * @return Disable chat completions endpoint for this public endpoint.
      * 
      */
     public Optional<Output<Boolean>> disabled() {
@@ -55,7 +55,7 @@ public final class AiSearchInstancePublicEndpointParamsChatCompletionsEndpointAr
         }
 
         /**
-         * @param disabled Disable chat completions endpoint for this public endpoint
+         * @param disabled Disable chat completions endpoint for this public endpoint.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class AiSearchInstancePublicEndpointParamsChatCompletionsEndpointAr
         }
 
         /**
-         * @param disabled Disable chat completions endpoint for this public endpoint
+         * @param disabled Disable chat completions endpoint for this public endpoint.
          * 
          * @return builder
          * 

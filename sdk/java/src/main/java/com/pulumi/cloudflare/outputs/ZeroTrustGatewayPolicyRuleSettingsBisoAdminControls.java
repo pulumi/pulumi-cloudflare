@@ -50,8 +50,8 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
      */
     private @Nullable Boolean du;
     /**
-     * @return Configure keyboard usage behavior. If this field is absent, keyboard usage remains enabled. Applies only when version == &#34;v2&#34;.
-     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
+     * @return Configure keyboard usage behavior. When set to enable*read*only*actions, only approved browser commands (find, copy, print, zoom, and select-all) may execute; other keyboard input is blocked from reaching the page. Copy and print remain subject to their independent controls. If this field is absent, keyboard usage remains enabled. Applies only when version == &#34;v2&#34;. The enable*read*only*actions value requires an explicit version of &#34;v2&#34;.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;enable*read*only_actions&#34;.
      * 
      */
     private @Nullable String keyboard;
@@ -138,8 +138,8 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
         return Optional.ofNullable(this.du);
     }
     /**
-     * @return Configure keyboard usage behavior. If this field is absent, keyboard usage remains enabled. Applies only when version == &#34;v2&#34;.
-     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
+     * @return Configure keyboard usage behavior. When set to enable*read*only*actions, only approved browser commands (find, copy, print, zoom, and select-all) may execute; other keyboard input is blocked from reaching the page. Copy and print remain subject to their independent controls. If this field is absent, keyboard usage remains enabled. Applies only when version == &#34;v2&#34;. The enable*read*only*actions value requires an explicit version of &#34;v2&#34;.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;enable*read*only_actions&#34;.
      * 
      */
     public Optional<String> keyboard() {

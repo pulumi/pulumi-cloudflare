@@ -38,12 +38,16 @@ public final class PipelineSinkConfigArgs extends com.pulumi.resources.ResourceA
     /**
      * R2 Bucket to write to
      * 
+     * The R2 Bucket that hosts this catalog
+     * 
      */
     @Import(name="bucket", required=true)
     private Output<String> bucket;
 
     /**
      * @return R2 Bucket to write to
+     * 
+     * The R2 Bucket that hosts this catalog
      * 
      */
     public Output<String> bucket() {
@@ -235,6 +239,8 @@ public final class PipelineSinkConfigArgs extends com.pulumi.resources.ResourceA
         /**
          * @param bucket R2 Bucket to write to
          * 
+         * The R2 Bucket that hosts this catalog
+         * 
          * @return builder
          * 
          */
@@ -245,6 +251,8 @@ public final class PipelineSinkConfigArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param bucket R2 Bucket to write to
+         * 
+         * The R2 Bucket that hosts this catalog
          * 
          * @return builder
          * 

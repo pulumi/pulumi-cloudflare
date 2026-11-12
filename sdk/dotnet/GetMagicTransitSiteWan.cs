@@ -183,6 +183,14 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly int Priority;
         /// <summary>
+        /// Provisioned download rate of the WAN circuit in kilobits per second.
+        /// </summary>
+        public readonly int ProvisionedDownloadKbps;
+        /// <summary>
+        /// Provisioned upload rate of the WAN circuit in kilobits per second.
+        /// </summary>
+        public readonly int ProvisionedUploadKbps;
+        /// <summary>
         /// Identifier
         /// </summary>
         public readonly string SiteId;
@@ -215,6 +223,10 @@ namespace Pulumi.Cloudflare
 
             int priority,
 
+            int provisionedDownloadKbps,
+
+            int provisionedUploadKbps,
+
             string siteId,
 
             Outputs.GetMagicTransitSiteWanStaticAddressingResult staticAddressing,
@@ -230,6 +242,8 @@ namespace Pulumi.Cloudflare
             Name = name;
             Physport = physport;
             Priority = priority;
+            ProvisionedDownloadKbps = provisionedDownloadKbps;
+            ProvisionedUploadKbps = provisionedUploadKbps;
             SiteId = siteId;
             StaticAddressing = staticAddressing;
             VlanTag = vlanTag;

@@ -21,27 +21,28 @@ class SecretsStoreSecretArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 scopes: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  store_id: pulumi.Input[_builtins.str],
                  value: pulumi.Input[_builtins.str],
-                 comment: pulumi.Input[Optional[_builtins.str]] = None):
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a SecretsStoreSecret resource.
 
         :param pulumi.Input[_builtins.str] account_id: Account Identifier
         :param pulumi.Input[_builtins.str] name: The name of the secret
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The list of services that can use this secret. Valid values are `workers`, `ai_gateway`, `dex`, and `access`. Must be listed in alphabetical order.
         :param pulumi.Input[_builtins.str] store_id: Store Identifier
         :param pulumi.Input[_builtins.str] value: The value of the secret. Maximum 64 KiB (65,536 bytes). Note that this is 'write only' - no API response will provide this value, it is only used to create/modify secrets.
         :param pulumi.Input[_builtins.str] comment: Freeform text describing the secret
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The list of services that can use this secret, or null when the secret inherits its store's scopes. Set it to null in a patch to inherit again. An empty list lets no service use the secret. Explicit scopes must be listed in alphabetical order.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "scopes", scopes)
         pulumi.set(__self__, "store_id", store_id)
         pulumi.set(__self__, "value", value)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -66,18 +67,6 @@ class SecretsStoreSecretArgs:
     @name.setter
     def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def scopes(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
-        """
-        The list of services that can use this secret. Valid values are `workers`, `ai_gateway`, `dex`, and `access`. Must be listed in alphabetical order.
-        """
-        return pulumi.get(self, "scopes")
-
-    @scopes.setter
-    def scopes(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
-        pulumi.set(self, "scopes", value)
 
     @_builtins.property
     @pulumi.getter(name="storeId")
@@ -115,6 +104,18 @@ class SecretsStoreSecretArgs:
     def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The list of services that can use this secret, or null when the secret inherits its store's scopes. Set it to null in a patch to inherit again. An empty list lets no service use the secret. Explicit scopes must be listed in alphabetical order.
+        """
+        return pulumi.get(self, "scopes")
+
+    @scopes.setter
+    def scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "scopes", value)
+
 
 @pulumi.input_type
 class _SecretsStoreSecretState:
@@ -136,7 +137,7 @@ class _SecretsStoreSecretState:
         :param pulumi.Input[_builtins.str] created: When the secret was created.
         :param pulumi.Input[_builtins.str] modified: When the secret was modified.
         :param pulumi.Input[_builtins.str] name: The name of the secret
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The list of services that can use this secret. Valid values are `workers`, `ai_gateway`, `dex`, and `access`. Must be listed in alphabetical order.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The list of services that can use this secret, or null when the secret inherits its store's scopes. Set it to null in a patch to inherit again. An empty list lets no service use the secret. Explicit scopes must be listed in alphabetical order.
         :param pulumi.Input[_builtins.str] status: Available values: "pending", "active", "deleted".
         :param pulumi.Input[_builtins.str] store_id: Store Identifier
         :param pulumi.Input[_builtins.str] value: The value of the secret. Maximum 64 KiB (65,536 bytes). Note that this is 'write only' - no API response will provide this value, it is only used to create/modify secrets.
@@ -224,7 +225,7 @@ class _SecretsStoreSecretState:
     @pulumi.getter
     def scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The list of services that can use this secret. Valid values are `workers`, `ai_gateway`, `dex`, and `access`. Must be listed in alphabetical order.
+        The list of services that can use this secret, or null when the secret inherits its store's scopes. Set it to null in a patch to inherit again. An empty list lets no service use the secret. Explicit scopes must be listed in alphabetical order.
         """
         return pulumi.get(self, "scopes")
 
@@ -314,7 +315,7 @@ class SecretsStoreSecret(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: Account Identifier
         :param pulumi.Input[_builtins.str] comment: Freeform text describing the secret
         :param pulumi.Input[_builtins.str] name: The name of the secret
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The list of services that can use this secret. Valid values are `workers`, `ai_gateway`, `dex`, and `access`. Must be listed in alphabetical order.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The list of services that can use this secret, or null when the secret inherits its store's scopes. Set it to null in a patch to inherit again. An empty list lets no service use the secret. Explicit scopes must be listed in alphabetical order.
         :param pulumi.Input[_builtins.str] store_id: Store Identifier
         :param pulumi.Input[_builtins.str] value: The value of the secret. Maximum 64 KiB (65,536 bytes). Note that this is 'write only' - no API response will provide this value, it is only used to create/modify secrets.
         """
@@ -388,8 +389,6 @@ class SecretsStoreSecret(pulumi.CustomResource):
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
-            if scopes is None and not opts.urn:
-                raise TypeError("Missing required property 'scopes'")
             __props__.__dict__["scopes"] = scopes
             if store_id is None and not opts.urn:
                 raise TypeError("Missing required property 'store_id'")
@@ -433,7 +432,7 @@ class SecretsStoreSecret(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] created: When the secret was created.
         :param pulumi.Input[_builtins.str] modified: When the secret was modified.
         :param pulumi.Input[_builtins.str] name: The name of the secret
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The list of services that can use this secret. Valid values are `workers`, `ai_gateway`, `dex`, and `access`. Must be listed in alphabetical order.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The list of services that can use this secret, or null when the secret inherits its store's scopes. Set it to null in a patch to inherit again. An empty list lets no service use the secret. Explicit scopes must be listed in alphabetical order.
         :param pulumi.Input[_builtins.str] status: Available values: "pending", "active", "deleted".
         :param pulumi.Input[_builtins.str] store_id: Store Identifier
         :param pulumi.Input[_builtins.str] value: The value of the secret. Maximum 64 KiB (65,536 bytes). Note that this is 'write only' - no API response will provide this value, it is only used to create/modify secrets.
@@ -519,9 +518,9 @@ class SecretsStoreSecret(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def scopes(self) -> pulumi.Output[Sequence[_builtins.str]]:
+    def scopes(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        The list of services that can use this secret. Valid values are `workers`, `ai_gateway`, `dex`, and `access`. Must be listed in alphabetical order.
+        The list of services that can use this secret, or null when the secret inherits its store's scopes. Set it to null in a patch to inherit again. An empty list lets no service use the secret. Explicit scopes must be listed in alphabetical order.
         """
         return pulumi.get(self, "scopes")
 

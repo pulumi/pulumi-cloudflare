@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetAccountFilter;
+import com.pulumi.cloudflare.outputs.GetAccountLegacyFlags;
 import com.pulumi.cloudflare.outputs.GetAccountManagedBy;
 import com.pulumi.cloudflare.outputs.GetAccountSettings;
 import com.pulumi.core.annotations.CustomType;
@@ -31,6 +32,11 @@ public final class GetAccountResult {
      * 
      */
     private String id;
+    /**
+     * @return Legacy account flags.
+     * 
+     */
+    private GetAccountLegacyFlags legacyFlags;
     /**
      * @return Parent container details
      * 
@@ -78,6 +84,13 @@ public final class GetAccountResult {
         return this.id;
     }
     /**
+     * @return Legacy account flags.
+     * 
+     */
+    public GetAccountLegacyFlags legacyFlags() {
+        return this.legacyFlags;
+    }
+    /**
      * @return Parent container details
      * 
      */
@@ -119,6 +132,7 @@ public final class GetAccountResult {
         private String createdOn;
         private @Nullable GetAccountFilter filter;
         private String id;
+        private GetAccountLegacyFlags legacyFlags;
         private GetAccountManagedBy managedBy;
         private String name;
         private GetAccountSettings settings;
@@ -130,6 +144,7 @@ public final class GetAccountResult {
     	      this.createdOn = defaults.createdOn;
     	      this.filter = defaults.filter;
     	      this.id = defaults.id;
+    	      this.legacyFlags = defaults.legacyFlags;
     	      this.managedBy = defaults.managedBy;
     	      this.name = defaults.name;
     	      this.settings = defaults.settings;
@@ -162,6 +177,14 @@ public final class GetAccountResult {
               throw new MissingRequiredPropertyException("GetAccountResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder legacyFlags(GetAccountLegacyFlags legacyFlags) {
+            if (legacyFlags == null) {
+              throw new MissingRequiredPropertyException("GetAccountResult", "legacyFlags");
+            }
+            this.legacyFlags = legacyFlags;
             return this;
         }
         @CustomType.Setter
@@ -202,6 +225,7 @@ public final class GetAccountResult {
             _resultValue.createdOn = createdOn;
             _resultValue.filter = filter;
             _resultValue.id = id;
+            _resultValue.legacyFlags = legacyFlags;
             _resultValue.managedBy = managedBy;
             _resultValue.name = name;
             _resultValue.settings = settings;

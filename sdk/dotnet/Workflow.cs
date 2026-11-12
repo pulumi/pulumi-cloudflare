@@ -41,6 +41,7 @@ namespace Pulumi.Cloudflare
     ///             ErrorRetention = "5 minutes",
     ///             SuccessRetention = "5 minutes",
     ///         },
+    ///         Jurisdiction = "eu",
     ///         Limits = new Cloudflare.Inputs.WorkflowLimitsArgs
     ///         {
     ///             Steps = 1,
@@ -89,6 +90,13 @@ namespace Pulumi.Cloudflare
 
         [Output("isDeleted")]
         public Output<double> IsDeleted { get; private set; } = null!;
+
+        /// <summary>
+        /// Jurisdiction where instances of this workflow run and store data. Can only be set when the workflow is created and cannot be changed afterwards; omit it to keep the existing jurisdiction.
+        /// Available values: "eu", "fedramp", "us".
+        /// </summary>
+        [Output("jurisdiction")]
+        public Output<string?> Jurisdiction { get; private set; } = null!;
 
         [Output("limits")]
         public Output<Outputs.WorkflowLimits?> Limits { get; private set; } = null!;
@@ -184,6 +192,13 @@ namespace Pulumi.Cloudflare
         [Input("defaultRetention")]
         public Input<Inputs.WorkflowDefaultRetentionArgs>? DefaultRetention { get; set; }
 
+        /// <summary>
+        /// Jurisdiction where instances of this workflow run and store data. Can only be set when the workflow is created and cannot be changed afterwards; omit it to keep the existing jurisdiction.
+        /// Available values: "eu", "fedramp", "us".
+        /// </summary>
+        [Input("jurisdiction")]
+        public Input<string>? Jurisdiction { get; set; }
+
         [Input("limits")]
         public Input<Inputs.WorkflowLimitsArgs>? Limits { get; set; }
 
@@ -237,6 +252,13 @@ namespace Pulumi.Cloudflare
 
         [Input("isDeleted")]
         public Input<double>? IsDeleted { get; set; }
+
+        /// <summary>
+        /// Jurisdiction where instances of this workflow run and store data. Can only be set when the workflow is created and cannot be changed afterwards; omit it to keep the existing jurisdiction.
+        /// Available values: "eu", "fedramp", "us".
+        /// </summary>
+        [Input("jurisdiction")]
+        public Input<string>? Jurisdiction { get; set; }
 
         [Input("limits")]
         public Input<Inputs.WorkflowLimitsGetArgs>? Limits { get; set; }

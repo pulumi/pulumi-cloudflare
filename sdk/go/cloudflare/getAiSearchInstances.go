@@ -24,11 +24,10 @@ func LookupAiSearchInstances(ctx *pulumi.Context, args *LookupAiSearchInstancesA
 // A collection of arguments for invoking getAiSearchInstances.
 type LookupAiSearchInstancesArgs struct {
 	AccountId *string `pulumi:"accountId"`
-	// Filter by exact Search for Agents hostname (case-insensitive).
+	// Return only instances with this exact Search for Agents hostname (case-insensitive).
 	Hostname *string `pulumi:"hostname"`
 	// Max items to fetch, default: 1000
-	MaxItems *int `pulumi:"maxItems"`
-	// Filter by namespace.
+	MaxItems  *int    `pulumi:"maxItems"`
 	Namespace *string `pulumi:"namespace"`
 	// Field to order results by.
 	// Available values: "createdAt".
@@ -43,12 +42,11 @@ type LookupAiSearchInstancesArgs struct {
 // A collection of values returned by getAiSearchInstances.
 type LookupAiSearchInstancesResult struct {
 	AccountId *string `pulumi:"accountId"`
-	// Filter by exact Search for Agents hostname (case-insensitive).
+	// Return only instances with this exact Search for Agents hostname (case-insensitive).
 	Hostname *string `pulumi:"hostname"`
 	// Max items to fetch, default: 1000
-	MaxItems *int `pulumi:"maxItems"`
-	// Filter by namespace.
-	Namespace *string `pulumi:"namespace"`
+	MaxItems  *int   `pulumi:"maxItems"`
+	Namespace string `pulumi:"namespace"`
 	// Field to order results by.
 	// Available values: "createdAt".
 	OrderBy string `pulumi:"orderBy"`
@@ -69,11 +67,10 @@ func LookupAiSearchInstancesOutput(ctx *pulumi.Context, args LookupAiSearchInsta
 // A collection of arguments for invoking getAiSearchInstances.
 type LookupAiSearchInstancesOutputArgs struct {
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
-	// Filter by exact Search for Agents hostname (case-insensitive).
+	// Return only instances with this exact Search for Agents hostname (case-insensitive).
 	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
 	// Max items to fetch, default: 1000
-	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
-	// Filter by namespace.
+	MaxItems  pulumi.IntPtrInput    `pulumi:"maxItems"`
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
 	// Field to order results by.
 	// Available values: "createdAt".
@@ -108,7 +105,7 @@ func (o LookupAiSearchInstancesResultOutput) AccountId() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v LookupAiSearchInstancesResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// Filter by exact Search for Agents hostname (case-insensitive).
+// Return only instances with this exact Search for Agents hostname (case-insensitive).
 func (o LookupAiSearchInstancesResultOutput) Hostname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAiSearchInstancesResult) *string { return v.Hostname }).(pulumi.StringPtrOutput)
 }
@@ -118,9 +115,8 @@ func (o LookupAiSearchInstancesResultOutput) MaxItems() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupAiSearchInstancesResult) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
 }
 
-// Filter by namespace.
-func (o LookupAiSearchInstancesResultOutput) Namespace() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupAiSearchInstancesResult) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+func (o LookupAiSearchInstancesResultOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAiSearchInstancesResult) string { return v.Namespace }).(pulumi.StringOutput)
 }
 
 // Field to order results by.

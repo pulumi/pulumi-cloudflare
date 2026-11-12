@@ -20,6 +20,8 @@ import * as utilities from "./utilities";
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     hostname: "app.example.com",
  *     service: "my-worker",
+ *     enabled: true,
+ *     previewsEnabled: false,
  *     zoneId: "593c9c94de529bbbfaac7c53ced0447d",
  *     zoneName: "example.com",
  * });
@@ -82,6 +84,10 @@ export class WorkerDomain extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly certId: pulumi.Output<string>;
     /**
+     * Whether the configured hostname is routable for the domain. If disabled, then requests to the configured hostname will not be routed to the configured Worker. If disabled, then preview routing must be enabled, and only subdomains of the configured hostname will be routable.
+     */
+    declare public readonly enabled: pulumi.Output<boolean>;
+    /**
      * Worker environment associated with the domain.
      *
      * @deprecated This attribute is deprecated.
@@ -91,6 +97,10 @@ export class WorkerDomain extends pulumi.CustomResource {
      * Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
      */
     declare public readonly hostname: pulumi.Output<string>;
+    /**
+     * Whether previews are routable for the domain. If enabled, previews will be routable as subdomains of the configured hostname. For example, if the configured hostname is `app.example.com`, then requests to `my-feature.app.example.com` will be routed to the preview with slug `my-feature`, if such a preview exists. If preview routing is disabled, then hostname routing must be enabled.
+     */
+    declare public readonly previewsEnabled: pulumi.Output<boolean>;
     /**
      * Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
      */
@@ -122,8 +132,10 @@ export class WorkerDomain extends pulumi.CustomResource {
             const state = argsOrState as WorkerDomainState | undefined;
             resourceInputs["accountId"] = state?.accountId;
             resourceInputs["certId"] = state?.certId;
+            resourceInputs["enabled"] = state?.enabled;
             resourceInputs["environment"] = state?.environment;
             resourceInputs["hostname"] = state?.hostname;
+            resourceInputs["previewsEnabled"] = state?.previewsEnabled;
             resourceInputs["service"] = state?.service;
             resourceInputs["zoneId"] = state?.zoneId;
             resourceInputs["zoneName"] = state?.zoneName;
@@ -139,8 +151,10 @@ export class WorkerDomain extends pulumi.CustomResource {
                 throw new Error("Missing required property 'service'");
             }
             resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["enabled"] = args?.enabled;
             resourceInputs["environment"] = args?.environment;
             resourceInputs["hostname"] = args?.hostname;
+            resourceInputs["previewsEnabled"] = args?.previewsEnabled;
             resourceInputs["service"] = args?.service;
             resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["zoneName"] = args?.zoneName;
@@ -166,6 +180,10 @@ export interface WorkerDomainState {
      */
     certId?: pulumi.Input<string | undefined>;
     /**
+     * Whether the configured hostname is routable for the domain. If disabled, then requests to the configured hostname will not be routed to the configured Worker. If disabled, then preview routing must be enabled, and only subdomains of the configured hostname will be routable.
+     */
+    enabled?: pulumi.Input<boolean | undefined>;
+    /**
      * Worker environment associated with the domain.
      *
      * @deprecated This attribute is deprecated.
@@ -175,6 +193,10 @@ export interface WorkerDomainState {
      * Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
      */
     hostname?: pulumi.Input<string | undefined>;
+    /**
+     * Whether previews are routable for the domain. If enabled, previews will be routable as subdomains of the configured hostname. For example, if the configured hostname is `app.example.com`, then requests to `my-feature.app.example.com` will be routed to the preview with slug `my-feature`, if such a preview exists. If preview routing is disabled, then hostname routing must be enabled.
+     */
+    previewsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
      */
@@ -198,6 +220,10 @@ export interface WorkerDomainArgs {
      */
     accountId: pulumi.Input<string>;
     /**
+     * Whether the configured hostname is routable for the domain. If disabled, then requests to the configured hostname will not be routed to the configured Worker. If disabled, then preview routing must be enabled, and only subdomains of the configured hostname will be routable.
+     */
+    enabled?: pulumi.Input<boolean | undefined>;
+    /**
      * Worker environment associated with the domain.
      *
      * @deprecated This attribute is deprecated.
@@ -207,6 +233,10 @@ export interface WorkerDomainArgs {
      * Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
      */
     hostname: pulumi.Input<string>;
+    /**
+     * Whether previews are routable for the domain. If enabled, previews will be routable as subdomains of the configured hostname. For example, if the configured hostname is `app.example.com`, then requests to `my-feature.app.example.com` will be routed to the preview with slug `my-feature`, if such a preview exists. If preview routing is disabled, then hostname routing must be enabled.
+     */
+    previewsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
      */

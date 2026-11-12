@@ -14,11 +14,11 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ZoneDnsSettingsNameservers
     {
         /// <summary>
-        /// Identifier of the account-owned Custom Nameserver Set to use for this zone.
+        /// For `type: custom`: Identifier of the account-owned Custom Nameserver Set to use for this zone.
         /// </summary>
         public readonly string? NameserverSetId;
         /// <summary>
-        /// Configured nameserver set number to use for this zone.
+        /// For `type: custom.account` or `type: custom.tenant` or `type: custom.zone`: Configured nameserver set number to use for this zone.
         /// </summary>
         public readonly int? NsSet;
         /// <summary>

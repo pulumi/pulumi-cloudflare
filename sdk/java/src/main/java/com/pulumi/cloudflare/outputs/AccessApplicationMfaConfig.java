@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 public final class AccessApplicationMfaConfig {
     /**
      * @return The authenticators allowed for MFA.
-     * Available values: &#34;totp&#34;, &#34;biometrics&#34;, &#34;securityKey&#34;.
+     * Available values: &#34;totp&#34;, &#34;biometrics&#34;, &#34;security*key&#34;, &#34;piv*key&#34;, &#34;ssh*fido2*key&#34;.
      * 
      */
     private @Nullable List<String> allowedAuthenticators;
@@ -33,7 +33,7 @@ public final class AccessApplicationMfaConfig {
     private AccessApplicationMfaConfig() {}
     /**
      * @return The authenticators allowed for MFA.
-     * Available values: &#34;totp&#34;, &#34;biometrics&#34;, &#34;securityKey&#34;.
+     * Available values: &#34;totp&#34;, &#34;biometrics&#34;, &#34;security*key&#34;, &#34;piv*key&#34;, &#34;ssh*fido2*key&#34;.
      * 
      */
     public List<String> allowedAuthenticators() {

@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,23 @@ import javax.annotation.Nullable;
 public final class GetPipelineStreamFilterArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final GetPipelineStreamFilterArgs Empty = new GetPipelineStreamFilterArgs();
+
+    /**
+     * Sort direction.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    @Import(name="direction", required=true)
+    private Output<String> direction;
+
+    /**
+     * @return Sort direction.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    public Output<String> direction() {
+        return this.direction;
+    }
 
     /**
      * Filters streams by name (case-insensitive substring).
@@ -28,6 +46,23 @@ public final class GetPipelineStreamFilterArgs extends com.pulumi.resources.Reso
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * Sorts streams by this field. Defaults to `createdAt`.
+     * Available values: &#34;name&#34;, &#34;createdAt&#34;.
+     * 
+     */
+    @Import(name="orderBy")
+    private @Nullable Output<String> orderBy;
+
+    /**
+     * @return Sorts streams by this field. Defaults to `createdAt`.
+     * Available values: &#34;name&#34;, &#34;createdAt&#34;.
+     * 
+     */
+    public Optional<Output<String>> orderBy() {
+        return Optional.ofNullable(this.orderBy);
     }
 
     /**
@@ -48,7 +83,9 @@ public final class GetPipelineStreamFilterArgs extends com.pulumi.resources.Reso
     private GetPipelineStreamFilterArgs() {}
 
     private GetPipelineStreamFilterArgs(GetPipelineStreamFilterArgs $) {
+        this.direction = $.direction;
         this.name = $.name;
+        this.orderBy = $.orderBy;
         this.pipelineId = $.pipelineId;
     }
 
@@ -68,6 +105,29 @@ public final class GetPipelineStreamFilterArgs extends com.pulumi.resources.Reso
 
         public Builder(GetPipelineStreamFilterArgs defaults) {
             $ = new GetPipelineStreamFilterArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param direction Sort direction.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder direction(Output<String> direction) {
+            $.direction = direction;
+            return this;
+        }
+
+        /**
+         * @param direction Sort direction.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder direction(String direction) {
+            return direction(Output.of(direction));
         }
 
         /**
@@ -92,6 +152,29 @@ public final class GetPipelineStreamFilterArgs extends com.pulumi.resources.Reso
         }
 
         /**
+         * @param orderBy Sorts streams by this field. Defaults to `createdAt`.
+         * Available values: &#34;name&#34;, &#34;createdAt&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orderBy(@Nullable Output<String> orderBy) {
+            $.orderBy = orderBy;
+            return this;
+        }
+
+        /**
+         * @param orderBy Sorts streams by this field. Defaults to `createdAt`.
+         * Available values: &#34;name&#34;, &#34;createdAt&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orderBy(String orderBy) {
+            return orderBy(Output.of(orderBy));
+        }
+
+        /**
          * @param pipelineId Specifies the public ID of the pipeline.
          * 
          * @return builder
@@ -113,6 +196,9 @@ public final class GetPipelineStreamFilterArgs extends com.pulumi.resources.Reso
         }
 
         public GetPipelineStreamFilterArgs build() {
+            if ($.direction == null) {
+                throw new MissingRequiredPropertyException("GetPipelineStreamFilterArgs", "direction");
+            }
             return $;
         }
     }

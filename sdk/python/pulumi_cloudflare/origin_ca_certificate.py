@@ -22,7 +22,8 @@ class OriginCaCertificateArgs:
                  csr: pulumi.Input[_builtins.str],
                  hostnames: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  request_type: pulumi.Input[_builtins.str],
-                 requested_validity: pulumi.Input[Optional[_builtins.float]] = None):
+                 requested_validity: pulumi.Input[Optional[_builtins.float]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a OriginCaCertificate resource.
 
@@ -33,12 +34,15 @@ class OriginCaCertificateArgs:
                Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
         :param pulumi.Input[_builtins.float] requested_validity: The number of days for which the certificate should be valid.
                Available values: 7, 30, 90, 365, 730, 1095, 5475.
+        :param pulumi.Input[_builtins.str] zone_id: Identifier of the zone whose keyless servers the certificate is for. Required when `request_type` is `keyless-certificate`; ignored otherwise.
         """
         pulumi.set(__self__, "csr", csr)
         pulumi.set(__self__, "hostnames", hostnames)
         pulumi.set(__self__, "request_type", request_type)
         if requested_validity is not None:
             pulumi.set(__self__, "requested_validity", requested_validity)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
     @pulumi.getter
@@ -91,6 +95,18 @@ class OriginCaCertificateArgs:
     def requested_validity(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "requested_validity", value)
 
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Identifier of the zone whose keyless servers the certificate is for. Required when `request_type` is `keyless-certificate`; ignored otherwise.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "zone_id", value)
+
 
 @pulumi.input_type
 class _OriginCaCertificateState:
@@ -100,7 +116,9 @@ class _OriginCaCertificateState:
                  expires_on: pulumi.Input[Optional[_builtins.str]] = None,
                  hostnames: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  request_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 requested_validity: pulumi.Input[Optional[_builtins.float]] = None):
+                 requested_validity: pulumi.Input[Optional[_builtins.float]] = None,
+                 revoked_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OriginCaCertificate resources.
 
@@ -113,6 +131,8 @@ class _OriginCaCertificateState:
                Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
         :param pulumi.Input[_builtins.float] requested_validity: The number of days for which the certificate should be valid.
                Available values: 7, 30, 90, 365, 730, 1095, 5475.
+        :param pulumi.Input[_builtins.str] revoked_at: When the certificate was revoked.
+        :param pulumi.Input[_builtins.str] zone_id: Identifier of the zone whose keyless servers the certificate is for. Required when `request_type` is `keyless-certificate`; ignored otherwise.
         """
         if certificate is not None:
             pulumi.set(__self__, "certificate", certificate)
@@ -126,6 +146,10 @@ class _OriginCaCertificateState:
             pulumi.set(__self__, "request_type", request_type)
         if requested_validity is not None:
             pulumi.set(__self__, "requested_validity", requested_validity)
+        if revoked_at is not None:
+            pulumi.set(__self__, "revoked_at", revoked_at)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
     @pulumi.getter
@@ -202,6 +226,30 @@ class _OriginCaCertificateState:
     def requested_validity(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "requested_validity", value)
 
+    @_builtins.property
+    @pulumi.getter(name="revokedAt")
+    def revoked_at(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        When the certificate was revoked.
+        """
+        return pulumi.get(self, "revoked_at")
+
+    @revoked_at.setter
+    def revoked_at(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "revoked_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Identifier of the zone whose keyless servers the certificate is for. Required when `request_type` is `keyless-certificate`; ignored otherwise.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "zone_id", value)
+
 
 @pulumi.type_token("cloudflare:index/originCaCertificate:OriginCaCertificate")
 class OriginCaCertificate(pulumi.CustomResource):
@@ -213,6 +261,7 @@ class OriginCaCertificate(pulumi.CustomResource):
                  hostnames: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  request_type: pulumi.Input[Optional[_builtins.str]] = None,
                  requested_validity: pulumi.Input[Optional[_builtins.float]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -246,7 +295,8 @@ class OriginCaCertificate(pulumi.CustomResource):
                 "sub.example.com",
             ],
             request_type="origin-rsa",
-            requested_validity=float(5475))
+            requested_validity=float(5475),
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353")
         ```
 
         ## Import
@@ -265,6 +315,7 @@ class OriginCaCertificate(pulumi.CustomResource):
                Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
         :param pulumi.Input[_builtins.float] requested_validity: The number of days for which the certificate should be valid.
                Available values: 7, 30, 90, 365, 730, 1095, 5475.
+        :param pulumi.Input[_builtins.str] zone_id: Identifier of the zone whose keyless servers the certificate is for. Required when `request_type` is `keyless-certificate`; ignored otherwise.
         """
         ...
     @overload
@@ -304,7 +355,8 @@ class OriginCaCertificate(pulumi.CustomResource):
                 "sub.example.com",
             ],
             request_type="origin-rsa",
-            requested_validity=float(5475))
+            requested_validity=float(5475),
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353")
         ```
 
         ## Import
@@ -333,6 +385,7 @@ class OriginCaCertificate(pulumi.CustomResource):
                  hostnames: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  request_type: pulumi.Input[Optional[_builtins.str]] = None,
                  requested_validity: pulumi.Input[Optional[_builtins.float]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -352,8 +405,10 @@ class OriginCaCertificate(pulumi.CustomResource):
                 raise TypeError("Missing required property 'request_type'")
             __props__.__dict__["request_type"] = request_type
             __props__.__dict__["requested_validity"] = requested_validity
+            __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["certificate"] = None
             __props__.__dict__["expires_on"] = None
+            __props__.__dict__["revoked_at"] = None
         super(OriginCaCertificate, __self__).__init__(
             'cloudflare:index/originCaCertificate:OriginCaCertificate',
             resource_name,
@@ -369,7 +424,9 @@ class OriginCaCertificate(pulumi.CustomResource):
             expires_on: pulumi.Input[Optional[_builtins.str]] = None,
             hostnames: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             request_type: pulumi.Input[Optional[_builtins.str]] = None,
-            requested_validity: pulumi.Input[Optional[_builtins.float]] = None) -> 'OriginCaCertificate':
+            requested_validity: pulumi.Input[Optional[_builtins.float]] = None,
+            revoked_at: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'OriginCaCertificate':
         """
         Get an existing OriginCaCertificate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -386,6 +443,8 @@ class OriginCaCertificate(pulumi.CustomResource):
                Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
         :param pulumi.Input[_builtins.float] requested_validity: The number of days for which the certificate should be valid.
                Available values: 7, 30, 90, 365, 730, 1095, 5475.
+        :param pulumi.Input[_builtins.str] revoked_at: When the certificate was revoked.
+        :param pulumi.Input[_builtins.str] zone_id: Identifier of the zone whose keyless servers the certificate is for. Required when `request_type` is `keyless-certificate`; ignored otherwise.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -397,6 +456,8 @@ class OriginCaCertificate(pulumi.CustomResource):
         __props__.__dict__["hostnames"] = hostnames
         __props__.__dict__["request_type"] = request_type
         __props__.__dict__["requested_validity"] = requested_validity
+        __props__.__dict__["revoked_at"] = revoked_at
+        __props__.__dict__["zone_id"] = zone_id
         return OriginCaCertificate(resource_name, opts=opts, __props__=__props__)
 
     @staticmethod
@@ -407,7 +468,9 @@ class OriginCaCertificate(pulumi.CustomResource):
             expires_on: pulumi.Input[Optional[_builtins.str]] = None,
             hostnames: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             request_type: pulumi.Input[Optional[_builtins.str]] = None,
-            requested_validity: pulumi.Input[Optional[_builtins.float]] = None) -> pulumi.Output[bool]:
+            requested_validity: pulumi.Input[Optional[_builtins.float]] = None,
+            revoked_at: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
         __props__["certificate"] = certificate
         __props__["csr"] = csr
@@ -415,6 +478,8 @@ class OriginCaCertificate(pulumi.CustomResource):
         __props__["hostnames"] = hostnames
         __props__["requestType"] = request_type
         __props__["requestedValidity"] = requested_validity
+        __props__["revokedAt"] = revoked_at
+        __props__["zoneId"] = zone_id
         return pulumi.runtime.exists_resource(None, 'cloudflare:index/originCaCertificate:OriginCaCertificate', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
@@ -467,4 +532,20 @@ class OriginCaCertificate(pulumi.CustomResource):
         Available values: 7, 30, 90, 365, 730, 1095, 5475.
         """
         return pulumi.get(self, "requested_validity")
+
+    @_builtins.property
+    @pulumi.getter(name="revokedAt")
+    def revoked_at(self) -> pulumi.Output[_builtins.str]:
+        """
+        When the certificate was revoked.
+        """
+        return pulumi.get(self, "revoked_at")
+
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Identifier of the zone whose keyless servers the certificate is for. Required when `request_type` is `keyless-certificate`; ignored otherwise.
+        """
+        return pulumi.get(self, "zone_id")
 

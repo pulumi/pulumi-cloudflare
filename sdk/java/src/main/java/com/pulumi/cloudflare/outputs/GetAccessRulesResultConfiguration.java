@@ -11,28 +11,28 @@ import java.util.Objects;
 @CustomType
 public final class GetAccessRulesResultConfiguration {
     /**
-     * @return The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
-     * Available values: &#34;ip&#34;, &#34;ip6&#34;, &#34;ipRange&#34;, &#34;asn&#34;, &#34;country&#34;.
+     * @return For `target: ip`: The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
      * 
      */
     private String target;
     /**
-     * @return The IP address to match. This address will be compared to the IP address of incoming requests.
+     * @return Defines the target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
+     * Notes: You can search for a single IPv4 address, an IP address range with a subnet of &#39;/16&#39; or &#39;/24&#39;, or a two-letter ISO-3166-1 alpha-2 country code.
      * 
      */
     private String value;
 
     private GetAccessRulesResultConfiguration() {}
     /**
-     * @return The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
-     * Available values: &#34;ip&#34;, &#34;ip6&#34;, &#34;ipRange&#34;, &#34;asn&#34;, &#34;country&#34;.
+     * @return For `target: ip`: The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
      * 
      */
     public String target() {
         return this.target;
     }
     /**
-     * @return The IP address to match. This address will be compared to the IP address of incoming requests.
+     * @return Defines the target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
+     * Notes: You can search for a single IPv4 address, an IP address range with a subnet of &#39;/16&#39; or &#39;/24&#39;, or a two-letter ISO-3166-1 alpha-2 country code.
      * 
      */
     public String value() {

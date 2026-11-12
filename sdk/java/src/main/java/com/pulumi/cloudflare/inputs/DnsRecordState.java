@@ -81,14 +81,14 @@ public final class DnsRecordState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Components of a MX record.
+     * For `type: CAA`: Components of a CAA record.
      * 
      */
     @Import(name="data")
     private @Nullable Output<DnsRecordDataArgs> data;
 
     /**
-     * @return Components of a MX record.
+     * @return For `type: CAA`: Components of a CAA record.
      * 
      */
     public Optional<Output<DnsRecordDataArgs>> data() {
@@ -171,14 +171,14 @@ public final class DnsRecordState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enables private network routing to the origin.
+     * For `type: A` or `type: AAAA`: Enables private network routing to the origin.
      * 
      */
     @Import(name="privateRouting")
     private @Nullable Output<Boolean> privateRouting;
 
     /**
-     * @return Enables private network routing to the origin.
+     * @return For `type: A` or `type: AAAA`: Enables private network routing to the origin.
      * 
      */
     public Optional<Output<Boolean>> privateRouting() {
@@ -434,7 +434,7 @@ public final class DnsRecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param data Components of a MX record.
+         * @param data For `type: CAA`: Components of a CAA record.
          * 
          * @return builder
          * 
@@ -445,7 +445,7 @@ public final class DnsRecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param data Components of a MX record.
+         * @param data For `type: CAA`: Components of a CAA record.
          * 
          * @return builder
          * 
@@ -560,7 +560,7 @@ public final class DnsRecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param privateRouting Enables private network routing to the origin.
+         * @param privateRouting For `type: A` or `type: AAAA`: Enables private network routing to the origin.
          * 
          * @return builder
          * 
@@ -571,7 +571,7 @@ public final class DnsRecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param privateRouting Enables private network routing to the origin.
+         * @param privateRouting For `type: A` or `type: AAAA`: Enables private network routing to the origin.
          * 
          * @return builder
          * 

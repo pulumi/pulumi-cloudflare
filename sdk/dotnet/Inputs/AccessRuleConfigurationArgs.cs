@@ -13,14 +13,21 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class AccessRuleConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The configuration target. You must set the target to `Ip` when specifying an IP address in the rule.
-        /// Available values: "ip", "ip6", "IpRange", "asn", "country".
+        /// For `target: ip`: The configuration target. You must set the target to `Ip` when specifying an IP address in the rule.
         /// </summary>
         [Input("target")]
         public Input<string>? Target { get; set; }
 
         /// <summary>
-        /// The IP address to match. This address will be compared to the IP address of incoming requests.
+        /// For `target: ip`: The IP address to match. This address will be compared to the IP address of incoming requests.
+        /// 
+        /// For `target: ip6`: The IPv6 address to match.
+        /// 
+        /// For `target: IpRange`: The IP address range to match. You can only use prefix lengths `/16` and `/24` for IPv4 ranges, and prefix lengths `/32`, `/48`, and `/64` for IPv6 ranges.
+        /// 
+        /// For `target: asn`: The AS number to match.
+        /// 
+        /// For `target: country`: The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country).
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

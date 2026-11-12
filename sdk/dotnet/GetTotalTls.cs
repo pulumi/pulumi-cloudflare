@@ -127,7 +127,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetTotalTlsResult
     {
         /// <summary>
-        /// The Certificate Authority that Total TLS certificates will be issued through.
+        /// The Certificate Authority that Total TLS certificates will be issued through. Not returned in responses when Total TLS is disabled.
         /// Available values: "google", "lets*encrypt", "ssl*com".
         /// </summary>
         public readonly string CertificateAuthority;
@@ -140,7 +140,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The validity period in days for the certificates ordered via Total TLS.
+        /// The validity period in days for the certificates ordered via Total TLS. Not returned when Total TLS is disabled.
         /// Available values: 90.
         /// </summary>
         public readonly int ValidityPeriod;

@@ -58,7 +58,10 @@ import (
 //					"foo": pulumi.String("string"),
 //				},
 //				Description: pulumi.String("description"),
-//				Type:        pulumi.String("boolean"),
+//				Metadata: pulumi.Any(map[string]interface{}{
+//					"foo": true,
+//				}),
+//				Type: pulumi.String("boolean"),
 //			})
 //			if err != nil {
 //				return err
@@ -89,6 +92,8 @@ type FlagshipFlag struct {
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
 	Key pulumi.StringOutput `pulumi:"key"`
+	// Key-value metadata associated with the flag. `null` or an empty object clears existing metadata; omission semantics depend on the endpoint (PUT clears it, PATCH preserves it).
+	Metadata pulumi.AnyOutput `pulumi:"metadata"`
 	// Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `defaultVariation`.
 	Rules FlagshipFlagRuleArrayOutput `pulumi:"rules"`
 	// Deprecated compatibility field. Omit it; the API ignores this value and infers the type from the flag's variations.
@@ -165,6 +170,8 @@ type flagshipFlagState struct {
 	Enabled *bool `pulumi:"enabled"`
 	// Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
 	Key *string `pulumi:"key"`
+	// Key-value metadata associated with the flag. `null` or an empty object clears existing metadata; omission semantics depend on the endpoint (PUT clears it, PATCH preserves it).
+	Metadata interface{} `pulumi:"metadata"`
 	// Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `defaultVariation`.
 	Rules []FlagshipFlagRule `pulumi:"rules"`
 	// Deprecated compatibility field. Omit it; the API ignores this value and infers the type from the flag's variations.
@@ -191,6 +198,8 @@ type FlagshipFlagState struct {
 	Enabled pulumi.BoolPtrInput
 	// Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
 	Key pulumi.StringPtrInput
+	// Key-value metadata associated with the flag. `null` or an empty object clears existing metadata; omission semantics depend on the endpoint (PUT clears it, PATCH preserves it).
+	Metadata pulumi.Input
 	// Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `defaultVariation`.
 	Rules FlagshipFlagRuleArrayInput
 	// Deprecated compatibility field. Omit it; the API ignores this value and infers the type from the flag's variations.
@@ -227,6 +236,8 @@ type flagshipFlagArgs struct {
 	Enabled bool `pulumi:"enabled"`
 	// Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
 	Key string `pulumi:"key"`
+	// Key-value metadata associated with the flag. `null` or an empty object clears existing metadata; omission semantics depend on the endpoint (PUT clears it, PATCH preserves it).
+	Metadata interface{} `pulumi:"metadata"`
 	// Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `defaultVariation`.
 	Rules []FlagshipFlagRule `pulumi:"rules"`
 	// Deprecated compatibility field. Omit it; the API ignores this value and infers the type from the flag's variations.
@@ -252,6 +263,8 @@ type FlagshipFlagArgs struct {
 	Enabled pulumi.BoolInput
 	// Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
 	Key pulumi.StringInput
+	// Key-value metadata associated with the flag. `null` or an empty object clears existing metadata; omission semantics depend on the endpoint (PUT clears it, PATCH preserves it).
+	Metadata pulumi.Input
 	// Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `defaultVariation`.
 	Rules FlagshipFlagRuleArrayInput
 	// Deprecated compatibility field. Omit it; the API ignores this value and infers the type from the flag's variations.
@@ -378,6 +391,11 @@ func (o FlagshipFlagOutput) Enabled() pulumi.BoolOutput {
 // Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
 func (o FlagshipFlagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlagshipFlag) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
+}
+
+// Key-value metadata associated with the flag. `null` or an empty object clears existing metadata; omission semantics depend on the endpoint (PUT clears it, PATCH preserves it).
+func (o FlagshipFlagOutput) Metadata() pulumi.AnyOutput {
+	return o.ApplyT(func(v *FlagshipFlag) pulumi.AnyOutput { return v.Metadata }).(pulumi.AnyOutput)
 }
 
 // Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `defaultVariation`.

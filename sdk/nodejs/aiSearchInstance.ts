@@ -92,7 +92,7 @@ export class AiSearchInstance extends pulumi.CustomResource {
      */
     declare public readonly hybridSearchEnabled: pulumi.Output<boolean>;
     /**
-     * Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
+     * Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances. When set, both vector and keyword are required.
      */
     declare public readonly indexMethod: pulumi.Output<outputs.AiSearchInstanceIndexMethod>;
     declare public readonly indexingOptions: pulumi.Output<outputs.AiSearchInstanceIndexingOptions>;
@@ -101,18 +101,21 @@ export class AiSearchInstance extends pulumi.CustomResource {
     declare public readonly metadata: pulumi.Output<outputs.AiSearchInstanceMetadata | undefined>;
     declare public /*out*/ readonly modifiedAt: pulumi.Output<string>;
     declare public /*out*/ readonly modifiedBy: pulumi.Output<string>;
-    declare public /*out*/ readonly namespace: pulumi.Output<string>;
+    declare public readonly namespace: pulumi.Output<string>;
     declare public readonly paused: pulumi.Output<boolean>;
     declare public /*out*/ readonly publicEndpointId: pulumi.Output<string>;
     declare public readonly publicEndpointParams: pulumi.Output<outputs.AiSearchInstancePublicEndpointParams>;
     declare public readonly reranking: pulumi.Output<boolean>;
     declare public readonly rerankingModel: pulumi.Output<string>;
-    declare public readonly retrievalOptions: pulumi.Output<outputs.AiSearchInstanceRetrievalOptions | undefined>;
+    declare public readonly retrievalOptions: pulumi.Output<outputs.AiSearchInstanceRetrievalOptions>;
     /**
      * A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.
      */
     declare public readonly rewriteModel: pulumi.Output<string>;
     declare public readonly rewriteQuery: pulumi.Output<boolean>;
+    /**
+     * Minimum similarity score a chunk must reach to be returned. Defaults to 0.4.
+     */
     declare public readonly scoreThreshold: pulumi.Output<number>;
     declare public readonly source: pulumi.Output<string | undefined>;
     declare public readonly sourceParams: pulumi.Output<outputs.AiSearchInstanceSourceParams>;
@@ -120,19 +123,19 @@ export class AiSearchInstance extends pulumi.CustomResource {
     declare public readonly summarization: pulumi.Output<boolean>;
     declare public readonly summarizationModel: pulumi.Output<string | undefined>;
     /**
-     * Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+     * Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). Defaults to 86400 (24h).
      * Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
      */
     declare public readonly syncInterval: pulumi.Output<number>;
     declare public readonly systemPromptAisearch: pulumi.Output<string | undefined>;
     declare public readonly systemPromptIndexSummarization: pulumi.Output<string | undefined>;
     declare public readonly systemPromptRewriteQuery: pulumi.Output<string | undefined>;
-    declare public readonly tokenId: pulumi.Output<string | undefined>;
+    declare public readonly tokenId: pulumi.Output<string>;
     /**
      * Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
      * Available values: "r2", "web-crawler".
      */
-    declare public readonly type: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a AiSearchInstance resource with the given unique name, arguments, and options.
@@ -219,6 +222,7 @@ export class AiSearchInstance extends pulumi.CustomResource {
             resourceInputs["indexingOptions"] = args?.indexingOptions;
             resourceInputs["maxNumResults"] = args?.maxNumResults;
             resourceInputs["metadata"] = args?.metadata;
+            resourceInputs["namespace"] = args?.namespace;
             resourceInputs["paused"] = args?.paused;
             resourceInputs["publicEndpointParams"] = args?.publicEndpointParams;
             resourceInputs["reranking"] = args?.reranking;
@@ -244,7 +248,6 @@ export class AiSearchInstance extends pulumi.CustomResource {
             resourceInputs["lastActivity"] = undefined /*out*/;
             resourceInputs["modifiedAt"] = undefined /*out*/;
             resourceInputs["modifiedBy"] = undefined /*out*/;
-            resourceInputs["namespace"] = undefined /*out*/;
             resourceInputs["publicEndpointId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
@@ -297,7 +300,7 @@ export interface AiSearchInstanceState {
      */
     hybridSearchEnabled?: pulumi.Input<boolean | undefined>;
     /**
-     * Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
+     * Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances. When set, both vector and keyword are required.
      */
     indexMethod?: pulumi.Input<inputs.AiSearchInstanceIndexMethod | undefined>;
     indexingOptions?: pulumi.Input<inputs.AiSearchInstanceIndexingOptions | undefined>;
@@ -318,6 +321,9 @@ export interface AiSearchInstanceState {
      */
     rewriteModel?: pulumi.Input<string | undefined>;
     rewriteQuery?: pulumi.Input<boolean | undefined>;
+    /**
+     * Minimum similarity score a chunk must reach to be returned. Defaults to 0.4.
+     */
     scoreThreshold?: pulumi.Input<number | undefined>;
     source?: pulumi.Input<string | undefined>;
     sourceParams?: pulumi.Input<inputs.AiSearchInstanceSourceParams | undefined>;
@@ -325,7 +331,7 @@ export interface AiSearchInstanceState {
     summarization?: pulumi.Input<boolean | undefined>;
     summarizationModel?: pulumi.Input<string | undefined>;
     /**
-     * Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+     * Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). Defaults to 86400 (24h).
      * Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
      */
     syncInterval?: pulumi.Input<number | undefined>;
@@ -380,12 +386,13 @@ export interface AiSearchInstanceArgs {
      */
     hybridSearchEnabled?: pulumi.Input<boolean | undefined>;
     /**
-     * Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
+     * Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances. When set, both vector and keyword are required.
      */
     indexMethod?: pulumi.Input<inputs.AiSearchInstanceIndexMethod | undefined>;
     indexingOptions?: pulumi.Input<inputs.AiSearchInstanceIndexingOptions | undefined>;
     maxNumResults?: pulumi.Input<number | undefined>;
     metadata?: pulumi.Input<inputs.AiSearchInstanceMetadata | undefined>;
+    namespace?: pulumi.Input<string | undefined>;
     paused?: pulumi.Input<boolean | undefined>;
     publicEndpointParams?: pulumi.Input<inputs.AiSearchInstancePublicEndpointParams | undefined>;
     reranking?: pulumi.Input<boolean | undefined>;
@@ -396,13 +403,16 @@ export interface AiSearchInstanceArgs {
      */
     rewriteModel?: pulumi.Input<string | undefined>;
     rewriteQuery?: pulumi.Input<boolean | undefined>;
+    /**
+     * Minimum similarity score a chunk must reach to be returned. Defaults to 0.4.
+     */
     scoreThreshold?: pulumi.Input<number | undefined>;
     source?: pulumi.Input<string | undefined>;
     sourceParams?: pulumi.Input<inputs.AiSearchInstanceSourceParams | undefined>;
     summarization?: pulumi.Input<boolean | undefined>;
     summarizationModel?: pulumi.Input<string | undefined>;
     /**
-     * Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+     * Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). Defaults to 86400 (24h).
      * Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
      */
     syncInterval?: pulumi.Input<number | undefined>;

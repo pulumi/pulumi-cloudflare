@@ -12,6 +12,12 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class ZeroTrustDeviceDefaultProfileGlobalAccelerationGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether WARP users may manually override the automatic Global Acceleration decision. Defaults to true when not provided.
+        /// </summary>
+        [Input("allowManualOverride")]
+        public Input<bool>? AllowManualOverride { get; set; }
+
         [Input("apiEndpoints", required: true)]
         private InputList<string>? _apiEndpoints;
 
@@ -23,6 +29,12 @@ namespace Pulumi.Cloudflare.Inputs
             get => _apiEndpoints ?? (_apiEndpoints = new InputList<string>());
             set => _apiEndpoints = value;
         }
+
+        /// <summary>
+        /// Automatically switch Global Acceleration regions based on device location. Defaults to false when not provided.
+        /// </summary>
+        [Input("autoswitch")]
+        public Input<bool>? Autoswitch { get; set; }
 
         /// <summary>
         /// Global acceleration settings are used only when "enabled".

@@ -53,9 +53,6 @@ import (
 //						},
 //					},
 //					AllowChildBypass: pulumi.Bool(false),
-//					AuditSsh: &cloudflare.ZeroTrustGatewayPolicyRuleSettingsAuditSshArgs{
-//						CommandLogging: pulumi.Bool(false),
-//					},
 //					BisoAdminControls: &cloudflare.ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs{
 //						Copy:     pulumi.String("remote_only"),
 //						Dcp:      pulumi.Bool(true),
@@ -111,6 +108,9 @@ import (
 //					},
 //					ForensicCopy: &cloudflare.ZeroTrustGatewayPolicyRuleSettingsForensicCopyArgs{
 //						Enabled: pulumi.Bool(true),
+//					},
+//					Forward: &cloudflare.ZeroTrustGatewayPolicyRuleSettingsForwardArgs{
+//						WorkerId: pulumi.String("0123456789abcdef0123456789abcdef"),
 //					},
 //					IgnoreCnameCategoryMatches:      pulumi.Bool(true),
 //					InsecureDisableDnssecValidation: pulumi.Bool(false),
@@ -190,7 +190,7 @@ type ZeroTrustGatewayPolicy struct {
 	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
-	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
+	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect", "forward".
 	Action    pulumi.StringOutput `pulumi:"action"`
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Indicate the date of deletion, if any.
@@ -278,7 +278,7 @@ type zeroTrustGatewayPolicyState struct {
 	// Specify the Cloudflare account identifier.
 	AccountId *string `pulumi:"accountId"`
 	// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
-	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
+	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect", "forward".
 	Action    *string `pulumi:"action"`
 	CreatedAt *string `pulumi:"createdAt"`
 	// Indicate the date of deletion, if any.
@@ -322,7 +322,7 @@ type ZeroTrustGatewayPolicyState struct {
 	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringPtrInput
 	// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
-	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
+	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect", "forward".
 	Action    pulumi.StringPtrInput
 	CreatedAt pulumi.StringPtrInput
 	// Indicate the date of deletion, if any.
@@ -376,7 +376,7 @@ type zeroTrustGatewayPolicyArgs struct {
 	// Specify the Cloudflare account identifier.
 	AccountId string `pulumi:"accountId"`
 	// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
-	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
+	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect", "forward".
 	Action string `pulumi:"action"`
 	// Specify the rule description.
 	Description *string `pulumi:"description"`
@@ -407,7 +407,7 @@ type ZeroTrustGatewayPolicyArgs struct {
 	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringInput
 	// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
-	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
+	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect", "forward".
 	Action pulumi.StringInput
 	// Specify the rule description.
 	Description pulumi.StringPtrInput
@@ -526,7 +526,7 @@ func (o ZeroTrustGatewayPolicyOutput) AccountId() pulumi.StringOutput {
 }
 
 // Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
-// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
+// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect", "forward".
 func (o ZeroTrustGatewayPolicyOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
 }

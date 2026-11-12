@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetCtAlertingResult {
     /**
-     * @return Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma.
+     * @return Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. Omitted from responses when no addresses are configured.
      * 
      */
     private List<String> emails;
@@ -35,7 +35,7 @@ public final class GetCtAlertingResult {
 
     private GetCtAlertingResult() {}
     /**
-     * @return Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma.
+     * @return Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. Omitted from responses when no addresses are configured.
      * 
      */
     public List<String> emails() {

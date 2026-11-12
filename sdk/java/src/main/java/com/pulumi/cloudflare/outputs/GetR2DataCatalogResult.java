@@ -40,6 +40,11 @@ public final class GetR2DataCatalogResult {
      */
     private String id;
     /**
+     * @return Specifies the data-locality jurisdiction of the catalog. The first enable sets it, and it cannot change. Currently always `default`.
+     * 
+     */
+    private String jurisdiction;
+    /**
      * @return Configures maintenance for the catalog.
      * 
      */
@@ -94,6 +99,13 @@ public final class GetR2DataCatalogResult {
         return this.id;
     }
     /**
+     * @return Specifies the data-locality jurisdiction of the catalog. The first enable sets it, and it cannot change. Currently always `default`.
+     * 
+     */
+    public String jurisdiction() {
+        return this.jurisdiction;
+    }
+    /**
      * @return Configures maintenance for the catalog.
      * 
      */
@@ -130,6 +142,7 @@ public final class GetR2DataCatalogResult {
         private String bucketName;
         private String credentialStatus;
         private String id;
+        private String jurisdiction;
         private GetR2DataCatalogMaintenanceConfig maintenanceConfig;
         private String name;
         private String status;
@@ -141,6 +154,7 @@ public final class GetR2DataCatalogResult {
     	      this.bucketName = defaults.bucketName;
     	      this.credentialStatus = defaults.credentialStatus;
     	      this.id = defaults.id;
+    	      this.jurisdiction = defaults.jurisdiction;
     	      this.maintenanceConfig = defaults.maintenanceConfig;
     	      this.name = defaults.name;
     	      this.status = defaults.status;
@@ -185,6 +199,14 @@ public final class GetR2DataCatalogResult {
             return this;
         }
         @CustomType.Setter
+        public Builder jurisdiction(String jurisdiction) {
+            if (jurisdiction == null) {
+              throw new MissingRequiredPropertyException("GetR2DataCatalogResult", "jurisdiction");
+            }
+            this.jurisdiction = jurisdiction;
+            return this;
+        }
+        @CustomType.Setter
         public Builder maintenanceConfig(GetR2DataCatalogMaintenanceConfig maintenanceConfig) {
             if (maintenanceConfig == null) {
               throw new MissingRequiredPropertyException("GetR2DataCatalogResult", "maintenanceConfig");
@@ -215,6 +237,7 @@ public final class GetR2DataCatalogResult {
             _resultValue.bucketName = bucketName;
             _resultValue.credentialStatus = credentialStatus;
             _resultValue.id = id;
+            _resultValue.jurisdiction = jurisdiction;
             _resultValue.maintenanceConfig = maintenanceConfig;
             _resultValue.name = name;
             _resultValue.status = status;

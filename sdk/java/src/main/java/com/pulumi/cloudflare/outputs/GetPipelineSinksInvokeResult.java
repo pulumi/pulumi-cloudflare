@@ -21,6 +21,12 @@ public final class GetPipelineSinksInvokeResult {
      */
     private @Nullable String accountId;
     /**
+     * @return Sort direction.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    private String direction;
+    /**
      * @return Max items to fetch, default: 1000
      * 
      */
@@ -30,6 +36,12 @@ public final class GetPipelineSinksInvokeResult {
      * 
      */
     private @Nullable String name;
+    /**
+     * @return Sorts sinks by this field. Defaults to `createdAt`.
+     * Available values: &#34;name&#34;, &#34;createdAt&#34;.
+     * 
+     */
+    private @Nullable String orderBy;
     private @Nullable String pipelineId;
     /**
      * @return The items returned by the data source
@@ -46,6 +58,14 @@ public final class GetPipelineSinksInvokeResult {
         return Optional.ofNullable(this.accountId);
     }
     /**
+     * @return Sort direction.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    public String direction() {
+        return this.direction;
+    }
+    /**
      * @return Max items to fetch, default: 1000
      * 
      */
@@ -58,6 +78,14 @@ public final class GetPipelineSinksInvokeResult {
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
+    }
+    /**
+     * @return Sorts sinks by this field. Defaults to `createdAt`.
+     * Available values: &#34;name&#34;, &#34;createdAt&#34;.
+     * 
+     */
+    public Optional<String> orderBy() {
+        return Optional.ofNullable(this.orderBy);
     }
     public Optional<String> pipelineId() {
         return Optional.ofNullable(this.pipelineId);
@@ -80,16 +108,20 @@ public final class GetPipelineSinksInvokeResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String accountId;
+        private String direction;
         private @Nullable Integer maxItems;
         private @Nullable String name;
+        private @Nullable String orderBy;
         private @Nullable String pipelineId;
         private List<GetPipelineSinksResult> results;
         public Builder() {}
         public Builder(GetPipelineSinksInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
+    	      this.direction = defaults.direction;
     	      this.maxItems = defaults.maxItems;
     	      this.name = defaults.name;
+    	      this.orderBy = defaults.orderBy;
     	      this.pipelineId = defaults.pipelineId;
     	      this.results = defaults.results;
         }
@@ -98,6 +130,14 @@ public final class GetPipelineSinksInvokeResult {
         public Builder accountId(@Nullable String accountId) {
 
             this.accountId = accountId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder direction(String direction) {
+            if (direction == null) {
+              throw new MissingRequiredPropertyException("GetPipelineSinksInvokeResult", "direction");
+            }
+            this.direction = direction;
             return this;
         }
         @CustomType.Setter
@@ -110,6 +150,12 @@ public final class GetPipelineSinksInvokeResult {
         public Builder name(@Nullable String name) {
 
             this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder orderBy(@Nullable String orderBy) {
+
+            this.orderBy = orderBy;
             return this;
         }
         @CustomType.Setter
@@ -132,8 +178,10 @@ public final class GetPipelineSinksInvokeResult {
         public GetPipelineSinksInvokeResult build() {
             final var _resultValue = new GetPipelineSinksInvokeResult();
             _resultValue.accountId = accountId;
+            _resultValue.direction = direction;
             _resultValue.maxItems = maxItems;
             _resultValue.name = name;
+            _resultValue.orderBy = orderBy;
             _resultValue.pipelineId = pipelineId;
             _resultValue.results = results;
             return _resultValue;

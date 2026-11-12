@@ -34,7 +34,7 @@ public final class GetQueueConsumerResult {
     private String queueId;
     private String queueName;
     /**
-     * @return Name of a Worker
+     * @return For `type: worker`: Name of a Worker
      * 
      */
     private String scriptName;
@@ -81,7 +81,7 @@ public final class GetQueueConsumerResult {
         return this.queueName;
     }
     /**
-     * @return Name of a Worker
+     * @return For `type: worker`: Name of a Worker
      * 
      */
     public String scriptName() {

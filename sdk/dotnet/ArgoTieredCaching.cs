@@ -51,7 +51,7 @@ namespace Pulumi.Cloudflare
         public Output<string> ModifiedOn { get; private set; } = null!;
 
         /// <summary>
-        /// Enables Tiered Caching.
+        /// Enables or disables Tiered Cache.
         /// Available values: "on", "off".
         /// </summary>
         [Output("value")]
@@ -110,7 +110,7 @@ namespace Pulumi.Cloudflare
     public sealed class ArgoTieredCachingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enables Tiered Caching.
+        /// Enables or disables Tiered Cache.
         /// Available values: "on", "off".
         /// </summary>
         [Input("value", required: true)]
@@ -143,7 +143,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? ModifiedOn { get; set; }
 
         /// <summary>
-        /// Enables Tiered Caching.
+        /// Enables or disables Tiered Cache.
         /// Available values: "on", "off".
         /// </summary>
         [Input("value")]

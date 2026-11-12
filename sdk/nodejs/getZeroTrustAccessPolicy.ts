@@ -105,6 +105,10 @@ export interface GetZeroTrustAccessPolicyResult {
      */
     readonly policyId: string;
     /**
+     * The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.
+     */
+    readonly policyResolutionAccountId: string;
+    /**
      * A custom message that will appear on the purpose justification screen.
      */
     readonly purposeJustificationPrompt: string;

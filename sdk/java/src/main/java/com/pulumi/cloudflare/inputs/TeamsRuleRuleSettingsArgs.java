@@ -3,13 +3,13 @@
 
 package com.pulumi.cloudflare.inputs;
 
-import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsAuditSshArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsBisoAdminControlsArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsBlockPageArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsCheckSessionArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsDnsResolversArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsEgressArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsForensicCopyArgs;
+import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsForwardArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsL4overrideArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsNotificationSettingsArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsPayloadLogArgs;
@@ -60,21 +60,6 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
      */
     public Optional<Output<Boolean>> allowChildBypass() {
         return Optional.ofNullable(this.allowChildBypass);
-    }
-
-    /**
-     * Define the settings for the Audit SSH action. Settable only for `l4` rules with `auditSsh` action.
-     * 
-     */
-    @Import(name="auditSsh")
-    private @Nullable Output<TeamsRuleRuleSettingsAuditSshArgs> auditSsh;
-
-    /**
-     * @return Define the settings for the Audit SSH action. Settable only for `l4` rules with `auditSsh` action.
-     * 
-     */
-    public Optional<Output<TeamsRuleRuleSettingsAuditSshArgs>> auditSsh() {
-        return Optional.ofNullable(this.auditSsh);
     }
 
     /**
@@ -225,6 +210,21 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
      */
     public Optional<Output<TeamsRuleRuleSettingsForensicCopyArgs>> forensicCopy() {
         return Optional.ofNullable(this.forensicCopy);
+    }
+
+    /**
+     * Forward matching HTTP requests to a Worker. Required for `http` rules with the action set to `forward`.
+     * 
+     */
+    @Import(name="forward")
+    private @Nullable Output<TeamsRuleRuleSettingsForwardArgs> forward;
+
+    /**
+     * @return Forward matching HTTP requests to a Worker. Required for `http` rules with the action set to `forward`.
+     * 
+     */
+    public Optional<Output<TeamsRuleRuleSettingsForwardArgs>> forward() {
+        return Optional.ofNullable(this.forward);
     }
 
     /**
@@ -457,7 +457,6 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
     private TeamsRuleRuleSettingsArgs(TeamsRuleRuleSettingsArgs $) {
         this.addHeaders = $.addHeaders;
         this.allowChildBypass = $.allowChildBypass;
-        this.auditSsh = $.auditSsh;
         this.bisoAdminControls = $.bisoAdminControls;
         this.blockPage = $.blockPage;
         this.blockPageEnabled = $.blockPageEnabled;
@@ -468,6 +467,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         this.dnsResolvers = $.dnsResolvers;
         this.egress = $.egress;
         this.forensicCopy = $.forensicCopy;
+        this.forward = $.forward;
         this.ignoreCnameCategoryMatches = $.ignoreCnameCategoryMatches;
         this.insecureDisableDnssecValidation = $.insecureDisableDnssecValidation;
         this.ipCategories = $.ipCategories;
@@ -543,27 +543,6 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
          */
         public Builder allowChildBypass(Boolean allowChildBypass) {
             return allowChildBypass(Output.of(allowChildBypass));
-        }
-
-        /**
-         * @param auditSsh Define the settings for the Audit SSH action. Settable only for `l4` rules with `auditSsh` action.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder auditSsh(@Nullable Output<TeamsRuleRuleSettingsAuditSshArgs> auditSsh) {
-            $.auditSsh = auditSsh;
-            return this;
-        }
-
-        /**
-         * @param auditSsh Define the settings for the Audit SSH action. Settable only for `l4` rules with `auditSsh` action.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder auditSsh(TeamsRuleRuleSettingsAuditSshArgs auditSsh) {
-            return auditSsh(Output.of(auditSsh));
         }
 
         /**
@@ -784,6 +763,27 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
          */
         public Builder forensicCopy(TeamsRuleRuleSettingsForensicCopyArgs forensicCopy) {
             return forensicCopy(Output.of(forensicCopy));
+        }
+
+        /**
+         * @param forward Forward matching HTTP requests to a Worker. Required for `http` rules with the action set to `forward`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forward(@Nullable Output<TeamsRuleRuleSettingsForwardArgs> forward) {
+            $.forward = forward;
+            return this;
+        }
+
+        /**
+         * @param forward Forward matching HTTP requests to a Worker. Required for `http` rules with the action set to `forward`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forward(TeamsRuleRuleSettingsForwardArgs forward) {
+            return forward(Output.of(forward));
         }
 
         /**

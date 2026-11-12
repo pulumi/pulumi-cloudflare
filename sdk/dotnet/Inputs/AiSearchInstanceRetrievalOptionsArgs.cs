@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'.
+        /// Controls which documents become candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term and ranks results according to BM25 relevance. When omitted on an update, the existing stored value stays unchanged; when never set, search falls back to 'and'.
         /// Available values: "and", "or".
         /// </summary>
         [Input("keywordMatchMode")]

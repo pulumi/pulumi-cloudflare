@@ -14,53 +14,77 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class WorkerVersionExports
     {
         /// <summary>
-        /// Cache override for this entrypoint. It applies only to
-        /// `type: worker` entries and overrides the Worker's global
-        /// `cache_options.enabled` for that entrypoint.
+        /// For `type: worker`: Cache override for this entrypoint. Overrides the Worker's
+        /// global `cache_options.enabled` for this entrypoint only.
         /// </summary>
         public readonly Outputs.WorkerVersionExportsCache? Cache;
         /// <summary>
-        /// Destination class name for a `state: renamed` tombstone. The
-        /// target must appear as a live (`Created`) entry in the same
-        /// `Exports` map. Write-only: never present in GET responses.
+        /// For `type: durable-object` and `state: created`: Name of the container (declared in the upload's
+        /// `metadata.containers`) that backs this Durable Object. When
+        /// set, the namespace is container-enabled. Valid only on live
+        /// entries.
+        /// 
+        /// For `state: expecting-transfer`: Name of the container (declared in the upload's
+        /// `metadata.containers`) that backs this Durable Object once the
+        /// transfer settles. Valid only on live entries.
+        /// </summary>
+        public readonly string? Container;
+        /// <summary>
+        /// For `state: renamed`: The destination class name. Must differ from the source class
+        /// (the map key) and must be declared as a live (`Created`) entry
+        /// in the same `Exports` map. Write-only: never present in GET
+        /// responses.
         /// </summary>
         public readonly string? RenamedTo;
         /// <summary>
-        /// Lifecycle state of the export entry. Defaults to `Created`
-        /// (a normal, live export) when omitted.
+        /// For `state: created`: Live export. May be omitted; defaults to `Created`.
+        /// 
+        /// For `state: deleted`: Tombstone that deletes the namespace.
+        /// 
+        /// For `state: renamed`: Tombstone that renames the namespace's class.
+        /// 
+        /// For `state: transferred`: Tombstone that transfers the namespace to another script.
+        /// 
+        /// For `state: expecting-transfer`: Target side of a two-phase transfer.
+        /// Available values: "created", "deleted", "renamed", "transferred", "expecting-transfer".
         /// </summary>
         public readonly string? State;
         /// <summary>
-        /// Storage backend for a `type: durable-object` export. Required
-        /// for live Durable Object entries (`Created` and
-        /// `expecting-transfer`). `Sqlite` selects SQLite-backed storage;
-        /// `legacy-kv` selects the legacy key-value storage.
+        /// For `type: durable-object` and `state: created`: Durable Object storage backend. `Sqlite` is the recommended (and
+        /// only) backend for new namespaces. `legacy-kv` is accepted only for
+        /// a class whose namespace already exists as KV-backed; the `Exports`
+        /// flow never provisions a new `legacy-kv` namespace.
+        /// 
+        /// For `type: durable-object` and `state: expecting-transfer`: Durable Object storage backend. `Sqlite` is the recommended (and
+        /// only) backend for new namespaces. `legacy-kv` is accepted only for
+        /// a class whose namespace already exists as KV-backed; the `Exports`
+        /// flow never provisions a new `legacy-kv` namespace.
         /// Available values: "sqlite", "legacy-kv".
         /// </summary>
         public readonly string? Storage;
         /// <summary>
-        /// Source script for a `state: expecting-transfer` entry. The
-        /// namespace on this script is materialised from the source
-        /// script's data via the pending-transfer flow. Present on reads
-        /// for `expecting-transfer` entries.
+        /// For `state: expecting-transfer`: The source script name to receive the namespace from. Must be
+        /// in the same account and dispatch-namespace context. Present on
+        /// reads for `expecting-transfer` entries.
         /// </summary>
         public readonly string? TransferFrom;
         /// <summary>
-        /// Destination script for a `state: transferred` tombstone. Must
-        /// reference a script in the same account; cross-dispatch-namespace
-        /// transfers are rejected. Write-only: never present in GET
-        /// responses.
+        /// For `state: transferred`: The destination script name. Must be in the same account and
+        /// the same dispatch-namespace context (or both non-dispatch).
+        /// Cross-dispatch-namespace transfers are rejected. Write-only:
+        /// never present in GET responses.
         /// </summary>
         public readonly string? TransferredTo;
         /// <summary>
-        /// The kind of export.
-        /// Available values: "worker", "durable-object".
+        /// For `type: worker`: Marks this entry as a Worker entrypoint export.
         /// </summary>
         public readonly string Type;
 
         [OutputConstructor]
         private WorkerVersionExports(
             Outputs.WorkerVersionExportsCache? cache,
+
+            string? container,
 
             string? renamedTo,
 
@@ -75,6 +99,7 @@ namespace Pulumi.Cloudflare.Outputs
             string type)
         {
             Cache = cache;
+            Container = container;
             RenamedTo = renamedTo;
             State = state;
             Storage = storage;

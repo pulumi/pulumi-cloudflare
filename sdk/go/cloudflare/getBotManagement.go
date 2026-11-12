@@ -59,6 +59,8 @@ type LookupBotManagementArgs struct {
 
 // A collection of values returned by getBotManagement.
 type LookupBotManagementResult struct {
+	// Configure blocking behavior for supported personal AI agents.
+	AiAgents GetBotManagementAiAgents `pulumi:"aiAgents"`
 	// Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
 	AiBotsMigrationOptOut bool `pulumi:"aiBotsMigrationOptOut"`
 	// Enable rule to block AI Scrapers and Crawlers.
@@ -151,6 +153,11 @@ func (o LookupBotManagementResultOutput) ToLookupBotManagementResultOutput() Loo
 
 func (o LookupBotManagementResultOutput) ToLookupBotManagementResultOutputWithContext(ctx context.Context) LookupBotManagementResultOutput {
 	return o
+}
+
+// Configure blocking behavior for supported personal AI agents.
+func (o LookupBotManagementResultOutput) AiAgents() GetBotManagementAiAgentsOutput {
+	return o.ApplyT(func(v LookupBotManagementResult) GetBotManagementAiAgents { return v.AiAgents }).(GetBotManagementAiAgentsOutput)
 }
 
 // Temporary migration flag tracking zones opted out of AI bots managed-rule updates.

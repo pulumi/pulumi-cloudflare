@@ -31,6 +31,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "0123105f4ecef8ad9ca31a8372d0c353",
         ///         Name = "x",
+        ///         OrderBy = "name",
         ///         PipelineId = "pipeline_id",
         ///     });
         /// 
@@ -60,6 +61,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "0123105f4ecef8ad9ca31a8372d0c353",
         ///         Name = "x",
+        ///         OrderBy = "name",
         ///         PipelineId = "pipeline_id",
         ///     });
         /// 
@@ -89,6 +91,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "0123105f4ecef8ad9ca31a8372d0c353",
         ///         Name = "x",
+        ///         OrderBy = "name",
         ///         PipelineId = "pipeline_id",
         ///     });
         /// 
@@ -109,6 +112,13 @@ namespace Pulumi.Cloudflare
         public string? AccountId { get; set; }
 
         /// <summary>
+        /// Sort direction.
+        /// Available values: "asc", "desc".
+        /// </summary>
+        [Input("direction")]
+        public string? Direction { get; set; }
+
+        /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         [Input("maxItems")]
@@ -119,6 +129,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
+
+        /// <summary>
+        /// Sorts sinks by this field. Defaults to `CreatedAt`.
+        /// Available values: "name", "CreatedAt".
+        /// </summary>
+        [Input("orderBy")]
+        public string? OrderBy { get; set; }
 
         [Input("pipelineId")]
         public string? PipelineId { get; set; }
@@ -138,6 +155,13 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
+        /// Sort direction.
+        /// Available values: "asc", "desc".
+        /// </summary>
+        [Input("direction")]
+        public Input<string>? Direction { get; set; }
+
+        /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         [Input("maxItems")]
@@ -148,6 +172,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Sorts sinks by this field. Defaults to `CreatedAt`.
+        /// Available values: "name", "CreatedAt".
+        /// </summary>
+        [Input("orderBy")]
+        public Input<string>? OrderBy { get; set; }
 
         [Input("pipelineId")]
         public Input<string>? PipelineId { get; set; }
@@ -167,6 +198,11 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string? AccountId;
         /// <summary>
+        /// Sort direction.
+        /// Available values: "asc", "desc".
+        /// </summary>
+        public readonly string Direction;
+        /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         public readonly int? MaxItems;
@@ -174,6 +210,11 @@ namespace Pulumi.Cloudflare
         /// Filters sinks by name (case-insensitive substring).
         /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// Sorts sinks by this field. Defaults to `CreatedAt`.
+        /// Available values: "name", "CreatedAt".
+        /// </summary>
+        public readonly string? OrderBy;
         public readonly string? PipelineId;
         /// <summary>
         /// The items returned by the data source
@@ -184,17 +225,23 @@ namespace Pulumi.Cloudflare
         private GetPipelineSinksResult(
             string? accountId,
 
+            string direction,
+
             int? maxItems,
 
             string? name,
+
+            string? orderBy,
 
             string? pipelineId,
 
             ImmutableArray<Outputs.GetPipelineSinksResultResult> results)
         {
             AccountId = accountId;
+            Direction = direction;
             MaxItems = maxItems;
             Name = name;
+            OrderBy = orderBy;
             PipelineId = pipelineId;
             Results = results;
         }

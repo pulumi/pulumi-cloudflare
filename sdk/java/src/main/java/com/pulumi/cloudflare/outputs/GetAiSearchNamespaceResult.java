@@ -3,11 +3,14 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetAiSearchNamespaceFilter;
 import com.pulumi.cloudflare.outputs.GetAiSearchNamespacePublicEndpointParams;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAiSearchNamespaceResult {
@@ -18,6 +21,12 @@ public final class GetAiSearchNamespaceResult {
      * 
      */
     private String description;
+    private @Nullable GetAiSearchNamespaceFilter filter;
+    /**
+     * @return The ID of this resource.
+     * 
+     */
+    private String id;
     private String name;
     private String publicEndpointId;
     private GetAiSearchNamespacePublicEndpointParams publicEndpointParams;
@@ -35,6 +44,16 @@ public final class GetAiSearchNamespaceResult {
      */
     public String description() {
         return this.description;
+    }
+    public Optional<GetAiSearchNamespaceFilter> filter() {
+        return Optional.ofNullable(this.filter);
+    }
+    /**
+     * @return The ID of this resource.
+     * 
+     */
+    public String id() {
+        return this.id;
     }
     public String name() {
         return this.name;
@@ -58,6 +77,8 @@ public final class GetAiSearchNamespaceResult {
         private String accountId;
         private String createdAt;
         private String description;
+        private @Nullable GetAiSearchNamespaceFilter filter;
+        private String id;
         private String name;
         private String publicEndpointId;
         private GetAiSearchNamespacePublicEndpointParams publicEndpointParams;
@@ -67,6 +88,8 @@ public final class GetAiSearchNamespaceResult {
     	      this.accountId = defaults.accountId;
     	      this.createdAt = defaults.createdAt;
     	      this.description = defaults.description;
+    	      this.filter = defaults.filter;
+    	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.publicEndpointId = defaults.publicEndpointId;
     	      this.publicEndpointParams = defaults.publicEndpointParams;
@@ -94,6 +117,20 @@ public final class GetAiSearchNamespaceResult {
               throw new MissingRequiredPropertyException("GetAiSearchNamespaceResult", "description");
             }
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder filter(@Nullable GetAiSearchNamespaceFilter filter) {
+
+            this.filter = filter;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder id(String id) {
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAiSearchNamespaceResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -125,6 +162,8 @@ public final class GetAiSearchNamespaceResult {
             _resultValue.accountId = accountId;
             _resultValue.createdAt = createdAt;
             _resultValue.description = description;
+            _resultValue.filter = filter;
+            _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.publicEndpointId = publicEndpointId;
             _resultValue.publicEndpointParams = publicEndpointParams;

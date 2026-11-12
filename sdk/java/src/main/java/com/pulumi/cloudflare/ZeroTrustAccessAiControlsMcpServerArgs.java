@@ -60,14 +60,14 @@ public final class ZeroTrustAccessAiControlsMcpServerArgs extends com.pulumi.res
     }
 
     /**
-     * Pre-registered OAuth client*secret. Write-only - accepted on create/update when auth*credentials.auth*mode is &#39;manual&#39;. Required when creating a manual OAuth server or converting an existing server to manual mode. Omit it on update to preserve the existing secret; provide it to rotate the secret. Stored AES-GCM-encrypted in server*oauth_secrets; never returned by read endpoints.
+     * Provides &#39;client*secret&#39; for a pre-registered OAuth client. This field is accepted on create or update only when &#39;auth*credentials.auth*mode&#39; is &#39;manual&#39;. It is required when creating an MCP server with manual OAuth credentials or changing an existing server to use manual OAuth credentials. Omit &#39;client*secret&#39; on update to preserve the existing secret. Provide a new &#39;client_secret&#39; to rotate the secret. The secret is never returned by read, create, or update requests.
      * 
      */
     @Import(name="clientSecret")
     private @Nullable Output<String> clientSecret;
 
     /**
-     * @return Pre-registered OAuth client*secret. Write-only - accepted on create/update when auth*credentials.auth*mode is &#39;manual&#39;. Required when creating a manual OAuth server or converting an existing server to manual mode. Omit it on update to preserve the existing secret; provide it to rotate the secret. Stored AES-GCM-encrypted in server*oauth_secrets; never returned by read endpoints.
+     * @return Provides &#39;client*secret&#39; for a pre-registered OAuth client. This field is accepted on create or update only when &#39;auth*credentials.auth*mode&#39; is &#39;manual&#39;. It is required when creating an MCP server with manual OAuth credentials or changing an existing server to use manual OAuth credentials. Omit &#39;client*secret&#39; on update to preserve the existing secret. Provide a new &#39;client_secret&#39; to rotate the secret. The secret is never returned by read, create, or update requests.
      * 
      */
     public Optional<Output<String>> clientSecret() {
@@ -105,14 +105,14 @@ public final class ZeroTrustAccessAiControlsMcpServerArgs extends com.pulumi.res
     }
 
     /**
-     * When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true.
+     * When true, per-user authorization uses the shared Cloudflare callback URL as the &#39;redirect*uri&#39; instead of the portal callback URL. The default is false. Set &#39;is*shared*oauth*callback_enabled&#39; to true to enable the shared Cloudflare callback URL for this MCP server.
      * 
      */
     @Import(name="isSharedOauthCallbackEnabled")
     private @Nullable Output<Boolean> isSharedOauthCallbackEnabled;
 
     /**
-     * @return When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true.
+     * @return When true, per-user authorization uses the shared Cloudflare callback URL as the &#39;redirect*uri&#39; instead of the portal callback URL. The default is false. Set &#39;is*shared*oauth*callback_enabled&#39; to true to enable the shared Cloudflare callback URL for this MCP server.
      * 
      */
     public Optional<Output<Boolean>> isSharedOauthCallbackEnabled() {
@@ -283,7 +283,7 @@ public final class ZeroTrustAccessAiControlsMcpServerArgs extends com.pulumi.res
         }
 
         /**
-         * @param clientSecret Pre-registered OAuth client*secret. Write-only - accepted on create/update when auth*credentials.auth*mode is &#39;manual&#39;. Required when creating a manual OAuth server or converting an existing server to manual mode. Omit it on update to preserve the existing secret; provide it to rotate the secret. Stored AES-GCM-encrypted in server*oauth_secrets; never returned by read endpoints.
+         * @param clientSecret Provides &#39;client*secret&#39; for a pre-registered OAuth client. This field is accepted on create or update only when &#39;auth*credentials.auth*mode&#39; is &#39;manual&#39;. It is required when creating an MCP server with manual OAuth credentials or changing an existing server to use manual OAuth credentials. Omit &#39;client*secret&#39; on update to preserve the existing secret. Provide a new &#39;client_secret&#39; to rotate the secret. The secret is never returned by read, create, or update requests.
          * 
          * @return builder
          * 
@@ -294,7 +294,7 @@ public final class ZeroTrustAccessAiControlsMcpServerArgs extends com.pulumi.res
         }
 
         /**
-         * @param clientSecret Pre-registered OAuth client*secret. Write-only - accepted on create/update when auth*credentials.auth*mode is &#39;manual&#39;. Required when creating a manual OAuth server or converting an existing server to manual mode. Omit it on update to preserve the existing secret; provide it to rotate the secret. Stored AES-GCM-encrypted in server*oauth_secrets; never returned by read endpoints.
+         * @param clientSecret Provides &#39;client*secret&#39; for a pre-registered OAuth client. This field is accepted on create or update only when &#39;auth*credentials.auth*mode&#39; is &#39;manual&#39;. It is required when creating an MCP server with manual OAuth credentials or changing an existing server to use manual OAuth credentials. Omit &#39;client*secret&#39; on update to preserve the existing secret. Provide a new &#39;client_secret&#39; to rotate the secret. The secret is never returned by read, create, or update requests.
          * 
          * @return builder
          * 
@@ -346,7 +346,7 @@ public final class ZeroTrustAccessAiControlsMcpServerArgs extends com.pulumi.res
         }
 
         /**
-         * @param isSharedOauthCallbackEnabled When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true.
+         * @param isSharedOauthCallbackEnabled When true, per-user authorization uses the shared Cloudflare callback URL as the &#39;redirect*uri&#39; instead of the portal callback URL. The default is false. Set &#39;is*shared*oauth*callback_enabled&#39; to true to enable the shared Cloudflare callback URL for this MCP server.
          * 
          * @return builder
          * 
@@ -357,7 +357,7 @@ public final class ZeroTrustAccessAiControlsMcpServerArgs extends com.pulumi.res
         }
 
         /**
-         * @param isSharedOauthCallbackEnabled When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true.
+         * @param isSharedOauthCallbackEnabled When true, per-user authorization uses the shared Cloudflare callback URL as the &#39;redirect*uri&#39; instead of the portal callback URL. The default is false. Set &#39;is*shared*oauth*callback_enabled&#39; to true to enable the shared Cloudflare callback URL for this MCP server.
          * 
          * @return builder
          * 

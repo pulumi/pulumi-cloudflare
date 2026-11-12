@@ -25,6 +25,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// A valid CIDR notation representing an IP range.
         /// </summary>
         public readonly string? SecondaryAddress;
+        /// <summary>
+        /// Gateway address for the secondary connector of a high availability site.
+        /// </summary>
+        public readonly string? SecondaryGatewayAddress;
 
         [OutputConstructor]
         private MagicTransitSiteWanStaticAddressing(
@@ -32,11 +36,14 @@ namespace Pulumi.Cloudflare.Outputs
 
             string gatewayAddress,
 
-            string? secondaryAddress)
+            string? secondaryAddress,
+
+            string? secondaryGatewayAddress)
         {
             Address = address;
             GatewayAddress = gatewayAddress;
             SecondaryAddress = secondaryAddress;
+            SecondaryGatewayAddress = secondaryGatewayAddress;
         }
     }
 }

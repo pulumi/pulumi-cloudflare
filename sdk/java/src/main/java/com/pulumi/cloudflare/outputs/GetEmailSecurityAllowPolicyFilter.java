@@ -19,6 +19,11 @@ public final class GetEmailSecurityAllowPolicyFilter {
      */
     private @Nullable String direction;
     /**
+     * @return Filter to return only expired policies (`true`) or only policies that still apply (`false`). Omit to return both.
+     * 
+     */
+    private @Nullable Boolean expired;
+    /**
      * @return Filter to show only policies where messages from the sender are exempted from Spam, Spoof, and Bulk dispositions (not Malicious or Suspicious).
      * 
      */
@@ -69,6 +74,13 @@ public final class GetEmailSecurityAllowPolicyFilter {
      */
     public Optional<String> direction() {
         return Optional.ofNullable(this.direction);
+    }
+    /**
+     * @return Filter to return only expired policies (`true`) or only policies that still apply (`false`). Omit to return both.
+     * 
+     */
+    public Optional<Boolean> expired() {
+        return Optional.ofNullable(this.expired);
     }
     /**
      * @return Filter to show only policies where messages from the sender are exempted from Spam, Spoof, and Bulk dispositions (not Malicious or Suspicious).
@@ -139,6 +151,7 @@ public final class GetEmailSecurityAllowPolicyFilter {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String direction;
+        private @Nullable Boolean expired;
         private @Nullable Boolean isAcceptableSender;
         private @Nullable Boolean isExemptRecipient;
         private @Nullable Boolean isTrustedSender;
@@ -151,6 +164,7 @@ public final class GetEmailSecurityAllowPolicyFilter {
         public Builder(GetEmailSecurityAllowPolicyFilter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.direction = defaults.direction;
+    	      this.expired = defaults.expired;
     	      this.isAcceptableSender = defaults.isAcceptableSender;
     	      this.isExemptRecipient = defaults.isExemptRecipient;
     	      this.isTrustedSender = defaults.isTrustedSender;
@@ -165,6 +179,12 @@ public final class GetEmailSecurityAllowPolicyFilter {
         public Builder direction(@Nullable String direction) {
 
             this.direction = direction;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder expired(@Nullable Boolean expired) {
+
+            this.expired = expired;
             return this;
         }
         @CustomType.Setter
@@ -218,6 +238,7 @@ public final class GetEmailSecurityAllowPolicyFilter {
         public GetEmailSecurityAllowPolicyFilter build() {
             final var _resultValue = new GetEmailSecurityAllowPolicyFilter();
             _resultValue.direction = direction;
+            _resultValue.expired = expired;
             _resultValue.isAcceptableSender = isAcceptableSender;
             _resultValue.isExemptRecipient = isExemptRecipient;
             _resultValue.isTrustedSender = isTrustedSender;

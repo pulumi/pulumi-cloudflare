@@ -215,21 +215,18 @@ class ObservatoryScheduledTest(pulumi.CustomResource):
         - `Zone Settings Read`
         - `Zone Settings Write`
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example_observatory_scheduled_test = cloudflare.ObservatoryScheduledTest("example_observatory_scheduled_test",
-            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
-            url="example.com")
-        ```
-
         ## Import
+
+        Import using zone_id and url (region defaults to us-central1)
 
         ```sh
         $ pulumi import cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest example '<zone_id>/<url>'
+        ```
+
+        Import with an explicit region (required when the schedule is not in us-central1)
+
+        ```sh
+        $ pulumi import cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest example '<zone_id>/<url>/<region>'
         ```
 
 
@@ -254,21 +251,18 @@ class ObservatoryScheduledTest(pulumi.CustomResource):
         - `Zone Settings Read`
         - `Zone Settings Write`
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example_observatory_scheduled_test = cloudflare.ObservatoryScheduledTest("example_observatory_scheduled_test",
-            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
-            url="example.com")
-        ```
-
         ## Import
+
+        Import using zone_id and url (region defaults to us-central1)
 
         ```sh
         $ pulumi import cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest example '<zone_id>/<url>'
+        ```
+
+        Import with an explicit region (required when the schedule is not in us-central1)
+
+        ```sh
+        $ pulumi import cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest example '<zone_id>/<url>/<region>'
         ```
 
 

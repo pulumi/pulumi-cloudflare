@@ -29,13 +29,12 @@ public final class GetMonetizationRulesRule {
      */
     private String id;
     /**
-     * @return Price in the smallest indivisible unit of the configured payment token, encoded as a decimal string. Must be a canonical decimal integer in [1000, 100000000]: no leading zeros, and a bare JSON number is rejected. The price is required for the fixed-price schemes (&#34;exact&#34; and &#34;upto&#34;) and must be at least 1000, the smallest amount the payment facilitator can settle ($0.001 for a 6-decimal token such as USDC), and at most 100000000 ($100 for a 6-decimal token). When the scheme is &#34;origin*controlled&#34; the origin server sets pricing dynamically and the rule carries no price: the field must be omitted — any provided value, including &#34;0&#34;, is rejected because it would not be enforced. Responses always encode this as a string and omit it for &#34;origin*controlled&#34; rules; the pattern matches exactly the set of values the server accepts.
+     * @return For `scheme: exact` or `scheme: upto`: Price in the smallest indivisible unit of the configured payment token, encoded as a decimal string. Must be a canonical decimal integer in [1000, 100000000]: no leading zeros, and a bare JSON number is rejected. The price is required for the fixed-price schemes (&#34;exact&#34; and &#34;upto&#34;) and must be at least 1000, the smallest amount the payment facilitator can settle ($0.001 for a 6-decimal token such as USDC), and at most 100000000 ($100 for a 6-decimal token). When the scheme is &#34;origin*controlled&#34; the origin server sets pricing dynamically and the rule carries no price: the field must be omitted — any provided value, including &#34;0&#34;, is rejected because it would not be enforced. Responses always encode this as a string and omit it for &#34;origin*controlled&#34; rules; the pattern matches exactly the set of values the server accepts.
      * 
      */
     private String price;
     /**
-     * @return X402 payment scheme. &#34;exact&#34; requires the specified payment amount; &#34;upto&#34; permits a payment up to the specified amount. Both fixed-price schemes require the price field.
-     * Available values: &#34;exact&#34;, &#34;upto&#34;, &#34;originControlled&#34;.
+     * @return For `scheme: exact` or `scheme: upto`: X402 payment scheme. &#34;exact&#34; requires the specified payment amount; &#34;upto&#34; permits a payment up to the specified amount. Both fixed-price schemes require the price field.
      * 
      */
     private String scheme;
@@ -69,15 +68,14 @@ public final class GetMonetizationRulesRule {
         return this.id;
     }
     /**
-     * @return Price in the smallest indivisible unit of the configured payment token, encoded as a decimal string. Must be a canonical decimal integer in [1000, 100000000]: no leading zeros, and a bare JSON number is rejected. The price is required for the fixed-price schemes (&#34;exact&#34; and &#34;upto&#34;) and must be at least 1000, the smallest amount the payment facilitator can settle ($0.001 for a 6-decimal token such as USDC), and at most 100000000 ($100 for a 6-decimal token). When the scheme is &#34;origin*controlled&#34; the origin server sets pricing dynamically and the rule carries no price: the field must be omitted — any provided value, including &#34;0&#34;, is rejected because it would not be enforced. Responses always encode this as a string and omit it for &#34;origin*controlled&#34; rules; the pattern matches exactly the set of values the server accepts.
+     * @return For `scheme: exact` or `scheme: upto`: Price in the smallest indivisible unit of the configured payment token, encoded as a decimal string. Must be a canonical decimal integer in [1000, 100000000]: no leading zeros, and a bare JSON number is rejected. The price is required for the fixed-price schemes (&#34;exact&#34; and &#34;upto&#34;) and must be at least 1000, the smallest amount the payment facilitator can settle ($0.001 for a 6-decimal token such as USDC), and at most 100000000 ($100 for a 6-decimal token). When the scheme is &#34;origin*controlled&#34; the origin server sets pricing dynamically and the rule carries no price: the field must be omitted — any provided value, including &#34;0&#34;, is rejected because it would not be enforced. Responses always encode this as a string and omit it for &#34;origin*controlled&#34; rules; the pattern matches exactly the set of values the server accepts.
      * 
      */
     public String price() {
         return this.price;
     }
     /**
-     * @return X402 payment scheme. &#34;exact&#34; requires the specified payment amount; &#34;upto&#34; permits a payment up to the specified amount. Both fixed-price schemes require the price field.
-     * Available values: &#34;exact&#34;, &#34;upto&#34;, &#34;originControlled&#34;.
+     * @return For `scheme: exact` or `scheme: upto`: X402 payment scheme. &#34;exact&#34; requires the specified payment amount; &#34;upto&#34; permits a payment up to the specified amount. Both fixed-price schemes require the price field.
      * 
      */
     public String scheme() {

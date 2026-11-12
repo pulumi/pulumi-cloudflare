@@ -86,6 +86,7 @@ import (
 //					MfaDisabled:     pulumi.Bool(false),
 //					SessionDuration: pulumi.String("24h"),
 //				},
+//				PolicyResolutionAccountId:    pulumi.String("policy_resolution_account_id"),
 //				PurposeJustificationPrompt:   pulumi.String("Please enter a justification for entering this protected domain."),
 //				PurposeJustificationRequired: pulumi.Bool(true),
 //				Requires: cloudflare.ZeroTrustAccessPolicyRequireArray{
@@ -114,8 +115,6 @@ type ZeroTrustAccessPolicy struct {
 
 	// Identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Number of access applications currently using this policy.
-	AppCount pulumi.IntOutput `pulumi:"appCount"`
 	// Administrators who can approve a temporary authentication request.
 	ApprovalGroups ZeroTrustAccessPolicyApprovalGroupArrayOutput `pulumi:"approvalGroups"`
 	// Requires the user to request access from an administrator at the start of each session.
@@ -136,6 +135,8 @@ type ZeroTrustAccessPolicy struct {
 	MfaConfig ZeroTrustAccessPolicyMfaConfigPtrOutput `pulumi:"mfaConfig"`
 	// The name of the Access policy.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.
+	PolicyResolutionAccountId pulumi.StringPtrOutput `pulumi:"policyResolutionAccountId"`
 	// A custom message that will appear on the purpose justification screen.
 	PurposeJustificationPrompt pulumi.StringPtrOutput `pulumi:"purposeJustificationPrompt"`
 	// Require users to enter a justification when they log in to the application.
@@ -195,8 +196,6 @@ func GetZeroTrustAccessPolicy(ctx *pulumi.Context,
 type zeroTrustAccessPolicyState struct {
 	// Identifier.
 	AccountId *string `pulumi:"accountId"`
-	// Number of access applications currently using this policy.
-	AppCount *int `pulumi:"appCount"`
 	// Administrators who can approve a temporary authentication request.
 	ApprovalGroups []ZeroTrustAccessPolicyApprovalGroup `pulumi:"approvalGroups"`
 	// Requires the user to request access from an administrator at the start of each session.
@@ -217,6 +216,8 @@ type zeroTrustAccessPolicyState struct {
 	MfaConfig *ZeroTrustAccessPolicyMfaConfig `pulumi:"mfaConfig"`
 	// The name of the Access policy.
 	Name *string `pulumi:"name"`
+	// The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.
+	PolicyResolutionAccountId *string `pulumi:"policyResolutionAccountId"`
 	// A custom message that will appear on the purpose justification screen.
 	PurposeJustificationPrompt *string `pulumi:"purposeJustificationPrompt"`
 	// Require users to enter a justification when they log in to the application.
@@ -232,8 +233,6 @@ type zeroTrustAccessPolicyState struct {
 type ZeroTrustAccessPolicyState struct {
 	// Identifier.
 	AccountId pulumi.StringPtrInput
-	// Number of access applications currently using this policy.
-	AppCount pulumi.IntPtrInput
 	// Administrators who can approve a temporary authentication request.
 	ApprovalGroups ZeroTrustAccessPolicyApprovalGroupArrayInput
 	// Requires the user to request access from an administrator at the start of each session.
@@ -254,6 +253,8 @@ type ZeroTrustAccessPolicyState struct {
 	MfaConfig ZeroTrustAccessPolicyMfaConfigPtrInput
 	// The name of the Access policy.
 	Name pulumi.StringPtrInput
+	// The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.
+	PolicyResolutionAccountId pulumi.StringPtrInput
 	// A custom message that will appear on the purpose justification screen.
 	PurposeJustificationPrompt pulumi.StringPtrInput
 	// Require users to enter a justification when they log in to the application.
@@ -298,6 +299,8 @@ type zeroTrustAccessPolicyArgs struct {
 	MfaConfig *ZeroTrustAccessPolicyMfaConfig `pulumi:"mfaConfig"`
 	// The name of the Access policy.
 	Name string `pulumi:"name"`
+	// The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.
+	PolicyResolutionAccountId *string `pulumi:"policyResolutionAccountId"`
 	// A custom message that will appear on the purpose justification screen.
 	PurposeJustificationPrompt *string `pulumi:"purposeJustificationPrompt"`
 	// Require users to enter a justification when they log in to the application.
@@ -331,6 +334,8 @@ type ZeroTrustAccessPolicyArgs struct {
 	MfaConfig ZeroTrustAccessPolicyMfaConfigPtrInput
 	// The name of the Access policy.
 	Name pulumi.StringInput
+	// The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.
+	PolicyResolutionAccountId pulumi.StringPtrInput
 	// A custom message that will appear on the purpose justification screen.
 	PurposeJustificationPrompt pulumi.StringPtrInput
 	// Require users to enter a justification when they log in to the application.
@@ -433,11 +438,6 @@ func (o ZeroTrustAccessPolicyOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Number of access applications currently using this policy.
-func (o ZeroTrustAccessPolicyOutput) AppCount() pulumi.IntOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.IntOutput { return v.AppCount }).(pulumi.IntOutput)
-}
-
 // Administrators who can approve a temporary authentication request.
 func (o ZeroTrustAccessPolicyOutput) ApprovalGroups() ZeroTrustAccessPolicyApprovalGroupArrayOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessPolicy) ZeroTrustAccessPolicyApprovalGroupArrayOutput { return v.ApprovalGroups }).(ZeroTrustAccessPolicyApprovalGroupArrayOutput)
@@ -486,6 +486,11 @@ func (o ZeroTrustAccessPolicyOutput) MfaConfig() ZeroTrustAccessPolicyMfaConfigP
 // The name of the Access policy.
 func (o ZeroTrustAccessPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.
+func (o ZeroTrustAccessPolicyOutput) PolicyResolutionAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.StringPtrOutput { return v.PolicyResolutionAccountId }).(pulumi.StringPtrOutput)
 }
 
 // A custom message that will appear on the purpose justification screen.

@@ -128,9 +128,17 @@ public class HyperdriveConfig extends com.pulumi.resources.CustomResource {
     public Output<String> createdOn() {
         return this.createdOn;
     }
+    /**
+     * Selects a PlanetScale database and provisions credentials managed by Cloudflare when creating a Hyperdrive configuration. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. The selection is returned as read-only metadata and cannot be changed with replace or update operations.
+     * 
+     */
     @Export(name="integration", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> integration;
 
+    /**
+     * @return Selects a PlanetScale database and provisions credentials managed by Cloudflare when creating a Hyperdrive configuration. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. The selection is returned as read-only metadata and cannot be changed with replace or update operations.
+     * 
+     */
     public Output<Optional<String>> integration() {
         return Codegen.optional(this.integration);
     }

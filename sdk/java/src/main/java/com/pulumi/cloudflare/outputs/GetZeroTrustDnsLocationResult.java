@@ -21,6 +21,7 @@ public final class GetZeroTrustDnsLocationResult {
     private @Nullable String accountId;
     private Boolean clientDefault;
     private String createdAt;
+    private Boolean dns64Enabled;
     private String dnsDestinationIpsId;
     private String dnsDestinationIpv6BlockId;
     private String dohSubdomain;
@@ -46,6 +47,9 @@ public final class GetZeroTrustDnsLocationResult {
     }
     public String createdAt() {
         return this.createdAt;
+    }
+    public Boolean dns64Enabled() {
+        return this.dns64Enabled;
     }
     public String dnsDestinationIpsId() {
         return this.dnsDestinationIpsId;
@@ -105,6 +109,7 @@ public final class GetZeroTrustDnsLocationResult {
         private @Nullable String accountId;
         private Boolean clientDefault;
         private String createdAt;
+        private Boolean dns64Enabled;
         private String dnsDestinationIpsId;
         private String dnsDestinationIpv6BlockId;
         private String dohSubdomain;
@@ -126,6 +131,7 @@ public final class GetZeroTrustDnsLocationResult {
     	      this.accountId = defaults.accountId;
     	      this.clientDefault = defaults.clientDefault;
     	      this.createdAt = defaults.createdAt;
+    	      this.dns64Enabled = defaults.dns64Enabled;
     	      this.dnsDestinationIpsId = defaults.dnsDestinationIpsId;
     	      this.dnsDestinationIpv6BlockId = defaults.dnsDestinationIpv6BlockId;
     	      this.dohSubdomain = defaults.dohSubdomain;
@@ -163,6 +169,14 @@ public final class GetZeroTrustDnsLocationResult {
               throw new MissingRequiredPropertyException("GetZeroTrustDnsLocationResult", "createdAt");
             }
             this.createdAt = createdAt;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dns64Enabled(Boolean dns64Enabled) {
+            if (dns64Enabled == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDnsLocationResult", "dns64Enabled");
+            }
+            this.dns64Enabled = dns64Enabled;
             return this;
         }
         @CustomType.Setter
@@ -289,6 +303,7 @@ public final class GetZeroTrustDnsLocationResult {
             _resultValue.accountId = accountId;
             _resultValue.clientDefault = clientDefault;
             _resultValue.createdAt = createdAt;
+            _resultValue.dns64Enabled = dns64Enabled;
             _resultValue.dnsDestinationIpsId = dnsDestinationIpsId;
             _resultValue.dnsDestinationIpv6BlockId = dnsDestinationIpv6BlockId;
             _resultValue.dohSubdomain = dohSubdomain;

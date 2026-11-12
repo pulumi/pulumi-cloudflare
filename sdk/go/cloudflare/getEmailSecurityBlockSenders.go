@@ -33,6 +33,7 @@ import (
 //			_, err := cloudflare.GetEmailSecurityBlockSenders(ctx, &cloudflare.LookupEmailSecurityBlockSendersArgs{
 //				AccountId:   "023e105f4ecef8ad9ca31a8372d0c353",
 //				Direction:   pulumi.StringRef("asc"),
+//				Expired:     pulumi.BoolRef(true),
 //				Order:       pulumi.StringRef("pattern"),
 //				Pattern:     pulumi.StringRef("pattern"),
 //				PatternType: pulumi.StringRef("EMAIL"),
@@ -60,6 +61,7 @@ func LookupEmailSecurityBlockSenders(ctx *pulumi.Context, args *LookupEmailSecur
 type LookupEmailSecurityBlockSendersArgs struct {
 	AccountId   string  `pulumi:"accountId"`
 	Direction   *string `pulumi:"direction"`
+	Expired     *bool   `pulumi:"expired"`
 	MaxItems    *int    `pulumi:"maxItems"`
 	Order       *string `pulumi:"order"`
 	Pattern     *string `pulumi:"pattern"`
@@ -71,6 +73,7 @@ type LookupEmailSecurityBlockSendersArgs struct {
 type LookupEmailSecurityBlockSendersResult struct {
 	AccountId   string                               `pulumi:"accountId"`
 	Direction   *string                              `pulumi:"direction"`
+	Expired     *bool                                `pulumi:"expired"`
 	MaxItems    *int                                 `pulumi:"maxItems"`
 	Order       *string                              `pulumi:"order"`
 	Pattern     *string                              `pulumi:"pattern"`
@@ -88,6 +91,7 @@ func LookupEmailSecurityBlockSendersOutput(ctx *pulumi.Context, args LookupEmail
 type LookupEmailSecurityBlockSendersOutputArgs struct {
 	AccountId   pulumi.StringInput    `pulumi:"accountId"`
 	Direction   pulumi.StringPtrInput `pulumi:"direction"`
+	Expired     pulumi.BoolPtrInput   `pulumi:"expired"`
 	MaxItems    pulumi.IntPtrInput    `pulumi:"maxItems"`
 	Order       pulumi.StringPtrInput `pulumi:"order"`
 	Pattern     pulumi.StringPtrInput `pulumi:"pattern"`
@@ -120,6 +124,10 @@ func (o LookupEmailSecurityBlockSendersResultOutput) AccountId() pulumi.StringOu
 
 func (o LookupEmailSecurityBlockSendersResultOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEmailSecurityBlockSendersResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupEmailSecurityBlockSendersResultOutput) Expired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupEmailSecurityBlockSendersResult) *bool { return v.Expired }).(pulumi.BoolPtrOutput)
 }
 
 func (o LookupEmailSecurityBlockSendersResultOutput) MaxItems() pulumi.IntPtrOutput {

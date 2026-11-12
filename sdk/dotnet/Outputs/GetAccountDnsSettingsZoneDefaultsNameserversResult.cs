@@ -15,7 +15,7 @@ namespace Pulumi.Cloudflare.Outputs
     {
         /// <summary>
         /// Nameserver type
-        /// Available values: "cloudflare.standard", "cloudflare.standard.random", "custom.account", "custom.tenant".
+        /// Available values: "cloudflare.standard", "cloudflare.advanced", "cloudflare.standard.random", "custom.account", "custom.tenant".
         /// </summary>
         public readonly string Type;
 

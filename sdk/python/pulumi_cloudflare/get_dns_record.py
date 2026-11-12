@@ -123,17 +123,11 @@ class GetDnsRecordResult:
     @_builtins.property
     @pulumi.getter(name="createdOn")
     def created_on(self) -> _builtins.str:
-        """
-        When the record was created.
-        """
         return pulumi.get(self, "created_on")
 
     @_builtins.property
     @pulumi.getter
     def data(self) -> 'outputs.GetDnsRecordDataResult':
-        """
-        Components of a MX record.
-        """
         return pulumi.get(self, "data")
 
     @_builtins.property
@@ -152,9 +146,6 @@ class GetDnsRecordResult:
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        Identifier.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
@@ -168,98 +159,61 @@ class GetDnsRecordResult:
     @_builtins.property
     @pulumi.getter
     def meta(self) -> 'outputs.GetDnsRecordMetaResult':
-        """
-        Extra Cloudflare-specific metadata about the record.
-        """
         return pulumi.get(self, "meta")
 
     @_builtins.property
     @pulumi.getter(name="modifiedOn")
     def modified_on(self) -> _builtins.str:
-        """
-        When the record was last modified.
-        """
         return pulumi.get(self, "modified_on")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Complete DNS record name, including the zone name, in Punycode.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def priority(self) -> _builtins.float:
-        """
-        Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
-        """
         return pulumi.get(self, "priority")
 
     @_builtins.property
     @pulumi.getter(name="privateRouting")
     def private_routing(self) -> _builtins.bool:
-        """
-        Enables private network routing to the origin.
-        """
         return pulumi.get(self, "private_routing")
 
     @_builtins.property
     @pulumi.getter
     def proxiable(self) -> _builtins.bool:
-        """
-        Whether the record can be proxied by Cloudflare or not.
-        """
         return pulumi.get(self, "proxiable")
 
     @_builtins.property
     @pulumi.getter
     def proxied(self) -> _builtins.bool:
-        """
-        Whether the record is receiving the performance and security benefits of Cloudflare.
-        """
         return pulumi.get(self, "proxied")
 
     @_builtins.property
     @pulumi.getter
     def settings(self) -> 'outputs.GetDnsRecordSettingsResult':
-        """
-        Settings for the DNS record.
-        """
         return pulumi.get(self, "settings")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Sequence[_builtins.str]:
-        """
-        Custom tags for the DNS record. This field has no effect on DNS responses.
-        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="tagsModifiedOn")
     def tags_modified_on(self) -> _builtins.str:
-        """
-        When the record tags were last modified. Omitted if there are no tags.
-        """
         return pulumi.get(self, "tags_modified_on")
 
     @_builtins.property
     @pulumi.getter
     def ttl(self) -> _builtins.float:
-        """
-        Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
-        """
         return pulumi.get(self, "ttl")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        Record type.
-        Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property

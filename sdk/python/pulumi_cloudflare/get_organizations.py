@@ -28,19 +28,28 @@ class GetOrganizationsResult:
     """
     A collection of values returned by getOrganizations.
     """
-    def __init__(__self__, containing=None, ids=None, max_items=None, name=None, page_size=None, page_token=None, parent=None, results=None):
+    def __init__(__self__, containing=None, direction=None, ids=None, max_items=None, member=None, name=None, order_by=None, page_size=None, page_token=None, parent=None, results=None):
         if containing and not isinstance(containing, dict):
             raise TypeError("Expected argument 'containing' to be a dict")
         pulumi.set(__self__, "containing", containing)
+        if direction and not isinstance(direction, str):
+            raise TypeError("Expected argument 'direction' to be a str")
+        pulumi.set(__self__, "direction", direction)
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         pulumi.set(__self__, "ids", ids)
         if max_items and not isinstance(max_items, int):
             raise TypeError("Expected argument 'max_items' to be a int")
         pulumi.set(__self__, "max_items", max_items)
+        if member and not isinstance(member, dict):
+            raise TypeError("Expected argument 'member' to be a dict")
+        pulumi.set(__self__, "member", member)
         if name and not isinstance(name, dict):
             raise TypeError("Expected argument 'name' to be a dict")
         pulumi.set(__self__, "name", name)
+        if order_by and not isinstance(order_by, str):
+            raise TypeError("Expected argument 'order_by' to be a str")
+        pulumi.set(__self__, "order_by", order_by)
         if page_size and not isinstance(page_size, int):
             raise TypeError("Expected argument 'page_size' to be a int")
         pulumi.set(__self__, "page_size", page_size)
@@ -61,6 +70,16 @@ class GetOrganizationsResult:
 
     @_builtins.property
     @pulumi.getter
+    def direction(self) -> Optional[_builtins.str]:
+        """
+        Sort direction for the `order_by` field. Defaults to `asc` when `order_by` is
+        specified.
+        Available values: "asc", "desc".
+        """
+        return pulumi.get(self, "direction")
+
+    @_builtins.property
+    @pulumi.getter
     def ids(self) -> Optional[Sequence[_builtins.str]]:
         """
         Only return organizations with the specified IDs (ex. id=foo&id=bar). Send multiple elements
@@ -78,8 +97,23 @@ class GetOrganizationsResult:
 
     @_builtins.property
     @pulumi.getter
+    def member(self) -> Optional['outputs.GetOrganizationsMemberResult']:
+        return pulumi.get(self, "member")
+
+    @_builtins.property
+    @pulumi.getter
     def name(self) -> Optional['outputs.GetOrganizationsNameResult']:
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="orderBy")
+    def order_by(self) -> Optional[_builtins.str]:
+        """
+        Field to order results by. Currently supported values: `name`.
+        When not specified, results are ordered by hierarchy.
+        Available values: "name".
+        """
+        return pulumi.get(self, "order_by")
 
     @_builtins.property
     @pulumi.getter(name="pageSize")
@@ -116,9 +150,12 @@ class AwaitableGetOrganizationsResult(GetOrganizationsResult):
             yield self
         return GetOrganizationsResult(
             containing=self.containing,
+            direction=self.direction,
             ids=self.ids,
             max_items=self.max_items,
+            member=self.member,
             name=self.name,
+            order_by=self.order_by,
             page_size=self.page_size,
             page_token=self.page_token,
             parent=self.parent,
@@ -126,9 +163,12 @@ class AwaitableGetOrganizationsResult(GetOrganizationsResult):
 
 
 def get_organizations(containing: Optional[Union['GetOrganizationsContainingArgs', 'GetOrganizationsContainingArgsDict', 'outputs.GetOrganizationsContainingResult']] = None,
+                      direction: Optional[_builtins.str] = None,
                       ids: Optional[Sequence[_builtins.str]] = None,
                       max_items: Optional[_builtins.int] = None,
+                      member: Optional[Union['GetOrganizationsMemberArgs', 'GetOrganizationsMemberArgsDict', 'outputs.GetOrganizationsMemberResult']] = None,
                       name: Optional[Union['GetOrganizationsNameArgs', 'GetOrganizationsNameArgsDict', 'outputs.GetOrganizationsNameResult']] = None,
+                      order_by: Optional[_builtins.str] = None,
                       page_size: Optional[_builtins.int] = None,
                       page_token: Optional[_builtins.str] = None,
                       parent: Optional[Union['GetOrganizationsParentArgs', 'GetOrganizationsParentArgsDict', 'outputs.GetOrganizationsParentResult']] = None,
@@ -139,6 +179,10 @@ def get_organizations(containing: Optional[Union['GetOrganizationsContainingArgs
     - `User Details Read`
     - `User Details Write`
 
+    User API tokens can list and create Organizations, but reading, updating, or deleting an Organization requires a Global API key and your registered email address. The `Organization` Terraform resource therefore requires a Global API key for its full lifecycle.
+
+    See [Organizations authentication limitations](https://developers.cloudflare.com/fundamentals/organizations/limitations/#api-authentication) for credential compatibility by operation. Each endpoint’s **Security** section lists its supported authentication methods, with **Accepted Permissions** where applicable.
+
     ## Example Usage
 
     ```python
@@ -151,11 +195,16 @@ def get_organizations(containing: Optional[Union['GetOrganizationsContainingArgs
             "organization": "organization",
             "user": "user",
         },
+        direction="asc",
+        member={
+            "email": "email",
+        },
         name={
             "contains": "contains",
             "ends_with": "endsWith",
             "starts_with": "startsWith",
         },
+        order_by="name",
         page_size=0,
         page_token="page_token",
         parent={
@@ -164,18 +213,27 @@ def get_organizations(containing: Optional[Union['GetOrganizationsContainingArgs
     ```
 
 
+    :param _builtins.str direction: Sort direction for the `order_by` field. Defaults to `asc` when `order_by` is
+           specified.
+           Available values: "asc", "desc".
     :param Sequence[_builtins.str] ids: Only return organizations with the specified IDs (ex. id=foo&id=bar). Send multiple elements
            by repeating the query value.
     :param _builtins.int max_items: Max items to fetch, default: 1000
+    :param _builtins.str order_by: Field to order results by. Currently supported values: `name`.
+           When not specified, results are ordered by hierarchy.
+           Available values: "name".
     :param _builtins.int page_size: The amount of items to return. Defaults to 10.
     :param _builtins.str page_token: An opaque token returned from the last list response that when
            provided will retrieve the next page.
     """
     __args__ = dict()
     __args__['containing'] = containing
+    __args__['direction'] = direction
     __args__['ids'] = ids
     __args__['maxItems'] = max_items
+    __args__['member'] = member
     __args__['name'] = name
+    __args__['orderBy'] = order_by
     __args__['pageSize'] = page_size
     __args__['pageToken'] = page_token
     __args__['parent'] = parent
@@ -184,17 +242,23 @@ def get_organizations(containing: Optional[Union['GetOrganizationsContainingArgs
 
     return AwaitableGetOrganizationsResult(
         containing=pulumi.get(__ret__, 'containing'),
+        direction=pulumi.get(__ret__, 'direction'),
         ids=pulumi.get(__ret__, 'ids'),
         max_items=pulumi.get(__ret__, 'max_items'),
+        member=pulumi.get(__ret__, 'member'),
         name=pulumi.get(__ret__, 'name'),
+        order_by=pulumi.get(__ret__, 'order_by'),
         page_size=pulumi.get(__ret__, 'page_size'),
         page_token=pulumi.get(__ret__, 'page_token'),
         parent=pulumi.get(__ret__, 'parent'),
         results=pulumi.get(__ret__, 'results'))
 def get_organizations_output(containing: pulumi.Input[Optional[Optional[Union['GetOrganizationsContainingArgs', 'GetOrganizationsContainingArgsDict', 'outputs.GetOrganizationsContainingResult']]]] = None,
+                             direction: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                              max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                             member: pulumi.Input[Optional[Optional[Union['GetOrganizationsMemberArgs', 'GetOrganizationsMemberArgsDict', 'outputs.GetOrganizationsMemberResult']]]] = None,
                              name: pulumi.Input[Optional[Optional[Union['GetOrganizationsNameArgs', 'GetOrganizationsNameArgsDict', 'outputs.GetOrganizationsNameResult']]]] = None,
+                             order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                              page_token: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              parent: pulumi.Input[Optional[Optional[Union['GetOrganizationsParentArgs', 'GetOrganizationsParentArgsDict', 'outputs.GetOrganizationsParentResult']]]] = None,
@@ -205,6 +269,10 @@ def get_organizations_output(containing: pulumi.Input[Optional[Optional[Union['G
     - `User Details Read`
     - `User Details Write`
 
+    User API tokens can list and create Organizations, but reading, updating, or deleting an Organization requires a Global API key and your registered email address. The `Organization` Terraform resource therefore requires a Global API key for its full lifecycle.
+
+    See [Organizations authentication limitations](https://developers.cloudflare.com/fundamentals/organizations/limitations/#api-authentication) for credential compatibility by operation. Each endpoint’s **Security** section lists its supported authentication methods, with **Accepted Permissions** where applicable.
+
     ## Example Usage
 
     ```python
@@ -217,11 +285,16 @@ def get_organizations_output(containing: pulumi.Input[Optional[Optional[Union['G
             "organization": "organization",
             "user": "user",
         },
+        direction="asc",
+        member={
+            "email": "email",
+        },
         name={
             "contains": "contains",
             "ends_with": "endsWith",
             "starts_with": "startsWith",
         },
+        order_by="name",
         page_size=0,
         page_token="page_token",
         parent={
@@ -230,18 +303,27 @@ def get_organizations_output(containing: pulumi.Input[Optional[Optional[Union['G
     ```
 
 
+    :param _builtins.str direction: Sort direction for the `order_by` field. Defaults to `asc` when `order_by` is
+           specified.
+           Available values: "asc", "desc".
     :param Sequence[_builtins.str] ids: Only return organizations with the specified IDs (ex. id=foo&id=bar). Send multiple elements
            by repeating the query value.
     :param _builtins.int max_items: Max items to fetch, default: 1000
+    :param _builtins.str order_by: Field to order results by. Currently supported values: `name`.
+           When not specified, results are ordered by hierarchy.
+           Available values: "name".
     :param _builtins.int page_size: The amount of items to return. Defaults to 10.
     :param _builtins.str page_token: An opaque token returned from the last list response that when
            provided will retrieve the next page.
     """
     __args__ = dict()
     __args__['containing'] = containing
+    __args__['direction'] = direction
     __args__['ids'] = ids
     __args__['maxItems'] = max_items
+    __args__['member'] = member
     __args__['name'] = name
+    __args__['orderBy'] = order_by
     __args__['pageSize'] = page_size
     __args__['pageToken'] = page_token
     __args__['parent'] = parent
@@ -249,9 +331,12 @@ def get_organizations_output(containing: pulumi.Input[Optional[Optional[Union['G
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getOrganizations:getOrganizations', __args__, opts=opts, typ=GetOrganizationsResult)
     return __ret__.apply(lambda __response__: GetOrganizationsResult(
         containing=pulumi.get(__response__, 'containing'),
+        direction=pulumi.get(__response__, 'direction'),
         ids=pulumi.get(__response__, 'ids'),
         max_items=pulumi.get(__response__, 'max_items'),
+        member=pulumi.get(__response__, 'member'),
         name=pulumi.get(__response__, 'name'),
+        order_by=pulumi.get(__response__, 'order_by'),
         page_size=pulumi.get(__response__, 'page_size'),
         page_token=pulumi.get(__response__, 'page_token'),
         parent=pulumi.get(__response__, 'parent'),

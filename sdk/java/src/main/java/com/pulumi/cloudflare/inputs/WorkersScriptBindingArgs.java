@@ -294,7 +294,7 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
 
     /**
      * The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-     * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;fedramp-high&#34;.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;fedramp-high&#34;, &#34;us&#34;.
      * 
      */
     @Import(name="jurisdiction")
@@ -302,7 +302,7 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-     * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;fedramp-high&#34;.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;fedramp-high&#34;, &#34;us&#34;.
      * 
      */
     public Optional<Output<String>> jurisdiction() {
@@ -657,14 +657,14 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Identifier for the version to inherit the binding from, which can be the version ID or the literal &#34;latest&#34; to inherit from the latest version. Defaults to inheriting the binding from the latest version.
+     * Identifier for the version to inherit the binding from. This can be a version ID, or the literal &#34;latest&#34; to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to &#34;latest&#34;. Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only &#34;latest&#34; and reject a version ID with error 10057.
      * 
      */
     @Import(name="versionId")
     private @Nullable Output<String> versionId;
 
     /**
-     * @return Identifier for the version to inherit the binding from, which can be the version ID or the literal &#34;latest&#34; to inherit from the latest version. Defaults to inheriting the binding from the latest version.
+     * @return Identifier for the version to inherit the binding from. This can be a version ID, or the literal &#34;latest&#34; to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to &#34;latest&#34;. Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only &#34;latest&#34; and reject a version ID with error 10057.
      * 
      */
     public Optional<Output<String>> versionId() {
@@ -1155,7 +1155,7 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param jurisdiction The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-         * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;fedramp-high&#34;.
+         * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;fedramp-high&#34;, &#34;us&#34;.
          * 
          * @return builder
          * 
@@ -1167,7 +1167,7 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param jurisdiction The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-         * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;fedramp-high&#34;.
+         * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;fedramp-high&#34;, &#34;us&#34;.
          * 
          * @return builder
          * 
@@ -1672,7 +1672,7 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param versionId Identifier for the version to inherit the binding from, which can be the version ID or the literal &#34;latest&#34; to inherit from the latest version. Defaults to inheriting the binding from the latest version.
+         * @param versionId Identifier for the version to inherit the binding from. This can be a version ID, or the literal &#34;latest&#34; to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to &#34;latest&#34;. Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only &#34;latest&#34; and reject a version ID with error 10057.
          * 
          * @return builder
          * 
@@ -1683,7 +1683,7 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param versionId Identifier for the version to inherit the binding from, which can be the version ID or the literal &#34;latest&#34; to inherit from the latest version. Defaults to inheriting the binding from the latest version.
+         * @param versionId Identifier for the version to inherit the binding from. This can be a version ID, or the literal &#34;latest&#34; to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to &#34;latest&#34;. Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only &#34;latest&#34; and reject a version ID with error 10057.
          * 
          * @return builder
          * 

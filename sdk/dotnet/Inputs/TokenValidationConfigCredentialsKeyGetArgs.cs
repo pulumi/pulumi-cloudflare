@@ -20,20 +20,20 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string> Alg { get; set; } = null!;
 
         /// <summary>
-        /// Curve
+        /// For `alg: ES256` or `alg: ES384`: Curve
         /// Available values: "P-256", "P-384".
         /// </summary>
         [Input("crv")]
         public Input<string>? Crv { get; set; }
 
         /// <summary>
-        /// RSA exponent
+        /// For `alg: RS256` or `alg: RS384` or `alg: RS512` or `alg: PS256` or `alg: PS384` or `alg: PS512`: RSA exponent
         /// </summary>
         [Input("e")]
         public Input<string>? E { get; set; }
 
         /// <summary>
-        /// Symmetric key material. Required for create and PUT update requests.
+        /// For `alg: HS256` or `alg: HS384` or `alg: HS512`: Symmetric key material. Required for create and PUT update requests.
         /// </summary>
         [Input("k")]
         public Input<string>? K { get; set; }
@@ -52,19 +52,19 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string> Kty { get; set; } = null!;
 
         /// <summary>
-        /// RSA modulus
+        /// For `alg: RS256` or `alg: RS384` or `alg: RS512` or `alg: PS256` or `alg: PS384` or `alg: PS512`: RSA modulus
         /// </summary>
         [Input("n")]
         public Input<string>? N { get; set; }
 
         /// <summary>
-        /// X EC coordinate
+        /// For `alg: ES256` or `alg: ES384`: X EC coordinate
         /// </summary>
         [Input("x")]
         public Input<string>? X { get; set; }
 
         /// <summary>
-        /// Y EC coordinate
+        /// For `alg: ES256` or `alg: ES384`: Y EC coordinate
         /// </summary>
         [Input("y")]
         public Input<string>? Y { get; set; }

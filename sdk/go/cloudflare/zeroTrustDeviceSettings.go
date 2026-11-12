@@ -59,23 +59,23 @@ type ZeroTrustDeviceSettings struct {
 
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Sets the time limit, in seconds, that a user can use an override code to bypass WARP.
-	DisableForTime pulumi.Float64PtrOutput `pulumi:"disableForTime"`
+	DisableForTime pulumi.Float64Output `pulumi:"disableForTime"`
 	// Controls whether the external emergency disconnect feature is enabled.
-	ExternalEmergencySignalEnabled pulumi.BoolPtrOutput `pulumi:"externalEmergencySignalEnabled"`
+	ExternalEmergencySignalEnabled pulumi.BoolOutput `pulumi:"externalEmergencySignalEnabled"`
 	// The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external*emergency*signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.
-	ExternalEmergencySignalFingerprint pulumi.StringPtrOutput `pulumi:"externalEmergencySignalFingerprint"`
+	ExternalEmergencySignalFingerprint pulumi.StringOutput `pulumi:"externalEmergencySignalFingerprint"`
 	// The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., "5m", "2m30s", "1h"). Minimum 30 seconds.
-	ExternalEmergencySignalInterval pulumi.StringPtrOutput `pulumi:"externalEmergencySignalInterval"`
+	ExternalEmergencySignalInterval pulumi.StringOutput `pulumi:"externalEmergencySignalInterval"`
 	// The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.
-	ExternalEmergencySignalUrl pulumi.StringPtrOutput `pulumi:"externalEmergencySignalUrl"`
+	ExternalEmergencySignalUrl pulumi.StringOutput `pulumi:"externalEmergencySignalUrl"`
 	// Enable gateway proxy filtering on TCP.
-	GatewayProxyEnabled pulumi.BoolPtrOutput `pulumi:"gatewayProxyEnabled"`
+	GatewayProxyEnabled pulumi.BoolOutput `pulumi:"gatewayProxyEnabled"`
 	// Enable gateway proxy filtering on UDP.
-	GatewayUdpProxyEnabled pulumi.BoolPtrOutput `pulumi:"gatewayUdpProxyEnabled"`
+	GatewayUdpProxyEnabled pulumi.BoolOutput `pulumi:"gatewayUdpProxyEnabled"`
 	// Enable installation of cloudflare managed root certificate.
-	RootCertificateInstallationEnabled pulumi.BoolPtrOutput `pulumi:"rootCertificateInstallationEnabled"`
+	RootCertificateInstallationEnabled pulumi.BoolOutput `pulumi:"rootCertificateInstallationEnabled"`
 	// Enable using CGNAT virtual IPv4.
-	UseZtVirtualIp pulumi.BoolPtrOutput `pulumi:"useZtVirtualIp"`
+	UseZtVirtualIp pulumi.BoolOutput `pulumi:"useZtVirtualIp"`
 }
 
 // NewZeroTrustDeviceSettings registers a new resource with the given unique name, arguments, and options.
@@ -301,48 +301,48 @@ func (o ZeroTrustDeviceSettingsOutput) AccountId() pulumi.StringOutput {
 }
 
 // Sets the time limit, in seconds, that a user can use an override code to bypass WARP.
-func (o ZeroTrustDeviceSettingsOutput) DisableForTime() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDeviceSettings) pulumi.Float64PtrOutput { return v.DisableForTime }).(pulumi.Float64PtrOutput)
+func (o ZeroTrustDeviceSettingsOutput) DisableForTime() pulumi.Float64Output {
+	return o.ApplyT(func(v *ZeroTrustDeviceSettings) pulumi.Float64Output { return v.DisableForTime }).(pulumi.Float64Output)
 }
 
 // Controls whether the external emergency disconnect feature is enabled.
-func (o ZeroTrustDeviceSettingsOutput) ExternalEmergencySignalEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDeviceSettings) pulumi.BoolPtrOutput { return v.ExternalEmergencySignalEnabled }).(pulumi.BoolPtrOutput)
+func (o ZeroTrustDeviceSettingsOutput) ExternalEmergencySignalEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustDeviceSettings) pulumi.BoolOutput { return v.ExternalEmergencySignalEnabled }).(pulumi.BoolOutput)
 }
 
 // The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external*emergency*signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.
-func (o ZeroTrustDeviceSettingsOutput) ExternalEmergencySignalFingerprint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDeviceSettings) pulumi.StringPtrOutput { return v.ExternalEmergencySignalFingerprint }).(pulumi.StringPtrOutput)
+func (o ZeroTrustDeviceSettingsOutput) ExternalEmergencySignalFingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustDeviceSettings) pulumi.StringOutput { return v.ExternalEmergencySignalFingerprint }).(pulumi.StringOutput)
 }
 
 // The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., "5m", "2m30s", "1h"). Minimum 30 seconds.
-func (o ZeroTrustDeviceSettingsOutput) ExternalEmergencySignalInterval() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDeviceSettings) pulumi.StringPtrOutput { return v.ExternalEmergencySignalInterval }).(pulumi.StringPtrOutput)
+func (o ZeroTrustDeviceSettingsOutput) ExternalEmergencySignalInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustDeviceSettings) pulumi.StringOutput { return v.ExternalEmergencySignalInterval }).(pulumi.StringOutput)
 }
 
 // The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.
-func (o ZeroTrustDeviceSettingsOutput) ExternalEmergencySignalUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDeviceSettings) pulumi.StringPtrOutput { return v.ExternalEmergencySignalUrl }).(pulumi.StringPtrOutput)
+func (o ZeroTrustDeviceSettingsOutput) ExternalEmergencySignalUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustDeviceSettings) pulumi.StringOutput { return v.ExternalEmergencySignalUrl }).(pulumi.StringOutput)
 }
 
 // Enable gateway proxy filtering on TCP.
-func (o ZeroTrustDeviceSettingsOutput) GatewayProxyEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDeviceSettings) pulumi.BoolPtrOutput { return v.GatewayProxyEnabled }).(pulumi.BoolPtrOutput)
+func (o ZeroTrustDeviceSettingsOutput) GatewayProxyEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustDeviceSettings) pulumi.BoolOutput { return v.GatewayProxyEnabled }).(pulumi.BoolOutput)
 }
 
 // Enable gateway proxy filtering on UDP.
-func (o ZeroTrustDeviceSettingsOutput) GatewayUdpProxyEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDeviceSettings) pulumi.BoolPtrOutput { return v.GatewayUdpProxyEnabled }).(pulumi.BoolPtrOutput)
+func (o ZeroTrustDeviceSettingsOutput) GatewayUdpProxyEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustDeviceSettings) pulumi.BoolOutput { return v.GatewayUdpProxyEnabled }).(pulumi.BoolOutput)
 }
 
 // Enable installation of cloudflare managed root certificate.
-func (o ZeroTrustDeviceSettingsOutput) RootCertificateInstallationEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDeviceSettings) pulumi.BoolPtrOutput { return v.RootCertificateInstallationEnabled }).(pulumi.BoolPtrOutput)
+func (o ZeroTrustDeviceSettingsOutput) RootCertificateInstallationEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustDeviceSettings) pulumi.BoolOutput { return v.RootCertificateInstallationEnabled }).(pulumi.BoolOutput)
 }
 
 // Enable using CGNAT virtual IPv4.
-func (o ZeroTrustDeviceSettingsOutput) UseZtVirtualIp() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDeviceSettings) pulumi.BoolPtrOutput { return v.UseZtVirtualIp }).(pulumi.BoolPtrOutput)
+func (o ZeroTrustDeviceSettingsOutput) UseZtVirtualIp() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustDeviceSettings) pulumi.BoolOutput { return v.UseZtVirtualIp }).(pulumi.BoolOutput)
 }
 
 type ZeroTrustDeviceSettingsArrayOutput struct{ *pulumi.OutputState }

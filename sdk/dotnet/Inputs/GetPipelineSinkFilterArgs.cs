@@ -13,10 +13,24 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class GetPipelineSinkFilterInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Sort direction.
+        /// Available values: "asc", "desc".
+        /// </summary>
+        [Input("direction", required: true)]
+        public Input<string> Direction { get; set; } = null!;
+
+        /// <summary>
         /// Filters sinks by name (case-insensitive substring).
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Sorts sinks by this field. Defaults to `CreatedAt`.
+        /// Available values: "name", "CreatedAt".
+        /// </summary>
+        [Input("orderBy")]
+        public Input<string>? OrderBy { get; set; }
 
         [Input("pipelineId")]
         public Input<string>? PipelineId { get; set; }

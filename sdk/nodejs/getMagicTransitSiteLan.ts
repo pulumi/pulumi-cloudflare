@@ -86,6 +86,7 @@ export interface GetMagicTransitSiteLanResult {
     readonly name: string;
     readonly nat: outputs.GetMagicTransitSiteLanNat;
     readonly physport: number;
+    readonly remoteSubnets: outputs.GetMagicTransitSiteLanRemoteSubnet[];
     readonly routedSubnets: outputs.GetMagicTransitSiteLanRoutedSubnet[];
     /**
      * Identifier

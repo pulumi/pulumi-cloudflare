@@ -63,18 +63,18 @@ public final class SecretsStoreSecretArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The list of services that can use this secret. Valid values are `workers`, `aiGateway`, `dex`, and `access`. Must be listed in alphabetical order.
+     * The list of services that can use this secret, or null when the secret inherits its store&#39;s scopes. Set it to null in a patch to inherit again. An empty list lets no service use the secret. Explicit scopes must be listed in alphabetical order.
      * 
      */
-    @Import(name="scopes", required=true)
-    private Output<List<String>> scopes;
+    @Import(name="scopes")
+    private @Nullable Output<List<String>> scopes;
 
     /**
-     * @return The list of services that can use this secret. Valid values are `workers`, `aiGateway`, `dex`, and `access`. Must be listed in alphabetical order.
+     * @return The list of services that can use this secret, or null when the secret inherits its store&#39;s scopes. Set it to null in a patch to inherit again. An empty list lets no service use the secret. Explicit scopes must be listed in alphabetical order.
      * 
      */
-    public Output<List<String>> scopes() {
-        return this.scopes;
+    public Optional<Output<List<String>>> scopes() {
+        return Optional.ofNullable(this.scopes);
     }
 
     /**
@@ -200,18 +200,18 @@ public final class SecretsStoreSecretArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param scopes The list of services that can use this secret. Valid values are `workers`, `aiGateway`, `dex`, and `access`. Must be listed in alphabetical order.
+         * @param scopes The list of services that can use this secret, or null when the secret inherits its store&#39;s scopes. Set it to null in a patch to inherit again. An empty list lets no service use the secret. Explicit scopes must be listed in alphabetical order.
          * 
          * @return builder
          * 
          */
-        public Builder scopes(Output<List<String>> scopes) {
+        public Builder scopes(@Nullable Output<List<String>> scopes) {
             $.scopes = scopes;
             return this;
         }
 
         /**
-         * @param scopes The list of services that can use this secret. Valid values are `workers`, `aiGateway`, `dex`, and `access`. Must be listed in alphabetical order.
+         * @param scopes The list of services that can use this secret, or null when the secret inherits its store&#39;s scopes. Set it to null in a patch to inherit again. An empty list lets no service use the secret. Explicit scopes must be listed in alphabetical order.
          * 
          * @return builder
          * 
@@ -221,7 +221,7 @@ public final class SecretsStoreSecretArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param scopes The list of services that can use this secret. Valid values are `workers`, `aiGateway`, `dex`, and `access`. Must be listed in alphabetical order.
+         * @param scopes The list of services that can use this secret, or null when the secret inherits its store&#39;s scopes. Set it to null in a patch to inherit again. An empty list lets no service use the secret. Explicit scopes must be listed in alphabetical order.
          * 
          * @return builder
          * 
@@ -278,9 +278,6 @@ public final class SecretsStoreSecretArgs extends com.pulumi.resources.ResourceA
             }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("SecretsStoreSecretArgs", "name");
-            }
-            if ($.scopes == null) {
-                throw new MissingRequiredPropertyException("SecretsStoreSecretArgs", "scopes");
             }
             if ($.storeId == null) {
                 throw new MissingRequiredPropertyException("SecretsStoreSecretArgs", "storeId");

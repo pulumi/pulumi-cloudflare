@@ -24,17 +24,9 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string CertificateAuthority;
         /// <summary>
-        /// If a custom uploaded certificate is used.
-        /// </summary>
-        public readonly string CustomCertificate;
-        /// <summary>
         /// The identifier for the Custom CSR that was used.
         /// </summary>
         public readonly string CustomCsrId;
-        /// <summary>
-        /// The key for a custom uploaded certificate.
-        /// </summary>
-        public readonly string CustomKey;
         /// <summary>
         /// DCV Delegation records for domain validation.
         /// </summary>
@@ -99,11 +91,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             string certificateAuthority,
 
-            string customCertificate,
-
             string customCsrId,
-
-            string customKey,
 
             ImmutableArray<Outputs.GetCustomHostnamesResultSslDcvDelegationRecordResult> dcvDelegationRecords,
 
@@ -137,9 +125,7 @@ namespace Pulumi.Cloudflare.Outputs
         {
             BundleMethod = bundleMethod;
             CertificateAuthority = certificateAuthority;
-            CustomCertificate = customCertificate;
             CustomCsrId = customCsrId;
-            CustomKey = customKey;
             DcvDelegationRecords = dcvDelegationRecords;
             ExpiresOn = expiresOn;
             Hosts = hosts;

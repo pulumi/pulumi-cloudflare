@@ -49,7 +49,7 @@ namespace Pulumi.Cloudflare
     public partial class CtAlerting : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma.
+        /// Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. Omitted from responses when no addresses are configured.
         /// </summary>
         [Output("emails")]
         public Output<ImmutableArray<string>> Emails { get; private set; } = null!;
@@ -116,7 +116,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _emails;
 
         /// <summary>
-        /// Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma.
+        /// Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. Omitted from responses when no addresses are configured.
         /// </summary>
         public InputList<string> Emails
         {
@@ -148,7 +148,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _emails;
 
         /// <summary>
-        /// Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma.
+        /// Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. Omitted from responses when no addresses are configured.
         /// </summary>
         public InputList<string> Emails
         {

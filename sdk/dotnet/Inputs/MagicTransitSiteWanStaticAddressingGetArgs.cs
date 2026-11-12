@@ -30,6 +30,12 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("secondaryAddress")]
         public Input<string>? SecondaryAddress { get; set; }
 
+        /// <summary>
+        /// Gateway address for the secondary connector of a high availability site.
+        /// </summary>
+        [Input("secondaryGatewayAddress")]
+        public Input<string>? SecondaryGatewayAddress { get; set; }
+
         public MagicTransitSiteWanStaticAddressingGetArgs()
         {
         }

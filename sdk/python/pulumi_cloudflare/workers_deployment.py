@@ -26,14 +26,18 @@ class WorkersDeploymentArgs:
                  strategy: pulumi.Input[_builtins.str],
                  versions: pulumi.Input[Sequence[pulumi.Input['WorkersDeploymentVersionArgs']]],
                  annotations: pulumi.Input[Optional['WorkersDeploymentAnnotationsArgs']] = None,
+                 code_update_strategy: pulumi.Input[Optional['WorkersDeploymentCodeUpdateStrategyArgs']] = None,
                  force: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a WorkersDeployment resource.
 
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] script_name: Name of the script.
-        :param pulumi.Input[_builtins.str] strategy: Available values: "percentage".
+        :param pulumi.Input[_builtins.str] strategy: Strategy for routing traffic across the listed versions. `percentage` splits traffic according to each version's `percentage`.
+               Available values: "percentage".
         :param pulumi.Input[Sequence[pulumi.Input['WorkersDeploymentVersionArgs']]] versions: Worker versions included in this deployment. Each object must contain a `version_id` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions '[{"version_id":"023e105f-2a42-4f8b-a1c1-73f6a2a30c0f","percentage":100}]'`, or from a JSON file with `--versions @versions.json`.
+        :param pulumi.Input['WorkersDeploymentAnnotationsArgs'] annotations: Metadata attached to the deployment.
+        :param pulumi.Input['WorkersDeploymentCodeUpdateStrategyArgs'] code_update_strategy: Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
         :param pulumi.Input[_builtins.bool] force: If set to true, the deployment will be created even if normally blocked by something such rolling back to an older version when a secret has changed.
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -42,6 +46,8 @@ class WorkersDeploymentArgs:
         pulumi.set(__self__, "versions", versions)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
+        if code_update_strategy is not None:
+            pulumi.set(__self__, "code_update_strategy", code_update_strategy)
         if force is not None:
             pulumi.set(__self__, "force", force)
 
@@ -73,6 +79,7 @@ class WorkersDeploymentArgs:
     @pulumi.getter
     def strategy(self) -> pulumi.Input[_builtins.str]:
         """
+        Strategy for routing traffic across the listed versions. `percentage` splits traffic according to each version's `percentage`.
         Available values: "percentage".
         """
         return pulumi.get(self, "strategy")
@@ -96,11 +103,26 @@ class WorkersDeploymentArgs:
     @_builtins.property
     @pulumi.getter
     def annotations(self) -> pulumi.Input[Optional['WorkersDeploymentAnnotationsArgs']]:
+        """
+        Metadata attached to the deployment.
+        """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
     def annotations(self, value: pulumi.Input[Optional['WorkersDeploymentAnnotationsArgs']]):
         pulumi.set(self, "annotations", value)
+
+    @_builtins.property
+    @pulumi.getter(name="codeUpdateStrategy")
+    def code_update_strategy(self) -> pulumi.Input[Optional['WorkersDeploymentCodeUpdateStrategyArgs']]:
+        """
+        Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+        """
+        return pulumi.get(self, "code_update_strategy")
+
+    @code_update_strategy.setter
+    def code_update_strategy(self, value: pulumi.Input[Optional['WorkersDeploymentCodeUpdateStrategyArgs']]):
+        pulumi.set(self, "code_update_strategy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -121,6 +143,7 @@ class _WorkersDeploymentState:
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  annotations: pulumi.Input[Optional['WorkersDeploymentAnnotationsArgs']] = None,
                  author_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 code_update_strategy: pulumi.Input[Optional['WorkersDeploymentCodeUpdateStrategyArgs']] = None,
                  created_on: pulumi.Input[Optional[_builtins.str]] = None,
                  force: pulumi.Input[Optional[_builtins.bool]] = None,
                  script_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -131,9 +154,12 @@ class _WorkersDeploymentState:
         Input properties used for looking up and filtering WorkersDeployment resources.
 
         :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input['WorkersDeploymentAnnotationsArgs'] annotations: Metadata attached to the deployment.
+        :param pulumi.Input['WorkersDeploymentCodeUpdateStrategyArgs'] code_update_strategy: Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
         :param pulumi.Input[_builtins.bool] force: If set to true, the deployment will be created even if normally blocked by something such rolling back to an older version when a secret has changed.
         :param pulumi.Input[_builtins.str] script_name: Name of the script.
-        :param pulumi.Input[_builtins.str] strategy: Available values: "percentage".
+        :param pulumi.Input[_builtins.str] strategy: Strategy for routing traffic across the listed versions. `percentage` splits traffic according to each version's `percentage`.
+               Available values: "percentage".
         :param pulumi.Input[Sequence[pulumi.Input['WorkersDeploymentVersionArgs']]] versions: Worker versions included in this deployment. Each object must contain a `version_id` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions '[{"version_id":"023e105f-2a42-4f8b-a1c1-73f6a2a30c0f","percentage":100}]'`, or from a JSON file with `--versions @versions.json`.
         """
         if account_id is not None:
@@ -142,6 +168,8 @@ class _WorkersDeploymentState:
             pulumi.set(__self__, "annotations", annotations)
         if author_email is not None:
             pulumi.set(__self__, "author_email", author_email)
+        if code_update_strategy is not None:
+            pulumi.set(__self__, "code_update_strategy", code_update_strategy)
         if created_on is not None:
             pulumi.set(__self__, "created_on", created_on)
         if force is not None:
@@ -170,6 +198,9 @@ class _WorkersDeploymentState:
     @_builtins.property
     @pulumi.getter
     def annotations(self) -> pulumi.Input[Optional['WorkersDeploymentAnnotationsArgs']]:
+        """
+        Metadata attached to the deployment.
+        """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
@@ -184,6 +215,18 @@ class _WorkersDeploymentState:
     @author_email.setter
     def author_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "author_email", value)
+
+    @_builtins.property
+    @pulumi.getter(name="codeUpdateStrategy")
+    def code_update_strategy(self) -> pulumi.Input[Optional['WorkersDeploymentCodeUpdateStrategyArgs']]:
+        """
+        Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+        """
+        return pulumi.get(self, "code_update_strategy")
+
+    @code_update_strategy.setter
+    def code_update_strategy(self, value: pulumi.Input[Optional['WorkersDeploymentCodeUpdateStrategyArgs']]):
+        pulumi.set(self, "code_update_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="createdOn")
@@ -231,6 +274,7 @@ class _WorkersDeploymentState:
     @pulumi.getter
     def strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
+        Strategy for routing traffic across the listed versions. `percentage` splits traffic according to each version's `percentage`.
         Available values: "percentage".
         """
         return pulumi.get(self, "strategy")
@@ -260,6 +304,7 @@ class WorkersDeployment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  annotations: pulumi.Input[Optional[Union['WorkersDeploymentAnnotationsArgs', 'WorkersDeploymentAnnotationsArgsDict', 'outputs.WorkersDeploymentAnnotations']]] = None,
+                 code_update_strategy: pulumi.Input[Optional[Union['WorkersDeploymentCodeUpdateStrategyArgs', 'WorkersDeploymentCodeUpdateStrategyArgsDict', 'outputs.WorkersDeploymentCodeUpdateStrategy']]] = None,
                  force: pulumi.Input[Optional[_builtins.bool]] = None,
                  script_name: pulumi.Input[Optional[_builtins.str]] = None,
                  strategy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -268,6 +313,14 @@ class WorkersDeployment(pulumi.CustomResource):
         """
         Accepted Permissions
 
+        - `Individual Workers Admin`
+        - `Individual Workers Content Read-Only`
+        - `Individual Workers Editor`
+        - `Individual Workers Metadata Read-Only`
+        - `Workers Admin`
+        - `Workers Content Read-Only`
+        - `Workers Editor`
+        - `Workers Metadata Read-Only`
         - `Workers Scripts Read`
         - `Workers Scripts Write`
         - `Workers Tail Read`
@@ -288,6 +341,9 @@ class WorkersDeployment(pulumi.CustomResource):
             }],
             annotations={
                 "workers_message": "Deploy bug fix.",
+            },
+            code_update_strategy={
+                "mode": "immediate",
             })
         ```
 
@@ -301,9 +357,12 @@ class WorkersDeployment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[Union['WorkersDeploymentAnnotationsArgs', 'WorkersDeploymentAnnotationsArgsDict', 'outputs.WorkersDeploymentAnnotations']] annotations: Metadata attached to the deployment.
+        :param pulumi.Input[Union['WorkersDeploymentCodeUpdateStrategyArgs', 'WorkersDeploymentCodeUpdateStrategyArgsDict', 'outputs.WorkersDeploymentCodeUpdateStrategy']] code_update_strategy: Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
         :param pulumi.Input[_builtins.bool] force: If set to true, the deployment will be created even if normally blocked by something such rolling back to an older version when a secret has changed.
         :param pulumi.Input[_builtins.str] script_name: Name of the script.
-        :param pulumi.Input[_builtins.str] strategy: Available values: "percentage".
+        :param pulumi.Input[_builtins.str] strategy: Strategy for routing traffic across the listed versions. `percentage` splits traffic according to each version's `percentage`.
+               Available values: "percentage".
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkersDeploymentVersionArgs', 'WorkersDeploymentVersionArgsDict', 'outputs.WorkersDeploymentVersion']]]] versions: Worker versions included in this deployment. Each object must contain a `version_id` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions '[{"version_id":"023e105f-2a42-4f8b-a1c1-73f6a2a30c0f","percentage":100}]'`, or from a JSON file with `--versions @versions.json`.
         """
         ...
@@ -315,6 +374,14 @@ class WorkersDeployment(pulumi.CustomResource):
         """
         Accepted Permissions
 
+        - `Individual Workers Admin`
+        - `Individual Workers Content Read-Only`
+        - `Individual Workers Editor`
+        - `Individual Workers Metadata Read-Only`
+        - `Workers Admin`
+        - `Workers Content Read-Only`
+        - `Workers Editor`
+        - `Workers Metadata Read-Only`
         - `Workers Scripts Read`
         - `Workers Scripts Write`
         - `Workers Tail Read`
@@ -335,6 +402,9 @@ class WorkersDeployment(pulumi.CustomResource):
             }],
             annotations={
                 "workers_message": "Deploy bug fix.",
+            },
+            code_update_strategy={
+                "mode": "immediate",
             })
         ```
 
@@ -362,6 +432,7 @@ class WorkersDeployment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  annotations: pulumi.Input[Optional[Union['WorkersDeploymentAnnotationsArgs', 'WorkersDeploymentAnnotationsArgsDict', 'outputs.WorkersDeploymentAnnotations']]] = None,
+                 code_update_strategy: pulumi.Input[Optional[Union['WorkersDeploymentCodeUpdateStrategyArgs', 'WorkersDeploymentCodeUpdateStrategyArgsDict', 'outputs.WorkersDeploymentCodeUpdateStrategy']]] = None,
                  force: pulumi.Input[Optional[_builtins.bool]] = None,
                  script_name: pulumi.Input[Optional[_builtins.str]] = None,
                  strategy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -379,6 +450,7 @@ class WorkersDeployment(pulumi.CustomResource):
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["annotations"] = annotations
+            __props__.__dict__["code_update_strategy"] = code_update_strategy
             __props__.__dict__["force"] = force
             if script_name is None and not opts.urn:
                 raise TypeError("Missing required property 'script_name'")
@@ -405,6 +477,7 @@ class WorkersDeployment(pulumi.CustomResource):
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             annotations: pulumi.Input[Optional[Union['WorkersDeploymentAnnotationsArgs', 'WorkersDeploymentAnnotationsArgsDict', 'outputs.WorkersDeploymentAnnotations']]] = None,
             author_email: pulumi.Input[Optional[_builtins.str]] = None,
+            code_update_strategy: pulumi.Input[Optional[Union['WorkersDeploymentCodeUpdateStrategyArgs', 'WorkersDeploymentCodeUpdateStrategyArgsDict', 'outputs.WorkersDeploymentCodeUpdateStrategy']]] = None,
             created_on: pulumi.Input[Optional[_builtins.str]] = None,
             force: pulumi.Input[Optional[_builtins.bool]] = None,
             script_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -419,9 +492,12 @@ class WorkersDeployment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[Union['WorkersDeploymentAnnotationsArgs', 'WorkersDeploymentAnnotationsArgsDict', 'outputs.WorkersDeploymentAnnotations']] annotations: Metadata attached to the deployment.
+        :param pulumi.Input[Union['WorkersDeploymentCodeUpdateStrategyArgs', 'WorkersDeploymentCodeUpdateStrategyArgsDict', 'outputs.WorkersDeploymentCodeUpdateStrategy']] code_update_strategy: Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
         :param pulumi.Input[_builtins.bool] force: If set to true, the deployment will be created even if normally blocked by something such rolling back to an older version when a secret has changed.
         :param pulumi.Input[_builtins.str] script_name: Name of the script.
-        :param pulumi.Input[_builtins.str] strategy: Available values: "percentage".
+        :param pulumi.Input[_builtins.str] strategy: Strategy for routing traffic across the listed versions. `percentage` splits traffic according to each version's `percentage`.
+               Available values: "percentage".
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkersDeploymentVersionArgs', 'WorkersDeploymentVersionArgsDict', 'outputs.WorkersDeploymentVersion']]]] versions: Worker versions included in this deployment. Each object must contain a `version_id` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions '[{"version_id":"023e105f-2a42-4f8b-a1c1-73f6a2a30c0f","percentage":100}]'`, or from a JSON file with `--versions @versions.json`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -431,6 +507,7 @@ class WorkersDeployment(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["annotations"] = annotations
         __props__.__dict__["author_email"] = author_email
+        __props__.__dict__["code_update_strategy"] = code_update_strategy
         __props__.__dict__["created_on"] = created_on
         __props__.__dict__["force"] = force
         __props__.__dict__["script_name"] = script_name
@@ -445,6 +522,7 @@ class WorkersDeployment(pulumi.CustomResource):
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             annotations: pulumi.Input[Optional[Union['WorkersDeploymentAnnotationsArgs', 'WorkersDeploymentAnnotationsArgsDict', 'outputs.WorkersDeploymentAnnotations']]] = None,
             author_email: pulumi.Input[Optional[_builtins.str]] = None,
+            code_update_strategy: pulumi.Input[Optional[Union['WorkersDeploymentCodeUpdateStrategyArgs', 'WorkersDeploymentCodeUpdateStrategyArgsDict', 'outputs.WorkersDeploymentCodeUpdateStrategy']]] = None,
             created_on: pulumi.Input[Optional[_builtins.str]] = None,
             force: pulumi.Input[Optional[_builtins.bool]] = None,
             script_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -455,6 +533,7 @@ class WorkersDeployment(pulumi.CustomResource):
         __props__["accountId"] = account_id
         __props__["annotations"] = annotations
         __props__["authorEmail"] = author_email
+        __props__["codeUpdateStrategy"] = code_update_strategy
         __props__["createdOn"] = created_on
         __props__["force"] = force
         __props__["scriptName"] = script_name
@@ -474,12 +553,23 @@ class WorkersDeployment(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def annotations(self) -> pulumi.Output['outputs.WorkersDeploymentAnnotations']:
+        """
+        Metadata attached to the deployment.
+        """
         return pulumi.get(self, "annotations")
 
     @_builtins.property
     @pulumi.getter(name="authorEmail")
     def author_email(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "author_email")
+
+    @_builtins.property
+    @pulumi.getter(name="codeUpdateStrategy")
+    def code_update_strategy(self) -> pulumi.Output[Optional['outputs.WorkersDeploymentCodeUpdateStrategy']]:
+        """
+        Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+        """
+        return pulumi.get(self, "code_update_strategy")
 
     @_builtins.property
     @pulumi.getter(name="createdOn")
@@ -511,6 +601,7 @@ class WorkersDeployment(pulumi.CustomResource):
     @pulumi.getter
     def strategy(self) -> pulumi.Output[_builtins.str]:
         """
+        Strategy for routing traffic across the listed versions. `percentage` splits traffic according to each version's `percentage`.
         Available values: "percentage".
         """
         return pulumi.get(self, "strategy")

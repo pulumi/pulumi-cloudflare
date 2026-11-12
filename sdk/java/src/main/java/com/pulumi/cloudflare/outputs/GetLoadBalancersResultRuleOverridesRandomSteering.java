@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetLoadBalancersResultRuleOverridesRandomSteering {
     /**
-     * @return The default weight for pools in the load balancer that are not specified in the poolWeights map.
+     * @return The default weight for pools in the load balancer that are not specified in the poolWeights map. An omitted value inherits the load balancer&#39;s default weight.
      * 
      */
     private Double defaultWeight;
@@ -25,7 +25,7 @@ public final class GetLoadBalancersResultRuleOverridesRandomSteering {
 
     private GetLoadBalancersResultRuleOverridesRandomSteering() {}
     /**
-     * @return The default weight for pools in the load balancer that are not specified in the poolWeights map.
+     * @return The default weight for pools in the load balancer that are not specified in the poolWeights map. An omitted value inherits the load balancer&#39;s default weight.
      * 
      */
     public Double defaultWeight() {

@@ -175,7 +175,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Duration;
         /// <summary>
-        /// Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `ClientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+        /// Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `ClientSecret` stop being accepted, but the token itself is preserved and can be re-enabled. A service token reported as leaked is disabled automatically and cannot be re-enabled until its secret is rotated; attempting to do so returns a 409. Defaults to enabled when omitted on create.
         /// </summary>
         public readonly bool Enabled;
         public readonly string ExpiresAt;
@@ -185,6 +185,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// Where the leaked `ClientSecret` was found, if provided by the reporter. Omitted if the token has not been reported as leaked.
+        /// </summary>
+        public readonly string LeakReportUrl;
+        /// <summary>
+        /// When a secret scanning partner reported this service token's `ClientSecret` as leaked. A leaked service token is disabled and must be rotated before it can be re-enabled. Cleared once the secret is rotated. Omitted if the token has not been reported as leaked.
+        /// </summary>
+        public readonly string LeakReportedAt;
+        /// <summary>
+        /// The secret scanning partner that reported the leak. Omitted if the token has not been reported as leaked.
+        /// </summary>
+        public readonly string LeakReporter;
+        /// <summary>
         /// The name of the service token.
         /// </summary>
         public readonly string Name;
@@ -192,6 +204,10 @@ namespace Pulumi.Cloudflare
         /// UUID.
         /// </summary>
         public readonly string? ServiceTokenId;
+        /// <summary>
+        /// Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
@@ -213,9 +229,17 @@ namespace Pulumi.Cloudflare
 
             string id,
 
+            string leakReportUrl,
+
+            string leakReportedAt,
+
+            string leakReporter,
+
             string name,
 
             string? serviceTokenId,
+
+            ImmutableDictionary<string, string> tags,
 
             string? zoneId)
         {
@@ -226,8 +250,12 @@ namespace Pulumi.Cloudflare
             ExpiresAt = expiresAt;
             Filter = filter;
             Id = id;
+            LeakReportUrl = leakReportUrl;
+            LeakReportedAt = leakReportedAt;
+            LeakReporter = leakReporter;
             Name = name;
             ServiceTokenId = serviceTokenId;
+            Tags = tags;
             ZoneId = zoneId;
         }
     }

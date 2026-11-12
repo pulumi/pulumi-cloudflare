@@ -113,14 +113,14 @@ public final class LoadBalancerRuleOverridesArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Configures pool weights.
+     * Configures pool weights for a rule override. An omitted defaultWeight inherits the load balancer&#39;s default weight.
      * 
      */
     @Import(name="randomSteering")
     private @Nullable Output<LoadBalancerRuleOverridesRandomSteeringArgs> randomSteering;
 
     /**
-     * @return Configures pool weights.
+     * @return Configures pool weights for a rule override. An omitted defaultWeight inherits the load balancer&#39;s default weight.
      * 
      */
     public Optional<Output<LoadBalancerRuleOverridesRandomSteeringArgs>> randomSteering() {
@@ -392,7 +392,7 @@ public final class LoadBalancerRuleOverridesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param randomSteering Configures pool weights.
+         * @param randomSteering Configures pool weights for a rule override. An omitted defaultWeight inherits the load balancer&#39;s default weight.
          * 
          * @return builder
          * 
@@ -403,7 +403,7 @@ public final class LoadBalancerRuleOverridesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param randomSteering Configures pool weights.
+         * @param randomSteering Configures pool weights for a rule override. An omitted defaultWeight inherits the load balancer&#39;s default weight.
          * 
          * @return builder
          * 

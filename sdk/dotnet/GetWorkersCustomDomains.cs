@@ -30,8 +30,10 @@ namespace Pulumi.Cloudflare
         ///     var exampleWorkersCustomDomains = Cloudflare.GetWorkersCustomDomains.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Enabled = true,
         ///         Environment = "production",
         ///         Hostname = "app.example.com",
+        ///         PreviewsEnabled = false,
         ///         Service = "my-worker",
         ///         ZoneId = "593c9c94de529bbbfaac7c53ced0447d",
         ///         ZoneName = "example.com",
@@ -40,7 +42,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetWorkersCustomDomainsResult> InvokeAsync(GetWorkersCustomDomainsArgs? args = null, InvokeOptions? options = null)
+        public static Task<GetWorkersCustomDomainsResult> InvokeAsync(GetWorkersCustomDomainsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkersCustomDomainsResult>("cloudflare:index/getWorkersCustomDomains:getWorkersCustomDomains", args ?? new GetWorkersCustomDomainsArgs(), options.WithDefaults());
 
         /// <summary>
@@ -62,8 +64,10 @@ namespace Pulumi.Cloudflare
         ///     var exampleWorkersCustomDomains = Cloudflare.GetWorkersCustomDomains.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Enabled = true,
         ///         Environment = "production",
         ///         Hostname = "app.example.com",
+        ///         PreviewsEnabled = false,
         ///         Service = "my-worker",
         ///         ZoneId = "593c9c94de529bbbfaac7c53ced0447d",
         ///         ZoneName = "example.com",
@@ -72,7 +76,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetWorkersCustomDomainsResult> Invoke(GetWorkersCustomDomainsInvokeArgs? args = null, InvokeOptions? options = null)
+        public static Output<GetWorkersCustomDomainsResult> Invoke(GetWorkersCustomDomainsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkersCustomDomainsResult>("cloudflare:index/getWorkersCustomDomains:getWorkersCustomDomains", args ?? new GetWorkersCustomDomainsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
@@ -94,8 +98,10 @@ namespace Pulumi.Cloudflare
         ///     var exampleWorkersCustomDomains = Cloudflare.GetWorkersCustomDomains.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Enabled = true,
         ///         Environment = "production",
         ///         Hostname = "app.example.com",
+        ///         PreviewsEnabled = false,
         ///         Service = "my-worker",
         ///         ZoneId = "593c9c94de529bbbfaac7c53ced0447d",
         ///         ZoneName = "example.com",
@@ -114,8 +120,14 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId")]
-        public string? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public string AccountId { get; set; } = null!;
+
+        /// <summary>
+        /// Whether the configured hostname is routable for the domain.
+        /// </summary>
+        [Input("enabled")]
+        public bool? Enabled { get; set; }
 
         /// <summary>
         /// Worker environment associated with the domain.
@@ -134,6 +146,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("maxItems")]
         public int? MaxItems { get; set; }
+
+        /// <summary>
+        /// Whether previews are routable for the domain.
+        /// </summary>
+        [Input("previewsEnabled")]
+        public bool? PreviewsEnabled { get; set; }
 
         /// <summary>
         /// Name of the Worker associated with the domain.
@@ -164,8 +182,14 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
+
+        /// <summary>
+        /// Whether the configured hostname is routable for the domain.
+        /// </summary>
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
 
         /// <summary>
         /// Worker environment associated with the domain.
@@ -184,6 +208,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("maxItems")]
         public Input<int>? MaxItems { get; set; }
+
+        /// <summary>
+        /// Whether previews are routable for the domain.
+        /// </summary>
+        [Input("previewsEnabled")]
+        public Input<bool>? PreviewsEnabled { get; set; }
 
         /// <summary>
         /// Name of the Worker associated with the domain.
@@ -216,7 +246,11 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string? AccountId;
+        public readonly string AccountId;
+        /// <summary>
+        /// Whether the configured hostname is routable for the domain.
+        /// </summary>
+        public readonly bool? Enabled;
         /// <summary>
         /// Worker environment associated with the domain.
         /// </summary>
@@ -229,6 +263,10 @@ namespace Pulumi.Cloudflare
         /// Max items to fetch, default: 1000
         /// </summary>
         public readonly int? MaxItems;
+        /// <summary>
+        /// Whether previews are routable for the domain.
+        /// </summary>
+        public readonly bool? PreviewsEnabled;
         /// <summary>
         /// The items returned by the data source
         /// </summary>
@@ -248,13 +286,17 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetWorkersCustomDomainsResult(
-            string? accountId,
+            string accountId,
+
+            bool? enabled,
 
             string? environment,
 
             string? hostname,
 
             int? maxItems,
+
+            bool? previewsEnabled,
 
             ImmutableArray<Outputs.GetWorkersCustomDomainsResultResult> results,
 
@@ -265,9 +307,11 @@ namespace Pulumi.Cloudflare
             string? zoneName)
         {
             AccountId = accountId;
+            Enabled = enabled;
             Environment = environment;
             Hostname = hostname;
             MaxItems = maxItems;
+            PreviewsEnabled = previewsEnabled;
             Results = results;
             Service = service;
             ZoneId = zoneId;

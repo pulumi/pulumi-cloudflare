@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly bool? DefaultDomainEnabled;
         public readonly bool? Enabled;
         /// <summary>
-        /// Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account's multi-instance search limit.
+        /// Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must reference an existing instance in this namespace, and the list must stay within the account's multi-instance search limit.
         /// </summary>
         public readonly ImmutableArray<string> InstancesAlloweds;
         public readonly Outputs.AiSearchNamespacePublicEndpointParamsMcp? Mcp;

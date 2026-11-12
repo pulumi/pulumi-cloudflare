@@ -14,16 +14,11 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class OrganizationParent
     {
         public readonly string Id;
-        public readonly string? Name;
 
         [OutputConstructor]
-        private OrganizationParent(
-            string id,
-
-            string? name)
+        private OrganizationParent(string id)
         {
             Id = id;
-            Name = name;
         }
     }
 }

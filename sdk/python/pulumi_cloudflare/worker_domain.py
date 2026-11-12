@@ -22,7 +22,9 @@ class WorkerDomainArgs:
                  account_id: pulumi.Input[_builtins.str],
                  hostname: pulumi.Input[_builtins.str],
                  service: pulumi.Input[_builtins.str],
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  environment: pulumi.Input[Optional[_builtins.str]] = None,
+                 previews_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -31,18 +33,24 @@ class WorkerDomainArgs:
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] hostname: Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
         :param pulumi.Input[_builtins.str] service: Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
+        :param pulumi.Input[_builtins.bool] enabled: Whether the configured hostname is routable for the domain. If disabled, then requests to the configured hostname will not be routed to the configured Worker. If disabled, then preview routing must be enabled, and only subdomains of the configured hostname will be routable.
         :param pulumi.Input[_builtins.str] environment: Worker environment associated with the domain.
+        :param pulumi.Input[_builtins.bool] previews_enabled: Whether previews are routable for the domain. If enabled, previews will be routable as subdomains of the configured hostname. For example, if the configured hostname is `app.example.com`, then requests to `my-feature.app.example.com` will be routed to the preview with slug `my-feature`, if such a preview exists. If preview routing is disabled, then hostname routing must be enabled.
         :param pulumi.Input[_builtins.str] zone_id: ID of the zone containing the domain hostname.
         :param pulumi.Input[_builtins.str] zone_name: Name of the zone containing the domain hostname.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "service", service)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
         if environment is not None:
             warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
             pulumi.log.warn("""environment is deprecated: This attribute is deprecated.""")
         if environment is not None:
             pulumi.set(__self__, "environment", environment)
+        if previews_enabled is not None:
+            pulumi.set(__self__, "previews_enabled", previews_enabled)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
         if zone_name is not None:
@@ -86,6 +94,18 @@ class WorkerDomainArgs:
 
     @_builtins.property
     @pulumi.getter
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether the configured hostname is routable for the domain. If disabled, then requests to the configured hostname will not be routed to the configured Worker. If disabled, then preview routing must be enabled, and only subdomains of the configured hostname will be routable.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter
     @_utilities.deprecated("""This attribute is deprecated.""")
     def environment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -96,6 +116,18 @@ class WorkerDomainArgs:
     @environment.setter
     def environment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "environment", value)
+
+    @_builtins.property
+    @pulumi.getter(name="previewsEnabled")
+    def previews_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether previews are routable for the domain. If enabled, previews will be routable as subdomains of the configured hostname. For example, if the configured hostname is `app.example.com`, then requests to `my-feature.app.example.com` will be routed to the preview with slug `my-feature`, if such a preview exists. If preview routing is disabled, then hostname routing must be enabled.
+        """
+        return pulumi.get(self, "previews_enabled")
+
+    @previews_enabled.setter
+    def previews_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "previews_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
@@ -127,8 +159,10 @@ class _WorkerDomainState:
     def __init__(__self__, *,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  cert_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  environment: pulumi.Input[Optional[_builtins.str]] = None,
                  hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 previews_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  service: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_name: pulumi.Input[Optional[_builtins.str]] = None):
@@ -137,8 +171,10 @@ class _WorkerDomainState:
 
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] cert_id: ID of the TLS certificate issued for the domain.
+        :param pulumi.Input[_builtins.bool] enabled: Whether the configured hostname is routable for the domain. If disabled, then requests to the configured hostname will not be routed to the configured Worker. If disabled, then preview routing must be enabled, and only subdomains of the configured hostname will be routable.
         :param pulumi.Input[_builtins.str] environment: Worker environment associated with the domain.
         :param pulumi.Input[_builtins.str] hostname: Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
+        :param pulumi.Input[_builtins.bool] previews_enabled: Whether previews are routable for the domain. If enabled, previews will be routable as subdomains of the configured hostname. For example, if the configured hostname is `app.example.com`, then requests to `my-feature.app.example.com` will be routed to the preview with slug `my-feature`, if such a preview exists. If preview routing is disabled, then hostname routing must be enabled.
         :param pulumi.Input[_builtins.str] service: Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
         :param pulumi.Input[_builtins.str] zone_id: ID of the zone containing the domain hostname.
         :param pulumi.Input[_builtins.str] zone_name: Name of the zone containing the domain hostname.
@@ -147,6 +183,8 @@ class _WorkerDomainState:
             pulumi.set(__self__, "account_id", account_id)
         if cert_id is not None:
             pulumi.set(__self__, "cert_id", cert_id)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
         if environment is not None:
             warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
             pulumi.log.warn("""environment is deprecated: This attribute is deprecated.""")
@@ -154,6 +192,8 @@ class _WorkerDomainState:
             pulumi.set(__self__, "environment", environment)
         if hostname is not None:
             pulumi.set(__self__, "hostname", hostname)
+        if previews_enabled is not None:
+            pulumi.set(__self__, "previews_enabled", previews_enabled)
         if service is not None:
             pulumi.set(__self__, "service", service)
         if zone_id is not None:
@@ -187,6 +227,18 @@ class _WorkerDomainState:
 
     @_builtins.property
     @pulumi.getter
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether the configured hostname is routable for the domain. If disabled, then requests to the configured hostname will not be routed to the configured Worker. If disabled, then preview routing must be enabled, and only subdomains of the configured hostname will be routable.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter
     @_utilities.deprecated("""This attribute is deprecated.""")
     def environment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -209,6 +261,18 @@ class _WorkerDomainState:
     @hostname.setter
     def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
+
+    @_builtins.property
+    @pulumi.getter(name="previewsEnabled")
+    def previews_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether previews are routable for the domain. If enabled, previews will be routable as subdomains of the configured hostname. For example, if the configured hostname is `app.example.com`, then requests to `my-feature.app.example.com` will be routed to the preview with slug `my-feature`, if such a preview exists. If preview routing is disabled, then hostname routing must be enabled.
+        """
+        return pulumi.get(self, "previews_enabled")
+
+    @previews_enabled.setter
+    def previews_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "previews_enabled", value)
 
     @_builtins.property
     @pulumi.getter
@@ -259,8 +323,10 @@ class WorkerDomain(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  environment: pulumi.Input[Optional[_builtins.str]] = None,
                  hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 previews_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  service: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -281,6 +347,8 @@ class WorkerDomain(pulumi.CustomResource):
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             hostname="app.example.com",
             service="my-worker",
+            enabled=True,
+            previews_enabled=False,
             zone_id="593c9c94de529bbbfaac7c53ced0447d",
             zone_name="example.com")
         ```
@@ -295,8 +363,10 @@ class WorkerDomain(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.bool] enabled: Whether the configured hostname is routable for the domain. If disabled, then requests to the configured hostname will not be routed to the configured Worker. If disabled, then preview routing must be enabled, and only subdomains of the configured hostname will be routable.
         :param pulumi.Input[_builtins.str] environment: Worker environment associated with the domain.
         :param pulumi.Input[_builtins.str] hostname: Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
+        :param pulumi.Input[_builtins.bool] previews_enabled: Whether previews are routable for the domain. If enabled, previews will be routable as subdomains of the configured hostname. For example, if the configured hostname is `app.example.com`, then requests to `my-feature.app.example.com` will be routed to the preview with slug `my-feature`, if such a preview exists. If preview routing is disabled, then hostname routing must be enabled.
         :param pulumi.Input[_builtins.str] service: Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
         :param pulumi.Input[_builtins.str] zone_id: ID of the zone containing the domain hostname.
         :param pulumi.Input[_builtins.str] zone_name: Name of the zone containing the domain hostname.
@@ -323,6 +393,8 @@ class WorkerDomain(pulumi.CustomResource):
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             hostname="app.example.com",
             service="my-worker",
+            enabled=True,
+            previews_enabled=False,
             zone_id="593c9c94de529bbbfaac7c53ced0447d",
             zone_name="example.com")
         ```
@@ -350,8 +422,10 @@ class WorkerDomain(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  environment: pulumi.Input[Optional[_builtins.str]] = None,
                  hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 previews_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  service: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -368,10 +442,12 @@ class WorkerDomain(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["enabled"] = enabled
             __props__.__dict__["environment"] = environment
             if hostname is None and not opts.urn:
                 raise TypeError("Missing required property 'hostname'")
             __props__.__dict__["hostname"] = hostname
+            __props__.__dict__["previews_enabled"] = previews_enabled
             if service is None and not opts.urn:
                 raise TypeError("Missing required property 'service'")
             __props__.__dict__["service"] = service
@@ -392,8 +468,10 @@ class WorkerDomain(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             cert_id: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             environment: pulumi.Input[Optional[_builtins.str]] = None,
             hostname: pulumi.Input[Optional[_builtins.str]] = None,
+            previews_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             service: pulumi.Input[Optional[_builtins.str]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None,
             zone_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'WorkerDomain':
@@ -406,8 +484,10 @@ class WorkerDomain(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] cert_id: ID of the TLS certificate issued for the domain.
+        :param pulumi.Input[_builtins.bool] enabled: Whether the configured hostname is routable for the domain. If disabled, then requests to the configured hostname will not be routed to the configured Worker. If disabled, then preview routing must be enabled, and only subdomains of the configured hostname will be routable.
         :param pulumi.Input[_builtins.str] environment: Worker environment associated with the domain.
         :param pulumi.Input[_builtins.str] hostname: Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
+        :param pulumi.Input[_builtins.bool] previews_enabled: Whether previews are routable for the domain. If enabled, previews will be routable as subdomains of the configured hostname. For example, if the configured hostname is `app.example.com`, then requests to `my-feature.app.example.com` will be routed to the preview with slug `my-feature`, if such a preview exists. If preview routing is disabled, then hostname routing must be enabled.
         :param pulumi.Input[_builtins.str] service: Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
         :param pulumi.Input[_builtins.str] zone_id: ID of the zone containing the domain hostname.
         :param pulumi.Input[_builtins.str] zone_name: Name of the zone containing the domain hostname.
@@ -418,8 +498,10 @@ class WorkerDomain(pulumi.CustomResource):
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["cert_id"] = cert_id
+        __props__.__dict__["enabled"] = enabled
         __props__.__dict__["environment"] = environment
         __props__.__dict__["hostname"] = hostname
+        __props__.__dict__["previews_enabled"] = previews_enabled
         __props__.__dict__["service"] = service
         __props__.__dict__["zone_id"] = zone_id
         __props__.__dict__["zone_name"] = zone_name
@@ -430,16 +512,20 @@ class WorkerDomain(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             cert_id: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             environment: pulumi.Input[Optional[_builtins.str]] = None,
             hostname: pulumi.Input[Optional[_builtins.str]] = None,
+            previews_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             service: pulumi.Input[Optional[_builtins.str]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None,
             zone_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
         __props__["accountId"] = account_id
         __props__["certId"] = cert_id
+        __props__["enabled"] = enabled
         __props__["environment"] = environment
         __props__["hostname"] = hostname
+        __props__["previewsEnabled"] = previews_enabled
         __props__["service"] = service
         __props__["zoneId"] = zone_id
         __props__["zoneName"] = zone_name
@@ -463,6 +549,14 @@ class WorkerDomain(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
+    def enabled(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether the configured hostname is routable for the domain. If disabled, then requests to the configured hostname will not be routed to the configured Worker. If disabled, then preview routing must be enabled, and only subdomains of the configured hostname will be routable.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
     @_utilities.deprecated("""This attribute is deprecated.""")
     def environment(self) -> pulumi.Output[_builtins.str]:
         """
@@ -477,6 +571,14 @@ class WorkerDomain(pulumi.CustomResource):
         Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
         """
         return pulumi.get(self, "hostname")
+
+    @_builtins.property
+    @pulumi.getter(name="previewsEnabled")
+    def previews_enabled(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether previews are routable for the domain. If enabled, previews will be routable as subdomains of the configured hostname. For example, if the configured hostname is `app.example.com`, then requests to `my-feature.app.example.com` will be routed to the preview with slug `my-feature`, if such a preview exists. If preview routing is disabled, then hostname routing must be enabled.
+        """
+        return pulumi.get(self, "previews_enabled")
 
     @_builtins.property
     @pulumi.getter

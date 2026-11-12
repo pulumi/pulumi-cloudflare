@@ -50,19 +50,31 @@ import (
 //						Weight:           pulumi.Float64(0.6),
 //					},
 //				},
+//				CheckRegions: pulumi.StringArray{
+//					pulumi.String("WEU"),
+//					pulumi.String("ENAM"),
+//				},
 //				Description: pulumi.String("Primary data center - Provider XYZ"),
 //				Enabled:     pulumi.Bool(false),
-//				Latitude:    pulumi.Float64(0),
+//				HealthSources: pulumi.StringArray{
+//					pulumi.String("regional"),
+//					pulumi.String("global"),
+//				},
+//				Latitude: pulumi.Float64(0),
 //				LoadShedding: &cloudflare.LoadBalancerPoolLoadSheddingArgs{
 //					DefaultPercent: pulumi.Float64(0),
 //					DefaultPolicy:  pulumi.String("random"),
 //					SessionPercent: pulumi.Float64(0),
 //					SessionPolicy:  pulumi.String("hash"),
 //				},
-//				Longitude:         pulumi.Float64(0),
-//				MinimumOrigins:    pulumi.Int(0),
-//				Monitor:           pulumi.String("monitor"),
-//				MonitorGroup:      pulumi.String("monitor_group"),
+//				Longitude:      pulumi.Float64(0),
+//				MinimumOrigins: pulumi.Int(0),
+//				Monitor:        pulumi.String("monitor"),
+//				MonitorGroup:   pulumi.String("monitor_group"),
+//				Networks: []string{
+//					"cloudflare",
+//					"jdcloud",
+//				},
 //				NotificationEmail: pulumi.String("someone@example.com,sometwo@example.com"),
 //				NotificationFilter: &cloudflare.LoadBalancerPoolNotificationFilterArgs{
 //					Origin: &cloudflare.LoadBalancerPoolNotificationFilterOriginArgs{

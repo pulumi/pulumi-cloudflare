@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class WorkerVersionBindingGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
+        /// For `type: SecretKey`: Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
         /// </summary>
         [Input("algorithm")]
         public Input<string>? Algorithm { get; set; }
@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _allowedDestinationAddresses;
 
         /// <summary>
-        /// List of allowed destination addresses.
+        /// For `type: SendEmail`: List of allowed destination addresses.
         /// </summary>
         public InputList<string> AllowedDestinationAddresses
         {
@@ -34,7 +34,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _allowedSenderAddresses;
 
         /// <summary>
-        /// List of allowed sender addresses.
+        /// For `type: SendEmail`: List of allowed sender addresses.
         /// </summary>
         public InputList<string> AllowedSenderAddresses
         {
@@ -43,105 +43,111 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// ID of the Flagship app to bind to for feature flag evaluation.
+        /// For `type: flagship`: ID of the Flagship app to bind to for feature flag evaluation.
         /// </summary>
         [Input("appId")]
         public Input<string>? AppId { get; set; }
 
         /// <summary>
-        /// R2 bucket to bind to.
+        /// For `type: R2Bucket`: R2 bucket to bind to.
         /// </summary>
         [Input("bucketName")]
         public Input<string>? BucketName { get; set; }
 
         /// <summary>
-        /// Identifier of the certificate to bind to.
+        /// For `type: MtlsCertificate`: Identifier of the certificate to bind to.
         /// </summary>
         [Input("certificateId")]
         public Input<string>? CertificateId { get; set; }
 
         /// <summary>
-        /// The exported class name of the Durable Object.
+        /// For `type: DurableObjectNamespace`: The exported class name of the Durable Object.
+        /// 
+        /// For `type: workflow`: Class name of the Workflow. Should only be provided if the Workflow belongs to this script.
         /// </summary>
         [Input("className")]
         public Input<string>? ClassName { get; set; }
 
         /// <summary>
-        /// Identifier of the D1 database to bind to.
+        /// For `type: d1`: Identifier of the D1 database to bind to.
         /// </summary>
         [Input("databaseId")]
         public Input<string>? DatabaseId { get; set; }
 
         /// <summary>
-        /// The name of the dataset to bind to.
+        /// For `type: AnalyticsEngine`: The name of the dataset to bind to.
         /// </summary>
         [Input("dataset")]
         public Input<string>? Dataset { get; set; }
 
         /// <summary>
-        /// Destination address for the email.
+        /// For `type: SendEmail`: Destination address for the email.
         /// </summary>
         [Input("destinationAddress")]
         public Input<string>? DestinationAddress { get; set; }
 
         /// <summary>
-        /// The dispatch namespace the Durable Object script belongs to.
+        /// For `type: DurableObjectNamespace`: The dispatch namespace the Durable Object script belongs to.
         /// </summary>
         [Input("dispatchNamespace")]
         public Input<string>? DispatchNamespace { get; set; }
 
         /// <summary>
-        /// Entrypoint to invoke on the target Worker.
+        /// For `type: service`: Entrypoint to invoke on the target Worker.
         /// </summary>
         [Input("entrypoint")]
         public Input<string>? Entrypoint { get; set; }
 
         /// <summary>
-        /// The environment of the ScriptName to bind to.
+        /// For `type: DurableObjectNamespace`: The environment of the ScriptName to bind to.
+        /// 
+        /// For `type: service`: Optional environment if the Worker utilizes one.
         /// </summary>
         [Input("environment")]
         public Input<string>? Environment { get; set; }
 
         /// <summary>
-        /// Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
+        /// For `type: SecretKey`: Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
         /// Available values: "raw", "pkcs8", "spki", "jwk".
         /// </summary>
         [Input("format")]
         public Input<string>? Format { get; set; }
 
         /// <summary>
-        /// Identifier of the D1 database to bind to.
+        /// For `type: d1`: Identifier of the D1 database to bind to.
+        /// 
+        /// For `type: hyperdrive`: Identifier of the Hyperdrive connection to bind to.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// Enables Gateway identity for the binding. Requires network*id to be "cf1:network" and cannot be combined with tunnel*id.
+        /// For `type: VpcNetwork`: Enables Gateway identity for the binding. Requires NetworkId to be "cf1:network" and cannot be combined with TunnelId or an explicit "cf1:vnet:&lt;UUID&gt;" network_id.
         /// Available values: "runtime-email-alpha".
         /// </summary>
         [Input("identity")]
         public Input<string>? Identity { get; set; }
 
         /// <summary>
-        /// Name of the Vectorize index to bind to.
+        /// For `type: vectorize`: Name of the Vectorize index to bind to.
         /// </summary>
         [Input("indexName")]
         public Input<string>? IndexName { get; set; }
 
         /// <summary>
-        /// The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
+        /// For `type: AiSearch`: The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
         /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
 
         /// <summary>
-        /// JSON data to use.
+        /// For `type: json`: JSON data to use.
         /// </summary>
         [Input("json")]
         public Input<string>? Json { get; set; }
 
         /// <summary>
-        /// The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
+        /// For `type: R2Bucket`: The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
         /// Available values: "eu", "fedramp", "fedramp-high", "us".
         /// </summary>
         [Input("jurisdiction")]
@@ -151,7 +157,7 @@ namespace Pulumi.Cloudflare.Inputs
         private Input<string>? _keyBase64;
 
         /// <summary>
-        /// Base64-encoded key data. Required if `Format` is "raw", "pkcs8", or "spki".
+        /// For `type: SecretKey`: Base64-encoded key data. Required if `Format` is "raw", "pkcs8", or "spki".
         /// </summary>
         public Input<string>? KeyBase64
         {
@@ -167,7 +173,7 @@ namespace Pulumi.Cloudflare.Inputs
         private Input<string>? _keyJwk;
 
         /// <summary>
-        /// Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `Format` is "jwk".
+        /// For `type: SecretKey`: Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `Format` is "jwk".
         /// </summary>
         public Input<string>? KeyJwk
         {
@@ -180,103 +186,113 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// A JavaScript variable name for the binding.
+        /// For `type: ai` or `type: AiSearch` or `type: AiSearchNamespace` or `type: messaging` or `type: AnalyticsEngine` or `type: artifacts` or `type: assets` or `type: browser` or `type: d1` or `type: DataBlob` or `type: DispatchNamespace` or `type: DurableObjectNamespace` or `type: hyperdrive` or `type: images` or `type: json` or `type: KvNamespace` or `type: media` or `type: MtlsCertificate` or `type: PlainText` or `type: pipelines` or `type: k2` or `type: queue` or `type: ratelimit` or `type: R2Bucket` or `type: SecretText` or `type: SendEmail` or `type: service` or `type: TextBlob` or `type: vectorize` or `type: VersionMetadata` or `type: SecretsStoreSecret` or `type: flagship` or `type: SecretKey` or `type: workflow` or `type: WasmModule` or `type: VpcService` or `type: VpcNetwork` or `type: WorkerLoader`: A JavaScript variable name for the binding.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The namespace the instance belongs to. Defaults to "default" if omitted. Customers who don't use namespaces can simply omit this field.
+        /// For `type: AiSearch`: The namespace the instance belongs to. Defaults to "default" if omitted. Customers who don't use namespaces can simply omit this field.
+        /// 
+        /// For `type: AiSearchNamespace`: The user-chosen namespace name. Must exist before deploy -- Wrangler handles auto-creation on deploy failure (R2 bucket pattern). The "default" namespace is auto-created by config-api for new accounts. Grants full access (CRUD + search + chat) to all instances within the namespace.
+        /// 
+        /// For `type: messaging`: The Messaging namespace to bind to.
+        /// 
+        /// For `type: artifacts`: The Artifacts namespace exposed to the Worker in the Worker's account. Must be 2-63 characters, start with an ASCII alphanumeric character, contain only ASCII alphanumeric characters, dots, underscores, and hyphens, and must not end with a hyphen. The namespace does not need to be created before binding it.
+        /// 
+        /// For `type: DispatchNamespace`: The name of the dispatch namespace.
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
 
         /// <summary>
-        /// Namespace identifier tag.
+        /// For `type: DurableObjectNamespace` or `type: KvNamespace`: Namespace identifier tag.
+        /// 
+        /// For `type: ratelimit`: Identifier of the rate limit namespace to bind to.
         /// </summary>
         [Input("namespaceId")]
         public Input<string>? NamespaceId { get; set; }
 
         /// <summary>
-        /// Identifier of the network to bind to. Only "cf1:network" is currently supported. Mutually exclusive with tunnel_id.
+        /// For `type: VpcNetwork`: Identifier of the network to bind to. Use "cf1:network" to select the account's default virtual network at runtime, or "cf1:vnet:&lt;UUID&gt;" to select an explicit virtual network in the Worker's account. Mutually exclusive with tunnel_id.
         /// </summary>
         [Input("networkId")]
         public Input<string>? NetworkId { get; set; }
 
         /// <summary>
-        /// The old name of the inherited binding. If set, the binding will be renamed from `OldName` to `Name` in the new version. If not set, the binding will keep the same name between versions.
+        /// For `type: inherit`: The old name of the inherited binding. If set, the binding will be renamed from `OldName` to `Name` in the new version. If not set, the binding will keep the same name between versions.
         /// </summary>
         [Input("oldName")]
         public Input<string>? OldName { get; set; }
 
         /// <summary>
-        /// Outbound worker.
+        /// For `type: DispatchNamespace`: Outbound worker.
         /// </summary>
         [Input("outbound")]
         public Input<Inputs.WorkerVersionBindingOutboundGetArgs>? Outbound { get; set; }
 
         /// <summary>
-        /// The name of the file containing the data content. Only accepted for `service worker syntax` Workers.
+        /// For `type: DataBlob`: The name of the file containing the data content. Only accepted for `service worker syntax` Workers.
+        /// 
+        /// For `type: TextBlob`: The name of the file containing the text content. Only accepted for `service worker syntax` Workers.
+        /// 
+        /// For `type: WasmModule`: The name of the file containing the WebAssembly module content. Only accepted for `service worker syntax` Workers.
         /// </summary>
         [Input("part")]
         public Input<string>? Part { get; set; }
 
         /// <summary>
-        /// Name of the Pipeline to bind to.
+        /// For `type: pipelines`: Name of the Pipeline to bind to.
         /// </summary>
         [Input("pipeline")]
         public Input<string>? Pipeline { get; set; }
 
         /// <summary>
-        /// Name of the Queue to bind to.
+        /// For `type: queue`: Name of the Queue to bind to.
         /// </summary>
         [Input("queueName")]
         public Input<string>? QueueName { get; set; }
 
         /// <summary>
-        /// Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
-        /// </summary>
-        [Input("retry")]
-        public Input<Inputs.WorkerVersionBindingRetryGetArgs>? Retry { get; set; }
-
-        /// <summary>
-        /// The script where the Durable Object is defined, if it is external to this Worker.
+        /// For `type: DurableObjectNamespace`: The script where the Durable Object is defined, if it is external to this Worker.
+        /// 
+        /// For `type: workflow`: Script name that contains the Workflow. If not provided, defaults to this script name.
         /// </summary>
         [Input("scriptName")]
         public Input<string>? ScriptName { get; set; }
 
         /// <summary>
-        /// Name of the secret in the store.
+        /// For `type: SecretsStoreSecret`: Name of the secret in the store.
         /// </summary>
         [Input("secretName")]
         public Input<string>? SecretName { get; set; }
 
         /// <summary>
-        /// Name of Worker to bind to.
+        /// For `type: service`: Name of Worker to bind to.
         /// </summary>
         [Input("service")]
         public Input<string>? Service { get; set; }
 
         /// <summary>
-        /// Identifier of the VPC service to bind to.
+        /// For `type: VpcService`: Identifier of the VPC service to bind to.
         /// </summary>
         [Input("serviceId")]
         public Input<string>? ServiceId { get; set; }
 
         /// <summary>
-        /// The rate limit configuration.
+        /// For `type: ratelimit`: The rate limit configuration.
         /// </summary>
         [Input("simple")]
         public Input<Inputs.WorkerVersionBindingSimpleGetArgs>? Simple { get; set; }
 
         /// <summary>
-        /// ID of the store containing the secret.
+        /// For `type: SecretsStoreSecret`: ID of the store containing the secret.
         /// </summary>
         [Input("storeId")]
         public Input<string>? StoreId { get; set; }
 
         /// <summary>
-        /// ID of a K2 stream owned by the account deploying the Worker.
+        /// For `type: k2`: ID of a K2 stream owned by the account deploying the Worker.
         /// </summary>
         [Input("stream")]
         public Input<string>? Stream { get; set; }
@@ -285,7 +301,9 @@ namespace Pulumi.Cloudflare.Inputs
         private Input<string>? _text;
 
         /// <summary>
-        /// The text value to use.
+        /// For `type: PlainText`: The text value to use.
+        /// 
+        /// For `type: SecretText`: The secret value to use.
         /// </summary>
         public Input<string>? Text
         {
@@ -298,14 +316,14 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
+        /// For `type: VpcNetwork`: UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
         /// </summary>
         [Input("tunnelId")]
         public Input<string>? TunnelId { get; set; }
 
         /// <summary>
         /// The kind of resource that the binding provides.
-        /// Available values: "ai", "ai*search", "ai*search*namespace", "messaging", "analytics*engine", "artifacts", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "k2", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "flagship", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
+        /// Available values: "ai", "AiSearch", "AiSearchNamespace", "messaging", "AnalyticsEngine", "artifacts", "assets", "browser", "d1", "DataBlob", "DispatchNamespace", "DurableObjectNamespace", "hyperdrive", "inherit", "images", "json", "KvNamespace", "media", "MtlsCertificate", "PlainText", "pipelines", "k2", "queue", "ratelimit", "R2Bucket", "SecretText", "SendEmail", "service", "TextBlob", "vectorize", "VersionMetadata", "SecretsStoreSecret", "flagship", "SecretKey", "workflow", "WasmModule", "VpcService", "VpcNetwork", "WorkerLoader".
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -314,7 +332,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _usages;
 
         /// <summary>
-        /// Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
+        /// For `type: SecretKey`: Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
         /// </summary>
         public InputList<string> Usages
         {
@@ -323,13 +341,13 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version.
+        /// For `type: inherit`: Identifier for the version to inherit the binding from. This can be a version ID, or the literal "latest" to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to "latest". Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only "latest" and reject a version ID with error 10057.
         /// </summary>
         [Input("versionId")]
         public Input<string>? VersionId { get; set; }
 
         /// <summary>
-        /// Name of the Workflow to bind to.
+        /// For `type: workflow`: Name of the Workflow to bind to.
         /// </summary>
         [Input("workflowName")]
         public Input<string>? WorkflowName { get; set; }

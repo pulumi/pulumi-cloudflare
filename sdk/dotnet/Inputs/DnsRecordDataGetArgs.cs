@@ -148,6 +148,8 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Priority.
+        /// 
+        /// Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
         /// </summary>
         [Input("priority")]
         public Input<double>? Priority { get; set; }
@@ -202,12 +204,17 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Target.
+        /// 
+        /// A valid hostname.
+        /// 
+        /// The record content.
         /// </summary>
         [Input("target")]
         public Input<string>? Target { get; set; }
 
         /// <summary>
-        /// Type.
+        /// Record type.
+        /// Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
         /// </summary>
         [Input("type")]
         public Input<double>? Type { get; set; }
@@ -220,6 +227,8 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Value of the record. This field's semantics depend on the chosen tag.
+        /// 
+        /// Value.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

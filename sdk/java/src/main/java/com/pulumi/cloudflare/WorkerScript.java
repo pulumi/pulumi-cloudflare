@@ -10,6 +10,7 @@ import com.pulumi.cloudflare.outputs.WorkerScriptAnnotations;
 import com.pulumi.cloudflare.outputs.WorkerScriptAssets;
 import com.pulumi.cloudflare.outputs.WorkerScriptBinding;
 import com.pulumi.cloudflare.outputs.WorkerScriptCacheOptions;
+import com.pulumi.cloudflare.outputs.WorkerScriptCodeUpdateStrategy;
 import com.pulumi.cloudflare.outputs.WorkerScriptExports;
 import com.pulumi.cloudflare.outputs.WorkerScriptFiles;
 import com.pulumi.cloudflare.outputs.WorkerScriptLimits;
@@ -37,6 +38,12 @@ import javax.annotation.Nullable;
  * 
  * - `Workers Scripts Read`
  * - `Workers Scripts Write`
+ * - `Individual Workers Admin`
+ * - `Individual Workers Content Read-Only`
+ * - `Individual Workers Editor`
+ * - `Workers Admin`
+ * - `Workers Content Read-Only`
+ * - `Workers Editor`
  * - `Workers Tail Read`
  * 
  * &gt; For more direct control over Workers resources, we recommend the beta `cloudflare.Worker`, `cloudflare.WorkerVersion`, and `cloudflare.WorkersDeployment` resources. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
@@ -56,6 +63,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.inputs.WorkersScriptAssetsConfigArgs;
  * import com.pulumi.cloudflare.inputs.WorkersScriptBindingArgs;
  * import com.pulumi.cloudflare.inputs.WorkersScriptCacheOptionsArgs;
+ * import com.pulumi.cloudflare.inputs.WorkersScriptCodeUpdateStrategyArgs;
  * import com.pulumi.cloudflare.inputs.WorkersScriptExportsArgs;
  * import com.pulumi.cloudflare.inputs.WorkersScriptExportsCacheArgs;
  * import com.pulumi.cloudflare.inputs.WorkersScriptLimitsArgs;
@@ -115,6 +123,9 @@ import javax.annotation.Nullable;
  *             .cacheOptions(WorkersScriptCacheOptionsArgs.builder()
  *                 .enabled(true)
  *                 .crossVersionCache(true)
+ *                 .build())
+ *             .codeUpdateStrategy(WorkersScriptCodeUpdateStrategyArgs.builder()
+ *                 .mode("immediate")
  *                 .build())
  *             .compatibilityDate("2021-01-01T00:00:00Z")
  *             .compatibilityFlags("nodejs_compat")
@@ -282,7 +293,7 @@ public class WorkerScript extends com.pulumi.resources.CustomResource {
         return this.bindings;
     }
     /**
-     * When set to &#34;strict&#34;, the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+     * When set to &#34;strict&#34;, the upload will fail with error 10057 if any `inherit` type bindings cannot be resolved against the latest uploaded version of the Worker, which may not be the deployed version. Without this, unresolvable inherit bindings are silently dropped.
      * Available values: &#34;strict&#34;.
      * 
      */
@@ -290,7 +301,7 @@ public class WorkerScript extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> bindingsInherit;
 
     /**
-     * @return When set to &#34;strict&#34;, the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+     * @return When set to &#34;strict&#34;, the upload will fail with error 10057 if any `inherit` type bindings cannot be resolved against the latest uploaded version of the Worker, which may not be the deployed version. Without this, unresolvable inherit bindings are silently dropped.
      * Available values: &#34;strict&#34;.
      * 
      */
@@ -330,6 +341,20 @@ public class WorkerScript extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<WorkerScriptCacheOptions>> cacheOptions() {
         return Codegen.optional(this.cacheOptions);
+    }
+    /**
+     * Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+     * 
+     */
+    @Export(name="codeUpdateStrategy", refs={WorkerScriptCodeUpdateStrategy.class}, tree="[0]")
+    private Output</* @Nullable */ WorkerScriptCodeUpdateStrategy> codeUpdateStrategy;
+
+    /**
+     * @return Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+     * 
+     */
+    public Output<Optional<WorkerScriptCodeUpdateStrategy>> codeUpdateStrategy() {
+        return Codegen.optional(this.codeUpdateStrategy);
     }
     /**
      * Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.

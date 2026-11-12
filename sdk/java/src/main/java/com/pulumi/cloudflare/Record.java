@@ -141,14 +141,14 @@ public class Record extends com.pulumi.resources.CustomResource {
         return this.createdOn;
     }
     /**
-     * Components of a MX record.
+     * For `type: CAA`: Components of a CAA record.
      * 
      */
     @Export(name="data", refs={RecordData.class}, tree="[0]")
     private Output</* @Nullable */ RecordData> data;
 
     /**
-     * @return Components of a MX record.
+     * @return For `type: CAA`: Components of a CAA record.
      * 
      */
     public Output<Optional<RecordData>> data() {
@@ -225,14 +225,14 @@ public class Record extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.priority);
     }
     /**
-     * Enables private network routing to the origin.
+     * For `type: A` or `type: AAAA`: Enables private network routing to the origin.
      * 
      */
     @Export(name="privateRouting", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> privateRouting;
 
     /**
-     * @return Enables private network routing to the origin.
+     * @return For `type: A` or `type: AAAA`: Enables private network routing to the origin.
      * 
      */
     public Output<Optional<Boolean>> privateRouting() {

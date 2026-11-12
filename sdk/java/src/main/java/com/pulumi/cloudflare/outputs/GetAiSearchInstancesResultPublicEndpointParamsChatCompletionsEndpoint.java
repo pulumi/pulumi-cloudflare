@@ -10,17 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAiSearchInstancesResultPublicEndpointParamsChatCompletionsEndpoint {
-    /**
-     * @return Disable chat completions endpoint for this public endpoint
-     * 
-     */
     private Boolean disabled;
 
     private GetAiSearchInstancesResultPublicEndpointParamsChatCompletionsEndpoint() {}
-    /**
-     * @return Disable chat completions endpoint for this public endpoint
-     * 
-     */
     public Boolean disabled() {
         return this.disabled;
     }

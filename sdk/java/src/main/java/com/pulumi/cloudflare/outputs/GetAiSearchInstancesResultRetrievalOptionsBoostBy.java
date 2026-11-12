@@ -11,30 +11,32 @@ import java.util.Objects;
 @CustomType
 public final class GetAiSearchInstancesResultRetrievalOptionsBoostBy {
     /**
-     * @return Boost direction. &#39;desc&#39; = higher values rank higher (e.g. newer timestamps). &#39;asc&#39; = lower values rank higher. &#39;exists&#39; = boost chunks that have the field. &#39;not*exists&#39; = boost chunks that lack the field. Optional — defaults to &#39;asc&#39; for numeric/datetime fields, &#39;exists&#39; for text/boolean fields.
-     * Available values: &#34;asc&#34;, &#34;desc&#34;, &#34;exists&#34;, &#34;not*exists&#34;.
+     * @return Available values: &#34;number&#34;, &#34;datetime&#34;, &#34;text&#34;, &#34;boolean&#34;.
+     * 
+     */
+    private String dataType;
+    /**
+     * @return Available values: &#34;asc&#34;, &#34;desc&#34;, &#34;exists&#34;, &#34;notExists&#34;.
      * 
      */
     private String direction;
-    /**
-     * @return Metadata field name to boost by. Use &#39;timestamp&#39; for document freshness, or any custom*metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not*exists); text/boolean fields only support exists/not_exists.
-     * 
-     */
     private String field;
 
     private GetAiSearchInstancesResultRetrievalOptionsBoostBy() {}
     /**
-     * @return Boost direction. &#39;desc&#39; = higher values rank higher (e.g. newer timestamps). &#39;asc&#39; = lower values rank higher. &#39;exists&#39; = boost chunks that have the field. &#39;not*exists&#39; = boost chunks that lack the field. Optional — defaults to &#39;asc&#39; for numeric/datetime fields, &#39;exists&#39; for text/boolean fields.
-     * Available values: &#34;asc&#34;, &#34;desc&#34;, &#34;exists&#34;, &#34;not*exists&#34;.
+     * @return Available values: &#34;number&#34;, &#34;datetime&#34;, &#34;text&#34;, &#34;boolean&#34;.
+     * 
+     */
+    public String dataType() {
+        return this.dataType;
+    }
+    /**
+     * @return Available values: &#34;asc&#34;, &#34;desc&#34;, &#34;exists&#34;, &#34;notExists&#34;.
      * 
      */
     public String direction() {
         return this.direction;
     }
-    /**
-     * @return Metadata field name to boost by. Use &#39;timestamp&#39; for document freshness, or any custom*metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not*exists); text/boolean fields only support exists/not_exists.
-     * 
-     */
     public String field() {
         return this.field;
     }
@@ -48,15 +50,25 @@ public final class GetAiSearchInstancesResultRetrievalOptionsBoostBy {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String dataType;
         private String direction;
         private String field;
         public Builder() {}
         public Builder(GetAiSearchInstancesResultRetrievalOptionsBoostBy defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.dataType = defaults.dataType;
     	      this.direction = defaults.direction;
     	      this.field = defaults.field;
         }
 
+        @CustomType.Setter
+        public Builder dataType(String dataType) {
+            if (dataType == null) {
+              throw new MissingRequiredPropertyException("GetAiSearchInstancesResultRetrievalOptionsBoostBy", "dataType");
+            }
+            this.dataType = dataType;
+            return this;
+        }
         @CustomType.Setter
         public Builder direction(String direction) {
             if (direction == null) {
@@ -75,6 +87,7 @@ public final class GetAiSearchInstancesResultRetrievalOptionsBoostBy {
         }
         public GetAiSearchInstancesResultRetrievalOptionsBoostBy build() {
             final var _resultValue = new GetAiSearchInstancesResultRetrievalOptionsBoostBy();
+            _resultValue.dataType = dataType;
             _resultValue.direction = direction;
             _resultValue.field = field;
             return _resultValue;

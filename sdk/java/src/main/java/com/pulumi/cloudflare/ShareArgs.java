@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare;
 
+import com.pulumi.cloudflare.inputs.ShareExcludedRecipientArgs;
 import com.pulumi.cloudflare.inputs.ShareRecipientArgs;
 import com.pulumi.cloudflare.inputs.ShareResourceArgs;
 import com.pulumi.core.Output;
@@ -11,6 +12,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -33,6 +35,21 @@ public final class ShareArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Output<String> accountId() {
         return this.accountId;
+    }
+
+    /**
+     * Accounts to exclude from an organization-targeted share. Only allowed when `recipients` contains no account entries. The share owner cannot be excluded. Duplicate entries are ignored.
+     * 
+     */
+    @Import(name="excludedRecipients")
+    private @Nullable Output<List<ShareExcludedRecipientArgs>> excludedRecipients;
+
+    /**
+     * @return Accounts to exclude from an organization-targeted share. Only allowed when `recipients` contains no account entries. The share owner cannot be excluded. Duplicate entries are ignored.
+     * 
+     */
+    public Optional<Output<List<ShareExcludedRecipientArgs>>> excludedRecipients() {
+        return Optional.ofNullable(this.excludedRecipients);
     }
 
     /**
@@ -66,6 +83,23 @@ public final class ShareArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+     * Available values: &#34;api&#34;, &#34;mirror&#34;.
+     * 
+     */
+    @Import(name="includeTagsFrom")
+    private @Nullable Output<String> includeTagsFrom;
+
+    /**
+     * @return Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+     * Available values: &#34;api&#34;, &#34;mirror&#34;.
+     * 
+     */
+    public Optional<Output<String>> includeTagsFrom() {
+        return Optional.ofNullable(this.includeTagsFrom);
+    }
+
+    /**
      * The name of the share.
      * 
      */
@@ -80,29 +114,47 @@ public final class ShareArgs extends com.pulumi.resources.ResourceArgs {
         return this.name;
     }
 
-    @Import(name="recipients", required=true)
-    private Output<List<ShareRecipientArgs>> recipients;
+    @Import(name="recipients")
+    private @Nullable Output<List<ShareRecipientArgs>> recipients;
 
-    public Output<List<ShareRecipientArgs>> recipients() {
-        return this.recipients;
+    public Optional<Output<List<ShareRecipientArgs>>> recipients() {
+        return Optional.ofNullable(this.recipients);
     }
 
-    @Import(name="resources", required=true)
-    private Output<List<ShareResourceArgs>> resources;
+    @Import(name="resources")
+    private @Nullable Output<List<ShareResourceArgs>> resources;
 
-    public Output<List<ShareResourceArgs>> resources() {
-        return this.resources;
+    public Optional<Output<List<ShareResourceArgs>>> resources() {
+        return Optional.ofNullable(this.resources);
+    }
+
+    /**
+     * Tags associated with the share.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return Tags associated with the share.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
     }
 
     private ShareArgs() {}
 
     private ShareArgs(ShareArgs $) {
         this.accountId = $.accountId;
+        this.excludedRecipients = $.excludedRecipients;
         this.includeRecipientCounts = $.includeRecipientCounts;
         this.includeResources = $.includeResources;
+        this.includeTagsFrom = $.includeTagsFrom;
         this.name = $.name;
         this.recipients = $.recipients;
         this.resources = $.resources;
+        this.tags = $.tags;
     }
 
     public static Builder builder() {
@@ -142,6 +194,37 @@ public final class ShareArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        /**
+         * @param excludedRecipients Accounts to exclude from an organization-targeted share. Only allowed when `recipients` contains no account entries. The share owner cannot be excluded. Duplicate entries are ignored.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludedRecipients(@Nullable Output<List<ShareExcludedRecipientArgs>> excludedRecipients) {
+            $.excludedRecipients = excludedRecipients;
+            return this;
+        }
+
+        /**
+         * @param excludedRecipients Accounts to exclude from an organization-targeted share. Only allowed when `recipients` contains no account entries. The share owner cannot be excluded. Duplicate entries are ignored.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludedRecipients(List<ShareExcludedRecipientArgs> excludedRecipients) {
+            return excludedRecipients(Output.of(excludedRecipients));
+        }
+
+        /**
+         * @param excludedRecipients Accounts to exclude from an organization-targeted share. Only allowed when `recipients` contains no account entries. The share owner cannot be excluded. Duplicate entries are ignored.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludedRecipients(ShareExcludedRecipientArgs... excludedRecipients) {
+            return excludedRecipients(List.of(excludedRecipients));
         }
 
         /**
@@ -187,6 +270,29 @@ public final class ShareArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param includeTagsFrom Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+         * Available values: &#34;api&#34;, &#34;mirror&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeTagsFrom(@Nullable Output<String> includeTagsFrom) {
+            $.includeTagsFrom = includeTagsFrom;
+            return this;
+        }
+
+        /**
+         * @param includeTagsFrom Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+         * Available values: &#34;api&#34;, &#34;mirror&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeTagsFrom(String includeTagsFrom) {
+            return includeTagsFrom(Output.of(includeTagsFrom));
+        }
+
+        /**
          * @param name The name of the share.
          * 
          * @return builder
@@ -207,7 +313,7 @@ public final class ShareArgs extends com.pulumi.resources.ResourceArgs {
             return name(Output.of(name));
         }
 
-        public Builder recipients(Output<List<ShareRecipientArgs>> recipients) {
+        public Builder recipients(@Nullable Output<List<ShareRecipientArgs>> recipients) {
             $.recipients = recipients;
             return this;
         }
@@ -220,7 +326,7 @@ public final class ShareArgs extends com.pulumi.resources.ResourceArgs {
             return recipients(List.of(recipients));
         }
 
-        public Builder resources(Output<List<ShareResourceArgs>> resources) {
+        public Builder resources(@Nullable Output<List<ShareResourceArgs>> resources) {
             $.resources = resources;
             return this;
         }
@@ -233,18 +339,33 @@ public final class ShareArgs extends com.pulumi.resources.ResourceArgs {
             return resources(List.of(resources));
         }
 
+        /**
+         * @param tags Tags associated with the share.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags Tags associated with the share.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
+        }
+
         public ShareArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("ShareArgs", "accountId");
             }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("ShareArgs", "name");
-            }
-            if ($.recipients == null) {
-                throw new MissingRequiredPropertyException("ShareArgs", "recipients");
-            }
-            if ($.resources == null) {
-                throw new MissingRequiredPropertyException("ShareArgs", "resources");
             }
             return $;
         }

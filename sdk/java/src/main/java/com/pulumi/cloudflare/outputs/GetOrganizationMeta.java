@@ -6,12 +6,14 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.cloudflare.outputs.GetOrganizationMetaTenantFlags;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetOrganizationMeta {
+    private Boolean areChildAccountsAccessibleByOrgMembers;
     /**
      * @return Ordered chain of organization tags from the root organization down to
      * (and including) this organization itself. Root organizations return a
@@ -28,8 +30,12 @@ public final class GetOrganizationMeta {
      * 
      */
     private GetOrganizationMetaTenantFlags tenantFlags;
+    private String tenantType;
 
     private GetOrganizationMeta() {}
+    public Boolean areChildAccountsAccessibleByOrgMembers() {
+        return this.areChildAccountsAccessibleByOrgMembers;
+    }
     /**
      * @return Ordered chain of organization tags from the root organization down to
      * (and including) this organization itself. Root organizations return a
@@ -52,6 +58,9 @@ public final class GetOrganizationMeta {
     public GetOrganizationMetaTenantFlags tenantFlags() {
         return this.tenantFlags;
     }
+    public String tenantType() {
+        return this.tenantType;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -62,17 +71,29 @@ public final class GetOrganizationMeta {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean areChildAccountsAccessibleByOrgMembers;
         private List<String> hierarchyTags;
         private String managedBy;
         private GetOrganizationMetaTenantFlags tenantFlags;
+        private String tenantType;
         public Builder() {}
         public Builder(GetOrganizationMeta defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.areChildAccountsAccessibleByOrgMembers = defaults.areChildAccountsAccessibleByOrgMembers;
     	      this.hierarchyTags = defaults.hierarchyTags;
     	      this.managedBy = defaults.managedBy;
     	      this.tenantFlags = defaults.tenantFlags;
+    	      this.tenantType = defaults.tenantType;
         }
 
+        @CustomType.Setter
+        public Builder areChildAccountsAccessibleByOrgMembers(Boolean areChildAccountsAccessibleByOrgMembers) {
+            if (areChildAccountsAccessibleByOrgMembers == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationMeta", "areChildAccountsAccessibleByOrgMembers");
+            }
+            this.areChildAccountsAccessibleByOrgMembers = areChildAccountsAccessibleByOrgMembers;
+            return this;
+        }
         @CustomType.Setter
         public Builder hierarchyTags(List<String> hierarchyTags) {
             if (hierarchyTags == null) {
@@ -100,11 +121,21 @@ public final class GetOrganizationMeta {
             this.tenantFlags = tenantFlags;
             return this;
         }
+        @CustomType.Setter
+        public Builder tenantType(String tenantType) {
+            if (tenantType == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationMeta", "tenantType");
+            }
+            this.tenantType = tenantType;
+            return this;
+        }
         public GetOrganizationMeta build() {
             final var _resultValue = new GetOrganizationMeta();
+            _resultValue.areChildAccountsAccessibleByOrgMembers = areChildAccountsAccessibleByOrgMembers;
             _resultValue.hierarchyTags = hierarchyTags;
             _resultValue.managedBy = managedBy;
             _resultValue.tenantFlags = tenantFlags;
+            _resultValue.tenantType = tenantType;
             return _resultValue;
         }
     }

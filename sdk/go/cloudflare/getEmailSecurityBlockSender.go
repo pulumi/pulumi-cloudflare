@@ -64,6 +64,7 @@ type LookupEmailSecurityBlockSenderResult struct {
 	AccountId string                             `pulumi:"accountId"`
 	Comments  string                             `pulumi:"comments"`
 	CreatedAt string                             `pulumi:"createdAt"`
+	ExpiresAt string                             `pulumi:"expiresAt"`
 	Filter    *GetEmailSecurityBlockSenderFilter `pulumi:"filter"`
 	Id        string                             `pulumi:"id"`
 	IsRegex   bool                               `pulumi:"isRegex"`
@@ -116,6 +117,10 @@ func (o LookupEmailSecurityBlockSenderResultOutput) Comments() pulumi.StringOutp
 
 func (o LookupEmailSecurityBlockSenderResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailSecurityBlockSenderResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+func (o LookupEmailSecurityBlockSenderResultOutput) ExpiresAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEmailSecurityBlockSenderResult) string { return v.ExpiresAt }).(pulumi.StringOutput)
 }
 
 func (o LookupEmailSecurityBlockSenderResultOutput) Filter() GetEmailSecurityBlockSenderFilterPtrOutput {

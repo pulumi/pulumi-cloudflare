@@ -23,19 +23,29 @@ class OrganizationArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
                  parent: pulumi.Input[Optional['OrganizationParentArgs']] = None,
+                 parent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  profile: pulumi.Input[Optional['OrganizationProfileArgs']] = None):
         """
         The set of arguments for constructing a Organization resource.
+
+        :param pulumi.Input[_builtins.str] name: The Organization name, limited to 65 UTF-8 bytes.
+        :param pulumi.Input[_builtins.str] parent_id: The current parent Organization ID. A different value is rejected; this endpoint cannot move an Organization.
+        :param pulumi.Input['OrganizationProfileArgs'] profile: Optional profile fields, each limited to 1,000 UTF-8 bytes. An empty profile is ignored.
         """
         pulumi.set(__self__, "name", name)
         if parent is not None:
             pulumi.set(__self__, "parent", parent)
+        if parent_id is not None:
+            pulumi.set(__self__, "parent_id", parent_id)
         if profile is not None:
             pulumi.set(__self__, "profile", profile)
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The Organization name, limited to 65 UTF-8 bytes.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -52,8 +62,23 @@ class OrganizationArgs:
         pulumi.set(self, "parent", value)
 
     @_builtins.property
+    @pulumi.getter(name="parentId")
+    def parent_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The current parent Organization ID. A different value is rejected; this endpoint cannot move an Organization.
+        """
+        return pulumi.get(self, "parent_id")
+
+    @parent_id.setter
+    def parent_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "parent_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def profile(self) -> pulumi.Input[Optional['OrganizationProfileArgs']]:
+        """
+        Optional profile fields, each limited to 1,000 UTF-8 bytes. An empty profile is ignored.
+        """
         return pulumi.get(self, "profile")
 
     @profile.setter
@@ -68,9 +93,14 @@ class _OrganizationState:
                  meta: pulumi.Input[Optional['OrganizationMetaArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional['OrganizationParentArgs']] = None,
+                 parent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  profile: pulumi.Input[Optional['OrganizationProfileArgs']] = None):
         """
         Input properties used for looking up and filtering Organization resources.
+
+        :param pulumi.Input[_builtins.str] name: The Organization name, limited to 65 UTF-8 bytes.
+        :param pulumi.Input[_builtins.str] parent_id: The current parent Organization ID. A different value is rejected; this endpoint cannot move an Organization.
+        :param pulumi.Input['OrganizationProfileArgs'] profile: Optional profile fields, each limited to 1,000 UTF-8 bytes. An empty profile is ignored.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -80,6 +110,8 @@ class _OrganizationState:
             pulumi.set(__self__, "name", name)
         if parent is not None:
             pulumi.set(__self__, "parent", parent)
+        if parent_id is not None:
+            pulumi.set(__self__, "parent_id", parent_id)
         if profile is not None:
             pulumi.set(__self__, "profile", profile)
 
@@ -104,6 +136,9 @@ class _OrganizationState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Organization name, limited to 65 UTF-8 bytes.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -120,8 +155,23 @@ class _OrganizationState:
         pulumi.set(self, "parent", value)
 
     @_builtins.property
+    @pulumi.getter(name="parentId")
+    def parent_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The current parent Organization ID. A different value is rejected; this endpoint cannot move an Organization.
+        """
+        return pulumi.get(self, "parent_id")
+
+    @parent_id.setter
+    def parent_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "parent_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def profile(self) -> pulumi.Input[Optional['OrganizationProfileArgs']]:
+        """
+        Optional profile fields, each limited to 1,000 UTF-8 bytes. An empty profile is ignored.
+        """
         return pulumi.get(self, "profile")
 
     @profile.setter
@@ -137,12 +187,17 @@ class Organization(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[Union['OrganizationParentArgs', 'OrganizationParentArgsDict', 'outputs.OrganizationParent']]] = None,
+                 parent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  profile: pulumi.Input[Optional[Union['OrganizationProfileArgs', 'OrganizationProfileArgsDict', 'outputs.OrganizationProfile']]] = None,
                  __props__=None):
         """
         Accepted Permissions
 
         - `User Details Write`
+
+        User API tokens can list and create Organizations, but reading, updating, or deleting an Organization requires a Global API key and your registered email address. The `Organization` Terraform resource therefore requires a Global API key for its full lifecycle.
+
+        See [Organizations authentication limitations](https://developers.cloudflare.com/fundamentals/organizations/limitations/#api-authentication) for credential compatibility by operation. Each endpoint’s **Security** section lists its supported authentication methods, with **Accepted Permissions** where applicable.
 
         ## Example Usage
 
@@ -151,7 +206,7 @@ class Organization(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example_organization = cloudflare.Organization("example_organization",
-            name="name",
+            name="x",
             parent={
                 "id": "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
             },
@@ -173,6 +228,9 @@ class Organization(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] name: The Organization name, limited to 65 UTF-8 bytes.
+        :param pulumi.Input[_builtins.str] parent_id: The current parent Organization ID. A different value is rejected; this endpoint cannot move an Organization.
+        :param pulumi.Input[Union['OrganizationProfileArgs', 'OrganizationProfileArgsDict', 'outputs.OrganizationProfile']] profile: Optional profile fields, each limited to 1,000 UTF-8 bytes. An empty profile is ignored.
         """
         ...
     @overload
@@ -185,6 +243,10 @@ class Organization(pulumi.CustomResource):
 
         - `User Details Write`
 
+        User API tokens can list and create Organizations, but reading, updating, or deleting an Organization requires a Global API key and your registered email address. The `Organization` Terraform resource therefore requires a Global API key for its full lifecycle.
+
+        See [Organizations authentication limitations](https://developers.cloudflare.com/fundamentals/organizations/limitations/#api-authentication) for credential compatibility by operation. Each endpoint’s **Security** section lists its supported authentication methods, with **Accepted Permissions** where applicable.
+
         ## Example Usage
 
         ```python
@@ -192,7 +254,7 @@ class Organization(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example_organization = cloudflare.Organization("example_organization",
-            name="name",
+            name="x",
             parent={
                 "id": "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
             },
@@ -229,6 +291,7 @@ class Organization(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[Union['OrganizationParentArgs', 'OrganizationParentArgsDict', 'outputs.OrganizationParent']]] = None,
+                 parent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  profile: pulumi.Input[Optional[Union['OrganizationProfileArgs', 'OrganizationProfileArgsDict', 'outputs.OrganizationProfile']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -243,6 +306,7 @@ class Organization(pulumi.CustomResource):
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["parent"] = parent
+            __props__.__dict__["parent_id"] = parent_id
             __props__.__dict__["profile"] = profile
             __props__.__dict__["create_time"] = None
             __props__.__dict__["meta"] = None
@@ -260,6 +324,7 @@ class Organization(pulumi.CustomResource):
             meta: pulumi.Input[Optional[Union['OrganizationMetaArgs', 'OrganizationMetaArgsDict', 'outputs.OrganizationMeta']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[Union['OrganizationParentArgs', 'OrganizationParentArgsDict', 'outputs.OrganizationParent']]] = None,
+            parent_id: pulumi.Input[Optional[_builtins.str]] = None,
             profile: pulumi.Input[Optional[Union['OrganizationProfileArgs', 'OrganizationProfileArgsDict', 'outputs.OrganizationProfile']]] = None) -> 'Organization':
         """
         Get an existing Organization resource's state with the given name, id, and optional extra
@@ -268,6 +333,9 @@ class Organization(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] name: The Organization name, limited to 65 UTF-8 bytes.
+        :param pulumi.Input[_builtins.str] parent_id: The current parent Organization ID. A different value is rejected; this endpoint cannot move an Organization.
+        :param pulumi.Input[Union['OrganizationProfileArgs', 'OrganizationProfileArgsDict', 'outputs.OrganizationProfile']] profile: Optional profile fields, each limited to 1,000 UTF-8 bytes. An empty profile is ignored.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -277,6 +345,7 @@ class Organization(pulumi.CustomResource):
         __props__.__dict__["meta"] = meta
         __props__.__dict__["name"] = name
         __props__.__dict__["parent"] = parent
+        __props__.__dict__["parent_id"] = parent_id
         __props__.__dict__["profile"] = profile
         return Organization(resource_name, opts=opts, __props__=__props__)
 
@@ -287,12 +356,14 @@ class Organization(pulumi.CustomResource):
             meta: pulumi.Input[Optional[Union['OrganizationMetaArgs', 'OrganizationMetaArgsDict', 'outputs.OrganizationMeta']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[Union['OrganizationParentArgs', 'OrganizationParentArgsDict', 'outputs.OrganizationParent']]] = None,
+            parent_id: pulumi.Input[Optional[_builtins.str]] = None,
             profile: pulumi.Input[Optional[Union['OrganizationProfileArgs', 'OrganizationProfileArgsDict', 'outputs.OrganizationProfile']]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
         __props__["createTime"] = create_time
         __props__["meta"] = meta
         __props__["name"] = name
         __props__["parent"] = parent
+        __props__["parentId"] = parent_id
         __props__["profile"] = profile
         return pulumi.runtime.exists_resource(None, 'cloudflare:index/organization:Organization', id, __props__, opts or pulumi.ResourceOptions())
 
@@ -309,15 +380,29 @@ class Organization(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
+        """
+        The Organization name, limited to 65 UTF-8 bytes.
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> pulumi.Output['outputs.OrganizationParent']:
+    def parent(self) -> pulumi.Output[Optional['outputs.OrganizationParent']]:
         return pulumi.get(self, "parent")
+
+    @_builtins.property
+    @pulumi.getter(name="parentId")
+    def parent_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The current parent Organization ID. A different value is rejected; this endpoint cannot move an Organization.
+        """
+        return pulumi.get(self, "parent_id")
 
     @_builtins.property
     @pulumi.getter
     def profile(self) -> pulumi.Output[Optional['outputs.OrganizationProfile']]:
+        """
+        Optional profile fields, each limited to 1,000 UTF-8 bytes. An empty profile is ignored.
+        """
         return pulumi.get(self, "profile")
 

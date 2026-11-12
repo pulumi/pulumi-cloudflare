@@ -31,14 +31,14 @@ public final class PagesProjectCanonicalDeploymentEnvVarsArgs extends com.pulumi
     }
 
     /**
-     * Environment variable value.
+     * For `type: plainText`: Environment variable value.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return Environment variable value.
+     * @return For `type: plainText`: Environment variable value.
      * 
      */
     public Optional<Output<String>> value() {
@@ -92,7 +92,7 @@ public final class PagesProjectCanonicalDeploymentEnvVarsArgs extends com.pulumi
         }
 
         /**
-         * @param value Environment variable value.
+         * @param value For `type: plainText`: Environment variable value.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class PagesProjectCanonicalDeploymentEnvVarsArgs extends com.pulumi
         }
 
         /**
-         * @param value Environment variable value.
+         * @param value For `type: plainText`: Environment variable value.
          * 
          * @return builder
          * 

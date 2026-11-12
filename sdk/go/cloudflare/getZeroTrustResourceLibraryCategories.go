@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Resource Library Read`
+// - `Resource Library Write`
+// - `Zero Trust Read`
+// - `Zero Trust Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -53,7 +60,7 @@ type LookupZeroTrustResourceLibraryCategoriesArgs struct {
 	Limit *int `pulumi:"limit"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
-	// Number of results to skip. Defaults to 0; negative values are clamped to 0.
+	// Number of results to skip. Defaults to 0; negative values are clamped to 0. Ignored when `cursor` is provided.
 	Offset *int `pulumi:"offset"`
 }
 
@@ -64,7 +71,7 @@ type LookupZeroTrustResourceLibraryCategoriesResult struct {
 	Limit int `pulumi:"limit"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
-	// Number of results to skip. Defaults to 0; negative values are clamped to 0.
+	// Number of results to skip. Defaults to 0; negative values are clamped to 0. Ignored when `cursor` is provided.
 	Offset int `pulumi:"offset"`
 	// The items returned by the data source
 	Results []GetZeroTrustResourceLibraryCategoriesResult `pulumi:"results"`
@@ -82,7 +89,7 @@ type LookupZeroTrustResourceLibraryCategoriesOutputArgs struct {
 	Limit pulumi.IntPtrInput `pulumi:"limit"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
-	// Number of results to skip. Defaults to 0; negative values are clamped to 0.
+	// Number of results to skip. Defaults to 0; negative values are clamped to 0. Ignored when `cursor` is provided.
 	Offset pulumi.IntPtrInput `pulumi:"offset"`
 }
 
@@ -119,7 +126,7 @@ func (o LookupZeroTrustResourceLibraryCategoriesResultOutput) MaxItems() pulumi.
 	return o.ApplyT(func(v LookupZeroTrustResourceLibraryCategoriesResult) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
 }
 
-// Number of results to skip. Defaults to 0; negative values are clamped to 0.
+// Number of results to skip. Defaults to 0; negative values are clamped to 0. Ignored when `cursor` is provided.
 func (o LookupZeroTrustResourceLibraryCategoriesResultOutput) Offset() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupZeroTrustResourceLibraryCategoriesResult) int { return v.Offset }).(pulumi.IntOutput)
 }

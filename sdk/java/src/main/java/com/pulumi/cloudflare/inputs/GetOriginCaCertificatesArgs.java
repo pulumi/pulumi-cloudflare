@@ -18,21 +18,6 @@ public final class GetOriginCaCertificatesArgs extends com.pulumi.resources.Invo
     public static final GetOriginCaCertificatesArgs Empty = new GetOriginCaCertificatesArgs();
 
     /**
-     * Limit to the number of records returned.
-     * 
-     */
-    @Import(name="limit")
-    private @Nullable Output<Integer> limit;
-
-    /**
-     * @return Limit to the number of records returned.
-     * 
-     */
-    public Optional<Output<Integer>> limit() {
-        return Optional.ofNullable(this.limit);
-    }
-
-    /**
      * Max items to fetch, default: 1000
      * 
      */
@@ -45,21 +30,6 @@ public final class GetOriginCaCertificatesArgs extends com.pulumi.resources.Invo
      */
     public Optional<Output<Integer>> maxItems() {
         return Optional.ofNullable(this.maxItems);
-    }
-
-    /**
-     * Offset the results.
-     * 
-     */
-    @Import(name="offset")
-    private @Nullable Output<Integer> offset;
-
-    /**
-     * @return Offset the results.
-     * 
-     */
-    public Optional<Output<Integer>> offset() {
-        return Optional.ofNullable(this.offset);
     }
 
     /**
@@ -80,9 +50,7 @@ public final class GetOriginCaCertificatesArgs extends com.pulumi.resources.Invo
     private GetOriginCaCertificatesArgs() {}
 
     private GetOriginCaCertificatesArgs(GetOriginCaCertificatesArgs $) {
-        this.limit = $.limit;
         this.maxItems = $.maxItems;
-        this.offset = $.offset;
         this.zoneId = $.zoneId;
     }
 
@@ -105,27 +73,6 @@ public final class GetOriginCaCertificatesArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param limit Limit to the number of records returned.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder limit(@Nullable Output<Integer> limit) {
-            $.limit = limit;
-            return this;
-        }
-
-        /**
-         * @param limit Limit to the number of records returned.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder limit(Integer limit) {
-            return limit(Output.of(limit));
-        }
-
-        /**
          * @param maxItems Max items to fetch, default: 1000
          * 
          * @return builder
@@ -144,27 +91,6 @@ public final class GetOriginCaCertificatesArgs extends com.pulumi.resources.Invo
          */
         public Builder maxItems(Integer maxItems) {
             return maxItems(Output.of(maxItems));
-        }
-
-        /**
-         * @param offset Offset the results.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder offset(@Nullable Output<Integer> offset) {
-            $.offset = offset;
-            return this;
-        }
-
-        /**
-         * @param offset Offset the results.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder offset(Integer offset) {
-            return offset(Output.of(offset));
         }
 
         /**

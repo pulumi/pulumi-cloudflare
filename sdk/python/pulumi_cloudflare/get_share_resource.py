@@ -81,7 +81,7 @@ class GetShareResourceResult:
     @pulumi.getter
     def created(self) -> _builtins.str:
         """
-        When the share was created.
+        When the object was created.
         """
         return pulumi.get(self, "created")
 
@@ -110,7 +110,7 @@ class GetShareResourceResult:
     @pulumi.getter
     def modified(self) -> _builtins.str:
         """
-        When the share was modified.
+        When the object was last modified.
         """
         return pulumi.get(self, "modified")
 
@@ -126,7 +126,7 @@ class GetShareResourceResult:
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> _builtins.str:
         """
-        Share Resource identifier.
+        Identifier assigned by the service that owns the shared resource.
         """
         return pulumi.get(self, "resource_id")
 

@@ -75,7 +75,7 @@ type Record struct {
 	Content pulumi.StringOutput `pulumi:"content"`
 	// When the record was created.
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
-	// Components of a MX record.
+	// For `type: CAA`: Components of a CAA record.
 	Data RecordDataPtrOutput `pulumi:"data"`
 	// Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 	IncludeShadowMetadata pulumi.BoolOutput `pulumi:"includeShadowMetadata"`
@@ -87,7 +87,7 @@ type Record struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
 	Priority pulumi.Float64PtrOutput `pulumi:"priority"`
-	// Enables private network routing to the origin.
+	// For `type: A` or `type: AAAA`: Enables private network routing to the origin.
 	PrivateRouting pulumi.BoolPtrOutput `pulumi:"privateRouting"`
 	// Whether the record can be proxied by Cloudflare or not.
 	Proxiable pulumi.BoolOutput `pulumi:"proxiable"`
@@ -164,7 +164,7 @@ type recordState struct {
 	Content *string `pulumi:"content"`
 	// When the record was created.
 	CreatedOn *string `pulumi:"createdOn"`
-	// Components of a MX record.
+	// For `type: CAA`: Components of a CAA record.
 	Data *RecordData `pulumi:"data"`
 	// Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 	IncludeShadowMetadata *bool `pulumi:"includeShadowMetadata"`
@@ -176,7 +176,7 @@ type recordState struct {
 	Name *string `pulumi:"name"`
 	// Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
 	Priority *float64 `pulumi:"priority"`
-	// Enables private network routing to the origin.
+	// For `type: A` or `type: AAAA`: Enables private network routing to the origin.
 	PrivateRouting *bool `pulumi:"privateRouting"`
 	// Whether the record can be proxied by Cloudflare or not.
 	Proxiable *bool `pulumi:"proxiable"`
@@ -206,7 +206,7 @@ type RecordState struct {
 	Content pulumi.StringPtrInput
 	// When the record was created.
 	CreatedOn pulumi.StringPtrInput
-	// Components of a MX record.
+	// For `type: CAA`: Components of a CAA record.
 	Data RecordDataPtrInput
 	// Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 	IncludeShadowMetadata pulumi.BoolPtrInput
@@ -218,7 +218,7 @@ type RecordState struct {
 	Name pulumi.StringPtrInput
 	// Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
 	Priority pulumi.Float64PtrInput
-	// Enables private network routing to the origin.
+	// For `type: A` or `type: AAAA`: Enables private network routing to the origin.
 	PrivateRouting pulumi.BoolPtrInput
 	// Whether the record can be proxied by Cloudflare or not.
 	Proxiable pulumi.BoolPtrInput
@@ -254,7 +254,7 @@ type recordArgs struct {
 	Comment *string `pulumi:"comment"`
 	// A valid IPv4 address.
 	Content *string `pulumi:"content"`
-	// Components of a MX record.
+	// For `type: CAA`: Components of a CAA record.
 	Data *RecordData `pulumi:"data"`
 	// Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 	IncludeShadowMetadata *bool `pulumi:"includeShadowMetadata"`
@@ -262,7 +262,7 @@ type recordArgs struct {
 	Name string `pulumi:"name"`
 	// Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
 	Priority *float64 `pulumi:"priority"`
-	// Enables private network routing to the origin.
+	// For `type: A` or `type: AAAA`: Enables private network routing to the origin.
 	PrivateRouting *bool `pulumi:"privateRouting"`
 	// Whether the record is receiving the performance and security benefits of Cloudflare.
 	Proxied *bool `pulumi:"proxied"`
@@ -285,7 +285,7 @@ type RecordArgs struct {
 	Comment pulumi.StringPtrInput
 	// A valid IPv4 address.
 	Content pulumi.StringPtrInput
-	// Components of a MX record.
+	// For `type: CAA`: Components of a CAA record.
 	Data RecordDataPtrInput
 	// Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 	IncludeShadowMetadata pulumi.BoolPtrInput
@@ -293,7 +293,7 @@ type RecordArgs struct {
 	Name pulumi.StringInput
 	// Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
 	Priority pulumi.Float64PtrInput
-	// Enables private network routing to the origin.
+	// For `type: A` or `type: AAAA`: Enables private network routing to the origin.
 	PrivateRouting pulumi.BoolPtrInput
 	// Whether the record is receiving the performance and security benefits of Cloudflare.
 	Proxied pulumi.BoolPtrInput
@@ -417,7 +417,7 @@ func (o RecordOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
-// Components of a MX record.
+// For `type: CAA`: Components of a CAA record.
 func (o RecordOutput) Data() RecordDataPtrOutput {
 	return o.ApplyT(func(v *Record) RecordDataPtrOutput { return v.Data }).(RecordDataPtrOutput)
 }
@@ -447,7 +447,7 @@ func (o RecordOutput) Priority() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *Record) pulumi.Float64PtrOutput { return v.Priority }).(pulumi.Float64PtrOutput)
 }
 
-// Enables private network routing to the origin.
+// For `type: A` or `type: AAAA`: Enables private network routing to the origin.
 func (o RecordOutput) PrivateRouting() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Record) pulumi.BoolPtrOutput { return v.PrivateRouting }).(pulumi.BoolPtrOutput)
 }

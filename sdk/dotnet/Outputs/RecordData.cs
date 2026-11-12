@@ -105,6 +105,8 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly double? Preference;
         /// <summary>
         /// Priority.
+        /// 
+        /// Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
         /// </summary>
         public readonly double? Priority;
         /// <summary>
@@ -141,10 +143,15 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? Tag;
         /// <summary>
         /// Target.
+        /// 
+        /// A valid hostname.
+        /// 
+        /// The record content.
         /// </summary>
         public readonly string? Target;
         /// <summary>
-        /// Type.
+        /// Record type.
+        /// Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
         /// </summary>
         public readonly double? Type;
         /// <summary>
@@ -153,6 +160,8 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly double? Usage;
         /// <summary>
         /// Value of the record. This field's semantics depend on the chosen tag.
+        /// 
+        /// Value.
         /// </summary>
         public readonly string? Value;
         /// <summary>

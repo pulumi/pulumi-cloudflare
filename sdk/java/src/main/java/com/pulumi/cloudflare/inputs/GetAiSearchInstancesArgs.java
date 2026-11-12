@@ -24,14 +24,14 @@ public final class GetAiSearchInstancesArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * Filter by exact Search for Agents hostname (case-insensitive).
+     * Return only instances with this exact Search for Agents hostname (case-insensitive).
      * 
      */
     @Import(name="hostname")
     private @Nullable Output<String> hostname;
 
     /**
-     * @return Filter by exact Search for Agents hostname (case-insensitive).
+     * @return Return only instances with this exact Search for Agents hostname (case-insensitive).
      * 
      */
     public Optional<Output<String>> hostname() {
@@ -53,17 +53,9 @@ public final class GetAiSearchInstancesArgs extends com.pulumi.resources.InvokeA
         return Optional.ofNullable(this.maxItems);
     }
 
-    /**
-     * Filter by namespace.
-     * 
-     */
     @Import(name="namespace")
     private @Nullable Output<String> namespace;
 
-    /**
-     * @return Filter by namespace.
-     * 
-     */
     public Optional<Output<String>> namespace() {
         return Optional.ofNullable(this.namespace);
     }
@@ -157,7 +149,7 @@ public final class GetAiSearchInstancesArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param hostname Filter by exact Search for Agents hostname (case-insensitive).
+         * @param hostname Return only instances with this exact Search for Agents hostname (case-insensitive).
          * 
          * @return builder
          * 
@@ -168,7 +160,7 @@ public final class GetAiSearchInstancesArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param hostname Filter by exact Search for Agents hostname (case-insensitive).
+         * @param hostname Return only instances with this exact Search for Agents hostname (case-insensitive).
          * 
          * @return builder
          * 
@@ -198,23 +190,11 @@ public final class GetAiSearchInstancesArgs extends com.pulumi.resources.InvokeA
             return maxItems(Output.of(maxItems));
         }
 
-        /**
-         * @param namespace Filter by namespace.
-         * 
-         * @return builder
-         * 
-         */
         public Builder namespace(@Nullable Output<String> namespace) {
             $.namespace = namespace;
             return this;
         }
 
-        /**
-         * @param namespace Filter by namespace.
-         * 
-         * @return builder
-         * 
-         */
         public Builder namespace(String namespace) {
             return namespace(Output.of(namespace));
         }

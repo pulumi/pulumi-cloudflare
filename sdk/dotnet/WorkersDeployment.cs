@@ -12,6 +12,14 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Accepted Permissions
     /// 
+    /// - `Individual Workers Admin`
+    /// - `Individual Workers Content Read-Only`
+    /// - `Individual Workers Editor`
+    /// - `Individual Workers Metadata Read-Only`
+    /// - `Workers Admin`
+    /// - `Workers Content Read-Only`
+    /// - `Workers Editor`
+    /// - `Workers Metadata Read-Only`
     /// - `Workers Scripts Read`
     /// - `Workers Scripts Write`
     /// - `Workers Tail Read`
@@ -43,6 +51,10 @@ namespace Pulumi.Cloudflare
     ///         {
     ///             WorkersMessage = "Deploy bug fix.",
     ///         },
+    ///         CodeUpdateStrategy = new Cloudflare.Inputs.WorkersDeploymentCodeUpdateStrategyArgs
+    ///         {
+    ///             Mode = "immediate",
+    ///         },
     ///     });
     /// 
     /// });
@@ -63,11 +75,20 @@ namespace Pulumi.Cloudflare
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
+        /// <summary>
+        /// Metadata attached to the deployment.
+        /// </summary>
         [Output("annotations")]
         public Output<Outputs.WorkersDeploymentAnnotations> Annotations { get; private set; } = null!;
 
         [Output("authorEmail")]
         public Output<string> AuthorEmail { get; private set; } = null!;
+
+        /// <summary>
+        /// Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+        /// </summary>
+        [Output("codeUpdateStrategy")]
+        public Output<Outputs.WorkersDeploymentCodeUpdateStrategy?> CodeUpdateStrategy { get; private set; } = null!;
 
         [Output("createdOn")]
         public Output<string> CreatedOn { get; private set; } = null!;
@@ -88,6 +109,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Source { get; private set; } = null!;
 
         /// <summary>
+        /// Strategy for routing traffic across the listed versions. `Percentage` splits traffic according to each version's `Percentage`.
         /// Available values: "percentage".
         /// </summary>
         [Output("strategy")]
@@ -151,8 +173,17 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
+        /// <summary>
+        /// Metadata attached to the deployment.
+        /// </summary>
         [Input("annotations")]
         public Input<Inputs.WorkersDeploymentAnnotationsArgs>? Annotations { get; set; }
+
+        /// <summary>
+        /// Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+        /// </summary>
+        [Input("codeUpdateStrategy")]
+        public Input<Inputs.WorkersDeploymentCodeUpdateStrategyArgs>? CodeUpdateStrategy { get; set; }
 
         /// <summary>
         /// If set to true, the deployment will be created even if normally blocked by something such rolling back to an older version when a secret has changed.
@@ -167,6 +198,7 @@ namespace Pulumi.Cloudflare
         public Input<string> ScriptName { get; set; } = null!;
 
         /// <summary>
+        /// Strategy for routing traffic across the listed versions. `Percentage` splits traffic according to each version's `Percentage`.
         /// Available values: "percentage".
         /// </summary>
         [Input("strategy", required: true)]
@@ -198,11 +230,20 @@ namespace Pulumi.Cloudflare
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
+        /// <summary>
+        /// Metadata attached to the deployment.
+        /// </summary>
         [Input("annotations")]
         public Input<Inputs.WorkersDeploymentAnnotationsGetArgs>? Annotations { get; set; }
 
         [Input("authorEmail")]
         public Input<string>? AuthorEmail { get; set; }
+
+        /// <summary>
+        /// Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+        /// </summary>
+        [Input("codeUpdateStrategy")]
+        public Input<Inputs.WorkersDeploymentCodeUpdateStrategyGetArgs>? CodeUpdateStrategy { get; set; }
 
         [Input("createdOn")]
         public Input<string>? CreatedOn { get; set; }
@@ -223,6 +264,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Source { get; set; }
 
         /// <summary>
+        /// Strategy for routing traffic across the listed versions. `Percentage` splits traffic according to each version's `Percentage`.
         /// Available values: "percentage".
         /// </summary>
         [Input("strategy")]

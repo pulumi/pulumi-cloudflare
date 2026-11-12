@@ -83,6 +83,7 @@ type LookupMagicTransitSiteLanResult struct {
 	Name          string                               `pulumi:"name"`
 	Nat           GetMagicTransitSiteLanNat            `pulumi:"nat"`
 	Physport      int                                  `pulumi:"physport"`
+	RemoteSubnets []GetMagicTransitSiteLanRemoteSubnet `pulumi:"remoteSubnets"`
 	RoutedSubnets []GetMagicTransitSiteLanRoutedSubnet `pulumi:"routedSubnets"`
 	// Identifier
 	SiteId string `pulumi:"siteId"`
@@ -170,6 +171,10 @@ func (o LookupMagicTransitSiteLanResultOutput) Nat() GetMagicTransitSiteLanNatOu
 
 func (o LookupMagicTransitSiteLanResultOutput) Physport() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupMagicTransitSiteLanResult) int { return v.Physport }).(pulumi.IntOutput)
+}
+
+func (o LookupMagicTransitSiteLanResultOutput) RemoteSubnets() GetMagicTransitSiteLanRemoteSubnetArrayOutput {
+	return o.ApplyT(func(v LookupMagicTransitSiteLanResult) []GetMagicTransitSiteLanRemoteSubnet { return v.RemoteSubnets }).(GetMagicTransitSiteLanRemoteSubnetArrayOutput)
 }
 
 func (o LookupMagicTransitSiteLanResultOutput) RoutedSubnets() GetMagicTransitSiteLanRoutedSubnetArrayOutput {

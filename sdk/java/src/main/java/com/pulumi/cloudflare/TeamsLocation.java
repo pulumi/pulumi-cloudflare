@@ -66,6 +66,7 @@ import javax.annotation.Nullable;
  *             .name("Austin Office Location")
  *             .clientDefault(false)
  *             .dnsDestinationIpsId("0e4a32c6-6fb8-4858-9296-98f51631e8e6")
+ *             .dns64Enabled(false)
  *             .ecsSupport(false)
  *             .endpoints(ZeroTrustDnsLocationEndpointsArgs.builder()
  *                 .doh(ZeroTrustDnsLocationEndpointsDohArgs.builder()
@@ -150,6 +151,20 @@ public class TeamsLocation extends com.pulumi.resources.CustomResource {
 
     public Output<String> createdAt() {
         return this.createdAt;
+    }
+    /**
+     * Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.
+     * 
+     */
+    @Export(name="dns64Enabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> dns64Enabled;
+
+    /**
+     * @return Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.
+     * 
+     */
+    public Output<Optional<Boolean>> dns64Enabled() {
+        return Codegen.optional(this.dns64Enabled);
     }
     /**
      * Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.

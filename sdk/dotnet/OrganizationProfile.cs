@@ -41,19 +41,19 @@ namespace Pulumi.Cloudflare
     public partial class OrganizationProfile : global::Pulumi.CustomResource
     {
         [Output("businessAddress")]
-        public Output<string> BusinessAddress { get; private set; } = null!;
+        public Output<string?> BusinessAddress { get; private set; } = null!;
 
         [Output("businessEmail")]
-        public Output<string> BusinessEmail { get; private set; } = null!;
+        public Output<string?> BusinessEmail { get; private set; } = null!;
 
         [Output("businessName")]
-        public Output<string> BusinessName { get; private set; } = null!;
+        public Output<string?> BusinessName { get; private set; } = null!;
 
         [Output("businessPhone")]
-        public Output<string> BusinessPhone { get; private set; } = null!;
+        public Output<string?> BusinessPhone { get; private set; } = null!;
 
         [Output("externalMetadata")]
-        public Output<string> ExternalMetadata { get; private set; } = null!;
+        public Output<string?> ExternalMetadata { get; private set; } = null!;
 
         [Output("organizationId")]
         public Output<string> OrganizationId { get; private set; } = null!;
@@ -104,20 +104,20 @@ namespace Pulumi.Cloudflare
 
     public sealed class OrganizationProfileArgs : global::Pulumi.ResourceArgs
     {
-        [Input("businessAddress", required: true)]
-        public Input<string> BusinessAddress { get; set; } = null!;
+        [Input("businessAddress")]
+        public Input<string>? BusinessAddress { get; set; }
 
-        [Input("businessEmail", required: true)]
-        public Input<string> BusinessEmail { get; set; } = null!;
+        [Input("businessEmail")]
+        public Input<string>? BusinessEmail { get; set; }
 
-        [Input("businessName", required: true)]
-        public Input<string> BusinessName { get; set; } = null!;
+        [Input("businessName")]
+        public Input<string>? BusinessName { get; set; }
 
-        [Input("businessPhone", required: true)]
-        public Input<string> BusinessPhone { get; set; } = null!;
+        [Input("businessPhone")]
+        public Input<string>? BusinessPhone { get; set; }
 
-        [Input("externalMetadata", required: true)]
-        public Input<string> ExternalMetadata { get; set; } = null!;
+        [Input("externalMetadata")]
+        public Input<string>? ExternalMetadata { get; set; }
 
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;

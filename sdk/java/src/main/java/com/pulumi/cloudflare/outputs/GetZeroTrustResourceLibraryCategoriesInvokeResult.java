@@ -27,7 +27,7 @@ public final class GetZeroTrustResourceLibraryCategoriesInvokeResult {
      */
     private @Nullable Integer maxItems;
     /**
-     * @return Number of results to skip. Defaults to 0; negative values are clamped to 0.
+     * @return Number of results to skip. Defaults to 0; negative values are clamped to 0. Ignored when `cursor` is provided.
      * 
      */
     private Integer offset;
@@ -56,7 +56,7 @@ public final class GetZeroTrustResourceLibraryCategoriesInvokeResult {
         return Optional.ofNullable(this.maxItems);
     }
     /**
-     * @return Number of results to skip. Defaults to 0; negative values are clamped to 0.
+     * @return Number of results to skip. Defaults to 0; negative values are clamped to 0. Ignored when `cursor` is provided.
      * 
      */
     public Integer offset() {

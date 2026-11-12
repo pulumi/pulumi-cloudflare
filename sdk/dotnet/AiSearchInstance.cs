@@ -93,7 +93,7 @@ namespace Pulumi.Cloudflare
         public Output<bool> HybridSearchEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
+        /// Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances. When set, both vector and keyword are required.
         /// </summary>
         [Output("indexMethod")]
         public Output<Outputs.AiSearchInstanceIndexMethod> IndexMethod { get; private set; } = null!;
@@ -135,7 +135,7 @@ namespace Pulumi.Cloudflare
         public Output<string> RerankingModel { get; private set; } = null!;
 
         [Output("retrievalOptions")]
-        public Output<Outputs.AiSearchInstanceRetrievalOptions?> RetrievalOptions { get; private set; } = null!;
+        public Output<Outputs.AiSearchInstanceRetrievalOptions> RetrievalOptions { get; private set; } = null!;
 
         /// <summary>
         /// A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.
@@ -146,6 +146,9 @@ namespace Pulumi.Cloudflare
         [Output("rewriteQuery")]
         public Output<bool> RewriteQuery { get; private set; } = null!;
 
+        /// <summary>
+        /// Minimum similarity score a chunk must reach to be returned. Defaults to 0.4.
+        /// </summary>
         [Output("scoreThreshold")]
         public Output<double> ScoreThreshold { get; private set; } = null!;
 
@@ -165,7 +168,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> SummarizationModel { get; private set; } = null!;
 
         /// <summary>
-        /// Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+        /// Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). Defaults to 86400 (24h).
         /// Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
         /// </summary>
         [Output("syncInterval")]
@@ -181,14 +184,14 @@ namespace Pulumi.Cloudflare
         public Output<string?> SystemPromptRewriteQuery { get; private set; } = null!;
 
         [Output("tokenId")]
-        public Output<string?> TokenId { get; private set; } = null!;
+        public Output<string> TokenId { get; private set; } = null!;
 
         /// <summary>
         /// Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
         /// Available values: "r2", "web-crawler".
         /// </summary>
         [Output("type")]
-        public Output<string?> Type { get; private set; } = null!;
+        public Output<string> Type { get; private set; } = null!;
 
 
         /// <summary>
@@ -303,7 +306,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? HybridSearchEnabled { get; set; }
 
         /// <summary>
-        /// Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
+        /// Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances. When set, both vector and keyword are required.
         /// </summary>
         [Input("indexMethod")]
         public Input<Inputs.AiSearchInstanceIndexMethodArgs>? IndexMethod { get; set; }
@@ -316,6 +319,9 @@ namespace Pulumi.Cloudflare
 
         [Input("metadata")]
         public Input<Inputs.AiSearchInstanceMetadataArgs>? Metadata { get; set; }
+
+        [Input("namespace")]
+        public Input<string>? Namespace { get; set; }
 
         [Input("paused")]
         public Input<bool>? Paused { get; set; }
@@ -341,6 +347,9 @@ namespace Pulumi.Cloudflare
         [Input("rewriteQuery")]
         public Input<bool>? RewriteQuery { get; set; }
 
+        /// <summary>
+        /// Minimum similarity score a chunk must reach to be returned. Defaults to 0.4.
+        /// </summary>
         [Input("scoreThreshold")]
         public Input<double>? ScoreThreshold { get; set; }
 
@@ -357,7 +366,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? SummarizationModel { get; set; }
 
         /// <summary>
-        /// Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+        /// Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). Defaults to 86400 (24h).
         /// Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
         /// </summary>
         [Input("syncInterval")]
@@ -469,7 +478,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? HybridSearchEnabled { get; set; }
 
         /// <summary>
-        /// Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
+        /// Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances. When set, both vector and keyword are required.
         /// </summary>
         [Input("indexMethod")]
         public Input<Inputs.AiSearchInstanceIndexMethodGetArgs>? IndexMethod { get; set; }
@@ -522,6 +531,9 @@ namespace Pulumi.Cloudflare
         [Input("rewriteQuery")]
         public Input<bool>? RewriteQuery { get; set; }
 
+        /// <summary>
+        /// Minimum similarity score a chunk must reach to be returned. Defaults to 0.4.
+        /// </summary>
         [Input("scoreThreshold")]
         public Input<double>? ScoreThreshold { get; set; }
 
@@ -541,7 +553,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? SummarizationModel { get; set; }
 
         /// <summary>
-        /// Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+        /// Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). Defaults to 86400 (24h).
         /// Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
         /// </summary>
         [Input("syncInterval")]

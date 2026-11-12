@@ -28,7 +28,7 @@ class GetZeroTrustAccessServiceTokenResult:
     """
     A collection of values returned by getZeroTrustAccessServiceToken.
     """
-    def __init__(__self__, account_id=None, client_id=None, duration=None, enabled=None, expires_at=None, filter=None, id=None, name=None, service_token_id=None, zone_id=None):
+    def __init__(__self__, account_id=None, client_id=None, duration=None, enabled=None, expires_at=None, filter=None, id=None, leak_report_url=None, leak_reported_at=None, leak_reporter=None, name=None, service_token_id=None, tags=None, zone_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -50,12 +50,24 @@ class GetZeroTrustAccessServiceTokenResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if leak_report_url and not isinstance(leak_report_url, str):
+            raise TypeError("Expected argument 'leak_report_url' to be a str")
+        pulumi.set(__self__, "leak_report_url", leak_report_url)
+        if leak_reported_at and not isinstance(leak_reported_at, str):
+            raise TypeError("Expected argument 'leak_reported_at' to be a str")
+        pulumi.set(__self__, "leak_reported_at", leak_reported_at)
+        if leak_reporter and not isinstance(leak_reporter, str):
+            raise TypeError("Expected argument 'leak_reporter' to be a str")
+        pulumi.set(__self__, "leak_reporter", leak_reporter)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
         if service_token_id and not isinstance(service_token_id, str):
             raise TypeError("Expected argument 'service_token_id' to be a str")
         pulumi.set(__self__, "service_token_id", service_token_id)
+        if tags and not isinstance(tags, dict):
+            raise TypeError("Expected argument 'tags' to be a dict")
+        pulumi.set(__self__, "tags", tags)
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         pulumi.set(__self__, "zone_id", zone_id)
@@ -88,7 +100,7 @@ class GetZeroTrustAccessServiceTokenResult:
     @pulumi.getter
     def enabled(self) -> _builtins.bool:
         """
-        Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `client_secret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+        Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `client_secret` stop being accepted, but the token itself is preserved and can be re-enabled. A service token reported as leaked is disabled automatically and cannot be re-enabled until its secret is rotated; attempting to do so returns a 409. Defaults to enabled when omitted on create.
         """
         return pulumi.get(self, "enabled")
 
@@ -111,6 +123,30 @@ class GetZeroTrustAccessServiceTokenResult:
         return pulumi.get(self, "id")
 
     @_builtins.property
+    @pulumi.getter(name="leakReportUrl")
+    def leak_report_url(self) -> _builtins.str:
+        """
+        Where the leaked `client_secret` was found, if provided by the reporter. Omitted if the token has not been reported as leaked.
+        """
+        return pulumi.get(self, "leak_report_url")
+
+    @_builtins.property
+    @pulumi.getter(name="leakReportedAt")
+    def leak_reported_at(self) -> _builtins.str:
+        """
+        When a secret scanning partner reported this service token's `client_secret` as leaked. A leaked service token is disabled and must be rotated before it can be re-enabled. Cleared once the secret is rotated. Omitted if the token has not been reported as leaked.
+        """
+        return pulumi.get(self, "leak_reported_at")
+
+    @_builtins.property
+    @pulumi.getter(name="leakReporter")
+    def leak_reporter(self) -> _builtins.str:
+        """
+        The secret scanning partner that reported the leak. Omitted if the token has not been reported as leaked.
+        """
+        return pulumi.get(self, "leak_reporter")
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
@@ -125,6 +161,14 @@ class GetZeroTrustAccessServiceTokenResult:
         UUID.
         """
         return pulumi.get(self, "service_token_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, _builtins.str]:
+        """
+        Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.
+        """
+        return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
@@ -148,8 +192,12 @@ class AwaitableGetZeroTrustAccessServiceTokenResult(GetZeroTrustAccessServiceTok
             expires_at=self.expires_at,
             filter=self.filter,
             id=self.id,
+            leak_report_url=self.leak_report_url,
+            leak_reported_at=self.leak_reported_at,
+            leak_reporter=self.leak_reporter,
             name=self.name,
             service_token_id=self.service_token_id,
+            tags=self.tags,
             zone_id=self.zone_id)
 
 
@@ -196,8 +244,12 @@ def get_zero_trust_access_service_token(account_id: Optional[_builtins.str] = No
         expires_at=pulumi.get(__ret__, 'expires_at'),
         filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
+        leak_report_url=pulumi.get(__ret__, 'leak_report_url'),
+        leak_reported_at=pulumi.get(__ret__, 'leak_reported_at'),
+        leak_reporter=pulumi.get(__ret__, 'leak_reporter'),
         name=pulumi.get(__ret__, 'name'),
         service_token_id=pulumi.get(__ret__, 'service_token_id'),
+        tags=pulumi.get(__ret__, 'tags'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_zero_trust_access_service_token_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                filter: pulumi.Input[Optional[Optional[Union['GetZeroTrustAccessServiceTokenFilterArgs', 'GetZeroTrustAccessServiceTokenFilterArgsDict', 'outputs.GetZeroTrustAccessServiceTokenFilterResult']]]] = None,
@@ -241,6 +293,10 @@ def get_zero_trust_access_service_token_output(account_id: pulumi.Input[Optional
         expires_at=pulumi.get(__response__, 'expires_at'),
         filter=pulumi.get(__response__, 'filter'),
         id=pulumi.get(__response__, 'id'),
+        leak_report_url=pulumi.get(__response__, 'leak_report_url'),
+        leak_reported_at=pulumi.get(__response__, 'leak_reported_at'),
+        leak_reporter=pulumi.get(__response__, 'leak_reporter'),
         name=pulumi.get(__response__, 'name'),
         service_token_id=pulumi.get(__response__, 'service_token_id'),
+        tags=pulumi.get(__response__, 'tags'),
         zone_id=pulumi.get(__response__, 'zone_id')))

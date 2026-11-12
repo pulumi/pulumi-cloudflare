@@ -25,6 +25,11 @@ public final class GetMagicTransitSiteWansResultStaticAddressing {
      * 
      */
     private String secondaryAddress;
+    /**
+     * @return Gateway address for the secondary connector of a high availability site.
+     * 
+     */
+    private String secondaryGatewayAddress;
 
     private GetMagicTransitSiteWansResultStaticAddressing() {}
     /**
@@ -48,6 +53,13 @@ public final class GetMagicTransitSiteWansResultStaticAddressing {
     public String secondaryAddress() {
         return this.secondaryAddress;
     }
+    /**
+     * @return Gateway address for the secondary connector of a high availability site.
+     * 
+     */
+    public String secondaryGatewayAddress() {
+        return this.secondaryGatewayAddress;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -61,12 +73,14 @@ public final class GetMagicTransitSiteWansResultStaticAddressing {
         private String address;
         private String gatewayAddress;
         private String secondaryAddress;
+        private String secondaryGatewayAddress;
         public Builder() {}
         public Builder(GetMagicTransitSiteWansResultStaticAddressing defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.address = defaults.address;
     	      this.gatewayAddress = defaults.gatewayAddress;
     	      this.secondaryAddress = defaults.secondaryAddress;
+    	      this.secondaryGatewayAddress = defaults.secondaryGatewayAddress;
         }
 
         @CustomType.Setter
@@ -93,11 +107,20 @@ public final class GetMagicTransitSiteWansResultStaticAddressing {
             this.secondaryAddress = secondaryAddress;
             return this;
         }
+        @CustomType.Setter
+        public Builder secondaryGatewayAddress(String secondaryGatewayAddress) {
+            if (secondaryGatewayAddress == null) {
+              throw new MissingRequiredPropertyException("GetMagicTransitSiteWansResultStaticAddressing", "secondaryGatewayAddress");
+            }
+            this.secondaryGatewayAddress = secondaryGatewayAddress;
+            return this;
+        }
         public GetMagicTransitSiteWansResultStaticAddressing build() {
             final var _resultValue = new GetMagicTransitSiteWansResultStaticAddressing();
             _resultValue.address = address;
             _resultValue.gatewayAddress = gatewayAddress;
             _resultValue.secondaryAddress = secondaryAddress;
+            _resultValue.secondaryGatewayAddress = secondaryGatewayAddress;
             return _resultValue;
         }
     }

@@ -69,7 +69,7 @@ class GetZeroTrustResourceLibraryCategoriesResult:
     @pulumi.getter
     def offset(self) -> _builtins.int:
         """
-        Number of results to skip. Defaults to 0; negative values are clamped to 0.
+        Number of results to skip. Defaults to 0; negative values are clamped to 0. Ignored when `cursor` is provided.
         """
         return pulumi.get(self, "offset")
 
@@ -101,6 +101,13 @@ def get_zero_trust_resource_library_categories(account_id: Optional[_builtins.st
                                                offset: Optional[_builtins.int] = None,
                                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustResourceLibraryCategoriesResult:
     """
+    Accepted Permissions
+
+    - `Resource Library Read`
+    - `Resource Library Write`
+    - `Zero Trust Read`
+    - `Zero Trust Write`
+
     ## Example Usage
 
     ```python
@@ -113,7 +120,7 @@ def get_zero_trust_resource_library_categories(account_id: Optional[_builtins.st
 
     :param _builtins.int limit: Number of results to return. Defaults to 25; values are clamped to 1–250.
     :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.int offset: Number of results to skip. Defaults to 0; negative values are clamped to 0.
+    :param _builtins.int offset: Number of results to skip. Defaults to 0; negative values are clamped to 0. Ignored when `cursor` is provided.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -135,6 +142,13 @@ def get_zero_trust_resource_library_categories_output(account_id: pulumi.Input[O
                                                       offset: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustResourceLibraryCategoriesResult]:
     """
+    Accepted Permissions
+
+    - `Resource Library Read`
+    - `Resource Library Write`
+    - `Zero Trust Read`
+    - `Zero Trust Write`
+
     ## Example Usage
 
     ```python
@@ -147,7 +161,7 @@ def get_zero_trust_resource_library_categories_output(account_id: pulumi.Input[O
 
     :param _builtins.int limit: Number of results to return. Defaults to 25; values are clamped to 1–250.
     :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.int offset: Number of results to skip. Defaults to 0; negative values are clamped to 0.
+    :param _builtins.int offset: Number of results to skip. Defaults to 0; negative values are clamped to 0. Ignored when `cursor` is provided.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

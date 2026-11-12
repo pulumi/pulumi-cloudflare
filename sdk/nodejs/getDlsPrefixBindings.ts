@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `DLS: Read`
+ * - `DLS: Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -58,6 +63,11 @@ export interface GetDlsPrefixBindingsResult {
     readonly results: outputs.GetDlsPrefixBindingsResult[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `DLS: Read`
+ * - `DLS: Write`
+ *
  * ## Example Usage
  *
  * ```typescript

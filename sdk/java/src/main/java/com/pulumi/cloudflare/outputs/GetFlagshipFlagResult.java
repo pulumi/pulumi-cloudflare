@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.outputs.GetFlagshipFlagRule;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -58,6 +59,11 @@ public final class GetFlagshipFlagResult {
      * 
      */
     private String key;
+    /**
+     * @return Key-value metadata associated with the flag. Returned only when the flag has metadata.
+     * 
+     */
+    private Object metadata;
     /**
      * @return Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `defaultVariation`.
      * 
@@ -138,6 +144,13 @@ public final class GetFlagshipFlagResult {
         return this.key;
     }
     /**
+     * @return Key-value metadata associated with the flag. Returned only when the flag has metadata.
+     * 
+     */
+    public Object metadata() {
+        return this.metadata;
+    }
+    /**
      * @return Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `defaultVariation`.
      * 
      */
@@ -184,6 +197,7 @@ public final class GetFlagshipFlagResult {
         private @Nullable String flagKey;
         private String id;
         private String key;
+        private Object metadata;
         private List<GetFlagshipFlagRule> rules;
         private String type;
         private String updatedAt;
@@ -201,6 +215,7 @@ public final class GetFlagshipFlagResult {
     	      this.flagKey = defaults.flagKey;
     	      this.id = defaults.id;
     	      this.key = defaults.key;
+    	      this.metadata = defaults.metadata;
     	      this.rules = defaults.rules;
     	      this.type = defaults.type;
     	      this.updatedAt = defaults.updatedAt;
@@ -277,6 +292,14 @@ public final class GetFlagshipFlagResult {
             return this;
         }
         @CustomType.Setter
+        public Builder metadata(Object metadata) {
+            if (metadata == null) {
+              throw new MissingRequiredPropertyException("GetFlagshipFlagResult", "metadata");
+            }
+            this.metadata = metadata;
+            return this;
+        }
+        @CustomType.Setter
         public Builder rules(List<GetFlagshipFlagRule> rules) {
             if (rules == null) {
               throw new MissingRequiredPropertyException("GetFlagshipFlagResult", "rules");
@@ -330,6 +353,7 @@ public final class GetFlagshipFlagResult {
             _resultValue.flagKey = flagKey;
             _resultValue.id = id;
             _resultValue.key = key;
+            _resultValue.metadata = metadata;
             _resultValue.rules = rules;
             _resultValue.type = type;
             _resultValue.updatedAt = updatedAt;

@@ -267,7 +267,7 @@ class GetAiSearchInstanceResult:
     @pulumi.getter(name="indexMethod")
     def index_method(self) -> 'outputs.GetAiSearchInstanceIndexMethodResult':
         """
-        Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
+        Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances. When set, both vector and keyword are required.
         """
         return pulumi.get(self, "index_method")
 
@@ -352,6 +352,9 @@ class GetAiSearchInstanceResult:
     @_builtins.property
     @pulumi.getter(name="scoreThreshold")
     def score_threshold(self) -> _builtins.float:
+        """
+        Minimum similarity score a chunk must reach to be returned. Defaults to 0.4.
+        """
         return pulumi.get(self, "score_threshold")
 
     @_builtins.property
@@ -373,7 +376,7 @@ class GetAiSearchInstanceResult:
     @pulumi.getter(name="syncInterval")
     def sync_interval(self) -> _builtins.float:
         """
-        Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+        Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). Defaults to 86400 (24h).
         Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
         """
         return pulumi.get(self, "sync_interval")
@@ -445,6 +448,7 @@ class AwaitableGetAiSearchInstanceResult(GetAiSearchInstanceResult):
 def get_ai_search_instance(account_id: Optional[_builtins.str] = None,
                            filter: Optional[Union['GetAiSearchInstanceFilterArgs', 'GetAiSearchInstanceFilterArgsDict', 'outputs.GetAiSearchInstanceFilterResult']] = None,
                            id: Optional[_builtins.str] = None,
+                           namespace: Optional[_builtins.str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAiSearchInstanceResult:
     """
     Use this data source to access information about an existing resource.
@@ -455,6 +459,7 @@ def get_ai_search_instance(account_id: Optional[_builtins.str] = None,
     __args__['accountId'] = account_id
     __args__['filter'] = filter
     __args__['id'] = id
+    __args__['namespace'] = namespace
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getAiSearchInstance:getAiSearchInstance', __args__, opts=opts, typ=GetAiSearchInstanceResult).value
 
@@ -503,6 +508,7 @@ def get_ai_search_instance(account_id: Optional[_builtins.str] = None,
 def get_ai_search_instance_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   filter: pulumi.Input[Optional[Optional[Union['GetAiSearchInstanceFilterArgs', 'GetAiSearchInstanceFilterArgsDict', 'outputs.GetAiSearchInstanceFilterResult']]]] = None,
                                   id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  namespace: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiSearchInstanceResult]:
     """
     Use this data source to access information about an existing resource.
@@ -513,6 +519,7 @@ def get_ai_search_instance_output(account_id: pulumi.Input[Optional[Optional[_bu
     __args__['accountId'] = account_id
     __args__['filter'] = filter
     __args__['id'] = id
+    __args__['namespace'] = namespace
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getAiSearchInstance:getAiSearchInstance', __args__, opts=opts, typ=GetAiSearchInstanceResult)
     return __ret__.apply(lambda __response__: GetAiSearchInstanceResult(

@@ -49,6 +49,7 @@ export interface GetEmailSecurityBlockSenderResult {
     readonly accountId: string;
     readonly comments: string;
     readonly createdAt: string;
+    readonly expiresAt: string;
     readonly filter?: outputs.GetEmailSecurityBlockSenderFilter;
     readonly id: string;
     readonly isRegex: boolean;

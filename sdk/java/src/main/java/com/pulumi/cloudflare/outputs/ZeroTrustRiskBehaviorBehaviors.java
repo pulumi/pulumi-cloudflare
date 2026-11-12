@@ -13,7 +13,7 @@ import java.util.Objects;
 public final class ZeroTrustRiskBehaviorBehaviors {
     private Boolean enabled;
     /**
-     * @return Available values: &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;.
+     * @return Available values: &#34;info&#34;, &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;.
      * 
      */
     private String riskLevel;
@@ -23,7 +23,7 @@ public final class ZeroTrustRiskBehaviorBehaviors {
         return this.enabled;
     }
     /**
-     * @return Available values: &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;.
+     * @return Available values: &#34;info&#34;, &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;.
      * 
      */
     public String riskLevel() {

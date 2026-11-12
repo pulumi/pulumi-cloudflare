@@ -27,11 +27,13 @@ class ZeroTrustDlpEntryArgs:
                  pattern: pulumi.Input['ZeroTrustDlpEntryPatternArgs'],
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  profile_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 type: pulumi.Input[Optional[_builtins.str]] = None):
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 validator_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ZeroTrustDlpEntry resource.
 
         :param pulumi.Input[_builtins.str] type: Available values: "custom", "predefined", "integration".
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] validator_ids: Validators the new entry should reference, by id, at most 10.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "enabled", enabled)
@@ -43,6 +45,8 @@ class ZeroTrustDlpEntryArgs:
             pulumi.set(__self__, "profile_id", profile_id)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if validator_ids is not None:
+            pulumi.set(__self__, "validator_ids", validator_ids)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -110,6 +114,18 @@ class ZeroTrustDlpEntryArgs:
     def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
+    @_builtins.property
+    @pulumi.getter(name="validatorIds")
+    def validator_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Validators the new entry should reference, by id, at most 10.
+        """
+        return pulumi.get(self, "validator_ids")
+
+    @validator_ids.setter
+    def validator_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "validator_ids", value)
+
 
 @pulumi.input_type
 class _ZeroTrustDlpEntryState:
@@ -129,19 +145,21 @@ class _ZeroTrustDlpEntryState:
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  updated_at: pulumi.Input[Optional[_builtins.str]] = None,
                  upload_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 validator_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  variant: pulumi.Input[Optional['ZeroTrustDlpEntryVariantArgs']] = None,
                  word_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustDlpEntry resources.
 
-        :param pulumi.Input[_builtins.bool] case_sensitive: Only applies to custom word lists.
+        :param pulumi.Input[_builtins.bool] case_sensitive: For `type: exact_data`: Only applies to custom word lists.
                Determines if the words should be matched in a case-sensitive manner
                Cannot be set to false if secret is true
-        :param pulumi.Input[_builtins.bool] deprecated: Whether this entry is deprecated for new use. This is computed from the static catalog and
+        :param pulumi.Input[_builtins.bool] deprecated: For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
                emitted only when true.
         :param pulumi.Input[_builtins.str] type: Available values: "custom", "predefined", "integration".
         :param pulumi.Input[_builtins.str] upload_status: Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
-        :param pulumi.Input['ZeroTrustDlpEntryVariantArgs'] variant: A Predefined AI prompt classification topic entry.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] validator_ids: Validators the new entry should reference, by id, at most 10.
+        :param pulumi.Input['ZeroTrustDlpEntryVariantArgs'] variant: For `type: predefined`: A Predefined AI prompt classification topic entry.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -173,6 +191,8 @@ class _ZeroTrustDlpEntryState:
             pulumi.set(__self__, "updated_at", updated_at)
         if upload_status is not None:
             pulumi.set(__self__, "upload_status", upload_status)
+        if validator_ids is not None:
+            pulumi.set(__self__, "validator_ids", validator_ids)
         if variant is not None:
             pulumi.set(__self__, "variant", variant)
         if word_lists is not None:
@@ -191,7 +211,7 @@ class _ZeroTrustDlpEntryState:
     @pulumi.getter(name="caseSensitive")
     def case_sensitive(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Only applies to custom word lists.
+        For `type: exact_data`: Only applies to custom word lists.
         Determines if the words should be matched in a case-sensitive manner
         Cannot be set to false if secret is true
         """
@@ -223,7 +243,7 @@ class _ZeroTrustDlpEntryState:
     @pulumi.getter
     def deprecated(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether this entry is deprecated for new use. This is computed from the static catalog and
+        For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
         emitted only when true.
         """
         return pulumi.get(self, "deprecated")
@@ -329,10 +349,22 @@ class _ZeroTrustDlpEntryState:
         pulumi.set(self, "upload_status", value)
 
     @_builtins.property
+    @pulumi.getter(name="validatorIds")
+    def validator_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Validators the new entry should reference, by id, at most 10.
+        """
+        return pulumi.get(self, "validator_ids")
+
+    @validator_ids.setter
+    def validator_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "validator_ids", value)
+
+    @_builtins.property
     @pulumi.getter
     def variant(self) -> pulumi.Input[Optional['ZeroTrustDlpEntryVariantArgs']]:
         """
-        A Predefined AI prompt classification topic entry.
+        For `type: predefined`: A Predefined AI prompt classification topic entry.
         """
         return pulumi.get(self, "variant")
 
@@ -363,6 +395,7 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
                  pattern: pulumi.Input[Optional[Union['ZeroTrustDlpEntryPatternArgs', 'ZeroTrustDlpEntryPatternArgsDict', 'outputs.ZeroTrustDlpEntryPattern']]] = None,
                  profile_id: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
+                 validator_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -385,7 +418,8 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
                 "validation": "luhn",
             },
             description="description",
-            profile_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+            profile_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            validator_ids=["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"])
         ```
 
         ## Import
@@ -398,6 +432,7 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] type: Available values: "custom", "predefined", "integration".
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] validator_ids: Validators the new entry should reference, by id, at most 10.
         """
         ...
     @overload
@@ -426,7 +461,8 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
                 "validation": "luhn",
             },
             description="description",
-            profile_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+            profile_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            validator_ids=["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"])
         ```
 
         ## Import
@@ -458,6 +494,7 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
                  pattern: pulumi.Input[Optional[Union['ZeroTrustDlpEntryPatternArgs', 'ZeroTrustDlpEntryPatternArgsDict', 'outputs.ZeroTrustDlpEntryPattern']]] = None,
                  profile_id: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
+                 validator_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -482,6 +519,7 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
             __props__.__dict__["pattern"] = pattern
             __props__.__dict__["profile_id"] = profile_id
             __props__.__dict__["type"] = type
+            __props__.__dict__["validator_ids"] = validator_ids
             __props__.__dict__["case_sensitive"] = None
             __props__.__dict__["confidence"] = None
             __props__.__dict__["created_at"] = None
@@ -517,6 +555,7 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
             type: pulumi.Input[Optional[_builtins.str]] = None,
             updated_at: pulumi.Input[Optional[_builtins.str]] = None,
             upload_status: pulumi.Input[Optional[_builtins.str]] = None,
+            validator_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             variant: pulumi.Input[Optional[Union['ZeroTrustDlpEntryVariantArgs', 'ZeroTrustDlpEntryVariantArgsDict', 'outputs.ZeroTrustDlpEntryVariant']]] = None,
             word_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'ZeroTrustDlpEntry':
         """
@@ -526,14 +565,15 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] case_sensitive: Only applies to custom word lists.
+        :param pulumi.Input[_builtins.bool] case_sensitive: For `type: exact_data`: Only applies to custom word lists.
                Determines if the words should be matched in a case-sensitive manner
                Cannot be set to false if secret is true
-        :param pulumi.Input[_builtins.bool] deprecated: Whether this entry is deprecated for new use. This is computed from the static catalog and
+        :param pulumi.Input[_builtins.bool] deprecated: For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
                emitted only when true.
         :param pulumi.Input[_builtins.str] type: Available values: "custom", "predefined", "integration".
         :param pulumi.Input[_builtins.str] upload_status: Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
-        :param pulumi.Input[Union['ZeroTrustDlpEntryVariantArgs', 'ZeroTrustDlpEntryVariantArgsDict', 'outputs.ZeroTrustDlpEntryVariant']] variant: A Predefined AI prompt classification topic entry.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] validator_ids: Validators the new entry should reference, by id, at most 10.
+        :param pulumi.Input[Union['ZeroTrustDlpEntryVariantArgs', 'ZeroTrustDlpEntryVariantArgsDict', 'outputs.ZeroTrustDlpEntryVariant']] variant: For `type: predefined`: A Predefined AI prompt classification topic entry.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -554,6 +594,7 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         __props__.__dict__["updated_at"] = updated_at
         __props__.__dict__["upload_status"] = upload_status
+        __props__.__dict__["validator_ids"] = validator_ids
         __props__.__dict__["variant"] = variant
         __props__.__dict__["word_lists"] = word_lists
         return ZeroTrustDlpEntry(resource_name, opts=opts, __props__=__props__)
@@ -576,6 +617,7 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
             type: pulumi.Input[Optional[_builtins.str]] = None,
             updated_at: pulumi.Input[Optional[_builtins.str]] = None,
             upload_status: pulumi.Input[Optional[_builtins.str]] = None,
+            validator_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             variant: pulumi.Input[Optional[Union['ZeroTrustDlpEntryVariantArgs', 'ZeroTrustDlpEntryVariantArgsDict', 'outputs.ZeroTrustDlpEntryVariant']]] = None,
             word_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
@@ -594,6 +636,7 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
         __props__["type"] = type
         __props__["updatedAt"] = updated_at
         __props__["uploadStatus"] = upload_status
+        __props__["validatorIds"] = validator_ids
         __props__["variant"] = variant
         __props__["wordLists"] = word_lists
         return pulumi.runtime.exists_resource(None, 'cloudflare:index/zeroTrustDlpEntry:ZeroTrustDlpEntry', id, __props__, opts or pulumi.ResourceOptions())
@@ -607,7 +650,7 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
     @pulumi.getter(name="caseSensitive")
     def case_sensitive(self) -> pulumi.Output[_builtins.bool]:
         """
-        Only applies to custom word lists.
+        For `type: exact_data`: Only applies to custom word lists.
         Determines if the words should be matched in a case-sensitive manner
         Cannot be set to false if secret is true
         """
@@ -627,7 +670,7 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
     @pulumi.getter
     def deprecated(self) -> pulumi.Output[_builtins.bool]:
         """
-        Whether this entry is deprecated for new use. This is computed from the static catalog and
+        For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
         emitted only when true.
         """
         return pulumi.get(self, "deprecated")
@@ -689,10 +732,18 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
         return pulumi.get(self, "upload_status")
 
     @_builtins.property
+    @pulumi.getter(name="validatorIds")
+    def validator_ids(self) -> pulumi.Output[Sequence[_builtins.str]]:
+        """
+        Validators the new entry should reference, by id, at most 10.
+        """
+        return pulumi.get(self, "validator_ids")
+
+    @_builtins.property
     @pulumi.getter
     def variant(self) -> pulumi.Output['outputs.ZeroTrustDlpEntryVariant']:
         """
-        A Predefined AI prompt classification topic entry.
+        For `type: predefined`: A Predefined AI prompt classification topic entry.
         """
         return pulumi.get(self, "variant")
 

@@ -31,6 +31,13 @@ public final class GetEmailSecurityAllowPoliciesPlainArgs extends com.pulumi.res
         return Optional.ofNullable(this.direction);
     }
 
+    @Import(name="expired")
+    private @Nullable Boolean expired;
+
+    public Optional<Boolean> expired() {
+        return Optional.ofNullable(this.expired);
+    }
+
     @Import(name="isAcceptableSender")
     private @Nullable Boolean isAcceptableSender;
 
@@ -99,6 +106,7 @@ public final class GetEmailSecurityAllowPoliciesPlainArgs extends com.pulumi.res
     private GetEmailSecurityAllowPoliciesPlainArgs(GetEmailSecurityAllowPoliciesPlainArgs $) {
         this.accountId = $.accountId;
         this.direction = $.direction;
+        this.expired = $.expired;
         this.isAcceptableSender = $.isAcceptableSender;
         this.isExemptRecipient = $.isExemptRecipient;
         this.isTrustedSender = $.isTrustedSender;
@@ -135,6 +143,11 @@ public final class GetEmailSecurityAllowPoliciesPlainArgs extends com.pulumi.res
 
         public Builder direction(@Nullable String direction) {
             $.direction = direction;
+            return this;
+        }
+
+        public Builder expired(@Nullable Boolean expired) {
+            $.expired = expired;
             return this;
         }
 

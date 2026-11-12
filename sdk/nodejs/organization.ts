@@ -11,6 +11,10 @@ import * as utilities from "./utilities";
  *
  * - `User Details Write`
  *
+ * User API tokens can list and create Organizations, but reading, updating, or deleting an Organization requires a Global API key and your registered email address. The `cloudflare.Organization` Terraform resource therefore requires a Global API key for its full lifecycle.
+ *
+ * See [Organizations authentication limitations](https://developers.cloudflare.com/fundamentals/organizations/limitations/#api-authentication) for credential compatibility by operation. Each endpoint’s **Security** section lists its supported authentication methods, with **Accepted Permissions** where applicable.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +22,7 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleOrganization = new cloudflare.Organization("example_organization", {
- *     name: "name",
+ *     name: "x",
  *     parent: {
  *         id: "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
  *     },
@@ -79,8 +83,18 @@ export class Organization extends pulumi.CustomResource {
 
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     declare public /*out*/ readonly meta: pulumi.Output<outputs.OrganizationMeta>;
+    /**
+     * The Organization name, limited to 65 UTF-8 bytes.
+     */
     declare public readonly name: pulumi.Output<string>;
-    declare public readonly parent: pulumi.Output<outputs.OrganizationParent>;
+    declare public readonly parent: pulumi.Output<outputs.OrganizationParent | undefined>;
+    /**
+     * The current parent Organization ID. A different value is rejected; this endpoint cannot move an Organization.
+     */
+    declare public readonly parentId: pulumi.Output<string | undefined>;
+    /**
+     * Optional profile fields, each limited to 1,000 UTF-8 bytes. An empty profile is ignored.
+     */
     declare public readonly profile: pulumi.Output<outputs.OrganizationProfile | undefined>;
 
     /**
@@ -100,6 +114,7 @@ export class Organization extends pulumi.CustomResource {
             resourceInputs["meta"] = state?.meta;
             resourceInputs["name"] = state?.name;
             resourceInputs["parent"] = state?.parent;
+            resourceInputs["parentId"] = state?.parentId;
             resourceInputs["profile"] = state?.profile;
         } else {
             const args = argsOrState as OrganizationArgs | undefined;
@@ -108,6 +123,7 @@ export class Organization extends pulumi.CustomResource {
             }
             resourceInputs["name"] = args?.name;
             resourceInputs["parent"] = args?.parent;
+            resourceInputs["parentId"] = args?.parentId;
             resourceInputs["profile"] = args?.profile;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["meta"] = undefined /*out*/;
@@ -123,8 +139,18 @@ export class Organization extends pulumi.CustomResource {
 export interface OrganizationState {
     createTime?: pulumi.Input<string | undefined>;
     meta?: pulumi.Input<inputs.OrganizationMeta | undefined>;
+    /**
+     * The Organization name, limited to 65 UTF-8 bytes.
+     */
     name?: pulumi.Input<string | undefined>;
     parent?: pulumi.Input<inputs.OrganizationParent | undefined>;
+    /**
+     * The current parent Organization ID. A different value is rejected; this endpoint cannot move an Organization.
+     */
+    parentId?: pulumi.Input<string | undefined>;
+    /**
+     * Optional profile fields, each limited to 1,000 UTF-8 bytes. An empty profile is ignored.
+     */
     profile?: pulumi.Input<inputs.OrganizationProfile | undefined>;
 }
 
@@ -132,7 +158,17 @@ export interface OrganizationState {
  * The set of arguments for constructing a Organization resource.
  */
 export interface OrganizationArgs {
+    /**
+     * The Organization name, limited to 65 UTF-8 bytes.
+     */
     name: pulumi.Input<string>;
     parent?: pulumi.Input<inputs.OrganizationParent | undefined>;
+    /**
+     * The current parent Organization ID. A different value is rejected; this endpoint cannot move an Organization.
+     */
+    parentId?: pulumi.Input<string | undefined>;
+    /**
+     * Optional profile fields, each limited to 1,000 UTF-8 bytes. An empty profile is ignored.
+     */
     profile?: pulumi.Input<inputs.OrganizationProfile | undefined>;
 }

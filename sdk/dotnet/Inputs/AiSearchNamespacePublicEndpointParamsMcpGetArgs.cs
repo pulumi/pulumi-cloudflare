@@ -16,7 +16,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Disable MCP endpoint for this public endpoint
+        /// Disable MCP endpoint for this public endpoint.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }

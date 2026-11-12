@@ -19,18 +19,18 @@ public final class TokenValidationConfigCredentialsKey {
      */
     private String alg;
     /**
-     * @return Curve
+     * @return For `alg: ES256` or `alg: ES384`: Curve
      * Available values: &#34;P-256&#34;, &#34;P-384&#34;.
      * 
      */
     private @Nullable String crv;
     /**
-     * @return RSA exponent
+     * @return For `alg: RS256` or `alg: RS384` or `alg: RS512` or `alg: PS256` or `alg: PS384` or `alg: PS512`: RSA exponent
      * 
      */
     private @Nullable String e;
     /**
-     * @return Symmetric key material. Required for create and PUT update requests.
+     * @return For `alg: HS256` or `alg: HS384` or `alg: HS512`: Symmetric key material. Required for create and PUT update requests.
      * 
      */
     private @Nullable String k;
@@ -46,17 +46,17 @@ public final class TokenValidationConfigCredentialsKey {
      */
     private String kty;
     /**
-     * @return RSA modulus
+     * @return For `alg: RS256` or `alg: RS384` or `alg: RS512` or `alg: PS256` or `alg: PS384` or `alg: PS512`: RSA modulus
      * 
      */
     private @Nullable String n;
     /**
-     * @return X EC coordinate
+     * @return For `alg: ES256` or `alg: ES384`: X EC coordinate
      * 
      */
     private @Nullable String x;
     /**
-     * @return Y EC coordinate
+     * @return For `alg: ES256` or `alg: ES384`: Y EC coordinate
      * 
      */
     private @Nullable String y;
@@ -71,7 +71,7 @@ public final class TokenValidationConfigCredentialsKey {
         return this.alg;
     }
     /**
-     * @return Curve
+     * @return For `alg: ES256` or `alg: ES384`: Curve
      * Available values: &#34;P-256&#34;, &#34;P-384&#34;.
      * 
      */
@@ -79,14 +79,14 @@ public final class TokenValidationConfigCredentialsKey {
         return Optional.ofNullable(this.crv);
     }
     /**
-     * @return RSA exponent
+     * @return For `alg: RS256` or `alg: RS384` or `alg: RS512` or `alg: PS256` or `alg: PS384` or `alg: PS512`: RSA exponent
      * 
      */
     public Optional<String> e() {
         return Optional.ofNullable(this.e);
     }
     /**
-     * @return Symmetric key material. Required for create and PUT update requests.
+     * @return For `alg: HS256` or `alg: HS384` or `alg: HS512`: Symmetric key material. Required for create and PUT update requests.
      * 
      */
     public Optional<String> k() {
@@ -108,21 +108,21 @@ public final class TokenValidationConfigCredentialsKey {
         return this.kty;
     }
     /**
-     * @return RSA modulus
+     * @return For `alg: RS256` or `alg: RS384` or `alg: RS512` or `alg: PS256` or `alg: PS384` or `alg: PS512`: RSA modulus
      * 
      */
     public Optional<String> n() {
         return Optional.ofNullable(this.n);
     }
     /**
-     * @return X EC coordinate
+     * @return For `alg: ES256` or `alg: ES384`: X EC coordinate
      * 
      */
     public Optional<String> x() {
         return Optional.ofNullable(this.x);
     }
     /**
-     * @return Y EC coordinate
+     * @return For `alg: ES256` or `alg: ES384`: Y EC coordinate
      * 
      */
     public Optional<String> y() {

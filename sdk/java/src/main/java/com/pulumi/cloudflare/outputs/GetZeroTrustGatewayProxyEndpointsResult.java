@@ -14,7 +14,7 @@ public final class GetZeroTrustGatewayProxyEndpointsResult {
     private String createdAt;
     private String id;
     /**
-     * @return Specify the list of CIDRs to restrict ingress connections.
+     * @return For `kind: ip`: Specify the list of CIDRs to restrict ingress connections.
      * 
      */
     private List<String> ips;
@@ -44,7 +44,7 @@ public final class GetZeroTrustGatewayProxyEndpointsResult {
         return this.id;
     }
     /**
-     * @return Specify the list of CIDRs to restrict ingress connections.
+     * @return For `kind: ip`: Specify the list of CIDRs to restrict ingress connections.
      * 
      */
     public List<String> ips() {

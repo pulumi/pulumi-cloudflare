@@ -1275,6 +1275,36 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.vary);
     }
 
+    /**
+     * Whether to serve the WebMCP bridge script, which exposes the page&#39;s tools to browser AI agents.
+     * 
+     */
+    @Import(name="webmcpEnabled")
+    private @Nullable Output<Boolean> webmcpEnabled;
+
+    /**
+     * @return Whether to serve the WebMCP bridge script, which exposes the page&#39;s tools to browser AI agents.
+     * 
+     */
+    public Optional<Output<Boolean>> webmcpEnabled() {
+        return Optional.ofNullable(this.webmcpEnabled);
+    }
+
+    /**
+     * Bundled WebMCP tool packs to activate for matching requests. An empty list disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself.
+     * 
+     */
+    @Import(name="webmcpPacks")
+    private @Nullable Output<List<String>> webmcpPacks;
+
+    /**
+     * @return Bundled WebMCP tool packs to activate for matching requests. An empty list disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself.
+     * 
+     */
+    public Optional<Output<List<String>>> webmcpPacks() {
+        return Optional.ofNullable(this.webmcpPacks);
+    }
+
     private RulesetRuleActionParametersArgs() {}
 
     private RulesetRuleActionParametersArgs(RulesetRuleActionParametersArgs $) {
@@ -1358,6 +1388,8 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         this.uri = $.uri;
         this.values = $.values;
         this.vary = $.vary;
+        this.webmcpEnabled = $.webmcpEnabled;
+        this.webmcpPacks = $.webmcpPacks;
     }
 
     public static Builder builder() {
@@ -3188,6 +3220,58 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
          */
         public Builder vary(RulesetRuleActionParametersVaryArgs vary) {
             return vary(Output.of(vary));
+        }
+
+        /**
+         * @param webmcpEnabled Whether to serve the WebMCP bridge script, which exposes the page&#39;s tools to browser AI agents.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder webmcpEnabled(@Nullable Output<Boolean> webmcpEnabled) {
+            $.webmcpEnabled = webmcpEnabled;
+            return this;
+        }
+
+        /**
+         * @param webmcpEnabled Whether to serve the WebMCP bridge script, which exposes the page&#39;s tools to browser AI agents.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder webmcpEnabled(Boolean webmcpEnabled) {
+            return webmcpEnabled(Output.of(webmcpEnabled));
+        }
+
+        /**
+         * @param webmcpPacks Bundled WebMCP tool packs to activate for matching requests. An empty list disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder webmcpPacks(@Nullable Output<List<String>> webmcpPacks) {
+            $.webmcpPacks = webmcpPacks;
+            return this;
+        }
+
+        /**
+         * @param webmcpPacks Bundled WebMCP tool packs to activate for matching requests. An empty list disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder webmcpPacks(List<String> webmcpPacks) {
+            return webmcpPacks(Output.of(webmcpPacks));
+        }
+
+        /**
+         * @param webmcpPacks Bundled WebMCP tool packs to activate for matching requests. An empty list disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder webmcpPacks(String... webmcpPacks) {
+            return webmcpPacks(List.of(webmcpPacks));
         }
 
         public RulesetRuleActionParametersArgs build() {

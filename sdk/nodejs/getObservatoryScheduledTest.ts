@@ -9,19 +9,6 @@ import * as utilities from "./utilities";
  *
  * - `Zone Settings Read`
  * - `Zone Settings Write`
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const exampleObservatoryScheduledTest = cloudflare.getObservatoryScheduledTest({
- *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     url: "example.com",
- *     region: "us-central1",
- * });
- * ```
  */
 export function getObservatoryScheduledTest(args: GetObservatoryScheduledTestArgs, opts?: pulumi.InvokeOptions): Promise<GetObservatoryScheduledTestResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -79,19 +66,6 @@ export interface GetObservatoryScheduledTestResult {
  *
  * - `Zone Settings Read`
  * - `Zone Settings Write`
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const exampleObservatoryScheduledTest = cloudflare.getObservatoryScheduledTest({
- *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     url: "example.com",
- *     region: "us-central1",
- * });
- * ```
  */
 export function getObservatoryScheduledTestOutput(args: GetObservatoryScheduledTestOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetObservatoryScheduledTestResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.BotManagementArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.BotManagementState;
+import com.pulumi.cloudflare.outputs.BotManagementAiAgents;
 import com.pulumi.cloudflare.outputs.BotManagementStaleZoneConfiguration;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -33,6 +34,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.BotManagement;
  * import com.pulumi.cloudflare.BotManagementArgs;
+ * import com.pulumi.cloudflare.inputs.BotManagementAiAgentsArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -48,6 +50,13 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var exampleBotManagement = new BotManagement("exampleBotManagement", BotManagementArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .aiAgents(BotManagementAiAgentsArgs.builder()
+ *                 .anthropicAgent("block")
+ *                 .googleAgent("block")
+ *                 .instinct("block")
+ *                 .muse("block")
+ *                 .openaiAgent("block")
+ *                 .build())
  *             .aiBotsMigrationOptOut(false)
  *             .aiBotsProtection("block")
  *             .aisearch("block")
@@ -77,6 +86,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="cloudflare:index/botManagement:BotManagement")
 public class BotManagement extends com.pulumi.resources.CustomResource {
+    /**
+     * Configure blocking behavior for supported personal AI agents.
+     * 
+     */
+    @Export(name="aiAgents", refs={BotManagementAiAgents.class}, tree="[0]")
+    private Output<BotManagementAiAgents> aiAgents;
+
+    /**
+     * @return Configure blocking behavior for supported personal AI agents.
+     * 
+     */
+    public Output<BotManagementAiAgents> aiAgents() {
+        return this.aiAgents;
+    }
     /**
      * Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
      * 

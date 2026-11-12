@@ -11,6 +11,7 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -38,7 +39,7 @@ public final class GetShareResult {
      */
     private Integer associatingRecipientCount;
     /**
-     * @return When the share was created.
+     * @return When the object was created.
      * 
      */
     private String created;
@@ -69,12 +70,18 @@ public final class GetShareResult {
      */
     private @Nullable Boolean includeResources;
     /**
+     * @return Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+     * Available values: &#34;api&#34;, &#34;mirror&#34;.
+     * 
+     */
+    private @Nullable String includeTagsFrom;
+    /**
      * @return Available values: &#34;sent&#34;, &#34;received&#34;.
      * 
      */
     private String kind;
     /**
-     * @return When the share was modified.
+     * @return When the object was last modified.
      * 
      */
     private String modified;
@@ -103,6 +110,11 @@ public final class GetShareResult {
      * 
      */
     private String status;
+    /**
+     * @return Tags associated with the share. Included in create and update responses when tags are supplied, and in read responses when the `includeTagsFrom` parameter is set.
+     * 
+     */
+    private Map<String,String> tags;
     /**
      * @return Available values: &#34;account&#34;, &#34;organization&#34;.
      * 
@@ -139,7 +151,7 @@ public final class GetShareResult {
         return this.associatingRecipientCount;
     }
     /**
-     * @return When the share was created.
+     * @return When the object was created.
      * 
      */
     public String created() {
@@ -184,6 +196,14 @@ public final class GetShareResult {
         return Optional.ofNullable(this.includeResources);
     }
     /**
+     * @return Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+     * Available values: &#34;api&#34;, &#34;mirror&#34;.
+     * 
+     */
+    public Optional<String> includeTagsFrom() {
+        return Optional.ofNullable(this.includeTagsFrom);
+    }
+    /**
      * @return Available values: &#34;sent&#34;, &#34;received&#34;.
      * 
      */
@@ -191,7 +211,7 @@ public final class GetShareResult {
         return this.kind;
     }
     /**
-     * @return When the share was modified.
+     * @return When the object was last modified.
      * 
      */
     public String modified() {
@@ -233,6 +253,13 @@ public final class GetShareResult {
         return this.status;
     }
     /**
+     * @return Tags associated with the share. Included in create and update responses when tags are supplied, and in read responses when the `includeTagsFrom` parameter is set.
+     * 
+     */
+    public Map<String,String> tags() {
+        return this.tags;
+    }
+    /**
      * @return Available values: &#34;account&#34;, &#34;organization&#34;.
      * 
      */
@@ -260,6 +287,7 @@ public final class GetShareResult {
         private String id;
         private @Nullable Boolean includeRecipientCounts;
         private @Nullable Boolean includeResources;
+        private @Nullable String includeTagsFrom;
         private String kind;
         private String modified;
         private String name;
@@ -267,6 +295,7 @@ public final class GetShareResult {
         private List<GetShareResource> resources;
         private @Nullable String shareId;
         private String status;
+        private Map<String,String> tags;
         private String targetType;
         public Builder() {}
         public Builder(GetShareResult defaults) {
@@ -282,6 +311,7 @@ public final class GetShareResult {
     	      this.id = defaults.id;
     	      this.includeRecipientCounts = defaults.includeRecipientCounts;
     	      this.includeResources = defaults.includeResources;
+    	      this.includeTagsFrom = defaults.includeTagsFrom;
     	      this.kind = defaults.kind;
     	      this.modified = defaults.modified;
     	      this.name = defaults.name;
@@ -289,6 +319,7 @@ public final class GetShareResult {
     	      this.resources = defaults.resources;
     	      this.shareId = defaults.shareId;
     	      this.status = defaults.status;
+    	      this.tags = defaults.tags;
     	      this.targetType = defaults.targetType;
         }
 
@@ -375,6 +406,12 @@ public final class GetShareResult {
             return this;
         }
         @CustomType.Setter
+        public Builder includeTagsFrom(@Nullable String includeTagsFrom) {
+
+            this.includeTagsFrom = includeTagsFrom;
+            return this;
+        }
+        @CustomType.Setter
         public Builder kind(String kind) {
             if (kind == null) {
               throw new MissingRequiredPropertyException("GetShareResult", "kind");
@@ -432,6 +469,14 @@ public final class GetShareResult {
             return this;
         }
         @CustomType.Setter
+        public Builder tags(Map<String,String> tags) {
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetShareResult", "tags");
+            }
+            this.tags = tags;
+            return this;
+        }
+        @CustomType.Setter
         public Builder targetType(String targetType) {
             if (targetType == null) {
               throw new MissingRequiredPropertyException("GetShareResult", "targetType");
@@ -452,6 +497,7 @@ public final class GetShareResult {
             _resultValue.id = id;
             _resultValue.includeRecipientCounts = includeRecipientCounts;
             _resultValue.includeResources = includeResources;
+            _resultValue.includeTagsFrom = includeTagsFrom;
             _resultValue.kind = kind;
             _resultValue.modified = modified;
             _resultValue.name = name;
@@ -459,6 +505,7 @@ public final class GetShareResult {
             _resultValue.resources = resources;
             _resultValue.shareId = shareId;
             _resultValue.status = status;
+            _resultValue.tags = tags;
             _resultValue.targetType = targetType;
             return _resultValue;
         }

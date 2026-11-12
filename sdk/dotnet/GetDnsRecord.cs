@@ -174,75 +174,29 @@ namespace Pulumi.Cloudflare
         /// A valid IPv4 address.
         /// </summary>
         public readonly string Content;
-        /// <summary>
-        /// When the record was created.
-        /// </summary>
         public readonly string CreatedOn;
-        /// <summary>
-        /// Components of a MX record.
-        /// </summary>
         public readonly Outputs.GetDnsRecordDataResult Data;
         /// <summary>
         /// Identifier.
         /// </summary>
         public readonly string? DnsRecordId;
         public readonly Outputs.GetDnsRecordFilterResult? Filter;
-        /// <summary>
-        /// Identifier.
-        /// </summary>
         public readonly string Id;
         /// <summary>
         /// Whether to include shadow metadata in the `Meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
         /// </summary>
         public readonly bool IncludeShadowMetadata;
-        /// <summary>
-        /// Extra Cloudflare-specific metadata about the record.
-        /// </summary>
         public readonly Outputs.GetDnsRecordMetaResult Meta;
-        /// <summary>
-        /// When the record was last modified.
-        /// </summary>
         public readonly string ModifiedOn;
-        /// <summary>
-        /// Complete DNS record name, including the zone name, in Punycode.
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
-        /// </summary>
         public readonly double Priority;
-        /// <summary>
-        /// Enables private network routing to the origin.
-        /// </summary>
         public readonly bool PrivateRouting;
-        /// <summary>
-        /// Whether the record can be proxied by Cloudflare or not.
-        /// </summary>
         public readonly bool Proxiable;
-        /// <summary>
-        /// Whether the record is receiving the performance and security benefits of Cloudflare.
-        /// </summary>
         public readonly bool Proxied;
-        /// <summary>
-        /// Settings for the DNS record.
-        /// </summary>
         public readonly Outputs.GetDnsRecordSettingsResult Settings;
-        /// <summary>
-        /// Custom tags for the DNS record. This field has no effect on DNS responses.
-        /// </summary>
         public readonly ImmutableArray<string> Tags;
-        /// <summary>
-        /// When the record tags were last modified. Omitted if there are no tags.
-        /// </summary>
         public readonly string TagsModifiedOn;
-        /// <summary>
-        /// Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
-        /// </summary>
         public readonly double Ttl;
-        /// <summary>
-        /// Record type.
-        /// Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
-        /// </summary>
         public readonly string Type;
         /// <summary>
         /// Identifier.

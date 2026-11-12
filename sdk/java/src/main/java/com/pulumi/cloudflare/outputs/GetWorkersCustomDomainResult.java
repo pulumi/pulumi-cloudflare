@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.cloudflare.outputs.GetWorkersCustomDomainFilter;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,7 +18,7 @@ public final class GetWorkersCustomDomainResult {
      * @return Identifier.
      * 
      */
-    private @Nullable String accountId;
+    private String accountId;
     /**
      * @return ID of the TLS certificate issued for the domain.
      * 
@@ -28,6 +29,11 @@ public final class GetWorkersCustomDomainResult {
      * 
      */
     private @Nullable String domainId;
+    /**
+     * @return Whether the configured hostname is routable for the domain. If disabled, then requests to the configured hostname will not be routed to the configured Worker. If disabled, then preview routing must be enabled, and only subdomains of the configured hostname will be routable.
+     * 
+     */
+    private Boolean enabled;
     /**
      * @return Worker environment associated with the domain.
      * 
@@ -47,6 +53,11 @@ public final class GetWorkersCustomDomainResult {
      * 
      */
     private String id;
+    /**
+     * @return Whether previews are routable for the domain. If enabled, previews will be routable as subdomains of the configured hostname. For example, if the configured hostname is `app.example.com`, then requests to `my-feature.app.example.com` will be routed to the preview with slug `my-feature`, if such a preview exists. If preview routing is disabled, then hostname routing must be enabled.
+     * 
+     */
+    private Boolean previewsEnabled;
     /**
      * @return Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
      * 
@@ -68,8 +79,8 @@ public final class GetWorkersCustomDomainResult {
      * @return Identifier.
      * 
      */
-    public Optional<String> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public String accountId() {
+        return this.accountId;
     }
     /**
      * @return ID of the TLS certificate issued for the domain.
@@ -84,6 +95,13 @@ public final class GetWorkersCustomDomainResult {
      */
     public Optional<String> domainId() {
         return Optional.ofNullable(this.domainId);
+    }
+    /**
+     * @return Whether the configured hostname is routable for the domain. If disabled, then requests to the configured hostname will not be routed to the configured Worker. If disabled, then preview routing must be enabled, and only subdomains of the configured hostname will be routable.
+     * 
+     */
+    public Boolean enabled() {
+        return this.enabled;
     }
     /**
      * @return Worker environment associated with the domain.
@@ -111,6 +129,13 @@ public final class GetWorkersCustomDomainResult {
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return Whether previews are routable for the domain. If enabled, previews will be routable as subdomains of the configured hostname. For example, if the configured hostname is `app.example.com`, then requests to `my-feature.app.example.com` will be routed to the preview with slug `my-feature`, if such a preview exists. If preview routing is disabled, then hostname routing must be enabled.
+     * 
+     */
+    public Boolean previewsEnabled() {
+        return this.previewsEnabled;
     }
     /**
      * @return Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
@@ -143,13 +168,15 @@ public final class GetWorkersCustomDomainResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String accountId;
+        private String accountId;
         private String certId;
         private @Nullable String domainId;
+        private Boolean enabled;
         private String environment;
         private @Nullable GetWorkersCustomDomainFilter filter;
         private String hostname;
         private String id;
+        private Boolean previewsEnabled;
         private String service;
         private String zoneId;
         private String zoneName;
@@ -159,18 +186,22 @@ public final class GetWorkersCustomDomainResult {
     	      this.accountId = defaults.accountId;
     	      this.certId = defaults.certId;
     	      this.domainId = defaults.domainId;
+    	      this.enabled = defaults.enabled;
     	      this.environment = defaults.environment;
     	      this.filter = defaults.filter;
     	      this.hostname = defaults.hostname;
     	      this.id = defaults.id;
+    	      this.previewsEnabled = defaults.previewsEnabled;
     	      this.service = defaults.service;
     	      this.zoneId = defaults.zoneId;
     	      this.zoneName = defaults.zoneName;
         }
 
         @CustomType.Setter
-        public Builder accountId(@Nullable String accountId) {
-
+        public Builder accountId(String accountId) {
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetWorkersCustomDomainResult", "accountId");
+            }
             this.accountId = accountId;
             return this;
         }
@@ -186,6 +217,14 @@ public final class GetWorkersCustomDomainResult {
         public Builder domainId(@Nullable String domainId) {
 
             this.domainId = domainId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enabled(Boolean enabled) {
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetWorkersCustomDomainResult", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
@@ -219,6 +258,14 @@ public final class GetWorkersCustomDomainResult {
             return this;
         }
         @CustomType.Setter
+        public Builder previewsEnabled(Boolean previewsEnabled) {
+            if (previewsEnabled == null) {
+              throw new MissingRequiredPropertyException("GetWorkersCustomDomainResult", "previewsEnabled");
+            }
+            this.previewsEnabled = previewsEnabled;
+            return this;
+        }
+        @CustomType.Setter
         public Builder service(String service) {
             if (service == null) {
               throw new MissingRequiredPropertyException("GetWorkersCustomDomainResult", "service");
@@ -247,10 +294,12 @@ public final class GetWorkersCustomDomainResult {
             _resultValue.accountId = accountId;
             _resultValue.certId = certId;
             _resultValue.domainId = domainId;
+            _resultValue.enabled = enabled;
             _resultValue.environment = environment;
             _resultValue.filter = filter;
             _resultValue.hostname = hostname;
             _resultValue.id = id;
+            _resultValue.previewsEnabled = previewsEnabled;
             _resultValue.service = service;
             _resultValue.zoneId = zoneId;
             _resultValue.zoneName = zoneName;

@@ -90,6 +90,8 @@ type LookupZeroTrustAccessPolicyResult struct {
 	Name string `pulumi:"name"`
 	// The UUID of the policy
 	PolicyId string `pulumi:"policyId"`
+	// The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.
+	PolicyResolutionAccountId string `pulumi:"policyResolutionAccountId"`
 	// A custom message that will appear on the purpose justification screen.
 	PurposeJustificationPrompt string `pulumi:"purposeJustificationPrompt"`
 	// Require users to enter a justification when they log in to the application.
@@ -206,6 +208,11 @@ func (o LookupZeroTrustAccessPolicyResultOutput) Name() pulumi.StringOutput {
 // The UUID of the policy
 func (o LookupZeroTrustAccessPolicyResultOutput) PolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessPolicyResult) string { return v.PolicyId }).(pulumi.StringOutput)
+}
+
+// The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.
+func (o LookupZeroTrustAccessPolicyResultOutput) PolicyResolutionAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessPolicyResult) string { return v.PolicyResolutionAccountId }).(pulumi.StringOutput)
 }
 
 // A custom message that will appear on the purpose justification screen.

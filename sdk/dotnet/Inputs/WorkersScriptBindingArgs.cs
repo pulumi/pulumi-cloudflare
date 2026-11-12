@@ -135,7 +135,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-        /// Available values: "eu", "fedramp", "fedramp-high".
+        /// Available values: "eu", "fedramp", "fedramp-high", "us".
         /// </summary>
         [Input("jurisdiction")]
         public Input<string>? Jurisdiction { get; set; }
@@ -316,7 +316,7 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version.
+        /// Identifier for the version to inherit the binding from. This can be a version ID, or the literal "latest" to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to "latest". Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only "latest" and reject a version ID with error 10057.
         /// </summary>
         [Input("versionId")]
         public Input<string>? VersionId { get; set; }

@@ -14,7 +14,6 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetAiSearchInstancesResultIndexingOptionsResult
     {
         /// <summary>
-        /// Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter.
         /// Available values: "porter", "trigram".
         /// </summary>
         public readonly string KeywordTokenizer;

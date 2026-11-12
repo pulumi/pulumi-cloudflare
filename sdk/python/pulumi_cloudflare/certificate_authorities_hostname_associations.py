@@ -26,6 +26,7 @@ class CertificateAuthoritiesHostnameAssociationsArgs:
         The set of arguments for constructing a CertificateAuthoritiesHostnameAssociations resource.
 
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hostnames: Unordered set of hostnames. Hostnames are stored as lowercase punycode.
         :param pulumi.Input[_builtins.str] mtls_certificate_id: The UUID for a certificate that was uploaded to the mTLS Certificate Management endpoint. If no mtls*certificate*id is given, the hostnames will be associated to your active Cloudflare Managed CA.
         """
         pulumi.set(__self__, "zone_id", zone_id)
@@ -49,6 +50,9 @@ class CertificateAuthoritiesHostnameAssociationsArgs:
     @_builtins.property
     @pulumi.getter
     def hostnames(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Unordered set of hostnames. Hostnames are stored as lowercase punycode.
+        """
         return pulumi.get(self, "hostnames")
 
     @hostnames.setter
@@ -77,6 +81,7 @@ class _CertificateAuthoritiesHostnameAssociationsState:
         """
         Input properties used for looking up and filtering CertificateAuthoritiesHostnameAssociations resources.
 
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hostnames: Unordered set of hostnames. Hostnames are stored as lowercase punycode.
         :param pulumi.Input[_builtins.str] mtls_certificate_id: The UUID for a certificate that was uploaded to the mTLS Certificate Management endpoint. If no mtls*certificate*id is given, the hostnames will be associated to your active Cloudflare Managed CA.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
@@ -90,6 +95,9 @@ class _CertificateAuthoritiesHostnameAssociationsState:
     @_builtins.property
     @pulumi.getter
     def hostnames(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Unordered set of hostnames. Hostnames are stored as lowercase punycode.
+        """
         return pulumi.get(self, "hostnames")
 
     @hostnames.setter
@@ -158,6 +166,7 @@ class CertificateAuthoritiesHostnameAssociations(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hostnames: Unordered set of hostnames. Hostnames are stored as lowercase punycode.
         :param pulumi.Input[_builtins.str] mtls_certificate_id: The UUID for a certificate that was uploaded to the mTLS Certificate Management endpoint. If no mtls*certificate*id is given, the hostnames will be associated to your active Cloudflare Managed CA.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
@@ -244,6 +253,7 @@ class CertificateAuthoritiesHostnameAssociations(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hostnames: Unordered set of hostnames. Hostnames are stored as lowercase punycode.
         :param pulumi.Input[_builtins.str] mtls_certificate_id: The UUID for a certificate that was uploaded to the mTLS Certificate Management endpoint. If no mtls*certificate*id is given, the hostnames will be associated to your active Cloudflare Managed CA.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
@@ -271,6 +281,9 @@ class CertificateAuthoritiesHostnameAssociations(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def hostnames(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        Unordered set of hostnames. Hostnames are stored as lowercase punycode.
+        """
         return pulumi.get(self, "hostnames")
 
     @_builtins.property

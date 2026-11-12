@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 
@@ -20,6 +21,16 @@ public final class GetAccountManagedBy {
      * 
      */
     private String parentOrgName;
+    /**
+     * @return ID of the root Organization, if one exists
+     * 
+     */
+    private String rootOrgId;
+    /**
+     * @return Indicates whether the parent Organization hierarchy should be displayed
+     * 
+     */
+    private Boolean shouldDisplayParentOrgs;
 
     private GetAccountManagedBy() {}
     /**
@@ -36,6 +47,20 @@ public final class GetAccountManagedBy {
     public String parentOrgName() {
         return this.parentOrgName;
     }
+    /**
+     * @return ID of the root Organization, if one exists
+     * 
+     */
+    public String rootOrgId() {
+        return this.rootOrgId;
+    }
+    /**
+     * @return Indicates whether the parent Organization hierarchy should be displayed
+     * 
+     */
+    public Boolean shouldDisplayParentOrgs() {
+        return this.shouldDisplayParentOrgs;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -48,11 +73,15 @@ public final class GetAccountManagedBy {
     public static final class Builder {
         private String parentOrgId;
         private String parentOrgName;
+        private String rootOrgId;
+        private Boolean shouldDisplayParentOrgs;
         public Builder() {}
         public Builder(GetAccountManagedBy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.parentOrgId = defaults.parentOrgId;
     	      this.parentOrgName = defaults.parentOrgName;
+    	      this.rootOrgId = defaults.rootOrgId;
+    	      this.shouldDisplayParentOrgs = defaults.shouldDisplayParentOrgs;
         }
 
         @CustomType.Setter
@@ -71,10 +100,28 @@ public final class GetAccountManagedBy {
             this.parentOrgName = parentOrgName;
             return this;
         }
+        @CustomType.Setter
+        public Builder rootOrgId(String rootOrgId) {
+            if (rootOrgId == null) {
+              throw new MissingRequiredPropertyException("GetAccountManagedBy", "rootOrgId");
+            }
+            this.rootOrgId = rootOrgId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder shouldDisplayParentOrgs(Boolean shouldDisplayParentOrgs) {
+            if (shouldDisplayParentOrgs == null) {
+              throw new MissingRequiredPropertyException("GetAccountManagedBy", "shouldDisplayParentOrgs");
+            }
+            this.shouldDisplayParentOrgs = shouldDisplayParentOrgs;
+            return this;
+        }
         public GetAccountManagedBy build() {
             final var _resultValue = new GetAccountManagedBy();
             _resultValue.parentOrgId = parentOrgId;
             _resultValue.parentOrgName = parentOrgName;
+            _resultValue.rootOrgId = rootOrgId;
+            _resultValue.shouldDisplayParentOrgs = shouldDisplayParentOrgs;
             return _resultValue;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -13,6 +14,21 @@ import javax.annotation.Nullable;
 public final class GetWorkersCustomDomainFilter extends com.pulumi.resources.InvokeArgs {
 
     public static final GetWorkersCustomDomainFilter Empty = new GetWorkersCustomDomainFilter();
+
+    /**
+     * Whether the configured hostname is routable for the domain.
+     * 
+     */
+    @Import(name="enabled")
+    private @Nullable Boolean enabled;
+
+    /**
+     * @return Whether the configured hostname is routable for the domain.
+     * 
+     */
+    public Optional<Boolean> enabled() {
+        return Optional.ofNullable(this.enabled);
+    }
 
     /**
      * Worker environment associated with the domain.
@@ -42,6 +58,21 @@ public final class GetWorkersCustomDomainFilter extends com.pulumi.resources.Inv
      */
     public Optional<String> hostname() {
         return Optional.ofNullable(this.hostname);
+    }
+
+    /**
+     * Whether previews are routable for the domain.
+     * 
+     */
+    @Import(name="previewsEnabled")
+    private @Nullable Boolean previewsEnabled;
+
+    /**
+     * @return Whether previews are routable for the domain.
+     * 
+     */
+    public Optional<Boolean> previewsEnabled() {
+        return Optional.ofNullable(this.previewsEnabled);
     }
 
     /**
@@ -92,8 +123,10 @@ public final class GetWorkersCustomDomainFilter extends com.pulumi.resources.Inv
     private GetWorkersCustomDomainFilter() {}
 
     private GetWorkersCustomDomainFilter(GetWorkersCustomDomainFilter $) {
+        this.enabled = $.enabled;
         this.environment = $.environment;
         this.hostname = $.hostname;
+        this.previewsEnabled = $.previewsEnabled;
         this.service = $.service;
         this.zoneId = $.zoneId;
         this.zoneName = $.zoneName;
@@ -118,6 +151,17 @@ public final class GetWorkersCustomDomainFilter extends com.pulumi.resources.Inv
         }
 
         /**
+         * @param enabled Whether the configured hostname is routable for the domain.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(@Nullable Boolean enabled) {
+            $.enabled = enabled;
+            return this;
+        }
+
+        /**
          * @param environment Worker environment associated with the domain.
          * 
          * @return builder
@@ -136,6 +180,17 @@ public final class GetWorkersCustomDomainFilter extends com.pulumi.resources.Inv
          */
         public Builder hostname(@Nullable String hostname) {
             $.hostname = hostname;
+            return this;
+        }
+
+        /**
+         * @param previewsEnabled Whether previews are routable for the domain.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder previewsEnabled(@Nullable Boolean previewsEnabled) {
+            $.previewsEnabled = previewsEnabled;
             return this;
         }
 

@@ -27,16 +27,17 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewPrecursor(ctx, "example_precursor", &cloudflare.PrecursorArgs{
-//				ZoneId:      pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				DefaultMode: pulumi.String("min-friction"),
-//				EnforcementRules: cloudflare.PrecursorEnforcementRuleArray{
-//					&cloudflare.PrecursorEnforcementRuleArgs{
-//						Expression:  pulumi.String("http.request.uri.path eq \"/login\""),
-//						Mode:        pulumi.String("max-security"),
-//						Description: pulumi.String("Ease friction on the login path"),
-//						Enabled:     pulumi.Bool(true),
+//				ZoneId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Mode:   pulumi.String("monitor"),
+//				Rules: cloudflare.PrecursorRuleArray{
+//					&cloudflare.PrecursorRuleArgs{
+//						Expression:       pulumi.String("http.request.uri.path eq \"/login\""),
+//						ShowInterstitial: pulumi.Bool(true),
+//						Description:      pulumi.String("Show an interstitial on the login path"),
+//						Enabled:          pulumi.Bool(true),
 //					},
 //				},
+//				ShowInterstitial: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -50,21 +51,21 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/precursor:Precursor example '<zone_id>'
+// $ pulumi import cloudflare:index/precursor:Precursor example '<zone_id>/<cloudflare_version>'
 // ```
 type Precursor struct {
 	pulumi.CustomResourceState
 
-	// The zone-level Precursor enforcement mode applied to requests that do
-	// not match a more specific enforcement rule.
-	// Available values: "off", "min-friction", "max-security".
-	//
-	// Deprecated: This attribute is deprecated.
-	DefaultMode pulumi.StringOutput `pulumi:"defaultMode"`
-	// The ordered list of enforcement rules for the zone.
-	//
-	// Deprecated: This attribute is deprecated.
-	EnforcementRules PrecursorEnforcementRuleArrayOutput `pulumi:"enforcementRules"`
+	// Controls Precursor detection for the zone. `off` disables detection,
+	// `monitor` records detections without affecting bot scores, and `arm`
+	// allows detections to affect bot scores.
+	// Available values: "off", "monitor", "arm".
+	Mode pulumi.StringOutput `pulumi:"mode"`
+	// The ordered list of Precursor rules for the zone.
+	Rules PrecursorRuleArrayOutput `pulumi:"rules"`
+	// Whether Precursor shows an interstitial when it takes action on a
+	// request.
+	ShowInterstitial pulumi.BoolPtrOutput `pulumi:"showInterstitial"`
 	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
@@ -102,31 +103,31 @@ func GetPrecursor(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Precursor resources.
 type precursorState struct {
-	// The zone-level Precursor enforcement mode applied to requests that do
-	// not match a more specific enforcement rule.
-	// Available values: "off", "min-friction", "max-security".
-	//
-	// Deprecated: This attribute is deprecated.
-	DefaultMode *string `pulumi:"defaultMode"`
-	// The ordered list of enforcement rules for the zone.
-	//
-	// Deprecated: This attribute is deprecated.
-	EnforcementRules []PrecursorEnforcementRule `pulumi:"enforcementRules"`
+	// Controls Precursor detection for the zone. `off` disables detection,
+	// `monitor` records detections without affecting bot scores, and `arm`
+	// allows detections to affect bot scores.
+	// Available values: "off", "monitor", "arm".
+	Mode *string `pulumi:"mode"`
+	// The ordered list of Precursor rules for the zone.
+	Rules []PrecursorRule `pulumi:"rules"`
+	// Whether Precursor shows an interstitial when it takes action on a
+	// request.
+	ShowInterstitial *bool `pulumi:"showInterstitial"`
 	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type PrecursorState struct {
-	// The zone-level Precursor enforcement mode applied to requests that do
-	// not match a more specific enforcement rule.
-	// Available values: "off", "min-friction", "max-security".
-	//
-	// Deprecated: This attribute is deprecated.
-	DefaultMode pulumi.StringPtrInput
-	// The ordered list of enforcement rules for the zone.
-	//
-	// Deprecated: This attribute is deprecated.
-	EnforcementRules PrecursorEnforcementRuleArrayInput
+	// Controls Precursor detection for the zone. `off` disables detection,
+	// `monitor` records detections without affecting bot scores, and `arm`
+	// allows detections to affect bot scores.
+	// Available values: "off", "monitor", "arm".
+	Mode pulumi.StringPtrInput
+	// The ordered list of Precursor rules for the zone.
+	Rules PrecursorRuleArrayInput
+	// Whether Precursor shows an interstitial when it takes action on a
+	// request.
+	ShowInterstitial pulumi.BoolPtrInput
 	// Identifier.
 	ZoneId pulumi.StringPtrInput
 }
@@ -142,32 +143,32 @@ func PrecursorExists(ctx *pulumi.Context,
 }
 
 type precursorArgs struct {
-	// The zone-level Precursor enforcement mode applied to requests that do
-	// not match a more specific enforcement rule.
-	// Available values: "off", "min-friction", "max-security".
-	//
-	// Deprecated: This attribute is deprecated.
-	DefaultMode *string `pulumi:"defaultMode"`
-	// The ordered list of enforcement rules for the zone.
-	//
-	// Deprecated: This attribute is deprecated.
-	EnforcementRules []PrecursorEnforcementRule `pulumi:"enforcementRules"`
+	// Controls Precursor detection for the zone. `off` disables detection,
+	// `monitor` records detections without affecting bot scores, and `arm`
+	// allows detections to affect bot scores.
+	// Available values: "off", "monitor", "arm".
+	Mode *string `pulumi:"mode"`
+	// The ordered list of Precursor rules for the zone.
+	Rules []PrecursorRule `pulumi:"rules"`
+	// Whether Precursor shows an interstitial when it takes action on a
+	// request.
+	ShowInterstitial *bool `pulumi:"showInterstitial"`
 	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a Precursor resource.
 type PrecursorArgs struct {
-	// The zone-level Precursor enforcement mode applied to requests that do
-	// not match a more specific enforcement rule.
-	// Available values: "off", "min-friction", "max-security".
-	//
-	// Deprecated: This attribute is deprecated.
-	DefaultMode pulumi.StringPtrInput
-	// The ordered list of enforcement rules for the zone.
-	//
-	// Deprecated: This attribute is deprecated.
-	EnforcementRules PrecursorEnforcementRuleArrayInput
+	// Controls Precursor detection for the zone. `off` disables detection,
+	// `monitor` records detections without affecting bot scores, and `arm`
+	// allows detections to affect bot scores.
+	// Available values: "off", "monitor", "arm".
+	Mode pulumi.StringPtrInput
+	// The ordered list of Precursor rules for the zone.
+	Rules PrecursorRuleArrayInput
+	// Whether Precursor shows an interstitial when it takes action on a
+	// request.
+	ShowInterstitial pulumi.BoolPtrInput
 	// Identifier.
 	ZoneId pulumi.StringInput
 }
@@ -259,20 +260,23 @@ func (o PrecursorOutput) ToPrecursorOutputWithContext(ctx context.Context) Precu
 	return o
 }
 
-// The zone-level Precursor enforcement mode applied to requests that do
-// not match a more specific enforcement rule.
-// Available values: "off", "min-friction", "max-security".
-//
-// Deprecated: This attribute is deprecated.
-func (o PrecursorOutput) DefaultMode() pulumi.StringOutput {
-	return o.ApplyT(func(v *Precursor) pulumi.StringOutput { return v.DefaultMode }).(pulumi.StringOutput)
+// Controls Precursor detection for the zone. `off` disables detection,
+// `monitor` records detections without affecting bot scores, and `arm`
+// allows detections to affect bot scores.
+// Available values: "off", "monitor", "arm".
+func (o PrecursorOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Precursor) pulumi.StringOutput { return v.Mode }).(pulumi.StringOutput)
 }
 
-// The ordered list of enforcement rules for the zone.
-//
-// Deprecated: This attribute is deprecated.
-func (o PrecursorOutput) EnforcementRules() PrecursorEnforcementRuleArrayOutput {
-	return o.ApplyT(func(v *Precursor) PrecursorEnforcementRuleArrayOutput { return v.EnforcementRules }).(PrecursorEnforcementRuleArrayOutput)
+// The ordered list of Precursor rules for the zone.
+func (o PrecursorOutput) Rules() PrecursorRuleArrayOutput {
+	return o.ApplyT(func(v *Precursor) PrecursorRuleArrayOutput { return v.Rules }).(PrecursorRuleArrayOutput)
+}
+
+// Whether Precursor shows an interstitial when it takes action on a
+// request.
+func (o PrecursorOutput) ShowInterstitial() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Precursor) pulumi.BoolPtrOutput { return v.ShowInterstitial }).(pulumi.BoolPtrOutput)
 }
 
 // Identifier.

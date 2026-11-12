@@ -13,15 +13,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAiSearchInstanceFilter {
     /**
-     * @return Filter by exact Search for Agents hostname (case-insensitive).
+     * @return Return only instances with this exact Search for Agents hostname (case-insensitive).
      * 
      */
     private @Nullable String hostname;
-    /**
-     * @return Filter by namespace.
-     * 
-     */
-    private @Nullable String namespace;
     /**
      * @return Field to order results by.
      * Available values: &#34;createdAt&#34;.
@@ -42,18 +37,11 @@ public final class GetAiSearchInstanceFilter {
 
     private GetAiSearchInstanceFilter() {}
     /**
-     * @return Filter by exact Search for Agents hostname (case-insensitive).
+     * @return Return only instances with this exact Search for Agents hostname (case-insensitive).
      * 
      */
     public Optional<String> hostname() {
         return Optional.ofNullable(this.hostname);
-    }
-    /**
-     * @return Filter by namespace.
-     * 
-     */
-    public Optional<String> namespace() {
-        return Optional.ofNullable(this.namespace);
     }
     /**
      * @return Field to order results by.
@@ -89,7 +77,6 @@ public final class GetAiSearchInstanceFilter {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String hostname;
-        private @Nullable String namespace;
         private String orderBy;
         private String orderByDirection;
         private @Nullable String search;
@@ -97,7 +84,6 @@ public final class GetAiSearchInstanceFilter {
         public Builder(GetAiSearchInstanceFilter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.hostname = defaults.hostname;
-    	      this.namespace = defaults.namespace;
     	      this.orderBy = defaults.orderBy;
     	      this.orderByDirection = defaults.orderByDirection;
     	      this.search = defaults.search;
@@ -107,12 +93,6 @@ public final class GetAiSearchInstanceFilter {
         public Builder hostname(@Nullable String hostname) {
 
             this.hostname = hostname;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder namespace(@Nullable String namespace) {
-
-            this.namespace = namespace;
             return this;
         }
         @CustomType.Setter
@@ -140,7 +120,6 @@ public final class GetAiSearchInstanceFilter {
         public GetAiSearchInstanceFilter build() {
             final var _resultValue = new GetAiSearchInstanceFilter();
             _resultValue.hostname = hostname;
-            _resultValue.namespace = namespace;
             _resultValue.orderBy = orderBy;
             _resultValue.orderByDirection = orderByDirection;
             _resultValue.search = search;

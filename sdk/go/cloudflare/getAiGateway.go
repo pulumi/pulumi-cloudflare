@@ -62,17 +62,24 @@ type LookupAiGatewayArgs struct {
 
 // A collection of values returned by getAiGateway.
 type LookupAiGatewayResult struct {
-	AccountId      *string `pulumi:"accountId"`
-	Authentication bool    `pulumi:"authentication"`
+	AccountId *string `pulumi:"accountId"`
+	// Require authentication for gateway access. New gateways must have authentication enabled. Once enabled, authentication cannot be disabled.
+	Authentication bool `pulumi:"authentication"`
 	// Requires customer-provided provider credentials and prevents fallback to Unified Billing.
-	ByokOnly                bool                   `pulumi:"byokOnly"`
-	CacheInvalidateOnUpdate bool                   `pulumi:"cacheInvalidateOnUpdate"`
-	CacheTtl                int                    `pulumi:"cacheTtl"`
-	CollectLogs             bool                   `pulumi:"collectLogs"`
-	CreatedAt               string                 `pulumi:"createdAt"`
-	Dlp                     GetAiGatewayDlp        `pulumi:"dlp"`
-	Filter                  *GetAiGatewayFilter    `pulumi:"filter"`
-	Guardrails              GetAiGatewayGuardrails `pulumi:"guardrails"`
+	ByokOnly                bool            `pulumi:"byokOnly"`
+	CacheInvalidateOnUpdate bool            `pulumi:"cacheInvalidateOnUpdate"`
+	CacheTtl                int             `pulumi:"cacheTtl"`
+	CollectLogs             bool            `pulumi:"collectLogs"`
+	CreatedAt               string          `pulumi:"createdAt"`
+	Dlp                     GetAiGatewayDlp `pulumi:"dlp"`
+	// FedRAMP compliance level: fedramp-medium or fedramp-high.
+	// Available values: "fedramp-medium", "fedramp-high".
+	FedrampLevel string `pulumi:"fedrampLevel"`
+	// FedRAMP enforcement mode. "prefer" prioritizes compliant connectors but allows fallback. "require" strictly filters.
+	// Available values: "prefer", "require".
+	FedrampMode string                 `pulumi:"fedrampMode"`
+	Filter      *GetAiGatewayFilter    `pulumi:"filter"`
+	Guardrails  GetAiGatewayGuardrails `pulumi:"guardrails"`
 	// Unique identifier of the AI Gateway within the account.
 	Id                string `pulumi:"id"`
 	IsDefault         bool   `pulumi:"isDefault"`
@@ -96,8 +103,9 @@ type LookupAiGatewayResult struct {
 	// Maximum number of retry attempts for failed requests (1-5)
 	RetryMaxAttempts int                     `pulumi:"retryMaxAttempts"`
 	SpendLimits      GetAiGatewaySpendLimits `pulumi:"spendLimits"`
-	StoreId          string                  `pulumi:"storeId"`
-	Stripe           GetAiGatewayStripe      `pulumi:"stripe"`
+	// Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it.
+	StoreId string             `pulumi:"storeId"`
+	Stripe  GetAiGatewayStripe `pulumi:"stripe"`
 	// Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
 	// Available values: "postpaid", "unified".
 	WorkersAiBillingMode string `pulumi:"workersAiBillingMode"`
@@ -140,6 +148,7 @@ func (o LookupAiGatewayResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAiGatewayResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
+// Require authentication for gateway access. New gateways must have authentication enabled. Once enabled, authentication cannot be disabled.
 func (o LookupAiGatewayResultOutput) Authentication() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupAiGatewayResult) bool { return v.Authentication }).(pulumi.BoolOutput)
 }
@@ -167,6 +176,18 @@ func (o LookupAiGatewayResultOutput) CreatedAt() pulumi.StringOutput {
 
 func (o LookupAiGatewayResultOutput) Dlp() GetAiGatewayDlpOutput {
 	return o.ApplyT(func(v LookupAiGatewayResult) GetAiGatewayDlp { return v.Dlp }).(GetAiGatewayDlpOutput)
+}
+
+// FedRAMP compliance level: fedramp-medium or fedramp-high.
+// Available values: "fedramp-medium", "fedramp-high".
+func (o LookupAiGatewayResultOutput) FedrampLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAiGatewayResult) string { return v.FedrampLevel }).(pulumi.StringOutput)
+}
+
+// FedRAMP enforcement mode. "prefer" prioritizes compliant connectors but allows fallback. "require" strictly filters.
+// Available values: "prefer", "require".
+func (o LookupAiGatewayResultOutput) FedrampMode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAiGatewayResult) string { return v.FedrampMode }).(pulumi.StringOutput)
 }
 
 func (o LookupAiGatewayResultOutput) Filter() GetAiGatewayFilterPtrOutput {
@@ -248,6 +269,7 @@ func (o LookupAiGatewayResultOutput) SpendLimits() GetAiGatewaySpendLimitsOutput
 	return o.ApplyT(func(v LookupAiGatewayResult) GetAiGatewaySpendLimits { return v.SpendLimits }).(GetAiGatewaySpendLimitsOutput)
 }
 
+// Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it.
 func (o LookupAiGatewayResultOutput) StoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiGatewayResult) string { return v.StoreId }).(pulumi.StringOutput)
 }

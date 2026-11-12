@@ -12,22 +12,18 @@ import * as utilities from "./utilities";
  * - `Zone Settings Read`
  * - `Zone Settings Write`
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const exampleObservatoryScheduledTest = new cloudflare.ObservatoryScheduledTest("example_observatory_scheduled_test", {
- *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     url: "example.com",
- * });
- * ```
- *
  * ## Import
+ *
+ * Import using zoneId and url (region defaults to us-central1)
  *
  * ```sh
  * $ pulumi import cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest example '<zone_id>/<url>'
+ * ```
+ *
+ * Import with an explicit region (required when the schedule is not in us-central1)
+ *
+ * ```sh
+ * $ pulumi import cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest example '<zone_id>/<url>/<region>'
  * ```
  */
 export class ObservatoryScheduledTest extends pulumi.CustomResource {

@@ -45,7 +45,7 @@ namespace Pulumi.Cloudflare
     public partial class TotalTls : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The Certificate Authority that Total TLS certificates will be issued through.
+        /// The Certificate Authority that Total TLS certificates will be issued through. Not returned in responses when Total TLS is disabled.
         /// Available values: "google", "lets*encrypt", "ssl*com".
         /// </summary>
         [Output("certificateAuthority")]
@@ -58,7 +58,7 @@ namespace Pulumi.Cloudflare
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// The validity period in days for the certificates ordered via Total TLS.
+        /// The validity period in days for the certificates ordered via Total TLS. Not returned when Total TLS is disabled.
         /// Available values: 90.
         /// </summary>
         [Output("validityPeriod")]
@@ -117,7 +117,7 @@ namespace Pulumi.Cloudflare
     public sealed class TotalTlsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Certificate Authority that Total TLS certificates will be issued through.
+        /// The Certificate Authority that Total TLS certificates will be issued through. Not returned in responses when Total TLS is disabled.
         /// Available values: "google", "lets*encrypt", "ssl*com".
         /// </summary>
         [Input("certificateAuthority")]
@@ -144,7 +144,7 @@ namespace Pulumi.Cloudflare
     public sealed class TotalTlsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Certificate Authority that Total TLS certificates will be issued through.
+        /// The Certificate Authority that Total TLS certificates will be issued through. Not returned in responses when Total TLS is disabled.
         /// Available values: "google", "lets*encrypt", "ssl*com".
         /// </summary>
         [Input("certificateAuthority")]
@@ -157,7 +157,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The validity period in days for the certificates ordered via Total TLS.
+        /// The validity period in days for the certificates ordered via Total TLS. Not returned when Total TLS is disabled.
         /// Available values: 90.
         /// </summary>
         [Input("validityPeriod")]

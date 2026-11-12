@@ -63,10 +63,6 @@ type LookupZoneDnsSettingsArgs struct {
 type LookupZoneDnsSettingsResult struct {
 	// Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
 	FlattenAllCnames bool `pulumi:"flattenAllCnames"`
-	// Deprecated. Use nameservers.type to configure Advanced Nameservers.
-	//
-	// Deprecated: foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
-	FoundationDns bool `pulumi:"foundationDns"`
 	// Settings for this internal zone.
 	InternalDns GetZoneDnsSettingsInternalDns `pulumi:"internalDns"`
 	// Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
@@ -119,13 +115,6 @@ func (o LookupZoneDnsSettingsResultOutput) ToLookupZoneDnsSettingsResultOutputWi
 // Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
 func (o LookupZoneDnsSettingsResultOutput) FlattenAllCnames() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupZoneDnsSettingsResult) bool { return v.FlattenAllCnames }).(pulumi.BoolOutput)
-}
-
-// Deprecated. Use nameservers.type to configure Advanced Nameservers.
-//
-// Deprecated: foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
-func (o LookupZoneDnsSettingsResultOutput) FoundationDns() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupZoneDnsSettingsResult) bool { return v.FoundationDns }).(pulumi.BoolOutput)
 }
 
 // Settings for this internal zone.

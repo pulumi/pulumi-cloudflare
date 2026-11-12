@@ -33,6 +33,21 @@ public final class GetEmailSecurityAllowPolicyFilter extends com.pulumi.resource
     }
 
     /**
+     * Filter to return only expired policies (`true`) or only policies that still apply (`false`). Omit to return both.
+     * 
+     */
+    @Import(name="expired")
+    private @Nullable Boolean expired;
+
+    /**
+     * @return Filter to return only expired policies (`true`) or only policies that still apply (`false`). Omit to return both.
+     * 
+     */
+    public Optional<Boolean> expired() {
+        return Optional.ofNullable(this.expired);
+    }
+
+    /**
      * Filter to show only policies where messages from the sender are exempted from Spam, Spoof, and Bulk dispositions (not Malicious or Suspicious).
      * 
      */
@@ -160,6 +175,7 @@ public final class GetEmailSecurityAllowPolicyFilter extends com.pulumi.resource
 
     private GetEmailSecurityAllowPolicyFilter(GetEmailSecurityAllowPolicyFilter $) {
         this.direction = $.direction;
+        this.expired = $.expired;
         this.isAcceptableSender = $.isAcceptableSender;
         this.isExemptRecipient = $.isExemptRecipient;
         this.isTrustedSender = $.isTrustedSender;
@@ -197,6 +213,17 @@ public final class GetEmailSecurityAllowPolicyFilter extends com.pulumi.resource
          */
         public Builder direction(@Nullable String direction) {
             $.direction = direction;
+            return this;
+        }
+
+        /**
+         * @param expired Filter to return only expired policies (`true`) or only policies that still apply (`false`). Omit to return both.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expired(@Nullable Boolean expired) {
+            $.expired = expired;
             return this;
         }
 

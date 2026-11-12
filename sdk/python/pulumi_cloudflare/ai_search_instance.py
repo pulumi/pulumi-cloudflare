@@ -39,6 +39,7 @@ class AiSearchInstanceArgs:
                  indexing_options: pulumi.Input[Optional['AiSearchInstanceIndexingOptionsArgs']] = None,
                  max_num_results: pulumi.Input[Optional[_builtins.int]] = None,
                  metadata: pulumi.Input[Optional['AiSearchInstanceMetadataArgs']] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
                  paused: pulumi.Input[Optional[_builtins.bool]] = None,
                  public_endpoint_params: pulumi.Input[Optional['AiSearchInstancePublicEndpointParamsArgs']] = None,
                  reranking: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -67,9 +68,10 @@ class AiSearchInstanceArgs:
                Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
         :param pulumi.Input[_builtins.str] fusion_method: Available values: "max", "rrf".
         :param pulumi.Input[_builtins.bool] hybrid_search_enabled: Deprecated — use index_method instead. Defaults to true for new instances; set false to create a vector-only instance.
-        :param pulumi.Input['AiSearchInstanceIndexMethodArgs'] index_method: Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
+        :param pulumi.Input['AiSearchInstanceIndexMethodArgs'] index_method: Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances. When set, both vector and keyword are required.
         :param pulumi.Input[_builtins.str] rewrite_model: A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.
-        :param pulumi.Input[_builtins.float] sync_interval: Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+        :param pulumi.Input[_builtins.float] score_threshold: Minimum similarity score a chunk must reach to be returned. Defaults to 0.4.
+        :param pulumi.Input[_builtins.float] sync_interval: Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). Defaults to 86400 (24h).
                Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
         :param pulumi.Input[_builtins.str] type: Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
                Available values: "r2", "web-crawler".
@@ -111,6 +113,8 @@ class AiSearchInstanceArgs:
             pulumi.set(__self__, "max_num_results", max_num_results)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
         if paused is not None:
             pulumi.set(__self__, "paused", paused)
         if public_endpoint_params is not None:
@@ -298,7 +302,7 @@ class AiSearchInstanceArgs:
     @pulumi.getter(name="indexMethod")
     def index_method(self) -> pulumi.Input[Optional['AiSearchInstanceIndexMethodArgs']]:
         """
-        Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
+        Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances. When set, both vector and keyword are required.
         """
         return pulumi.get(self, "index_method")
 
@@ -332,6 +336,15 @@ class AiSearchInstanceArgs:
     @metadata.setter
     def metadata(self, value: pulumi.Input[Optional['AiSearchInstanceMetadataArgs']]):
         pulumi.set(self, "metadata", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "namespace", value)
 
     @_builtins.property
     @pulumi.getter
@@ -402,6 +415,9 @@ class AiSearchInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="scoreThreshold")
     def score_threshold(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        Minimum similarity score a chunk must reach to be returned. Defaults to 0.4.
+        """
         return pulumi.get(self, "score_threshold")
 
     @score_threshold.setter
@@ -448,7 +464,7 @@ class AiSearchInstanceArgs:
     @pulumi.getter(name="syncInterval")
     def sync_interval(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
-        Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+        Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). Defaults to 86400 (24h).
         Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
         """
         return pulumi.get(self, "sync_interval")
@@ -566,9 +582,10 @@ class _AiSearchInstanceState:
                Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
         :param pulumi.Input[_builtins.str] fusion_method: Available values: "max", "rrf".
         :param pulumi.Input[_builtins.bool] hybrid_search_enabled: Deprecated — use index_method instead. Defaults to true for new instances; set false to create a vector-only instance.
-        :param pulumi.Input['AiSearchInstanceIndexMethodArgs'] index_method: Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
+        :param pulumi.Input['AiSearchInstanceIndexMethodArgs'] index_method: Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances. When set, both vector and keyword are required.
         :param pulumi.Input[_builtins.str] rewrite_model: A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.
-        :param pulumi.Input[_builtins.float] sync_interval: Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+        :param pulumi.Input[_builtins.float] score_threshold: Minimum similarity score a chunk must reach to be returned. Defaults to 0.4.
+        :param pulumi.Input[_builtins.float] sync_interval: Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). Defaults to 86400 (24h).
                Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
         :param pulumi.Input[_builtins.str] type: Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
                Available values: "r2", "web-crawler".
@@ -855,7 +872,7 @@ class _AiSearchInstanceState:
     @pulumi.getter(name="indexMethod")
     def index_method(self) -> pulumi.Input[Optional['AiSearchInstanceIndexMethodArgs']]:
         """
-        Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
+        Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances. When set, both vector and keyword are required.
         """
         return pulumi.get(self, "index_method")
 
@@ -1004,6 +1021,9 @@ class _AiSearchInstanceState:
     @_builtins.property
     @pulumi.getter(name="scoreThreshold")
     def score_threshold(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        Minimum similarity score a chunk must reach to be returned. Defaults to 0.4.
+        """
         return pulumi.get(self, "score_threshold")
 
     @score_threshold.setter
@@ -1059,7 +1079,7 @@ class _AiSearchInstanceState:
     @pulumi.getter(name="syncInterval")
     def sync_interval(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
-        Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+        Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). Defaults to 86400 (24h).
         Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
         """
         return pulumi.get(self, "sync_interval")
@@ -1142,6 +1162,7 @@ class AiSearchInstance(pulumi.CustomResource):
                  indexing_options: pulumi.Input[Optional[Union['AiSearchInstanceIndexingOptionsArgs', 'AiSearchInstanceIndexingOptionsArgsDict', 'outputs.AiSearchInstanceIndexingOptions']]] = None,
                  max_num_results: pulumi.Input[Optional[_builtins.int]] = None,
                  metadata: pulumi.Input[Optional[Union['AiSearchInstanceMetadataArgs', 'AiSearchInstanceMetadataArgsDict', 'outputs.AiSearchInstanceMetadata']]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
                  paused: pulumi.Input[Optional[_builtins.bool]] = None,
                  public_endpoint_params: pulumi.Input[Optional[Union['AiSearchInstancePublicEndpointParamsArgs', 'AiSearchInstancePublicEndpointParamsArgsDict', 'outputs.AiSearchInstancePublicEndpointParams']]] = None,
                  reranking: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1178,9 +1199,10 @@ class AiSearchInstance(pulumi.CustomResource):
                Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
         :param pulumi.Input[_builtins.str] fusion_method: Available values: "max", "rrf".
         :param pulumi.Input[_builtins.bool] hybrid_search_enabled: Deprecated — use index_method instead. Defaults to true for new instances; set false to create a vector-only instance.
-        :param pulumi.Input[Union['AiSearchInstanceIndexMethodArgs', 'AiSearchInstanceIndexMethodArgsDict', 'outputs.AiSearchInstanceIndexMethod']] index_method: Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
+        :param pulumi.Input[Union['AiSearchInstanceIndexMethodArgs', 'AiSearchInstanceIndexMethodArgsDict', 'outputs.AiSearchInstanceIndexMethod']] index_method: Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances. When set, both vector and keyword are required.
         :param pulumi.Input[_builtins.str] rewrite_model: A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.
-        :param pulumi.Input[_builtins.float] sync_interval: Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+        :param pulumi.Input[_builtins.float] score_threshold: Minimum similarity score a chunk must reach to be returned. Defaults to 0.4.
+        :param pulumi.Input[_builtins.float] sync_interval: Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). Defaults to 86400 (24h).
                Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
         :param pulumi.Input[_builtins.str] type: Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
                Available values: "r2", "web-crawler".
@@ -1232,6 +1254,7 @@ class AiSearchInstance(pulumi.CustomResource):
                  indexing_options: pulumi.Input[Optional[Union['AiSearchInstanceIndexingOptionsArgs', 'AiSearchInstanceIndexingOptionsArgsDict', 'outputs.AiSearchInstanceIndexingOptions']]] = None,
                  max_num_results: pulumi.Input[Optional[_builtins.int]] = None,
                  metadata: pulumi.Input[Optional[Union['AiSearchInstanceMetadataArgs', 'AiSearchInstanceMetadataArgsDict', 'outputs.AiSearchInstanceMetadata']]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
                  paused: pulumi.Input[Optional[_builtins.bool]] = None,
                  public_endpoint_params: pulumi.Input[Optional[Union['AiSearchInstancePublicEndpointParamsArgs', 'AiSearchInstancePublicEndpointParamsArgsDict', 'outputs.AiSearchInstancePublicEndpointParams']]] = None,
                  reranking: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1281,6 +1304,7 @@ class AiSearchInstance(pulumi.CustomResource):
             __props__.__dict__["indexing_options"] = indexing_options
             __props__.__dict__["max_num_results"] = max_num_results
             __props__.__dict__["metadata"] = metadata
+            __props__.__dict__["namespace"] = namespace
             __props__.__dict__["paused"] = paused
             __props__.__dict__["public_endpoint_params"] = public_endpoint_params
             __props__.__dict__["reranking"] = reranking
@@ -1306,7 +1330,6 @@ class AiSearchInstance(pulumi.CustomResource):
             __props__.__dict__["last_activity"] = None
             __props__.__dict__["modified_at"] = None
             __props__.__dict__["modified_by"] = None
-            __props__.__dict__["namespace"] = None
             __props__.__dict__["public_endpoint_id"] = None
             __props__.__dict__["status"] = None
         super(AiSearchInstance, __self__).__init__(
@@ -1379,9 +1402,10 @@ class AiSearchInstance(pulumi.CustomResource):
                Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
         :param pulumi.Input[_builtins.str] fusion_method: Available values: "max", "rrf".
         :param pulumi.Input[_builtins.bool] hybrid_search_enabled: Deprecated — use index_method instead. Defaults to true for new instances; set false to create a vector-only instance.
-        :param pulumi.Input[Union['AiSearchInstanceIndexMethodArgs', 'AiSearchInstanceIndexMethodArgsDict', 'outputs.AiSearchInstanceIndexMethod']] index_method: Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
+        :param pulumi.Input[Union['AiSearchInstanceIndexMethodArgs', 'AiSearchInstanceIndexMethodArgsDict', 'outputs.AiSearchInstanceIndexMethod']] index_method: Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances. When set, both vector and keyword are required.
         :param pulumi.Input[_builtins.str] rewrite_model: A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.
-        :param pulumi.Input[_builtins.float] sync_interval: Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+        :param pulumi.Input[_builtins.float] score_threshold: Minimum similarity score a chunk must reach to be returned. Defaults to 0.4.
+        :param pulumi.Input[_builtins.float] sync_interval: Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). Defaults to 86400 (24h).
                Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
         :param pulumi.Input[_builtins.str] type: Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
                Available values: "r2", "web-crawler".
@@ -1650,7 +1674,7 @@ class AiSearchInstance(pulumi.CustomResource):
     @pulumi.getter(name="indexMethod")
     def index_method(self) -> pulumi.Output['outputs.AiSearchInstanceIndexMethod']:
         """
-        Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
+        Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances. When set, both vector and keyword are required.
         """
         return pulumi.get(self, "index_method")
 
@@ -1716,7 +1740,7 @@ class AiSearchInstance(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="retrievalOptions")
-    def retrieval_options(self) -> pulumi.Output[Optional['outputs.AiSearchInstanceRetrievalOptions']]:
+    def retrieval_options(self) -> pulumi.Output['outputs.AiSearchInstanceRetrievalOptions']:
         return pulumi.get(self, "retrieval_options")
 
     @_builtins.property
@@ -1735,6 +1759,9 @@ class AiSearchInstance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="scoreThreshold")
     def score_threshold(self) -> pulumi.Output[_builtins.float]:
+        """
+        Minimum similarity score a chunk must reach to be returned. Defaults to 0.4.
+        """
         return pulumi.get(self, "score_threshold")
 
     @_builtins.property
@@ -1766,7 +1793,7 @@ class AiSearchInstance(pulumi.CustomResource):
     @pulumi.getter(name="syncInterval")
     def sync_interval(self) -> pulumi.Output[_builtins.float]:
         """
-        Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+        Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). Defaults to 86400 (24h).
         Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
         """
         return pulumi.get(self, "sync_interval")
@@ -1788,12 +1815,12 @@ class AiSearchInstance(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="tokenId")
-    def token_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def token_id(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "token_id")
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def type(self) -> pulumi.Output[_builtins.str]:
         """
         Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
         Available values: "r2", "web-crawler".

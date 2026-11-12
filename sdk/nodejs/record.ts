@@ -100,7 +100,7 @@ export class Record extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createdOn: pulumi.Output<string>;
     /**
-     * Components of a MX record.
+     * For `type: CAA`: Components of a CAA record.
      */
     declare public readonly data: pulumi.Output<outputs.RecordData | undefined>;
     /**
@@ -124,7 +124,7 @@ export class Record extends pulumi.CustomResource {
      */
     declare public readonly priority: pulumi.Output<number | undefined>;
     /**
-     * Enables private network routing to the origin.
+     * For `type: A` or `type: AAAA`: Enables private network routing to the origin.
      */
     declare public readonly privateRouting: pulumi.Output<boolean | undefined>;
     /**
@@ -258,7 +258,7 @@ export interface RecordState {
      */
     createdOn?: pulumi.Input<string | undefined>;
     /**
-     * Components of a MX record.
+     * For `type: CAA`: Components of a CAA record.
      */
     data?: pulumi.Input<inputs.RecordData | undefined>;
     /**
@@ -282,7 +282,7 @@ export interface RecordState {
      */
     priority?: pulumi.Input<number | undefined>;
     /**
-     * Enables private network routing to the origin.
+     * For `type: A` or `type: AAAA`: Enables private network routing to the origin.
      */
     privateRouting?: pulumi.Input<boolean | undefined>;
     /**
@@ -333,7 +333,7 @@ export interface RecordArgs {
      */
     content?: pulumi.Input<string | undefined>;
     /**
-     * Components of a MX record.
+     * For `type: CAA`: Components of a CAA record.
      */
     data?: pulumi.Input<inputs.RecordData | undefined>;
     /**
@@ -349,7 +349,7 @@ export interface RecordArgs {
      */
     priority?: pulumi.Input<number | undefined>;
     /**
-     * Enables private network routing to the origin.
+     * For `type: A` or `type: AAAA`: Enables private network routing to the origin.
      */
     privateRouting?: pulumi.Input<boolean | undefined>;
     /**

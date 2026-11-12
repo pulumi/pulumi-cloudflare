@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetOrganizationsContaining;
+import com.pulumi.cloudflare.outputs.GetOrganizationsMember;
 import com.pulumi.cloudflare.outputs.GetOrganizationsName;
 import com.pulumi.cloudflare.outputs.GetOrganizationsParent;
 import com.pulumi.cloudflare.outputs.GetOrganizationsResult;
@@ -20,6 +21,13 @@ import javax.annotation.Nullable;
 public final class GetOrganizationsInvokeResult {
     private @Nullable GetOrganizationsContaining containing;
     /**
+     * @return Sort direction for the `orderBy` field. Defaults to `asc` when `orderBy` is
+     * specified.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    private @Nullable String direction;
+    /**
      * @return Only return organizations with the specified IDs (ex. id=foo&amp;id=bar). Send multiple elements
      * by repeating the query value.
      * 
@@ -30,7 +38,15 @@ public final class GetOrganizationsInvokeResult {
      * 
      */
     private @Nullable Integer maxItems;
+    private @Nullable GetOrganizationsMember member;
     private @Nullable GetOrganizationsName name;
+    /**
+     * @return Field to order results by. Currently supported values: `name`.
+     * When not specified, results are ordered by hierarchy.
+     * Available values: &#34;name&#34;.
+     * 
+     */
+    private @Nullable String orderBy;
     /**
      * @return The amount of items to return. Defaults to 10.
      * 
@@ -50,6 +66,15 @@ public final class GetOrganizationsInvokeResult {
         return Optional.ofNullable(this.containing);
     }
     /**
+     * @return Sort direction for the `orderBy` field. Defaults to `asc` when `orderBy` is
+     * specified.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    public Optional<String> direction() {
+        return Optional.ofNullable(this.direction);
+    }
+    /**
      * @return Only return organizations with the specified IDs (ex. id=foo&amp;id=bar). Send multiple elements
      * by repeating the query value.
      * 
@@ -64,8 +89,20 @@ public final class GetOrganizationsInvokeResult {
     public Optional<Integer> maxItems() {
         return Optional.ofNullable(this.maxItems);
     }
+    public Optional<GetOrganizationsMember> member() {
+        return Optional.ofNullable(this.member);
+    }
     public Optional<GetOrganizationsName> name() {
         return Optional.ofNullable(this.name);
+    }
+    /**
+     * @return Field to order results by. Currently supported values: `name`.
+     * When not specified, results are ordered by hierarchy.
+     * Available values: &#34;name&#34;.
+     * 
+     */
+    public Optional<String> orderBy() {
+        return Optional.ofNullable(this.orderBy);
     }
     /**
      * @return The amount of items to return. Defaults to 10.
@@ -99,9 +136,12 @@ public final class GetOrganizationsInvokeResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable GetOrganizationsContaining containing;
+        private @Nullable String direction;
         private @Nullable List<String> ids;
         private @Nullable Integer maxItems;
+        private @Nullable GetOrganizationsMember member;
         private @Nullable GetOrganizationsName name;
+        private @Nullable String orderBy;
         private @Nullable Integer pageSize;
         private @Nullable String pageToken;
         private @Nullable GetOrganizationsParent parent;
@@ -110,9 +150,12 @@ public final class GetOrganizationsInvokeResult {
         public Builder(GetOrganizationsInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.containing = defaults.containing;
+    	      this.direction = defaults.direction;
     	      this.ids = defaults.ids;
     	      this.maxItems = defaults.maxItems;
+    	      this.member = defaults.member;
     	      this.name = defaults.name;
+    	      this.orderBy = defaults.orderBy;
     	      this.pageSize = defaults.pageSize;
     	      this.pageToken = defaults.pageToken;
     	      this.parent = defaults.parent;
@@ -123,6 +166,12 @@ public final class GetOrganizationsInvokeResult {
         public Builder containing(@Nullable GetOrganizationsContaining containing) {
 
             this.containing = containing;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder direction(@Nullable String direction) {
+
+            this.direction = direction;
             return this;
         }
         @CustomType.Setter
@@ -141,9 +190,21 @@ public final class GetOrganizationsInvokeResult {
             return this;
         }
         @CustomType.Setter
+        public Builder member(@Nullable GetOrganizationsMember member) {
+
+            this.member = member;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(@Nullable GetOrganizationsName name) {
 
             this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder orderBy(@Nullable String orderBy) {
+
+            this.orderBy = orderBy;
             return this;
         }
         @CustomType.Setter
@@ -178,9 +239,12 @@ public final class GetOrganizationsInvokeResult {
         public GetOrganizationsInvokeResult build() {
             final var _resultValue = new GetOrganizationsInvokeResult();
             _resultValue.containing = containing;
+            _resultValue.direction = direction;
             _resultValue.ids = ids;
             _resultValue.maxItems = maxItems;
+            _resultValue.member = member;
             _resultValue.name = name;
+            _resultValue.orderBy = orderBy;
             _resultValue.pageSize = pageSize;
             _resultValue.pageToken = pageToken;
             _resultValue.parent = parent;

@@ -16,6 +16,10 @@ import (
 //
 // - `User Details Write`
 //
+// User API tokens can list and create Organizations, but reading, updating, or deleting an Organization requires a Global API key and your registered email address. The `Organization` Terraform resource therefore requires a Global API key for its full lifecycle.
+//
+// See [Organizations authentication limitations](https://developers.cloudflare.com/fundamentals/organizations/limitations/#api-authentication) for credential compatibility by operation. Each endpoint’s **Security** section lists its supported authentication methods, with **Accepted Permissions** where applicable.
+//
 // ## Example Usage
 //
 // ```go
@@ -31,7 +35,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewOrganization(ctx, "example_organization", &cloudflare.OrganizationArgs{
-//				Name: pulumi.String("name"),
+//				Name: pulumi.String("x"),
 //				Parent: &cloudflare.OrganizationParentArgs{
 //					Id: pulumi.String("a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8"),
 //				},
@@ -60,11 +64,15 @@ import (
 type Organization struct {
 	pulumi.CustomResourceState
 
-	CreateTime pulumi.StringOutput              `pulumi:"createTime"`
-	Meta       OrganizationMetaOutput           `pulumi:"meta"`
-	Name       pulumi.StringOutput              `pulumi:"name"`
-	Parent     OrganizationParentOutput         `pulumi:"parent"`
-	Profile    OrganizationProfileTypePtrOutput `pulumi:"profile"`
+	CreateTime pulumi.StringOutput    `pulumi:"createTime"`
+	Meta       OrganizationMetaOutput `pulumi:"meta"`
+	// The Organization name, limited to 65 UTF-8 bytes.
+	Name   pulumi.StringOutput         `pulumi:"name"`
+	Parent OrganizationParentPtrOutput `pulumi:"parent"`
+	// The current parent Organization ID. A different value is rejected; this endpoint cannot move an Organization.
+	ParentId pulumi.StringPtrOutput `pulumi:"parentId"`
+	// Optional profile fields, each limited to 1,000 UTF-8 bytes. An empty profile is ignored.
+	Profile OrganizationProfileTypePtrOutput `pulumi:"profile"`
 }
 
 // NewOrganization registers a new resource with the given unique name, arguments, and options.
@@ -100,19 +108,27 @@ func GetOrganization(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Organization resources.
 type organizationState struct {
-	CreateTime *string                  `pulumi:"createTime"`
-	Meta       *OrganizationMeta        `pulumi:"meta"`
-	Name       *string                  `pulumi:"name"`
-	Parent     *OrganizationParent      `pulumi:"parent"`
-	Profile    *OrganizationProfileType `pulumi:"profile"`
+	CreateTime *string           `pulumi:"createTime"`
+	Meta       *OrganizationMeta `pulumi:"meta"`
+	// The Organization name, limited to 65 UTF-8 bytes.
+	Name   *string             `pulumi:"name"`
+	Parent *OrganizationParent `pulumi:"parent"`
+	// The current parent Organization ID. A different value is rejected; this endpoint cannot move an Organization.
+	ParentId *string `pulumi:"parentId"`
+	// Optional profile fields, each limited to 1,000 UTF-8 bytes. An empty profile is ignored.
+	Profile *OrganizationProfileType `pulumi:"profile"`
 }
 
 type OrganizationState struct {
 	CreateTime pulumi.StringPtrInput
 	Meta       OrganizationMetaPtrInput
-	Name       pulumi.StringPtrInput
-	Parent     OrganizationParentPtrInput
-	Profile    OrganizationProfileTypePtrInput
+	// The Organization name, limited to 65 UTF-8 bytes.
+	Name   pulumi.StringPtrInput
+	Parent OrganizationParentPtrInput
+	// The current parent Organization ID. A different value is rejected; this endpoint cannot move an Organization.
+	ParentId pulumi.StringPtrInput
+	// Optional profile fields, each limited to 1,000 UTF-8 bytes. An empty profile is ignored.
+	Profile OrganizationProfileTypePtrInput
 }
 
 func (OrganizationState) ElementType() reflect.Type {
@@ -126,15 +142,23 @@ func OrganizationExists(ctx *pulumi.Context,
 }
 
 type organizationArgs struct {
-	Name    string                   `pulumi:"name"`
-	Parent  *OrganizationParent      `pulumi:"parent"`
+	// The Organization name, limited to 65 UTF-8 bytes.
+	Name   string              `pulumi:"name"`
+	Parent *OrganizationParent `pulumi:"parent"`
+	// The current parent Organization ID. A different value is rejected; this endpoint cannot move an Organization.
+	ParentId *string `pulumi:"parentId"`
+	// Optional profile fields, each limited to 1,000 UTF-8 bytes. An empty profile is ignored.
 	Profile *OrganizationProfileType `pulumi:"profile"`
 }
 
 // The set of arguments for constructing a Organization resource.
 type OrganizationArgs struct {
-	Name    pulumi.StringInput
-	Parent  OrganizationParentPtrInput
+	// The Organization name, limited to 65 UTF-8 bytes.
+	Name   pulumi.StringInput
+	Parent OrganizationParentPtrInput
+	// The current parent Organization ID. A different value is rejected; this endpoint cannot move an Organization.
+	ParentId pulumi.StringPtrInput
+	// Optional profile fields, each limited to 1,000 UTF-8 bytes. An empty profile is ignored.
 	Profile OrganizationProfileTypePtrInput
 }
 
@@ -233,14 +257,21 @@ func (o OrganizationOutput) Meta() OrganizationMetaOutput {
 	return o.ApplyT(func(v *Organization) OrganizationMetaOutput { return v.Meta }).(OrganizationMetaOutput)
 }
 
+// The Organization name, limited to 65 UTF-8 bytes.
 func (o OrganizationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o OrganizationOutput) Parent() OrganizationParentOutput {
-	return o.ApplyT(func(v *Organization) OrganizationParentOutput { return v.Parent }).(OrganizationParentOutput)
+func (o OrganizationOutput) Parent() OrganizationParentPtrOutput {
+	return o.ApplyT(func(v *Organization) OrganizationParentPtrOutput { return v.Parent }).(OrganizationParentPtrOutput)
 }
 
+// The current parent Organization ID. A different value is rejected; this endpoint cannot move an Organization.
+func (o OrganizationOutput) ParentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Organization) pulumi.StringPtrOutput { return v.ParentId }).(pulumi.StringPtrOutput)
+}
+
+// Optional profile fields, each limited to 1,000 UTF-8 bytes. An empty profile is ignored.
 func (o OrganizationOutput) Profile() OrganizationProfileTypePtrOutput {
 	return o.ApplyT(func(v *Organization) OrganizationProfileTypePtrOutput { return v.Profile }).(OrganizationProfileTypePtrOutput)
 }

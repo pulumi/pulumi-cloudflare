@@ -32,11 +32,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewWorkersCustomDomain(ctx, "example_workers_custom_domain", &cloudflare.WorkersCustomDomainArgs{
-//				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				Hostname:  pulumi.String("app.example.com"),
-//				Service:   pulumi.String("my-worker"),
-//				ZoneId:    pulumi.String("593c9c94de529bbbfaac7c53ced0447d"),
-//				ZoneName:  pulumi.String("example.com"),
+//				AccountId:       pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Hostname:        pulumi.String("app.example.com"),
+//				Service:         pulumi.String("my-worker"),
+//				Enabled:         pulumi.Bool(true),
+//				PreviewsEnabled: pulumi.Bool(false),
+//				ZoneId:          pulumi.String("593c9c94de529bbbfaac7c53ced0447d"),
+//				ZoneName:        pulumi.String("example.com"),
 //			})
 //			if err != nil {
 //				return err
@@ -61,12 +63,16 @@ type WorkerDomain struct {
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// ID of the TLS certificate issued for the domain.
 	CertId pulumi.StringOutput `pulumi:"certId"`
+	// Whether the configured hostname is routable for the domain. If disabled, then requests to the configured hostname will not be routed to the configured Worker. If disabled, then preview routing must be enabled, and only subdomains of the configured hostname will be routable.
+	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// Worker environment associated with the domain.
 	//
 	// Deprecated: This attribute is deprecated.
 	Environment pulumi.StringOutput `pulumi:"environment"`
 	// Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
 	Hostname pulumi.StringOutput `pulumi:"hostname"`
+	// Whether previews are routable for the domain. If enabled, previews will be routable as subdomains of the configured hostname. For example, if the configured hostname is `app.example.com`, then requests to `my-feature.app.example.com` will be routed to the preview with slug `my-feature`, if such a preview exists. If preview routing is disabled, then hostname routing must be enabled.
+	PreviewsEnabled pulumi.BoolOutput `pulumi:"previewsEnabled"`
 	// Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
 	Service pulumi.StringOutput `pulumi:"service"`
 	// ID of the zone containing the domain hostname.
@@ -124,12 +130,16 @@ type workerDomainState struct {
 	AccountId *string `pulumi:"accountId"`
 	// ID of the TLS certificate issued for the domain.
 	CertId *string `pulumi:"certId"`
+	// Whether the configured hostname is routable for the domain. If disabled, then requests to the configured hostname will not be routed to the configured Worker. If disabled, then preview routing must be enabled, and only subdomains of the configured hostname will be routable.
+	Enabled *bool `pulumi:"enabled"`
 	// Worker environment associated with the domain.
 	//
 	// Deprecated: This attribute is deprecated.
 	Environment *string `pulumi:"environment"`
 	// Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
 	Hostname *string `pulumi:"hostname"`
+	// Whether previews are routable for the domain. If enabled, previews will be routable as subdomains of the configured hostname. For example, if the configured hostname is `app.example.com`, then requests to `my-feature.app.example.com` will be routed to the preview with slug `my-feature`, if such a preview exists. If preview routing is disabled, then hostname routing must be enabled.
+	PreviewsEnabled *bool `pulumi:"previewsEnabled"`
 	// Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
 	Service *string `pulumi:"service"`
 	// ID of the zone containing the domain hostname.
@@ -143,12 +153,16 @@ type WorkerDomainState struct {
 	AccountId pulumi.StringPtrInput
 	// ID of the TLS certificate issued for the domain.
 	CertId pulumi.StringPtrInput
+	// Whether the configured hostname is routable for the domain. If disabled, then requests to the configured hostname will not be routed to the configured Worker. If disabled, then preview routing must be enabled, and only subdomains of the configured hostname will be routable.
+	Enabled pulumi.BoolPtrInput
 	// Worker environment associated with the domain.
 	//
 	// Deprecated: This attribute is deprecated.
 	Environment pulumi.StringPtrInput
 	// Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
 	Hostname pulumi.StringPtrInput
+	// Whether previews are routable for the domain. If enabled, previews will be routable as subdomains of the configured hostname. For example, if the configured hostname is `app.example.com`, then requests to `my-feature.app.example.com` will be routed to the preview with slug `my-feature`, if such a preview exists. If preview routing is disabled, then hostname routing must be enabled.
+	PreviewsEnabled pulumi.BoolPtrInput
 	// Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
 	Service pulumi.StringPtrInput
 	// ID of the zone containing the domain hostname.
@@ -170,12 +184,16 @@ func WorkerDomainExists(ctx *pulumi.Context,
 type workerDomainArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`
+	// Whether the configured hostname is routable for the domain. If disabled, then requests to the configured hostname will not be routed to the configured Worker. If disabled, then preview routing must be enabled, and only subdomains of the configured hostname will be routable.
+	Enabled *bool `pulumi:"enabled"`
 	// Worker environment associated with the domain.
 	//
 	// Deprecated: This attribute is deprecated.
 	Environment *string `pulumi:"environment"`
 	// Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
 	Hostname string `pulumi:"hostname"`
+	// Whether previews are routable for the domain. If enabled, previews will be routable as subdomains of the configured hostname. For example, if the configured hostname is `app.example.com`, then requests to `my-feature.app.example.com` will be routed to the preview with slug `my-feature`, if such a preview exists. If preview routing is disabled, then hostname routing must be enabled.
+	PreviewsEnabled *bool `pulumi:"previewsEnabled"`
 	// Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
 	Service string `pulumi:"service"`
 	// ID of the zone containing the domain hostname.
@@ -188,12 +206,16 @@ type workerDomainArgs struct {
 type WorkerDomainArgs struct {
 	// Identifier.
 	AccountId pulumi.StringInput
+	// Whether the configured hostname is routable for the domain. If disabled, then requests to the configured hostname will not be routed to the configured Worker. If disabled, then preview routing must be enabled, and only subdomains of the configured hostname will be routable.
+	Enabled pulumi.BoolPtrInput
 	// Worker environment associated with the domain.
 	//
 	// Deprecated: This attribute is deprecated.
 	Environment pulumi.StringPtrInput
 	// Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
 	Hostname pulumi.StringInput
+	// Whether previews are routable for the domain. If enabled, previews will be routable as subdomains of the configured hostname. For example, if the configured hostname is `app.example.com`, then requests to `my-feature.app.example.com` will be routed to the preview with slug `my-feature`, if such a preview exists. If preview routing is disabled, then hostname routing must be enabled.
+	PreviewsEnabled pulumi.BoolPtrInput
 	// Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
 	Service pulumi.StringInput
 	// ID of the zone containing the domain hostname.
@@ -299,6 +321,11 @@ func (o WorkerDomainOutput) CertId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerDomain) pulumi.StringOutput { return v.CertId }).(pulumi.StringOutput)
 }
 
+// Whether the configured hostname is routable for the domain. If disabled, then requests to the configured hostname will not be routed to the configured Worker. If disabled, then preview routing must be enabled, and only subdomains of the configured hostname will be routable.
+func (o WorkerDomainOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *WorkerDomain) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
+}
+
 // Worker environment associated with the domain.
 //
 // Deprecated: This attribute is deprecated.
@@ -309,6 +336,11 @@ func (o WorkerDomainOutput) Environment() pulumi.StringOutput {
 // Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
 func (o WorkerDomainOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerDomain) pulumi.StringOutput { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// Whether previews are routable for the domain. If enabled, previews will be routable as subdomains of the configured hostname. For example, if the configured hostname is `app.example.com`, then requests to `my-feature.app.example.com` will be routed to the preview with slug `my-feature`, if such a preview exists. If preview routing is disabled, then hostname routing must be enabled.
+func (o WorkerDomainOutput) PreviewsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *WorkerDomain) pulumi.BoolOutput { return v.PreviewsEnabled }).(pulumi.BoolOutput)
 }
 
 // Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.

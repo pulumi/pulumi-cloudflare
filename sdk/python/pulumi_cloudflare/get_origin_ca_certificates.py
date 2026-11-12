@@ -27,16 +27,10 @@ class GetOriginCaCertificatesResult:
     """
     A collection of values returned by getOriginCaCertificates.
     """
-    def __init__(__self__, limit=None, max_items=None, offset=None, results=None, zone_id=None):
-        if limit and not isinstance(limit, int):
-            raise TypeError("Expected argument 'limit' to be a int")
-        pulumi.set(__self__, "limit", limit)
+    def __init__(__self__, max_items=None, results=None, zone_id=None):
         if max_items and not isinstance(max_items, int):
             raise TypeError("Expected argument 'max_items' to be a int")
         pulumi.set(__self__, "max_items", max_items)
-        if offset and not isinstance(offset, int):
-            raise TypeError("Expected argument 'offset' to be a int")
-        pulumi.set(__self__, "offset", offset)
         if results and not isinstance(results, list):
             raise TypeError("Expected argument 'results' to be a list")
         pulumi.set(__self__, "results", results)
@@ -45,28 +39,12 @@ class GetOriginCaCertificatesResult:
         pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
-    @pulumi.getter
-    def limit(self) -> Optional[_builtins.int]:
-        """
-        Limit to the number of records returned.
-        """
-        return pulumi.get(self, "limit")
-
-    @_builtins.property
     @pulumi.getter(name="maxItems")
     def max_items(self) -> Optional[_builtins.int]:
         """
         Max items to fetch, default: 1000
         """
         return pulumi.get(self, "max_items")
-
-    @_builtins.property
-    @pulumi.getter
-    def offset(self) -> Optional[_builtins.int]:
-        """
-        Offset the results.
-        """
-        return pulumi.get(self, "offset")
 
     @_builtins.property
     @pulumi.getter
@@ -91,16 +69,12 @@ class AwaitableGetOriginCaCertificatesResult(GetOriginCaCertificatesResult):
         if False:
             yield self
         return GetOriginCaCertificatesResult(
-            limit=self.limit,
             max_items=self.max_items,
-            offset=self.offset,
             results=self.results,
             zone_id=self.zone_id)
 
 
-def get_origin_ca_certificates(limit: Optional[_builtins.int] = None,
-                               max_items: Optional[_builtins.int] = None,
-                               offset: Optional[_builtins.int] = None,
+def get_origin_ca_certificates(max_items: Optional[_builtins.int] = None,
                                zone_id: Optional[_builtins.str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOriginCaCertificatesResult:
     """
@@ -110,34 +84,24 @@ def get_origin_ca_certificates(limit: Optional[_builtins.int] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_origin_ca_certificates = cloudflare.get_origin_ca_certificates(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
-        limit=10,
-        offset=10)
+    example_origin_ca_certificates = cloudflare.get_origin_ca_certificates(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
-    :param _builtins.int limit: Limit to the number of records returned.
     :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.int offset: Offset the results.
     :param _builtins.str zone_id: Identifier.
     """
     __args__ = dict()
-    __args__['limit'] = limit
     __args__['maxItems'] = max_items
-    __args__['offset'] = offset
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getOriginCaCertificates:getOriginCaCertificates', __args__, opts=opts, typ=GetOriginCaCertificatesResult).value
 
     return AwaitableGetOriginCaCertificatesResult(
-        limit=pulumi.get(__ret__, 'limit'),
         max_items=pulumi.get(__ret__, 'max_items'),
-        offset=pulumi.get(__ret__, 'offset'),
         results=pulumi.get(__ret__, 'results'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_origin_ca_certificates_output(limit: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
-                                      max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
-                                      offset: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+def get_origin_ca_certificates_output(max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                       zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOriginCaCertificatesResult]:
     """
@@ -147,27 +111,19 @@ def get_origin_ca_certificates_output(limit: pulumi.Input[Optional[Optional[_bui
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_origin_ca_certificates = cloudflare.get_origin_ca_certificates(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
-        limit=10,
-        offset=10)
+    example_origin_ca_certificates = cloudflare.get_origin_ca_certificates(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
-    :param _builtins.int limit: Limit to the number of records returned.
     :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.int offset: Offset the results.
     :param _builtins.str zone_id: Identifier.
     """
     __args__ = dict()
-    __args__['limit'] = limit
     __args__['maxItems'] = max_items
-    __args__['offset'] = offset
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getOriginCaCertificates:getOriginCaCertificates', __args__, opts=opts, typ=GetOriginCaCertificatesResult)
     return __ret__.apply(lambda __response__: GetOriginCaCertificatesResult(
-        limit=pulumi.get(__response__, 'limit'),
         max_items=pulumi.get(__response__, 'max_items'),
-        offset=pulumi.get(__response__, 'offset'),
         results=pulumi.get(__response__, 'results'),
         zone_id=pulumi.get(__response__, 'zone_id')))

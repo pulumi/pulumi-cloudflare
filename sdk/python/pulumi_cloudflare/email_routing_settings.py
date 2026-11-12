@@ -25,7 +25,7 @@ class EmailRoutingSettingsArgs:
         The set of arguments for constructing a EmailRoutingSettings resource.
 
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
-        :param pulumi.Input[_builtins.bool] support_subaddress: Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+        :param pulumi.Input[_builtins.bool] support_subaddress: Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. When omitted, preserves the existing setting.
         """
         pulumi.set(__self__, "zone_id", zone_id)
         if support_subaddress is not None:
@@ -47,7 +47,7 @@ class EmailRoutingSettingsArgs:
     @pulumi.getter(name="supportSubaddress")
     def support_subaddress(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+        Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. When omitted, preserves the existing setting.
         """
         return pulumi.get(self, "support_subaddress")
 
@@ -78,7 +78,7 @@ class _EmailRoutingSettingsState:
         :param pulumi.Input[_builtins.bool] skip_wizard: Flag to check if the user skipped the configuration wizard.
         :param pulumi.Input[_builtins.str] status: Show the state of your account, and the type or configuration error.
                Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
-        :param pulumi.Input[_builtins.bool] support_subaddress: Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+        :param pulumi.Input[_builtins.bool] support_subaddress: Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. When omitted, preserves the existing setting.
         :param pulumi.Input[_builtins.str] tag: Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
@@ -181,7 +181,7 @@ class _EmailRoutingSettingsState:
     @pulumi.getter(name="supportSubaddress")
     def support_subaddress(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+        Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. When omitted, preserves the existing setting.
         """
         return pulumi.get(self, "support_subaddress")
 
@@ -248,7 +248,7 @@ class EmailRoutingSettings(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] support_subaddress: Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+        :param pulumi.Input[_builtins.bool] support_subaddress: Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. When omitted, preserves the existing setting.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         ...
@@ -349,7 +349,7 @@ class EmailRoutingSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] skip_wizard: Flag to check if the user skipped the configuration wizard.
         :param pulumi.Input[_builtins.str] status: Show the state of your account, and the type or configuration error.
                Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
-        :param pulumi.Input[_builtins.bool] support_subaddress: Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+        :param pulumi.Input[_builtins.bool] support_subaddress: Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. When omitted, preserves the existing setting.
         :param pulumi.Input[_builtins.str] tag: Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
@@ -443,9 +443,9 @@ class EmailRoutingSettings(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="supportSubaddress")
-    def support_subaddress(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def support_subaddress(self) -> pulumi.Output[_builtins.bool]:
         """
-        Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+        Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. When omitted, preserves the existing setting.
         """
         return pulumi.get(self, "support_subaddress")
 

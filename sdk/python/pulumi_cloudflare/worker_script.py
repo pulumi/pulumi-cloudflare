@@ -29,6 +29,7 @@ class WorkerScriptArgs:
                  bindings_inherit: pulumi.Input[Optional[_builtins.str]] = None,
                  body_part: pulumi.Input[Optional[_builtins.str]] = None,
                  cache_options: pulumi.Input[Optional['WorkerScriptCacheOptionsArgs']] = None,
+                 code_update_strategy: pulumi.Input[Optional['WorkerScriptCodeUpdateStrategyArgs']] = None,
                  compatibility_date: pulumi.Input[Optional[_builtins.str]] = None,
                  compatibility_flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  content: pulumi.Input[Optional[_builtins.str]] = None,
@@ -57,13 +58,14 @@ class WorkerScriptArgs:
         :param pulumi.Input['WorkerScriptAnnotationsArgs'] annotations: Annotations for the version created by this upload.
         :param pulumi.Input['WorkerScriptAssetsArgs'] assets: Configuration for assets within a Worker.
         :param pulumi.Input[Sequence[pulumi.Input['WorkerScriptBindingArgs']]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
-        :param pulumi.Input[_builtins.str] bindings_inherit: When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+        :param pulumi.Input[_builtins.str] bindings_inherit: When set to "strict", the upload will fail with error 10057 if any `inherit` type bindings cannot be resolved against the latest uploaded version of the Worker, which may not be the deployed version. Without this, unresolvable inherit bindings are silently dropped.
                Available values: "strict".
         :param pulumi.Input[_builtins.str] body_part: Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
         :param pulumi.Input['WorkerScriptCacheOptionsArgs'] cache_options: Global CacheW configuration for the Worker. When caching is on,
                the platform provisions a `cloudflare.app` zone for the Worker.
                A `type: worker` entry in the `exports` map can override this
                value for a single entrypoint.
+        :param pulumi.Input['WorkerScriptCodeUpdateStrategyArgs'] code_update_strategy: Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
         :param pulumi.Input[_builtins.str] compatibility_date: Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compatibility_flags: Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
         :param pulumi.Input[_builtins.str] content: Module or Service Worker contents of the Worker. Conflicts with `content_file`.
@@ -100,6 +102,8 @@ class WorkerScriptArgs:
             pulumi.set(__self__, "body_part", body_part)
         if cache_options is not None:
             pulumi.set(__self__, "cache_options", cache_options)
+        if code_update_strategy is not None:
+            pulumi.set(__self__, "code_update_strategy", code_update_strategy)
         if compatibility_date is not None:
             pulumi.set(__self__, "compatibility_date", compatibility_date)
         if compatibility_flags is not None:
@@ -205,7 +209,7 @@ class WorkerScriptArgs:
     @pulumi.getter(name="bindingsInherit")
     def bindings_inherit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+        When set to "strict", the upload will fail with error 10057 if any `inherit` type bindings cannot be resolved against the latest uploaded version of the Worker, which may not be the deployed version. Without this, unresolvable inherit bindings are silently dropped.
         Available values: "strict".
         """
         return pulumi.get(self, "bindings_inherit")
@@ -240,6 +244,18 @@ class WorkerScriptArgs:
     @cache_options.setter
     def cache_options(self, value: pulumi.Input[Optional['WorkerScriptCacheOptionsArgs']]):
         pulumi.set(self, "cache_options", value)
+
+    @_builtins.property
+    @pulumi.getter(name="codeUpdateStrategy")
+    def code_update_strategy(self) -> pulumi.Input[Optional['WorkerScriptCodeUpdateStrategyArgs']]:
+        """
+        Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+        """
+        return pulumi.get(self, "code_update_strategy")
+
+    @code_update_strategy.setter
+    def code_update_strategy(self, value: pulumi.Input[Optional['WorkerScriptCodeUpdateStrategyArgs']]):
+        pulumi.set(self, "code_update_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="compatibilityDate")
@@ -493,6 +509,7 @@ class _WorkerScriptState:
                  bindings_inherit: pulumi.Input[Optional[_builtins.str]] = None,
                  body_part: pulumi.Input[Optional[_builtins.str]] = None,
                  cache_options: pulumi.Input[Optional['WorkerScriptCacheOptionsArgs']] = None,
+                 code_update_strategy: pulumi.Input[Optional['WorkerScriptCodeUpdateStrategyArgs']] = None,
                  compatibility_date: pulumi.Input[Optional[_builtins.str]] = None,
                  compatibility_flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  content: pulumi.Input[Optional[_builtins.str]] = None,
@@ -533,13 +550,14 @@ class _WorkerScriptState:
         :param pulumi.Input['WorkerScriptAnnotationsArgs'] annotations: Annotations for the version created by this upload.
         :param pulumi.Input['WorkerScriptAssetsArgs'] assets: Configuration for assets within a Worker.
         :param pulumi.Input[Sequence[pulumi.Input['WorkerScriptBindingArgs']]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
-        :param pulumi.Input[_builtins.str] bindings_inherit: When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+        :param pulumi.Input[_builtins.str] bindings_inherit: When set to "strict", the upload will fail with error 10057 if any `inherit` type bindings cannot be resolved against the latest uploaded version of the Worker, which may not be the deployed version. Without this, unresolvable inherit bindings are silently dropped.
                Available values: "strict".
         :param pulumi.Input[_builtins.str] body_part: Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
         :param pulumi.Input['WorkerScriptCacheOptionsArgs'] cache_options: Global CacheW configuration for the Worker. When caching is on,
                the platform provisions a `cloudflare.app` zone for the Worker.
                A `type: worker` entry in the `exports` map can override this
                value for a single entrypoint.
+        :param pulumi.Input['WorkerScriptCodeUpdateStrategyArgs'] code_update_strategy: Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
         :param pulumi.Input[_builtins.str] compatibility_date: Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compatibility_flags: Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
         :param pulumi.Input[_builtins.str] content: Module or Service Worker contents of the Worker. Conflicts with `content_file`.
@@ -588,6 +606,8 @@ class _WorkerScriptState:
             pulumi.set(__self__, "body_part", body_part)
         if cache_options is not None:
             pulumi.set(__self__, "cache_options", cache_options)
+        if code_update_strategy is not None:
+            pulumi.set(__self__, "code_update_strategy", code_update_strategy)
         if compatibility_date is not None:
             pulumi.set(__self__, "compatibility_date", compatibility_date)
         if compatibility_flags is not None:
@@ -713,7 +733,7 @@ class _WorkerScriptState:
     @pulumi.getter(name="bindingsInherit")
     def bindings_inherit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+        When set to "strict", the upload will fail with error 10057 if any `inherit` type bindings cannot be resolved against the latest uploaded version of the Worker, which may not be the deployed version. Without this, unresolvable inherit bindings are silently dropped.
         Available values: "strict".
         """
         return pulumi.get(self, "bindings_inherit")
@@ -748,6 +768,18 @@ class _WorkerScriptState:
     @cache_options.setter
     def cache_options(self, value: pulumi.Input[Optional['WorkerScriptCacheOptionsArgs']]):
         pulumi.set(self, "cache_options", value)
+
+    @_builtins.property
+    @pulumi.getter(name="codeUpdateStrategy")
+    def code_update_strategy(self) -> pulumi.Input[Optional['WorkerScriptCodeUpdateStrategyArgs']]:
+        """
+        Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+        """
+        return pulumi.get(self, "code_update_strategy")
+
+    @code_update_strategy.setter
+    def code_update_strategy(self, value: pulumi.Input[Optional['WorkerScriptCodeUpdateStrategyArgs']]):
+        pulumi.set(self, "code_update_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="compatibilityDate")
@@ -1164,6 +1196,7 @@ class WorkerScript(pulumi.CustomResource):
                  bindings_inherit: pulumi.Input[Optional[_builtins.str]] = None,
                  body_part: pulumi.Input[Optional[_builtins.str]] = None,
                  cache_options: pulumi.Input[Optional[Union['WorkerScriptCacheOptionsArgs', 'WorkerScriptCacheOptionsArgsDict', 'outputs.WorkerScriptCacheOptions']]] = None,
+                 code_update_strategy: pulumi.Input[Optional[Union['WorkerScriptCodeUpdateStrategyArgs', 'WorkerScriptCodeUpdateStrategyArgsDict', 'outputs.WorkerScriptCodeUpdateStrategy']]] = None,
                  compatibility_date: pulumi.Input[Optional[_builtins.str]] = None,
                  compatibility_flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  content: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1191,6 +1224,12 @@ class WorkerScript(pulumi.CustomResource):
 
         - `Workers Scripts Read`
         - `Workers Scripts Write`
+        - `Individual Workers Admin`
+        - `Individual Workers Content Read-Only`
+        - `Individual Workers Editor`
+        - `Workers Admin`
+        - `Workers Content Read-Only`
+        - `Workers Editor`
         - `Workers Tail Read`
 
         > For more direct control over Workers resources, we recommend the beta `Worker`, `WorkerVersion`, and `WorkersDeployment` resources. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
@@ -1231,6 +1270,9 @@ class WorkerScript(pulumi.CustomResource):
             cache_options={
                 "enabled": True,
                 "cross_version_cache": True,
+            },
+            code_update_strategy={
+                "mode": "immediate",
             },
             compatibility_date="2021-01-01T00:00:00Z",
             compatibility_flags=["nodejs_compat"],
@@ -1339,13 +1381,14 @@ class WorkerScript(pulumi.CustomResource):
         :param pulumi.Input[Union['WorkerScriptAnnotationsArgs', 'WorkerScriptAnnotationsArgsDict', 'outputs.WorkerScriptAnnotations']] annotations: Annotations for the version created by this upload.
         :param pulumi.Input[Union['WorkerScriptAssetsArgs', 'WorkerScriptAssetsArgsDict', 'outputs.WorkerScriptAssets']] assets: Configuration for assets within a Worker.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerScriptBindingArgs', 'WorkerScriptBindingArgsDict', 'outputs.WorkerScriptBinding']]]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
-        :param pulumi.Input[_builtins.str] bindings_inherit: When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+        :param pulumi.Input[_builtins.str] bindings_inherit: When set to "strict", the upload will fail with error 10057 if any `inherit` type bindings cannot be resolved against the latest uploaded version of the Worker, which may not be the deployed version. Without this, unresolvable inherit bindings are silently dropped.
                Available values: "strict".
         :param pulumi.Input[_builtins.str] body_part: Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
         :param pulumi.Input[Union['WorkerScriptCacheOptionsArgs', 'WorkerScriptCacheOptionsArgsDict', 'outputs.WorkerScriptCacheOptions']] cache_options: Global CacheW configuration for the Worker. When caching is on,
                the platform provisions a `cloudflare.app` zone for the Worker.
                A `type: worker` entry in the `exports` map can override this
                value for a single entrypoint.
+        :param pulumi.Input[Union['WorkerScriptCodeUpdateStrategyArgs', 'WorkerScriptCodeUpdateStrategyArgsDict', 'outputs.WorkerScriptCodeUpdateStrategy']] code_update_strategy: Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
         :param pulumi.Input[_builtins.str] compatibility_date: Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compatibility_flags: Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
         :param pulumi.Input[_builtins.str] content: Module or Service Worker contents of the Worker. Conflicts with `content_file`.
@@ -1380,6 +1423,12 @@ class WorkerScript(pulumi.CustomResource):
 
         - `Workers Scripts Read`
         - `Workers Scripts Write`
+        - `Individual Workers Admin`
+        - `Individual Workers Content Read-Only`
+        - `Individual Workers Editor`
+        - `Workers Admin`
+        - `Workers Content Read-Only`
+        - `Workers Editor`
         - `Workers Tail Read`
 
         > For more direct control over Workers resources, we recommend the beta `Worker`, `WorkerVersion`, and `WorkersDeployment` resources. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
@@ -1420,6 +1469,9 @@ class WorkerScript(pulumi.CustomResource):
             cache_options={
                 "enabled": True,
                 "cross_version_cache": True,
+            },
+            code_update_strategy={
+                "mode": "immediate",
             },
             compatibility_date="2021-01-01T00:00:00Z",
             compatibility_flags=["nodejs_compat"],
@@ -1544,6 +1596,7 @@ class WorkerScript(pulumi.CustomResource):
                  bindings_inherit: pulumi.Input[Optional[_builtins.str]] = None,
                  body_part: pulumi.Input[Optional[_builtins.str]] = None,
                  cache_options: pulumi.Input[Optional[Union['WorkerScriptCacheOptionsArgs', 'WorkerScriptCacheOptionsArgsDict', 'outputs.WorkerScriptCacheOptions']]] = None,
+                 code_update_strategy: pulumi.Input[Optional[Union['WorkerScriptCodeUpdateStrategyArgs', 'WorkerScriptCodeUpdateStrategyArgsDict', 'outputs.WorkerScriptCodeUpdateStrategy']]] = None,
                  compatibility_date: pulumi.Input[Optional[_builtins.str]] = None,
                  compatibility_flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  content: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1584,6 +1637,7 @@ class WorkerScript(pulumi.CustomResource):
             __props__.__dict__["bindings_inherit"] = bindings_inherit
             __props__.__dict__["body_part"] = body_part
             __props__.__dict__["cache_options"] = cache_options
+            __props__.__dict__["code_update_strategy"] = code_update_strategy
             __props__.__dict__["compatibility_date"] = compatibility_date
             __props__.__dict__["compatibility_flags"] = compatibility_flags
             __props__.__dict__["content"] = content
@@ -1638,6 +1692,7 @@ class WorkerScript(pulumi.CustomResource):
             bindings_inherit: pulumi.Input[Optional[_builtins.str]] = None,
             body_part: pulumi.Input[Optional[_builtins.str]] = None,
             cache_options: pulumi.Input[Optional[Union['WorkerScriptCacheOptionsArgs', 'WorkerScriptCacheOptionsArgsDict', 'outputs.WorkerScriptCacheOptions']]] = None,
+            code_update_strategy: pulumi.Input[Optional[Union['WorkerScriptCodeUpdateStrategyArgs', 'WorkerScriptCodeUpdateStrategyArgsDict', 'outputs.WorkerScriptCodeUpdateStrategy']]] = None,
             compatibility_date: pulumi.Input[Optional[_builtins.str]] = None,
             compatibility_flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             content: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1682,13 +1737,14 @@ class WorkerScript(pulumi.CustomResource):
         :param pulumi.Input[Union['WorkerScriptAnnotationsArgs', 'WorkerScriptAnnotationsArgsDict', 'outputs.WorkerScriptAnnotations']] annotations: Annotations for the version created by this upload.
         :param pulumi.Input[Union['WorkerScriptAssetsArgs', 'WorkerScriptAssetsArgsDict', 'outputs.WorkerScriptAssets']] assets: Configuration for assets within a Worker.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerScriptBindingArgs', 'WorkerScriptBindingArgsDict', 'outputs.WorkerScriptBinding']]]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
-        :param pulumi.Input[_builtins.str] bindings_inherit: When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+        :param pulumi.Input[_builtins.str] bindings_inherit: When set to "strict", the upload will fail with error 10057 if any `inherit` type bindings cannot be resolved against the latest uploaded version of the Worker, which may not be the deployed version. Without this, unresolvable inherit bindings are silently dropped.
                Available values: "strict".
         :param pulumi.Input[_builtins.str] body_part: Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
         :param pulumi.Input[Union['WorkerScriptCacheOptionsArgs', 'WorkerScriptCacheOptionsArgsDict', 'outputs.WorkerScriptCacheOptions']] cache_options: Global CacheW configuration for the Worker. When caching is on,
                the platform provisions a `cloudflare.app` zone for the Worker.
                A `type: worker` entry in the `exports` map can override this
                value for a single entrypoint.
+        :param pulumi.Input[Union['WorkerScriptCodeUpdateStrategyArgs', 'WorkerScriptCodeUpdateStrategyArgsDict', 'outputs.WorkerScriptCodeUpdateStrategy']] code_update_strategy: Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
         :param pulumi.Input[_builtins.str] compatibility_date: Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compatibility_flags: Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
         :param pulumi.Input[_builtins.str] content: Module or Service Worker contents of the Worker. Conflicts with `content_file`.
@@ -1734,6 +1790,7 @@ class WorkerScript(pulumi.CustomResource):
         __props__.__dict__["bindings_inherit"] = bindings_inherit
         __props__.__dict__["body_part"] = body_part
         __props__.__dict__["cache_options"] = cache_options
+        __props__.__dict__["code_update_strategy"] = code_update_strategy
         __props__.__dict__["compatibility_date"] = compatibility_date
         __props__.__dict__["compatibility_flags"] = compatibility_flags
         __props__.__dict__["content"] = content
@@ -1779,6 +1836,7 @@ class WorkerScript(pulumi.CustomResource):
             bindings_inherit: pulumi.Input[Optional[_builtins.str]] = None,
             body_part: pulumi.Input[Optional[_builtins.str]] = None,
             cache_options: pulumi.Input[Optional[Union['WorkerScriptCacheOptionsArgs', 'WorkerScriptCacheOptionsArgsDict', 'outputs.WorkerScriptCacheOptions']]] = None,
+            code_update_strategy: pulumi.Input[Optional[Union['WorkerScriptCodeUpdateStrategyArgs', 'WorkerScriptCodeUpdateStrategyArgsDict', 'outputs.WorkerScriptCodeUpdateStrategy']]] = None,
             compatibility_date: pulumi.Input[Optional[_builtins.str]] = None,
             compatibility_flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             content: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1820,6 +1878,7 @@ class WorkerScript(pulumi.CustomResource):
         __props__["bindingsInherit"] = bindings_inherit
         __props__["bodyPart"] = body_part
         __props__["cacheOptions"] = cache_options
+        __props__["codeUpdateStrategy"] = code_update_strategy
         __props__["compatibilityDate"] = compatibility_date
         __props__["compatibilityFlags"] = compatibility_flags
         __props__["content"] = content
@@ -1891,7 +1950,7 @@ class WorkerScript(pulumi.CustomResource):
     @pulumi.getter(name="bindingsInherit")
     def bindings_inherit(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+        When set to "strict", the upload will fail with error 10057 if any `inherit` type bindings cannot be resolved against the latest uploaded version of the Worker, which may not be the deployed version. Without this, unresolvable inherit bindings are silently dropped.
         Available values: "strict".
         """
         return pulumi.get(self, "bindings_inherit")
@@ -1914,6 +1973,14 @@ class WorkerScript(pulumi.CustomResource):
         value for a single entrypoint.
         """
         return pulumi.get(self, "cache_options")
+
+    @_builtins.property
+    @pulumi.getter(name="codeUpdateStrategy")
+    def code_update_strategy(self) -> pulumi.Output[Optional['outputs.WorkerScriptCodeUpdateStrategy']]:
+        """
+        Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+        """
+        return pulumi.get(self, "code_update_strategy")
 
     @_builtins.property
     @pulumi.getter(name="compatibilityDate")

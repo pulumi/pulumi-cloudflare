@@ -12,20 +12,20 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class OrganizationProfileGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("businessAddress", required: true)]
-        public Input<string> BusinessAddress { get; set; } = null!;
+        [Input("businessAddress")]
+        public Input<string>? BusinessAddress { get; set; }
 
-        [Input("businessEmail", required: true)]
-        public Input<string> BusinessEmail { get; set; } = null!;
+        [Input("businessEmail")]
+        public Input<string>? BusinessEmail { get; set; }
 
-        [Input("businessName", required: true)]
-        public Input<string> BusinessName { get; set; } = null!;
+        [Input("businessName")]
+        public Input<string>? BusinessName { get; set; }
 
-        [Input("businessPhone", required: true)]
-        public Input<string> BusinessPhone { get; set; } = null!;
+        [Input("businessPhone")]
+        public Input<string>? BusinessPhone { get; set; }
 
-        [Input("externalMetadata", required: true)]
-        public Input<string> ExternalMetadata { get; set; } = null!;
+        [Input("externalMetadata")]
+        public Input<string>? ExternalMetadata { get; set; }
 
         public OrganizationProfileGetArgs()
         {

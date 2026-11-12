@@ -15,9 +15,15 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
+        /// <summary>
+        /// Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
+        /// </summary>
         [Input("maxAge")]
         public Input<int>? MaxAge { get; set; }
 
+        /// <summary>
+        /// Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
+        /// </summary>
         [Input("staleWhileRevalidate")]
         public Input<int>? StaleWhileRevalidate { get; set; }
 

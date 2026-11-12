@@ -57,6 +57,11 @@ export interface GetWorkflowResult {
      */
     readonly id: string;
     readonly instances: {[key: string]: number};
+    /**
+     * Jurisdiction where instances of this workflow run and store data. Set when the workflow is created and cannot be changed.
+     * Available values: "eu", "fedramp", "us".
+     */
+    readonly jurisdiction: string;
     readonly modifiedOn: string;
     readonly name: string;
     readonly schedules: outputs.GetWorkflowSchedule[];

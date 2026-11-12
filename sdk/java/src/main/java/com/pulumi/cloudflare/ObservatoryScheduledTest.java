@@ -21,44 +21,18 @@ import javax.annotation.Nullable;
  * - `Zone Settings Read`
  * - `Zone Settings Write`
  * 
- * ## Example Usage
- * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ObservatoryScheduledTest;
- * import com.pulumi.cloudflare.ObservatoryScheduledTestArgs;
- * import java.util.ArrayList;
- * import java.util.Arrays;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var exampleObservatoryScheduledTest = new ObservatoryScheduledTest("exampleObservatoryScheduledTest", ObservatoryScheduledTestArgs.builder()
- *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .url("example.com")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * 
  * ## Import
+ * 
+ * Import using zoneId and url (region defaults to us-central1)
  * 
  * ```sh
  * $ pulumi import cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest example &#39;&lt;zone_id&gt;/&lt;url&gt;&#39;
+ * ```
+ * 
+ * Import with an explicit region (required when the schedule is not in us-central1)
+ * 
+ * ```sh
+ * $ pulumi import cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest example &#39;&lt;zone_id&gt;/&lt;url&gt;/&lt;region&gt;&#39;
  * ```
  * 
  */

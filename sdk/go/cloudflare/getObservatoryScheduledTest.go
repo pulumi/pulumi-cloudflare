@@ -15,34 +15,6 @@ import (
 //
 // - `Zone Settings Read`
 // - `Zone Settings Write`
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetObservatoryScheduledTest(ctx, &cloudflare.LookupObservatoryScheduledTestArgs{
-//				ZoneId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
-//				Url:    "example.com",
-//				Region: pulumi.StringRef("us-central1"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupObservatoryScheduledTest(ctx *pulumi.Context, args *LookupObservatoryScheduledTestArgs, opts ...pulumi.InvokeOption) (*LookupObservatoryScheduledTestResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupObservatoryScheduledTestResult

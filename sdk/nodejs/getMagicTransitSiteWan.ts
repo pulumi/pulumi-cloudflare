@@ -79,6 +79,14 @@ export interface GetMagicTransitSiteWanResult {
      */
     readonly priority: number;
     /**
+     * Provisioned download rate of the WAN circuit in kilobits per second.
+     */
+    readonly provisionedDownloadKbps: number;
+    /**
+     * Provisioned upload rate of the WAN circuit in kilobits per second.
+     */
+    readonly provisionedUploadKbps: number;
+    /**
      * Identifier
      */
     readonly siteId: string;

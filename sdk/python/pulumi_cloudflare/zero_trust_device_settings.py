@@ -570,7 +570,7 @@ class ZeroTrustDeviceSettings(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="disableForTime")
-    def disable_for_time(self) -> pulumi.Output[Optional[_builtins.float]]:
+    def disable_for_time(self) -> pulumi.Output[_builtins.float]:
         """
         Sets the time limit, in seconds, that a user can use an override code to bypass WARP.
         """
@@ -578,7 +578,7 @@ class ZeroTrustDeviceSettings(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="externalEmergencySignalEnabled")
-    def external_emergency_signal_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def external_emergency_signal_enabled(self) -> pulumi.Output[_builtins.bool]:
         """
         Controls whether the external emergency disconnect feature is enabled.
         """
@@ -586,7 +586,7 @@ class ZeroTrustDeviceSettings(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="externalEmergencySignalFingerprint")
-    def external_emergency_signal_fingerprint(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def external_emergency_signal_fingerprint(self) -> pulumi.Output[_builtins.str]:
         """
         The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external*emergency*signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.
         """
@@ -594,7 +594,7 @@ class ZeroTrustDeviceSettings(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="externalEmergencySignalInterval")
-    def external_emergency_signal_interval(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def external_emergency_signal_interval(self) -> pulumi.Output[_builtins.str]:
         """
         The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., "5m", "2m30s", "1h"). Minimum 30 seconds.
         """
@@ -602,7 +602,7 @@ class ZeroTrustDeviceSettings(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="externalEmergencySignalUrl")
-    def external_emergency_signal_url(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def external_emergency_signal_url(self) -> pulumi.Output[_builtins.str]:
         """
         The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.
         """
@@ -610,7 +610,7 @@ class ZeroTrustDeviceSettings(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="gatewayProxyEnabled")
-    def gateway_proxy_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def gateway_proxy_enabled(self) -> pulumi.Output[_builtins.bool]:
         """
         Enable gateway proxy filtering on TCP.
         """
@@ -618,7 +618,7 @@ class ZeroTrustDeviceSettings(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="gatewayUdpProxyEnabled")
-    def gateway_udp_proxy_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def gateway_udp_proxy_enabled(self) -> pulumi.Output[_builtins.bool]:
         """
         Enable gateway proxy filtering on UDP.
         """
@@ -626,7 +626,7 @@ class ZeroTrustDeviceSettings(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="rootCertificateInstallationEnabled")
-    def root_certificate_installation_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def root_certificate_installation_enabled(self) -> pulumi.Output[_builtins.bool]:
         """
         Enable installation of cloudflare managed root certificate.
         """
@@ -634,7 +634,7 @@ class ZeroTrustDeviceSettings(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="useZtVirtualIp")
-    def use_zt_virtual_ip(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def use_zt_virtual_ip(self) -> pulumi.Output[_builtins.bool]:
         """
         Enable using CGNAT virtual IPv4.
         """

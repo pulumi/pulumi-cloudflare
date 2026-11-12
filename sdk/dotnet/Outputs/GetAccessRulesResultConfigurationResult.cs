@@ -14,12 +14,12 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetAccessRulesResultConfigurationResult
     {
         /// <summary>
-        /// The configuration target. You must set the target to `Ip` when specifying an IP address in the rule.
-        /// Available values: "ip", "ip6", "IpRange", "asn", "country".
+        /// For `target: ip`: The configuration target. You must set the target to `Ip` when specifying an IP address in the rule.
         /// </summary>
         public readonly string Target;
         /// <summary>
-        /// The IP address to match. This address will be compared to the IP address of incoming requests.
+        /// Defines the target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
+        /// Notes: You can search for a single IPv4 address, an IP address range with a subnet of '/16' or '/24', or a two-letter ISO-3166-1 alpha-2 country code.
         /// </summary>
         public readonly string Value;
 

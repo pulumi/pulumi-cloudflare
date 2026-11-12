@@ -71,43 +71,27 @@ type LookupDnsRecordResult struct {
 	// When the record comment was last modified. Omitted if there is no comment.
 	CommentModifiedOn string `pulumi:"commentModifiedOn"`
 	// A valid IPv4 address.
-	Content string `pulumi:"content"`
-	// When the record was created.
-	CreatedOn string `pulumi:"createdOn"`
-	// Components of a MX record.
-	Data GetDnsRecordData `pulumi:"data"`
+	Content   string           `pulumi:"content"`
+	CreatedOn string           `pulumi:"createdOn"`
+	Data      GetDnsRecordData `pulumi:"data"`
 	// Identifier.
 	DnsRecordId *string             `pulumi:"dnsRecordId"`
 	Filter      *GetDnsRecordFilter `pulumi:"filter"`
-	// Identifier.
-	Id string `pulumi:"id"`
+	Id          string              `pulumi:"id"`
 	// Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
-	IncludeShadowMetadata bool `pulumi:"includeShadowMetadata"`
-	// Extra Cloudflare-specific metadata about the record.
-	Meta GetDnsRecordMeta `pulumi:"meta"`
-	// When the record was last modified.
-	ModifiedOn string `pulumi:"modifiedOn"`
-	// Complete DNS record name, including the zone name, in Punycode.
-	Name string `pulumi:"name"`
-	// Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
-	Priority float64 `pulumi:"priority"`
-	// Enables private network routing to the origin.
-	PrivateRouting bool `pulumi:"privateRouting"`
-	// Whether the record can be proxied by Cloudflare or not.
-	Proxiable bool `pulumi:"proxiable"`
-	// Whether the record is receiving the performance and security benefits of Cloudflare.
-	Proxied bool `pulumi:"proxied"`
-	// Settings for the DNS record.
-	Settings GetDnsRecordSettings `pulumi:"settings"`
-	// Custom tags for the DNS record. This field has no effect on DNS responses.
-	Tags []string `pulumi:"tags"`
-	// When the record tags were last modified. Omitted if there are no tags.
-	TagsModifiedOn string `pulumi:"tagsModifiedOn"`
-	// Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
-	Ttl float64 `pulumi:"ttl"`
-	// Record type.
-	// Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
-	Type string `pulumi:"type"`
+	IncludeShadowMetadata bool                 `pulumi:"includeShadowMetadata"`
+	Meta                  GetDnsRecordMeta     `pulumi:"meta"`
+	ModifiedOn            string               `pulumi:"modifiedOn"`
+	Name                  string               `pulumi:"name"`
+	Priority              float64              `pulumi:"priority"`
+	PrivateRouting        bool                 `pulumi:"privateRouting"`
+	Proxiable             bool                 `pulumi:"proxiable"`
+	Proxied               bool                 `pulumi:"proxied"`
+	Settings              GetDnsRecordSettings `pulumi:"settings"`
+	Tags                  []string             `pulumi:"tags"`
+	TagsModifiedOn        string               `pulumi:"tagsModifiedOn"`
+	Ttl                   float64              `pulumi:"ttl"`
+	Type                  string               `pulumi:"type"`
 	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -162,12 +146,10 @@ func (o LookupDnsRecordResultOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDnsRecordResult) string { return v.Content }).(pulumi.StringOutput)
 }
 
-// When the record was created.
 func (o LookupDnsRecordResultOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDnsRecordResult) string { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
-// Components of a MX record.
 func (o LookupDnsRecordResultOutput) Data() GetDnsRecordDataOutput {
 	return o.ApplyT(func(v LookupDnsRecordResult) GetDnsRecordData { return v.Data }).(GetDnsRecordDataOutput)
 }
@@ -181,7 +163,6 @@ func (o LookupDnsRecordResultOutput) Filter() GetDnsRecordFilterPtrOutput {
 	return o.ApplyT(func(v LookupDnsRecordResult) *GetDnsRecordFilter { return v.Filter }).(GetDnsRecordFilterPtrOutput)
 }
 
-// Identifier.
 func (o LookupDnsRecordResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDnsRecordResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -191,63 +172,50 @@ func (o LookupDnsRecordResultOutput) IncludeShadowMetadata() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupDnsRecordResult) bool { return v.IncludeShadowMetadata }).(pulumi.BoolOutput)
 }
 
-// Extra Cloudflare-specific metadata about the record.
 func (o LookupDnsRecordResultOutput) Meta() GetDnsRecordMetaOutput {
 	return o.ApplyT(func(v LookupDnsRecordResult) GetDnsRecordMeta { return v.Meta }).(GetDnsRecordMetaOutput)
 }
 
-// When the record was last modified.
 func (o LookupDnsRecordResultOutput) ModifiedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDnsRecordResult) string { return v.ModifiedOn }).(pulumi.StringOutput)
 }
 
-// Complete DNS record name, including the zone name, in Punycode.
 func (o LookupDnsRecordResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDnsRecordResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
 func (o LookupDnsRecordResultOutput) Priority() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupDnsRecordResult) float64 { return v.Priority }).(pulumi.Float64Output)
 }
 
-// Enables private network routing to the origin.
 func (o LookupDnsRecordResultOutput) PrivateRouting() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupDnsRecordResult) bool { return v.PrivateRouting }).(pulumi.BoolOutput)
 }
 
-// Whether the record can be proxied by Cloudflare or not.
 func (o LookupDnsRecordResultOutput) Proxiable() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupDnsRecordResult) bool { return v.Proxiable }).(pulumi.BoolOutput)
 }
 
-// Whether the record is receiving the performance and security benefits of Cloudflare.
 func (o LookupDnsRecordResultOutput) Proxied() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupDnsRecordResult) bool { return v.Proxied }).(pulumi.BoolOutput)
 }
 
-// Settings for the DNS record.
 func (o LookupDnsRecordResultOutput) Settings() GetDnsRecordSettingsOutput {
 	return o.ApplyT(func(v LookupDnsRecordResult) GetDnsRecordSettings { return v.Settings }).(GetDnsRecordSettingsOutput)
 }
 
-// Custom tags for the DNS record. This field has no effect on DNS responses.
 func (o LookupDnsRecordResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupDnsRecordResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// When the record tags were last modified. Omitted if there are no tags.
 func (o LookupDnsRecordResultOutput) TagsModifiedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDnsRecordResult) string { return v.TagsModifiedOn }).(pulumi.StringOutput)
 }
 
-// Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
 func (o LookupDnsRecordResultOutput) Ttl() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupDnsRecordResult) float64 { return v.Ttl }).(pulumi.Float64Output)
 }
 
-// Record type.
-// Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
 func (o LookupDnsRecordResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDnsRecordResult) string { return v.Type }).(pulumi.StringOutput)
 }

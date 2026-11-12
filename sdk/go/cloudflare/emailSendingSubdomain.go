@@ -59,7 +59,7 @@ type EmailSendingSubdomain struct {
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// The date and time the destination address was last modified.
 	Modified pulumi.StringOutput `pulumi:"modified"`
-	// The domain name within the zone. A wildcard is allowed only as the complete leftmost label (`*.example.com`) and requires the account wildcard Email Sending entitlement.
+	// The domain name within the zone. A wildcard is allowed only as the complete leftmost label (`*.example.com`) and requires the account wildcard Email Sending entitlement. The derived Return-Path hostname, including its bounce prefix, must be at most 201 characters after ASCII conversion; wildcards use the base hostname.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Whether sent messages from this subdomain can be previewed in the activity log.
 	PreviewEnabled pulumi.BoolOutput `pulumi:"previewEnabled"`
@@ -119,7 +119,7 @@ type emailSendingSubdomainState struct {
 	Enabled *bool `pulumi:"enabled"`
 	// The date and time the destination address was last modified.
 	Modified *string `pulumi:"modified"`
-	// The domain name within the zone. A wildcard is allowed only as the complete leftmost label (`*.example.com`) and requires the account wildcard Email Sending entitlement.
+	// The domain name within the zone. A wildcard is allowed only as the complete leftmost label (`*.example.com`) and requires the account wildcard Email Sending entitlement. The derived Return-Path hostname, including its bounce prefix, must be at most 201 characters after ASCII conversion; wildcards use the base hostname.
 	Name *string `pulumi:"name"`
 	// Whether sent messages from this subdomain can be previewed in the activity log.
 	PreviewEnabled *bool `pulumi:"previewEnabled"`
@@ -144,7 +144,7 @@ type EmailSendingSubdomainState struct {
 	Enabled pulumi.BoolPtrInput
 	// The date and time the destination address was last modified.
 	Modified pulumi.StringPtrInput
-	// The domain name within the zone. A wildcard is allowed only as the complete leftmost label (`*.example.com`) and requires the account wildcard Email Sending entitlement.
+	// The domain name within the zone. A wildcard is allowed only as the complete leftmost label (`*.example.com`) and requires the account wildcard Email Sending entitlement. The derived Return-Path hostname, including its bounce prefix, must be at most 201 characters after ASCII conversion; wildcards use the base hostname.
 	Name pulumi.StringPtrInput
 	// Whether sent messages from this subdomain can be previewed in the activity log.
 	PreviewEnabled pulumi.BoolPtrInput
@@ -171,7 +171,7 @@ type emailSendingSubdomainArgs struct {
 	// this subdomain drops that recipient and still delivers to the
 	// rest, instead of failing the entire request.
 	DropSuppressedRecipients *bool `pulumi:"dropSuppressedRecipients"`
-	// The domain name within the zone. A wildcard is allowed only as the complete leftmost label (`*.example.com`) and requires the account wildcard Email Sending entitlement.
+	// The domain name within the zone. A wildcard is allowed only as the complete leftmost label (`*.example.com`) and requires the account wildcard Email Sending entitlement. The derived Return-Path hostname, including its bounce prefix, must be at most 201 characters after ASCII conversion; wildcards use the base hostname.
 	Name string `pulumi:"name"`
 	// Whether sent messages from this subdomain can be previewed in the activity log.
 	PreviewEnabled *bool `pulumi:"previewEnabled"`
@@ -185,7 +185,7 @@ type EmailSendingSubdomainArgs struct {
 	// this subdomain drops that recipient and still delivers to the
 	// rest, instead of failing the entire request.
 	DropSuppressedRecipients pulumi.BoolPtrInput
-	// The domain name within the zone. A wildcard is allowed only as the complete leftmost label (`*.example.com`) and requires the account wildcard Email Sending entitlement.
+	// The domain name within the zone. A wildcard is allowed only as the complete leftmost label (`*.example.com`) and requires the account wildcard Email Sending entitlement. The derived Return-Path hostname, including its bounce prefix, must be at most 201 characters after ASCII conversion; wildcards use the base hostname.
 	Name pulumi.StringInput
 	// Whether sent messages from this subdomain can be previewed in the activity log.
 	PreviewEnabled pulumi.BoolPtrInput
@@ -307,7 +307,7 @@ func (o EmailSendingSubdomainOutput) Modified() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailSendingSubdomain) pulumi.StringOutput { return v.Modified }).(pulumi.StringOutput)
 }
 
-// The domain name within the zone. A wildcard is allowed only as the complete leftmost label (`*.example.com`) and requires the account wildcard Email Sending entitlement.
+// The domain name within the zone. A wildcard is allowed only as the complete leftmost label (`*.example.com`) and requires the account wildcard Email Sending entitlement. The derived Return-Path hostname, including its bounce prefix, must be at most 201 characters after ASCII conversion; wildcards use the base hostname.
 func (o EmailSendingSubdomainOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailSendingSubdomain) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

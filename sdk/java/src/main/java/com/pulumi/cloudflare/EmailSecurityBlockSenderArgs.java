@@ -40,6 +40,21 @@ public final class EmailSecurityBlockSenderArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration.
+     * 
+     */
+    @Import(name="expiresAt")
+    private @Nullable Output<String> expiresAt;
+
+    /**
+     * @return Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration.
+     * 
+     */
+    public Optional<Output<String>> expiresAt() {
+        return Optional.ofNullable(this.expiresAt);
+    }
+
+    /**
      * Whether `pattern` is a regular expression instead of a literal value.
      * 
      */
@@ -99,6 +114,7 @@ public final class EmailSecurityBlockSenderArgs extends com.pulumi.resources.Res
     private EmailSecurityBlockSenderArgs(EmailSecurityBlockSenderArgs $) {
         this.accountId = $.accountId;
         this.comments = $.comments;
+        this.expiresAt = $.expiresAt;
         this.isRegex = $.isRegex;
         this.pattern = $.pattern;
         this.patternType = $.patternType;
@@ -150,6 +166,27 @@ public final class EmailSecurityBlockSenderArgs extends com.pulumi.resources.Res
 
         public Builder comments(String comments) {
             return comments(Output.of(comments));
+        }
+
+        /**
+         * @param expiresAt Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expiresAt(@Nullable Output<String> expiresAt) {
+            $.expiresAt = expiresAt;
+            return this;
+        }
+
+        /**
+         * @param expiresAt Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expiresAt(String expiresAt) {
+            return expiresAt(Output.of(expiresAt));
         }
 
         /**

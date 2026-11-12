@@ -71,75 +71,29 @@ export interface GetDnsRecordResult {
      * A valid IPv4 address.
      */
     readonly content: string;
-    /**
-     * When the record was created.
-     */
     readonly createdOn: string;
-    /**
-     * Components of a MX record.
-     */
     readonly data: outputs.GetDnsRecordData;
     /**
      * Identifier.
      */
     readonly dnsRecordId?: string;
     readonly filter?: outputs.GetDnsRecordFilter;
-    /**
-     * Identifier.
-     */
     readonly id: string;
     /**
      * Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
      */
     readonly includeShadowMetadata: boolean;
-    /**
-     * Extra Cloudflare-specific metadata about the record.
-     */
     readonly meta: outputs.GetDnsRecordMeta;
-    /**
-     * When the record was last modified.
-     */
     readonly modifiedOn: string;
-    /**
-     * Complete DNS record name, including the zone name, in Punycode.
-     */
     readonly name: string;
-    /**
-     * Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
-     */
     readonly priority: number;
-    /**
-     * Enables private network routing to the origin.
-     */
     readonly privateRouting: boolean;
-    /**
-     * Whether the record can be proxied by Cloudflare or not.
-     */
     readonly proxiable: boolean;
-    /**
-     * Whether the record is receiving the performance and security benefits of Cloudflare.
-     */
     readonly proxied: boolean;
-    /**
-     * Settings for the DNS record.
-     */
     readonly settings: outputs.GetDnsRecordSettings;
-    /**
-     * Custom tags for the DNS record. This field has no effect on DNS responses.
-     */
     readonly tags: string[];
-    /**
-     * When the record tags were last modified. Omitted if there are no tags.
-     */
     readonly tagsModifiedOn: string;
-    /**
-     * Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
-     */
     readonly ttl: number;
-    /**
-     * Record type.
-     * Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
-     */
     readonly type: string;
     /**
      * Identifier.

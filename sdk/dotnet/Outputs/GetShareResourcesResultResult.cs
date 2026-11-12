@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetShareResourcesResultResult
     {
         /// <summary>
-        /// When the share was created.
+        /// When the object was created.
         /// </summary>
         public readonly string Created;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Meta;
         /// <summary>
-        /// When the share was modified.
+        /// When the object was last modified.
         /// </summary>
         public readonly string Modified;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string ResourceAccountId;
         /// <summary>
-        /// Share Resource identifier.
+        /// Identifier assigned by the service that owns the shared resource.
         /// </summary>
         public readonly string ResourceId;
         /// <summary>

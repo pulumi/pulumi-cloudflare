@@ -61,6 +61,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .description("description")
  *             .profileId("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+ *             .validatorIds("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
  *             .build());
  * 
  *     }
@@ -84,7 +85,7 @@ public class ZeroTrustDlpEntry extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     /**
-     * Only applies to custom word lists.
+     * For `type: exactData`: Only applies to custom word lists.
      * Determines if the words should be matched in a case-sensitive manner
      * Cannot be set to false if secret is true
      * 
@@ -93,7 +94,7 @@ public class ZeroTrustDlpEntry extends com.pulumi.resources.CustomResource {
     private Output<Boolean> caseSensitive;
 
     /**
-     * @return Only applies to custom word lists.
+     * @return For `type: exactData`: Only applies to custom word lists.
      * Determines if the words should be matched in a case-sensitive manner
      * Cannot be set to false if secret is true
      * 
@@ -114,7 +115,7 @@ public class ZeroTrustDlpEntry extends com.pulumi.resources.CustomResource {
         return this.createdAt;
     }
     /**
-     * Whether this entry is deprecated for new use. This is computed from the static catalog and
+     * For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
      * emitted only when true.
      * 
      */
@@ -122,7 +123,7 @@ public class ZeroTrustDlpEntry extends com.pulumi.resources.CustomResource {
     private Output<Boolean> deprecated;
 
     /**
-     * @return Whether this entry is deprecated for new use. This is computed from the static catalog and
+     * @return For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
      * emitted only when true.
      * 
      */
@@ -206,14 +207,28 @@ public class ZeroTrustDlpEntry extends com.pulumi.resources.CustomResource {
         return this.uploadStatus;
     }
     /**
-     * A Predefined AI prompt classification topic entry.
+     * Validators the new entry should reference, by id, at most 10.
+     * 
+     */
+    @Export(name="validatorIds", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> validatorIds;
+
+    /**
+     * @return Validators the new entry should reference, by id, at most 10.
+     * 
+     */
+    public Output<List<String>> validatorIds() {
+        return this.validatorIds;
+    }
+    /**
+     * For `type: predefined`: A Predefined AI prompt classification topic entry.
      * 
      */
     @Export(name="variant", refs={ZeroTrustDlpEntryVariant.class}, tree="[0]")
     private Output<ZeroTrustDlpEntryVariant> variant;
 
     /**
-     * @return A Predefined AI prompt classification topic entry.
+     * @return For `type: predefined`: A Predefined AI prompt classification topic entry.
      * 
      */
     public Output<ZeroTrustDlpEntryVariant> variant() {

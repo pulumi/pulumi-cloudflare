@@ -28,6 +28,7 @@ import com.pulumi.cloudflare.inputs.AccessPolicyExcludeOidcArgs;
 import com.pulumi.cloudflare.inputs.AccessPolicyExcludeOktaArgs;
 import com.pulumi.cloudflare.inputs.AccessPolicyExcludeSamlArgs;
 import com.pulumi.cloudflare.inputs.AccessPolicyExcludeServiceTokenArgs;
+import com.pulumi.cloudflare.inputs.AccessPolicyExcludeServiceTokenTagArgs;
 import com.pulumi.cloudflare.inputs.AccessPolicyExcludeUserRiskScoreArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -231,6 +232,13 @@ public final class AccessPolicyExcludeArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.serviceToken);
     }
 
+    @Import(name="serviceTokenTag")
+    private @Nullable Output<AccessPolicyExcludeServiceTokenTagArgs> serviceTokenTag;
+
+    public Optional<Output<AccessPolicyExcludeServiceTokenTagArgs>> serviceTokenTag() {
+        return Optional.ofNullable(this.serviceTokenTag);
+    }
+
     @Import(name="userRiskScore")
     private @Nullable Output<AccessPolicyExcludeUserRiskScoreArgs> userRiskScore;
 
@@ -266,6 +274,7 @@ public final class AccessPolicyExcludeArgs extends com.pulumi.resources.Resource
         this.okta = $.okta;
         this.saml = $.saml;
         this.serviceToken = $.serviceToken;
+        this.serviceTokenTag = $.serviceTokenTag;
         this.userRiskScore = $.userRiskScore;
     }
 
@@ -534,6 +543,15 @@ public final class AccessPolicyExcludeArgs extends com.pulumi.resources.Resource
 
         public Builder serviceToken(AccessPolicyExcludeServiceTokenArgs serviceToken) {
             return serviceToken(Output.of(serviceToken));
+        }
+
+        public Builder serviceTokenTag(@Nullable Output<AccessPolicyExcludeServiceTokenTagArgs> serviceTokenTag) {
+            $.serviceTokenTag = serviceTokenTag;
+            return this;
+        }
+
+        public Builder serviceTokenTag(AccessPolicyExcludeServiceTokenTagArgs serviceTokenTag) {
+            return serviceTokenTag(Output.of(serviceTokenTag));
         }
 
         public Builder userRiskScore(@Nullable Output<AccessPolicyExcludeUserRiskScoreArgs> userRiskScore) {

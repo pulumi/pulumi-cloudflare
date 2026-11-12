@@ -11,6 +11,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Resource Sharing Read`
+//
 // ## Example Usage
 //
 // ```go
@@ -29,6 +33,7 @@ import (
 //				AccountId:              "023e105f4ecef8ad9ca31a8372d0c353",
 //				IncludeRecipientCounts: pulumi.BoolRef(true),
 //				IncludeResources:       pulumi.BoolRef(true),
+//				IncludeTagsFrom:        pulumi.StringRef("api"),
 //				Kind:                   pulumi.StringRef("sent"),
 //				ResourceTypes: []string{
 //					"custom-ruleset",
@@ -68,6 +73,9 @@ type LookupSharesArgs struct {
 	IncludeRecipientCounts *bool `pulumi:"includeRecipientCounts"`
 	// Include resources in the response.
 	IncludeResources *bool `pulumi:"includeResources"`
+	// Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+	// Available values: "api", "mirror".
+	IncludeTagsFrom *string `pulumi:"includeTagsFrom"`
 	// Filter shares by kind.
 	// Available values: "sent", "received".
 	Kind *string `pulumi:"kind"`
@@ -99,6 +107,9 @@ type LookupSharesResult struct {
 	IncludeRecipientCounts *bool `pulumi:"includeRecipientCounts"`
 	// Include resources in the response.
 	IncludeResources *bool `pulumi:"includeResources"`
+	// Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+	// Available values: "api", "mirror".
+	IncludeTagsFrom *string `pulumi:"includeTagsFrom"`
 	// Filter shares by kind.
 	// Available values: "sent", "received".
 	Kind *string `pulumi:"kind"`
@@ -137,6 +148,9 @@ type LookupSharesOutputArgs struct {
 	IncludeRecipientCounts pulumi.BoolPtrInput `pulumi:"includeRecipientCounts"`
 	// Include resources in the response.
 	IncludeResources pulumi.BoolPtrInput `pulumi:"includeResources"`
+	// Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+	// Available values: "api", "mirror".
+	IncludeTagsFrom pulumi.StringPtrInput `pulumi:"includeTagsFrom"`
 	// Filter shares by kind.
 	// Available values: "sent", "received".
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
@@ -195,6 +209,12 @@ func (o LookupSharesResultOutput) IncludeRecipientCounts() pulumi.BoolPtrOutput 
 // Include resources in the response.
 func (o LookupSharesResultOutput) IncludeResources() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupSharesResult) *bool { return v.IncludeResources }).(pulumi.BoolPtrOutput)
+}
+
+// Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+// Available values: "api", "mirror".
+func (o LookupSharesResultOutput) IncludeTagsFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupSharesResult) *string { return v.IncludeTagsFrom }).(pulumi.StringPtrOutput)
 }
 
 // Filter shares by kind.

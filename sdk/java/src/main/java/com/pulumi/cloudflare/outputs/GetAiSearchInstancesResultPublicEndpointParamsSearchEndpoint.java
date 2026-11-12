@@ -10,17 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAiSearchInstancesResultPublicEndpointParamsSearchEndpoint {
-    /**
-     * @return Disable search endpoint for this public endpoint
-     * 
-     */
     private Boolean disabled;
 
     private GetAiSearchInstancesResultPublicEndpointParamsSearchEndpoint() {}
-    /**
-     * @return Disable search endpoint for this public endpoint
-     * 
-     */
     public Boolean disabled() {
         return this.disabled;
     }

@@ -91,6 +91,10 @@ export interface GetFlagshipFlagResult {
      */
     readonly key: string;
     /**
+     * Key-value metadata associated with the flag. Returned only when the flag has metadata.
+     */
+    readonly metadata: any;
+    /**
      * Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `defaultVariation`.
      */
     readonly rules: outputs.GetFlagshipFlagRule[];

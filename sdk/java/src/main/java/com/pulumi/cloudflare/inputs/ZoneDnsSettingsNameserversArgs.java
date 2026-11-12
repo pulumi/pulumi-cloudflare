@@ -18,14 +18,14 @@ public final class ZoneDnsSettingsNameserversArgs extends com.pulumi.resources.R
     public static final ZoneDnsSettingsNameserversArgs Empty = new ZoneDnsSettingsNameserversArgs();
 
     /**
-     * Identifier of the account-owned Custom Nameserver Set to use for this zone.
+     * For `type: custom`: Identifier of the account-owned Custom Nameserver Set to use for this zone.
      * 
      */
     @Import(name="nameserverSetId")
     private @Nullable Output<String> nameserverSetId;
 
     /**
-     * @return Identifier of the account-owned Custom Nameserver Set to use for this zone.
+     * @return For `type: custom`: Identifier of the account-owned Custom Nameserver Set to use for this zone.
      * 
      */
     public Optional<Output<String>> nameserverSetId() {
@@ -33,14 +33,14 @@ public final class ZoneDnsSettingsNameserversArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Configured nameserver set number to use for this zone.
+     * For `type: custom.account` or `type: custom.tenant` or `type: custom.zone`: Configured nameserver set number to use for this zone.
      * 
      */
     @Import(name="nsSet")
     private @Nullable Output<Integer> nsSet;
 
     /**
-     * @return Configured nameserver set number to use for this zone.
+     * @return For `type: custom.account` or `type: custom.tenant` or `type: custom.zone`: Configured nameserver set number to use for this zone.
      * 
      */
     public Optional<Output<Integer>> nsSet() {
@@ -91,7 +91,7 @@ public final class ZoneDnsSettingsNameserversArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param nameserverSetId Identifier of the account-owned Custom Nameserver Set to use for this zone.
+         * @param nameserverSetId For `type: custom`: Identifier of the account-owned Custom Nameserver Set to use for this zone.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class ZoneDnsSettingsNameserversArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param nameserverSetId Identifier of the account-owned Custom Nameserver Set to use for this zone.
+         * @param nameserverSetId For `type: custom`: Identifier of the account-owned Custom Nameserver Set to use for this zone.
          * 
          * @return builder
          * 
@@ -112,7 +112,7 @@ public final class ZoneDnsSettingsNameserversArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param nsSet Configured nameserver set number to use for this zone.
+         * @param nsSet For `type: custom.account` or `type: custom.tenant` or `type: custom.zone`: Configured nameserver set number to use for this zone.
          * 
          * @return builder
          * 
@@ -123,7 +123,7 @@ public final class ZoneDnsSettingsNameserversArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param nsSet Configured nameserver set number to use for this zone.
+         * @param nsSet For `type: custom.account` or `type: custom.tenant` or `type: custom.zone`: Configured nameserver set number to use for this zone.
          * 
          * @return builder
          * 

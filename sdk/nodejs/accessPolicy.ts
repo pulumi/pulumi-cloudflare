@@ -69,6 +69,7 @@ import * as utilities from "./utilities";
  *         mfaDisabled: false,
  *         sessionDuration: "24h",
  *     },
+ *     policyResolutionAccountId: "policy_resolution_account_id",
  *     purposeJustificationPrompt: "Please enter a justification for entering this protected domain.",
  *     purposeJustificationRequired: true,
  *     requires: [{
@@ -131,10 +132,6 @@ export class AccessPolicy extends pulumi.CustomResource {
      */
     declare public readonly accountId: pulumi.Output<string>;
     /**
-     * Number of access applications currently using this policy.
-     */
-    declare public /*out*/ readonly appCount: pulumi.Output<number>;
-    /**
      * Administrators who can approve a temporary authentication request.
      */
     declare public readonly approvalGroups: pulumi.Output<outputs.AccessPolicyApprovalGroup[] | undefined>;
@@ -173,6 +170,10 @@ export class AccessPolicy extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.
+     */
+    declare public readonly policyResolutionAccountId: pulumi.Output<string | undefined>;
+    /**
      * A custom message that will appear on the purpose justification screen.
      */
     declare public readonly purposeJustificationPrompt: pulumi.Output<string | undefined>;
@@ -208,7 +209,6 @@ export class AccessPolicy extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as AccessPolicyState | undefined;
             resourceInputs["accountId"] = state?.accountId;
-            resourceInputs["appCount"] = state?.appCount;
             resourceInputs["approvalGroups"] = state?.approvalGroups;
             resourceInputs["approvalRequired"] = state?.approvalRequired;
             resourceInputs["connectionRules"] = state?.connectionRules;
@@ -219,6 +219,7 @@ export class AccessPolicy extends pulumi.CustomResource {
             resourceInputs["isolationRequired"] = state?.isolationRequired;
             resourceInputs["mfaConfig"] = state?.mfaConfig;
             resourceInputs["name"] = state?.name;
+            resourceInputs["policyResolutionAccountId"] = state?.policyResolutionAccountId;
             resourceInputs["purposeJustificationPrompt"] = state?.purposeJustificationPrompt;
             resourceInputs["purposeJustificationRequired"] = state?.purposeJustificationRequired;
             resourceInputs["requires"] = state?.requires;
@@ -246,11 +247,11 @@ export class AccessPolicy extends pulumi.CustomResource {
             resourceInputs["isolationRequired"] = args?.isolationRequired;
             resourceInputs["mfaConfig"] = args?.mfaConfig;
             resourceInputs["name"] = args?.name;
+            resourceInputs["policyResolutionAccountId"] = args?.policyResolutionAccountId;
             resourceInputs["purposeJustificationPrompt"] = args?.purposeJustificationPrompt;
             resourceInputs["purposeJustificationRequired"] = args?.purposeJustificationRequired;
             resourceInputs["requires"] = args?.requires;
             resourceInputs["sessionDuration"] = args?.sessionDuration;
-            resourceInputs["appCount"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["reusable"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
@@ -270,10 +271,6 @@ export interface AccessPolicyState {
      * Identifier.
      */
     accountId?: pulumi.Input<string | undefined>;
-    /**
-     * Number of access applications currently using this policy.
-     */
-    appCount?: pulumi.Input<number | undefined>;
     /**
      * Administrators who can approve a temporary authentication request.
      */
@@ -312,6 +309,10 @@ export interface AccessPolicyState {
      * The name of the Access policy.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.
+     */
+    policyResolutionAccountId?: pulumi.Input<string | undefined>;
     /**
      * A custom message that will appear on the purpose justification screen.
      */
@@ -377,6 +378,10 @@ export interface AccessPolicyArgs {
      * The name of the Access policy.
      */
     name: pulumi.Input<string>;
+    /**
+     * The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.
+     */
+    policyResolutionAccountId?: pulumi.Input<string | undefined>;
     /**
      * A custom message that will appear on the purpose justification screen.
      */

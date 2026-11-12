@@ -19,13 +19,13 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string> Meta { get; set; } = null!;
 
         /// <summary>
-        /// Account identifier.
+        /// The account that owns the resource. Must match the `AccountId` in the path.
         /// </summary>
         [Input("resourceAccountId", required: true)]
         public Input<string> ResourceAccountId { get; set; } = null!;
 
         /// <summary>
-        /// Share Resource identifier.
+        /// Identifier assigned by the service that owns the shared resource.
         /// </summary>
         [Input("resourceId", required: true)]
         public Input<string> ResourceId { get; set; } = null!;

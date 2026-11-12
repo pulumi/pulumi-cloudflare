@@ -16,6 +16,11 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Zone Observability Read`
+ * - `Zone Observability Write`
+ * 
  * ## Example Usage
  * 
  * <pre>

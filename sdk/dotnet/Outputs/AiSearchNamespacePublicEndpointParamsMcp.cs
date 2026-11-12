@@ -15,7 +15,7 @@ namespace Pulumi.Cloudflare.Outputs
     {
         public readonly string? Description;
         /// <summary>
-        /// Disable MCP endpoint for this public endpoint
+        /// Disable MCP endpoint for this public endpoint.
         /// </summary>
         public readonly bool? Disabled;
 

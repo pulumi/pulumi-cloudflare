@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -11,6 +12,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetWorkersCustomDomainFilter {
+    /**
+     * @return Whether the configured hostname is routable for the domain.
+     * 
+     */
+    private @Nullable Boolean enabled;
     /**
      * @return Worker environment associated with the domain.
      * 
@@ -21,6 +27,11 @@ public final class GetWorkersCustomDomainFilter {
      * 
      */
     private @Nullable String hostname;
+    /**
+     * @return Whether previews are routable for the domain.
+     * 
+     */
+    private @Nullable Boolean previewsEnabled;
     /**
      * @return Name of the Worker associated with the domain.
      * 
@@ -39,6 +50,13 @@ public final class GetWorkersCustomDomainFilter {
 
     private GetWorkersCustomDomainFilter() {}
     /**
+     * @return Whether the configured hostname is routable for the domain.
+     * 
+     */
+    public Optional<Boolean> enabled() {
+        return Optional.ofNullable(this.enabled);
+    }
+    /**
      * @return Worker environment associated with the domain.
      * 
      */
@@ -51,6 +69,13 @@ public final class GetWorkersCustomDomainFilter {
      */
     public Optional<String> hostname() {
         return Optional.ofNullable(this.hostname);
+    }
+    /**
+     * @return Whether previews are routable for the domain.
+     * 
+     */
+    public Optional<Boolean> previewsEnabled() {
+        return Optional.ofNullable(this.previewsEnabled);
     }
     /**
      * @return Name of the Worker associated with the domain.
@@ -83,21 +108,31 @@ public final class GetWorkersCustomDomainFilter {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean enabled;
         private @Nullable String environment;
         private @Nullable String hostname;
+        private @Nullable Boolean previewsEnabled;
         private @Nullable String service;
         private @Nullable String zoneId;
         private @Nullable String zoneName;
         public Builder() {}
         public Builder(GetWorkersCustomDomainFilter defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.enabled = defaults.enabled;
     	      this.environment = defaults.environment;
     	      this.hostname = defaults.hostname;
+    	      this.previewsEnabled = defaults.previewsEnabled;
     	      this.service = defaults.service;
     	      this.zoneId = defaults.zoneId;
     	      this.zoneName = defaults.zoneName;
         }
 
+        @CustomType.Setter
+        public Builder enabled(@Nullable Boolean enabled) {
+
+            this.enabled = enabled;
+            return this;
+        }
         @CustomType.Setter
         public Builder environment(@Nullable String environment) {
 
@@ -108,6 +143,12 @@ public final class GetWorkersCustomDomainFilter {
         public Builder hostname(@Nullable String hostname) {
 
             this.hostname = hostname;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder previewsEnabled(@Nullable Boolean previewsEnabled) {
+
+            this.previewsEnabled = previewsEnabled;
             return this;
         }
         @CustomType.Setter
@@ -130,8 +171,10 @@ public final class GetWorkersCustomDomainFilter {
         }
         public GetWorkersCustomDomainFilter build() {
             final var _resultValue = new GetWorkersCustomDomainFilter();
+            _resultValue.enabled = enabled;
             _resultValue.environment = environment;
             _resultValue.hostname = hostname;
+            _resultValue.previewsEnabled = previewsEnabled;
             _resultValue.service = service;
             _resultValue.zoneId = zoneId;
             _resultValue.zoneName = zoneName;

@@ -33,6 +33,7 @@ import (
 //			_, err := cloudflare.GetEmailSecurityAllowPolicies(ctx, &cloudflare.LookupEmailSecurityAllowPoliciesArgs{
 //				AccountId:          "023e105f4ecef8ad9ca31a8372d0c353",
 //				Direction:          pulumi.StringRef("asc"),
+//				Expired:            pulumi.BoolRef(true),
 //				IsAcceptableSender: pulumi.BoolRef(true),
 //				IsExemptRecipient:  pulumi.BoolRef(true),
 //				IsTrustedSender:    pulumi.BoolRef(true),
@@ -64,6 +65,7 @@ func LookupEmailSecurityAllowPolicies(ctx *pulumi.Context, args *LookupEmailSecu
 type LookupEmailSecurityAllowPoliciesArgs struct {
 	AccountId          string  `pulumi:"accountId"`
 	Direction          *string `pulumi:"direction"`
+	Expired            *bool   `pulumi:"expired"`
 	IsAcceptableSender *bool   `pulumi:"isAcceptableSender"`
 	IsExemptRecipient  *bool   `pulumi:"isExemptRecipient"`
 	IsTrustedSender    *bool   `pulumi:"isTrustedSender"`
@@ -79,6 +81,7 @@ type LookupEmailSecurityAllowPoliciesArgs struct {
 type LookupEmailSecurityAllowPoliciesResult struct {
 	AccountId          string                                `pulumi:"accountId"`
 	Direction          *string                               `pulumi:"direction"`
+	Expired            *bool                                 `pulumi:"expired"`
 	IsAcceptableSender *bool                                 `pulumi:"isAcceptableSender"`
 	IsExemptRecipient  *bool                                 `pulumi:"isExemptRecipient"`
 	IsTrustedSender    *bool                                 `pulumi:"isTrustedSender"`
@@ -100,6 +103,7 @@ func LookupEmailSecurityAllowPoliciesOutput(ctx *pulumi.Context, args LookupEmai
 type LookupEmailSecurityAllowPoliciesOutputArgs struct {
 	AccountId          pulumi.StringInput    `pulumi:"accountId"`
 	Direction          pulumi.StringPtrInput `pulumi:"direction"`
+	Expired            pulumi.BoolPtrInput   `pulumi:"expired"`
 	IsAcceptableSender pulumi.BoolPtrInput   `pulumi:"isAcceptableSender"`
 	IsExemptRecipient  pulumi.BoolPtrInput   `pulumi:"isExemptRecipient"`
 	IsTrustedSender    pulumi.BoolPtrInput   `pulumi:"isTrustedSender"`
@@ -136,6 +140,10 @@ func (o LookupEmailSecurityAllowPoliciesResultOutput) AccountId() pulumi.StringO
 
 func (o LookupEmailSecurityAllowPoliciesResultOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEmailSecurityAllowPoliciesResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupEmailSecurityAllowPoliciesResultOutput) Expired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupEmailSecurityAllowPoliciesResult) *bool { return v.Expired }).(pulumi.BoolPtrOutput)
 }
 
 func (o LookupEmailSecurityAllowPoliciesResultOutput) IsAcceptableSender() pulumi.BoolPtrOutput {

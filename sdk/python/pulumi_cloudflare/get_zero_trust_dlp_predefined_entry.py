@@ -27,7 +27,7 @@ class GetZeroTrustDlpPredefinedEntryResult:
     """
     A collection of values returned by getZeroTrustDlpPredefinedEntry.
     """
-    def __init__(__self__, account_id=None, case_sensitive=None, confidence=None, created_at=None, deprecated=None, description=None, enabled=None, entry_id=None, id=None, name=None, pattern=None, profile_id=None, profiles=None, secret=None, type=None, updated_at=None, upload_status=None, variant=None, word_lists=None):
+    def __init__(__self__, account_id=None, case_sensitive=None, confidence=None, created_at=None, deprecated=None, description=None, enabled=None, entry_id=None, id=None, name=None, pattern=None, profile_id=None, profiles=None, secret=None, type=None, updated_at=None, upload_status=None, validator_ids=None, variant=None, word_lists=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -79,6 +79,9 @@ class GetZeroTrustDlpPredefinedEntryResult:
         if upload_status and not isinstance(upload_status, str):
             raise TypeError("Expected argument 'upload_status' to be a str")
         pulumi.set(__self__, "upload_status", upload_status)
+        if validator_ids and not isinstance(validator_ids, list):
+            raise TypeError("Expected argument 'validator_ids' to be a list")
+        pulumi.set(__self__, "validator_ids", validator_ids)
         if variant and not isinstance(variant, dict):
             raise TypeError("Expected argument 'variant' to be a dict")
         pulumi.set(__self__, "variant", variant)
@@ -95,7 +98,7 @@ class GetZeroTrustDlpPredefinedEntryResult:
     @pulumi.getter(name="caseSensitive")
     def case_sensitive(self) -> _builtins.bool:
         """
-        Only applies to custom word lists.
+        For `type: exact_data`: Only applies to custom word lists.
         Determines if the words should be matched in a case-sensitive manner
         Cannot be set to false if secret is true
         """
@@ -115,7 +118,7 @@ class GetZeroTrustDlpPredefinedEntryResult:
     @pulumi.getter
     def deprecated(self) -> _builtins.bool:
         """
-        Whether this entry is deprecated for new use. This is computed from the static catalog and
+        For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
         emitted only when true.
         """
         return pulumi.get(self, "deprecated")
@@ -123,6 +126,9 @@ class GetZeroTrustDlpPredefinedEntryResult:
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
+        """
+        For `type: custom_prompt_topic`: The optional description of the custom prompt topic entry.
+        """
         return pulumi.get(self, "description")
 
     @_builtins.property
@@ -138,9 +144,6 @@ class GetZeroTrustDlpPredefinedEntryResult:
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
@@ -171,9 +174,6 @@ class GetZeroTrustDlpPredefinedEntryResult:
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "word_list".
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
@@ -184,17 +184,16 @@ class GetZeroTrustDlpPredefinedEntryResult:
     @_builtins.property
     @pulumi.getter(name="uploadStatus")
     def upload_status(self) -> _builtins.str:
-        """
-        Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
-        """
         return pulumi.get(self, "upload_status")
+
+    @_builtins.property
+    @pulumi.getter(name="validatorIds")
+    def validator_ids(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "validator_ids")
 
     @_builtins.property
     @pulumi.getter
     def variant(self) -> 'outputs.GetZeroTrustDlpPredefinedEntryVariantResult':
-        """
-        A Predefined AI prompt classification topic entry.
-        """
         return pulumi.get(self, "variant")
 
     @_builtins.property
@@ -226,6 +225,7 @@ class AwaitableGetZeroTrustDlpPredefinedEntryResult(GetZeroTrustDlpPredefinedEnt
             type=self.type,
             updated_at=self.updated_at,
             upload_status=self.upload_status,
+            validator_ids=self.validator_ids,
             variant=self.variant,
             word_lists=self.word_lists)
 
@@ -273,6 +273,7 @@ def get_zero_trust_dlp_predefined_entry(account_id: Optional[_builtins.str] = No
         type=pulumi.get(__ret__, 'type'),
         updated_at=pulumi.get(__ret__, 'updated_at'),
         upload_status=pulumi.get(__ret__, 'upload_status'),
+        validator_ids=pulumi.get(__ret__, 'validator_ids'),
         variant=pulumi.get(__ret__, 'variant'),
         word_lists=pulumi.get(__ret__, 'word_lists'))
 def get_zero_trust_dlp_predefined_entry_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -317,5 +318,6 @@ def get_zero_trust_dlp_predefined_entry_output(account_id: pulumi.Input[Optional
         type=pulumi.get(__response__, 'type'),
         updated_at=pulumi.get(__response__, 'updated_at'),
         upload_status=pulumi.get(__response__, 'upload_status'),
+        validator_ids=pulumi.get(__response__, 'validator_ids'),
         variant=pulumi.get(__response__, 'variant'),
         word_lists=pulumi.get(__response__, 'word_lists')))

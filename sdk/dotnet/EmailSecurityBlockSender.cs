@@ -32,6 +32,7 @@ namespace Pulumi.Cloudflare
     ///         Pattern = "test@example.com",
     ///         PatternType = "EMAIL",
     ///         Comments = "Block sender with email test@example.com",
+    ///         ExpiresAt = "2027-01-01T00:00:00Z",
     ///     });
     /// 
     /// });
@@ -57,6 +58,12 @@ namespace Pulumi.Cloudflare
 
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `Null` to clear the expiration.
+        /// </summary>
+        [Output("expiresAt")]
+        public Output<string?> ExpiresAt { get; private set; } = null!;
 
         /// <summary>
         /// Whether `Pattern` is a regular expression instead of a literal value.
@@ -146,6 +153,12 @@ namespace Pulumi.Cloudflare
         public Input<string>? Comments { get; set; }
 
         /// <summary>
+        /// Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `Null` to clear the expiration.
+        /// </summary>
+        [Input("expiresAt")]
+        public Input<string>? ExpiresAt { get; set; }
+
+        /// <summary>
         /// Whether `Pattern` is a regular expression instead of a literal value.
         /// </summary>
         [Input("isRegex", required: true)]
@@ -187,6 +200,12 @@ namespace Pulumi.Cloudflare
 
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
+
+        /// <summary>
+        /// Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `Null` to clear the expiration.
+        /// </summary>
+        [Input("expiresAt")]
+        public Input<string>? ExpiresAt { get; set; }
 
         /// <summary>
         /// Whether `Pattern` is a regular expression instead of a literal value.

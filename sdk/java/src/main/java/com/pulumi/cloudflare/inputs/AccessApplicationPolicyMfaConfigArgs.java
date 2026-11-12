@@ -19,7 +19,7 @@ public final class AccessApplicationPolicyMfaConfigArgs extends com.pulumi.resou
 
     /**
      * The authenticators allowed for MFA.
-     * Available values: &#34;totp&#34;, &#34;biometrics&#34;, &#34;security*key&#34;, &#34;ssh*piv_key&#34;.
+     * Available values: &#34;totp&#34;, &#34;biometrics&#34;, &#34;security*key&#34;, &#34;piv*key&#34;, &#34;ssh*fido2*key&#34;.
      * 
      */
     @Import(name="allowedAuthenticators")
@@ -27,7 +27,7 @@ public final class AccessApplicationPolicyMfaConfigArgs extends com.pulumi.resou
 
     /**
      * @return The authenticators allowed for MFA.
-     * Available values: &#34;totp&#34;, &#34;biometrics&#34;, &#34;security*key&#34;, &#34;ssh*piv_key&#34;.
+     * Available values: &#34;totp&#34;, &#34;biometrics&#34;, &#34;security*key&#34;, &#34;piv*key&#34;, &#34;ssh*fido2*key&#34;.
      * 
      */
     public Optional<Output<List<String>>> allowedAuthenticators() {
@@ -92,7 +92,7 @@ public final class AccessApplicationPolicyMfaConfigArgs extends com.pulumi.resou
 
         /**
          * @param allowedAuthenticators The authenticators allowed for MFA.
-         * Available values: &#34;totp&#34;, &#34;biometrics&#34;, &#34;security*key&#34;, &#34;ssh*piv_key&#34;.
+         * Available values: &#34;totp&#34;, &#34;biometrics&#34;, &#34;security*key&#34;, &#34;piv*key&#34;, &#34;ssh*fido2*key&#34;.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class AccessApplicationPolicyMfaConfigArgs extends com.pulumi.resou
 
         /**
          * @param allowedAuthenticators The authenticators allowed for MFA.
-         * Available values: &#34;totp&#34;, &#34;biometrics&#34;, &#34;security*key&#34;, &#34;ssh*piv_key&#34;.
+         * Available values: &#34;totp&#34;, &#34;biometrics&#34;, &#34;security*key&#34;, &#34;piv*key&#34;, &#34;ssh*fido2*key&#34;.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class AccessApplicationPolicyMfaConfigArgs extends com.pulumi.resou
 
         /**
          * @param allowedAuthenticators The authenticators allowed for MFA.
-         * Available values: &#34;totp&#34;, &#34;biometrics&#34;, &#34;security*key&#34;, &#34;ssh*piv_key&#34;.
+         * Available values: &#34;totp&#34;, &#34;biometrics&#34;, &#34;security*key&#34;, &#34;piv*key&#34;, &#34;ssh*fido2*key&#34;.
          * 
          * @return builder
          * 

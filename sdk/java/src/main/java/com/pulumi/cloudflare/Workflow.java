@@ -69,6 +69,7 @@ import javax.annotation.Nullable;
  *                 .errorRetention("5 minutes")
  *                 .successRetention("5 minutes")
  *                 .build())
+ *             .jurisdiction("eu")
  *             .limits(WorkflowLimitsArgs.builder()
  *                 .steps(1)
  *                 .build())
@@ -140,6 +141,22 @@ public class Workflow extends com.pulumi.resources.CustomResource {
 
     public Output<Double> isDeleted() {
         return this.isDeleted;
+    }
+    /**
+     * Jurisdiction where instances of this workflow run and store data. Can only be set when the workflow is created and cannot be changed afterwards; omit it to keep the existing jurisdiction.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;us&#34;.
+     * 
+     */
+    @Export(name="jurisdiction", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> jurisdiction;
+
+    /**
+     * @return Jurisdiction where instances of this workflow run and store data. Can only be set when the workflow is created and cannot be changed afterwards; omit it to keep the existing jurisdiction.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;us&#34;.
+     * 
+     */
+    public Output<Optional<String>> jurisdiction() {
+        return Codegen.optional(this.jurisdiction);
     }
     @Export(name="limits", refs={WorkflowLimits.class}, tree="[0]")
     private Output</* @Nullable */ WorkflowLimits> limits;

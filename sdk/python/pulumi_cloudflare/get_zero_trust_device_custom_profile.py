@@ -28,7 +28,7 @@ class GetZeroTrustDeviceCustomProfileResult:
     """
     A collection of values returned by getZeroTrustDeviceCustomProfile.
     """
-    def __init__(__self__, account_id=None, allow_mode_switch=None, allow_updates=None, allowed_to_leave=None, auto_connect=None, browser_extension_config=None, captive_portal=None, default=None, description=None, disable_auto_fallback=None, dns_search_suffixes=None, enabled=None, exclude_office_ips=None, excludes=None, fallback_domains=None, filter=None, gateway_unique_id=None, id=None, includes=None, lan_allow_minutes=None, lan_allow_subnet_size=None, match=None, name=None, policy_id=None, precedence=None, profile_type=None, register_interface_ip_with_dns=None, sccm_vpn_boundary_support=None, service_mode_v2=None, support_url=None, switch_locked=None, target_tests=None, tunnel_protocol=None, uninstall_protection=None, virtual_networks=None):
+    def __init__(__self__, account_id=None, allow_mode_switch=None, allow_updates=None, allowed_to_leave=None, auto_connect=None, browser_extension_config=None, captive_portal=None, default=None, description=None, disable_auto_fallback=None, dns_search_suffixes=None, enable_device_credential_authentication=None, enabled=None, exclude_office_ips=None, excludes=None, fallback_domains=None, filter=None, gateway_unique_id=None, id=None, includes=None, lan_allow_minutes=None, lan_allow_subnet_size=None, match=None, name=None, policy_id=None, precedence=None, profile_type=None, register_interface_ip_with_dns=None, sccm_vpn_boundary_support=None, service_mode_v2=None, support_url=None, switch_locked=None, target_tests=None, tunnel_protocol=None, uninstall_protection=None, virtual_networks=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -62,6 +62,9 @@ class GetZeroTrustDeviceCustomProfileResult:
         if dns_search_suffixes and not isinstance(dns_search_suffixes, list):
             raise TypeError("Expected argument 'dns_search_suffixes' to be a list")
         pulumi.set(__self__, "dns_search_suffixes", dns_search_suffixes)
+        if enable_device_credential_authentication and not isinstance(enable_device_credential_authentication, bool):
+            raise TypeError("Expected argument 'enable_device_credential_authentication' to be a bool")
+        pulumi.set(__self__, "enable_device_credential_authentication", enable_device_credential_authentication)
         if enabled and not isinstance(enabled, bool):
             raise TypeError("Expected argument 'enabled' to be a bool")
         pulumi.set(__self__, "enabled", enabled)
@@ -219,6 +222,14 @@ class GetZeroTrustDeviceCustomProfileResult:
         List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
         """
         return pulumi.get(self, "dns_search_suffixes")
+
+    @_builtins.property
+    @pulumi.getter(name="enableDeviceCredentialAuthentication")
+    def enable_device_credential_authentication(self) -> _builtins.bool:
+        """
+        Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.
+        """
+        return pulumi.get(self, "enable_device_credential_authentication")
 
     @_builtins.property
     @pulumi.getter
@@ -414,6 +425,7 @@ class AwaitableGetZeroTrustDeviceCustomProfileResult(GetZeroTrustDeviceCustomPro
             description=self.description,
             disable_auto_fallback=self.disable_auto_fallback,
             dns_search_suffixes=self.dns_search_suffixes,
+            enable_device_credential_authentication=self.enable_device_credential_authentication,
             enabled=self.enabled,
             exclude_office_ips=self.exclude_office_ips,
             excludes=self.excludes,
@@ -474,6 +486,7 @@ def get_zero_trust_device_custom_profile(account_id: Optional[_builtins.str] = N
         description=pulumi.get(__ret__, 'description'),
         disable_auto_fallback=pulumi.get(__ret__, 'disable_auto_fallback'),
         dns_search_suffixes=pulumi.get(__ret__, 'dns_search_suffixes'),
+        enable_device_credential_authentication=pulumi.get(__ret__, 'enable_device_credential_authentication'),
         enabled=pulumi.get(__ret__, 'enabled'),
         exclude_office_ips=pulumi.get(__ret__, 'exclude_office_ips'),
         excludes=pulumi.get(__ret__, 'excludes'),
@@ -531,6 +544,7 @@ def get_zero_trust_device_custom_profile_output(account_id: pulumi.Input[Optiona
         description=pulumi.get(__response__, 'description'),
         disable_auto_fallback=pulumi.get(__response__, 'disable_auto_fallback'),
         dns_search_suffixes=pulumi.get(__response__, 'dns_search_suffixes'),
+        enable_device_credential_authentication=pulumi.get(__response__, 'enable_device_credential_authentication'),
         enabled=pulumi.get(__response__, 'enabled'),
         exclude_office_ips=pulumi.get(__response__, 'exclude_office_ips'),
         excludes=pulumi.get(__response__, 'excludes'),

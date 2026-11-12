@@ -16,6 +16,10 @@ import (
 // - `User Details Read`
 // - `User Details Write`
 //
+// User API tokens can list and create Organizations, but reading, updating, or deleting an Organization requires a Global API key and your registered email address. The `Organization` Terraform resource therefore requires a Global API key for its full lifecycle.
+//
+// See [Organizations authentication limitations](https://developers.cloudflare.com/fundamentals/organizations/limitations/#api-authentication) for credential compatibility by operation. Each endpoint’s **Security** section lists its supported authentication methods, with **Accepted Permissions** where applicable.
+//
 // ## Example Usage
 //
 // ```go
@@ -39,11 +43,16 @@ import (
 //					Organization: pulumi.StringRef("organization"),
 //					User:         pulumi.StringRef("user"),
 //				},
+//				Direction: pulumi.StringRef("asc"),
+//				Member: cloudflare.GetOrganizationsMember{
+//					Email: pulumi.StringRef("email"),
+//				},
 //				Name: cloudflare.GetOrganizationsName{
 //					Contains:   pulumi.StringRef("contains"),
 //					EndsWith:   pulumi.StringRef("endsWith"),
 //					StartsWith: pulumi.StringRef("startsWith"),
 //				},
+//				OrderBy:   pulumi.StringRef("name"),
 //				PageSize:  pulumi.IntRef(0),
 //				PageToken: pulumi.StringRef("page_token"),
 //				Parent: cloudflare.GetOrganizationsParent{
@@ -71,12 +80,21 @@ func LookupOrganizations(ctx *pulumi.Context, args *LookupOrganizationsArgs, opt
 // A collection of arguments for invoking getOrganizations.
 type LookupOrganizationsArgs struct {
 	Containing *GetOrganizationsContaining `pulumi:"containing"`
+	// Sort direction for the `orderBy` field. Defaults to `asc` when `orderBy` is
+	// specified.
+	// Available values: "asc", "desc".
+	Direction *string `pulumi:"direction"`
 	// Only return organizations with the specified IDs (ex. id=foo&id=bar). Send multiple elements
 	// by repeating the query value.
 	Ids []string `pulumi:"ids"`
 	// Max items to fetch, default: 1000
-	MaxItems *int                  `pulumi:"maxItems"`
-	Name     *GetOrganizationsName `pulumi:"name"`
+	MaxItems *int                    `pulumi:"maxItems"`
+	Member   *GetOrganizationsMember `pulumi:"member"`
+	Name     *GetOrganizationsName   `pulumi:"name"`
+	// Field to order results by. Currently supported values: `name`.
+	// When not specified, results are ordered by hierarchy.
+	// Available values: "name".
+	OrderBy *string `pulumi:"orderBy"`
 	// The amount of items to return. Defaults to 10.
 	PageSize *int `pulumi:"pageSize"`
 	// An opaque token returned from the last list response that when
@@ -88,12 +106,21 @@ type LookupOrganizationsArgs struct {
 // A collection of values returned by getOrganizations.
 type LookupOrganizationsResult struct {
 	Containing *GetOrganizationsContaining `pulumi:"containing"`
+	// Sort direction for the `orderBy` field. Defaults to `asc` when `orderBy` is
+	// specified.
+	// Available values: "asc", "desc".
+	Direction *string `pulumi:"direction"`
 	// Only return organizations with the specified IDs (ex. id=foo&id=bar). Send multiple elements
 	// by repeating the query value.
 	Ids []string `pulumi:"ids"`
 	// Max items to fetch, default: 1000
-	MaxItems *int                  `pulumi:"maxItems"`
-	Name     *GetOrganizationsName `pulumi:"name"`
+	MaxItems *int                    `pulumi:"maxItems"`
+	Member   *GetOrganizationsMember `pulumi:"member"`
+	Name     *GetOrganizationsName   `pulumi:"name"`
+	// Field to order results by. Currently supported values: `name`.
+	// When not specified, results are ordered by hierarchy.
+	// Available values: "name".
+	OrderBy *string `pulumi:"orderBy"`
 	// The amount of items to return. Defaults to 10.
 	PageSize *int `pulumi:"pageSize"`
 	// An opaque token returned from the last list response that when
@@ -111,12 +138,21 @@ func LookupOrganizationsOutput(ctx *pulumi.Context, args LookupOrganizationsOutp
 // A collection of arguments for invoking getOrganizations.
 type LookupOrganizationsOutputArgs struct {
 	Containing GetOrganizationsContainingPtrInput `pulumi:"containing"`
+	// Sort direction for the `orderBy` field. Defaults to `asc` when `orderBy` is
+	// specified.
+	// Available values: "asc", "desc".
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// Only return organizations with the specified IDs (ex. id=foo&id=bar). Send multiple elements
 	// by repeating the query value.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// Max items to fetch, default: 1000
-	MaxItems pulumi.IntPtrInput           `pulumi:"maxItems"`
-	Name     GetOrganizationsNamePtrInput `pulumi:"name"`
+	MaxItems pulumi.IntPtrInput             `pulumi:"maxItems"`
+	Member   GetOrganizationsMemberPtrInput `pulumi:"member"`
+	Name     GetOrganizationsNamePtrInput   `pulumi:"name"`
+	// Field to order results by. Currently supported values: `name`.
+	// When not specified, results are ordered by hierarchy.
+	// Available values: "name".
+	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`
 	// The amount of items to return. Defaults to 10.
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
 	// An opaque token returned from the last list response that when
@@ -148,6 +184,13 @@ func (o LookupOrganizationsResultOutput) Containing() GetOrganizationsContaining
 	return o.ApplyT(func(v LookupOrganizationsResult) *GetOrganizationsContaining { return v.Containing }).(GetOrganizationsContainingPtrOutput)
 }
 
+// Sort direction for the `orderBy` field. Defaults to `asc` when `orderBy` is
+// specified.
+// Available values: "asc", "desc".
+func (o LookupOrganizationsResultOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupOrganizationsResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
 // Only return organizations with the specified IDs (ex. id=foo&id=bar). Send multiple elements
 // by repeating the query value.
 func (o LookupOrganizationsResultOutput) Ids() pulumi.StringArrayOutput {
@@ -159,8 +202,19 @@ func (o LookupOrganizationsResultOutput) MaxItems() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupOrganizationsResult) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
 }
 
+func (o LookupOrganizationsResultOutput) Member() GetOrganizationsMemberPtrOutput {
+	return o.ApplyT(func(v LookupOrganizationsResult) *GetOrganizationsMember { return v.Member }).(GetOrganizationsMemberPtrOutput)
+}
+
 func (o LookupOrganizationsResultOutput) Name() GetOrganizationsNamePtrOutput {
 	return o.ApplyT(func(v LookupOrganizationsResult) *GetOrganizationsName { return v.Name }).(GetOrganizationsNamePtrOutput)
+}
+
+// Field to order results by. Currently supported values: `name`.
+// When not specified, results are ordered by hierarchy.
+// Available values: "name".
+func (o LookupOrganizationsResultOutput) OrderBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupOrganizationsResult) *string { return v.OrderBy }).(pulumi.StringPtrOutput)
 }
 
 // The amount of items to return. Defaults to 10.

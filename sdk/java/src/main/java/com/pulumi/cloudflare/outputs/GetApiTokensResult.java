@@ -81,6 +81,20 @@ public final class GetApiTokensResult {
      * 
      */
     private String status;
+    /**
+     * @return The prefix of the token value, before the first underscore. Use it with
+     * `tokenSuffix` to identify a token. Only present for tokens created or
+     * rolled after this field was added.
+     * 
+     */
+    private String tokenPrefix;
+    /**
+     * @return The last 4 characters of the token value. Use it with `tokenPrefix` to
+     * identify a token. It is not unique. Only present for tokens created or
+     * rolled after this field was added.
+     * 
+     */
+    private String tokenSuffix;
 
     private GetApiTokensResult() {}
     public GetApiTokensResultCondition condition() {
@@ -177,6 +191,24 @@ public final class GetApiTokensResult {
     public String status() {
         return this.status;
     }
+    /**
+     * @return The prefix of the token value, before the first underscore. Use it with
+     * `tokenSuffix` to identify a token. Only present for tokens created or
+     * rolled after this field was added.
+     * 
+     */
+    public String tokenPrefix() {
+        return this.tokenPrefix;
+    }
+    /**
+     * @return The last 4 characters of the token value. Use it with `tokenPrefix` to
+     * identify a token. It is not unique. Only present for tokens created or
+     * rolled after this field was added.
+     * 
+     */
+    public String tokenSuffix() {
+        return this.tokenSuffix;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -200,6 +232,8 @@ public final class GetApiTokensResult {
         private String provisionerId;
         private String provisionerType;
         private String status;
+        private String tokenPrefix;
+        private String tokenSuffix;
         public Builder() {}
         public Builder(GetApiTokensResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -216,6 +250,8 @@ public final class GetApiTokensResult {
     	      this.provisionerId = defaults.provisionerId;
     	      this.provisionerType = defaults.provisionerType;
     	      this.status = defaults.status;
+    	      this.tokenPrefix = defaults.tokenPrefix;
+    	      this.tokenSuffix = defaults.tokenSuffix;
         }
 
         @CustomType.Setter
@@ -325,6 +361,22 @@ public final class GetApiTokensResult {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
+        public Builder tokenPrefix(String tokenPrefix) {
+            if (tokenPrefix == null) {
+              throw new MissingRequiredPropertyException("GetApiTokensResult", "tokenPrefix");
+            }
+            this.tokenPrefix = tokenPrefix;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder tokenSuffix(String tokenSuffix) {
+            if (tokenSuffix == null) {
+              throw new MissingRequiredPropertyException("GetApiTokensResult", "tokenSuffix");
+            }
+            this.tokenSuffix = tokenSuffix;
+            return this;
+        }
         public GetApiTokensResult build() {
             final var _resultValue = new GetApiTokensResult();
             _resultValue.condition = condition;
@@ -340,6 +392,8 @@ public final class GetApiTokensResult {
             _resultValue.provisionerId = provisionerId;
             _resultValue.provisionerType = provisionerType;
             _resultValue.status = status;
+            _resultValue.tokenPrefix = tokenPrefix;
+            _resultValue.tokenSuffix = tokenSuffix;
             return _resultValue;
         }
     }

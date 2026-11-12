@@ -16,7 +16,6 @@ import * as utilities from "./utilities";
  * const exampleShareRecipient = new cloudflare.ShareRecipient("example_share_recipient", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     shareId: "3fd85f74b32742f1bff64a85009dda07",
- *     organizationId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     recipientAccountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
@@ -78,7 +77,7 @@ export class ShareRecipient extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly associationStatus: pulumi.Output<string>;
     /**
-     * When the share was created.
+     * When the object was created.
      */
     declare public /*out*/ readonly created: pulumi.Output<string>;
     /**
@@ -86,13 +85,9 @@ export class ShareRecipient extends pulumi.CustomResource {
      */
     declare public readonly includeResources: pulumi.Output<boolean | undefined>;
     /**
-     * When the share was modified.
+     * When the object was last modified.
      */
     declare public /*out*/ readonly modified: pulumi.Output<string>;
-    /**
-     * Organization identifier.
-     */
-    declare public readonly organizationId: pulumi.Output<string | undefined>;
     /**
      * The account that will receive the share.
      */
@@ -121,7 +116,6 @@ export class ShareRecipient extends pulumi.CustomResource {
             resourceInputs["created"] = state?.created;
             resourceInputs["includeResources"] = state?.includeResources;
             resourceInputs["modified"] = state?.modified;
-            resourceInputs["organizationId"] = state?.organizationId;
             resourceInputs["recipientAccountId"] = state?.recipientAccountId;
             resourceInputs["resources"] = state?.resources;
             resourceInputs["shareId"] = state?.shareId;
@@ -135,7 +129,6 @@ export class ShareRecipient extends pulumi.CustomResource {
             }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["includeResources"] = args?.includeResources;
-            resourceInputs["organizationId"] = args?.organizationId;
             resourceInputs["recipientAccountId"] = args?.recipientAccountId;
             resourceInputs["shareId"] = args?.shareId;
             resourceInputs["associationStatus"] = undefined /*out*/;
@@ -164,7 +157,7 @@ export interface ShareRecipientState {
      */
     associationStatus?: pulumi.Input<string | undefined>;
     /**
-     * When the share was created.
+     * When the object was created.
      */
     created?: pulumi.Input<string | undefined>;
     /**
@@ -172,13 +165,9 @@ export interface ShareRecipientState {
      */
     includeResources?: pulumi.Input<boolean | undefined>;
     /**
-     * When the share was modified.
+     * When the object was last modified.
      */
     modified?: pulumi.Input<string | undefined>;
-    /**
-     * Organization identifier.
-     */
-    organizationId?: pulumi.Input<string | undefined>;
     /**
      * The account that will receive the share.
      */
@@ -202,10 +191,6 @@ export interface ShareRecipientArgs {
      * Include resources in the response.
      */
     includeResources?: pulumi.Input<boolean | undefined>;
-    /**
-     * Organization identifier.
-     */
-    organizationId?: pulumi.Input<string | undefined>;
     /**
      * The account that will receive the share.
      */

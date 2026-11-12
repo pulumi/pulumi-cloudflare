@@ -137,10 +137,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool FlattenAllCnames;
         /// <summary>
-        /// Deprecated. Use nameservers.type to configure Advanced Nameservers.
-        /// </summary>
-        public readonly bool FoundationDns;
-        /// <summary>
         /// Settings for this internal zone.
         /// </summary>
         public readonly Outputs.GetZoneDnsSettingsInternalDnsResult InternalDns;
@@ -178,8 +174,6 @@ namespace Pulumi.Cloudflare
         private GetZoneDnsSettingsResult(
             bool flattenAllCnames,
 
-            bool foundationDns,
-
             Outputs.GetZoneDnsSettingsInternalDnsResult internalDns,
 
             bool multiProvider,
@@ -197,7 +191,6 @@ namespace Pulumi.Cloudflare
             string zoneMode)
         {
             FlattenAllCnames = flattenAllCnames;
-            FoundationDns = foundationDns;
             InternalDns = internalDns;
             MultiProvider = multiProvider;
             Nameservers = nameservers;

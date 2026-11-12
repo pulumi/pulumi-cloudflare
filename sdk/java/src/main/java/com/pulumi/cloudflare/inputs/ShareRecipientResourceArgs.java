@@ -18,14 +18,14 @@ public final class ShareRecipientResourceArgs extends com.pulumi.resources.Resou
     public static final ShareRecipientResourceArgs Empty = new ShareRecipientResourceArgs();
 
     /**
-     * Share Recipient error message.
+     * Error from the most recent attempt to apply the resource to the recipient. Empty string when no error has been recorded.
      * 
      */
     @Import(name="error")
     private @Nullable Output<String> error;
 
     /**
-     * @return Share Recipient error message.
+     * @return Error from the most recent attempt to apply the resource to the recipient. Empty string when no error has been recorded.
      * 
      */
     public Optional<Output<String>> error() {
@@ -33,14 +33,14 @@ public final class ShareRecipientResourceArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Share Resource identifier.
+     * Identifier assigned by the service that owns the shared resource.
      * 
      */
     @Import(name="resourceId")
     private @Nullable Output<String> resourceId;
 
     /**
-     * @return Share Resource identifier.
+     * @return Identifier assigned by the service that owns the shared resource.
      * 
      */
     public Optional<Output<String>> resourceId() {
@@ -48,14 +48,14 @@ public final class ShareRecipientResourceArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Resource Version.
+     * Resource version applied to the recipient, if reconciliation has occurred.
      * 
      */
     @Import(name="resourceVersion")
     private @Nullable Output<Integer> resourceVersion;
 
     /**
-     * @return Resource Version.
+     * @return Resource version applied to the recipient, if reconciliation has occurred.
      * 
      */
     public Optional<Output<Integer>> resourceVersion() {
@@ -105,7 +105,7 @@ public final class ShareRecipientResourceArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param error Share Recipient error message.
+         * @param error Error from the most recent attempt to apply the resource to the recipient. Empty string when no error has been recorded.
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class ShareRecipientResourceArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param error Share Recipient error message.
+         * @param error Error from the most recent attempt to apply the resource to the recipient. Empty string when no error has been recorded.
          * 
          * @return builder
          * 
@@ -126,7 +126,7 @@ public final class ShareRecipientResourceArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param resourceId Share Resource identifier.
+         * @param resourceId Identifier assigned by the service that owns the shared resource.
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class ShareRecipientResourceArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param resourceId Share Resource identifier.
+         * @param resourceId Identifier assigned by the service that owns the shared resource.
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class ShareRecipientResourceArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param resourceVersion Resource Version.
+         * @param resourceVersion Resource version applied to the recipient, if reconciliation has occurred.
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class ShareRecipientResourceArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param resourceVersion Resource Version.
+         * @param resourceVersion Resource version applied to the recipient, if reconciliation has occurred.
          * 
          * @return builder
          * 

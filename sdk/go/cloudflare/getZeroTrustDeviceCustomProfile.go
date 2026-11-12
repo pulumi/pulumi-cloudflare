@@ -77,6 +77,8 @@ type LookupZeroTrustDeviceCustomProfileResult struct {
 	DisableAutoFallback bool `pulumi:"disableAutoFallback"`
 	// List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
 	DnsSearchSuffixes []GetZeroTrustDeviceCustomProfileDnsSearchSuffix `pulumi:"dnsSearchSuffixes"`
+	// Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.
+	EnableDeviceCredentialAuthentication bool `pulumi:"enableDeviceCredentialAuthentication"`
 	// Whether the policy will be applied to matching devices.
 	Enabled bool `pulumi:"enabled"`
 	// Whether to add Microsoft IPs to Split Tunnel exclusions.
@@ -210,6 +212,11 @@ func (o LookupZeroTrustDeviceCustomProfileResultOutput) DnsSearchSuffixes() GetZ
 	return o.ApplyT(func(v LookupZeroTrustDeviceCustomProfileResult) []GetZeroTrustDeviceCustomProfileDnsSearchSuffix {
 		return v.DnsSearchSuffixes
 	}).(GetZeroTrustDeviceCustomProfileDnsSearchSuffixArrayOutput)
+}
+
+// Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.
+func (o LookupZeroTrustDeviceCustomProfileResultOutput) EnableDeviceCredentialAuthentication() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupZeroTrustDeviceCustomProfileResult) bool { return v.EnableDeviceCredentialAuthentication }).(pulumi.BoolOutput)
 }
 
 // Whether the policy will be applied to matching devices.

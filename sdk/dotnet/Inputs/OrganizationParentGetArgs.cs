@@ -15,9 +15,6 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
         public OrganizationParentGetArgs()
         {
         }

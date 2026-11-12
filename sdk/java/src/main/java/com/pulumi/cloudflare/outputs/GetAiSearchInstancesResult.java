@@ -14,7 +14,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -22,10 +21,6 @@ import java.util.Objects;
 @CustomType
 public final class GetAiSearchInstancesResult {
     private String aiGatewayId;
-    /**
-     * @return Available values: &#34;{@literal @}cf/meta/llama-3.3-70b-instruct-fp8-fast&#34;, &#34;{@literal @}cf/zai-org/glm-4.7-flash&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fast&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fp8&#34;, &#34;{@literal @}cf/meta/llama-4-scout-17b-16e-instruct&#34;, &#34;{@literal @}cf/qwen/qwen3-30b-a3b-fp8&#34;, &#34;{@literal @}cf/deepseek-ai/deepseek-r1-distill-qwen-32b&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2-instruct&#34;, &#34;{@literal @}cf/google/gemma-3-12b-it&#34;, &#34;{@literal @}cf/google/gemma-4-26b-a4b-it&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2.5&#34;, &#34;anthropic/claude-3-7-sonnet&#34;, &#34;anthropic/claude-sonnet-4&#34;, &#34;anthropic/claude-opus-4&#34;, &#34;anthropic/claude-3-5-haiku&#34;, &#34;cerebras/qwen-3-235b-a22b-instruct&#34;, &#34;cerebras/qwen-3-235b-a22b-thinking&#34;, &#34;cerebras/llama-3.3-70b&#34;, &#34;cerebras/llama-4-maverick-17b-128e-instruct&#34;, &#34;cerebras/llama-4-scout-17b-16e-instruct&#34;, &#34;cerebras/gpt-oss-120b&#34;, &#34;google-ai-studio/gemini-2.5-flash&#34;, &#34;google-ai-studio/gemini-2.5-pro&#34;, &#34;grok/grok-4&#34;, &#34;groq/llama-3.3-70b-versatile&#34;, &#34;groq/llama-3.1-8b-instant&#34;, &#34;openai/gpt-5&#34;, &#34;openai/gpt-5-mini&#34;, &#34;openai/gpt-5-nano&#34;, &#34;&#34;.
-     * 
-     */
     private String aisearchModel;
     private Boolean cache;
     /**
@@ -34,20 +29,16 @@ public final class GetAiSearchInstancesResult {
      */
     private String cacheThreshold;
     /**
-     * @return Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
-     * Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
+     * @return Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
      * 
      */
     private Double cacheTtl;
-    private Integer chunkOverlap;
-    private Integer chunkSize;
+    private Boolean chunk;
+    private Double chunkOverlap;
+    private Double chunkSize;
     private String createdAt;
     private String createdBy;
     private List<GetAiSearchInstancesResultCustomMetadata> customMetadatas;
-    /**
-     * @return Available values: &#34;{@literal @}cf/qwen/qwen3-embedding-0.6b&#34;, &#34;{@literal @}cf/baai/bge-m3&#34;, &#34;{@literal @}cf/baai/bge-large-en-v1.5&#34;, &#34;{@literal @}cf/google/embeddinggemma-300m&#34;, &#34;google-ai-studio/gemini-embedding-001&#34;, &#34;google-ai-studio/gemini-embedding-2-preview&#34;, &#34;google-ai-studio/gemini-embedding-2&#34;, &#34;openai/text-embedding-3-small&#34;, &#34;openai/text-embedding-3-large&#34;, &#34;&#34;.
-     * 
-     */
     private String embeddingModel;
     private Boolean enable;
     private Double engineVersion;
@@ -56,27 +47,12 @@ public final class GetAiSearchInstancesResult {
      * 
      */
     private String fusionMethod;
-    /**
-     * @return Deprecated — use indexMethod instead.
-     * 
-     * @deprecated This attribute is deprecated.
-     * 
-     */
-    @Deprecated
     private Boolean hybridSearchEnabled;
-    /**
-     * @return AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
-     * 
-     */
     private String id;
-    /**
-     * @return Controls which storage backends are used during indexing. Defaults to vector-only.
-     * 
-     */
     private GetAiSearchInstancesResultIndexMethod indexMethod;
     private GetAiSearchInstancesResultIndexingOptions indexingOptions;
     private String lastActivity;
-    private Integer maxNumResults;
+    private Double maxNumResults;
     private GetAiSearchInstancesResultMetadata metadata;
     private String modifiedAt;
     private String modifiedBy;
@@ -85,28 +61,24 @@ public final class GetAiSearchInstancesResult {
     private String publicEndpointId;
     private GetAiSearchInstancesResultPublicEndpointParams publicEndpointParams;
     private Boolean reranking;
-    /**
-     * @return Available values: &#34;{@literal @}cf/baai/bge-reranker-base&#34;, &#34;&#34;.
-     * 
-     */
     private String rerankingModel;
     private GetAiSearchInstancesResultRetrievalOptions retrievalOptions;
-    /**
-     * @return Available values: &#34;{@literal @}cf/meta/llama-3.3-70b-instruct-fp8-fast&#34;, &#34;{@literal @}cf/zai-org/glm-4.7-flash&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fast&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fp8&#34;, &#34;{@literal @}cf/meta/llama-4-scout-17b-16e-instruct&#34;, &#34;{@literal @}cf/qwen/qwen3-30b-a3b-fp8&#34;, &#34;{@literal @}cf/deepseek-ai/deepseek-r1-distill-qwen-32b&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2-instruct&#34;, &#34;{@literal @}cf/google/gemma-3-12b-it&#34;, &#34;{@literal @}cf/google/gemma-4-26b-a4b-it&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2.5&#34;, &#34;anthropic/claude-3-7-sonnet&#34;, &#34;anthropic/claude-sonnet-4&#34;, &#34;anthropic/claude-opus-4&#34;, &#34;anthropic/claude-3-5-haiku&#34;, &#34;cerebras/qwen-3-235b-a22b-instruct&#34;, &#34;cerebras/qwen-3-235b-a22b-thinking&#34;, &#34;cerebras/llama-3.3-70b&#34;, &#34;cerebras/llama-4-maverick-17b-128e-instruct&#34;, &#34;cerebras/llama-4-scout-17b-16e-instruct&#34;, &#34;cerebras/gpt-oss-120b&#34;, &#34;google-ai-studio/gemini-2.5-flash&#34;, &#34;google-ai-studio/gemini-2.5-pro&#34;, &#34;grok/grok-4&#34;, &#34;groq/llama-3.3-70b-versatile&#34;, &#34;groq/llama-3.1-8b-instant&#34;, &#34;openai/gpt-5&#34;, &#34;openai/gpt-5-mini&#34;, &#34;openai/gpt-5-nano&#34;, &#34;&#34;.
-     * 
-     */
     private String rewriteModel;
     private Boolean rewriteQuery;
     private Double scoreThreshold;
     private String source;
     private GetAiSearchInstancesResultSourceParams sourceParams;
     private String status;
+    private Boolean summarization;
+    private String summarizationModel;
     /**
-     * @return Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
-     * Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
+     * @return Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
      * 
      */
     private Double syncInterval;
+    private String systemPromptAisearch;
+    private String systemPromptIndexSummarization;
+    private String systemPromptRewriteQuery;
     private String tokenId;
     /**
      * @return Available values: &#34;r2&#34;, &#34;web-crawler&#34;.
@@ -118,10 +90,6 @@ public final class GetAiSearchInstancesResult {
     public String aiGatewayId() {
         return this.aiGatewayId;
     }
-    /**
-     * @return Available values: &#34;{@literal @}cf/meta/llama-3.3-70b-instruct-fp8-fast&#34;, &#34;{@literal @}cf/zai-org/glm-4.7-flash&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fast&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fp8&#34;, &#34;{@literal @}cf/meta/llama-4-scout-17b-16e-instruct&#34;, &#34;{@literal @}cf/qwen/qwen3-30b-a3b-fp8&#34;, &#34;{@literal @}cf/deepseek-ai/deepseek-r1-distill-qwen-32b&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2-instruct&#34;, &#34;{@literal @}cf/google/gemma-3-12b-it&#34;, &#34;{@literal @}cf/google/gemma-4-26b-a4b-it&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2.5&#34;, &#34;anthropic/claude-3-7-sonnet&#34;, &#34;anthropic/claude-sonnet-4&#34;, &#34;anthropic/claude-opus-4&#34;, &#34;anthropic/claude-3-5-haiku&#34;, &#34;cerebras/qwen-3-235b-a22b-instruct&#34;, &#34;cerebras/qwen-3-235b-a22b-thinking&#34;, &#34;cerebras/llama-3.3-70b&#34;, &#34;cerebras/llama-4-maverick-17b-128e-instruct&#34;, &#34;cerebras/llama-4-scout-17b-16e-instruct&#34;, &#34;cerebras/gpt-oss-120b&#34;, &#34;google-ai-studio/gemini-2.5-flash&#34;, &#34;google-ai-studio/gemini-2.5-pro&#34;, &#34;grok/grok-4&#34;, &#34;groq/llama-3.3-70b-versatile&#34;, &#34;groq/llama-3.1-8b-instant&#34;, &#34;openai/gpt-5&#34;, &#34;openai/gpt-5-mini&#34;, &#34;openai/gpt-5-nano&#34;, &#34;&#34;.
-     * 
-     */
     public String aisearchModel() {
         return this.aisearchModel;
     }
@@ -136,17 +104,19 @@ public final class GetAiSearchInstancesResult {
         return this.cacheThreshold;
     }
     /**
-     * @return Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
-     * Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
+     * @return Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
      * 
      */
     public Double cacheTtl() {
         return this.cacheTtl;
     }
-    public Integer chunkOverlap() {
+    public Boolean chunk() {
+        return this.chunk;
+    }
+    public Double chunkOverlap() {
         return this.chunkOverlap;
     }
-    public Integer chunkSize() {
+    public Double chunkSize() {
         return this.chunkSize;
     }
     public String createdAt() {
@@ -158,10 +128,6 @@ public final class GetAiSearchInstancesResult {
     public List<GetAiSearchInstancesResultCustomMetadata> customMetadatas() {
         return this.customMetadatas;
     }
-    /**
-     * @return Available values: &#34;{@literal @}cf/qwen/qwen3-embedding-0.6b&#34;, &#34;{@literal @}cf/baai/bge-m3&#34;, &#34;{@literal @}cf/baai/bge-large-en-v1.5&#34;, &#34;{@literal @}cf/google/embeddinggemma-300m&#34;, &#34;google-ai-studio/gemini-embedding-001&#34;, &#34;google-ai-studio/gemini-embedding-2-preview&#34;, &#34;google-ai-studio/gemini-embedding-2&#34;, &#34;openai/text-embedding-3-small&#34;, &#34;openai/text-embedding-3-large&#34;, &#34;&#34;.
-     * 
-     */
     public String embeddingModel() {
         return this.embeddingModel;
     }
@@ -178,27 +144,12 @@ public final class GetAiSearchInstancesResult {
     public String fusionMethod() {
         return this.fusionMethod;
     }
-    /**
-     * @return Deprecated — use indexMethod instead.
-     * 
-     * @deprecated This attribute is deprecated.
-     * 
-     */
-    @Deprecated
     public Boolean hybridSearchEnabled() {
         return this.hybridSearchEnabled;
     }
-    /**
-     * @return AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
-     * 
-     */
     public String id() {
         return this.id;
     }
-    /**
-     * @return Controls which storage backends are used during indexing. Defaults to vector-only.
-     * 
-     */
     public GetAiSearchInstancesResultIndexMethod indexMethod() {
         return this.indexMethod;
     }
@@ -208,7 +159,7 @@ public final class GetAiSearchInstancesResult {
     public String lastActivity() {
         return this.lastActivity;
     }
-    public Integer maxNumResults() {
+    public Double maxNumResults() {
         return this.maxNumResults;
     }
     public GetAiSearchInstancesResultMetadata metadata() {
@@ -235,20 +186,12 @@ public final class GetAiSearchInstancesResult {
     public Boolean reranking() {
         return this.reranking;
     }
-    /**
-     * @return Available values: &#34;{@literal @}cf/baai/bge-reranker-base&#34;, &#34;&#34;.
-     * 
-     */
     public String rerankingModel() {
         return this.rerankingModel;
     }
     public GetAiSearchInstancesResultRetrievalOptions retrievalOptions() {
         return this.retrievalOptions;
     }
-    /**
-     * @return Available values: &#34;{@literal @}cf/meta/llama-3.3-70b-instruct-fp8-fast&#34;, &#34;{@literal @}cf/zai-org/glm-4.7-flash&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fast&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fp8&#34;, &#34;{@literal @}cf/meta/llama-4-scout-17b-16e-instruct&#34;, &#34;{@literal @}cf/qwen/qwen3-30b-a3b-fp8&#34;, &#34;{@literal @}cf/deepseek-ai/deepseek-r1-distill-qwen-32b&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2-instruct&#34;, &#34;{@literal @}cf/google/gemma-3-12b-it&#34;, &#34;{@literal @}cf/google/gemma-4-26b-a4b-it&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2.5&#34;, &#34;anthropic/claude-3-7-sonnet&#34;, &#34;anthropic/claude-sonnet-4&#34;, &#34;anthropic/claude-opus-4&#34;, &#34;anthropic/claude-3-5-haiku&#34;, &#34;cerebras/qwen-3-235b-a22b-instruct&#34;, &#34;cerebras/qwen-3-235b-a22b-thinking&#34;, &#34;cerebras/llama-3.3-70b&#34;, &#34;cerebras/llama-4-maverick-17b-128e-instruct&#34;, &#34;cerebras/llama-4-scout-17b-16e-instruct&#34;, &#34;cerebras/gpt-oss-120b&#34;, &#34;google-ai-studio/gemini-2.5-flash&#34;, &#34;google-ai-studio/gemini-2.5-pro&#34;, &#34;grok/grok-4&#34;, &#34;groq/llama-3.3-70b-versatile&#34;, &#34;groq/llama-3.1-8b-instant&#34;, &#34;openai/gpt-5&#34;, &#34;openai/gpt-5-mini&#34;, &#34;openai/gpt-5-nano&#34;, &#34;&#34;.
-     * 
-     */
     public String rewriteModel() {
         return this.rewriteModel;
     }
@@ -267,13 +210,27 @@ public final class GetAiSearchInstancesResult {
     public String status() {
         return this.status;
     }
+    public Boolean summarization() {
+        return this.summarization;
+    }
+    public String summarizationModel() {
+        return this.summarizationModel;
+    }
     /**
-     * @return Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
-     * Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
+     * @return Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
      * 
      */
     public Double syncInterval() {
         return this.syncInterval;
+    }
+    public String systemPromptAisearch() {
+        return this.systemPromptAisearch;
+    }
+    public String systemPromptIndexSummarization() {
+        return this.systemPromptIndexSummarization;
+    }
+    public String systemPromptRewriteQuery() {
+        return this.systemPromptRewriteQuery;
     }
     public String tokenId() {
         return this.tokenId;
@@ -300,8 +257,9 @@ public final class GetAiSearchInstancesResult {
         private Boolean cache;
         private String cacheThreshold;
         private Double cacheTtl;
-        private Integer chunkOverlap;
-        private Integer chunkSize;
+        private Boolean chunk;
+        private Double chunkOverlap;
+        private Double chunkSize;
         private String createdAt;
         private String createdBy;
         private List<GetAiSearchInstancesResultCustomMetadata> customMetadatas;
@@ -314,7 +272,7 @@ public final class GetAiSearchInstancesResult {
         private GetAiSearchInstancesResultIndexMethod indexMethod;
         private GetAiSearchInstancesResultIndexingOptions indexingOptions;
         private String lastActivity;
-        private Integer maxNumResults;
+        private Double maxNumResults;
         private GetAiSearchInstancesResultMetadata metadata;
         private String modifiedAt;
         private String modifiedBy;
@@ -331,7 +289,12 @@ public final class GetAiSearchInstancesResult {
         private String source;
         private GetAiSearchInstancesResultSourceParams sourceParams;
         private String status;
+        private Boolean summarization;
+        private String summarizationModel;
         private Double syncInterval;
+        private String systemPromptAisearch;
+        private String systemPromptIndexSummarization;
+        private String systemPromptRewriteQuery;
         private String tokenId;
         private String type;
         public Builder() {}
@@ -342,6 +305,7 @@ public final class GetAiSearchInstancesResult {
     	      this.cache = defaults.cache;
     	      this.cacheThreshold = defaults.cacheThreshold;
     	      this.cacheTtl = defaults.cacheTtl;
+    	      this.chunk = defaults.chunk;
     	      this.chunkOverlap = defaults.chunkOverlap;
     	      this.chunkSize = defaults.chunkSize;
     	      this.createdAt = defaults.createdAt;
@@ -373,7 +337,12 @@ public final class GetAiSearchInstancesResult {
     	      this.source = defaults.source;
     	      this.sourceParams = defaults.sourceParams;
     	      this.status = defaults.status;
+    	      this.summarization = defaults.summarization;
+    	      this.summarizationModel = defaults.summarizationModel;
     	      this.syncInterval = defaults.syncInterval;
+    	      this.systemPromptAisearch = defaults.systemPromptAisearch;
+    	      this.systemPromptIndexSummarization = defaults.systemPromptIndexSummarization;
+    	      this.systemPromptRewriteQuery = defaults.systemPromptRewriteQuery;
     	      this.tokenId = defaults.tokenId;
     	      this.type = defaults.type;
         }
@@ -419,7 +388,15 @@ public final class GetAiSearchInstancesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder chunkOverlap(Integer chunkOverlap) {
+        public Builder chunk(Boolean chunk) {
+            if (chunk == null) {
+              throw new MissingRequiredPropertyException("GetAiSearchInstancesResult", "chunk");
+            }
+            this.chunk = chunk;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder chunkOverlap(Double chunkOverlap) {
             if (chunkOverlap == null) {
               throw new MissingRequiredPropertyException("GetAiSearchInstancesResult", "chunkOverlap");
             }
@@ -427,7 +404,7 @@ public final class GetAiSearchInstancesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder chunkSize(Integer chunkSize) {
+        public Builder chunkSize(Double chunkSize) {
             if (chunkSize == null) {
               throw new MissingRequiredPropertyException("GetAiSearchInstancesResult", "chunkSize");
             }
@@ -534,7 +511,7 @@ public final class GetAiSearchInstancesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder maxNumResults(Integer maxNumResults) {
+        public Builder maxNumResults(Double maxNumResults) {
             if (maxNumResults == null) {
               throw new MissingRequiredPropertyException("GetAiSearchInstancesResult", "maxNumResults");
             }
@@ -670,11 +647,51 @@ public final class GetAiSearchInstancesResult {
             return this;
         }
         @CustomType.Setter
+        public Builder summarization(Boolean summarization) {
+            if (summarization == null) {
+              throw new MissingRequiredPropertyException("GetAiSearchInstancesResult", "summarization");
+            }
+            this.summarization = summarization;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder summarizationModel(String summarizationModel) {
+            if (summarizationModel == null) {
+              throw new MissingRequiredPropertyException("GetAiSearchInstancesResult", "summarizationModel");
+            }
+            this.summarizationModel = summarizationModel;
+            return this;
+        }
+        @CustomType.Setter
         public Builder syncInterval(Double syncInterval) {
             if (syncInterval == null) {
               throw new MissingRequiredPropertyException("GetAiSearchInstancesResult", "syncInterval");
             }
             this.syncInterval = syncInterval;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder systemPromptAisearch(String systemPromptAisearch) {
+            if (systemPromptAisearch == null) {
+              throw new MissingRequiredPropertyException("GetAiSearchInstancesResult", "systemPromptAisearch");
+            }
+            this.systemPromptAisearch = systemPromptAisearch;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder systemPromptIndexSummarization(String systemPromptIndexSummarization) {
+            if (systemPromptIndexSummarization == null) {
+              throw new MissingRequiredPropertyException("GetAiSearchInstancesResult", "systemPromptIndexSummarization");
+            }
+            this.systemPromptIndexSummarization = systemPromptIndexSummarization;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder systemPromptRewriteQuery(String systemPromptRewriteQuery) {
+            if (systemPromptRewriteQuery == null) {
+              throw new MissingRequiredPropertyException("GetAiSearchInstancesResult", "systemPromptRewriteQuery");
+            }
+            this.systemPromptRewriteQuery = systemPromptRewriteQuery;
             return this;
         }
         @CustomType.Setter
@@ -700,6 +717,7 @@ public final class GetAiSearchInstancesResult {
             _resultValue.cache = cache;
             _resultValue.cacheThreshold = cacheThreshold;
             _resultValue.cacheTtl = cacheTtl;
+            _resultValue.chunk = chunk;
             _resultValue.chunkOverlap = chunkOverlap;
             _resultValue.chunkSize = chunkSize;
             _resultValue.createdAt = createdAt;
@@ -731,7 +749,12 @@ public final class GetAiSearchInstancesResult {
             _resultValue.source = source;
             _resultValue.sourceParams = sourceParams;
             _resultValue.status = status;
+            _resultValue.summarization = summarization;
+            _resultValue.summarizationModel = summarizationModel;
             _resultValue.syncInterval = syncInterval;
+            _resultValue.systemPromptAisearch = systemPromptAisearch;
+            _resultValue.systemPromptIndexSummarization = systemPromptIndexSummarization;
+            _resultValue.systemPromptRewriteQuery = systemPromptRewriteQuery;
             _resultValue.tokenId = tokenId;
             _resultValue.type = type;
             return _resultValue;

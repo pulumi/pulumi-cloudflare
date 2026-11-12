@@ -15,20 +15,21 @@ import * as utilities from "./utilities";
  *
  * const examplePrecursor = new cloudflare.Precursor("example_precursor", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     defaultMode: "min-friction",
- *     enforcementRules: [{
+ *     mode: "monitor",
+ *     rules: [{
  *         expression: "http.request.uri.path eq \"/login\"",
- *         mode: "max-security",
- *         description: "Ease friction on the login path",
+ *         showInterstitial: true,
+ *         description: "Show an interstitial on the login path",
  *         enabled: true,
  *     }],
+ *     showInterstitial: true,
  * });
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/precursor:Precursor example '<zone_id>'
+ * $ pulumi import cloudflare:index/precursor:Precursor example '<zone_id>/<cloudflare_version>'
  * ```
  */
 export class Precursor extends pulumi.CustomResource {
@@ -71,19 +72,21 @@ export class Precursor extends pulumi.CustomResource {
     }
 
     /**
-     * The zone-level Precursor enforcement mode applied to requests that do
-     * not match a more specific enforcement rule.
-     * Available values: "off", "min-friction", "max-security".
-     *
-     * @deprecated This attribute is deprecated.
+     * Controls Precursor detection for the zone. `off` disables detection,
+     * `monitor` records detections without affecting bot scores, and `arm`
+     * allows detections to affect bot scores.
+     * Available values: "off", "monitor", "arm".
      */
-    declare public readonly defaultMode: pulumi.Output<string>;
+    declare public readonly mode: pulumi.Output<string>;
     /**
-     * The ordered list of enforcement rules for the zone.
-     *
-     * @deprecated This attribute is deprecated.
+     * The ordered list of Precursor rules for the zone.
      */
-    declare public readonly enforcementRules: pulumi.Output<outputs.PrecursorEnforcementRule[]>;
+    declare public readonly rules: pulumi.Output<outputs.PrecursorRule[]>;
+    /**
+     * Whether Precursor shows an interstitial when it takes action on a
+     * request.
+     */
+    declare public readonly showInterstitial: pulumi.Output<boolean | undefined>;
     /**
      * Identifier.
      */
@@ -102,16 +105,18 @@ export class Precursor extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PrecursorState | undefined;
-            resourceInputs["defaultMode"] = state?.defaultMode;
-            resourceInputs["enforcementRules"] = state?.enforcementRules;
+            resourceInputs["mode"] = state?.mode;
+            resourceInputs["rules"] = state?.rules;
+            resourceInputs["showInterstitial"] = state?.showInterstitial;
             resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as PrecursorArgs | undefined;
             if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["defaultMode"] = args?.defaultMode;
-            resourceInputs["enforcementRules"] = args?.enforcementRules;
+            resourceInputs["mode"] = args?.mode;
+            resourceInputs["rules"] = args?.rules;
+            resourceInputs["showInterstitial"] = args?.showInterstitial;
             resourceInputs["zoneId"] = args?.zoneId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -124,19 +129,21 @@ export class Precursor extends pulumi.CustomResource {
  */
 export interface PrecursorState {
     /**
-     * The zone-level Precursor enforcement mode applied to requests that do
-     * not match a more specific enforcement rule.
-     * Available values: "off", "min-friction", "max-security".
-     *
-     * @deprecated This attribute is deprecated.
+     * Controls Precursor detection for the zone. `off` disables detection,
+     * `monitor` records detections without affecting bot scores, and `arm`
+     * allows detections to affect bot scores.
+     * Available values: "off", "monitor", "arm".
      */
-    defaultMode?: pulumi.Input<string | undefined>;
+    mode?: pulumi.Input<string | undefined>;
     /**
-     * The ordered list of enforcement rules for the zone.
-     *
-     * @deprecated This attribute is deprecated.
+     * The ordered list of Precursor rules for the zone.
      */
-    enforcementRules?: pulumi.Input<pulumi.Input<inputs.PrecursorEnforcementRule>[] | undefined>;
+    rules?: pulumi.Input<pulumi.Input<inputs.PrecursorRule>[] | undefined>;
+    /**
+     * Whether Precursor shows an interstitial when it takes action on a
+     * request.
+     */
+    showInterstitial?: pulumi.Input<boolean | undefined>;
     /**
      * Identifier.
      */
@@ -148,19 +155,21 @@ export interface PrecursorState {
  */
 export interface PrecursorArgs {
     /**
-     * The zone-level Precursor enforcement mode applied to requests that do
-     * not match a more specific enforcement rule.
-     * Available values: "off", "min-friction", "max-security".
-     *
-     * @deprecated This attribute is deprecated.
+     * Controls Precursor detection for the zone. `off` disables detection,
+     * `monitor` records detections without affecting bot scores, and `arm`
+     * allows detections to affect bot scores.
+     * Available values: "off", "monitor", "arm".
      */
-    defaultMode?: pulumi.Input<string | undefined>;
+    mode?: pulumi.Input<string | undefined>;
     /**
-     * The ordered list of enforcement rules for the zone.
-     *
-     * @deprecated This attribute is deprecated.
+     * The ordered list of Precursor rules for the zone.
      */
-    enforcementRules?: pulumi.Input<pulumi.Input<inputs.PrecursorEnforcementRule>[] | undefined>;
+    rules?: pulumi.Input<pulumi.Input<inputs.PrecursorRule>[] | undefined>;
+    /**
+     * Whether Precursor shows an interstitial when it takes action on a
+     * request.
+     */
+    showInterstitial?: pulumi.Input<boolean | undefined>;
     /**
      * Identifier.
      */

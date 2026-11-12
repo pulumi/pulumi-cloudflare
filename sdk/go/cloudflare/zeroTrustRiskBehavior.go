@@ -36,7 +36,7 @@ import (
 //				Behaviors: cloudflare.ZeroTrustRiskBehaviorBehaviorsMap{
 //					"foo": &cloudflare.ZeroTrustRiskBehaviorBehaviorsArgs{
 //						Enabled:   pulumi.Bool(true),
-//						RiskLevel: pulumi.String("low"),
+//						RiskLevel: pulumi.String("info"),
 //					},
 //				},
 //			})

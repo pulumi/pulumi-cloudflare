@@ -13,7 +13,6 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -81,126 +80,126 @@ public class ZeroTrustDeviceSettings extends com.pulumi.resources.CustomResource
      * 
      */
     @Export(name="disableForTime", refs={Double.class}, tree="[0]")
-    private Output</* @Nullable */ Double> disableForTime;
+    private Output<Double> disableForTime;
 
     /**
      * @return Sets the time limit, in seconds, that a user can use an override code to bypass WARP.
      * 
      */
-    public Output<Optional<Double>> disableForTime() {
-        return Codegen.optional(this.disableForTime);
+    public Output<Double> disableForTime() {
+        return this.disableForTime;
     }
     /**
      * Controls whether the external emergency disconnect feature is enabled.
      * 
      */
     @Export(name="externalEmergencySignalEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> externalEmergencySignalEnabled;
+    private Output<Boolean> externalEmergencySignalEnabled;
 
     /**
      * @return Controls whether the external emergency disconnect feature is enabled.
      * 
      */
-    public Output<Optional<Boolean>> externalEmergencySignalEnabled() {
-        return Codegen.optional(this.externalEmergencySignalEnabled);
+    public Output<Boolean> externalEmergencySignalEnabled() {
+        return this.externalEmergencySignalEnabled;
     }
     /**
      * The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external*emergency*signal_url. If provided, the WARP client will use this value to verify the server&#39;s identity. The device will ignore any response if the server&#39;s certificate fingerprint does not exactly match this value.
      * 
      */
     @Export(name="externalEmergencySignalFingerprint", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> externalEmergencySignalFingerprint;
+    private Output<String> externalEmergencySignalFingerprint;
 
     /**
      * @return The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external*emergency*signal_url. If provided, the WARP client will use this value to verify the server&#39;s identity. The device will ignore any response if the server&#39;s certificate fingerprint does not exactly match this value.
      * 
      */
-    public Output<Optional<String>> externalEmergencySignalFingerprint() {
-        return Codegen.optional(this.externalEmergencySignalFingerprint);
+    public Output<String> externalEmergencySignalFingerprint() {
+        return this.externalEmergencySignalFingerprint;
     }
     /**
      * The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., &#34;5m&#34;, &#34;2m30s&#34;, &#34;1h&#34;). Minimum 30 seconds.
      * 
      */
     @Export(name="externalEmergencySignalInterval", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> externalEmergencySignalInterval;
+    private Output<String> externalEmergencySignalInterval;
 
     /**
      * @return The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., &#34;5m&#34;, &#34;2m30s&#34;, &#34;1h&#34;). Minimum 30 seconds.
      * 
      */
-    public Output<Optional<String>> externalEmergencySignalInterval() {
-        return Codegen.optional(this.externalEmergencySignalInterval);
+    public Output<String> externalEmergencySignalInterval() {
+        return this.externalEmergencySignalInterval;
     }
     /**
      * The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.
      * 
      */
     @Export(name="externalEmergencySignalUrl", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> externalEmergencySignalUrl;
+    private Output<String> externalEmergencySignalUrl;
 
     /**
      * @return The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.
      * 
      */
-    public Output<Optional<String>> externalEmergencySignalUrl() {
-        return Codegen.optional(this.externalEmergencySignalUrl);
+    public Output<String> externalEmergencySignalUrl() {
+        return this.externalEmergencySignalUrl;
     }
     /**
      * Enable gateway proxy filtering on TCP.
      * 
      */
     @Export(name="gatewayProxyEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> gatewayProxyEnabled;
+    private Output<Boolean> gatewayProxyEnabled;
 
     /**
      * @return Enable gateway proxy filtering on TCP.
      * 
      */
-    public Output<Optional<Boolean>> gatewayProxyEnabled() {
-        return Codegen.optional(this.gatewayProxyEnabled);
+    public Output<Boolean> gatewayProxyEnabled() {
+        return this.gatewayProxyEnabled;
     }
     /**
      * Enable gateway proxy filtering on UDP.
      * 
      */
     @Export(name="gatewayUdpProxyEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> gatewayUdpProxyEnabled;
+    private Output<Boolean> gatewayUdpProxyEnabled;
 
     /**
      * @return Enable gateway proxy filtering on UDP.
      * 
      */
-    public Output<Optional<Boolean>> gatewayUdpProxyEnabled() {
-        return Codegen.optional(this.gatewayUdpProxyEnabled);
+    public Output<Boolean> gatewayUdpProxyEnabled() {
+        return this.gatewayUdpProxyEnabled;
     }
     /**
      * Enable installation of cloudflare managed root certificate.
      * 
      */
     @Export(name="rootCertificateInstallationEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> rootCertificateInstallationEnabled;
+    private Output<Boolean> rootCertificateInstallationEnabled;
 
     /**
      * @return Enable installation of cloudflare managed root certificate.
      * 
      */
-    public Output<Optional<Boolean>> rootCertificateInstallationEnabled() {
-        return Codegen.optional(this.rootCertificateInstallationEnabled);
+    public Output<Boolean> rootCertificateInstallationEnabled() {
+        return this.rootCertificateInstallationEnabled;
     }
     /**
      * Enable using CGNAT virtual IPv4.
      * 
      */
     @Export(name="useZtVirtualIp", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> useZtVirtualIp;
+    private Output<Boolean> useZtVirtualIp;
 
     /**
      * @return Enable using CGNAT virtual IPv4.
      * 
      */
-    public Output<Optional<Boolean>> useZtVirtualIp() {
-        return Codegen.optional(this.useZtVirtualIp);
+    public Output<Boolean> useZtVirtualIp() {
+        return this.useZtVirtualIp;
     }
 
     /**

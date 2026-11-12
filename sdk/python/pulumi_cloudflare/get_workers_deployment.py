@@ -27,7 +27,7 @@ class GetWorkersDeploymentResult:
     """
     A collection of values returned by getWorkersDeployment.
     """
-    def __init__(__self__, account_id=None, annotations=None, author_email=None, created_on=None, deployment_id=None, id=None, script_name=None, source=None, strategy=None, versions=None):
+    def __init__(__self__, account_id=None, annotations=None, author_email=None, code_update_strategy=None, created_on=None, deployment_id=None, id=None, script_name=None, source=None, strategy=None, versions=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -37,6 +37,9 @@ class GetWorkersDeploymentResult:
         if author_email and not isinstance(author_email, str):
             raise TypeError("Expected argument 'author_email' to be a str")
         pulumi.set(__self__, "author_email", author_email)
+        if code_update_strategy and not isinstance(code_update_strategy, dict):
+            raise TypeError("Expected argument 'code_update_strategy' to be a dict")
+        pulumi.set(__self__, "code_update_strategy", code_update_strategy)
         if created_on and not isinstance(created_on, str):
             raise TypeError("Expected argument 'created_on' to be a str")
         pulumi.set(__self__, "created_on", created_on)
@@ -70,12 +73,23 @@ class GetWorkersDeploymentResult:
     @_builtins.property
     @pulumi.getter
     def annotations(self) -> 'outputs.GetWorkersDeploymentAnnotationsResult':
+        """
+        Metadata attached to the deployment.
+        """
         return pulumi.get(self, "annotations")
 
     @_builtins.property
     @pulumi.getter(name="authorEmail")
     def author_email(self) -> _builtins.str:
         return pulumi.get(self, "author_email")
+
+    @_builtins.property
+    @pulumi.getter(name="codeUpdateStrategy")
+    def code_update_strategy(self) -> 'outputs.GetWorkersDeploymentCodeUpdateStrategyResult':
+        """
+        Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+        """
+        return pulumi.get(self, "code_update_strategy")
 
     @_builtins.property
     @pulumi.getter(name="createdOn")
@@ -112,6 +126,7 @@ class GetWorkersDeploymentResult:
     @pulumi.getter
     def strategy(self) -> _builtins.str:
         """
+        Strategy for routing traffic across the listed versions. `percentage` splits traffic according to each version's `percentage`.
         Available values: "percentage".
         """
         return pulumi.get(self, "strategy")
@@ -134,6 +149,7 @@ class AwaitableGetWorkersDeploymentResult(GetWorkersDeploymentResult):
             account_id=self.account_id,
             annotations=self.annotations,
             author_email=self.author_email,
+            code_update_strategy=self.code_update_strategy,
             created_on=self.created_on,
             deployment_id=self.deployment_id,
             id=self.id,
@@ -150,6 +166,14 @@ def get_workers_deployment(account_id: Optional[_builtins.str] = None,
     """
     Accepted Permissions
 
+    - `Individual Workers Admin`
+    - `Individual Workers Content Read-Only`
+    - `Individual Workers Editor`
+    - `Individual Workers Metadata Read-Only`
+    - `Workers Admin`
+    - `Workers Content Read-Only`
+    - `Workers Editor`
+    - `Workers Metadata Read-Only`
     - `Workers Scripts Read`
     - `Workers Scripts Write`
     - `Workers Tail Read`
@@ -180,6 +204,7 @@ def get_workers_deployment(account_id: Optional[_builtins.str] = None,
         account_id=pulumi.get(__ret__, 'account_id'),
         annotations=pulumi.get(__ret__, 'annotations'),
         author_email=pulumi.get(__ret__, 'author_email'),
+        code_update_strategy=pulumi.get(__ret__, 'code_update_strategy'),
         created_on=pulumi.get(__ret__, 'created_on'),
         deployment_id=pulumi.get(__ret__, 'deployment_id'),
         id=pulumi.get(__ret__, 'id'),
@@ -194,6 +219,14 @@ def get_workers_deployment_output(account_id: pulumi.Input[Optional[_builtins.st
     """
     Accepted Permissions
 
+    - `Individual Workers Admin`
+    - `Individual Workers Content Read-Only`
+    - `Individual Workers Editor`
+    - `Individual Workers Metadata Read-Only`
+    - `Workers Admin`
+    - `Workers Content Read-Only`
+    - `Workers Editor`
+    - `Workers Metadata Read-Only`
     - `Workers Scripts Read`
     - `Workers Scripts Write`
     - `Workers Tail Read`
@@ -223,6 +256,7 @@ def get_workers_deployment_output(account_id: pulumi.Input[Optional[_builtins.st
         account_id=pulumi.get(__response__, 'account_id'),
         annotations=pulumi.get(__response__, 'annotations'),
         author_email=pulumi.get(__response__, 'author_email'),
+        code_update_strategy=pulumi.get(__response__, 'code_update_strategy'),
         created_on=pulumi.get(__response__, 'created_on'),
         deployment_id=pulumi.get(__response__, 'deployment_id'),
         id=pulumi.get(__response__, 'id'),

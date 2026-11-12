@@ -47,7 +47,7 @@ class GetTotalTlsResult:
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> _builtins.str:
         """
-        The Certificate Authority that Total TLS certificates will be issued through.
+        The Certificate Authority that Total TLS certificates will be issued through. Not returned in responses when Total TLS is disabled.
         Available values: "google", "lets*encrypt", "ssl*com".
         """
         return pulumi.get(self, "certificate_authority")
@@ -72,7 +72,7 @@ class GetTotalTlsResult:
     @pulumi.getter(name="validityPeriod")
     def validity_period(self) -> _builtins.int:
         """
-        The validity period in days for the certificates ordered via Total TLS.
+        The validity period in days for the certificates ordered via Total TLS. Not returned when Total TLS is disabled.
         Available values: 90.
         """
         return pulumi.get(self, "validity_period")

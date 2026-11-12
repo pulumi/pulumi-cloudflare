@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -21,6 +22,16 @@ public final class AccountManagedBy {
      * 
      */
     private @Nullable String parentOrgName;
+    /**
+     * @return ID of the root Organization, if one exists
+     * 
+     */
+    private @Nullable String rootOrgId;
+    /**
+     * @return Indicates whether the parent Organization hierarchy should be displayed
+     * 
+     */
+    private @Nullable Boolean shouldDisplayParentOrgs;
 
     private AccountManagedBy() {}
     /**
@@ -37,6 +48,20 @@ public final class AccountManagedBy {
     public Optional<String> parentOrgName() {
         return Optional.ofNullable(this.parentOrgName);
     }
+    /**
+     * @return ID of the root Organization, if one exists
+     * 
+     */
+    public Optional<String> rootOrgId() {
+        return Optional.ofNullable(this.rootOrgId);
+    }
+    /**
+     * @return Indicates whether the parent Organization hierarchy should be displayed
+     * 
+     */
+    public Optional<Boolean> shouldDisplayParentOrgs() {
+        return Optional.ofNullable(this.shouldDisplayParentOrgs);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -49,11 +74,15 @@ public final class AccountManagedBy {
     public static final class Builder {
         private @Nullable String parentOrgId;
         private @Nullable String parentOrgName;
+        private @Nullable String rootOrgId;
+        private @Nullable Boolean shouldDisplayParentOrgs;
         public Builder() {}
         public Builder(AccountManagedBy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.parentOrgId = defaults.parentOrgId;
     	      this.parentOrgName = defaults.parentOrgName;
+    	      this.rootOrgId = defaults.rootOrgId;
+    	      this.shouldDisplayParentOrgs = defaults.shouldDisplayParentOrgs;
         }
 
         @CustomType.Setter
@@ -68,10 +97,24 @@ public final class AccountManagedBy {
             this.parentOrgName = parentOrgName;
             return this;
         }
+        @CustomType.Setter
+        public Builder rootOrgId(@Nullable String rootOrgId) {
+
+            this.rootOrgId = rootOrgId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder shouldDisplayParentOrgs(@Nullable Boolean shouldDisplayParentOrgs) {
+
+            this.shouldDisplayParentOrgs = shouldDisplayParentOrgs;
+            return this;
+        }
         public AccountManagedBy build() {
             final var _resultValue = new AccountManagedBy();
             _resultValue.parentOrgId = parentOrgId;
             _resultValue.parentOrgName = parentOrgName;
+            _resultValue.rootOrgId = rootOrgId;
+            _resultValue.shouldDisplayParentOrgs = shouldDisplayParentOrgs;
             return _resultValue;
         }
     }

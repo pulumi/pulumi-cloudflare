@@ -79,6 +79,36 @@ public final class MagicTransitSiteWanState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Provisioned download rate of the WAN circuit in kilobits per second.
+     * 
+     */
+    @Import(name="provisionedDownloadKbps")
+    private @Nullable Output<Integer> provisionedDownloadKbps;
+
+    /**
+     * @return Provisioned download rate of the WAN circuit in kilobits per second.
+     * 
+     */
+    public Optional<Output<Integer>> provisionedDownloadKbps() {
+        return Optional.ofNullable(this.provisionedDownloadKbps);
+    }
+
+    /**
+     * Provisioned upload rate of the WAN circuit in kilobits per second.
+     * 
+     */
+    @Import(name="provisionedUploadKbps")
+    private @Nullable Output<Integer> provisionedUploadKbps;
+
+    /**
+     * @return Provisioned upload rate of the WAN circuit in kilobits per second.
+     * 
+     */
+    public Optional<Output<Integer>> provisionedUploadKbps() {
+        return Optional.ofNullable(this.provisionedUploadKbps);
+    }
+
+    /**
      * Identifier
      * 
      */
@@ -94,14 +124,14 @@ public final class MagicTransitSiteWanState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
+     * Static addressing configuration for a WAN. Omit to use DHCP. Submit secondary*address when the site is in high availability mode.
      * 
      */
     @Import(name="staticAddressing")
     private @Nullable Output<MagicTransitSiteWanStaticAddressingArgs> staticAddressing;
 
     /**
-     * @return (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
+     * @return Static addressing configuration for a WAN. Omit to use DHCP. Submit secondary*address when the site is in high availability mode.
      * 
      */
     public Optional<Output<MagicTransitSiteWanStaticAddressingArgs>> staticAddressing() {
@@ -132,6 +162,8 @@ public final class MagicTransitSiteWanState extends com.pulumi.resources.Resourc
         this.name = $.name;
         this.physport = $.physport;
         this.priority = $.priority;
+        this.provisionedDownloadKbps = $.provisionedDownloadKbps;
+        this.provisionedUploadKbps = $.provisionedUploadKbps;
         this.siteId = $.siteId;
         this.staticAddressing = $.staticAddressing;
         this.vlanTag = $.vlanTag;
@@ -236,6 +268,48 @@ public final class MagicTransitSiteWanState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param provisionedDownloadKbps Provisioned download rate of the WAN circuit in kilobits per second.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisionedDownloadKbps(@Nullable Output<Integer> provisionedDownloadKbps) {
+            $.provisionedDownloadKbps = provisionedDownloadKbps;
+            return this;
+        }
+
+        /**
+         * @param provisionedDownloadKbps Provisioned download rate of the WAN circuit in kilobits per second.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisionedDownloadKbps(Integer provisionedDownloadKbps) {
+            return provisionedDownloadKbps(Output.of(provisionedDownloadKbps));
+        }
+
+        /**
+         * @param provisionedUploadKbps Provisioned upload rate of the WAN circuit in kilobits per second.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisionedUploadKbps(@Nullable Output<Integer> provisionedUploadKbps) {
+            $.provisionedUploadKbps = provisionedUploadKbps;
+            return this;
+        }
+
+        /**
+         * @param provisionedUploadKbps Provisioned upload rate of the WAN circuit in kilobits per second.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisionedUploadKbps(Integer provisionedUploadKbps) {
+            return provisionedUploadKbps(Output.of(provisionedUploadKbps));
+        }
+
+        /**
          * @param siteId Identifier
          * 
          * @return builder
@@ -257,7 +331,7 @@ public final class MagicTransitSiteWanState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param staticAddressing (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
+         * @param staticAddressing Static addressing configuration for a WAN. Omit to use DHCP. Submit secondary*address when the site is in high availability mode.
          * 
          * @return builder
          * 
@@ -268,7 +342,7 @@ public final class MagicTransitSiteWanState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param staticAddressing (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
+         * @param staticAddressing Static addressing configuration for a WAN. Omit to use DHCP. Submit secondary*address when the site is in high availability mode.
          * 
          * @return builder
          * 

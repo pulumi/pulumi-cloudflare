@@ -35,7 +35,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.AccessApplicationPolicyInclude> Includes;
         /// <summary>
-        /// Configures multi-factor authentication (MFA) settings for this policy. For infrastructure applications only `SshPivKey` is a supported authenticator; for other application types use `Totp`, `Biometrics`, or `SecurityKey`.
+        /// Configures multi-factor authentication (MFA) settings for this policy. For infrastructure applications, supported authenticators are `PivKey` and `SshFido2Key`; for other application types use `Totp`, `Biometrics`, or `SecurityKey`.
         /// </summary>
         public readonly Outputs.AccessApplicationPolicyMfaConfig? MfaConfig;
         /// <summary>

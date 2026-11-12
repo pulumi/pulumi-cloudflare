@@ -31,6 +31,8 @@ from .ai_gateway_dynamic_routing import *
 from .ai_search_instance import *
 from .ai_search_namespace import *
 from .ai_search_token import *
+from .ai_security import *
+from .ai_security_custom_topics import *
 from .api_shield import *
 from .api_shield_discovery_operation import *
 from .api_shield_operation import *
@@ -126,6 +128,8 @@ from .get_ai_search_namespace import *
 from .get_ai_search_namespaces import *
 from .get_ai_search_token import *
 from .get_ai_search_tokens import *
+from .get_ai_security import *
+from .get_ai_security_custom_topics import *
 from .get_api_shield import *
 from .get_api_shield_discovery_operations import *
 from .get_api_shield_operation import *
@@ -255,6 +259,7 @@ from .get_load_balancer_monitors import *
 from .get_load_balancer_pool import *
 from .get_load_balancer_pools import *
 from .get_load_balancers import *
+from .get_log_explorer_datasets import *
 from .get_logpull_retention import *
 from .get_logpush_dataset_field import *
 from .get_logpush_dataset_job import *
@@ -458,6 +463,8 @@ from .get_zero_trust_access_short_lived_certificate import *
 from .get_zero_trust_access_short_lived_certificates import *
 from .get_zero_trust_access_tag import *
 from .get_zero_trust_access_tags import *
+from .get_zero_trust_casb_finding_type import *
+from .get_zero_trust_casb_finding_types import *
 from .get_zero_trust_casb_integration import *
 from .get_zero_trust_casb_integrations import *
 from .get_zero_trust_casb_policies import *
@@ -465,6 +472,28 @@ from .get_zero_trust_casb_policy import *
 from .get_zero_trust_casb_webhook import *
 from .get_zero_trust_casb_webhooks import *
 from .get_zero_trust_connectivity_settings import *
+from .get_zero_trust_cws_basic_auth_credential import *
+from .get_zero_trust_cws_basic_auth_credentials import *
+from .get_zero_trust_cws_basic_auth_secret import *
+from .get_zero_trust_cws_basic_auth_secrets import *
+from .get_zero_trust_cws_deployment import *
+from .get_zero_trust_cws_deployments import *
+from .get_zero_trust_cws_domain_acl import *
+from .get_zero_trust_cws_domain_acls import *
+from .get_zero_trust_cws_policies import *
+from .get_zero_trust_cws_policy import *
+from .get_zero_trust_cws_policy_set import *
+from .get_zero_trust_cws_policy_sets import *
+from .get_zero_trust_cws_rego_metadata import *
+from .get_zero_trust_cws_rego_metadata_list import *
+from .get_zero_trust_cws_rego_module import *
+from .get_zero_trust_cws_rego_modules import *
+from .get_zero_trust_cws_tenant_structure import *
+from .get_zero_trust_cws_tenant_structure_node import *
+from .get_zero_trust_cws_tenant_structure_nodes import *
+from .get_zero_trust_cws_tenant_structures import *
+from .get_zero_trust_cws_workload import *
+from .get_zero_trust_cws_workloads import *
 from .get_zero_trust_device_custom_profile import *
 from .get_zero_trust_device_custom_profile_local_domain_fallback import *
 from .get_zero_trust_device_custom_profiles import *
@@ -507,6 +536,8 @@ from .get_zero_trust_dlp_integration_entry import *
 from .get_zero_trust_dlp_predefined_entries import *
 from .get_zero_trust_dlp_predefined_entry import *
 from .get_zero_trust_dlp_predefined_profile import *
+from .get_zero_trust_dlp_proximity_validator import *
+from .get_zero_trust_dlp_proximity_validators import *
 from .get_zero_trust_dlp_sensitivity_group import *
 from .get_zero_trust_dlp_sensitivity_groups import *
 from .get_zero_trust_dlp_sensitivity_level import *
@@ -519,6 +550,7 @@ from .get_zero_trust_gateway_app_types_list import *
 from .get_zero_trust_gateway_categories_list import *
 from .get_zero_trust_gateway_certificate import *
 from .get_zero_trust_gateway_certificates import *
+from .get_zero_trust_gateway_dns_destination_ips_list import *
 from .get_zero_trust_gateway_logging import *
 from .get_zero_trust_gateway_pacfile import *
 from .get_zero_trust_gateway_pacfiles import *
@@ -532,6 +564,7 @@ from .get_zero_trust_lists import *
 from .get_zero_trust_network_hostname_route import *
 from .get_zero_trust_network_hostname_routes import *
 from .get_zero_trust_organization import *
+from .get_zero_trust_organization_trust_settings import *
 from .get_zero_trust_resource_library_application import *
 from .get_zero_trust_resource_library_applications import *
 from .get_zero_trust_resource_library_categories import *
@@ -580,6 +613,7 @@ from .load_balancer import *
 from .load_balancer_monitor import *
 from .load_balancer_monitor_group import *
 from .load_balancer_pool import *
+from .log_explorer_dataset import *
 from .logpull_retention import *
 from .logpush_job import *
 from .logpush_ownership_challenge import *
@@ -718,10 +752,22 @@ from .zero_trust_access_policy import *
 from .zero_trust_access_service_token import *
 from .zero_trust_access_short_lived_certificate import *
 from .zero_trust_access_tag import *
+from .zero_trust_casb_finding_type import *
 from .zero_trust_casb_integration import *
 from .zero_trust_casb_policy import *
 from .zero_trust_casb_webhook import *
 from .zero_trust_connectivity_settings import *
+from .zero_trust_cws_basic_auth_credential import *
+from .zero_trust_cws_basic_auth_secret import *
+from .zero_trust_cws_deployment import *
+from .zero_trust_cws_domain_acl import *
+from .zero_trust_cws_policy import *
+from .zero_trust_cws_policy_set import *
+from .zero_trust_cws_rego_metadata import *
+from .zero_trust_cws_rego_module import *
+from .zero_trust_cws_tenant_structure import *
+from .zero_trust_cws_tenant_structure_node import *
+from .zero_trust_cws_workload import *
 from .zero_trust_device_custom_profile import *
 from .zero_trust_device_custom_profile_local_domain_fallback import *
 from .zero_trust_device_default_profile import *
@@ -746,6 +792,7 @@ from .zero_trust_dlp_entry import *
 from .zero_trust_dlp_integration_entry import *
 from .zero_trust_dlp_predefined_entry import *
 from .zero_trust_dlp_predefined_profile import *
+from .zero_trust_dlp_proximity_validator import *
 from .zero_trust_dlp_sensitivity_group import *
 from .zero_trust_dlp_sensitivity_level import *
 from .zero_trust_dlp_sensitivity_level_order import *
@@ -761,6 +808,7 @@ from .zero_trust_list import *
 from .zero_trust_local_fallback_domain import *
 from .zero_trust_network_hostname_route import *
 from .zero_trust_organization import *
+from .zero_trust_organization_trust_settings import *
 from .zero_trust_resource_library_application import *
 from .zero_trust_risk_behavior import *
 from .zero_trust_risk_scoring_integration import *
@@ -993,6 +1041,22 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/aiSearchToken:AiSearchToken": "AiSearchToken"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/aiSecurity",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/aiSecurity:AiSecurity": "AiSecurity"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/aiSecurityCustomTopics",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/aiSecurityCustomTopics:AiSecurityCustomTopics": "AiSecurityCustomTopics"
   }
  },
  {
@@ -1641,6 +1705,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/loadBalancerPool:LoadBalancerPool": "LoadBalancerPool"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/logExplorerDataset",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/logExplorerDataset:LogExplorerDataset": "LogExplorerDataset"
   }
  },
  {
@@ -2741,6 +2813,14 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/zeroTrustCasbFindingType",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustCasbFindingType:ZeroTrustCasbFindingType": "ZeroTrustCasbFindingType"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/zeroTrustCasbIntegration",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -2769,6 +2849,94 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/zeroTrustConnectivitySettings:ZeroTrustConnectivitySettings": "ZeroTrustConnectivitySettings"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustCwsBasicAuthCredential",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustCwsBasicAuthCredential:ZeroTrustCwsBasicAuthCredential": "ZeroTrustCwsBasicAuthCredential"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustCwsBasicAuthSecret",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustCwsBasicAuthSecret:ZeroTrustCwsBasicAuthSecret": "ZeroTrustCwsBasicAuthSecret"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustCwsDeployment",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustCwsDeployment:ZeroTrustCwsDeployment": "ZeroTrustCwsDeployment"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustCwsDomainAcl",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustCwsDomainAcl:ZeroTrustCwsDomainAcl": "ZeroTrustCwsDomainAcl"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustCwsPolicy",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustCwsPolicy:ZeroTrustCwsPolicy": "ZeroTrustCwsPolicy"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustCwsPolicySet",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustCwsPolicySet:ZeroTrustCwsPolicySet": "ZeroTrustCwsPolicySet"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustCwsRegoMetadata",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustCwsRegoMetadata:ZeroTrustCwsRegoMetadata": "ZeroTrustCwsRegoMetadata"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustCwsRegoModule",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustCwsRegoModule:ZeroTrustCwsRegoModule": "ZeroTrustCwsRegoModule"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustCwsTenantStructure",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustCwsTenantStructure:ZeroTrustCwsTenantStructure": "ZeroTrustCwsTenantStructure"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustCwsTenantStructureNode",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustCwsTenantStructureNode:ZeroTrustCwsTenantStructureNode": "ZeroTrustCwsTenantStructureNode"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustCwsWorkload",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustCwsWorkload:ZeroTrustCwsWorkload": "ZeroTrustCwsWorkload"
   }
  },
  {
@@ -2965,6 +3133,14 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/zeroTrustDlpProximityValidator",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustDlpProximityValidator:ZeroTrustDlpProximityValidator": "ZeroTrustDlpProximityValidator"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/zeroTrustDlpSensitivityGroup",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -3081,6 +3257,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/zeroTrustOrganization:ZeroTrustOrganization": "ZeroTrustOrganization"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustOrganizationTrustSettings",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustOrganizationTrustSettings:ZeroTrustOrganizationTrustSettings": "ZeroTrustOrganizationTrustSettings"
   }
  },
  {

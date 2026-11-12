@@ -20,6 +20,13 @@ namespace Pulumi.Cloudflare.Inputs
         public string Direction { get; set; } = null!;
 
         /// <summary>
+        /// Include share tags in the response. `Api` reads tags from the tag service; `Mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `Tags`.
+        /// Available values: "api", "mirror".
+        /// </summary>
+        [Input("includeTagsFrom")]
+        public string? IncludeTagsFrom { get; set; }
+
+        /// <summary>
         /// Filter shares by kind.
         /// Available values: "sent", "received".
         /// </summary>

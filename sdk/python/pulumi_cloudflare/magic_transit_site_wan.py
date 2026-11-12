@@ -28,6 +28,8 @@ class MagicTransitSiteWanArgs:
                  load_balance_inner_flows: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 provisioned_download_kbps: pulumi.Input[Optional[_builtins.int]] = None,
+                 provisioned_upload_kbps: pulumi.Input[Optional[_builtins.int]] = None,
                  static_addressing: pulumi.Input[Optional['MagicTransitSiteWanStaticAddressingArgs']] = None,
                  vlan_tag: pulumi.Input[Optional[_builtins.int]] = None):
         """
@@ -37,7 +39,9 @@ class MagicTransitSiteWanArgs:
         :param pulumi.Input[_builtins.str] site_id: Identifier
         :param pulumi.Input[_builtins.str] health_check_rate: Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
                Available values: "low", "mid", "high".
-        :param pulumi.Input['MagicTransitSiteWanStaticAddressingArgs'] static_addressing: (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
+        :param pulumi.Input[_builtins.int] provisioned_download_kbps: Provisioned download rate of the WAN circuit in kilobits per second.
+        :param pulumi.Input[_builtins.int] provisioned_upload_kbps: Provisioned upload rate of the WAN circuit in kilobits per second.
+        :param pulumi.Input['MagicTransitSiteWanStaticAddressingArgs'] static_addressing: Static addressing configuration for a WAN. Omit to use DHCP. Submit secondary*address when the site is in high availability mode.
         :param pulumi.Input[_builtins.int] vlan_tag: VLAN ID. Use zero for untagged.
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -51,6 +55,10 @@ class MagicTransitSiteWanArgs:
             pulumi.set(__self__, "name", name)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
+        if provisioned_download_kbps is not None:
+            pulumi.set(__self__, "provisioned_download_kbps", provisioned_download_kbps)
+        if provisioned_upload_kbps is not None:
+            pulumi.set(__self__, "provisioned_upload_kbps", provisioned_upload_kbps)
         if static_addressing is not None:
             pulumi.set(__self__, "static_addressing", static_addressing)
         if vlan_tag is not None:
@@ -130,10 +138,34 @@ class MagicTransitSiteWanArgs:
         pulumi.set(self, "priority", value)
 
     @_builtins.property
+    @pulumi.getter(name="provisionedDownloadKbps")
+    def provisioned_download_kbps(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Provisioned download rate of the WAN circuit in kilobits per second.
+        """
+        return pulumi.get(self, "provisioned_download_kbps")
+
+    @provisioned_download_kbps.setter
+    def provisioned_download_kbps(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "provisioned_download_kbps", value)
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedUploadKbps")
+    def provisioned_upload_kbps(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Provisioned upload rate of the WAN circuit in kilobits per second.
+        """
+        return pulumi.get(self, "provisioned_upload_kbps")
+
+    @provisioned_upload_kbps.setter
+    def provisioned_upload_kbps(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "provisioned_upload_kbps", value)
+
+    @_builtins.property
     @pulumi.getter(name="staticAddressing")
     def static_addressing(self) -> pulumi.Input[Optional['MagicTransitSiteWanStaticAddressingArgs']]:
         """
-        (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
+        Static addressing configuration for a WAN. Omit to use DHCP. Submit secondary*address when the site is in high availability mode.
         """
         return pulumi.get(self, "static_addressing")
 
@@ -163,6 +195,8 @@ class _MagicTransitSiteWanState:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  physport: pulumi.Input[Optional[_builtins.int]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 provisioned_download_kbps: pulumi.Input[Optional[_builtins.int]] = None,
+                 provisioned_upload_kbps: pulumi.Input[Optional[_builtins.int]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
                  static_addressing: pulumi.Input[Optional['MagicTransitSiteWanStaticAddressingArgs']] = None,
                  vlan_tag: pulumi.Input[Optional[_builtins.int]] = None):
@@ -172,8 +206,10 @@ class _MagicTransitSiteWanState:
         :param pulumi.Input[_builtins.str] account_id: Identifier
         :param pulumi.Input[_builtins.str] health_check_rate: Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
                Available values: "low", "mid", "high".
+        :param pulumi.Input[_builtins.int] provisioned_download_kbps: Provisioned download rate of the WAN circuit in kilobits per second.
+        :param pulumi.Input[_builtins.int] provisioned_upload_kbps: Provisioned upload rate of the WAN circuit in kilobits per second.
         :param pulumi.Input[_builtins.str] site_id: Identifier
-        :param pulumi.Input['MagicTransitSiteWanStaticAddressingArgs'] static_addressing: (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
+        :param pulumi.Input['MagicTransitSiteWanStaticAddressingArgs'] static_addressing: Static addressing configuration for a WAN. Omit to use DHCP. Submit secondary*address when the site is in high availability mode.
         :param pulumi.Input[_builtins.int] vlan_tag: VLAN ID. Use zero for untagged.
         """
         if account_id is not None:
@@ -188,6 +224,10 @@ class _MagicTransitSiteWanState:
             pulumi.set(__self__, "physport", physport)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
+        if provisioned_download_kbps is not None:
+            pulumi.set(__self__, "provisioned_download_kbps", provisioned_download_kbps)
+        if provisioned_upload_kbps is not None:
+            pulumi.set(__self__, "provisioned_upload_kbps", provisioned_upload_kbps)
         if site_id is not None:
             pulumi.set(__self__, "site_id", site_id)
         if static_addressing is not None:
@@ -257,6 +297,30 @@ class _MagicTransitSiteWanState:
         pulumi.set(self, "priority", value)
 
     @_builtins.property
+    @pulumi.getter(name="provisionedDownloadKbps")
+    def provisioned_download_kbps(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Provisioned download rate of the WAN circuit in kilobits per second.
+        """
+        return pulumi.get(self, "provisioned_download_kbps")
+
+    @provisioned_download_kbps.setter
+    def provisioned_download_kbps(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "provisioned_download_kbps", value)
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedUploadKbps")
+    def provisioned_upload_kbps(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Provisioned upload rate of the WAN circuit in kilobits per second.
+        """
+        return pulumi.get(self, "provisioned_upload_kbps")
+
+    @provisioned_upload_kbps.setter
+    def provisioned_upload_kbps(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "provisioned_upload_kbps", value)
+
+    @_builtins.property
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -272,7 +336,7 @@ class _MagicTransitSiteWanState:
     @pulumi.getter(name="staticAddressing")
     def static_addressing(self) -> pulumi.Input[Optional['MagicTransitSiteWanStaticAddressingArgs']]:
         """
-        (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
+        Static addressing configuration for a WAN. Omit to use DHCP. Submit secondary*address when the site is in high availability mode.
         """
         return pulumi.get(self, "static_addressing")
 
@@ -305,6 +369,8 @@ class MagicTransitSiteWan(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  physport: pulumi.Input[Optional[_builtins.int]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 provisioned_download_kbps: pulumi.Input[Optional[_builtins.int]] = None,
+                 provisioned_upload_kbps: pulumi.Input[Optional[_builtins.int]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
                  static_addressing: pulumi.Input[Optional[Union['MagicTransitSiteWanStaticAddressingArgs', 'MagicTransitSiteWanStaticAddressingArgsDict', 'outputs.MagicTransitSiteWanStaticAddressing']]] = None,
                  vlan_tag: pulumi.Input[Optional[_builtins.int]] = None,
@@ -331,10 +397,13 @@ class MagicTransitSiteWan(pulumi.CustomResource):
             load_balance_inner_flows=True,
             name="name",
             priority=0,
+            provisioned_download_kbps=500,
+            provisioned_upload_kbps=100,
             static_addressing={
                 "address": "192.0.2.0/24",
                 "gateway_address": "192.0.2.1",
                 "secondary_address": "192.0.2.0/24",
+                "secondary_gateway_address": "192.0.2.1",
             },
             vlan_tag=42)
         ```
@@ -351,8 +420,10 @@ class MagicTransitSiteWan(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: Identifier
         :param pulumi.Input[_builtins.str] health_check_rate: Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
                Available values: "low", "mid", "high".
+        :param pulumi.Input[_builtins.int] provisioned_download_kbps: Provisioned download rate of the WAN circuit in kilobits per second.
+        :param pulumi.Input[_builtins.int] provisioned_upload_kbps: Provisioned upload rate of the WAN circuit in kilobits per second.
         :param pulumi.Input[_builtins.str] site_id: Identifier
-        :param pulumi.Input[Union['MagicTransitSiteWanStaticAddressingArgs', 'MagicTransitSiteWanStaticAddressingArgsDict', 'outputs.MagicTransitSiteWanStaticAddressing']] static_addressing: (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
+        :param pulumi.Input[Union['MagicTransitSiteWanStaticAddressingArgs', 'MagicTransitSiteWanStaticAddressingArgsDict', 'outputs.MagicTransitSiteWanStaticAddressing']] static_addressing: Static addressing configuration for a WAN. Omit to use DHCP. Submit secondary*address when the site is in high availability mode.
         :param pulumi.Input[_builtins.int] vlan_tag: VLAN ID. Use zero for untagged.
         """
         ...
@@ -383,10 +454,13 @@ class MagicTransitSiteWan(pulumi.CustomResource):
             load_balance_inner_flows=True,
             name="name",
             priority=0,
+            provisioned_download_kbps=500,
+            provisioned_upload_kbps=100,
             static_addressing={
                 "address": "192.0.2.0/24",
                 "gateway_address": "192.0.2.1",
                 "secondary_address": "192.0.2.0/24",
+                "secondary_gateway_address": "192.0.2.1",
             },
             vlan_tag=42)
         ```
@@ -419,6 +493,8 @@ class MagicTransitSiteWan(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  physport: pulumi.Input[Optional[_builtins.int]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 provisioned_download_kbps: pulumi.Input[Optional[_builtins.int]] = None,
+                 provisioned_upload_kbps: pulumi.Input[Optional[_builtins.int]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
                  static_addressing: pulumi.Input[Optional[Union['MagicTransitSiteWanStaticAddressingArgs', 'MagicTransitSiteWanStaticAddressingArgsDict', 'outputs.MagicTransitSiteWanStaticAddressing']]] = None,
                  vlan_tag: pulumi.Input[Optional[_builtins.int]] = None,
@@ -441,6 +517,8 @@ class MagicTransitSiteWan(pulumi.CustomResource):
                 raise TypeError("Missing required property 'physport'")
             __props__.__dict__["physport"] = physport
             __props__.__dict__["priority"] = priority
+            __props__.__dict__["provisioned_download_kbps"] = provisioned_download_kbps
+            __props__.__dict__["provisioned_upload_kbps"] = provisioned_upload_kbps
             if site_id is None and not opts.urn:
                 raise TypeError("Missing required property 'site_id'")
             __props__.__dict__["site_id"] = site_id
@@ -462,6 +540,8 @@ class MagicTransitSiteWan(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             physport: pulumi.Input[Optional[_builtins.int]] = None,
             priority: pulumi.Input[Optional[_builtins.int]] = None,
+            provisioned_download_kbps: pulumi.Input[Optional[_builtins.int]] = None,
+            provisioned_upload_kbps: pulumi.Input[Optional[_builtins.int]] = None,
             site_id: pulumi.Input[Optional[_builtins.str]] = None,
             static_addressing: pulumi.Input[Optional[Union['MagicTransitSiteWanStaticAddressingArgs', 'MagicTransitSiteWanStaticAddressingArgsDict', 'outputs.MagicTransitSiteWanStaticAddressing']]] = None,
             vlan_tag: pulumi.Input[Optional[_builtins.int]] = None) -> 'MagicTransitSiteWan':
@@ -475,8 +555,10 @@ class MagicTransitSiteWan(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: Identifier
         :param pulumi.Input[_builtins.str] health_check_rate: Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
                Available values: "low", "mid", "high".
+        :param pulumi.Input[_builtins.int] provisioned_download_kbps: Provisioned download rate of the WAN circuit in kilobits per second.
+        :param pulumi.Input[_builtins.int] provisioned_upload_kbps: Provisioned upload rate of the WAN circuit in kilobits per second.
         :param pulumi.Input[_builtins.str] site_id: Identifier
-        :param pulumi.Input[Union['MagicTransitSiteWanStaticAddressingArgs', 'MagicTransitSiteWanStaticAddressingArgsDict', 'outputs.MagicTransitSiteWanStaticAddressing']] static_addressing: (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
+        :param pulumi.Input[Union['MagicTransitSiteWanStaticAddressingArgs', 'MagicTransitSiteWanStaticAddressingArgsDict', 'outputs.MagicTransitSiteWanStaticAddressing']] static_addressing: Static addressing configuration for a WAN. Omit to use DHCP. Submit secondary*address when the site is in high availability mode.
         :param pulumi.Input[_builtins.int] vlan_tag: VLAN ID. Use zero for untagged.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -489,6 +571,8 @@ class MagicTransitSiteWan(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["physport"] = physport
         __props__.__dict__["priority"] = priority
+        __props__.__dict__["provisioned_download_kbps"] = provisioned_download_kbps
+        __props__.__dict__["provisioned_upload_kbps"] = provisioned_upload_kbps
         __props__.__dict__["site_id"] = site_id
         __props__.__dict__["static_addressing"] = static_addressing
         __props__.__dict__["vlan_tag"] = vlan_tag
@@ -503,6 +587,8 @@ class MagicTransitSiteWan(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             physport: pulumi.Input[Optional[_builtins.int]] = None,
             priority: pulumi.Input[Optional[_builtins.int]] = None,
+            provisioned_download_kbps: pulumi.Input[Optional[_builtins.int]] = None,
+            provisioned_upload_kbps: pulumi.Input[Optional[_builtins.int]] = None,
             site_id: pulumi.Input[Optional[_builtins.str]] = None,
             static_addressing: pulumi.Input[Optional[Union['MagicTransitSiteWanStaticAddressingArgs', 'MagicTransitSiteWanStaticAddressingArgsDict', 'outputs.MagicTransitSiteWanStaticAddressing']]] = None,
             vlan_tag: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
@@ -513,6 +599,8 @@ class MagicTransitSiteWan(pulumi.CustomResource):
         __props__["name"] = name
         __props__["physport"] = physport
         __props__["priority"] = priority
+        __props__["provisionedDownloadKbps"] = provisioned_download_kbps
+        __props__["provisionedUploadKbps"] = provisioned_upload_kbps
         __props__["siteId"] = site_id
         __props__["staticAddressing"] = static_addressing
         __props__["vlanTag"] = vlan_tag
@@ -556,6 +644,22 @@ class MagicTransitSiteWan(pulumi.CustomResource):
         return pulumi.get(self, "priority")
 
     @_builtins.property
+    @pulumi.getter(name="provisionedDownloadKbps")
+    def provisioned_download_kbps(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        Provisioned download rate of the WAN circuit in kilobits per second.
+        """
+        return pulumi.get(self, "provisioned_download_kbps")
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedUploadKbps")
+    def provisioned_upload_kbps(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        Provisioned upload rate of the WAN circuit in kilobits per second.
+        """
+        return pulumi.get(self, "provisioned_upload_kbps")
+
+    @_builtins.property
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Output[_builtins.str]:
         """
@@ -567,7 +671,7 @@ class MagicTransitSiteWan(pulumi.CustomResource):
     @pulumi.getter(name="staticAddressing")
     def static_addressing(self) -> pulumi.Output[Optional['outputs.MagicTransitSiteWanStaticAddressing']]:
         """
-        (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
+        Static addressing configuration for a WAN. Omit to use DHCP. Submit secondary*address when the site is in high availability mode.
         """
         return pulumi.get(self, "static_addressing")
 

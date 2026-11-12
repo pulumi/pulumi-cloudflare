@@ -200,6 +200,15 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string OriginWorkerId;
         /// <summary>
+        /// Name of the Worker origin. Omitted when the Worker is not found or its name cannot be resolved.
+        /// </summary>
+        public readonly string OriginWorkerName;
+        /// <summary>
+        /// Lookup status of the Worker origin. Unknown indicates that its name could not be resolved. Only returned for Worker origins.
+        /// Available values: "available", "NotFound", "unknown".
+        /// </summary>
+        public readonly string OriginWorkerStatus;
+        /// <summary>
         /// The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`.
         /// </summary>
         public readonly string Protocol;
@@ -255,6 +264,10 @@ namespace Pulumi.Cloudflare
 
             string originWorkerId,
 
+            string originWorkerName,
+
+            string originWorkerStatus,
+
             string protocol,
 
             string proxyProtocol,
@@ -280,6 +293,8 @@ namespace Pulumi.Cloudflare
             OriginDns = originDns;
             OriginPort = originPort;
             OriginWorkerId = originWorkerId;
+            OriginWorkerName = originWorkerName;
+            OriginWorkerStatus = originWorkerStatus;
             Protocol = protocol;
             ProxyProtocol = proxyProtocol;
             Tls = tls;

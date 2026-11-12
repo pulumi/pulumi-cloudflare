@@ -138,6 +138,7 @@ namespace Pulumi.Cloudflare
         public readonly string AccountId;
         public readonly string Comments;
         public readonly string CreatedAt;
+        public readonly string ExpiresAt;
         public readonly Outputs.GetEmailSecurityAllowPolicyFilterResult? Filter;
         public readonly string Id;
         public readonly bool IsAcceptableSender;
@@ -161,6 +162,8 @@ namespace Pulumi.Cloudflare
             string comments,
 
             string createdAt,
+
+            string expiresAt,
 
             Outputs.GetEmailSecurityAllowPolicyFilterResult? filter,
 
@@ -195,6 +198,7 @@ namespace Pulumi.Cloudflare
             AccountId = accountId;
             Comments = comments;
             CreatedAt = createdAt;
+            ExpiresAt = expiresAt;
             Filter = filter;
             Id = id;
             IsAcceptableSender = isAcceptableSender;

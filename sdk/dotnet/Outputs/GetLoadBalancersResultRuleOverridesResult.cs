@@ -38,7 +38,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, ImmutableArray<string>> PopPools;
         /// <summary>
-        /// Configures pool weights.
+        /// Configures pool weights for a rule override. An omitted DefaultWeight inherits the load balancer's default weight.
         /// </summary>
         public readonly Outputs.GetLoadBalancersResultRuleOverridesRandomSteeringResult RandomSteering;
         /// <summary>

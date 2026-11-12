@@ -10,6 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Resource Sharing Read`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -25,6 +29,13 @@ namespace Pulumi.Cloudflare
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Name = "My Shared WAF Managed Rule",
+    ///         ExcludedRecipients = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.ShareExcludedRecipientArgs
+    ///             {
+    ///                 AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///             },
+    ///         },
     ///         Recipients = new[]
     ///         {
     ///             new Cloudflare.Inputs.ShareRecipientArgs
@@ -41,9 +52,13 @@ namespace Pulumi.Cloudflare
     ///                 {
     ///                 }),
     ///                 ResourceAccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-    ///                 ResourceId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///                 ResourceId = "0a679032-bbb2-4b7e-9acc-dd5c5cb27a17",
     ///                 ResourceType = "custom-ruleset",
     ///             },
+    ///         },
+    ///         Tags = 
+    ///         {
+    ///             { "foo", "string" },
     ///         },
     ///     });
     /// 
@@ -84,7 +99,7 @@ namespace Pulumi.Cloudflare
         public Output<int> AssociatingRecipientCount { get; private set; } = null!;
 
         /// <summary>
-        /// When the share was created.
+        /// When the object was created.
         /// </summary>
         [Output("created")]
         public Output<string> Created { get; private set; } = null!;
@@ -102,6 +117,12 @@ namespace Pulumi.Cloudflare
         public Output<int> DisassociatingRecipientCount { get; private set; } = null!;
 
         /// <summary>
+        /// Accounts to exclude from an organization-targeted share. Only allowed when `Recipients` contains no account entries. The share owner cannot be excluded. Duplicate entries are ignored.
+        /// </summary>
+        [Output("excludedRecipients")]
+        public Output<ImmutableArray<Outputs.ShareExcludedRecipient>> ExcludedRecipients { get; private set; } = null!;
+
+        /// <summary>
         /// Include recipient counts in the response.
         /// </summary>
         [Output("includeRecipientCounts")]
@@ -114,13 +135,20 @@ namespace Pulumi.Cloudflare
         public Output<bool?> IncludeResources { get; private set; } = null!;
 
         /// <summary>
+        /// Include share tags in the response. `Api` reads tags from the tag service; `Mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `Tags`.
+        /// Available values: "api", "mirror".
+        /// </summary>
+        [Output("includeTagsFrom")]
+        public Output<string?> IncludeTagsFrom { get; private set; } = null!;
+
+        /// <summary>
         /// Available values: "sent", "received".
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
 
         /// <summary>
-        /// When the share was modified.
+        /// When the object was last modified.
         /// </summary>
         [Output("modified")]
         public Output<string> Modified { get; private set; } = null!;
@@ -148,6 +176,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// Tags associated with the share.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// Available values: "account", "organization".
@@ -207,6 +241,18 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
+        [Input("excludedRecipients")]
+        private InputList<Inputs.ShareExcludedRecipientArgs>? _excludedRecipients;
+
+        /// <summary>
+        /// Accounts to exclude from an organization-targeted share. Only allowed when `Recipients` contains no account entries. The share owner cannot be excluded. Duplicate entries are ignored.
+        /// </summary>
+        public InputList<Inputs.ShareExcludedRecipientArgs> ExcludedRecipients
+        {
+            get => _excludedRecipients ?? (_excludedRecipients = new InputList<Inputs.ShareExcludedRecipientArgs>());
+            set => _excludedRecipients = value;
+        }
+
         /// <summary>
         /// Include recipient counts in the response.
         /// </summary>
@@ -220,12 +266,19 @@ namespace Pulumi.Cloudflare
         public Input<bool>? IncludeResources { get; set; }
 
         /// <summary>
+        /// Include share tags in the response. `Api` reads tags from the tag service; `Mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `Tags`.
+        /// Available values: "api", "mirror".
+        /// </summary>
+        [Input("includeTagsFrom")]
+        public Input<string>? IncludeTagsFrom { get; set; }
+
+        /// <summary>
         /// The name of the share.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        [Input("recipients", required: true)]
+        [Input("recipients")]
         private InputList<Inputs.ShareRecipientArgs>? _recipients;
         public InputList<Inputs.ShareRecipientArgs> Recipients
         {
@@ -233,12 +286,24 @@ namespace Pulumi.Cloudflare
             set => _recipients = value;
         }
 
-        [Input("resources", required: true)]
+        [Input("resources")]
         private InputList<Inputs.ShareResourceArgs>? _resources;
         public InputList<Inputs.ShareResourceArgs> Resources
         {
             get => _resources ?? (_resources = new InputList<Inputs.ShareResourceArgs>());
             set => _resources = value;
+        }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Tags associated with the share.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
         }
 
         public ShareArgs()
@@ -274,7 +339,7 @@ namespace Pulumi.Cloudflare
         public Input<int>? AssociatingRecipientCount { get; set; }
 
         /// <summary>
-        /// When the share was created.
+        /// When the object was created.
         /// </summary>
         [Input("created")]
         public Input<string>? Created { get; set; }
@@ -291,6 +356,18 @@ namespace Pulumi.Cloudflare
         [Input("disassociatingRecipientCount")]
         public Input<int>? DisassociatingRecipientCount { get; set; }
 
+        [Input("excludedRecipients")]
+        private InputList<Inputs.ShareExcludedRecipientGetArgs>? _excludedRecipients;
+
+        /// <summary>
+        /// Accounts to exclude from an organization-targeted share. Only allowed when `Recipients` contains no account entries. The share owner cannot be excluded. Duplicate entries are ignored.
+        /// </summary>
+        public InputList<Inputs.ShareExcludedRecipientGetArgs> ExcludedRecipients
+        {
+            get => _excludedRecipients ?? (_excludedRecipients = new InputList<Inputs.ShareExcludedRecipientGetArgs>());
+            set => _excludedRecipients = value;
+        }
+
         /// <summary>
         /// Include recipient counts in the response.
         /// </summary>
@@ -304,13 +381,20 @@ namespace Pulumi.Cloudflare
         public Input<bool>? IncludeResources { get; set; }
 
         /// <summary>
+        /// Include share tags in the response. `Api` reads tags from the tag service; `Mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `Tags`.
+        /// Available values: "api", "mirror".
+        /// </summary>
+        [Input("includeTagsFrom")]
+        public Input<string>? IncludeTagsFrom { get; set; }
+
+        /// <summary>
         /// Available values: "sent", "received".
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
         /// <summary>
-        /// When the share was modified.
+        /// When the object was last modified.
         /// </summary>
         [Input("modified")]
         public Input<string>? Modified { get; set; }
@@ -348,6 +432,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Tags associated with the share.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// Available values: "account", "organization".

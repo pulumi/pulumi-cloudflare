@@ -63,7 +63,7 @@ type CustomOriginTrustStore struct {
 	// Status of the zone's custom SSL.
 	// Available values: "initializing", "pending*deployment", "active", "pending*deletion", "deleted", "expired".
 	Status pulumi.StringOutput `pulumi:"status"`
-	// When the certificate was last modified.
+	// When the certificate was last modified. Only returned when uploading a certificate.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 	// When the certificate was uploaded to Cloudflare.
 	UploadedOn pulumi.StringOutput `pulumi:"uploadedOn"`
@@ -118,7 +118,7 @@ type customOriginTrustStoreState struct {
 	// Status of the zone's custom SSL.
 	// Available values: "initializing", "pending*deployment", "active", "pending*deletion", "deleted", "expired".
 	Status *string `pulumi:"status"`
-	// When the certificate was last modified.
+	// When the certificate was last modified. Only returned when uploading a certificate.
 	UpdatedAt *string `pulumi:"updatedAt"`
 	// When the certificate was uploaded to Cloudflare.
 	UploadedOn *string `pulumi:"uploadedOn"`
@@ -138,7 +138,7 @@ type CustomOriginTrustStoreState struct {
 	// Status of the zone's custom SSL.
 	// Available values: "initializing", "pending*deployment", "active", "pending*deletion", "deleted", "expired".
 	Status pulumi.StringPtrInput
-	// When the certificate was last modified.
+	// When the certificate was last modified. Only returned when uploading a certificate.
 	UpdatedAt pulumi.StringPtrInput
 	// When the certificate was uploaded to Cloudflare.
 	UploadedOn pulumi.StringPtrInput
@@ -284,7 +284,7 @@ func (o CustomOriginTrustStoreOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomOriginTrustStore) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// When the certificate was last modified.
+// When the certificate was last modified. Only returned when uploading a certificate.
 func (o CustomOriginTrustStoreOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomOriginTrustStore) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }

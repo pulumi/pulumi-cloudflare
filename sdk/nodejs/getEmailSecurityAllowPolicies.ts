@@ -21,6 +21,7 @@ import * as utilities from "./utilities";
  * const exampleEmailSecurityAllowPolicies = cloudflare.getEmailSecurityAllowPolicies({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     direction: "asc",
+ *     expired: true,
  *     isAcceptableSender: true,
  *     isExemptRecipient: true,
  *     isTrustedSender: true,
@@ -37,6 +38,7 @@ export function getEmailSecurityAllowPolicies(args: GetEmailSecurityAllowPolicie
     return pulumi.runtime.invoke("cloudflare:index/getEmailSecurityAllowPolicies:getEmailSecurityAllowPolicies", {
         "accountId": args.accountId,
         "direction": args.direction,
+        "expired": args.expired,
         "isAcceptableSender": args.isAcceptableSender,
         "isExemptRecipient": args.isExemptRecipient,
         "isTrustedSender": args.isTrustedSender,
@@ -55,6 +57,7 @@ export function getEmailSecurityAllowPolicies(args: GetEmailSecurityAllowPolicie
 export interface GetEmailSecurityAllowPoliciesArgs {
     accountId: string;
     direction?: string;
+    expired?: boolean;
     isAcceptableSender?: boolean;
     isExemptRecipient?: boolean;
     isTrustedSender?: boolean;
@@ -72,6 +75,7 @@ export interface GetEmailSecurityAllowPoliciesArgs {
 export interface GetEmailSecurityAllowPoliciesResult {
     readonly accountId: string;
     readonly direction?: string;
+    readonly expired?: boolean;
     readonly isAcceptableSender?: boolean;
     readonly isExemptRecipient?: boolean;
     readonly isTrustedSender?: boolean;
@@ -98,6 +102,7 @@ export interface GetEmailSecurityAllowPoliciesResult {
  * const exampleEmailSecurityAllowPolicies = cloudflare.getEmailSecurityAllowPolicies({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     direction: "asc",
+ *     expired: true,
  *     isAcceptableSender: true,
  *     isExemptRecipient: true,
  *     isTrustedSender: true,
@@ -114,6 +119,7 @@ export function getEmailSecurityAllowPoliciesOutput(args: GetEmailSecurityAllowP
     return pulumi.runtime.invokeOutput("cloudflare:index/getEmailSecurityAllowPolicies:getEmailSecurityAllowPolicies", {
         "accountId": args.accountId,
         "direction": args.direction,
+        "expired": args.expired,
         "isAcceptableSender": args.isAcceptableSender,
         "isExemptRecipient": args.isExemptRecipient,
         "isTrustedSender": args.isTrustedSender,
@@ -132,6 +138,7 @@ export function getEmailSecurityAllowPoliciesOutput(args: GetEmailSecurityAllowP
 export interface GetEmailSecurityAllowPoliciesOutputArgs {
     accountId: pulumi.Input<string>;
     direction?: pulumi.Input<string | undefined>;
+    expired?: pulumi.Input<boolean | undefined>;
     isAcceptableSender?: pulumi.Input<boolean | undefined>;
     isExemptRecipient?: pulumi.Input<boolean | undefined>;
     isTrustedSender?: pulumi.Input<boolean | undefined>;

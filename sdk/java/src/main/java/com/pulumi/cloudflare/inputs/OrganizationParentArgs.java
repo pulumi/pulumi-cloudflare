@@ -8,8 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class OrganizationParentArgs extends com.pulumi.resources.ResourceArgs {
@@ -23,18 +21,10 @@ public final class OrganizationParentArgs extends com.pulumi.resources.ResourceA
         return this.id;
     }
 
-    @Import(name="name")
-    private @Nullable Output<String> name;
-
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
-    }
-
     private OrganizationParentArgs() {}
 
     private OrganizationParentArgs(OrganizationParentArgs $) {
         this.id = $.id;
-        this.name = $.name;
     }
 
     public static Builder builder() {
@@ -62,15 +52,6 @@ public final class OrganizationParentArgs extends com.pulumi.resources.ResourceA
 
         public Builder id(String id) {
             return id(Output.of(id));
-        }
-
-        public Builder name(@Nullable Output<String> name) {
-            $.name = name;
-            return this;
-        }
-
-        public Builder name(String name) {
-            return name(Output.of(name));
         }
 
         public OrganizationParentArgs build() {

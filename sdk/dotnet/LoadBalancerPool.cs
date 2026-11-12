@@ -49,8 +49,18 @@ namespace Pulumi.Cloudflare
     ///                 Weight = 0.6,
     ///             },
     ///         },
+    ///         CheckRegions = new[]
+    ///         {
+    ///             "WEU",
+    ///             "ENAM",
+    ///         },
     ///         Description = "Primary data center - Provider XYZ",
     ///         Enabled = false,
+    ///         HealthSources = new[]
+    ///         {
+    ///             "regional",
+    ///             "global",
+    ///         },
     ///         Latitude = 0.0,
     ///         LoadShedding = new Cloudflare.Inputs.LoadBalancerPoolLoadSheddingArgs
     ///         {
@@ -63,6 +73,11 @@ namespace Pulumi.Cloudflare
     ///         MinimumOrigins = 0,
     ///         Monitor = "monitor",
     ///         MonitorGroup = "monitor_group",
+    ///         Networks = new[]
+    ///         {
+    ///             "cloudflare",
+    ///             "jdcloud",
+    ///         },
     ///         NotificationEmail = "someone@example.com,sometwo@example.com",
     ///         NotificationFilter = new Cloudflare.Inputs.LoadBalancerPoolNotificationFilterArgs
     ///         {

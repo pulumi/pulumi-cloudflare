@@ -14,46 +14,22 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptions {
-    /**
-     * @return List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.
-     * 
-     */
     private List<GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptionsContentSelector> contentSelectors;
-    /**
-     * @return Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF).
-     * 
-     */
     private Map<String,String> includeHeaders;
     private Boolean includeImages;
-    /**
-     * @return List of specific sitemap URLs to use for crawling. Only valid when parseType is &#39;sitemap&#39;.
-     * 
-     */
     private List<String> specificSitemaps;
     private Boolean useBrowserRendering;
 
     private GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptions() {}
-    /**
-     * @return List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.
-     * 
-     */
     public List<GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptionsContentSelector> contentSelectors() {
         return this.contentSelectors;
     }
-    /**
-     * @return Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF).
-     * 
-     */
     public Map<String,String> includeHeaders() {
         return this.includeHeaders;
     }
     public Boolean includeImages() {
         return this.includeImages;
     }
-    /**
-     * @return List of specific sitemap URLs to use for crawling. Only valid when parseType is &#39;sitemap&#39;.
-     * 
-     */
     public List<String> specificSitemaps() {
         return this.specificSitemaps;
     }

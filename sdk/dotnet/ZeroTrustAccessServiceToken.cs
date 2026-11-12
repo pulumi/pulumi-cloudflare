@@ -33,6 +33,10 @@ namespace Pulumi.Cloudflare
     ///         Duration = "60m",
     ///         Enabled = true,
     ///         PreviousClientSecretExpiresAt = "2014-01-01T05:20:00.12345Z",
+    ///         Tags = 
+    ///         {
+    ///             { "environment", "production" },
+    ///         },
     ///     });
     /// 
     /// });
@@ -66,7 +70,7 @@ namespace Pulumi.Cloudflare
         public Output<string> ClientSecret { get; private set; } = null!;
 
         /// <summary>
-        /// A version number identifying the current `ClientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `PreviousClientSecretExpiresAt`.
+        /// A version number identifying the current `ClientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `PreviousClientSecretExpiresAt`. If the service token was reported as leaked, `PreviousClientSecretExpiresAt` is not required, may not be in the future, and the previous secret is discarded immediately.
         /// </summary>
         [Output("clientSecretVersion")]
         public Output<double> ClientSecretVersion { get; private set; } = null!;
@@ -78,7 +82,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Duration { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `ClientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+        /// Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `ClientSecret` stop being accepted, but the token itself is preserved and can be re-enabled. A service token reported as leaked is disabled automatically and cannot be re-enabled until its secret is rotated; attempting to do so returns a 409. Defaults to enabled when omitted on create.
         /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
@@ -87,16 +91,40 @@ namespace Pulumi.Cloudflare
         public Output<string> ExpiresAt { get; private set; } = null!;
 
         /// <summary>
+        /// Where the leaked `ClientSecret` was found, if provided by the reporter. Omitted if the token has not been reported as leaked.
+        /// </summary>
+        [Output("leakReportUrl")]
+        public Output<string> LeakReportUrl { get; private set; } = null!;
+
+        /// <summary>
+        /// When a secret scanning partner reported this service token's `ClientSecret` as leaked. A leaked service token is disabled and must be rotated before it can be re-enabled. Cleared once the secret is rotated. Omitted if the token has not been reported as leaked.
+        /// </summary>
+        [Output("leakReportedAt")]
+        public Output<string> LeakReportedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// The secret scanning partner that reported the leak. Omitted if the token has not been reported as leaked.
+        /// </summary>
+        [Output("leakReporter")]
+        public Output<string> LeakReporter { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the service token.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The expiration of the previous `ClientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+        /// The expiration of the previous `ClientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise. Rotating a service token that was reported as leaked discards the previous secret entirely, so no grace period can be set.
         /// </summary>
         [Output("previousClientSecretExpiresAt")]
         public Output<string?> PreviousClientSecretExpiresAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
@@ -165,7 +193,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// A version number identifying the current `ClientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `PreviousClientSecretExpiresAt`.
+        /// A version number identifying the current `ClientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `PreviousClientSecretExpiresAt`. If the service token was reported as leaked, `PreviousClientSecretExpiresAt` is not required, may not be in the future, and the previous secret is discarded immediately.
         /// </summary>
         [Input("clientSecretVersion")]
         public Input<double>? ClientSecretVersion { get; set; }
@@ -177,7 +205,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Duration { get; set; }
 
         /// <summary>
-        /// Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `ClientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+        /// Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `ClientSecret` stop being accepted, but the token itself is preserved and can be re-enabled. A service token reported as leaked is disabled automatically and cannot be re-enabled until its secret is rotated; attempting to do so returns a 409. Defaults to enabled when omitted on create.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -189,10 +217,22 @@ namespace Pulumi.Cloudflare
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The expiration of the previous `ClientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+        /// The expiration of the previous `ClientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise. Rotating a service token that was reported as leaked discards the previous secret entirely, so no grace period can be set.
         /// </summary>
         [Input("previousClientSecretExpiresAt")]
         public Input<string>? PreviousClientSecretExpiresAt { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
@@ -237,7 +277,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// A version number identifying the current `ClientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `PreviousClientSecretExpiresAt`.
+        /// A version number identifying the current `ClientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `PreviousClientSecretExpiresAt`. If the service token was reported as leaked, `PreviousClientSecretExpiresAt` is not required, may not be in the future, and the previous secret is discarded immediately.
         /// </summary>
         [Input("clientSecretVersion")]
         public Input<double>? ClientSecretVersion { get; set; }
@@ -249,7 +289,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Duration { get; set; }
 
         /// <summary>
-        /// Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `ClientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+        /// Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `ClientSecret` stop being accepted, but the token itself is preserved and can be re-enabled. A service token reported as leaked is disabled automatically and cannot be re-enabled until its secret is rotated; attempting to do so returns a 409. Defaults to enabled when omitted on create.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -258,16 +298,46 @@ namespace Pulumi.Cloudflare
         public Input<string>? ExpiresAt { get; set; }
 
         /// <summary>
+        /// Where the leaked `ClientSecret` was found, if provided by the reporter. Omitted if the token has not been reported as leaked.
+        /// </summary>
+        [Input("leakReportUrl")]
+        public Input<string>? LeakReportUrl { get; set; }
+
+        /// <summary>
+        /// When a secret scanning partner reported this service token's `ClientSecret` as leaked. A leaked service token is disabled and must be rotated before it can be re-enabled. Cleared once the secret is rotated. Omitted if the token has not been reported as leaked.
+        /// </summary>
+        [Input("leakReportedAt")]
+        public Input<string>? LeakReportedAt { get; set; }
+
+        /// <summary>
+        /// The secret scanning partner that reported the leak. Omitted if the token has not been reported as leaked.
+        /// </summary>
+        [Input("leakReporter")]
+        public Input<string>? LeakReporter { get; set; }
+
+        /// <summary>
         /// The name of the service token.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The expiration of the previous `ClientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+        /// The expiration of the previous `ClientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise. Rotating a service token that was reported as leaked discards the previous secret entirely, so no grace period can be set.
         /// </summary>
         [Input("previousClientSecretExpiresAt")]
         public Input<string>? PreviousClientSecretExpiresAt { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.

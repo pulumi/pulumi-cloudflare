@@ -44,6 +44,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly Outputs.AccessPolicyRequireOkta? Okta;
         public readonly Outputs.AccessPolicyRequireSaml? Saml;
         public readonly Outputs.AccessPolicyRequireServiceToken? ServiceToken;
+        public readonly Outputs.AccessPolicyRequireServiceTokenTag? ServiceTokenTag;
         public readonly Outputs.AccessPolicyRequireUserRiskScore? UserRiskScore;
 
         [OutputConstructor]
@@ -98,6 +99,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.AccessPolicyRequireServiceToken? serviceToken,
 
+            Outputs.AccessPolicyRequireServiceTokenTag? serviceTokenTag,
+
             Outputs.AccessPolicyRequireUserRiskScore? userRiskScore)
         {
             AnyValidServiceToken = anyValidServiceToken;
@@ -125,6 +128,7 @@ namespace Pulumi.Cloudflare.Outputs
             Okta = okta;
             Saml = saml;
             ServiceToken = serviceToken;
+            ServiceTokenTag = serviceTokenTag;
             UserRiskScore = userRiskScore;
         }
     }

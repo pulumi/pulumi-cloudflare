@@ -11,28 +11,42 @@ import java.util.Objects;
 @CustomType
 public final class GetAccessRuleConfiguration {
     /**
-     * @return The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
-     * Available values: &#34;ip&#34;, &#34;ip6&#34;, &#34;ipRange&#34;, &#34;asn&#34;, &#34;country&#34;.
+     * @return For `target: ip`: The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
      * 
      */
     private String target;
     /**
-     * @return The IP address to match. This address will be compared to the IP address of incoming requests.
+     * @return For `target: ip`: The IP address to match. This address will be compared to the IP address of incoming requests.
+     * 
+     * For `target: ip6`: The IPv6 address to match.
+     * 
+     * For `target: ipRange`: The IP address range to match. You can only use prefix lengths `/16` and `/24` for IPv4 ranges, and prefix lengths `/32`, `/48`, and `/64` for IPv6 ranges.
+     * 
+     * For `target: asn`: The AS number to match.
+     * 
+     * For `target: country`: The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country).
      * 
      */
     private String value;
 
     private GetAccessRuleConfiguration() {}
     /**
-     * @return The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
-     * Available values: &#34;ip&#34;, &#34;ip6&#34;, &#34;ipRange&#34;, &#34;asn&#34;, &#34;country&#34;.
+     * @return For `target: ip`: The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
      * 
      */
     public String target() {
         return this.target;
     }
     /**
-     * @return The IP address to match. This address will be compared to the IP address of incoming requests.
+     * @return For `target: ip`: The IP address to match. This address will be compared to the IP address of incoming requests.
+     * 
+     * For `target: ip6`: The IPv6 address to match.
+     * 
+     * For `target: ipRange`: The IP address range to match. You can only use prefix lengths `/16` and `/24` for IPv4 ranges, and prefix lengths `/32`, `/48`, and `/64` for IPv6 ranges.
+     * 
+     * For `target: asn`: The AS number to match.
+     * 
+     * For `target: country`: The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country).
      * 
      */
     public String value() {

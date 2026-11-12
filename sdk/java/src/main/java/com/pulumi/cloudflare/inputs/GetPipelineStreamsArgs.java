@@ -32,6 +32,23 @@ public final class GetPipelineStreamsArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
+     * Sort direction.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    @Import(name="direction")
+    private @Nullable Output<String> direction;
+
+    /**
+     * @return Sort direction.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    public Optional<Output<String>> direction() {
+        return Optional.ofNullable(this.direction);
+    }
+
+    /**
      * Max items to fetch, default: 1000
      * 
      */
@@ -62,6 +79,23 @@ public final class GetPipelineStreamsArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
+     * Sorts streams by this field. Defaults to `createdAt`.
+     * Available values: &#34;name&#34;, &#34;createdAt&#34;.
+     * 
+     */
+    @Import(name="orderBy")
+    private @Nullable Output<String> orderBy;
+
+    /**
+     * @return Sorts streams by this field. Defaults to `createdAt`.
+     * Available values: &#34;name&#34;, &#34;createdAt&#34;.
+     * 
+     */
+    public Optional<Output<String>> orderBy() {
+        return Optional.ofNullable(this.orderBy);
+    }
+
+    /**
      * Specifies the public ID of the pipeline.
      * 
      */
@@ -80,8 +114,10 @@ public final class GetPipelineStreamsArgs extends com.pulumi.resources.InvokeArg
 
     private GetPipelineStreamsArgs(GetPipelineStreamsArgs $) {
         this.accountId = $.accountId;
+        this.direction = $.direction;
         this.maxItems = $.maxItems;
         this.name = $.name;
+        this.orderBy = $.orderBy;
         this.pipelineId = $.pipelineId;
     }
 
@@ -125,6 +161,29 @@ public final class GetPipelineStreamsArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
+         * @param direction Sort direction.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder direction(@Nullable Output<String> direction) {
+            $.direction = direction;
+            return this;
+        }
+
+        /**
+         * @param direction Sort direction.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder direction(String direction) {
+            return direction(Output.of(direction));
+        }
+
+        /**
          * @param maxItems Max items to fetch, default: 1000
          * 
          * @return builder
@@ -164,6 +223,29 @@ public final class GetPipelineStreamsArgs extends com.pulumi.resources.InvokeArg
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param orderBy Sorts streams by this field. Defaults to `createdAt`.
+         * Available values: &#34;name&#34;, &#34;createdAt&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orderBy(@Nullable Output<String> orderBy) {
+            $.orderBy = orderBy;
+            return this;
+        }
+
+        /**
+         * @param orderBy Sorts streams by this field. Defaults to `createdAt`.
+         * Available values: &#34;name&#34;, &#34;createdAt&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orderBy(String orderBy) {
+            return orderBy(Output.of(orderBy));
         }
 
         /**

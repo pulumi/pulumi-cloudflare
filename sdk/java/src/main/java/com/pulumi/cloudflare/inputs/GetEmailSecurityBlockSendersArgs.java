@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -29,6 +30,13 @@ public final class GetEmailSecurityBlockSendersArgs extends com.pulumi.resources
 
     public Optional<Output<String>> direction() {
         return Optional.ofNullable(this.direction);
+    }
+
+    @Import(name="expired")
+    private @Nullable Output<Boolean> expired;
+
+    public Optional<Output<Boolean>> expired() {
+        return Optional.ofNullable(this.expired);
     }
 
     @Import(name="maxItems")
@@ -71,6 +79,7 @@ public final class GetEmailSecurityBlockSendersArgs extends com.pulumi.resources
     private GetEmailSecurityBlockSendersArgs(GetEmailSecurityBlockSendersArgs $) {
         this.accountId = $.accountId;
         this.direction = $.direction;
+        this.expired = $.expired;
         this.maxItems = $.maxItems;
         this.order = $.order;
         this.pattern = $.pattern;
@@ -112,6 +121,15 @@ public final class GetEmailSecurityBlockSendersArgs extends com.pulumi.resources
 
         public Builder direction(String direction) {
             return direction(Output.of(direction));
+        }
+
+        public Builder expired(@Nullable Output<Boolean> expired) {
+            $.expired = expired;
+            return this;
+        }
+
+        public Builder expired(Boolean expired) {
+            return expired(Output.of(expired));
         }
 
         public Builder maxItems(@Nullable Output<Integer> maxItems) {

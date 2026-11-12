@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AiSearchInstancePublicEndpointParamsChatCompletionsEndpoint {
     /**
-     * @return Disable chat completions endpoint for this public endpoint
+     * @return Disable chat completions endpoint for this public endpoint.
      * 
      */
     private @Nullable Boolean disabled;
 
     private AiSearchInstancePublicEndpointParamsChatCompletionsEndpoint() {}
     /**
-     * @return Disable chat completions endpoint for this public endpoint
+     * @return Disable chat completions endpoint for this public endpoint.
      * 
      */
     public Optional<Boolean> disabled() {

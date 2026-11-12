@@ -30,8 +30,8 @@ class ShareResourceInitArgs:
 
         :param pulumi.Input[_builtins.str] account_id: Account identifier.
         :param pulumi.Input[_builtins.str] meta: Resource Metadata.
-        :param pulumi.Input[_builtins.str] resource_account_id: Account identifier.
-        :param pulumi.Input[_builtins.str] resource_id: Share Resource identifier.
+        :param pulumi.Input[_builtins.str] resource_account_id: The account that owns the resource. Must match the `account_id` in the path.
+        :param pulumi.Input[_builtins.str] resource_id: Identifier assigned by the service that owns the shared resource.
         :param pulumi.Input[_builtins.str] resource_type: Resource Type.
                Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
         :param pulumi.Input[_builtins.str] share_id: Share identifier tag.
@@ -71,7 +71,7 @@ class ShareResourceInitArgs:
     @pulumi.getter(name="resourceAccountId")
     def resource_account_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Account identifier.
+        The account that owns the resource. Must match the `account_id` in the path.
         """
         return pulumi.get(self, "resource_account_id")
 
@@ -83,7 +83,7 @@ class ShareResourceInitArgs:
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Share Resource identifier.
+        Identifier assigned by the service that owns the shared resource.
         """
         return pulumi.get(self, "resource_id")
 
@@ -134,11 +134,11 @@ class _ShareResourceState:
         Input properties used for looking up and filtering ShareResource resources.
 
         :param pulumi.Input[_builtins.str] account_id: Account identifier.
-        :param pulumi.Input[_builtins.str] created: When the share was created.
+        :param pulumi.Input[_builtins.str] created: When the object was created.
         :param pulumi.Input[_builtins.str] meta: Resource Metadata.
-        :param pulumi.Input[_builtins.str] modified: When the share was modified.
-        :param pulumi.Input[_builtins.str] resource_account_id: Account identifier.
-        :param pulumi.Input[_builtins.str] resource_id: Share Resource identifier.
+        :param pulumi.Input[_builtins.str] modified: When the object was last modified.
+        :param pulumi.Input[_builtins.str] resource_account_id: The account that owns the resource. Must match the `account_id` in the path.
+        :param pulumi.Input[_builtins.str] resource_id: Identifier assigned by the service that owns the shared resource.
         :param pulumi.Input[_builtins.str] resource_type: Resource Type.
                Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
         :param pulumi.Input[_builtins.int] resource_version: Resource Version.
@@ -183,7 +183,7 @@ class _ShareResourceState:
     @pulumi.getter
     def created(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        When the share was created.
+        When the object was created.
         """
         return pulumi.get(self, "created")
 
@@ -207,7 +207,7 @@ class _ShareResourceState:
     @pulumi.getter
     def modified(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        When the share was modified.
+        When the object was last modified.
         """
         return pulumi.get(self, "modified")
 
@@ -219,7 +219,7 @@ class _ShareResourceState:
     @pulumi.getter(name="resourceAccountId")
     def resource_account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Account identifier.
+        The account that owns the resource. Must match the `account_id` in the path.
         """
         return pulumi.get(self, "resource_account_id")
 
@@ -231,7 +231,7 @@ class _ShareResourceState:
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Share Resource identifier.
+        Identifier assigned by the service that owns the shared resource.
         """
         return pulumi.get(self, "resource_id")
 
@@ -316,7 +316,7 @@ class ShareResource(pulumi.CustomResource):
             share_id="3fd85f74b32742f1bff64a85009dda07",
             meta=json.dumps({}),
             resource_account_id="023e105f4ecef8ad9ca31a8372d0c353",
-            resource_id="023e105f4ecef8ad9ca31a8372d0c353",
+            resource_id="0a679032-bbb2-4b7e-9acc-dd5c5cb27a17",
             resource_type="custom-ruleset")
         ```
 
@@ -331,8 +331,8 @@ class ShareResource(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account identifier.
         :param pulumi.Input[_builtins.str] meta: Resource Metadata.
-        :param pulumi.Input[_builtins.str] resource_account_id: Account identifier.
-        :param pulumi.Input[_builtins.str] resource_id: Share Resource identifier.
+        :param pulumi.Input[_builtins.str] resource_account_id: The account that owns the resource. Must match the `account_id` in the path.
+        :param pulumi.Input[_builtins.str] resource_id: Identifier assigned by the service that owns the shared resource.
         :param pulumi.Input[_builtins.str] resource_type: Resource Type.
                Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
         :param pulumi.Input[_builtins.str] share_id: Share identifier tag.
@@ -356,7 +356,7 @@ class ShareResource(pulumi.CustomResource):
             share_id="3fd85f74b32742f1bff64a85009dda07",
             meta=json.dumps({}),
             resource_account_id="023e105f4ecef8ad9ca31a8372d0c353",
-            resource_id="023e105f4ecef8ad9ca31a8372d0c353",
+            resource_id="0a679032-bbb2-4b7e-9acc-dd5c5cb27a17",
             resource_type="custom-ruleset")
         ```
 
@@ -447,11 +447,11 @@ class ShareResource(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account identifier.
-        :param pulumi.Input[_builtins.str] created: When the share was created.
+        :param pulumi.Input[_builtins.str] created: When the object was created.
         :param pulumi.Input[_builtins.str] meta: Resource Metadata.
-        :param pulumi.Input[_builtins.str] modified: When the share was modified.
-        :param pulumi.Input[_builtins.str] resource_account_id: Account identifier.
-        :param pulumi.Input[_builtins.str] resource_id: Share Resource identifier.
+        :param pulumi.Input[_builtins.str] modified: When the object was last modified.
+        :param pulumi.Input[_builtins.str] resource_account_id: The account that owns the resource. Must match the `account_id` in the path.
+        :param pulumi.Input[_builtins.str] resource_id: Identifier assigned by the service that owns the shared resource.
         :param pulumi.Input[_builtins.str] resource_type: Resource Type.
                Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
         :param pulumi.Input[_builtins.int] resource_version: Resource Version.
@@ -513,7 +513,7 @@ class ShareResource(pulumi.CustomResource):
     @pulumi.getter
     def created(self) -> pulumi.Output[_builtins.str]:
         """
-        When the share was created.
+        When the object was created.
         """
         return pulumi.get(self, "created")
 
@@ -529,7 +529,7 @@ class ShareResource(pulumi.CustomResource):
     @pulumi.getter
     def modified(self) -> pulumi.Output[_builtins.str]:
         """
-        When the share was modified.
+        When the object was last modified.
         """
         return pulumi.get(self, "modified")
 
@@ -537,7 +537,7 @@ class ShareResource(pulumi.CustomResource):
     @pulumi.getter(name="resourceAccountId")
     def resource_account_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Account identifier.
+        The account that owns the resource. Must match the `account_id` in the path.
         """
         return pulumi.get(self, "resource_account_id")
 
@@ -545,7 +545,7 @@ class ShareResource(pulumi.CustomResource):
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Share Resource identifier.
+        Identifier assigned by the service that owns the shared resource.
         """
         return pulumi.get(self, "resource_id")
 

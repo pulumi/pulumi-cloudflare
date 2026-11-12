@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetZoneTracingRules
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Zone Observability Read`
+        /// - `Zone Observability Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -34,6 +39,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZoneTracingRulesResult>("cloudflare:index/getZoneTracingRules:getZoneTracingRules", args ?? new GetZoneTracingRulesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Zone Observability Read`
+        /// - `Zone Observability Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -56,6 +66,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetZoneTracingRulesResult>("cloudflare:index/getZoneTracingRules:getZoneTracingRules", args ?? new GetZoneTracingRulesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Zone Observability Read`
+        /// - `Zone Observability Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

@@ -15,7 +15,7 @@ namespace Pulumi.Cloudflare.Outputs
     {
         public readonly bool Enabled;
         /// <summary>
-        /// Available values: "low", "medium", "high".
+        /// Available values: "info", "low", "medium", "high".
         /// </summary>
         public readonly string RiskLevel;
 

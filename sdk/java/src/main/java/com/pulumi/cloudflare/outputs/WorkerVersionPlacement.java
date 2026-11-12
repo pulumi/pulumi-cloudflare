@@ -25,7 +25,6 @@ public final class WorkerVersionPlacement {
     private @Nullable String hostname;
     /**
      * @return Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: &#34;smart&#34;, &#34;targeted&#34;.
      * 
      */
     private @Nullable String mode;
@@ -57,7 +56,6 @@ public final class WorkerVersionPlacement {
     }
     /**
      * @return Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: &#34;smart&#34;, &#34;targeted&#34;.
      * 
      */
     public Optional<String> mode() {

@@ -7,6 +7,10 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Resource Sharing Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -17,6 +21,7 @@ import * as utilities from "./utilities";
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     includeRecipientCounts: true,
  *     includeResources: true,
+ *     includeTagsFrom: "api",
  *     kind: "sent",
  *     resourceTypes: ["custom-ruleset"],
  *     status: "active",
@@ -32,6 +37,7 @@ export function getShares(args: GetSharesArgs, opts?: pulumi.InvokeOptions): Pro
         "direction": args.direction,
         "includeRecipientCounts": args.includeRecipientCounts,
         "includeResources": args.includeResources,
+        "includeTagsFrom": args.includeTagsFrom,
         "kind": args.kind,
         "maxItems": args.maxItems,
         "order": args.order,
@@ -63,6 +69,11 @@ export interface GetSharesArgs {
      * Include resources in the response.
      */
     includeResources?: boolean;
+    /**
+     * Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+     * Available values: "api", "mirror".
+     */
+    includeTagsFrom?: string;
     /**
      * Filter shares by kind.
      * Available values: "sent", "received".
@@ -119,6 +130,11 @@ export interface GetSharesResult {
      */
     readonly includeResources?: boolean;
     /**
+     * Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+     * Available values: "api", "mirror".
+     */
+    readonly includeTagsFrom?: string;
+    /**
      * Filter shares by kind.
      * Available values: "sent", "received".
      */
@@ -156,6 +172,10 @@ export interface GetSharesResult {
     readonly targetType?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Resource Sharing Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -166,6 +186,7 @@ export interface GetSharesResult {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     includeRecipientCounts: true,
  *     includeResources: true,
+ *     includeTagsFrom: "api",
  *     kind: "sent",
  *     resourceTypes: ["custom-ruleset"],
  *     status: "active",
@@ -181,6 +202,7 @@ export function getSharesOutput(args: GetSharesOutputArgs, opts?: pulumi.InvokeO
         "direction": args.direction,
         "includeRecipientCounts": args.includeRecipientCounts,
         "includeResources": args.includeResources,
+        "includeTagsFrom": args.includeTagsFrom,
         "kind": args.kind,
         "maxItems": args.maxItems,
         "order": args.order,
@@ -212,6 +234,11 @@ export interface GetSharesOutputArgs {
      * Include resources in the response.
      */
     includeResources?: pulumi.Input<boolean | undefined>;
+    /**
+     * Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+     * Available values: "api", "mirror".
+     */
+    includeTagsFrom?: pulumi.Input<string | undefined>;
     /**
      * Filter shares by kind.
      * Available values: "sent", "received".

@@ -72,6 +72,10 @@ export interface GetR2DataCatalogResult {
      */
     readonly id: string;
     /**
+     * Specifies the data-locality jurisdiction of the catalog. The first enable sets it, and it cannot change. Currently always `default`.
+     */
+    readonly jurisdiction: string;
+    /**
      * Configures maintenance for the catalog.
      */
     readonly maintenanceConfig: outputs.GetR2DataCatalogMaintenanceConfig;

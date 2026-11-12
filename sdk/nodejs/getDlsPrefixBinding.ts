@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `DLS: Read`
+ * - `DLS: Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -69,6 +74,11 @@ export interface GetDlsPrefixBindingResult {
     readonly regionKey: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `DLS: Read`
+ * - `DLS: Write`
+ *
  * ## Example Usage
  *
  * ```typescript

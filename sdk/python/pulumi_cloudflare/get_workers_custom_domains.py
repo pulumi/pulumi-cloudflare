@@ -27,10 +27,13 @@ class GetWorkersCustomDomainsResult:
     """
     A collection of values returned by getWorkersCustomDomains.
     """
-    def __init__(__self__, account_id=None, environment=None, hostname=None, max_items=None, results=None, service=None, zone_id=None, zone_name=None):
+    def __init__(__self__, account_id=None, enabled=None, environment=None, hostname=None, max_items=None, previews_enabled=None, results=None, service=None, zone_id=None, zone_name=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
+        if enabled and not isinstance(enabled, bool):
+            raise TypeError("Expected argument 'enabled' to be a bool")
+        pulumi.set(__self__, "enabled", enabled)
         if environment and not isinstance(environment, str):
             raise TypeError("Expected argument 'environment' to be a str")
         pulumi.set(__self__, "environment", environment)
@@ -40,6 +43,9 @@ class GetWorkersCustomDomainsResult:
         if max_items and not isinstance(max_items, int):
             raise TypeError("Expected argument 'max_items' to be a int")
         pulumi.set(__self__, "max_items", max_items)
+        if previews_enabled and not isinstance(previews_enabled, bool):
+            raise TypeError("Expected argument 'previews_enabled' to be a bool")
+        pulumi.set(__self__, "previews_enabled", previews_enabled)
         if results and not isinstance(results, list):
             raise TypeError("Expected argument 'results' to be a list")
         pulumi.set(__self__, "results", results)
@@ -55,11 +61,19 @@ class GetWorkersCustomDomainsResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[_builtins.str]:
+    def account_id(self) -> _builtins.str:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether the configured hostname is routable for the domain.
+        """
+        return pulumi.get(self, "enabled")
 
     @_builtins.property
     @pulumi.getter
@@ -84,6 +98,14 @@ class GetWorkersCustomDomainsResult:
         Max items to fetch, default: 1000
         """
         return pulumi.get(self, "max_items")
+
+    @_builtins.property
+    @pulumi.getter(name="previewsEnabled")
+    def previews_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether previews are routable for the domain.
+        """
+        return pulumi.get(self, "previews_enabled")
 
     @_builtins.property
     @pulumi.getter
@@ -125,9 +147,11 @@ class AwaitableGetWorkersCustomDomainsResult(GetWorkersCustomDomainsResult):
             yield self
         return GetWorkersCustomDomainsResult(
             account_id=self.account_id,
+            enabled=self.enabled,
             environment=self.environment,
             hostname=self.hostname,
             max_items=self.max_items,
+            previews_enabled=self.previews_enabled,
             results=self.results,
             service=self.service,
             zone_id=self.zone_id,
@@ -135,9 +159,11 @@ class AwaitableGetWorkersCustomDomainsResult(GetWorkersCustomDomainsResult):
 
 
 def get_workers_custom_domains(account_id: Optional[_builtins.str] = None,
+                               enabled: Optional[_builtins.bool] = None,
                                environment: Optional[_builtins.str] = None,
                                hostname: Optional[_builtins.str] = None,
                                max_items: Optional[_builtins.int] = None,
+                               previews_enabled: Optional[_builtins.bool] = None,
                                service: Optional[_builtins.str] = None,
                                zone_id: Optional[_builtins.str] = None,
                                zone_name: Optional[_builtins.str] = None,
@@ -155,8 +181,10 @@ def get_workers_custom_domains(account_id: Optional[_builtins.str] = None,
     import pulumi_cloudflare as cloudflare
 
     example_workers_custom_domains = cloudflare.get_workers_custom_domains(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+        enabled=True,
         environment="production",
         hostname="app.example.com",
+        previews_enabled=False,
         service="my-worker",
         zone_id="593c9c94de529bbbfaac7c53ced0447d",
         zone_name="example.com")
@@ -164,18 +192,22 @@ def get_workers_custom_domains(account_id: Optional[_builtins.str] = None,
 
 
     :param _builtins.str account_id: Identifier.
+    :param _builtins.bool enabled: Whether the configured hostname is routable for the domain.
     :param _builtins.str environment: Worker environment associated with the domain.
     :param _builtins.str hostname: Hostname of the domain.
     :param _builtins.int max_items: Max items to fetch, default: 1000
+    :param _builtins.bool previews_enabled: Whether previews are routable for the domain.
     :param _builtins.str service: Name of the Worker associated with the domain.
     :param _builtins.str zone_id: ID of the zone containing the domain hostname.
     :param _builtins.str zone_name: Name of the zone containing the domain hostname.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['enabled'] = enabled
     __args__['environment'] = environment
     __args__['hostname'] = hostname
     __args__['maxItems'] = max_items
+    __args__['previewsEnabled'] = previews_enabled
     __args__['service'] = service
     __args__['zoneId'] = zone_id
     __args__['zoneName'] = zone_name
@@ -184,17 +216,21 @@ def get_workers_custom_domains(account_id: Optional[_builtins.str] = None,
 
     return AwaitableGetWorkersCustomDomainsResult(
         account_id=pulumi.get(__ret__, 'account_id'),
+        enabled=pulumi.get(__ret__, 'enabled'),
         environment=pulumi.get(__ret__, 'environment'),
         hostname=pulumi.get(__ret__, 'hostname'),
         max_items=pulumi.get(__ret__, 'max_items'),
+        previews_enabled=pulumi.get(__ret__, 'previews_enabled'),
         results=pulumi.get(__ret__, 'results'),
         service=pulumi.get(__ret__, 'service'),
         zone_id=pulumi.get(__ret__, 'zone_id'),
         zone_name=pulumi.get(__ret__, 'zone_name'))
-def get_workers_custom_domains_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+def get_workers_custom_domains_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                      enabled: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                                       environment: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                       hostname: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                       max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                      previews_enabled: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                                       service: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                       zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                       zone_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -212,8 +248,10 @@ def get_workers_custom_domains_output(account_id: pulumi.Input[Optional[Optional
     import pulumi_cloudflare as cloudflare
 
     example_workers_custom_domains = cloudflare.get_workers_custom_domains(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+        enabled=True,
         environment="production",
         hostname="app.example.com",
+        previews_enabled=False,
         service="my-worker",
         zone_id="593c9c94de529bbbfaac7c53ced0447d",
         zone_name="example.com")
@@ -221,18 +259,22 @@ def get_workers_custom_domains_output(account_id: pulumi.Input[Optional[Optional
 
 
     :param _builtins.str account_id: Identifier.
+    :param _builtins.bool enabled: Whether the configured hostname is routable for the domain.
     :param _builtins.str environment: Worker environment associated with the domain.
     :param _builtins.str hostname: Hostname of the domain.
     :param _builtins.int max_items: Max items to fetch, default: 1000
+    :param _builtins.bool previews_enabled: Whether previews are routable for the domain.
     :param _builtins.str service: Name of the Worker associated with the domain.
     :param _builtins.str zone_id: ID of the zone containing the domain hostname.
     :param _builtins.str zone_name: Name of the zone containing the domain hostname.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['enabled'] = enabled
     __args__['environment'] = environment
     __args__['hostname'] = hostname
     __args__['maxItems'] = max_items
+    __args__['previewsEnabled'] = previews_enabled
     __args__['service'] = service
     __args__['zoneId'] = zone_id
     __args__['zoneName'] = zone_name
@@ -240,9 +282,11 @@ def get_workers_custom_domains_output(account_id: pulumi.Input[Optional[Optional
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getWorkersCustomDomains:getWorkersCustomDomains', __args__, opts=opts, typ=GetWorkersCustomDomainsResult)
     return __ret__.apply(lambda __response__: GetWorkersCustomDomainsResult(
         account_id=pulumi.get(__response__, 'account_id'),
+        enabled=pulumi.get(__response__, 'enabled'),
         environment=pulumi.get(__response__, 'environment'),
         hostname=pulumi.get(__response__, 'hostname'),
         max_items=pulumi.get(__response__, 'max_items'),
+        previews_enabled=pulumi.get(__response__, 'previews_enabled'),
         results=pulumi.get(__response__, 'results'),
         service=pulumi.get(__response__, 'service'),
         zone_id=pulumi.get(__response__, 'zone_id'),

@@ -19,12 +19,6 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<bool>? FlattenAllCnames { get; set; }
 
         /// <summary>
-        /// Whether to enable Foundation DNS Advanced Nameservers on the zone.
-        /// </summary>
-        [Input("foundationDns")]
-        public Input<bool>? FoundationDns { get; set; }
-
-        /// <summary>
         /// Settings for this internal zone.
         /// </summary>
         [Input("internalDns")]

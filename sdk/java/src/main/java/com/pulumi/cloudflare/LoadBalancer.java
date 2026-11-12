@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.LoadBalancerState;
 import com.pulumi.cloudflare.outputs.LoadBalancerAdaptiveRouting;
 import com.pulumi.cloudflare.outputs.LoadBalancerLocationStrategy;
+import com.pulumi.cloudflare.outputs.LoadBalancerPoolSet;
 import com.pulumi.cloudflare.outputs.LoadBalancerRandomSteering;
 import com.pulumi.cloudflare.outputs.LoadBalancerRule;
 import com.pulumi.cloudflare.outputs.LoadBalancerSessionAffinityAttributes;
@@ -28,6 +29,19 @@ import javax.annotation.Nullable;
  * - `Load Balancers Read`
  * - `Load Balancers Write`
  * 
+ * ## Planning updates
+ * 
+ * On an update, unchanged API defaults can retain their state values instead of
+ * showing `(known after apply)`. This includes unset overrides in unchanged, named
+ * rules. Removing a configured, non-default value still lets the API reset that
+ * value; the plan does not retain the removed setting.
+ * 
+ * `modifiedOn` remains unknown because it changes on every write. Other computed
+ * values can remain unknown on creation, when a related setting changes, or when
+ * the provider cannot determine a safe default. For example, changing session
+ * affinity can change its default TTL, and an unconfigured DNS TTL remains unknown
+ * for an unproxied load balancer.
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -41,6 +55,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.LoadBalancerArgs;
  * import com.pulumi.cloudflare.inputs.LoadBalancerAdaptiveRoutingArgs;
  * import com.pulumi.cloudflare.inputs.LoadBalancerLocationStrategyArgs;
+ * import com.pulumi.cloudflare.inputs.LoadBalancerPoolSetArgs;
+ * import com.pulumi.cloudflare.inputs.LoadBalancerPoolSetFixedResponseArgs;
+ * import com.pulumi.cloudflare.inputs.LoadBalancerPoolSetMatchArgs;
+ * import com.pulumi.cloudflare.inputs.LoadBalancerPoolSetMatchTopologyArgs;
+ * import com.pulumi.cloudflare.inputs.LoadBalancerPoolSetOverridesArgs;
  * import com.pulumi.cloudflare.inputs.LoadBalancerRandomSteeringArgs;
  * import com.pulumi.cloudflare.inputs.LoadBalancerRuleArgs;
  * import com.pulumi.cloudflare.inputs.LoadBalancerRuleFixedResponseArgs;
@@ -86,7 +105,37 @@ import javax.annotation.Nullable;
  *                 .mode("resolver_ip")
  *                 .preferEcs("always")
  *                 .build())
- *             .networks("string")
+ *             .networks(            
+ *                 "cloudflare",
+ *                 "jdcloud")
+ *             .poolSets(LoadBalancerPoolSetArgs.builder()
+ *                 .disabled(true)
+ *                 .fixedResponse(LoadBalancerPoolSetFixedResponseArgs.builder()
+ *                     .contentType("application/json")
+ *                     .location("www.example.com")
+ *                     .messageBody("Testing Hello")
+ *                     .statusCode(0)
+ *                     .build())
+ *                 .match(LoadBalancerPoolSetMatchArgs.builder()
+ *                     .default_(true)
+ *                     .topology(LoadBalancerPoolSetMatchTopologyArgs.builder()
+ *                         .countries("string")
+ *                         .pops("string")
+ *                         .regions("WNAM")
+ *                         .build())
+ *                     .build())
+ *                 .name("wnam-primary")
+ *                 .overrides(LoadBalancerPoolSetOverridesArgs.builder()
+ *                     .fallbackPool("9290f38c5d07c2e2f4df57b1f61d4196")
+ *                     .poolDefaultWeight(0.2)
+ *                     .poolWeights(Map.ofEntries(
+ *                         Map.entry("9290f38c5d07c2e2f4df57b1f61d4196", 0.5),
+ *                         Map.entry("de90f38ced07c2e2f4df50b1f61d4194", 0.3)
+ *                     ))
+ *                     .pools("17b5962d775c646f3f9725cbc7a53df4")
+ *                     .steeringPolicy("random")
+ *                     .build())
+ *                 .build())
  *             .popPools(Map.ofEntries(
  *                 Map.entry("LAX", Arrays.asList(                
  *                     "de90f38ced07c2e2f4df50b1f61d4194",
@@ -348,6 +397,20 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      */
     public Output<List<String>> networks() {
         return this.networks;
+    }
+    /**
+     * An optional list of pool sets, evaluated in array order with first match wins. Pool sets are independent from the standard steering fields (`regionPools` / `countryPools` / `popPools` / `defaultPools` / `steeringPolicy` / `randomSteering` / `fallbackPool` / `rules`). On a PATCH, an empty array (`pool_sets: []`) clears all pool sets, while omitting the field leaves existing pool sets unchanged.
+     * 
+     */
+    @Export(name="poolSets", refs={List.class,LoadBalancerPoolSet.class}, tree="[0,1]")
+    private Output<List<LoadBalancerPoolSet>> poolSets;
+
+    /**
+     * @return An optional list of pool sets, evaluated in array order with first match wins. Pool sets are independent from the standard steering fields (`regionPools` / `countryPools` / `popPools` / `defaultPools` / `steeringPolicy` / `randomSteering` / `fallbackPool` / `rules`). On a PATCH, an empty array (`pool_sets: []`) clears all pool sets, while omitting the field leaves existing pool sets unchanged.
+     * 
+     */
+    public Output<List<LoadBalancerPoolSet>> poolSets() {
+        return this.poolSets;
     }
     /**
      * Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.

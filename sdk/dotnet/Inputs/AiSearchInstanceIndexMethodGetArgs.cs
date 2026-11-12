@@ -15,14 +15,14 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// Enable keyword (BM25) storage backend.
         /// </summary>
-        [Input("keyword", required: true)]
-        public Input<bool> Keyword { get; set; } = null!;
+        [Input("keyword")]
+        public Input<bool>? Keyword { get; set; }
 
         /// <summary>
         /// Enable vector (embedding) storage backend.
         /// </summary>
-        [Input("vector", required: true)]
-        public Input<bool> Vector { get; set; } = null!;
+        [Input("vector")]
+        public Input<bool>? Vector { get; set; }
 
         public AiSearchInstanceIndexMethodGetArgs()
         {

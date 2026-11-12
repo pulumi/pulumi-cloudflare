@@ -27,7 +27,7 @@ class GetZeroTrustAccessPolicyResult:
     """
     A collection of values returned by getZeroTrustAccessPolicy.
     """
-    def __init__(__self__, account_id=None, app_count=None, approval_groups=None, approval_required=None, connection_rules=None, created_at=None, decision=None, excludes=None, id=None, includes=None, isolation_required=None, mfa_config=None, name=None, policy_id=None, purpose_justification_prompt=None, purpose_justification_required=None, requires=None, reusable=None, session_duration=None, updated_at=None):
+    def __init__(__self__, account_id=None, app_count=None, approval_groups=None, approval_required=None, connection_rules=None, created_at=None, decision=None, excludes=None, id=None, includes=None, isolation_required=None, mfa_config=None, name=None, policy_id=None, policy_resolution_account_id=None, purpose_justification_prompt=None, purpose_justification_required=None, requires=None, reusable=None, session_duration=None, updated_at=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -70,6 +70,9 @@ class GetZeroTrustAccessPolicyResult:
         if policy_id and not isinstance(policy_id, str):
             raise TypeError("Expected argument 'policy_id' to be a str")
         pulumi.set(__self__, "policy_id", policy_id)
+        if policy_resolution_account_id and not isinstance(policy_resolution_account_id, str):
+            raise TypeError("Expected argument 'policy_resolution_account_id' to be a str")
+        pulumi.set(__self__, "policy_resolution_account_id", policy_resolution_account_id)
         if purpose_justification_prompt and not isinstance(purpose_justification_prompt, str):
             raise TypeError("Expected argument 'purpose_justification_prompt' to be a str")
         pulumi.set(__self__, "purpose_justification_prompt", purpose_justification_prompt)
@@ -200,6 +203,14 @@ class GetZeroTrustAccessPolicyResult:
         return pulumi.get(self, "policy_id")
 
     @_builtins.property
+    @pulumi.getter(name="policyResolutionAccountId")
+    def policy_resolution_account_id(self) -> _builtins.str:
+        """
+        The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.
+        """
+        return pulumi.get(self, "policy_resolution_account_id")
+
+    @_builtins.property
     @pulumi.getter(name="purposeJustificationPrompt")
     def purpose_justification_prompt(self) -> _builtins.str:
         """
@@ -262,6 +273,7 @@ class AwaitableGetZeroTrustAccessPolicyResult(GetZeroTrustAccessPolicyResult):
             mfa_config=self.mfa_config,
             name=self.name,
             policy_id=self.policy_id,
+            policy_resolution_account_id=self.policy_resolution_account_id,
             purpose_justification_prompt=self.purpose_justification_prompt,
             purpose_justification_required=self.purpose_justification_required,
             requires=self.requires,
@@ -314,6 +326,7 @@ def get_zero_trust_access_policy(account_id: Optional[_builtins.str] = None,
         mfa_config=pulumi.get(__ret__, 'mfa_config'),
         name=pulumi.get(__ret__, 'name'),
         policy_id=pulumi.get(__ret__, 'policy_id'),
+        policy_resolution_account_id=pulumi.get(__ret__, 'policy_resolution_account_id'),
         purpose_justification_prompt=pulumi.get(__ret__, 'purpose_justification_prompt'),
         purpose_justification_required=pulumi.get(__ret__, 'purpose_justification_required'),
         requires=pulumi.get(__ret__, 'requires'),
@@ -363,6 +376,7 @@ def get_zero_trust_access_policy_output(account_id: pulumi.Input[Optional[Option
         mfa_config=pulumi.get(__response__, 'mfa_config'),
         name=pulumi.get(__response__, 'name'),
         policy_id=pulumi.get(__response__, 'policy_id'),
+        policy_resolution_account_id=pulumi.get(__response__, 'policy_resolution_account_id'),
         purpose_justification_prompt=pulumi.get(__response__, 'purpose_justification_prompt'),
         purpose_justification_required=pulumi.get(__response__, 'purpose_justification_required'),
         requires=pulumi.get(__response__, 'requires'),

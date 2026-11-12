@@ -13,13 +13,7 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetAiSearchInstancesResultSourceParamsResult
     {
-        /// <summary>
-        /// List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)
-        /// </summary>
         public readonly ImmutableArray<string> ExcludeItems;
-        /// <summary>
-        /// List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)
-        /// </summary>
         public readonly ImmutableArray<string> IncludeItems;
         public readonly string Prefix;
         public readonly string R2Jurisdiction;

@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/totalTls:TotalTls")
 public class TotalTls extends com.pulumi.resources.CustomResource {
     /**
-     * The Certificate Authority that Total TLS certificates will be issued through.
+     * The Certificate Authority that Total TLS certificates will be issued through. Not returned in responses when Total TLS is disabled.
      * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
      * 
      */
@@ -75,7 +75,7 @@ public class TotalTls extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> certificateAuthority;
 
     /**
-     * @return The Certificate Authority that Total TLS certificates will be issued through.
+     * @return The Certificate Authority that Total TLS certificates will be issued through. Not returned in responses when Total TLS is disabled.
      * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
      * 
      */
@@ -97,7 +97,7 @@ public class TotalTls extends com.pulumi.resources.CustomResource {
         return this.enabled;
     }
     /**
-     * The validity period in days for the certificates ordered via Total TLS.
+     * The validity period in days for the certificates ordered via Total TLS. Not returned when Total TLS is disabled.
      * Available values: 90.
      * 
      */
@@ -105,7 +105,7 @@ public class TotalTls extends com.pulumi.resources.CustomResource {
     private Output<Integer> validityPeriod;
 
     /**
-     * @return The validity period in days for the certificates ordered via Total TLS.
+     * @return The validity period in days for the certificates ordered via Total TLS. Not returned when Total TLS is disabled.
      * Available values: 90.
      * 
      */

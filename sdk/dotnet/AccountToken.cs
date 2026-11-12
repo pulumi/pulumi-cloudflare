@@ -167,6 +167,22 @@ namespace Pulumi.Cloudflare
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
+        /// The prefix of the token value, before the first underscore. Use it with
+        /// `TokenSuffix` to identify a token. Only present for tokens created or
+        /// rolled after this field was added.
+        /// </summary>
+        [Output("tokenPrefix")]
+        public Output<string> TokenPrefix { get; private set; } = null!;
+
+        /// <summary>
+        /// The last 4 characters of the token value. Use it with `TokenPrefix` to
+        /// identify a token. It is not unique. Only present for tokens created or
+        /// rolled after this field was added.
+        /// </summary>
+        [Output("tokenSuffix")]
+        public Output<string> TokenSuffix { get; private set; } = null!;
+
+        /// <summary>
         /// The token value.
         /// </summary>
         [Output("value")]
@@ -363,6 +379,22 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// The prefix of the token value, before the first underscore. Use it with
+        /// `TokenSuffix` to identify a token. Only present for tokens created or
+        /// rolled after this field was added.
+        /// </summary>
+        [Input("tokenPrefix")]
+        public Input<string>? TokenPrefix { get; set; }
+
+        /// <summary>
+        /// The last 4 characters of the token value. Use it with `TokenPrefix` to
+        /// identify a token. It is not unique. Only present for tokens created or
+        /// rolled after this field was added.
+        /// </summary>
+        [Input("tokenSuffix")]
+        public Input<string>? TokenSuffix { get; set; }
 
         [Input("value")]
         private Input<string>? _value;

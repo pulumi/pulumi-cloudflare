@@ -51,6 +51,7 @@ export interface GetZeroTrustDnsLocationResult {
     readonly accountId?: string;
     readonly clientDefault: boolean;
     readonly createdAt: string;
+    readonly dns64Enabled: boolean;
     readonly dnsDestinationIpsId: string;
     readonly dnsDestinationIpv6BlockId: string;
     readonly dohSubdomain: string;

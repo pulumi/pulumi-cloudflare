@@ -168,7 +168,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string AssociationStatus;
         /// <summary>
-        /// When the share was created.
+        /// When the object was created.
         /// </summary>
         public readonly string Created;
         /// <summary>
@@ -180,7 +180,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool? IncludeResources;
         /// <summary>
-        /// When the share was modified.
+        /// When the object was last modified.
         /// </summary>
         public readonly string Modified;
         /// <summary>

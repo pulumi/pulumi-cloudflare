@@ -15,7 +15,7 @@ namespace Pulumi.Cloudflare.Outputs
     {
         /// <summary>
         /// The authenticators allowed for MFA.
-        /// Available values: "totp", "biometrics", "SecurityKey".
+        /// Available values: "totp", "biometrics", "security*key", "piv*key", "ssh*fido2*key".
         /// </summary>
         public readonly ImmutableArray<string> AllowedAuthenticators;
         /// <summary>

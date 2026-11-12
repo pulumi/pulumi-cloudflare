@@ -69,6 +69,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .denyUnmatchedRequests(true)
  *             .denyUnmatchedRequestsExemptedZoneNames("example.com")
+ *             .disableEndUserAppCreation(false)
  *             .isUiReadOnly(true)
  *             .loginDesign(ZeroTrustOrganizationLoginDesignArgs.builder()
  *                 .backgroundColor("#c5ed1b")
@@ -215,6 +216,20 @@ public class ZeroTrustOrganization extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<String>>> denyUnmatchedRequestsExemptedZoneNames() {
         return Codegen.optional(this.denyUnmatchedRequestsExemptedZoneNames);
+    }
+    /**
+     * Whether creation of end user applications is disabled for this organization.
+     * 
+     */
+    @Export(name="disableEndUserAppCreation", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> disableEndUserAppCreation;
+
+    /**
+     * @return Whether creation of end user applications is disabled for this organization.
+     * 
+     */
+    public Output<Boolean> disableEndUserAppCreation() {
+        return this.disableEndUserAppCreation;
     }
     /**
      * Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.

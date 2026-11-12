@@ -62,7 +62,7 @@ class GetAiSearchInstancesResult:
     @pulumi.getter
     def hostname(self) -> Optional[_builtins.str]:
         """
-        Filter by exact Search for Agents hostname (case-insensitive).
+        Return only instances with this exact Search for Agents hostname (case-insensitive).
         """
         return pulumi.get(self, "hostname")
 
@@ -76,10 +76,7 @@ class GetAiSearchInstancesResult:
 
     @_builtins.property
     @pulumi.getter
-    def namespace(self) -> Optional[_builtins.str]:
-        """
-        Filter by namespace.
-        """
+    def namespace(self) -> _builtins.str:
         return pulumi.get(self, "namespace")
 
     @_builtins.property
@@ -144,9 +141,8 @@ def get_ai_search_instances(account_id: Optional[_builtins.str] = None,
     """
     Use this data source to access information about an existing resource.
 
-    :param _builtins.str hostname: Filter by exact Search for Agents hostname (case-insensitive).
+    :param _builtins.str hostname: Return only instances with this exact Search for Agents hostname (case-insensitive).
     :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.str namespace: Filter by namespace.
     :param _builtins.str order_by: Field to order results by.
            Available values: "created_at".
     :param _builtins.str order_by_direction: Order direction.
@@ -184,9 +180,8 @@ def get_ai_search_instances_output(account_id: pulumi.Input[Optional[Optional[_b
     """
     Use this data source to access information about an existing resource.
 
-    :param _builtins.str hostname: Filter by exact Search for Agents hostname (case-insensitive).
+    :param _builtins.str hostname: Return only instances with this exact Search for Agents hostname (case-insensitive).
     :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.str namespace: Filter by namespace.
     :param _builtins.str order_by: Field to order results by.
            Available values: "created_at".
     :param _builtins.str order_by_direction: Order direction.

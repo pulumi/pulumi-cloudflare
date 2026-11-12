@@ -278,6 +278,13 @@ def get_zero_trust_resource_library_application(account_id: Optional[_builtins.s
                                                 id: Optional[_builtins.int] = None,
                                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustResourceLibraryApplicationResult:
     """
+    Accepted Permissions
+
+    - `Resource Library Read`
+    - `Resource Library Write`
+    - `Zero Trust Read`
+    - `Zero Trust Write`
+
     ## Example Usage
 
     ```python
@@ -324,6 +331,13 @@ def get_zero_trust_resource_library_application_output(account_id: pulumi.Input[
                                                        id: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustResourceLibraryApplicationResult]:
     """
+    Accepted Permissions
+
+    - `Resource Library Read`
+    - `Resource Library Write`
+    - `Zero Trust Read`
+    - `Zero Trust Write`
+
     ## Example Usage
 
     ```python

@@ -144,6 +144,9 @@ class GetConnectivityDirectoryServiceResult:
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
+        """
+        Available values: "tcp", "http".
+        """
         return pulumi.get(self, "type")
 
     @_builtins.property

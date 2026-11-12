@@ -117,7 +117,7 @@ export interface AccessApplicationLandingPageDesign {
 export interface AccessApplicationMfaConfig {
     /**
      * The authenticators allowed for MFA.
-     * Available values: "totp", "biometrics", "securityKey".
+     * Available values: "totp", "biometrics", "security*key", "piv*key", "ssh*fido2*key".
      */
     allowedAuthenticators?: string[];
     /**
@@ -198,7 +198,7 @@ export interface AccessApplicationPolicy {
      */
     includes?: outputs.AccessApplicationPolicyInclude[];
     /**
-     * Configures multi-factor authentication (MFA) settings for this policy. For infrastructure applications only `sshPivKey` is a supported authenticator; for other application types use `totp`, `biometrics`, or `securityKey`.
+     * Configures multi-factor authentication (MFA) settings for this policy. For infrastructure applications, supported authenticators are `pivKey` and `sshFido2Key`; for other application types use `totp`, `biometrics`, or `securityKey`.
      */
     mfaConfig?: outputs.AccessApplicationPolicyMfaConfig;
     /**
@@ -725,7 +725,7 @@ export interface AccessApplicationPolicyIncludeServiceToken {
 export interface AccessApplicationPolicyMfaConfig {
     /**
      * The authenticators allowed for MFA.
-     * Available values: "totp", "biometrics", "security*key", "ssh*piv_key".
+     * Available values: "totp", "biometrics", "security*key", "piv*key", "ssh*fido2*key".
      */
     allowedAuthenticators?: string[];
     /**
@@ -1379,6 +1379,7 @@ export interface AccessGroupExclude {
     okta?: outputs.AccessGroupExcludeOkta;
     saml?: outputs.AccessGroupExcludeSaml;
     serviceToken?: outputs.AccessGroupExcludeServiceToken;
+    serviceTokenTag?: outputs.AccessGroupExcludeServiceTokenTag;
     userRiskScore?: outputs.AccessGroupExcludeUserRiskScore;
 }
 
@@ -1597,6 +1598,17 @@ export interface AccessGroupExcludeServiceToken {
     tokenId: string;
 }
 
+export interface AccessGroupExcludeServiceTokenTag {
+    /**
+     * The tag key to match. Keys are case-sensitive and may contain Unicode letters and digits, underscores, periods, and hyphens.
+     */
+    key: string;
+    /**
+     * The tag value to match. Values are case-sensitive, preserve whitespace, and must not contain NUL characters.
+     */
+    value: string;
+}
+
 export interface AccessGroupExcludeUserRiskScore {
     /**
      * A list of risk score levels to match. Values can be low, medium, high, or unscored.
@@ -1636,6 +1648,7 @@ export interface AccessGroupInclude {
     okta?: outputs.AccessGroupIncludeOkta;
     saml?: outputs.AccessGroupIncludeSaml;
     serviceToken?: outputs.AccessGroupIncludeServiceToken;
+    serviceTokenTag?: outputs.AccessGroupIncludeServiceTokenTag;
     userRiskScore?: outputs.AccessGroupIncludeUserRiskScore;
 }
 
@@ -1854,6 +1867,17 @@ export interface AccessGroupIncludeServiceToken {
     tokenId: string;
 }
 
+export interface AccessGroupIncludeServiceTokenTag {
+    /**
+     * The tag key to match. Keys are case-sensitive and may contain Unicode letters and digits, underscores, periods, and hyphens.
+     */
+    key: string;
+    /**
+     * The tag value to match. Values are case-sensitive, preserve whitespace, and must not contain NUL characters.
+     */
+    value: string;
+}
+
 export interface AccessGroupIncludeUserRiskScore {
     /**
      * A list of risk score levels to match. Values can be low, medium, high, or unscored.
@@ -1893,6 +1917,7 @@ export interface AccessGroupRequire {
     okta?: outputs.AccessGroupRequireOkta;
     saml?: outputs.AccessGroupRequireSaml;
     serviceToken?: outputs.AccessGroupRequireServiceToken;
+    serviceTokenTag?: outputs.AccessGroupRequireServiceTokenTag;
     userRiskScore?: outputs.AccessGroupRequireUserRiskScore;
 }
 
@@ -2111,6 +2136,17 @@ export interface AccessGroupRequireServiceToken {
     tokenId: string;
 }
 
+export interface AccessGroupRequireServiceTokenTag {
+    /**
+     * The tag key to match. Keys are case-sensitive and may contain Unicode letters and digits, underscores, periods, and hyphens.
+     */
+    key: string;
+    /**
+     * The tag value to match. Values are case-sensitive, preserve whitespace, and must not contain NUL characters.
+     */
+    value: string;
+}
+
 export interface AccessGroupRequireUserRiskScore {
     /**
      * A list of risk score levels to match. Values can be low, medium, high, or unscored.
@@ -2157,6 +2193,8 @@ export interface AccessIdentityProviderConfig {
     clientId?: string;
     /**
      * Your OAuth Client Secret
+     *
+     * The client secret from the Duo Generic OIDC Relying Party metadata.
      */
     clientSecret?: string;
     /**
@@ -2178,6 +2216,13 @@ export interface AccessIdentityProviderConfig {
     /**
      * Enable SAML assertion encryption. When enabled, the Identity Provider will encrypt
      * SAML assertions using the certificate from the assigned certificate set.
+     *
+     * To enable encryption:
+     * 1. Create a certificate set via POST to `/identity_providers/{id}/saml_certificate`
+     * 2. Set this field to `true` and include `samlCertificateSetId` in the PUT request
+     * 3. Configure the public certificate in your external Identity Provider
+     *
+     * Note: Requires `samlCertificateSetId` to be set when `true`.
      */
     enableEncryption: boolean;
     /**
@@ -2193,6 +2238,8 @@ export interface AccessIdentityProviderConfig {
      */
     idpPublicCerts?: string[];
     /**
+     * The issuer URL from the Duo Generic OIDC Relying Party metadata.
+     *
      * IdP Entity ID or Issuer URL
      */
     issuerUrl?: string;
@@ -2225,6 +2272,8 @@ export interface AccessIdentityProviderConfig {
     pkceEnabled?: boolean;
     /**
      * Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interactionRequired error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
+     *
+     * Configures the prompt behavior for Google authentication.
      * Available values: "login", "selectAccount", "none", "consent".
      */
     prompt?: string;
@@ -2250,7 +2299,7 @@ export interface AccessIdentityProviderConfig {
      */
     supportGroups?: boolean;
     /**
-     * The tokenEndpoint URL of your IdP
+     * The tokenEndpoint URL of your IdP. Updates that change its origin (scheme, host, or port) require clientSecret in the request. Path-only changes do not require client_secret.
      */
     tokenUrl?: string;
     /**
@@ -2515,6 +2564,7 @@ export interface AccessPolicyExclude {
     okta?: outputs.AccessPolicyExcludeOkta;
     saml?: outputs.AccessPolicyExcludeSaml;
     serviceToken?: outputs.AccessPolicyExcludeServiceToken;
+    serviceTokenTag?: outputs.AccessPolicyExcludeServiceTokenTag;
     userRiskScore?: outputs.AccessPolicyExcludeUserRiskScore;
 }
 
@@ -2733,6 +2783,17 @@ export interface AccessPolicyExcludeServiceToken {
     tokenId: string;
 }
 
+export interface AccessPolicyExcludeServiceTokenTag {
+    /**
+     * The tag key to match. Keys are case-sensitive and may contain Unicode letters and digits, underscores, periods, and hyphens.
+     */
+    key: string;
+    /**
+     * The tag value to match. Values are case-sensitive, preserve whitespace, and must not contain NUL characters.
+     */
+    value: string;
+}
+
 export interface AccessPolicyExcludeUserRiskScore {
     /**
      * A list of risk score levels to match. Values can be low, medium, high, or unscored.
@@ -2772,6 +2833,7 @@ export interface AccessPolicyInclude {
     okta?: outputs.AccessPolicyIncludeOkta;
     saml?: outputs.AccessPolicyIncludeSaml;
     serviceToken?: outputs.AccessPolicyIncludeServiceToken;
+    serviceTokenTag?: outputs.AccessPolicyIncludeServiceTokenTag;
     userRiskScore?: outputs.AccessPolicyIncludeUserRiskScore;
 }
 
@@ -2990,6 +3052,17 @@ export interface AccessPolicyIncludeServiceToken {
     tokenId: string;
 }
 
+export interface AccessPolicyIncludeServiceTokenTag {
+    /**
+     * The tag key to match. Keys are case-sensitive and may contain Unicode letters and digits, underscores, periods, and hyphens.
+     */
+    key: string;
+    /**
+     * The tag value to match. Values are case-sensitive, preserve whitespace, and must not contain NUL characters.
+     */
+    value: string;
+}
+
 export interface AccessPolicyIncludeUserRiskScore {
     /**
      * A list of risk score levels to match. Values can be low, medium, high, or unscored.
@@ -3044,6 +3117,7 @@ export interface AccessPolicyRequire {
     okta?: outputs.AccessPolicyRequireOkta;
     saml?: outputs.AccessPolicyRequireSaml;
     serviceToken?: outputs.AccessPolicyRequireServiceToken;
+    serviceTokenTag?: outputs.AccessPolicyRequireServiceTokenTag;
     userRiskScore?: outputs.AccessPolicyRequireUserRiskScore;
 }
 
@@ -3262,6 +3336,17 @@ export interface AccessPolicyRequireServiceToken {
     tokenId: string;
 }
 
+export interface AccessPolicyRequireServiceTokenTag {
+    /**
+     * The tag key to match. Keys are case-sensitive and may contain Unicode letters and digits, underscores, periods, and hyphens.
+     */
+    key: string;
+    /**
+     * The tag value to match. Values are case-sensitive, preserve whitespace, and must not contain NUL characters.
+     */
+    value: string;
+}
+
 export interface AccessPolicyRequireUserRiskScore {
     /**
      * A list of risk score levels to match. Values can be low, medium, high, or unscored.
@@ -3271,12 +3356,19 @@ export interface AccessPolicyRequireUserRiskScore {
 
 export interface AccessRuleConfiguration {
     /**
-     * The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
-     * Available values: "ip", "ip6", "ipRange", "asn", "country".
+     * For `target: ip`: The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
      */
     target?: string;
     /**
-     * The IP address to match. This address will be compared to the IP address of incoming requests.
+     * For `target: ip`: The IP address to match. This address will be compared to the IP address of incoming requests.
+     *
+     * For `target: ip6`: The IPv6 address to match.
+     *
+     * For `target: ipRange`: The IP address range to match. You can only use prefix lengths `/16` and `/24` for IPv4 ranges, and prefix lengths `/32`, `/48`, and `/64` for IPv6 ranges.
+     *
+     * For `target: asn`: The AS number to match.
+     *
+     * For `target: country`: The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country).
      */
     value?: string;
 }
@@ -3302,10 +3394,6 @@ export interface AccountDnsSettingsZoneDefaults {
      * Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
      */
     flattenAllCnames?: boolean;
-    /**
-     * Whether to enable Foundation DNS Advanced Nameservers on the zone.
-     */
-    foundationDns?: boolean;
     /**
      * Settings for this internal zone.
      */
@@ -3347,7 +3435,7 @@ export interface AccountDnsSettingsZoneDefaultsInternalDns {
 export interface AccountDnsSettingsZoneDefaultsNameservers {
     /**
      * Nameserver type
-     * Available values: "cloudflare.standard", "cloudflare.standard.random", "custom.account", "custom.tenant".
+     * Available values: "cloudflare.standard", "cloudflare.advanced", "cloudflare.standard.random", "custom.account", "custom.tenant".
      */
     type?: string;
 }
@@ -3383,6 +3471,28 @@ export interface AccountDnsSettingsZoneDefaultsSoa {
     ttl?: number;
 }
 
+export interface AccountLegacyFlags {
+    /**
+     * Enterprise zone quota for standard and enterprise accounts. Accounts without a quota have a maximum of 0.
+     */
+    enterpriseZoneQuota: outputs.AccountLegacyFlagsEnterpriseZoneQuota;
+}
+
+export interface AccountLegacyFlagsEnterpriseZoneQuota {
+    /**
+     * Number of additional Enterprise zones available. Returns 0 if the quota is not allocated or is exhausted.
+     */
+    available: number;
+    /**
+     * Current number of Enterprise zones.
+     */
+    current: number;
+    /**
+     * Maximum number of Enterprise zones allowed.
+     */
+    maximum: number;
+}
+
 export interface AccountManagedBy {
     /**
      * ID of the parent Organization, if one exists
@@ -3392,6 +3502,14 @@ export interface AccountManagedBy {
      * Name of the parent Organization, if one exists
      */
     parentOrgName: string;
+    /**
+     * ID of the root Organization, if one exists
+     */
+    rootOrgId: string;
+    /**
+     * Indicates whether the parent Organization hierarchy should be displayed
+     */
+    shouldDisplayParentOrgs: boolean;
 }
 
 export interface AccountMemberPolicy {
@@ -3758,6 +3876,10 @@ export interface AiGatewayGuardrailsPrompt {
     /**
      * Available values: "FLAG", "BLOCK".
      */
+    s14?: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
     s2?: string;
     /**
      * Available values: "FLAG", "BLOCK".
@@ -3814,6 +3936,10 @@ export interface AiGatewayGuardrailsResponse {
      * Available values: "FLAG", "BLOCK".
      */
     s13?: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s14?: string;
     /**
      * Available values: "FLAG", "BLOCK".
      */
@@ -3961,24 +4087,24 @@ export interface AiSearchInstanceMetadataCreatedFromEmdashPlugin {
 
 export interface AiSearchInstancePublicEndpointParams {
     authorizedHosts?: string[];
-    chatCompletionsEndpoint: outputs.AiSearchInstancePublicEndpointParamsChatCompletionsEndpoint;
+    chatCompletionsEndpoint?: outputs.AiSearchInstancePublicEndpointParamsChatCompletionsEndpoint;
     /**
      * Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
      */
-    customDomains?: string[];
+    customDomains: string[];
     /**
      * When false, the instance is reachable only via a registered custom domain and the default \n\n.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public*endpoint*params is replaced wholesale on update, so resend default*domain*enabled on every update to keep the default host off — omitting it resets to true.
      */
     defaultDomainEnabled: boolean;
     enabled: boolean;
     mcp: outputs.AiSearchInstancePublicEndpointParamsMcp;
-    rateLimit?: outputs.AiSearchInstancePublicEndpointParamsRateLimit;
-    searchEndpoint: outputs.AiSearchInstancePublicEndpointParamsSearchEndpoint;
+    rateLimit: outputs.AiSearchInstancePublicEndpointParamsRateLimit;
+    searchEndpoint?: outputs.AiSearchInstancePublicEndpointParamsSearchEndpoint;
 }
 
 export interface AiSearchInstancePublicEndpointParamsChatCompletionsEndpoint {
     /**
-     * Disable chat completions endpoint for this public endpoint
+     * Disable chat completions endpoint for this public endpoint.
      */
     disabled: boolean;
 }
@@ -3986,7 +4112,7 @@ export interface AiSearchInstancePublicEndpointParamsChatCompletionsEndpoint {
 export interface AiSearchInstancePublicEndpointParamsMcp {
     description: string;
     /**
-     * Disable MCP endpoint for this public endpoint
+     * Disable MCP endpoint for this public endpoint.
      */
     disabled: boolean;
 }
@@ -4002,7 +4128,7 @@ export interface AiSearchInstancePublicEndpointParamsRateLimit {
 
 export interface AiSearchInstancePublicEndpointParamsSearchEndpoint {
     /**
-     * Disable search endpoint for this public endpoint
+     * Disable search endpoint for this public endpoint.
      */
     disabled: boolean;
 }
@@ -4013,10 +4139,10 @@ export interface AiSearchInstanceRetrievalOptions {
      */
     boostBies?: outputs.AiSearchInstanceRetrievalOptionsBoostBy[];
     /**
-     * Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'.
+     * Controls which documents become candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term and ranks results according to BM25 relevance. When omitted on an update, the existing stored value stays unchanged; when never set, search falls back to 'and'.
      * Available values: "and", "or".
      */
-    keywordMatchMode?: string;
+    keywordMatchMode: string;
 }
 
 export interface AiSearchInstanceRetrievalOptionsBoostBy {
@@ -4024,7 +4150,7 @@ export interface AiSearchInstanceRetrievalOptionsBoostBy {
      * Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not*exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields.
      * Available values: "asc", "desc", "exists", "not*exists".
      */
-    direction?: string;
+    direction: string;
     /**
      * Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom*metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not*exists); text/boolean fields only support exists/not_exists.
      */
@@ -4033,11 +4159,11 @@ export interface AiSearchInstanceRetrievalOptionsBoostBy {
 
 export interface AiSearchInstanceSourceParams {
     /**
-     * List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it.
+     * List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts have a limit of 10 rules; contact support to raise it.
      */
     excludeItems?: string[];
     /**
-     * List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it.
+     * List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts have a limit of 10 rules; contact support to raise it.
      */
     includeItems?: string[];
     prefix?: string;
@@ -4047,16 +4173,15 @@ export interface AiSearchInstanceSourceParams {
 
 export interface AiSearchInstanceSourceParamsWebCrawler {
     /**
-     * Options for parse*type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'.
+     * Options for parse*type 'discover', where Browser Run discovers URLs through link following and sitemaps. Ignored for 'sitemap'.
      */
     discoverOptions?: outputs.AiSearchInstanceSourceParamsWebCrawlerDiscoverOptions;
     parseOptions?: outputs.AiSearchInstanceSourceParamsWebCrawlerParseOptions;
     /**
-     * How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account.
+     * How the crawler finds URLs. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to belong to a Verified zone on this account.
      * Available values: "sitemap", "discover".
      */
     parseType: string;
-    storeOptions: outputs.AiSearchInstanceSourceParamsWebCrawlerStoreOptions;
 }
 
 export interface AiSearchInstanceSourceParamsWebCrawlerDiscoverOptions {
@@ -4065,7 +4190,7 @@ export interface AiSearchInstanceSourceParamsWebCrawlerDiscoverOptions {
      */
     depth: number;
     /**
-     * Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own.
+     * Follow links that point outside the source domain. Must stay `false` because discover crawls only cover the zone you own.
      */
     includeExternalLinks: boolean;
     /**
@@ -4089,11 +4214,11 @@ export interface AiSearchInstanceSourceParamsWebCrawlerDiscoverOptions {
 
 export interface AiSearchInstanceSourceParamsWebCrawlerParseOptions {
     /**
-     * List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.
+     * List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. The crawler stores and indexes only the matched HTML fragment. Omit the field to disable content selection; the API rejects empty arrays.
      */
     contentSelectors?: outputs.AiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSelector[];
     /**
-     * Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF).
+     * Up to 5 custom HTTP headers sent with each crawl request. Names must use RFC-7230 token characters, excluding spaces, colons, and control characters. Values must use HTAB and printable ASCII only, excluding CR and LF.
      */
     includeHeaders?: {[key: string]: string};
     includeImages: boolean;
@@ -4110,15 +4235,9 @@ export interface AiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSelect
      */
     path: string;
     /**
-     * CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, ). Must target a single element; if multiple elements match, the selector is ignored and the full page is used.
+     * CSS selector to extract content from pages matching the path pattern. Disallowed characters: ;, `, $, {, }, . Must target a single element; if multiple elements match, the crawler ignores the selector and uses the full page.
      */
     selector: string;
-}
-
-export interface AiSearchInstanceSourceParamsWebCrawlerStoreOptions {
-    r2Jurisdiction: string;
-    storageId: string;
-    storageType: string;
 }
 
 export interface AiSearchNamespacePublicEndpointParams {
@@ -4134,7 +4253,7 @@ export interface AiSearchNamespacePublicEndpointParams {
     defaultDomainEnabled: boolean;
     enabled: boolean;
     /**
-     * Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account's multi-instance search limit.
+     * Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must reference an existing instance in this namespace, and the list must stay within the account's multi-instance search limit.
      */
     instancesAlloweds: string[];
     mcp: outputs.AiSearchNamespacePublicEndpointParamsMcp;
@@ -4144,7 +4263,7 @@ export interface AiSearchNamespacePublicEndpointParams {
 
 export interface AiSearchNamespacePublicEndpointParamsChatCompletionsEndpoint {
     /**
-     * Disable chat completions endpoint for this public endpoint
+     * Disable chat completions endpoint for this public endpoint.
      */
     disabled: boolean;
 }
@@ -4152,7 +4271,7 @@ export interface AiSearchNamespacePublicEndpointParamsChatCompletionsEndpoint {
 export interface AiSearchNamespacePublicEndpointParamsMcp {
     description: string;
     /**
-     * Disable MCP endpoint for this public endpoint
+     * Disable MCP endpoint for this public endpoint.
      */
     disabled: boolean;
 }
@@ -4168,14 +4287,25 @@ export interface AiSearchNamespacePublicEndpointParamsRateLimit {
 
 export interface AiSearchNamespacePublicEndpointParamsSearchEndpoint {
     /**
-     * Disable search endpoint for this public endpoint
+     * Disable search endpoint for this public endpoint.
      */
     disabled: boolean;
 }
 
+export interface AiSecurityCustomTopicsTopic {
+    /**
+     * Unique label identifier. Must contain only lowercase letters (a–z), digits (0–9), and hyphens.
+     */
+    label: string;
+    /**
+     * Description of the topic category. Must contain 2–50 UTF-8 bytes. Text in any language is supported, including spaces, numbers, punctuation, and symbols. Tabs, line breaks, invalid text, and invisible formatting characters are not allowed.
+     */
+    topic: string;
+}
+
 export interface ApiShieldAuthIdCharacteristic {
     /**
-     * The name of the characteristic field, i.e., the header or cookie name.
+     * For `type: header` or `type: cookie`: The name of the characteristic field, i.e., the header or cookie name.
      */
     name: string;
     /**
@@ -4480,6 +4610,34 @@ export interface AuthenticatedOriginPullsConfig {
     hostname?: string;
 }
 
+export interface BotManagementAiAgents {
+    /**
+     * Action to apply to one supported personal AI agent.
+     * Available values: "disabled", "block", "only*on*ad_pages".
+     */
+    anthropicAgent: string;
+    /**
+     * Action to apply to one supported personal AI agent.
+     * Available values: "disabled", "block", "only*on*ad_pages".
+     */
+    googleAgent: string;
+    /**
+     * Action to apply to one supported personal AI agent.
+     * Available values: "disabled", "block", "only*on*ad_pages".
+     */
+    instinct: string;
+    /**
+     * Action to apply to one supported personal AI agent.
+     * Available values: "disabled", "block", "only*on*ad_pages".
+     */
+    muse: string;
+    /**
+     * Action to apply to one supported personal AI agent.
+     * Available values: "disabled", "block", "only*on*ad_pages".
+     */
+    openaiAgent: string;
+}
+
 export interface BotManagementStaleZoneConfiguration {
     /**
      * Indicates that the zone's Bot Fight Mode is turned on.
@@ -4696,6 +4854,14 @@ export interface ConnectivityDirectoryServiceTlsSettings {
      * TLS certificate verification mode for the connection to the origin.
      */
     certVerificationMode: string;
+    /**
+     * UUID of the custom CA certificate or chain.
+     */
+    certificateAuthority?: string;
+    /**
+     * UUID of the mTLS client certificate and private key.
+     */
+    clientCertificate?: string;
 }
 
 export interface ContentScanningExpressionBody {
@@ -4780,7 +4946,7 @@ export interface CustomHostnameSsl {
     /**
      * Indicates whether the certificate covers a wildcard.
      */
-    wildcard?: boolean;
+    wildcard: boolean;
 }
 
 export interface CustomHostnameSslCustomCertBundle {
@@ -4909,10 +5075,22 @@ export interface DevicePostureIntegrationConfig {
     accessClientId?: string;
     /**
      * If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `apiUrl`.
+     *
+     * This secret will be passed in the `CF-Access-Client-Secret` header when hitting the `apiUrl`.
      */
     accessClientSecret?: string;
     /**
      * The Workspace One API URL provided in the Workspace One Admin Dashboard.
+     *
+     * The Crowdstrike API URL.
+     *
+     * The Uptycs API URL.
+     *
+     * The Tanium API URL.
+     *
+     * The SentinelOne S2S API URL.
+     *
+     * The Custom Device Posture Integration  API URL.
      */
     apiUrl?: string;
     /**
@@ -4921,6 +5099,12 @@ export interface DevicePostureIntegrationConfig {
     authUrl?: string;
     /**
      * The Workspace One client ID provided in the Workspace One Admin Dashboard.
+     *
+     * The Crowdstrike client ID.
+     *
+     * The Intune client ID.
+     *
+     * The Kolide client ID.
      */
     clientId?: string;
     /**
@@ -4929,10 +5113,26 @@ export interface DevicePostureIntegrationConfig {
     clientKey?: string;
     /**
      * The Workspace One client secret provided in the Workspace One Admin Dashboard.
+     *
+     * The Crowdstrike client secret.
+     *
+     * The Uptycs client secret.
+     *
+     * The Intune client secret.
+     *
+     * The Kolide client secret.
+     *
+     * The Tanium client secret.
+     *
+     * The SentinelOne S2S client secret.
      */
     clientSecret?: string;
     /**
      * The Crowdstrike customer ID.
+     *
+     * The Uptycs customer ID.
+     *
+     * The Intune customer ID.
      */
     customerId?: string;
 }
@@ -4985,7 +5185,7 @@ export interface DevicePostureRuleInput {
      */
     eidLastSeen?: string;
     /**
-     * Enabled.
+     * Whether the rule is enabled. This is a computed, read-only value. It is false for deprecated Kolide posture rules that still use the issueCount input, and true otherwise.
      */
     enabled?: boolean;
     /**
@@ -4997,7 +5197,7 @@ export interface DevicePostureRuleInput {
      */
     extendedKeyUsages?: string[];
     /**
-     * List ID.
+     * API UUID.
      */
     id?: string;
     /**
@@ -5024,16 +5224,20 @@ export interface DevicePostureRuleInput {
     networkStatus?: string;
     /**
      * Operating system.
+     *
+     * Operating System.
      * Available values: "windows", "linux", "mac", "android", "ios", "chromeos".
      */
     operatingSystem?: string;
     /**
      * Agent operational state.
-     * Available values: "na", "partially*disabled", "auto*fully*disabled", "fully*disabled", "auto*partially*disabled", "disabled*error", "db*corruption".
+     * Available values: "na", "partiallyDisabled", "autoFullyDisabled", "fullyDisabled", "autoPartiallyDisabled", "disabledError", "dbCorruption".
      */
     operationalState?: string;
     /**
      * Operator.
+     *
+     * Operator to evaluate riskLevel or eid_last_seen.
      * Available values: "<", "<=", ">", ">=", "==".
      */
     operator?: string;
@@ -5059,6 +5263,8 @@ export interface DevicePostureRuleInput {
     overall?: string;
     /**
      * File path.
+     *
+     * Path for the application.
      */
     path?: string;
     /**
@@ -5110,6 +5316,8 @@ export interface DevicePostureRuleInput {
     updateWindowDays?: number;
     /**
      * Version of OS.
+     *
+     * Version.
      */
     version?: string;
     /**
@@ -5296,6 +5504,8 @@ export interface DnsRecordData {
     preference?: number;
     /**
      * Priority.
+     *
+     * Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
      */
     priority?: number;
     /**
@@ -5332,10 +5542,15 @@ export interface DnsRecordData {
     tag?: string;
     /**
      * Target.
+     *
+     * A valid hostname.
+     *
+     * The record content.
      */
     target?: string;
     /**
-     * Type.
+     * Record type.
+     * Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
      */
     type?: number;
     /**
@@ -5344,6 +5559,8 @@ export interface DnsRecordData {
     usage?: number;
     /**
      * Value of the record. This field's semantics depend on the chosen tag.
+     *
+     * Value.
      */
     value?: string;
     /**
@@ -5616,20 +5833,15 @@ export interface FlagshipFlagRuleConditionClauseClauseClauseClause {
 }
 
 export interface FlagshipFlagRuleConditionClauseClauseClauseClauseClause {
-    attribute?: string;
-    clauses?: string[];
-    /**
-     * Available values: "AND", "OR".
-     */
-    logicalOperator?: string;
+    attribute: string;
     /**
      * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "notHas".
      */
-    operator?: string;
+    operator: string;
     /**
      * Value to compare against the context attribute. Must be an array for `in` and `notIn`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
      */
-    value?: string;
+    value: string;
 }
 
 export interface FlagshipFlagRuleRollout {
@@ -5645,12 +5857,19 @@ export interface FlagshipFlagRuleRollout {
 
 export interface GetAccessRuleConfiguration {
     /**
-     * The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
-     * Available values: "ip", "ip6", "ipRange", "asn", "country".
+     * For `target: ip`: The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
      */
     target: string;
     /**
-     * The IP address to match. This address will be compared to the IP address of incoming requests.
+     * For `target: ip`: The IP address to match. This address will be compared to the IP address of incoming requests.
+     *
+     * For `target: ip6`: The IPv6 address to match.
+     *
+     * For `target: ipRange`: The IP address range to match. You can only use prefix lengths `/16` and `/24` for IPv4 ranges, and prefix lengths `/32`, `/48`, and `/64` for IPv6 ranges.
+     *
+     * For `target: asn`: The AS number to match.
+     *
+     * For `target: country`: The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country).
      */
     value: string;
 }
@@ -5764,12 +5983,12 @@ export interface GetAccessRulesResult {
 
 export interface GetAccessRulesResultConfiguration {
     /**
-     * The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
-     * Available values: "ip", "ip6", "ipRange", "asn", "country".
+     * For `target: ip`: The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
      */
     target: string;
     /**
-     * The IP address to match. This address will be compared to the IP address of incoming requests.
+     * Defines the target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
+     * Notes: You can search for a single IPv4 address, an IP address range with a subnet of '/16' or '/24', or a two-letter ISO-3166-1 alpha-2 country code.
      */
     value: string;
 }
@@ -5932,10 +6151,6 @@ export interface GetAccountDnsSettingsZoneDefaults {
      */
     flattenAllCnames: boolean;
     /**
-     * Whether to enable Foundation DNS Advanced Nameservers on the zone.
-     */
-    foundationDns: boolean;
-    /**
      * Settings for this internal zone.
      */
     internalDns: outputs.GetAccountDnsSettingsZoneDefaultsInternalDns;
@@ -5976,7 +6191,7 @@ export interface GetAccountDnsSettingsZoneDefaultsInternalDns {
 export interface GetAccountDnsSettingsZoneDefaultsNameservers {
     /**
      * Nameserver type
-     * Available values: "cloudflare.standard", "cloudflare.standard.random", "custom.account", "custom.tenant".
+     * Available values: "cloudflare.standard", "cloudflare.advanced", "cloudflare.standard.random", "custom.account", "custom.tenant".
      */
     type: string;
 }
@@ -6024,6 +6239,28 @@ export interface GetAccountFilter {
     name?: string;
 }
 
+export interface GetAccountLegacyFlags {
+    /**
+     * Enterprise zone quota for standard and enterprise accounts. Accounts without a quota have a maximum of 0.
+     */
+    enterpriseZoneQuota: outputs.GetAccountLegacyFlagsEnterpriseZoneQuota;
+}
+
+export interface GetAccountLegacyFlagsEnterpriseZoneQuota {
+    /**
+     * Number of additional Enterprise zones available. Returns 0 if the quota is not allocated or is exhausted.
+     */
+    available: number;
+    /**
+     * Current number of Enterprise zones.
+     */
+    current: number;
+    /**
+     * Maximum number of Enterprise zones allowed.
+     */
+    maximum: number;
+}
+
 export interface GetAccountManagedBy {
     /**
      * ID of the parent Organization, if one exists
@@ -6033,6 +6270,14 @@ export interface GetAccountManagedBy {
      * Name of the parent Organization, if one exists
      */
     parentOrgName: string;
+    /**
+     * ID of the root Organization, if one exists
+     */
+    rootOrgId: string;
+    /**
+     * Indicates whether the parent Organization hierarchy should be displayed
+     */
+    shouldDisplayParentOrgs: boolean;
 }
 
 export interface GetAccountMemberFilter {
@@ -6985,6 +7230,18 @@ export interface GetAccountTokensResult {
      * Available values: "active", "disabled", "expired".
      */
     status: string;
+    /**
+     * The prefix of the token value, before the first underscore. Use it with
+     * `tokenSuffix` to identify a token. Only present for tokens created or
+     * rolled after this field was added.
+     */
+    tokenPrefix: string;
+    /**
+     * The last 4 characters of the token value. Use it with `tokenPrefix` to
+     * identify a token. It is not unique. Only present for tokens created or
+     * rolled after this field was added.
+     */
+    tokenSuffix: string;
 }
 
 export interface GetAccountTokensResultCondition {
@@ -7085,6 +7342,10 @@ export interface GetAccountsResult {
      */
     id: string;
     /**
+     * Legacy account flags.
+     */
+    legacyFlags: outputs.GetAccountsResultLegacyFlags;
+    /**
      * Parent container details
      */
     managedBy: outputs.GetAccountsResultManagedBy;
@@ -7102,6 +7363,28 @@ export interface GetAccountsResult {
     type: string;
 }
 
+export interface GetAccountsResultLegacyFlags {
+    /**
+     * Enterprise zone quota for standard and enterprise accounts. Accounts without a quota have a maximum of 0.
+     */
+    enterpriseZoneQuota: outputs.GetAccountsResultLegacyFlagsEnterpriseZoneQuota;
+}
+
+export interface GetAccountsResultLegacyFlagsEnterpriseZoneQuota {
+    /**
+     * Number of additional Enterprise zones available. Returns 0 if the quota is not allocated or is exhausted.
+     */
+    available: number;
+    /**
+     * Current number of Enterprise zones.
+     */
+    current: number;
+    /**
+     * Maximum number of Enterprise zones allowed.
+     */
+    maximum: number;
+}
+
 export interface GetAccountsResultManagedBy {
     /**
      * ID of the parent Organization, if one exists
@@ -7111,6 +7394,14 @@ export interface GetAccountsResultManagedBy {
      * Name of the parent Organization, if one exists
      */
     parentOrgName: string;
+    /**
+     * ID of the root Organization, if one exists
+     */
+    rootOrgId: string;
+    /**
+     * Indicates whether the parent Organization hierarchy should be displayed
+     */
+    shouldDisplayParentOrgs: boolean;
 }
 
 export interface GetAccountsResultSettings {
@@ -7311,6 +7602,10 @@ export interface GetAiGatewayGuardrailsPrompt {
     /**
      * Available values: "FLAG", "BLOCK".
      */
+    s14: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
     s2: string;
     /**
      * Available values: "FLAG", "BLOCK".
@@ -7367,6 +7662,10 @@ export interface GetAiGatewayGuardrailsResponse {
      * Available values: "FLAG", "BLOCK".
      */
     s13: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s14: string;
     /**
      * Available values: "FLAG", "BLOCK".
      */
@@ -7468,6 +7767,9 @@ export interface GetAiGatewayStripeUsageEvent {
 }
 
 export interface GetAiGatewaysResult {
+    /**
+     * Require authentication for gateway access. New gateways must have authentication enabled. Once enabled, authentication cannot be disabled.
+     */
     authentication: boolean;
     /**
      * Requires customer-provided provider credentials and prevents fallback to Unified Billing.
@@ -7478,6 +7780,16 @@ export interface GetAiGatewaysResult {
     collectLogs: boolean;
     createdAt: string;
     dlp: outputs.GetAiGatewaysResultDlp;
+    /**
+     * FedRAMP compliance level: fedramp-medium or fedramp-high.
+     * Available values: "fedramp-medium", "fedramp-high".
+     */
+    fedrampLevel: string;
+    /**
+     * FedRAMP enforcement mode. "prefer" prioritizes compliant connectors but allows fallback. "require" strictly filters.
+     * Available values: "prefer", "require".
+     */
+    fedrampMode: string;
     guardrails: outputs.GetAiGatewaysResultGuardrails;
     /**
      * Unique identifier of the AI Gateway within the account.
@@ -7514,6 +7826,9 @@ export interface GetAiGatewaysResult {
      */
     retryMaxAttempts: number;
     spendLimits: outputs.GetAiGatewaysResultSpendLimits;
+    /**
+     * Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it.
+     */
     storeId: string;
     stripe: outputs.GetAiGatewaysResultStripe;
     /**
@@ -7578,6 +7893,10 @@ export interface GetAiGatewaysResultGuardrailsPrompt {
     /**
      * Available values: "FLAG", "BLOCK".
      */
+    s14: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
     s2: string;
     /**
      * Available values: "FLAG", "BLOCK".
@@ -7634,6 +7953,10 @@ export interface GetAiGatewaysResultGuardrailsResponse {
      * Available values: "FLAG", "BLOCK".
      */
     s13: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s14: string;
     /**
      * Available values: "FLAG", "BLOCK".
      */
@@ -7744,13 +8067,9 @@ export interface GetAiSearchInstanceCustomMetadata {
 
 export interface GetAiSearchInstanceFilter {
     /**
-     * Filter by exact Search for Agents hostname (case-insensitive).
+     * Return only instances with this exact Search for Agents hostname (case-insensitive).
      */
     hostname?: string;
-    /**
-     * Filter by namespace.
-     */
-    namespace?: string;
     /**
      * Field to order results by.
      * Available values: "createdAt".
@@ -7823,7 +8142,7 @@ export interface GetAiSearchInstancePublicEndpointParams {
 
 export interface GetAiSearchInstancePublicEndpointParamsChatCompletionsEndpoint {
     /**
-     * Disable chat completions endpoint for this public endpoint
+     * Disable chat completions endpoint for this public endpoint.
      */
     disabled: boolean;
 }
@@ -7831,7 +8150,7 @@ export interface GetAiSearchInstancePublicEndpointParamsChatCompletionsEndpoint 
 export interface GetAiSearchInstancePublicEndpointParamsMcp {
     description: string;
     /**
-     * Disable MCP endpoint for this public endpoint
+     * Disable MCP endpoint for this public endpoint.
      */
     disabled: boolean;
 }
@@ -7847,7 +8166,7 @@ export interface GetAiSearchInstancePublicEndpointParamsRateLimit {
 
 export interface GetAiSearchInstancePublicEndpointParamsSearchEndpoint {
     /**
-     * Disable search endpoint for this public endpoint
+     * Disable search endpoint for this public endpoint.
      */
     disabled: boolean;
 }
@@ -7858,7 +8177,7 @@ export interface GetAiSearchInstanceRetrievalOptions {
      */
     boostBies: outputs.GetAiSearchInstanceRetrievalOptionsBoostBy[];
     /**
-     * Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.
+     * Controls which documents become candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term and ranks results according to BM25 relevance. When omitted on an update, the existing stored value stays unchanged; when never set, search falls back to 'and'.
      * Available values: "and", "or".
      */
     keywordMatchMode: string;
@@ -7878,11 +8197,11 @@ export interface GetAiSearchInstanceRetrievalOptionsBoostBy {
 
 export interface GetAiSearchInstanceSourceParams {
     /**
-     * List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it.
+     * List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts have a limit of 10 rules; contact support to raise it.
      */
     excludeItems: string[];
     /**
-     * List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it.
+     * List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts have a limit of 10 rules; contact support to raise it.
      */
     includeItems: string[];
     prefix: string;
@@ -7892,16 +8211,15 @@ export interface GetAiSearchInstanceSourceParams {
 
 export interface GetAiSearchInstanceSourceParamsWebCrawler {
     /**
-     * Options for parse*type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'.
+     * Options for parse*type 'discover', where Browser Run discovers URLs through link following and sitemaps. Ignored for 'sitemap'.
      */
     discoverOptions: outputs.GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptions;
     parseOptions: outputs.GetAiSearchInstanceSourceParamsWebCrawlerParseOptions;
     /**
-     * How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account.
+     * How the crawler finds URLs. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to belong to a Verified zone on this account.
      * Available values: "sitemap", "discover".
      */
     parseType: string;
-    storeOptions: outputs.GetAiSearchInstanceSourceParamsWebCrawlerStoreOptions;
 }
 
 export interface GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptions {
@@ -7910,7 +8228,7 @@ export interface GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptions {
      */
     depth: number;
     /**
-     * Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own.
+     * Follow links that point outside the source domain. Must stay `false` because discover crawls only cover the zone you own.
      */
     includeExternalLinks: boolean;
     /**
@@ -7934,11 +8252,11 @@ export interface GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptions {
 
 export interface GetAiSearchInstanceSourceParamsWebCrawlerParseOptions {
     /**
-     * List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.
+     * List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. The crawler stores and indexes only the matched HTML fragment. Omit the field to disable content selection; the API rejects empty arrays.
      */
     contentSelectors: outputs.GetAiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSelector[];
     /**
-     * Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF).
+     * Up to 5 custom HTTP headers sent with each crawl request. Names must use RFC-7230 token characters, excluding spaces, colons, and control characters. Values must use HTAB and printable ASCII only, excluding CR and LF.
      */
     includeHeaders: {[key: string]: string};
     includeImages: boolean;
@@ -7955,25 +8273,13 @@ export interface GetAiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSel
      */
     path: string;
     /**
-     * CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, ). Must target a single element; if multiple elements match, the selector is ignored and the full page is used.
+     * CSS selector to extract content from pages matching the path pattern. Disallowed characters: ;, `, $, {, }, . Must target a single element; if multiple elements match, the crawler ignores the selector and uses the full page.
      */
     selector: string;
 }
 
-export interface GetAiSearchInstanceSourceParamsWebCrawlerStoreOptions {
-    r2Jurisdiction: string;
-    storageId: string;
-    /**
-     * Available values: "r2".
-     */
-    storageType: string;
-}
-
 export interface GetAiSearchInstancesResult {
     aiGatewayId: string;
-    /**
-     * Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
-     */
     aisearchModel: string;
     cache: boolean;
     /**
@@ -7981,18 +8287,15 @@ export interface GetAiSearchInstancesResult {
      */
     cacheThreshold: string;
     /**
-     * Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
      * Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
      */
     cacheTtl: number;
+    chunk: boolean;
     chunkOverlap: number;
     chunkSize: number;
     createdAt: string;
     createdBy: string;
     customMetadatas: outputs.GetAiSearchInstancesResultCustomMetadata[];
-    /**
-     * Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "google-ai-studio/gemini-embedding-2", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
-     */
     embeddingModel: string;
     enable: boolean;
     engineVersion: number;
@@ -8000,19 +8303,8 @@ export interface GetAiSearchInstancesResult {
      * Available values: "max", "rrf".
      */
     fusionMethod: string;
-    /**
-     * Deprecated — use indexMethod instead.
-     *
-     * @deprecated This attribute is deprecated.
-     */
     hybridSearchEnabled: boolean;
-    /**
-     * AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
-     */
     id: string;
-    /**
-     * Controls which storage backends are used during indexing. Defaults to vector-only.
-     */
     indexMethod: outputs.GetAiSearchInstancesResultIndexMethod;
     indexingOptions: outputs.GetAiSearchInstancesResultIndexingOptions;
     lastActivity: string;
@@ -8025,25 +8317,23 @@ export interface GetAiSearchInstancesResult {
     publicEndpointId: string;
     publicEndpointParams: outputs.GetAiSearchInstancesResultPublicEndpointParams;
     reranking: boolean;
-    /**
-     * Available values: "@cf/baai/bge-reranker-base", "".
-     */
     rerankingModel: string;
     retrievalOptions: outputs.GetAiSearchInstancesResultRetrievalOptions;
-    /**
-     * Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
-     */
     rewriteModel: string;
     rewriteQuery: boolean;
     scoreThreshold: number;
     source: string;
     sourceParams: outputs.GetAiSearchInstancesResultSourceParams;
     status: string;
+    summarization: boolean;
+    summarizationModel: string;
     /**
-     * Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
      * Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
      */
     syncInterval: number;
+    systemPromptAisearch: string;
+    systemPromptIndexSummarization: string;
+    systemPromptRewriteQuery: string;
     tokenId: string;
     /**
      * Available values: "r2", "web-crawler".
@@ -8060,19 +8350,12 @@ export interface GetAiSearchInstancesResultCustomMetadata {
 }
 
 export interface GetAiSearchInstancesResultIndexMethod {
-    /**
-     * Enable keyword (BM25) storage backend.
-     */
     keyword: boolean;
-    /**
-     * Enable vector (embedding) storage backend.
-     */
     vector: boolean;
 }
 
 export interface GetAiSearchInstancesResultIndexingOptions {
     /**
-     * Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter.
      * Available values: "porter", "trigram".
      */
     keywordTokenizer: string;
@@ -8096,13 +8379,7 @@ export interface GetAiSearchInstancesResultMetadataCreatedFromEmdashPlugin {
 export interface GetAiSearchInstancesResultPublicEndpointParams {
     authorizedHosts: string[];
     chatCompletionsEndpoint: outputs.GetAiSearchInstancesResultPublicEndpointParamsChatCompletionsEndpoint;
-    /**
-     * Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
-     */
     customDomains: string[];
-    /**
-     * When false, the instance is reachable only via a registered custom domain and the default \n\n.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public*endpoint*params is replaced wholesale on update, so resend default*domain*enabled on every update to keep the default host off — omitting it resets to true.
-     */
     defaultDomainEnabled: boolean;
     enabled: boolean;
     mcp: outputs.GetAiSearchInstancesResultPublicEndpointParamsMcp;
@@ -8111,17 +8388,11 @@ export interface GetAiSearchInstancesResultPublicEndpointParams {
 }
 
 export interface GetAiSearchInstancesResultPublicEndpointParamsChatCompletionsEndpoint {
-    /**
-     * Disable chat completions endpoint for this public endpoint
-     */
     disabled: boolean;
 }
 
 export interface GetAiSearchInstancesResultPublicEndpointParamsMcp {
     description: string;
-    /**
-     * Disable MCP endpoint for this public endpoint
-     */
     disabled: boolean;
 }
 
@@ -8135,19 +8406,12 @@ export interface GetAiSearchInstancesResultPublicEndpointParamsRateLimit {
 }
 
 export interface GetAiSearchInstancesResultPublicEndpointParamsSearchEndpoint {
-    /**
-     * Disable search endpoint for this public endpoint
-     */
     disabled: boolean;
 }
 
 export interface GetAiSearchInstancesResultRetrievalOptions {
-    /**
-     * Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric/datetime fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom*metadata field.
-     */
     boostBies: outputs.GetAiSearchInstancesResultRetrievalOptionsBoostBy[];
     /**
-     * Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.
      * Available values: "and", "or".
      */
     keywordMatchMode: string;
@@ -8155,24 +8419,18 @@ export interface GetAiSearchInstancesResultRetrievalOptions {
 
 export interface GetAiSearchInstancesResultRetrievalOptionsBoostBy {
     /**
-     * Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not*exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields.
-     * Available values: "asc", "desc", "exists", "not*exists".
+     * Available values: "number", "datetime", "text", "boolean".
+     */
+    dataType: string;
+    /**
+     * Available values: "asc", "desc", "exists", "notExists".
      */
     direction: string;
-    /**
-     * Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom*metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not*exists); text/boolean fields only support exists/not_exists.
-     */
     field: string;
 }
 
 export interface GetAiSearchInstancesResultSourceParams {
-    /**
-     * List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)
-     */
     excludeItems: string[];
-    /**
-     * List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)
-     */
     includeItems: string[];
     prefix: string;
     r2Jurisdiction: string;
@@ -8183,10 +8441,9 @@ export interface GetAiSearchInstancesResultSourceParamsWebCrawler {
     discoverOptions: outputs.GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptions;
     parseOptions: outputs.GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptions;
     /**
-     * Available values: "sitemap", "feed-rss", "crawl".
+     * Available values: "sitemap", "discover".
      */
     parseType: string;
-    storeOptions: outputs.GetAiSearchInstancesResultSourceParamsWebCrawlerStoreOptions;
 }
 
 export interface GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptions {
@@ -8194,7 +8451,7 @@ export interface GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptions
     includeExternalLinks: boolean;
     includeSubdomains: boolean;
     /**
-     * Maximum number of pages to crawl. New values are capped at 100000; instances configured before that cap may report a higher stored value, which the crawler clamps at run time.
+     * Maximum number of pages to crawl. New values have a maximum of 100000; instances configured before that cap may report a higher stored value, which the crawler clamps at run time.
      */
     limit: number;
     maxAge: number;
@@ -8205,40 +8462,23 @@ export interface GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptions
 }
 
 export interface GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptions {
-    /**
-     * List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.
-     */
     contentSelectors: outputs.GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptionsContentSelector[];
-    /**
-     * Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF).
-     */
     includeHeaders: {[key: string]: string};
     includeImages: boolean;
-    /**
-     * List of specific sitemap URLs to use for crawling. Only valid when parseType is 'sitemap'.
-     */
     specificSitemaps: string[];
     useBrowserRendering: boolean;
 }
 
 export interface GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptionsContentSelector {
-    /**
-     * Glob pattern to match against the page URL path. Uses standard glob syntax: * matches within a segment, ** crosses directories.
-     */
     path: string;
-    /**
-     * CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, ). Must target a single element; if multiple elements match, the selector is ignored and the full page is used.
-     */
     selector: string;
 }
 
-export interface GetAiSearchInstancesResultSourceParamsWebCrawlerStoreOptions {
-    r2Jurisdiction: string;
-    storageId: string;
+export interface GetAiSearchNamespaceFilter {
     /**
-     * Available values: "r2".
+     * Filter namespaces whose name or description contains this string (case-insensitive).
      */
-    storageType: string;
+    search?: string;
 }
 
 export interface GetAiSearchNamespacePublicEndpointParams {
@@ -8254,7 +8494,7 @@ export interface GetAiSearchNamespacePublicEndpointParams {
     defaultDomainEnabled: boolean;
     enabled: boolean;
     /**
-     * Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account's multi-instance search limit.
+     * Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must reference an existing instance in this namespace, and the list must stay within the account's multi-instance search limit.
      */
     instancesAlloweds: string[];
     mcp: outputs.GetAiSearchNamespacePublicEndpointParamsMcp;
@@ -8264,7 +8504,7 @@ export interface GetAiSearchNamespacePublicEndpointParams {
 
 export interface GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpoint {
     /**
-     * Disable chat completions endpoint for this public endpoint
+     * Disable chat completions endpoint for this public endpoint.
      */
     disabled: boolean;
 }
@@ -8272,7 +8512,7 @@ export interface GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpoint
 export interface GetAiSearchNamespacePublicEndpointParamsMcp {
     description: string;
     /**
-     * Disable MCP endpoint for this public endpoint
+     * Disable MCP endpoint for this public endpoint.
      */
     disabled: boolean;
 }
@@ -8288,7 +8528,7 @@ export interface GetAiSearchNamespacePublicEndpointParamsRateLimit {
 
 export interface GetAiSearchNamespacePublicEndpointParamsSearchEndpoint {
     /**
-     * Disable search endpoint for this public endpoint
+     * Disable search endpoint for this public endpoint.
      */
     disabled: boolean;
 }
@@ -8299,6 +8539,7 @@ export interface GetAiSearchNamespacesResult {
      * Optional description for the namespace. Max 256 characters.
      */
     description: string;
+    id: string;
     name: string;
     publicEndpointId: string;
     publicEndpointParams: outputs.GetAiSearchNamespacesResultPublicEndpointParams;
@@ -8317,7 +8558,7 @@ export interface GetAiSearchNamespacesResultPublicEndpointParams {
     defaultDomainEnabled: boolean;
     enabled: boolean;
     /**
-     * Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account's multi-instance search limit.
+     * Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must reference an existing instance in this namespace, and the list must stay within the account's multi-instance search limit.
      */
     instancesAlloweds: string[];
     mcp: outputs.GetAiSearchNamespacesResultPublicEndpointParamsMcp;
@@ -8327,7 +8568,7 @@ export interface GetAiSearchNamespacesResultPublicEndpointParams {
 
 export interface GetAiSearchNamespacesResultPublicEndpointParamsChatCompletionsEndpoint {
     /**
-     * Disable chat completions endpoint for this public endpoint
+     * Disable chat completions endpoint for this public endpoint.
      */
     disabled: boolean;
 }
@@ -8335,7 +8576,7 @@ export interface GetAiSearchNamespacesResultPublicEndpointParamsChatCompletionsE
 export interface GetAiSearchNamespacesResultPublicEndpointParamsMcp {
     description: string;
     /**
-     * Disable MCP endpoint for this public endpoint
+     * Disable MCP endpoint for this public endpoint.
      */
     disabled: boolean;
 }
@@ -8351,7 +8592,7 @@ export interface GetAiSearchNamespacesResultPublicEndpointParamsRateLimit {
 
 export interface GetAiSearchNamespacesResultPublicEndpointParamsSearchEndpoint {
     /**
-     * Disable search endpoint for this public endpoint
+     * Disable search endpoint for this public endpoint.
      */
     disabled: boolean;
 }
@@ -8375,9 +8616,20 @@ export interface GetAiSearchTokensResult {
     name: string;
 }
 
+export interface GetAiSecurityCustomTopicsTopic {
+    /**
+     * Unique label identifier. Must contain only lowercase letters (a–z), digits (0–9), and hyphens.
+     */
+    label: string;
+    /**
+     * Description of the topic category. Must contain 2–50 UTF-8 bytes. Text in any language is supported, including spaces, numbers, punctuation, and symbols. Tabs, line breaks, invalid text, and invisible formatting characters are not allowed.
+     */
+    topic: string;
+}
+
 export interface GetApiShieldAuthIdCharacteristic {
     /**
-     * The name of the characteristic field, i.e., the header or cookie name.
+     * For `type: header` or `type: cookie`: The name of the characteristic field, i.e., the header or cookie name.
      */
     name: string;
     /**
@@ -9049,6 +9301,18 @@ export interface GetApiTokensResult {
      * Available values: "active", "disabled", "expired".
      */
     status: string;
+    /**
+     * The prefix of the token value, before the first underscore. Use it with
+     * `tokenSuffix` to identify a token. Only present for tokens created or
+     * rolled after this field was added.
+     */
+    tokenPrefix: string;
+    /**
+     * The last 4 characters of the token value. Use it with `tokenPrefix` to
+     * identify a token. It is not unique. Only present for tokens created or
+     * rolled after this field was added.
+     */
+    tokenSuffix: string;
 }
 
 export interface GetApiTokensResultCondition {
@@ -9211,6 +9475,34 @@ export interface GetAuthenticatedOriginPullsHostnameCertificatesResult {
     uploadedOn: string;
 }
 
+export interface GetBotManagementAiAgents {
+    /**
+     * Action to apply to one supported personal AI agent.
+     * Available values: "disabled", "block", "only*on*ad_pages".
+     */
+    anthropicAgent: string;
+    /**
+     * Action to apply to one supported personal AI agent.
+     * Available values: "disabled", "block", "only*on*ad_pages".
+     */
+    googleAgent: string;
+    /**
+     * Action to apply to one supported personal AI agent.
+     * Available values: "disabled", "block", "only*on*ad_pages".
+     */
+    instinct: string;
+    /**
+     * Action to apply to one supported personal AI agent.
+     * Available values: "disabled", "block", "only*on*ad_pages".
+     */
+    muse: string;
+    /**
+     * Action to apply to one supported personal AI agent.
+     * Available values: "disabled", "block", "only*on*ad_pages".
+     */
+    openaiAgent: string;
+}
+
 export interface GetBotManagementStaleZoneConfiguration {
     /**
      * Indicates that the zone's Bot Fight Mode is turned on.
@@ -9260,13 +9552,23 @@ export interface GetByoIpPrefixesResult {
      */
     advertisedModifiedAt: string;
     /**
-     * Approval state of the prefix (P = pending, V = active).
+     * Approval state of the prefix (P = pending, V = approved). Approval does not advertise the prefix or activate traffic.
      */
     approved: string;
     /**
-     * Autonomous System Number (ASN) the prefix will be advertised under.
+     * Autonomous System Number (ASN) the prefix will be advertised under. Use 13335 for Cloudflare's ASN, or your own ASN as an integer without the AS prefix. The IRR route and RPKI ROA must authorize this ASN.
      */
     asn: number;
+    /**
+     * State of ASN ownership validation for a customer-owned Autonomous System Number (ASN). Returned when an ASN ownership validation result exists. Omitted when validation does not apply, such as for Cloudflare-owned ASNs. Verification is reused for prefixes with the same account and ASN. Refer to [ASN ownership validation states](https://developers.cloudflare.com/byoip/troubleshooting/prefix-validation/#asn-ownership-validation) for state meanings and resolutions.
+     * Available values: "pending", "valid", "missing", "invalid".
+     */
+    asnOwnershipValidationState: string;
+    /**
+     * State of Autonomous System Provider Authorization (ASPA) validation for a customer-owned ASN. Returned when an ASPA validation result exists. Publishing an ASPA is optional. A published ASPA must authorize AS13335 as a provider. An invalid result blocks approval. If omitted, no ASPA validation result is available. Omission does not indicate successful validation or confirm that no ASPA exists. Refer to [ASPA validation states](https://developers.cloudflare.com/byoip/troubleshooting/prefix-validation/#aspa-validation) for state meanings and resolutions, and [ASPA authorization](https://developers.cloudflare.com/byoip/concepts/route-filtering-rpki/#aspa-authorization) for publication guidance.
+     * Available values: "pending", "valid", "invalid".
+     */
+    aspaValidationState: string;
     /**
      * IP Prefix in Classless Inter-Domain Routing format.
      */
@@ -9310,7 +9612,7 @@ export interface GetByoIpPrefixesResult {
      */
     ownershipValidationState: string;
     /**
-     * Token provided to demonstrate ownership of the prefix.
+     * Token used to verify ownership of the prefix and, when applicable, its ASN. Use the same token for both checks. Refer to the [BYOIP onboarding guide](https://developers.cloudflare.com/byoip/get-started/) for verification instructions.
      */
     ownershipValidationToken: string;
     /**
@@ -9936,6 +10238,14 @@ export interface GetConnectivityDirectoryServiceTlsSettings {
      * TLS certificate verification mode for the connection to the origin.
      */
     certVerificationMode: string;
+    /**
+     * UUID of the custom CA certificate or chain.
+     */
+    certificateAuthority: string;
+    /**
+     * UUID of the mTLS client certificate and private key.
+     */
+    clientCertificate: string;
 }
 
 export interface GetConnectivityDirectoryServicesResult {
@@ -9983,6 +10293,14 @@ export interface GetConnectivityDirectoryServicesResultTlsSettings {
      * TLS certificate verification mode for the connection to the origin.
      */
     certVerificationMode: string;
+    /**
+     * UUID of the custom CA certificate or chain.
+     */
+    certificateAuthority: string;
+    /**
+     * UUID of the mTLS client certificate and private key.
+     */
+    clientCertificate: string;
 }
 
 export interface GetContentScanningExpressionsResult {
@@ -10159,17 +10477,9 @@ export interface GetCustomHostnameSsl {
      */
     certificateAuthority: string;
     /**
-     * If a custom uploaded certificate is used.
-     */
-    customCertificate: string;
-    /**
      * The identifier for the Custom CSR that was used.
      */
     customCsrId: string;
-    /**
-     * The key for a custom uploaded certificate.
-     */
-    customKey: string;
     /**
      * DCV Delegation records for domain validation.
      */
@@ -10432,17 +10742,9 @@ export interface GetCustomHostnamesResultSsl {
      */
     certificateAuthority: string;
     /**
-     * If a custom uploaded certificate is used.
-     */
-    customCertificate: string;
-    /**
      * The identifier for the Custom CSR that was used.
      */
     customCsrId: string;
-    /**
-     * The key for a custom uploaded certificate.
-     */
-    customKey: string;
     /**
      * DCV Delegation records for domain validation.
      */
@@ -10644,7 +10946,7 @@ export interface GetCustomOriginTrustStoresResult {
      */
     status: string;
     /**
-     * When the certificate was last modified.
+     * When the certificate was last modified. Only returned when uploading a certificate.
      */
     updatedAt: string;
     /**
@@ -11184,6 +11486,8 @@ export interface GetDnsRecordData {
     usage: number;
     /**
      * Value of the record. This field's semantics depend on the chosen tag.
+     *
+     * Value.
      */
     value: string;
     /**
@@ -11937,6 +12241,10 @@ export interface GetEmailSecurityAllowPoliciesResult {
     comments: string;
     createdAt: string;
     /**
+     * Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration.
+     */
+    expiresAt: string;
+    /**
      * Allow policy identifier.
      */
     id: string;
@@ -11979,7 +12287,7 @@ export interface GetEmailSecurityAllowPoliciesResult {
     lastModified: string;
     modifiedAt: string;
     /**
-     * The pattern value to match. The format depends on `patternType`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+     * The pattern value to match. The format depends on `patternType`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents. The API also rejects a pattern that equals a domain onboarded to the account, ignoring case.
      */
     pattern: string;
     /**
@@ -12003,6 +12311,10 @@ export interface GetEmailSecurityAllowPolicyFilter {
      * Available values: "asc", "desc".
      */
     direction?: string;
+    /**
+     * Filter to return only expired policies (`true`) or only policies that still apply (`false`). Omit to return both.
+     */
+    expired?: boolean;
     /**
      * Filter to show only policies where messages from the sender are exempted from Spam, Spoof, and Bulk dispositions (not Malicious or Suspicious).
      */
@@ -12046,6 +12358,10 @@ export interface GetEmailSecurityBlockSenderFilter {
      */
     direction?: string;
     /**
+     * Filter to return only expired patterns (`true`) or only patterns that still apply (`false`). Omit to return both.
+     */
+    expired?: boolean;
+    /**
      * Field to sort by.
      * Available values: "pattern", "createdAt".
      */
@@ -12068,6 +12384,10 @@ export interface GetEmailSecurityBlockSenderFilter {
 export interface GetEmailSecurityBlockSendersResult {
     comments: string;
     createdAt: string;
+    /**
+     * Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration.
+     */
+    expiresAt: string;
     /**
      * Blocked sender pattern identifier.
      */
@@ -12632,11 +12952,6 @@ export interface GetFlagshipFlagRuleConditionClauseClauseClauseClause {
 
 export interface GetFlagshipFlagRuleConditionClauseClauseClauseClauseClause {
     attribute: string;
-    clauses: string[];
-    /**
-     * Available values: "AND", "OR".
-     */
-    logicalOperator: string;
     /**
      * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "notHas".
      */
@@ -12679,6 +12994,10 @@ export interface GetFlagshipFlagsResult {
      * Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
      */
     key: string;
+    /**
+     * Key-value metadata associated with the flag. Returned only when the flag has metadata.
+     */
+    metadata: any;
     /**
      * Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `defaultVariation`.
      */
@@ -12799,11 +13118,6 @@ export interface GetFlagshipFlagsResultRuleConditionClauseClauseClauseClause {
 
 export interface GetFlagshipFlagsResultRuleConditionClauseClauseClauseClauseClause {
     attribute: string;
-    clauses: string[];
-    /**
-     * Available values: "AND", "OR".
-     */
-    logicalOperator: string;
     /**
      * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "notHas".
      */
@@ -14032,7 +14346,7 @@ export interface GetLoadBalancerRule {
      */
     overrides: outputs.GetLoadBalancerRuleOverrides;
     /**
-     * The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.
+     * The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If all priorities are omitted or zero, the API assigns priorities based on the array order of the rules field.
      */
     priority: number;
     /**
@@ -14086,7 +14400,7 @@ export interface GetLoadBalancerRuleOverrides {
      */
     popPools: {[key: string]: string[]};
     /**
-     * Configures pool weights.
+     * Configures pool weights for a rule override. An omitted defaultWeight inherits the load balancer's default weight.
      */
     randomSteering: outputs.GetLoadBalancerRuleOverridesRandomSteering;
     /**
@@ -14136,7 +14450,7 @@ export interface GetLoadBalancerRuleOverridesLocationStrategy {
 
 export interface GetLoadBalancerRuleOverridesRandomSteering {
     /**
-     * The default weight for pools in the load balancer that are not specified in the poolWeights map.
+     * The default weight for pools in the load balancer that are not specified in the poolWeights map. An omitted value inherits the load balancer's default weight.
      */
     defaultWeight: number;
     /**
@@ -14340,7 +14654,7 @@ export interface GetLoadBalancersResultRule {
      */
     overrides: outputs.GetLoadBalancersResultRuleOverrides;
     /**
-     * The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.
+     * The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If all priorities are omitted or zero, the API assigns priorities based on the array order of the rules field.
      */
     priority: number;
     /**
@@ -14394,7 +14708,7 @@ export interface GetLoadBalancersResultRuleOverrides {
      */
     popPools: {[key: string]: string[]};
     /**
-     * Configures pool weights.
+     * Configures pool weights for a rule override. An omitted defaultWeight inherits the load balancer's default weight.
      */
     randomSteering: outputs.GetLoadBalancersResultRuleOverridesRandomSteering;
     /**
@@ -14444,7 +14758,7 @@ export interface GetLoadBalancersResultRuleOverridesLocationStrategy {
 
 export interface GetLoadBalancersResultRuleOverridesRandomSteering {
     /**
-     * The default weight for pools in the load balancer that are not specified in the poolWeights map.
+     * The default weight for pools in the load balancer that are not specified in the poolWeights map. An omitted value inherits the load balancer's default weight.
      */
     defaultWeight: number;
     /**
@@ -14511,6 +14825,46 @@ export interface GetLoadBalancersResultSessionAffinityAttributes {
      * Available values: "none", "temporary", "sticky".
      */
     zeroDowntimeFailover: string;
+}
+
+export interface GetLogExplorerDatasetsResult {
+    /**
+     * RFC3339 timestamp recording when the API created this dataset.
+     */
+    createdAt: string;
+    /**
+     * Dataset type name (e.g. `httpRequests`).
+     */
+    dataset: string;
+    /**
+     * Unique dataset ID.
+     */
+    datasetId: string;
+    /**
+     * Whether deletion is blocked. Set to `false` before deleting the dataset.
+     */
+    deletionProtection: boolean;
+    /**
+     * Whether log ingest is currently active for this dataset.
+     */
+    enabled: boolean;
+    /**
+     * Unique dataset ID.
+     */
+    id: string;
+    /**
+     * Public ID of the account or zone that owns this dataset.
+     */
+    objectId: string;
+    /**
+     * Whether this dataset belongs to an account or a zone.
+     * Available values: "account", "zone".
+     */
+    objectType: string;
+    /**
+     * RFC3339 timestamp recording when the API last updated this dataset.
+     */
+    updatedAt: string;
 }
 
 export interface GetLogpushDatasetJobOutputOptions {
@@ -14630,7 +14984,7 @@ export interface GetLogpushJobOutputOptions {
 export interface GetLogpushJobsResult {
     /**
      * Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-     * Available values: "access*requests", "account*abuse*protection*events", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "email*security*post*delivery*events", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*bgp*logs", "magic*ids*detections", "mcp*portal*logs", "mnm*flow*logs", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "turnstile*events", "warp*config*changes", "warp*toggle*changes", "websocket*analytics", "workers*trace*events", "zaraz*events", "zero*trust*network_sessions".
+     * Available values: "access*requests", "account*abuse*protection*events", "ai*gateway*events", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "email*security*post*delivery*events", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*bgp*logs", "magic*ids*detections", "mcp*portal*logs", "mnm*flow*logs", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "turnstile*events", "warp*config*changes", "warp*toggle*changes", "websocket*analytics", "workers*trace*events", "zaraz*events", "zero*trust*network_sessions".
      */
     dataset: string;
     /**
@@ -14906,8 +15260,6 @@ export interface GetMagicTransitConnectorsResult {
     lastUpdated: string;
     licenseKey: string;
     notes: string;
-    primary: boolean;
-    siteId: string;
     timezone: string;
 }
 
@@ -15052,6 +15404,17 @@ export interface GetMagicTransitSiteLanNat {
     staticPrefix: string;
 }
 
+export interface GetMagicTransitSiteLanRemoteSubnet {
+    /**
+     * A valid CIDR notation representing an IP range.
+     */
+    localAliasPrefix: string;
+    /**
+     * A valid CIDR notation representing an IP range.
+     */
+    remotePrefix: string;
+}
+
 export interface GetMagicTransitSiteLanRoutedSubnet {
     nat: outputs.GetMagicTransitSiteLanRoutedSubnetNat;
     /**
@@ -15158,6 +15521,7 @@ export interface GetMagicTransitSiteLansResult {
     name: string;
     nat: outputs.GetMagicTransitSiteLansResultNat;
     physport: number;
+    remoteSubnets: outputs.GetMagicTransitSiteLansResultRemoteSubnet[];
     routedSubnets: outputs.GetMagicTransitSiteLansResultRoutedSubnet[];
     /**
      * Identifier
@@ -15178,6 +15542,17 @@ export interface GetMagicTransitSiteLansResultNat {
      * A valid CIDR notation representing an IP range.
      */
     staticPrefix: string;
+}
+
+export interface GetMagicTransitSiteLansResultRemoteSubnet {
+    /**
+     * A valid CIDR notation representing an IP range.
+     */
+    localAliasPrefix: string;
+    /**
+     * A valid CIDR notation representing an IP range.
+     */
+    remotePrefix: string;
 }
 
 export interface GetMagicTransitSiteLansResultRoutedSubnet {
@@ -15289,6 +15664,10 @@ export interface GetMagicTransitSiteWanStaticAddressing {
      * A valid CIDR notation representing an IP range.
      */
     secondaryAddress: string;
+    /**
+     * Gateway address for the secondary connector of a high availability site.
+     */
+    secondaryGatewayAddress: string;
 }
 
 export interface GetMagicTransitSiteWansResult {
@@ -15308,6 +15687,14 @@ export interface GetMagicTransitSiteWansResult {
      * Priority of WAN for traffic loadbalancing.
      */
     priority: number;
+    /**
+     * Provisioned download rate of the WAN circuit in kilobits per second.
+     */
+    provisionedDownloadKbps: number;
+    /**
+     * Provisioned upload rate of the WAN circuit in kilobits per second.
+     */
+    provisionedUploadKbps: number;
     /**
      * Identifier
      */
@@ -15335,6 +15722,10 @@ export interface GetMagicTransitSiteWansResultStaticAddressing {
      * A valid CIDR notation representing an IP range.
      */
     secondaryAddress: string;
+    /**
+     * Gateway address for the secondary connector of a high availability site.
+     */
+    secondaryGatewayAddress: string;
 }
 
 export interface GetMagicTransitSitesResult {
@@ -15766,12 +16157,11 @@ export interface GetMonetizationRulesRule {
      */
     id: string;
     /**
-     * Price in the smallest indivisible unit of the configured payment token, encoded as a decimal string. Must be a canonical decimal integer in [1000, 100000000]: no leading zeros, and a bare JSON number is rejected. The price is required for the fixed-price schemes ("exact" and "upto") and must be at least 1000, the smallest amount the payment facilitator can settle ($0.001 for a 6-decimal token such as USDC), and at most 100000000 ($100 for a 6-decimal token). When the scheme is "origin*controlled" the origin server sets pricing dynamically and the rule carries no price: the field must be omitted — any provided value, including "0", is rejected because it would not be enforced. Responses always encode this as a string and omit it for "origin*controlled" rules; the pattern matches exactly the set of values the server accepts.
+     * For `scheme: exact` or `scheme: upto`: Price in the smallest indivisible unit of the configured payment token, encoded as a decimal string. Must be a canonical decimal integer in [1000, 100000000]: no leading zeros, and a bare JSON number is rejected. The price is required for the fixed-price schemes ("exact" and "upto") and must be at least 1000, the smallest amount the payment facilitator can settle ($0.001 for a 6-decimal token such as USDC), and at most 100000000 ($100 for a 6-decimal token). When the scheme is "origin*controlled" the origin server sets pricing dynamically and the rule carries no price: the field must be omitted — any provided value, including "0", is rejected because it would not be enforced. Responses always encode this as a string and omit it for "origin*controlled" rules; the pattern matches exactly the set of values the server accepts.
      */
     price: string;
     /**
-     * X402 payment scheme. "exact" requires the specified payment amount; "upto" permits a payment up to the specified amount. Both fixed-price schemes require the price field.
-     * Available values: "exact", "upto", "originControlled".
+     * For `scheme: exact` or `scheme: upto`: X402 payment scheme. "exact" requires the specified payment amount; "upto" permits a payment up to the specified amount. Both fixed-price schemes require the price field.
      */
     scheme: string;
 }
@@ -16508,11 +16898,24 @@ export interface GetOauthScopesResult {
 export interface GetOrganizationFilter {
     containing?: outputs.GetOrganizationFilterContaining;
     /**
+     * Sort direction for the `orderBy` field. Defaults to `asc` when `orderBy` is
+     * specified.
+     * Available values: "asc", "desc".
+     */
+    direction?: string;
+    /**
      * Only return organizations with the specified IDs (ex. id=foo&id=bar). Send multiple elements
      * by repeating the query value.
      */
     ids?: string[];
+    member?: outputs.GetOrganizationFilterMember;
     name?: outputs.GetOrganizationFilterName;
+    /**
+     * Field to order results by. Currently supported values: `name`.
+     * When not specified, results are ordered by hierarchy.
+     * Available values: "name".
+     */
+    orderBy?: string;
     /**
      * The amount of items to return. Defaults to 10.
      */
@@ -16543,6 +16946,14 @@ export interface GetOrganizationFilterContaining {
     user?: string;
 }
 
+export interface GetOrganizationFilterMember {
+    /**
+     * Filter organizations to those where the given user, by email, is an active member of
+     * that exact organization. This does not include hierarchy-derived access.
+     */
+    email?: string;
+}
+
 export interface GetOrganizationFilterName {
     /**
      * (case-insensitive) Filter the list of organizations to where the name contains a particular
@@ -16570,6 +16981,7 @@ export interface GetOrganizationFilterParent {
 }
 
 export interface GetOrganizationMeta {
+    areChildAccountsAccessibleByOrgMembers: boolean;
     /**
      * Ordered chain of organization tags from the root organization down to
      * (and including) this organization itself. Root organizations return a
@@ -16584,6 +16996,7 @@ export interface GetOrganizationMeta {
      * Enable features for Organizations.
      */
     tenantFlags: outputs.GetOrganizationMetaTenantFlags;
+    tenantType: string;
 }
 
 export interface GetOrganizationMetaTenantFlags {
@@ -16628,6 +17041,14 @@ export interface GetOrganizationsContaining {
     user?: string;
 }
 
+export interface GetOrganizationsMember {
+    /**
+     * Filter organizations to those where the given user, by email, is an active member of
+     * that exact organization. This does not include hierarchy-derived access.
+     */
+    email?: string;
+}
+
 export interface GetOrganizationsName {
     /**
      * (case-insensitive) Filter the list of organizations to where the name contains a particular
@@ -16664,6 +17085,7 @@ export interface GetOrganizationsResult {
 }
 
 export interface GetOrganizationsResultMeta {
+    areChildAccountsAccessibleByOrgMembers: boolean;
     /**
      * Ordered chain of organization tags from the root organization down to
      * (and including) this organization itself. Root organizations return a
@@ -16678,6 +17100,7 @@ export interface GetOrganizationsResultMeta {
      * Enable features for Organizations.
      */
     tenantFlags: outputs.GetOrganizationsResultMetaTenantFlags;
+    tenantType: string;
 }
 
 export interface GetOrganizationsResultMetaTenantFlags {
@@ -16705,14 +17128,6 @@ export interface GetOrganizationsResultProfile {
 }
 
 export interface GetOriginCaCertificateFilter {
-    /**
-     * Limit to the number of records returned.
-     */
-    limit?: number;
-    /**
-     * Offset the results.
-     */
-    offset?: number;
     /**
      * Identifier.
      */
@@ -16747,10 +17162,14 @@ export interface GetOriginCaCertificatesResult {
      */
     requestType: string;
     /**
-     * The number of days for which the certificate should be valid.
+     * The number of days for which the certificate was requested to be valid. Only returned in the Create Certificate response, where it echoes the requested value. Not returned when getting or listing certificates.
      * Available values: 7, 30, 90, 365, 730, 1095, 5475.
      */
     requestedValidity: number;
+    /**
+     * When the certificate was revoked.
+     */
+    revokedAt: string;
 }
 
 export interface GetOriginCloudRegionsResult {
@@ -17188,7 +17607,7 @@ export interface GetPagesProjectCanonicalDeploymentEnvVars {
      */
     type: string;
     /**
-     * Environment variable value.
+     * For `type: plainText`: Environment variable value.
      */
     value: string;
 }
@@ -17442,7 +17861,7 @@ export interface GetPagesProjectDeploymentConfigsPreviewEnvVars {
      */
     type: string;
     /**
-     * Environment variable value.
+     * For `type: plainText`: Environment variable value.
      */
     value: string;
 }
@@ -17641,7 +18060,7 @@ export interface GetPagesProjectDeploymentConfigsProductionEnvVars {
      */
     type: string;
     /**
-     * Environment variable value.
+     * For `type: plainText`: Environment variable value.
      */
     value: string;
 }
@@ -17853,7 +18272,7 @@ export interface GetPagesProjectLatestDeploymentEnvVars {
      */
     type: string;
     /**
-     * Environment variable value.
+     * For `type: plainText`: Environment variable value.
      */
     value: string;
 }
@@ -18286,7 +18705,7 @@ export interface GetPagesProjectsResultCanonicalDeploymentEnvVars {
      */
     type: string;
     /**
-     * Environment variable value.
+     * For `type: plainText`: Environment variable value.
      */
     value: string;
 }
@@ -18540,7 +18959,7 @@ export interface GetPagesProjectsResultDeploymentConfigsPreviewEnvVars {
      */
     type: string;
     /**
-     * Environment variable value.
+     * For `type: plainText`: Environment variable value.
      */
     value: string;
 }
@@ -18739,7 +19158,7 @@ export interface GetPagesProjectsResultDeploymentConfigsProductionEnvVars {
      */
     type: string;
     /**
-     * Environment variable value.
+     * For `type: plainText`: Environment variable value.
      */
     value: string;
 }
@@ -18951,7 +19370,7 @@ export interface GetPagesProjectsResultLatestDeploymentEnvVars {
      */
     type: string;
     /**
-     * Environment variable value.
+     * For `type: plainText`: Environment variable value.
      */
     value: string;
 }
@@ -19141,6 +19560,8 @@ export interface GetPipelineSinkConfig {
     accountId: string;
     /**
      * R2 Bucket to write to
+     *
+     * The R2 Bucket that hosts this catalog
      */
     bucket: string;
     /**
@@ -19213,15 +19634,25 @@ export interface GetPipelineSinkConfigRollingPolicy {
 
 export interface GetPipelineSinkFilter {
     /**
+     * Sort direction.
+     * Available values: "asc", "desc".
+     */
+    direction: string;
+    /**
      * Filters sinks by name (case-insensitive substring).
      */
     name?: string;
+    /**
+     * Sorts sinks by this field. Defaults to `createdAt`.
+     * Available values: "name", "createdAt".
+     */
+    orderBy?: string;
     pipelineId?: string;
 }
 
 export interface GetPipelineSinkFormat {
     /**
-     * Specifies the compression applied to JSON sink output.
+     * For `type: json`: Specifies the compression applied to JSON sink output.
      * Available values: "uncompressed", "gzip", "snappy", "zstd", "lz4".
      */
     compression: string;
@@ -19298,6 +19729,8 @@ export interface GetPipelineSinksResultConfig {
     accountId: string;
     /**
      * R2 Bucket to write to
+     *
+     * The R2 Bucket that hosts this catalog
      */
     bucket: string;
     /**
@@ -19370,7 +19803,7 @@ export interface GetPipelineSinksResultConfigRollingPolicy {
 
 export interface GetPipelineSinksResultFormat {
     /**
-     * Specifies the compression applied to JSON sink output.
+     * For `type: json`: Specifies the compression applied to JSON sink output.
      * Available values: "uncompressed", "gzip", "snappy", "zstd", "lz4".
      */
     compression: string;
@@ -19412,9 +19845,19 @@ export interface GetPipelineSinksResultSchemaField {
 
 export interface GetPipelineStreamFilter {
     /**
+     * Sort direction.
+     * Available values: "asc", "desc".
+     */
+    direction: string;
+    /**
      * Filters streams by name (case-insensitive substring).
      */
     name?: string;
+    /**
+     * Sorts streams by this field. Defaults to `createdAt`.
+     * Available values: "name", "createdAt".
+     */
+    orderBy?: string;
     /**
      * Specifies the public ID of the pipeline.
      */
@@ -19610,7 +20053,7 @@ export interface GetPipelineTable {
     version: number;
 }
 
-export interface GetPrecursorEnforcementRule {
+export interface GetPrecursorRule {
     /**
      * An informative description of the rule.
      */
@@ -19628,11 +20071,10 @@ export interface GetPrecursorEnforcementRule {
      */
     id: string;
     /**
-     * The override mode Precursor applies to requests matching an enforcement
-     * rule. Unlike `defaultMode`, this cannot be `off`.
-     * Available values: "min-friction", "max-security".
+     * Whether Precursor shows an interstitial when it takes action on a
+     * request.
      */
-    mode: string;
+    showInterstitial: boolean;
 }
 
 export interface GetQueueConsumer {
@@ -19647,7 +20089,7 @@ export interface GetQueueConsumer {
     deadLetterQueue: string;
     queueName: string;
     /**
-     * Name of a Worker
+     * For `type: worker`: Name of a Worker
      */
     scriptName: string;
     settings: outputs.GetQueueConsumerSettings;
@@ -19696,7 +20138,7 @@ export interface GetQueueConsumersResult {
     deadLetterQueue: string;
     queueName: string;
     /**
-     * Name of a Worker
+     * For `type: worker`: Name of a Worker
      */
     scriptName: string;
     settings: outputs.GetQueueConsumersResultSettings;
@@ -19786,7 +20228,7 @@ export interface GetQueuesResultConsumer {
     deadLetterQueue: string;
     queueName: string;
     /**
-     * Name of a Worker
+     * For `type: worker`: Name of a Worker
      */
     scriptName: string;
     settings: outputs.GetQueuesResultConsumerSettings;
@@ -20673,6 +21115,14 @@ export interface GetRulesetRuleActionParameters {
      * Controls how cached responses vary based on request headers. `default` is required and applies to any Vary response header that does not have a per-header override.
      */
     vary: outputs.GetRulesetRuleActionParametersVary;
+    /**
+     * Whether to serve the WebMCP bridge script, which exposes the page's tools to browser AI agents.
+     */
+    webmcpEnabled: boolean;
+    /**
+     * Bundled WebMCP tool packs to activate for matching requests. An empty list disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself.
+     */
+    webmcpPacks: string[];
 }
 
 export interface GetRulesetRuleActionParametersAlgorithm {
@@ -21598,7 +22048,7 @@ export interface GetSecretsStoreSecretsResult {
      */
     name: string;
     /**
-     * The list of services that can use this secret.
+     * The list of services that can use this secret, or null when the secret inherits its store's scopes. Set it to null in a patch to inherit again. An empty list lets no service use the secret.
      */
     scopes: string[];
     /**
@@ -21641,6 +22091,11 @@ export interface GetShareFilter {
      */
     direction: string;
     /**
+     * Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+     * Available values: "api", "mirror".
+     */
+    includeTagsFrom?: string;
+    /**
      * Filter shares by kind.
      * Available values: "sent", "received".
      */
@@ -21672,15 +22127,15 @@ export interface GetShareFilter {
 
 export interface GetShareRecipientResource {
     /**
-     * Share Recipient error message.
+     * Error from the most recent attempt to apply the resource to the recipient. Empty string when no error has been recorded.
      */
     error: string;
     /**
-     * Share Resource identifier.
+     * Identifier assigned by the service that owns the shared resource.
      */
     resourceId: string;
     /**
-     * Resource Version.
+     * Resource version applied to the recipient, if reconciliation has occurred.
      */
     resourceVersion: number;
     /**
@@ -21702,7 +22157,7 @@ export interface GetShareRecipientsResult {
      */
     associationStatus: string;
     /**
-     * When the share was created.
+     * When the object was created.
      */
     created: string;
     /**
@@ -21710,7 +22165,7 @@ export interface GetShareRecipientsResult {
      */
     id: string;
     /**
-     * When the share was modified.
+     * When the object was last modified.
      */
     modified: string;
     resources: outputs.GetShareRecipientsResultResource[];
@@ -21718,15 +22173,15 @@ export interface GetShareRecipientsResult {
 
 export interface GetShareRecipientsResultResource {
     /**
-     * Share Recipient error message.
+     * Error from the most recent attempt to apply the resource to the recipient. Empty string when no error has been recorded.
      */
     error: string;
     /**
-     * Share Resource identifier.
+     * Identifier assigned by the service that owns the shared resource.
      */
     resourceId: string;
     /**
-     * Resource Version.
+     * Resource version applied to the recipient, if reconciliation has occurred.
      */
     resourceVersion: number;
     /**
@@ -21737,7 +22192,7 @@ export interface GetShareRecipientsResultResource {
 
 export interface GetShareResource {
     /**
-     * When the share was created.
+     * When the object was created.
      */
     created: string;
     /**
@@ -21749,7 +22204,7 @@ export interface GetShareResource {
      */
     meta: string;
     /**
-     * When the share was modified.
+     * When the object was last modified.
      */
     modified: string;
     /**
@@ -21757,7 +22212,7 @@ export interface GetShareResource {
      */
     resourceAccountId: string;
     /**
-     * Share Resource identifier.
+     * Identifier assigned by the service that owns the shared resource.
      */
     resourceId: string;
     /**
@@ -21791,7 +22246,7 @@ export interface GetShareResourceFilter {
 
 export interface GetShareResourcesResult {
     /**
-     * When the share was created.
+     * When the object was created.
      */
     created: string;
     /**
@@ -21803,7 +22258,7 @@ export interface GetShareResourcesResult {
      */
     meta: string;
     /**
-     * When the share was modified.
+     * When the object was last modified.
      */
     modified: string;
     /**
@@ -21811,7 +22266,7 @@ export interface GetShareResourcesResult {
      */
     resourceAccountId: string;
     /**
-     * Share Resource identifier.
+     * Identifier assigned by the service that owns the shared resource.
      */
     resourceId: string;
     /**
@@ -21848,7 +22303,7 @@ export interface GetSharesResult {
      */
     associatingRecipientCount: number;
     /**
-     * When the share was created.
+     * When the object was created.
      */
     created: string;
     /**
@@ -21868,7 +22323,7 @@ export interface GetSharesResult {
      */
     kind: string;
     /**
-     * When the share was modified.
+     * When the object was last modified.
      */
     modified: string;
     /**
@@ -21888,6 +22343,10 @@ export interface GetSharesResult {
      */
     status: string;
     /**
+     * Tags associated with the share. Included in create and update responses when tags are supplied, and in read responses when the `includeTagsFrom` parameter is set.
+     */
+    tags: {[key: string]: string};
+    /**
      * Available values: "account", "organization".
      */
     targetType: string;
@@ -21895,7 +22354,7 @@ export interface GetSharesResult {
 
 export interface GetSharesResultResource {
     /**
-     * When the share was created.
+     * When the object was created.
      */
     created: string;
     /**
@@ -21907,7 +22366,7 @@ export interface GetSharesResultResource {
      */
     meta: string;
     /**
-     * When the share was modified.
+     * When the object was last modified.
      */
     modified: string;
     /**
@@ -21915,7 +22374,7 @@ export interface GetSharesResultResource {
      */
     resourceAccountId: string;
     /**
-     * Share Resource identifier.
+     * Identifier assigned by the service that owns the shared resource.
      */
     resourceId: string;
     /**
@@ -22009,17 +22468,16 @@ export interface GetSpectrumApplicationDns {
 
 export interface GetSpectrumApplicationEdgeIps {
     /**
-     * The IP versions supported for inbound connections on Spectrum anycast IPs.
+     * For `type: dynamic`: The IP versions supported for inbound connections on Spectrum anycast IPs.
      * Available values: "all", "ipv4", "ipv6".
      */
     connectivity: string;
     /**
-     * The array of customer owned IPs we broadcast via anycast for this hostname and application.
+     * For `type: static`: The array of customer owned IPs we broadcast via anycast for this hostname and application.
      */
     ips: string[];
     /**
-     * The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.
-     * Available values: "dynamic", "static".
+     * For `type: dynamic`: The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.
      */
     type: string;
 }
@@ -22699,12 +23157,12 @@ export interface GetTokenValidationConfigCredentialsKey {
      */
     alg: string;
     /**
-     * Curve
+     * For `alg: ES256` or `alg: ES384`: Curve
      * Available values: "P-256", "P-384".
      */
     crv: string;
     /**
-     * RSA exponent
+     * For `alg: RS256` or `alg: RS384` or `alg: RS512` or `alg: PS256` or `alg: PS384` or `alg: PS512`: RSA exponent
      */
     e: string;
     /**
@@ -22717,15 +23175,15 @@ export interface GetTokenValidationConfigCredentialsKey {
      */
     kty: string;
     /**
-     * RSA modulus
+     * For `alg: RS256` or `alg: RS384` or `alg: RS512` or `alg: PS256` or `alg: PS384` or `alg: PS512`: RSA modulus
      */
     n: string;
     /**
-     * X EC coordinate
+     * For `alg: ES256` or `alg: ES384`: X EC coordinate
      */
     x: string;
     /**
-     * Y EC coordinate
+     * For `alg: ES256` or `alg: ES384`: Y EC coordinate
      */
     y: string;
 }
@@ -22758,12 +23216,12 @@ export interface GetTokenValidationConfigsResultCredentialsKey {
      */
     alg: string;
     /**
-     * Curve
+     * For `alg: ES256` or `alg: ES384`: Curve
      * Available values: "P-256", "P-384".
      */
     crv: string;
     /**
-     * RSA exponent
+     * For `alg: RS256` or `alg: RS384` or `alg: RS512` or `alg: PS256` or `alg: PS384` or `alg: PS512`: RSA exponent
      */
     e: string;
     /**
@@ -22776,15 +23234,15 @@ export interface GetTokenValidationConfigsResultCredentialsKey {
      */
     kty: string;
     /**
-     * RSA modulus
+     * For `alg: RS256` or `alg: RS384` or `alg: RS512` or `alg: PS256` or `alg: PS384` or `alg: PS512`: RSA modulus
      */
     n: string;
     /**
-     * X EC coordinate
+     * For `alg: ES256` or `alg: ES384`: X EC coordinate
      */
     x: string;
     /**
-     * Y EC coordinate
+     * For `alg: ES256` or `alg: ES384`: Y EC coordinate
      */
     y: string;
 }
@@ -23207,7 +23665,7 @@ export interface GetUserGroupsResult {
      */
     createdOn: string;
     /**
-     * User Group identifier tag.
+     * Identifier of the user group.
      */
     id: string;
     /**
@@ -24157,7 +24615,6 @@ export interface GetWorkerPreviewsBaseConfigPlacement {
     hostname: string;
     /**
      * Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: "smart", "targeted".
      */
     mode: string;
     /**
@@ -24438,7 +24895,7 @@ export interface GetWorkerVersionBinding {
      */
     id: string;
     /**
-     * Enables Gateway identity for the binding. Requires network*id to be "cf1:network" and cannot be combined with tunnel*id.
+     * Enables Gateway identity for the binding. Requires network*id to be "cf1:network" and cannot be combined with tunnel*id or an explicit "cf1:vnet:\n\n" network_id.
      * Available values: "runtime-email-alpha".
      */
     identity: string;
@@ -24480,7 +24937,7 @@ export interface GetWorkerVersionBinding {
      */
     namespaceId: string;
     /**
-     * Identifier of the network to bind to. Only "cf1:network" is currently supported. Mutually exclusive with tunnel_id.
+     * Identifier of the network to bind to. Use "cf1:network" to select the account's default virtual network at runtime, or "cf1:vnet:\n\n" to select an explicit virtual network in the Worker's account. Mutually exclusive with tunnel_id.
      */
     networkId: string;
     /**
@@ -24503,10 +24960,6 @@ export interface GetWorkerVersionBinding {
      * Name of the Queue to bind to.
      */
     queueName: string;
-    /**
-     * Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
-     */
-    retry: outputs.GetWorkerVersionBindingRetry;
     /**
      * The script where the Durable Object is defined, if it is external to this Worker.
      */
@@ -24553,7 +25006,7 @@ export interface GetWorkerVersionBinding {
      */
     usages: string[];
     /**
-     * Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version.
+     * Identifier for the version to inherit the binding from. This can be a version ID, or the literal "latest" to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to "latest". Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only "latest" and reject a version ID with error 10057.
      */
     versionId: string;
     /**
@@ -24593,17 +25046,6 @@ export interface GetWorkerVersionBindingOutboundWorker {
      * Name of the outbound worker.
      */
     service: string;
-}
-
-export interface GetWorkerVersionBindingRetry {
-    /**
-     * Maximum number of retries after the initial request, not the total number of attempts. Defaults to 4. Zero disables retries.
-     */
-    maxAttempts: number;
-    /**
-     * Retry timeout in milliseconds, measured from the start of the call. No retry starts after it expires, and a retry still running when it expires is cancelled. This is not a request timeout; it does not limit the initial request, which is still subject to any timeouts set by your Worker. Defaults to 10000.
-     */
-    timeoutMs: number;
 }
 
 export interface GetWorkerVersionBindingSimple {
@@ -25086,7 +25528,7 @@ export interface GetWorkerVersionsResultBinding {
      */
     id: string;
     /**
-     * Enables Gateway identity for the binding. Requires network*id to be "cf1:network" and cannot be combined with tunnel*id.
+     * Enables Gateway identity for the binding. Requires network*id to be "cf1:network" and cannot be combined with tunnel*id or an explicit "cf1:vnet:\n\n" network_id.
      * Available values: "runtime-email-alpha".
      */
     identity: string;
@@ -25128,7 +25570,7 @@ export interface GetWorkerVersionsResultBinding {
      */
     namespaceId: string;
     /**
-     * Identifier of the network to bind to. Only "cf1:network" is currently supported. Mutually exclusive with tunnel_id.
+     * Identifier of the network to bind to. Use "cf1:network" to select the account's default virtual network at runtime, or "cf1:vnet:\n\n" to select an explicit virtual network in the Worker's account. Mutually exclusive with tunnel_id.
      */
     networkId: string;
     /**
@@ -25151,10 +25593,6 @@ export interface GetWorkerVersionsResultBinding {
      * Name of the Queue to bind to.
      */
     queueName: string;
-    /**
-     * Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
-     */
-    retry: outputs.GetWorkerVersionsResultBindingRetry;
     /**
      * The script where the Durable Object is defined, if it is external to this Worker.
      */
@@ -25201,7 +25639,7 @@ export interface GetWorkerVersionsResultBinding {
      */
     usages: string[];
     /**
-     * Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version.
+     * Identifier for the version to inherit the binding from. This can be a version ID, or the literal "latest" to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to "latest". Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only "latest" and reject a version ID with error 10057.
      */
     versionId: string;
     /**
@@ -25241,17 +25679,6 @@ export interface GetWorkerVersionsResultBindingOutboundWorker {
      * Name of the outbound worker.
      */
     service: string;
-}
-
-export interface GetWorkerVersionsResultBindingRetry {
-    /**
-     * Maximum number of retries after the initial request, not the total number of attempts. Defaults to 4. Zero disables retries.
-     */
-    maxAttempts: number;
-    /**
-     * Retry timeout in milliseconds, measured from the start of the call. No retry starts after it expires, and a retry still running when it expires is cancelled. This is not a request timeout; it does not limit the initial request, which is still subject to any timeouts set by your Worker. Defaults to 10000.
-     */
-    timeoutMs: number;
 }
 
 export interface GetWorkerVersionsResultBindingSimple {
@@ -25512,6 +25939,10 @@ export interface GetWorkersCronTriggerSchedule {
 
 export interface GetWorkersCustomDomainFilter {
     /**
+     * Whether the configured hostname is routable for the domain.
+     */
+    enabled?: boolean;
+    /**
      * Worker environment associated with the domain.
      */
     environment?: string;
@@ -25519,6 +25950,10 @@ export interface GetWorkersCustomDomainFilter {
      * Hostname of the domain.
      */
     hostname?: string;
+    /**
+     * Whether previews are routable for the domain.
+     */
+    previewsEnabled?: boolean;
     /**
      * Name of the Worker associated with the domain.
      */
@@ -25539,6 +25974,10 @@ export interface GetWorkersCustomDomainsResult {
      */
     certId: string;
     /**
+     * Whether the configured hostname is routable for the domain. If disabled, then requests to the configured hostname will not be routed to the configured Worker. If disabled, then preview routing must be enabled, and only subdomains of the configured hostname will be routable.
+     */
+    enabled: boolean;
+    /**
      * Worker environment associated with the domain.
      *
      * @deprecated This attribute is deprecated.
@@ -25552,6 +25991,10 @@ export interface GetWorkersCustomDomainsResult {
      * Immutable ID of the domain.
      */
     id: string;
+    /**
+     * Whether previews are routable for the domain. If enabled, previews will be routable as subdomains of the configured hostname. For example, if the configured hostname is `app.example.com`, then requests to `my-feature.app.example.com` will be routed to the preview with slug `my-feature`, if such a preview exists. If preview routing is disabled, then hostname routing must be enabled.
+     */
+    previewsEnabled: boolean;
     /**
      * Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
      */
@@ -25577,6 +26020,17 @@ export interface GetWorkersDeploymentAnnotations {
     workersTriggeredBy: string;
 }
 
+export interface GetWorkersDeploymentCodeUpdateStrategy {
+    /**
+     * For `mode: deferred`: Set the maximum number of seconds to wait before forcing the update. When omitted, the default maximum delay applies.
+     */
+    maxDelay: number;
+    /**
+     * For `mode: immediate`: Apply Durable Object code updates immediately.
+     */
+    mode: string;
+}
+
 export interface GetWorkersDeploymentVersion {
     /**
      * Percentage of traffic served by this version.
@@ -25593,12 +26047,20 @@ export interface GetWorkersDeploymentsResult {
 }
 
 export interface GetWorkersDeploymentsResultDeployment {
+    /**
+     * Metadata attached to the deployment.
+     */
     annotations: outputs.GetWorkersDeploymentsResultDeploymentAnnotations;
     authorEmail: string;
+    /**
+     * Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+     */
+    codeUpdateStrategy: outputs.GetWorkersDeploymentsResultDeploymentCodeUpdateStrategy;
     createdOn: string;
     id: string;
     source: string;
     /**
+     * Strategy for routing traffic across the listed versions. `percentage` splits traffic according to each version's `percentage`.
      * Available values: "percentage".
      */
     strategy: string;
@@ -25617,6 +26079,17 @@ export interface GetWorkersDeploymentsResultDeploymentAnnotations {
      * Operation that triggered the creation of the deployment.
      */
     workersTriggeredBy: string;
+}
+
+export interface GetWorkersDeploymentsResultDeploymentCodeUpdateStrategy {
+    /**
+     * For `mode: deferred`: Set the maximum number of seconds to wait before forcing the update. When omitted, the default maximum delay applies.
+     */
+    maxDelay: number;
+    /**
+     * For `mode: immediate`: Apply Durable Object code updates immediately.
+     */
+    mode: string;
 }
 
 export interface GetWorkersDeploymentsResultDeploymentVersion {
@@ -25990,7 +26463,6 @@ export interface GetWorkersResultPreviewsBaseConfigPlacement {
     hostname: string;
     /**
      * Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: "smart", "targeted".
      */
     mode: string;
     /**
@@ -26310,9 +26782,8 @@ export interface GetWorkersScriptsResultCacheOptions {
 
 export interface GetWorkersScriptsResultExports {
     /**
-     * Cache override for this entrypoint. It applies only to
-     * `type: worker` entries and overrides the Worker's global
-     * `cache_options.enabled` for that entrypoint.
+     * For `type: worker`: Cache override for this entrypoint. Overrides the Worker's
+     * global `cache_options.enabled` for this entrypoint only.
      */
     cache: outputs.GetWorkersScriptsResultExportsCache;
     /**
@@ -26322,34 +26793,39 @@ export interface GetWorkersScriptsResultExports {
      */
     renamedTo: string;
     /**
-     * Lifecycle state of the export entry. Defaults to `created`
-     * (a normal, live export) when omitted.
+     * For `state: created`: Live export. May be omitted; defaults to `created`.
      */
     state: string;
     /**
-     * Storage backend for a `type: durable-object` export. Required
-     * for live Durable Object entries (`created` and
-     * `expecting-transfer`). `sqlite` selects SQLite-backed storage;
-     * `legacy-kv` selects the legacy key-value storage.
+     * For `type: durable-object` and `state: created`: Durable Object storage backend. `sqlite` is the recommended (and
+     * only) backend for new namespaces. `legacy-kv` is accepted only for
+     * a class whose namespace already exists as KV-backed; the `exports`
+     * flow never provisions a new `legacy-kv` namespace.
+     *
+     * For `type: durable-object` and `state: expecting-transfer`: Durable Object storage backend. `sqlite` is the recommended (and
+     * only) backend for new namespaces. `legacy-kv` is accepted only for
+     * a class whose namespace already exists as KV-backed; the `exports`
+     * flow never provisions a new `legacy-kv` namespace.
      * Available values: "sqlite", "legacy-kv".
      */
     storage: string;
     /**
-     * Source script for a `state: expecting-transfer` entry. The
-     * namespace on this script is materialised from the source
-     * script's data via the pending-transfer flow. Present on reads
-     * for `expecting-transfer` entries.
+     * For `state: expecting-transfer`: The source script name to receive the namespace from. Must be
+     * in the same account and dispatch-namespace context. Present on
+     * reads for `expecting-transfer` entries.
      */
     transferFrom: string;
     /**
-     * Destination script for a `state: transferred` tombstone. Must
-     * reference a script in the same account; cross-dispatch-namespace
-     * transfers are rejected. Write-only: never present in GET
-     * responses.
+     * For `state: transferred`: The destination script name. Must be in the same account and
+     * the same dispatch-namespace context (or both non-dispatch).
+     * Cross-dispatch-namespace transfers are rejected. Write-only:
+     * never present in GET responses.
      */
     transferredTo: string;
     /**
-     * The kind of export.
+     * For `type: worker`: Marks this entry as a Worker entrypoint export.
+     *
+     * For `type: durable-object`: Marks this entry as a Durable Object export.
      * Available values: "worker", "durable-object".
      */
     type: string;
@@ -26469,7 +26945,6 @@ export interface GetWorkersScriptsResultPlacement {
     lastAnalyzedAt: string;
     /**
      * Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: "smart", "targeted".
      */
     mode: string;
     /**
@@ -26478,7 +26953,7 @@ export interface GetWorkersScriptsResultPlacement {
     region: string;
     /**
      * Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
+     * Available values: "SUCCESS", "UNSUPPORTED_APPLICATION", "INSUFFICIENT_INVOCATIONS".
      */
     status: string;
     /**
@@ -26549,6 +27024,11 @@ export interface GetWorkflowsResult {
     createdOn: string;
     id: string;
     instances: {[key: string]: number};
+    /**
+     * Jurisdiction where instances of this workflow run and store data. Set when the workflow is created and cannot be changed.
+     * Available values: "eu", "fedramp", "us".
+     */
+    jurisdiction: string;
     modifiedOn: string;
     name: string;
     schedules: outputs.GetWorkflowsResultSchedule[];
@@ -26608,7 +27088,7 @@ export interface GetZeroTrustAccessAiControlsMcpPortalServer {
      */
     id: string;
     /**
-     * When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+     * When true, per-user authorization uses the shared Cloudflare callback URL as the 'redirect*uri' instead of the portal callback URL. The default is false. Set 'is*shared*oauth*callback_enabled' to true to enable the shared Cloudflare callback URL for this MCP server.
      */
     isSharedOauthCallbackEnabled: boolean;
     lastSuccessfulSync: string;
@@ -26621,6 +27101,10 @@ export interface GetZeroTrustAccessAiControlsMcpPortalServer {
     name: string;
     onBehalf: boolean;
     prompts: {[key: string]: string}[];
+    /**
+     * Timestamp of the most recent successful admin OAuth registration.
+     */
+    registeredAt: string;
     /**
      * Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
      */
@@ -26781,7 +27265,7 @@ export interface GetZeroTrustAccessAiControlsMcpPortalsResultServer {
      */
     id: string;
     /**
-     * When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+     * When true, per-user authorization uses the shared Cloudflare callback URL as the 'redirect*uri' instead of the portal callback URL. The default is false. Set 'is*shared*oauth*callback_enabled' to true to enable the shared Cloudflare callback URL for this MCP server.
      */
     isSharedOauthCallbackEnabled: boolean;
     lastSuccessfulSync: string;
@@ -26794,6 +27278,10 @@ export interface GetZeroTrustAccessAiControlsMcpPortalsResultServer {
     name: string;
     onBehalf: boolean;
     prompts: {[key: string]: string}[];
+    /**
+     * Timestamp of the most recent successful admin OAuth registration.
+     */
+    registeredAt: string;
     /**
      * Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
      */
@@ -27005,7 +27493,7 @@ export interface GetZeroTrustAccessAiControlsMcpServersResult {
      */
     id: string;
     /**
-     * When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+     * When true, per-user authorization uses the shared Cloudflare callback URL as the 'redirect*uri' instead of the portal callback URL. The default is false. Set 'is*shared*oauth*callback_enabled' to true to enable the shared Cloudflare callback URL for this MCP server.
      */
     isSharedOauthCallbackEnabled: boolean;
     lastSuccessfulSync: string;
@@ -27017,6 +27505,10 @@ export interface GetZeroTrustAccessAiControlsMcpServersResult {
      */
     name: string;
     prompts: {[key: string]: string}[];
+    /**
+     * Timestamp of the most recent successful admin OAuth registration.
+     */
+    registeredAt: string;
     /**
      * Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
      */
@@ -27259,7 +27751,7 @@ export interface GetZeroTrustAccessApplicationLandingPageDesign {
 export interface GetZeroTrustAccessApplicationMfaConfig {
     /**
      * The authenticators allowed for MFA.
-     * Available values: "totp", "biometrics", "securityKey".
+     * Available values: "totp", "biometrics", "security*key", "piv*key", "ssh*fido2*key".
      */
     allowedAuthenticators: string[];
     /**
@@ -27308,7 +27800,7 @@ export interface GetZeroTrustAccessApplicationPolicy {
      */
     isolationRequired: boolean;
     /**
-     * Configures multi-factor authentication (MFA) settings for this policy.
+     * Configures multi-factor authentication (MFA) settings for this policy. For infrastructure applications, supported authenticators are `pivKey` and `sshFido2Key`; for other application types use `totp`, `biometrics`, or `securityKey`.
      */
     mfaConfig: outputs.GetZeroTrustAccessApplicationPolicyMfaConfig;
     /**
@@ -27848,7 +28340,7 @@ export interface GetZeroTrustAccessApplicationPolicyIncludeServiceToken {
 export interface GetZeroTrustAccessApplicationPolicyMfaConfig {
     /**
      * The authenticators allowed for MFA.
-     * Available values: "totp", "biometrics", "security*key", "ssh*piv_key".
+     * Available values: "totp", "biometrics", "security*key", "piv*key", "ssh*fido2*key".
      */
     allowedAuthenticators: string[];
     /**
@@ -28542,7 +29034,7 @@ export interface GetZeroTrustAccessApplicationsResult {
      */
     logoUrl: string;
     /**
-     * Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+     * Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, rdp, and infrastructure application types. For infrastructure applications, supported authenticators are `pivKey` and `sshFido2Key`; for other application types use `totp`, `biometrics`, or `securityKey`.
      */
     mfaConfig: outputs.GetZeroTrustAccessApplicationsResultMfaConfig;
     /**
@@ -28723,7 +29215,7 @@ export interface GetZeroTrustAccessApplicationsResultLandingPageDesign {
 export interface GetZeroTrustAccessApplicationsResultMfaConfig {
     /**
      * The authenticators allowed for MFA.
-     * Available values: "totp", "biometrics", "securityKey".
+     * Available values: "totp", "biometrics", "security*key", "piv*key", "ssh*fido2*key".
      */
     allowedAuthenticators: string[];
     /**
@@ -28772,7 +29264,7 @@ export interface GetZeroTrustAccessApplicationsResultPolicy {
      */
     isolationRequired: boolean;
     /**
-     * Configures multi-factor authentication (MFA) settings for this policy.
+     * Configures multi-factor authentication (MFA) settings for this policy. For infrastructure applications, supported authenticators are `pivKey` and `sshFido2Key`; for other application types use `totp`, `biometrics`, or `securityKey`.
      */
     mfaConfig: outputs.GetZeroTrustAccessApplicationsResultPolicyMfaConfig;
     /**
@@ -29312,7 +29804,7 @@ export interface GetZeroTrustAccessApplicationsResultPolicyIncludeServiceToken {
 export interface GetZeroTrustAccessApplicationsResultPolicyMfaConfig {
     /**
      * The authenticators allowed for MFA.
-     * Available values: "totp", "biometrics", "security*key", "ssh*piv_key".
+     * Available values: "totp", "biometrics", "security*key", "piv*key", "ssh*fido2*key".
      */
     allowedAuthenticators: string[];
     /**
@@ -29994,6 +30486,7 @@ export interface GetZeroTrustAccessGroupExclude {
     okta: outputs.GetZeroTrustAccessGroupExcludeOkta;
     saml: outputs.GetZeroTrustAccessGroupExcludeSaml;
     serviceToken: outputs.GetZeroTrustAccessGroupExcludeServiceToken;
+    serviceTokenTag: outputs.GetZeroTrustAccessGroupExcludeServiceTokenTag;
     userRiskScore: outputs.GetZeroTrustAccessGroupExcludeUserRiskScore;
 }
 
@@ -30212,6 +30705,17 @@ export interface GetZeroTrustAccessGroupExcludeServiceToken {
     tokenId: string;
 }
 
+export interface GetZeroTrustAccessGroupExcludeServiceTokenTag {
+    /**
+     * The tag key to match. Keys are case-sensitive and may contain Unicode letters and digits, underscores, periods, and hyphens.
+     */
+    key: string;
+    /**
+     * The tag value to match. Values are case-sensitive, preserve whitespace, and must not contain NUL characters.
+     */
+    value: string;
+}
+
 export interface GetZeroTrustAccessGroupExcludeUserRiskScore {
     /**
      * A list of risk score levels to match. Values can be low, medium, high, or unscored.
@@ -30262,6 +30766,7 @@ export interface GetZeroTrustAccessGroupInclude {
     okta: outputs.GetZeroTrustAccessGroupIncludeOkta;
     saml: outputs.GetZeroTrustAccessGroupIncludeSaml;
     serviceToken: outputs.GetZeroTrustAccessGroupIncludeServiceToken;
+    serviceTokenTag: outputs.GetZeroTrustAccessGroupIncludeServiceTokenTag;
     userRiskScore: outputs.GetZeroTrustAccessGroupIncludeUserRiskScore;
 }
 
@@ -30480,6 +30985,17 @@ export interface GetZeroTrustAccessGroupIncludeServiceToken {
     tokenId: string;
 }
 
+export interface GetZeroTrustAccessGroupIncludeServiceTokenTag {
+    /**
+     * The tag key to match. Keys are case-sensitive and may contain Unicode letters and digits, underscores, periods, and hyphens.
+     */
+    key: string;
+    /**
+     * The tag value to match. Values are case-sensitive, preserve whitespace, and must not contain NUL characters.
+     */
+    value: string;
+}
+
 export interface GetZeroTrustAccessGroupIncludeUserRiskScore {
     /**
      * A list of risk score levels to match. Values can be low, medium, high, or unscored.
@@ -30519,6 +31035,7 @@ export interface GetZeroTrustAccessGroupIsDefault {
     okta: outputs.GetZeroTrustAccessGroupIsDefaultOkta;
     saml: outputs.GetZeroTrustAccessGroupIsDefaultSaml;
     serviceToken: outputs.GetZeroTrustAccessGroupIsDefaultServiceToken;
+    serviceTokenTag: outputs.GetZeroTrustAccessGroupIsDefaultServiceTokenTag;
     userRiskScore: outputs.GetZeroTrustAccessGroupIsDefaultUserRiskScore;
 }
 
@@ -30737,6 +31254,17 @@ export interface GetZeroTrustAccessGroupIsDefaultServiceToken {
     tokenId: string;
 }
 
+export interface GetZeroTrustAccessGroupIsDefaultServiceTokenTag {
+    /**
+     * The tag key to match. Keys are case-sensitive and may contain Unicode letters and digits, underscores, periods, and hyphens.
+     */
+    key: string;
+    /**
+     * The tag value to match. Values are case-sensitive, preserve whitespace, and must not contain NUL characters.
+     */
+    value: string;
+}
+
 export interface GetZeroTrustAccessGroupIsDefaultUserRiskScore {
     /**
      * A list of risk score levels to match. Values can be low, medium, high, or unscored.
@@ -30776,6 +31304,7 @@ export interface GetZeroTrustAccessGroupRequire {
     okta: outputs.GetZeroTrustAccessGroupRequireOkta;
     saml: outputs.GetZeroTrustAccessGroupRequireSaml;
     serviceToken: outputs.GetZeroTrustAccessGroupRequireServiceToken;
+    serviceTokenTag: outputs.GetZeroTrustAccessGroupRequireServiceTokenTag;
     userRiskScore: outputs.GetZeroTrustAccessGroupRequireUserRiskScore;
 }
 
@@ -30994,6 +31523,17 @@ export interface GetZeroTrustAccessGroupRequireServiceToken {
     tokenId: string;
 }
 
+export interface GetZeroTrustAccessGroupRequireServiceTokenTag {
+    /**
+     * The tag key to match. Keys are case-sensitive and may contain Unicode letters and digits, underscores, periods, and hyphens.
+     */
+    key: string;
+    /**
+     * The tag value to match. Values are case-sensitive, preserve whitespace, and must not contain NUL characters.
+     */
+    value: string;
+}
+
 export interface GetZeroTrustAccessGroupRequireUserRiskScore {
     /**
      * A list of risk score levels to match. Values can be low, medium, high, or unscored.
@@ -31060,6 +31600,7 @@ export interface GetZeroTrustAccessGroupsResultExclude {
     okta: outputs.GetZeroTrustAccessGroupsResultExcludeOkta;
     saml: outputs.GetZeroTrustAccessGroupsResultExcludeSaml;
     serviceToken: outputs.GetZeroTrustAccessGroupsResultExcludeServiceToken;
+    serviceTokenTag: outputs.GetZeroTrustAccessGroupsResultExcludeServiceTokenTag;
     userRiskScore: outputs.GetZeroTrustAccessGroupsResultExcludeUserRiskScore;
 }
 
@@ -31278,6 +31819,17 @@ export interface GetZeroTrustAccessGroupsResultExcludeServiceToken {
     tokenId: string;
 }
 
+export interface GetZeroTrustAccessGroupsResultExcludeServiceTokenTag {
+    /**
+     * The tag key to match. Keys are case-sensitive and may contain Unicode letters and digits, underscores, periods, and hyphens.
+     */
+    key: string;
+    /**
+     * The tag value to match. Values are case-sensitive, preserve whitespace, and must not contain NUL characters.
+     */
+    value: string;
+}
+
 export interface GetZeroTrustAccessGroupsResultExcludeUserRiskScore {
     /**
      * A list of risk score levels to match. Values can be low, medium, high, or unscored.
@@ -31317,6 +31869,7 @@ export interface GetZeroTrustAccessGroupsResultInclude {
     okta: outputs.GetZeroTrustAccessGroupsResultIncludeOkta;
     saml: outputs.GetZeroTrustAccessGroupsResultIncludeSaml;
     serviceToken: outputs.GetZeroTrustAccessGroupsResultIncludeServiceToken;
+    serviceTokenTag: outputs.GetZeroTrustAccessGroupsResultIncludeServiceTokenTag;
     userRiskScore: outputs.GetZeroTrustAccessGroupsResultIncludeUserRiskScore;
 }
 
@@ -31535,6 +32088,17 @@ export interface GetZeroTrustAccessGroupsResultIncludeServiceToken {
     tokenId: string;
 }
 
+export interface GetZeroTrustAccessGroupsResultIncludeServiceTokenTag {
+    /**
+     * The tag key to match. Keys are case-sensitive and may contain Unicode letters and digits, underscores, periods, and hyphens.
+     */
+    key: string;
+    /**
+     * The tag value to match. Values are case-sensitive, preserve whitespace, and must not contain NUL characters.
+     */
+    value: string;
+}
+
 export interface GetZeroTrustAccessGroupsResultIncludeUserRiskScore {
     /**
      * A list of risk score levels to match. Values can be low, medium, high, or unscored.
@@ -31574,6 +32138,7 @@ export interface GetZeroTrustAccessGroupsResultIsDefault {
     okta: outputs.GetZeroTrustAccessGroupsResultIsDefaultOkta;
     saml: outputs.GetZeroTrustAccessGroupsResultIsDefaultSaml;
     serviceToken: outputs.GetZeroTrustAccessGroupsResultIsDefaultServiceToken;
+    serviceTokenTag: outputs.GetZeroTrustAccessGroupsResultIsDefaultServiceTokenTag;
     userRiskScore: outputs.GetZeroTrustAccessGroupsResultIsDefaultUserRiskScore;
 }
 
@@ -31792,6 +32357,17 @@ export interface GetZeroTrustAccessGroupsResultIsDefaultServiceToken {
     tokenId: string;
 }
 
+export interface GetZeroTrustAccessGroupsResultIsDefaultServiceTokenTag {
+    /**
+     * The tag key to match. Keys are case-sensitive and may contain Unicode letters and digits, underscores, periods, and hyphens.
+     */
+    key: string;
+    /**
+     * The tag value to match. Values are case-sensitive, preserve whitespace, and must not contain NUL characters.
+     */
+    value: string;
+}
+
 export interface GetZeroTrustAccessGroupsResultIsDefaultUserRiskScore {
     /**
      * A list of risk score levels to match. Values can be low, medium, high, or unscored.
@@ -31831,6 +32407,7 @@ export interface GetZeroTrustAccessGroupsResultRequire {
     okta: outputs.GetZeroTrustAccessGroupsResultRequireOkta;
     saml: outputs.GetZeroTrustAccessGroupsResultRequireSaml;
     serviceToken: outputs.GetZeroTrustAccessGroupsResultRequireServiceToken;
+    serviceTokenTag: outputs.GetZeroTrustAccessGroupsResultRequireServiceTokenTag;
     userRiskScore: outputs.GetZeroTrustAccessGroupsResultRequireUserRiskScore;
 }
 
@@ -32049,6 +32626,17 @@ export interface GetZeroTrustAccessGroupsResultRequireServiceToken {
     tokenId: string;
 }
 
+export interface GetZeroTrustAccessGroupsResultRequireServiceTokenTag {
+    /**
+     * The tag key to match. Keys are case-sensitive and may contain Unicode letters and digits, underscores, periods, and hyphens.
+     */
+    key: string;
+    /**
+     * The tag value to match. Values are case-sensitive, preserve whitespace, and must not contain NUL characters.
+     */
+    value: string;
+}
+
 export interface GetZeroTrustAccessGroupsResultRequireUserRiskScore {
     /**
      * A list of risk score levels to match. Values can be low, medium, high, or unscored.
@@ -32095,6 +32683,8 @@ export interface GetZeroTrustAccessIdentityProviderConfig {
     clientId: string;
     /**
      * Your OAuth Client Secret
+     *
+     * The client secret from the Duo Generic OIDC Relying Party metadata.
      */
     clientSecret: string;
     /**
@@ -32116,6 +32706,13 @@ export interface GetZeroTrustAccessIdentityProviderConfig {
     /**
      * Enable SAML assertion encryption. When enabled, the Identity Provider will encrypt
      * SAML assertions using the certificate from the assigned certificate set.
+     *
+     * To enable encryption:
+     * 1. Create a certificate set via POST to `/identity_providers/{id}/saml_certificate`
+     * 2. Set this field to `true` and include `samlCertificateSetId` in the PUT request
+     * 3. Configure the public certificate in your external Identity Provider
+     *
+     * Note: Requires `samlCertificateSetId` to be set when `true`.
      */
     enableEncryption: boolean;
     /**
@@ -32131,6 +32728,8 @@ export interface GetZeroTrustAccessIdentityProviderConfig {
      */
     idpPublicCerts: string[];
     /**
+     * The issuer URL from the Duo Generic OIDC Relying Party metadata.
+     *
      * IdP Entity ID or Issuer URL
      */
     issuerUrl: string;
@@ -32163,6 +32762,8 @@ export interface GetZeroTrustAccessIdentityProviderConfig {
     pkceEnabled: boolean;
     /**
      * Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interactionRequired error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
+     *
+     * Configures the prompt behavior for Google authentication.
      * Available values: "login", "selectAccount", "none", "consent".
      */
     prompt: string;
@@ -32188,7 +32789,7 @@ export interface GetZeroTrustAccessIdentityProviderConfig {
      */
     supportGroups: boolean;
     /**
-     * The tokenEndpoint URL of your IdP
+     * The tokenEndpoint URL of your IdP. Updates that change its origin (scheme, host, or port) require clientSecret in the request. Path-only changes do not require client_secret.
      */
     tokenUrl: string;
     /**
@@ -32320,7 +32921,7 @@ export interface GetZeroTrustAccessIdentityProvidersResult {
     scimConfig: outputs.GetZeroTrustAccessIdentityProvidersResultScimConfig;
     /**
      * The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-     * Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex", "cloudflare", "passkeys".
+     * Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "duo", "okta", "onelogin", "pingone", "yandex", "cloudflare", "passkeys".
      */
     type: string;
 }
@@ -32364,6 +32965,8 @@ export interface GetZeroTrustAccessIdentityProvidersResultConfig {
     clientId: string;
     /**
      * Your OAuth Client Secret
+     *
+     * The client secret from the Duo Generic OIDC Relying Party metadata.
      */
     clientSecret: string;
     /**
@@ -32385,6 +32988,13 @@ export interface GetZeroTrustAccessIdentityProvidersResultConfig {
     /**
      * Enable SAML assertion encryption. When enabled, the Identity Provider will encrypt
      * SAML assertions using the certificate from the assigned certificate set.
+     *
+     * To enable encryption:
+     * 1. Create a certificate set via POST to `/identity_providers/{id}/saml_certificate`
+     * 2. Set this field to `true` and include `samlCertificateSetId` in the PUT request
+     * 3. Configure the public certificate in your external Identity Provider
+     *
+     * Note: Requires `samlCertificateSetId` to be set when `true`.
      */
     enableEncryption: boolean;
     /**
@@ -32400,6 +33010,8 @@ export interface GetZeroTrustAccessIdentityProvidersResultConfig {
      */
     idpPublicCerts: string[];
     /**
+     * The issuer URL from the Duo Generic OIDC Relying Party metadata.
+     *
      * IdP Entity ID or Issuer URL
      */
     issuerUrl: string;
@@ -32432,6 +33044,8 @@ export interface GetZeroTrustAccessIdentityProvidersResultConfig {
     pkceEnabled: boolean;
     /**
      * Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interactionRequired error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
+     *
+     * Configures the prompt behavior for Google authentication.
      * Available values: "login", "selectAccount", "none", "consent".
      */
     prompt: string;
@@ -32457,7 +33071,7 @@ export interface GetZeroTrustAccessIdentityProvidersResultConfig {
      */
     supportGroups: boolean;
     /**
-     * The tokenEndpoint URL of your IdP
+     * The tokenEndpoint URL of your IdP. Updates that change its origin (scheme, host, or port) require clientSecret in the request. Path-only changes do not require client_secret.
      */
     tokenUrl: string;
     /**
@@ -32804,6 +33418,10 @@ export interface GetZeroTrustAccessPoliciesResult {
      */
     name: string;
     /**
+     * The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.
+     */
+    policyResolutionAccountId: string;
+    /**
      * A custom message that will appear on the purpose justification screen.
      */
     purposeJustificationPrompt: string;
@@ -32888,6 +33506,7 @@ export interface GetZeroTrustAccessPoliciesResultExclude {
     okta: outputs.GetZeroTrustAccessPoliciesResultExcludeOkta;
     saml: outputs.GetZeroTrustAccessPoliciesResultExcludeSaml;
     serviceToken: outputs.GetZeroTrustAccessPoliciesResultExcludeServiceToken;
+    serviceTokenTag: outputs.GetZeroTrustAccessPoliciesResultExcludeServiceTokenTag;
     userRiskScore: outputs.GetZeroTrustAccessPoliciesResultExcludeUserRiskScore;
 }
 
@@ -33106,6 +33725,17 @@ export interface GetZeroTrustAccessPoliciesResultExcludeServiceToken {
     tokenId: string;
 }
 
+export interface GetZeroTrustAccessPoliciesResultExcludeServiceTokenTag {
+    /**
+     * The tag key to match. Keys are case-sensitive and may contain Unicode letters and digits, underscores, periods, and hyphens.
+     */
+    key: string;
+    /**
+     * The tag value to match. Values are case-sensitive, preserve whitespace, and must not contain NUL characters.
+     */
+    value: string;
+}
+
 export interface GetZeroTrustAccessPoliciesResultExcludeUserRiskScore {
     /**
      * A list of risk score levels to match. Values can be low, medium, high, or unscored.
@@ -33145,6 +33775,7 @@ export interface GetZeroTrustAccessPoliciesResultInclude {
     okta: outputs.GetZeroTrustAccessPoliciesResultIncludeOkta;
     saml: outputs.GetZeroTrustAccessPoliciesResultIncludeSaml;
     serviceToken: outputs.GetZeroTrustAccessPoliciesResultIncludeServiceToken;
+    serviceTokenTag: outputs.GetZeroTrustAccessPoliciesResultIncludeServiceTokenTag;
     userRiskScore: outputs.GetZeroTrustAccessPoliciesResultIncludeUserRiskScore;
 }
 
@@ -33363,6 +33994,17 @@ export interface GetZeroTrustAccessPoliciesResultIncludeServiceToken {
     tokenId: string;
 }
 
+export interface GetZeroTrustAccessPoliciesResultIncludeServiceTokenTag {
+    /**
+     * The tag key to match. Keys are case-sensitive and may contain Unicode letters and digits, underscores, periods, and hyphens.
+     */
+    key: string;
+    /**
+     * The tag value to match. Values are case-sensitive, preserve whitespace, and must not contain NUL characters.
+     */
+    value: string;
+}
+
 export interface GetZeroTrustAccessPoliciesResultIncludeUserRiskScore {
     /**
      * A list of risk score levels to match. Values can be low, medium, high, or unscored.
@@ -33417,6 +34059,7 @@ export interface GetZeroTrustAccessPoliciesResultRequire {
     okta: outputs.GetZeroTrustAccessPoliciesResultRequireOkta;
     saml: outputs.GetZeroTrustAccessPoliciesResultRequireSaml;
     serviceToken: outputs.GetZeroTrustAccessPoliciesResultRequireServiceToken;
+    serviceTokenTag: outputs.GetZeroTrustAccessPoliciesResultRequireServiceTokenTag;
     userRiskScore: outputs.GetZeroTrustAccessPoliciesResultRequireUserRiskScore;
 }
 
@@ -33635,6 +34278,17 @@ export interface GetZeroTrustAccessPoliciesResultRequireServiceToken {
     tokenId: string;
 }
 
+export interface GetZeroTrustAccessPoliciesResultRequireServiceTokenTag {
+    /**
+     * The tag key to match. Keys are case-sensitive and may contain Unicode letters and digits, underscores, periods, and hyphens.
+     */
+    key: string;
+    /**
+     * The tag value to match. Values are case-sensitive, preserve whitespace, and must not contain NUL characters.
+     */
+    value: string;
+}
+
 export interface GetZeroTrustAccessPoliciesResultRequireUserRiskScore {
     /**
      * A list of risk score levels to match. Values can be low, medium, high, or unscored.
@@ -33707,6 +34361,7 @@ export interface GetZeroTrustAccessPolicyExclude {
     okta: outputs.GetZeroTrustAccessPolicyExcludeOkta;
     saml: outputs.GetZeroTrustAccessPolicyExcludeSaml;
     serviceToken: outputs.GetZeroTrustAccessPolicyExcludeServiceToken;
+    serviceTokenTag: outputs.GetZeroTrustAccessPolicyExcludeServiceTokenTag;
     userRiskScore: outputs.GetZeroTrustAccessPolicyExcludeUserRiskScore;
 }
 
@@ -33925,6 +34580,17 @@ export interface GetZeroTrustAccessPolicyExcludeServiceToken {
     tokenId: string;
 }
 
+export interface GetZeroTrustAccessPolicyExcludeServiceTokenTag {
+    /**
+     * The tag key to match. Keys are case-sensitive and may contain Unicode letters and digits, underscores, periods, and hyphens.
+     */
+    key: string;
+    /**
+     * The tag value to match. Values are case-sensitive, preserve whitespace, and must not contain NUL characters.
+     */
+    value: string;
+}
+
 export interface GetZeroTrustAccessPolicyExcludeUserRiskScore {
     /**
      * A list of risk score levels to match. Values can be low, medium, high, or unscored.
@@ -33964,6 +34630,7 @@ export interface GetZeroTrustAccessPolicyInclude {
     okta: outputs.GetZeroTrustAccessPolicyIncludeOkta;
     saml: outputs.GetZeroTrustAccessPolicyIncludeSaml;
     serviceToken: outputs.GetZeroTrustAccessPolicyIncludeServiceToken;
+    serviceTokenTag: outputs.GetZeroTrustAccessPolicyIncludeServiceTokenTag;
     userRiskScore: outputs.GetZeroTrustAccessPolicyIncludeUserRiskScore;
 }
 
@@ -34182,6 +34849,17 @@ export interface GetZeroTrustAccessPolicyIncludeServiceToken {
     tokenId: string;
 }
 
+export interface GetZeroTrustAccessPolicyIncludeServiceTokenTag {
+    /**
+     * The tag key to match. Keys are case-sensitive and may contain Unicode letters and digits, underscores, periods, and hyphens.
+     */
+    key: string;
+    /**
+     * The tag value to match. Values are case-sensitive, preserve whitespace, and must not contain NUL characters.
+     */
+    value: string;
+}
+
 export interface GetZeroTrustAccessPolicyIncludeUserRiskScore {
     /**
      * A list of risk score levels to match. Values can be low, medium, high, or unscored.
@@ -34236,6 +34914,7 @@ export interface GetZeroTrustAccessPolicyRequire {
     okta: outputs.GetZeroTrustAccessPolicyRequireOkta;
     saml: outputs.GetZeroTrustAccessPolicyRequireSaml;
     serviceToken: outputs.GetZeroTrustAccessPolicyRequireServiceToken;
+    serviceTokenTag: outputs.GetZeroTrustAccessPolicyRequireServiceTokenTag;
     userRiskScore: outputs.GetZeroTrustAccessPolicyRequireUserRiskScore;
 }
 
@@ -34454,6 +35133,17 @@ export interface GetZeroTrustAccessPolicyRequireServiceToken {
     tokenId: string;
 }
 
+export interface GetZeroTrustAccessPolicyRequireServiceTokenTag {
+    /**
+     * The tag key to match. Keys are case-sensitive and may contain Unicode letters and digits, underscores, periods, and hyphens.
+     */
+    key: string;
+    /**
+     * The tag value to match. Values are case-sensitive, preserve whitespace, and must not contain NUL characters.
+     */
+    value: string;
+}
+
 export interface GetZeroTrustAccessPolicyRequireUserRiskScore {
     /**
      * A list of risk score levels to match. Values can be low, medium, high, or unscored.
@@ -34482,7 +35172,7 @@ export interface GetZeroTrustAccessServiceTokensResult {
      */
     duration: string;
     /**
-     * Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+     * Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled. A service token reported as leaked is disabled automatically and cannot be re-enabled until its secret is rotated; attempting to do so returns a 409. Defaults to enabled when omitted on create.
      */
     enabled: boolean;
     expiresAt: string;
@@ -34491,9 +35181,25 @@ export interface GetZeroTrustAccessServiceTokensResult {
      */
     id: string;
     /**
+     * Where the leaked `clientSecret` was found, if provided by the reporter. Omitted if the token has not been reported as leaked.
+     */
+    leakReportUrl: string;
+    /**
+     * When a secret scanning partner reported this service token's `clientSecret` as leaked. A leaked service token is disabled and must be rotated before it can be re-enabled. Cleared once the secret is rotated. Omitted if the token has not been reported as leaked.
+     */
+    leakReportedAt: string;
+    /**
+     * The secret scanning partner that reported the leak. Omitted if the token has not been reported as leaked.
+     */
+    leakReporter: string;
+    /**
      * The name of the service token.
      */
     name: string;
+    /**
+     * Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.
+     */
+    tags: {[key: string]: string};
 }
 
 export interface GetZeroTrustAccessShortLivedCertificatesResult {
@@ -34520,6 +35226,165 @@ export interface GetZeroTrustAccessTagsResult {
      * The name of the tag
      */
     name: string;
+}
+
+export interface GetZeroTrustCasbFindingTypeCategory {
+    /**
+     * The type of the observation.
+     * Available values: "Issue", "Insight", "Activity".
+     */
+    observation: string;
+    /**
+     * The product category.
+     * Available values: "SaaS", "Cloud".
+     */
+    product: string;
+    /**
+     * The type of the finding category.
+     * Available values: "Content", "Posture".
+     */
+    type: string;
+}
+
+export interface GetZeroTrustCasbFindingTypeFilter {
+    /**
+     * Sort direction for the primary field. Defaults to 'desc'.
+     * Ties are resolved by case-insensitive name, then ID, both ascending regardless of direction.
+     * Available values: "asc", "desc".
+     */
+    direction?: string;
+    /**
+     * Return only finding types updated at or before this RFC 3339 timestamp (inclusive).
+     */
+    maxUpdatedAt?: string;
+    /**
+     * Return only finding types updated at or after this RFC 3339 timestamp (inclusive).
+     */
+    minUpdatedAt?: string;
+    /**
+     * Field to sort by (case-insensitive). Defaults to 'created'.
+     * Name and vendor sorting is case-insensitive; vendor uses friendly provider names.
+     * Ascending order: type Content then Posture; origin custom then system;
+     * severity Low, Medium, High, Critical.
+     * Available values: "created", "updated", "matchCount", "name", "vendor", "type", "origin", "severity".
+     */
+    order?: string;
+    /**
+     * Filter finding types by origin. Supports multiple comma-separated, case-insensitive values.
+     */
+    origins?: string[];
+    /**
+     * When true, return only quarantined finding types; when false, return only non-quarantined finding types. Omit to return both.
+     */
+    quarantined?: boolean;
+    /**
+     * Filter finding types by name or ID (case-insensitive substring match).
+     */
+    search?: string;
+    /**
+     * Filter finding types by severity. Supports multiple comma-separated, case-insensitive values.
+     */
+    severities?: string[];
+    /**
+     * Filter finding types by category type. Supports multiple comma-separated, case-insensitive values.
+     */
+    types?: string[];
+    /**
+     * Filter finding types by vendor. Supports multiple comma-separated values. Each value may be either the vendor enum (GOOGLE_WORKSPACE) or the friendly name returned by the read routes (Google Workspace).
+     */
+    vendors?: string[];
+}
+
+export interface GetZeroTrustCasbFindingTypesResult {
+    /**
+     * Whether this finding type applies to every current and future integration of the vendor.
+     */
+    appliesToAllIntegrations: boolean;
+    /**
+     * Asset class the finding type's policy evaluates.
+     */
+    assetClass: string;
+    /**
+     * Canonical vendor enum value.
+     * Available values: "ANTHROPIC", "AWS", "BITBUCKET", "BOX", "CONFLUENCE", "DROPBOX", "GITHUB", "GOOGLE*CLOUD*PLATFORM", "GOOGLE_WORKSPACE", "JIRA", "MICROSOFT", "OPENAI", "SALESFORCE", "SERVICENOW", "SLACK", "ZOOM".
+     */
+    assetVendor: string;
+    /**
+     * Category information for a finding.
+     */
+    category: outputs.GetZeroTrustCasbFindingTypesResultCategory;
+    /**
+     * Timestamp when the finding type was created.
+     */
+    createdAt: string;
+    /**
+     * Detailed description of the finding.
+     */
+    description: string;
+    /**
+     * Rego expression backing this finding type. For custom finding types, generated package and import declarations are omitted. System expressions are returned unchanged.
+     */
+    expression: string;
+    /**
+     * The unique identifier of the finding.
+     */
+    id: string;
+    /**
+     * Integrations this finding type applies to when applies*to*all_integrations is false.
+     */
+    integrationIds: string[];
+    /**
+     * Number of currently active finding instances across the account's integrations. Zero when none have been detected.
+     */
+    matchCount: number;
+    /**
+     * The name of the finding.
+     */
+    name: string;
+    /**
+     * Whether the finding type is system-managed or customer-created.
+     * Available values: "system", "custom".
+     */
+    origin: string;
+    /**
+     * Whether evaluation of this finding type is suspended by an operator. Present only when true.
+     */
+    quarantined: boolean;
+    /**
+     * Default severity used when no integration-specific severity override exists.
+     * Available values: "Critical", "High", "Medium", "Low".
+     */
+    severity: string;
+    /**
+     * Timestamp when the finding type was last updated.
+     */
+    updatedAt: string;
+    /**
+     * The SaaS/Cloud vendor of the platform with which the finding is associated.
+     */
+    vendor: string;
+    /**
+     * Current version of the finding type. Incremented on each update.
+     */
+    version: number;
+}
+
+export interface GetZeroTrustCasbFindingTypesResultCategory {
+    /**
+     * The type of the observation.
+     * Available values: "Issue", "Insight", "Activity".
+     */
+    observation: string;
+    /**
+     * The product category.
+     * Available values: "SaaS", "Cloud".
+     */
+    product: string;
+    /**
+     * The type of the finding category.
+     * Available values: "Content", "Posture".
+     */
+    type: string;
 }
 
 export interface GetZeroTrustCasbIntegrationAuthorizationLink {
@@ -34789,6 +35654,558 @@ export interface GetZeroTrustCasbWebhooksResultHeader {
     value: string;
 }
 
+export interface GetZeroTrustCwsBasicAuthCredentialFilter {
+    /**
+     * Filter to credentials attached to this deployment
+     */
+    deploymentId?: string;
+    /**
+     * Sort direction (default: asc)
+     * Available values: "asc", "desc".
+     */
+    direction: string;
+    /**
+     * Field to order results by (default: created*at)
+     * Available values: "username", "created*at", "updatedAt".
+     */
+    order: string;
+    /**
+     * Filter by username (case-insensitive substring match)
+     */
+    username?: string;
+}
+
+export interface GetZeroTrustCwsBasicAuthCredentialsResult {
+    createdAt: string;
+    /**
+     * Server-assigned UUID
+     */
+    id: string;
+    updatedAt: string;
+    /**
+     * Login presented by the client. Printable ASCII only, excluding space and colon (RFC 7617 forbids a colon in the user-id).
+     */
+    username: string;
+}
+
+export interface GetZeroTrustCwsBasicAuthSecretFilter {
+    /**
+     * Sort direction (default: asc)
+     * Available values: "asc", "desc".
+     */
+    direction: string;
+    /**
+     * Field to order results by (default: created*at)
+     * Available values: "created*at".
+     */
+    order: string;
+}
+
+export interface GetZeroTrustCwsBasicAuthSecretsResult {
+    createdAt: string;
+    /**
+     * Optional RFC 3339 expiration time. Omit for no expiration.
+     */
+    expiresAt: string;
+    /**
+     * Server-assigned UUID
+     */
+    id: string;
+}
+
+export interface GetZeroTrustCwsDeploymentFilter {
+    /**
+     * Sort direction (default: asc)
+     * Available values: "asc", "desc".
+     */
+    direction: string;
+    /**
+     * Filter by deployment name (case-insensitive substring match)
+     */
+    name?: string;
+    /**
+     * Field to order results by (default: created*at)
+     * Available values: "name", "created*at", "updatedAt".
+     */
+    order: string;
+}
+
+export interface GetZeroTrustCwsDeploymentsResult {
+    /**
+     * IDs of basic-auth credentials attached to this deployment
+     */
+    basicAuthCredentialIds: string[];
+    createdAt: string;
+    /**
+     * Default traffic decision when no policy set matches
+     * Available values: "ALLOW", "BLOCK".
+     */
+    defaultMode: string;
+    /**
+     * Optional free-form description.
+     */
+    description: string;
+    /**
+     * ID of the attached domain ACL. Omitted when none.
+     */
+    domainAclId: string;
+    /**
+     * Server-assigned UUID
+     */
+    id: string;
+    /**
+     * Human-readable name; unique per account
+     */
+    name: string;
+    /**
+     * Action applied when an enforcing policy has a runtime Rego error
+     * Available values: "BLOCK", "SKIP".
+     */
+    onErrorAction: string;
+    /**
+     * IDs of policy sets attached to this deployment
+     */
+    policySetIds: string[];
+    /**
+     * Whether OPA builtin failures are raised as runtime evaluation errors
+     */
+    regoRaiseError: boolean;
+    /**
+     * Tags attached to this deployment
+     */
+    tags: {[key: string]: string};
+    updatedAt: string;
+}
+
+export interface GetZeroTrustCwsDomainAclEntry {
+    /**
+     * Per-domain decision overriding the parent ACL's defaultAction
+     * Available values: "ALLOW", "BLOCK".
+     */
+    action: string;
+    /**
+     * Hostname or domain pattern, capped at 255 UTF-8 bytes
+     */
+    domain: string;
+}
+
+export interface GetZeroTrustCwsDomainAclFilter {
+    /**
+     * Filter to domain ACLs attached to this deployment
+     */
+    deploymentId?: string;
+    /**
+     * Sort direction (default: asc)
+     * Available values: "asc", "desc".
+     */
+    direction: string;
+    /**
+     * Filter by domain ACL name (case-insensitive substring match)
+     */
+    name?: string;
+    /**
+     * Field to order results by (default: created*at)
+     * Available values: "name", "created*at", "updatedAt".
+     */
+    order: string;
+}
+
+export interface GetZeroTrustCwsDomainAclsResult {
+    createdAt: string;
+    /**
+     * Action applied when no entry matches the request domain
+     * Available values: "ALLOW", "BLOCK".
+     */
+    defaultAction: string;
+    /**
+     * Per-domain action overrides. Each domain appears at most once.
+     */
+    entries: outputs.GetZeroTrustCwsDomainAclsResultEntry[];
+    /**
+     * Server-assigned UUID
+     */
+    id: string;
+    /**
+     * Human-readable name; unique per account
+     */
+    name: string;
+    updatedAt: string;
+}
+
+export interface GetZeroTrustCwsDomainAclsResultEntry {
+    /**
+     * Per-domain decision overriding the parent ACL's defaultAction
+     * Available values: "ALLOW", "BLOCK".
+     */
+    action: string;
+    /**
+     * Hostname or domain pattern, capped at 255 UTF-8 bytes
+     */
+    domain: string;
+}
+
+export interface GetZeroTrustCwsPoliciesResult {
+    createdAt: string;
+    /**
+     * Optional free-form description.
+     */
+    description: string;
+    /**
+     * Non-function rule declared in rego*source. Evaluation uses data.\n\n*path>.\n\n.
+     */
+    entrypoint: string;
+    /**
+     * Filter expression that determines whether this policy applies. Maximum 4096 UTF-8 bytes.
+     */
+    filter: string;
+    /**
+     * Server-assigned UUID
+     */
+    id: string;
+    /**
+     * Human-readable name; unique per account
+     */
+    name: string;
+    /**
+     * Dotted path derived from rego_source. Begins with policy. and is unique per account.
+     */
+    packagePath: string;
+    /**
+     * Inline Rego source with a package beginning with "policy." Maximum 16384 UTF-8 bytes.
+     */
+    regoSource: string;
+    /**
+     * Tags attached to this policy
+     */
+    tags: {[key: string]: string};
+    updatedAt: string;
+}
+
+export interface GetZeroTrustCwsPolicyFindOneBy {
+    /**
+     * Sort direction (default: asc)
+     * Available values: "asc", "desc".
+     */
+    direction: string;
+    /**
+     * Filter by policy name (case-insensitive substring match)
+     */
+    name?: string;
+    /**
+     * Field to order results by (default: created*at)
+     * Available values: "name", "created*at", "updatedAt".
+     */
+    order: string;
+    /**
+     * Filter by package path (case-sensitive literal substring match)
+     */
+    packagePath?: string;
+    /**
+     * Filter to policies attached to (members of) this policy set
+     */
+    policySetId?: string;
+}
+
+export interface GetZeroTrustCwsPolicySetFilter {
+    /**
+     * Filter to policy sets attached to this deployment
+     */
+    deploymentId?: string;
+    /**
+     * Sort direction (default: asc)
+     * Available values: "asc", "desc".
+     */
+    direction: string;
+    /**
+     * Filter by policy set name (case-insensitive substring match)
+     */
+    name?: string;
+    /**
+     * Field to order results by (default: created*at)
+     * Available values: "name", "created*at", "updatedAt".
+     */
+    order: string;
+}
+
+export interface GetZeroTrustCwsPolicySetPolicy {
+    /**
+     * Whether this policy should enforce when it matches. False keeps the policy attached for non-enforcing evaluation.
+     */
+    enforce: boolean;
+    /**
+     * ID of the member policy
+     */
+    policyId: string;
+}
+
+export interface GetZeroTrustCwsPolicySetsResult {
+    createdAt: string;
+    /**
+     * Optional free-form description.
+     */
+    description: string;
+    /**
+     * IDs of workloads that exclude matching requests. Exclusions take precedence.
+     */
+    excludeWorkloadIds: string[];
+    /**
+     * Server-assigned UUID
+     */
+    id: string;
+    /**
+     * IDs of workloads that include matching requests. Empty includes all requests before exclusions.
+     */
+    includeWorkloadIds: string[];
+    /**
+     * Human-readable name; unique per account
+     */
+    name: string;
+    /**
+     * Member policies and their per-membership enforcement mode
+     */
+    policies: outputs.GetZeroTrustCwsPolicySetsResultPolicy[];
+    /**
+     * Tags attached to this policy set
+     */
+    tags: {[key: string]: string};
+    updatedAt: string;
+}
+
+export interface GetZeroTrustCwsPolicySetsResultPolicy {
+    /**
+     * Whether this policy should enforce when it matches. False keeps the policy attached for non-enforcing evaluation.
+     */
+    enforce: boolean;
+    /**
+     * ID of the member policy
+     */
+    policyId: string;
+}
+
+export interface GetZeroTrustCwsRegoMetadataFilter {
+    /**
+     * Sort direction (default: asc)
+     * Available values: "asc", "desc".
+     */
+    direction: string;
+    /**
+     * Filter by import path (case-sensitive literal substring match)
+     */
+    importPath?: string;
+    /**
+     * Filter by rego metadata name (case-insensitive substring match)
+     */
+    name?: string;
+    /**
+     * Field to order results by (default: created*at)
+     * Available values: "name", "created*at", "updatedAt".
+     */
+    order: string;
+}
+
+export interface GetZeroTrustCwsRegoMetadataListResult {
+    createdAt: string;
+    data: string;
+    /**
+     * Server-assigned UUID
+     */
+    id: string;
+    /**
+     * Unique Rego import path in the form metadata.\n\n, with one alphanumeric or underscore segment. Reference it as data.\n\n.
+     */
+    importPath: string;
+    /**
+     * Human-readable name; unique per account
+     */
+    name: string;
+    updatedAt: string;
+}
+
+export interface GetZeroTrustCwsRegoModuleFilter {
+    /**
+     * Sort direction (default: asc)
+     * Available values: "asc", "desc".
+     */
+    direction: string;
+    /**
+     * Filter by Rego module name (case-insensitive substring match)
+     */
+    name?: string;
+    /**
+     * Field to order results by (default: created*at)
+     * Available values: "name", "created*at", "updatedAt".
+     */
+    order: string;
+    /**
+     * Filter by package path (case-sensitive literal substring match)
+     */
+    packagePath?: string;
+}
+
+export interface GetZeroTrustCwsRegoModulesResult {
+    createdAt: string;
+    /**
+     * Server-assigned UUID
+     */
+    id: string;
+    /**
+     * Human-readable name; unique per account
+     */
+    name: string;
+    /**
+     * Dotted path derived from rego_source. Begins with lib. and is unique per account.
+     */
+    packagePath: string;
+    /**
+     * Library Rego source with a package beginning with "lib." Maximum 16384 UTF-8 bytes.
+     */
+    regoSource: string;
+    updatedAt: string;
+}
+
+export interface GetZeroTrustCwsTenantStructureFilter {
+    /**
+     * Sort direction (default: asc)
+     * Available values: "asc", "desc".
+     */
+    direction: string;
+    /**
+     * Filter by import path (case-sensitive literal substring match)
+     */
+    importPath?: string;
+    /**
+     * Filter by tenant structure name (case-insensitive substring match)
+     */
+    name?: string;
+    /**
+     * Field to order results by (default: created*at)
+     * Available values: "name", "created*at", "updatedAt".
+     */
+    order: string;
+}
+
+export interface GetZeroTrustCwsTenantStructureNodeFilter {
+    /**
+     * Sort direction (default: asc)
+     * Available values: "asc", "desc".
+     */
+    direction: string;
+    /**
+     * Filter by node name (case-insensitive substring match)
+     */
+    name?: string;
+    /**
+     * Filter by exact cloud-native identifier
+     */
+    nativeId?: string;
+    /**
+     * Filter by exact node kind
+     */
+    nodeKind?: string;
+    /**
+     * Field to order results by (default: created*at)
+     * Available values: "name", "created*at", "updatedAt".
+     */
+    order: string;
+    /**
+     * Filter by exact parent native ID
+     */
+    parent?: string;
+}
+
+export interface GetZeroTrustCwsTenantStructureNodesResult {
+    createdAt: string;
+    /**
+     * Server-assigned UUID
+     */
+    id: string;
+    /**
+     * Display name (e.g. an OU or account name), mutable. Optional; empty by default.
+     */
+    name: string;
+    /**
+     * Cloud-native identifier of this node, unique within the structure; the parent-reference target. Shape depends on the structure's application. Immutable after create.
+     */
+    nativeId: string;
+    /**
+     * Position in the tree. Legal values depend on the structure's application (aws: root/ou/account; cloudflare: org/account/zone). At most one root per structure. Immutable after create.
+     */
+    nodeKind: string;
+    /**
+     * Native ID of this node's parent. Required for non-root nodes and omitted for the root. The parent must be in the same structure and able to contain this node kind.
+     */
+    parent: string;
+    updatedAt: string;
+}
+
+export interface GetZeroTrustCwsTenantStructuresResult {
+    /**
+     * Platform this structure models. Immutable after creation; determines valid node kinds and identifier formats.
+     * Available values: "aws", "cloudflare".
+     */
+    application: string;
+    createdAt: string;
+    /**
+     * Server-assigned UUID
+     */
+    id: string;
+    /**
+     * Optional unique Rego mount path in the form tenant.\n\n.\n\n. The application segment must match application; omitted when unmounted.
+     */
+    importPath: string;
+    /**
+     * Human-readable name; unique per account
+     */
+    name: string;
+    updatedAt: string;
+}
+
+export interface GetZeroTrustCwsWorkloadFindOneBy {
+    /**
+     * Sort direction (default: asc)
+     * Available values: "asc", "desc".
+     */
+    direction: string;
+    /**
+     * Filter by workload name (case-insensitive substring match)
+     */
+    name?: string;
+    /**
+     * Field to order results by (default: created*at)
+     * Available values: "name", "created*at", "updatedAt".
+     */
+    order: string;
+    /**
+     * Filter to workloads attached to this policy set
+     */
+    policySetId?: string;
+}
+
+export interface GetZeroTrustCwsWorkloadsResult {
+    createdAt: string;
+    /**
+     * Optional free-form description.
+     */
+    description: string;
+    /**
+     * Filter expression selecting the requests this workload matches. Maximum 4096 UTF-8 bytes.
+     */
+    filter: string;
+    /**
+     * Server-assigned UUID
+     */
+    id: string;
+    /**
+     * Human-readable handle; unique per account.
+     */
+    name: string;
+    /**
+     * Tags attached to this workload
+     */
+    tags: {[key: string]: string};
+    updatedAt: string;
+}
+
 export interface GetZeroTrustDeviceCustomProfileBrowserExtensionConfig {
     /**
      * Whether the user may disable the browser extension proxy.
@@ -34939,6 +36356,10 @@ export interface GetZeroTrustDeviceCustomProfilesResult {
      * List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
      */
     dnsSearchSuffixes: outputs.GetZeroTrustDeviceCustomProfilesResultDnsSearchSuffix[];
+    /**
+     * Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.
+     */
+    enableDeviceCredentialAuthentication: boolean;
     /**
      * Whether the policy will be applied to matching devices.
      */
@@ -35441,7 +36862,7 @@ export interface GetZeroTrustDevicePostureRuleInput {
      */
     eidLastSeen: string;
     /**
-     * Enabled.
+     * Whether the rule is enabled. This is a computed, read-only value. It is false for deprecated Kolide posture rules that still use the issueCount input, and true otherwise.
      */
     enabled: boolean;
     /**
@@ -35453,7 +36874,7 @@ export interface GetZeroTrustDevicePostureRuleInput {
      */
     extendedKeyUsages: string[];
     /**
-     * List ID.
+     * API UUID.
      */
     id: string;
     /**
@@ -35480,16 +36901,20 @@ export interface GetZeroTrustDevicePostureRuleInput {
     networkStatus: string;
     /**
      * Operating system.
+     *
+     * Operating System.
      * Available values: "windows", "linux", "mac", "android", "ios", "chromeos".
      */
     operatingSystem: string;
     /**
      * Agent operational state.
-     * Available values: "na", "partially*disabled", "auto*fully*disabled", "fully*disabled", "auto*partially*disabled", "disabled*error", "db*corruption".
+     * Available values: "na", "partiallyDisabled", "autoFullyDisabled", "fullyDisabled", "autoPartiallyDisabled", "disabledError", "dbCorruption".
      */
     operationalState: string;
     /**
      * Operator.
+     *
+     * Operator to evaluate riskLevel or eid_last_seen.
      * Available values: "<", "<=", ">", ">=", "==".
      */
     operator: string;
@@ -35515,6 +36940,8 @@ export interface GetZeroTrustDevicePostureRuleInput {
     overall: string;
     /**
      * File path.
+     *
+     * Path for the application.
      */
     path: string;
     /**
@@ -35566,6 +36993,8 @@ export interface GetZeroTrustDevicePostureRuleInput {
     updateWindowDays: number;
     /**
      * Version of OS.
+     *
+     * Version.
      */
     version: string;
     /**
@@ -35694,6 +37123,8 @@ export interface GetZeroTrustDevicePostureRulesResultInput {
     extendedKeyUsages: string[];
     /**
      * List ID.
+     *
+     * UUID of Access List.
      */
     id: string;
     /**
@@ -35720,16 +37151,20 @@ export interface GetZeroTrustDevicePostureRulesResultInput {
     networkStatus: string;
     /**
      * Operating system.
+     *
+     * Operating System.
      * Available values: "windows", "linux", "mac", "android", "ios", "chromeos".
      */
     operatingSystem: string;
     /**
      * Agent operational state.
-     * Available values: "na", "partially*disabled", "auto*fully*disabled", "fully*disabled", "auto*partially*disabled", "disabled*error", "db*corruption".
+     * Available values: "na", "partiallyDisabled", "autoFullyDisabled", "fullyDisabled", "autoPartiallyDisabled", "disabledError", "dbCorruption".
      */
     operationalState: string;
     /**
      * Operator.
+     *
+     * Operator to evaluate riskLevel or eid_last_seen.
      * Available values: "<", "<=", ">", ">=", "==".
      */
     operator: string;
@@ -35755,6 +37190,8 @@ export interface GetZeroTrustDevicePostureRulesResultInput {
     overall: string;
     /**
      * File path.
+     *
+     * Path for the application.
      */
     path: string;
     /**
@@ -35806,6 +37243,8 @@ export interface GetZeroTrustDevicePostureRulesResultInput {
     updateWindowDays: number;
     /**
      * Version of OS.
+     *
+     * Version.
      */
     version: string;
     /**
@@ -36037,7 +37476,7 @@ export interface GetZeroTrustDexTestsResultTargetPolicy {
 
 export interface GetZeroTrustDlpCustomEntriesResult {
     /**
-     * Only applies to custom word lists.
+     * For `type: exactData`: Only applies to custom word lists.
      * Determines if the words should be matched in a case-sensitive manner
      * Cannot be set to false if secret is true
      */
@@ -36045,10 +37484,13 @@ export interface GetZeroTrustDlpCustomEntriesResult {
     confidence: outputs.GetZeroTrustDlpCustomEntriesResultConfidence;
     createdAt: string;
     /**
-     * Whether this entry is deprecated for new use. This is computed from the static catalog and
+     * For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
      * emitted only when true.
      */
     deprecated: boolean;
+    /**
+     * For `type: customPromptTopic`: The optional description of the custom prompt topic entry.
+     */
     description: string;
     enabled: boolean;
     id: string;
@@ -36057,7 +37499,7 @@ export interface GetZeroTrustDlpCustomEntriesResult {
     profileId: string;
     secret: boolean;
     /**
-     * Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+     * Available values: "custom", "customPromptTopic", "predefined", "integration", "exactData", "documentFingerprint", "wordList".
      */
     type: string;
     updatedAt: string;
@@ -36066,7 +37508,15 @@ export interface GetZeroTrustDlpCustomEntriesResult {
      */
     uploadStatus: string;
     /**
-     * A Predefined AI prompt classification topic entry.
+     * For `type: custom`: Validators this entry references, by id, at most 10. An empty list means the entry
+     * references none.
+     *
+     * Returned by the entry endpoints. Not returned on entries embedded in other responses, such
+     * as profiles.
+     */
+    validatorIds: string[];
+    /**
+     * For `type: predefined`: A Predefined AI prompt classification topic entry.
      */
     variant: outputs.GetZeroTrustDlpCustomEntriesResultVariant;
     wordLists: string[];
@@ -36095,7 +37545,7 @@ export interface GetZeroTrustDlpCustomEntriesResultPattern {
 
 export interface GetZeroTrustDlpCustomEntriesResultVariant {
     /**
-     * A customer-facing explanation of what this predefined AI prompt topic represents.
+     * For `type: PromptTopic`: A customer-facing explanation of what this predefined AI prompt topic represents.
      */
     description: string;
     /**
@@ -36136,7 +37586,7 @@ export interface GetZeroTrustDlpCustomEntryProfile {
 
 export interface GetZeroTrustDlpCustomEntryVariant {
     /**
-     * A customer-facing explanation of what this predefined AI prompt topic represents.
+     * For `type: PromptTopic`: A customer-facing explanation of what this predefined AI prompt topic represents.
      */
     description: string;
     /**
@@ -36169,7 +37619,7 @@ export interface GetZeroTrustDlpCustomProfileContextAwarenessSkip {
 
 export interface GetZeroTrustDlpCustomProfileEntry {
     /**
-     * Only applies to custom word lists.
+     * For `type: exactData`: Only applies to custom word lists.
      * Determines if the words should be matched in a case-sensitive manner
      * Cannot be set to false if secret is true
      */
@@ -36177,24 +37627,44 @@ export interface GetZeroTrustDlpCustomProfileEntry {
     confidence: outputs.GetZeroTrustDlpCustomProfileEntryConfidence;
     createdAt: string;
     /**
-     * Whether this entry is deprecated for new use. This is computed from the static catalog and
+     * For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
      * emitted only when true.
      */
     deprecated: boolean;
+    /**
+     * For `type: customPromptTopic`: The optional description of the custom prompt topic entry.
+     */
     description: string;
+    /**
+     * If true, scan the context of predefined entries to only return matches surrounded by keywords.
+     */
     enabled: boolean;
+    /**
+     * The ID of this resource.
+     */
     id: string;
+    /**
+     * For `type: custom`: The name of the profile.
+     */
     name: string;
     pattern: outputs.GetZeroTrustDlpCustomProfileEntryPattern;
     profileId: string;
     secret: boolean;
     /**
-     * Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+     * Available values: "custom", "customPromptTopic", "predefined", "integration", "exactData", "documentFingerprint", "wordList".
      */
     type: string;
     updatedAt: string;
     /**
-     * A Predefined AI prompt classification topic entry.
+     * For `type: custom`: Validators this entry references, by id, at most 10. An empty list means the entry
+     * references none.
+     *
+     * Returned by the entry endpoints. Not returned on entries embedded in other responses, such
+     * as profiles.
+     */
+    validatorIds: string[];
+    /**
+     * For `type: predefined`: A Predefined AI prompt classification topic entry.
      */
     variant: outputs.GetZeroTrustDlpCustomProfileEntryVariant;
     wordLists: string[];
@@ -36223,7 +37693,7 @@ export interface GetZeroTrustDlpCustomProfileEntryPattern {
 
 export interface GetZeroTrustDlpCustomProfileEntryVariant {
     /**
-     * A customer-facing explanation of what this predefined AI prompt topic represents.
+     * For `type: PromptTopic`: A customer-facing explanation of what this predefined AI prompt topic represents.
      */
     description: string;
     /**
@@ -36243,7 +37713,7 @@ export interface GetZeroTrustDlpCustomProfileSensitivityLevel {
 
 export interface GetZeroTrustDlpCustomProfileSharedEntry {
     /**
-     * Only applies to custom word lists.
+     * For `type: exactData`: Only applies to custom word lists.
      * Determines if the words should be matched in a case-sensitive manner
      * Cannot be set to false if secret is true
      */
@@ -36251,24 +37721,44 @@ export interface GetZeroTrustDlpCustomProfileSharedEntry {
     confidence: outputs.GetZeroTrustDlpCustomProfileSharedEntryConfidence;
     createdAt: string;
     /**
-     * Whether this entry is deprecated for new use. This is computed from the static catalog and
+     * For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
      * emitted only when true.
      */
     deprecated: boolean;
+    /**
+     * For `type: customPromptTopic`: The optional description of the custom prompt topic entry.
+     */
     description: string;
+    /**
+     * If true, scan the context of predefined entries to only return matches surrounded by keywords.
+     */
     enabled: boolean;
+    /**
+     * The ID of this resource.
+     */
     id: string;
+    /**
+     * For `type: custom`: The name of the profile.
+     */
     name: string;
     pattern: outputs.GetZeroTrustDlpCustomProfileSharedEntryPattern;
     profileId: string;
     secret: boolean;
     /**
-     * Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+     * Available values: "custom", "customPromptTopic", "predefined", "integration", "exactData", "documentFingerprint", "wordList".
      */
     type: string;
     updatedAt: string;
     /**
-     * A Predefined AI prompt classification topic entry.
+     * For `type: custom`: Validators this entry references, by id, at most 10. An empty list means the entry
+     * references none.
+     *
+     * Returned by the entry endpoints. Not returned on entries embedded in other responses, such
+     * as profiles.
+     */
+    validatorIds: string[];
+    /**
+     * For `type: predefined`: A Predefined AI prompt classification topic entry.
      */
     variant: outputs.GetZeroTrustDlpCustomProfileSharedEntryVariant;
     wordLists: string[];
@@ -36297,7 +37787,7 @@ export interface GetZeroTrustDlpCustomProfileSharedEntryPattern {
 
 export interface GetZeroTrustDlpCustomProfileSharedEntryVariant {
     /**
-     * A customer-facing explanation of what this predefined AI prompt topic represents.
+     * For `type: PromptTopic`: A customer-facing explanation of what this predefined AI prompt topic represents.
      */
     description: string;
     /**
@@ -36446,7 +37936,7 @@ export interface GetZeroTrustDlpDatasetsResultUpload {
 
 export interface GetZeroTrustDlpEntriesResult {
     /**
-     * Only applies to custom word lists.
+     * For `type: exactData`: Only applies to custom word lists.
      * Determines if the words should be matched in a case-sensitive manner
      * Cannot be set to false if secret is true
      */
@@ -36454,10 +37944,13 @@ export interface GetZeroTrustDlpEntriesResult {
     confidence: outputs.GetZeroTrustDlpEntriesResultConfidence;
     createdAt: string;
     /**
-     * Whether this entry is deprecated for new use. This is computed from the static catalog and
+     * For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
      * emitted only when true.
      */
     deprecated: boolean;
+    /**
+     * For `type: customPromptTopic`: The optional description of the custom prompt topic entry.
+     */
     description: string;
     enabled: boolean;
     id: string;
@@ -36466,7 +37959,7 @@ export interface GetZeroTrustDlpEntriesResult {
     profileId: string;
     secret: boolean;
     /**
-     * Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+     * Available values: "custom", "customPromptTopic", "predefined", "integration", "exactData", "documentFingerprint", "wordList".
      */
     type: string;
     updatedAt: string;
@@ -36475,7 +37968,15 @@ export interface GetZeroTrustDlpEntriesResult {
      */
     uploadStatus: string;
     /**
-     * A Predefined AI prompt classification topic entry.
+     * For `type: custom`: Validators this entry references, by id, at most 10. An empty list means the entry
+     * references none.
+     *
+     * Returned by the entry endpoints. Not returned on entries embedded in other responses, such
+     * as profiles.
+     */
+    validatorIds: string[];
+    /**
+     * For `type: predefined`: A Predefined AI prompt classification topic entry.
      */
     variant: outputs.GetZeroTrustDlpEntriesResultVariant;
     wordLists: string[];
@@ -36504,7 +38005,7 @@ export interface GetZeroTrustDlpEntriesResultPattern {
 
 export interface GetZeroTrustDlpEntriesResultVariant {
     /**
-     * A customer-facing explanation of what this predefined AI prompt topic represents.
+     * For `type: PromptTopic`: A customer-facing explanation of what this predefined AI prompt topic represents.
      */
     description: string;
     /**
@@ -36545,7 +38046,7 @@ export interface GetZeroTrustDlpEntryProfile {
 
 export interface GetZeroTrustDlpEntryVariant {
     /**
-     * A customer-facing explanation of what this predefined AI prompt topic represents.
+     * For `type: PromptTopic`: A customer-facing explanation of what this predefined AI prompt topic represents.
      */
     description: string;
     /**
@@ -36560,7 +38061,7 @@ export interface GetZeroTrustDlpEntryVariant {
 
 export interface GetZeroTrustDlpIntegrationEntriesResult {
     /**
-     * Only applies to custom word lists.
+     * For `type: exactData`: Only applies to custom word lists.
      * Determines if the words should be matched in a case-sensitive manner
      * Cannot be set to false if secret is true
      */
@@ -36568,10 +38069,13 @@ export interface GetZeroTrustDlpIntegrationEntriesResult {
     confidence: outputs.GetZeroTrustDlpIntegrationEntriesResultConfidence;
     createdAt: string;
     /**
-     * Whether this entry is deprecated for new use. This is computed from the static catalog and
+     * For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
      * emitted only when true.
      */
     deprecated: boolean;
+    /**
+     * For `type: customPromptTopic`: The optional description of the custom prompt topic entry.
+     */
     description: string;
     enabled: boolean;
     id: string;
@@ -36580,7 +38084,7 @@ export interface GetZeroTrustDlpIntegrationEntriesResult {
     profileId: string;
     secret: boolean;
     /**
-     * Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+     * Available values: "custom", "customPromptTopic", "predefined", "integration", "exactData", "documentFingerprint", "wordList".
      */
     type: string;
     updatedAt: string;
@@ -36589,7 +38093,15 @@ export interface GetZeroTrustDlpIntegrationEntriesResult {
      */
     uploadStatus: string;
     /**
-     * A Predefined AI prompt classification topic entry.
+     * For `type: custom`: Validators this entry references, by id, at most 10. An empty list means the entry
+     * references none.
+     *
+     * Returned by the entry endpoints. Not returned on entries embedded in other responses, such
+     * as profiles.
+     */
+    validatorIds: string[];
+    /**
+     * For `type: predefined`: A Predefined AI prompt classification topic entry.
      */
     variant: outputs.GetZeroTrustDlpIntegrationEntriesResultVariant;
     wordLists: string[];
@@ -36618,7 +38130,7 @@ export interface GetZeroTrustDlpIntegrationEntriesResultPattern {
 
 export interface GetZeroTrustDlpIntegrationEntriesResultVariant {
     /**
-     * A customer-facing explanation of what this predefined AI prompt topic represents.
+     * For `type: PromptTopic`: A customer-facing explanation of what this predefined AI prompt topic represents.
      */
     description: string;
     /**
@@ -36659,7 +38171,7 @@ export interface GetZeroTrustDlpIntegrationEntryProfile {
 
 export interface GetZeroTrustDlpIntegrationEntryVariant {
     /**
-     * A customer-facing explanation of what this predefined AI prompt topic represents.
+     * For `type: PromptTopic`: A customer-facing explanation of what this predefined AI prompt topic represents.
      */
     description: string;
     /**
@@ -36674,7 +38186,7 @@ export interface GetZeroTrustDlpIntegrationEntryVariant {
 
 export interface GetZeroTrustDlpPredefinedEntriesResult {
     /**
-     * Only applies to custom word lists.
+     * For `type: exactData`: Only applies to custom word lists.
      * Determines if the words should be matched in a case-sensitive manner
      * Cannot be set to false if secret is true
      */
@@ -36682,10 +38194,13 @@ export interface GetZeroTrustDlpPredefinedEntriesResult {
     confidence: outputs.GetZeroTrustDlpPredefinedEntriesResultConfidence;
     createdAt: string;
     /**
-     * Whether this entry is deprecated for new use. This is computed from the static catalog and
+     * For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
      * emitted only when true.
      */
     deprecated: boolean;
+    /**
+     * For `type: customPromptTopic`: The optional description of the custom prompt topic entry.
+     */
     description: string;
     enabled: boolean;
     id: string;
@@ -36694,7 +38209,7 @@ export interface GetZeroTrustDlpPredefinedEntriesResult {
     profileId: string;
     secret: boolean;
     /**
-     * Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+     * Available values: "custom", "customPromptTopic", "predefined", "integration", "exactData", "documentFingerprint", "wordList".
      */
     type: string;
     updatedAt: string;
@@ -36703,7 +38218,15 @@ export interface GetZeroTrustDlpPredefinedEntriesResult {
      */
     uploadStatus: string;
     /**
-     * A Predefined AI prompt classification topic entry.
+     * For `type: custom`: Validators this entry references, by id, at most 10. An empty list means the entry
+     * references none.
+     *
+     * Returned by the entry endpoints. Not returned on entries embedded in other responses, such
+     * as profiles.
+     */
+    validatorIds: string[];
+    /**
+     * For `type: predefined`: A Predefined AI prompt classification topic entry.
      */
     variant: outputs.GetZeroTrustDlpPredefinedEntriesResultVariant;
     wordLists: string[];
@@ -36732,7 +38255,7 @@ export interface GetZeroTrustDlpPredefinedEntriesResultPattern {
 
 export interface GetZeroTrustDlpPredefinedEntriesResultVariant {
     /**
-     * A customer-facing explanation of what this predefined AI prompt topic represents.
+     * For `type: PromptTopic`: A customer-facing explanation of what this predefined AI prompt topic represents.
      */
     description: string;
     /**
@@ -36773,7 +38296,7 @@ export interface GetZeroTrustDlpPredefinedEntryProfile {
 
 export interface GetZeroTrustDlpPredefinedEntryVariant {
     /**
-     * A customer-facing explanation of what this predefined AI prompt topic represents.
+     * For `type: PromptTopic`: A customer-facing explanation of what this predefined AI prompt topic represents.
      */
     description: string;
     /**
@@ -36788,7 +38311,7 @@ export interface GetZeroTrustDlpPredefinedEntryVariant {
 
 export interface GetZeroTrustDlpPredefinedProfileEntry {
     /**
-     * Only applies to custom word lists.
+     * For `type: exactData`: Only applies to custom word lists.
      * Determines if the words should be matched in a case-sensitive manner
      * Cannot be set to false if secret is true
      */
@@ -36796,24 +38319,41 @@ export interface GetZeroTrustDlpPredefinedProfileEntry {
     confidence: outputs.GetZeroTrustDlpPredefinedProfileEntryConfidence;
     createdAt: string;
     /**
-     * Whether this entry is deprecated for new use. This is computed from the static catalog and
+     * For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
      * emitted only when true.
      */
     deprecated: boolean;
+    /**
+     * For `type: customPromptTopic`: The optional description of the custom prompt topic entry.
+     */
     description: string;
     enabled: boolean;
+    /**
+     * The ID of this resource.
+     */
     id: string;
+    /**
+     * The name of the predefined profile.
+     */
     name: string;
     pattern: outputs.GetZeroTrustDlpPredefinedProfileEntryPattern;
     profileId: string;
     secret: boolean;
     /**
-     * Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+     * Available values: "custom", "customPromptTopic", "predefined", "integration", "exactData", "documentFingerprint", "wordList".
      */
     type: string;
     updatedAt: string;
     /**
-     * A Predefined AI prompt classification topic entry.
+     * For `type: custom`: Validators this entry references, by id, at most 10. An empty list means the entry
+     * references none.
+     *
+     * Returned by the entry endpoints. Not returned on entries embedded in other responses, such
+     * as profiles.
+     */
+    validatorIds: string[];
+    /**
+     * For `type: predefined`: A Predefined AI prompt classification topic entry.
      */
     variant: outputs.GetZeroTrustDlpPredefinedProfileEntryVariant;
     wordLists: string[];
@@ -36842,7 +38382,7 @@ export interface GetZeroTrustDlpPredefinedProfileEntryPattern {
 
 export interface GetZeroTrustDlpPredefinedProfileEntryVariant {
     /**
-     * A customer-facing explanation of what this predefined AI prompt topic represents.
+     * For `type: PromptTopic`: A customer-facing explanation of what this predefined AI prompt topic represents.
      */
     description: string;
     /**
@@ -36853,6 +38393,91 @@ export interface GetZeroTrustDlpPredefinedProfileEntryVariant {
      * Available values: "PromptTopic", "General".
      */
     type: string;
+}
+
+export interface GetZeroTrustDlpProximityValidatorReferencedBy {
+    /**
+     * The detection entries using this validator, ordered by name.
+     */
+    entries: outputs.GetZeroTrustDlpProximityValidatorReferencedByEntry[];
+    /**
+     * Number of detection entries this validator is attached to.
+     */
+    entryCount: number;
+}
+
+export interface GetZeroTrustDlpProximityValidatorReferencedByEntry {
+    id: string;
+    name: string;
+    /**
+     * The type of a detection entry.
+     * Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+     */
+    type: string;
+}
+
+export interface GetZeroTrustDlpProximityValidatorWord {
+    /**
+     * How much a word contributes to a match's confidence when it is found nearby.
+     */
+    weight: string;
+    /**
+     * The word or phrase to look for. Must contain 1–128 characters and is matched
+     * case-insensitively.
+     */
+    word: string;
+}
+
+export interface GetZeroTrustDlpProximityValidatorsResult {
+    createdAt: string;
+    id: string;
+    /**
+     * A name for this validator, at most 50 characters.
+     */
+    name: string;
+    /**
+     * What currently uses a validator. Deleting a validator that is still in use returns `409`, so
+     * check this first.
+     */
+    referencedBy: outputs.GetZeroTrustDlpProximityValidatorsResultReferencedBy;
+    updatedAt: string;
+    /**
+     * The words that raise confidence when found near a match.
+     */
+    words: outputs.GetZeroTrustDlpProximityValidatorsResultWord[];
+}
+
+export interface GetZeroTrustDlpProximityValidatorsResultReferencedBy {
+    /**
+     * The detection entries using this validator, ordered by name.
+     */
+    entries: outputs.GetZeroTrustDlpProximityValidatorsResultReferencedByEntry[];
+    /**
+     * Number of detection entries this validator is attached to.
+     */
+    entryCount: number;
+}
+
+export interface GetZeroTrustDlpProximityValidatorsResultReferencedByEntry {
+    id: string;
+    name: string;
+    /**
+     * The type of a detection entry.
+     * Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+     */
+    type: string;
+}
+
+export interface GetZeroTrustDlpProximityValidatorsResultWord {
+    /**
+     * How much a word contributes to a match's confidence when it is found nearby.
+     */
+    weight: string;
+    /**
+     * The word or phrase to look for. Must contain 1–128 characters and is matched
+     * case-insensitively.
+     */
+    word: string;
 }
 
 export interface GetZeroTrustDlpSensitivityGroupLevel {
@@ -37041,6 +38666,10 @@ export interface GetZeroTrustDnsLocationsResult {
      */
     clientDefault: boolean;
     createdAt: string;
+    /**
+     * Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.
+     */
+    dns64Enabled: boolean;
     /**
      * Indicate the identifier of the pair of IPv4 addresses assigned to this location.
      */
@@ -37297,6 +38926,17 @@ export interface GetZeroTrustGatewayCertificatesResult {
     uploadedOn: string;
 }
 
+export interface GetZeroTrustGatewayDnsDestinationIpsListResult {
+    backupIp: string;
+    id: string;
+    /**
+     * Specify whether the pair shared across multiple accounts (shared) or available exclusively to this account. Non-shared pairs can contain Cloudflare-owned IPs (dedicated) or customer-provided IPs (byoip).
+     * Available values: "shared", "dedicated", "byoip".
+     */
+    pairType: string;
+    primaryIp: string;
+}
+
 export interface GetZeroTrustGatewayLoggingSettingsByRuleType {
     /**
      * Configure logging settings for DNS firewall.
@@ -37370,7 +39010,7 @@ export interface GetZeroTrustGatewayPacfilesResult {
 export interface GetZeroTrustGatewayPoliciesResult {
     /**
      * Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
-     * Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
+     * Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect", "forward".
      */
     action: string;
     createdAt: string;
@@ -37474,10 +39114,6 @@ export interface GetZeroTrustGatewayPoliciesResultRuleSettings {
      */
     allowChildBypass: boolean;
     /**
-     * Define the settings for the Audit SSH action. Settable only for `l4` rules with `auditSsh` action.
-     */
-    auditSsh: outputs.GetZeroTrustGatewayPoliciesResultRuleSettingsAuditSsh;
-    /**
      * Configure browser isolation behavior. Settable only for `http` rules with the action set to `isolate`.
      */
     bisoAdminControls: outputs.GetZeroTrustGatewayPoliciesResultRuleSettingsBisoAdminControls;
@@ -37517,6 +39153,10 @@ export interface GetZeroTrustGatewayPoliciesResultRuleSettings {
      * Configure whether a copy of the HTTP request will be sent to storage when the rule matches.
      */
     forensicCopy: outputs.GetZeroTrustGatewayPoliciesResultRuleSettingsForensicCopy;
+    /**
+     * Forward matching HTTP requests to a Worker. Required for `http` rules with the action set to `forward`.
+     */
+    forward: outputs.GetZeroTrustGatewayPoliciesResultRuleSettingsForward;
     /**
      * Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dnsResolver` rules.
      */
@@ -37579,13 +39219,6 @@ export interface GetZeroTrustGatewayPoliciesResultRuleSettings {
     untrustedCert: outputs.GetZeroTrustGatewayPoliciesResultRuleSettingsUntrustedCert;
 }
 
-export interface GetZeroTrustGatewayPoliciesResultRuleSettingsAuditSsh {
-    /**
-     * Enable SSH command logging.
-     */
-    commandLogging: boolean;
-}
-
 export interface GetZeroTrustGatewayPoliciesResultRuleSettingsBisoAdminControls {
     /**
      * Configure copy behavior. If set to remote*only, users cannot copy isolated content from the remote browser to the local clipboard. If this field is absent, copying remains enabled. Applies only when version == "v2".
@@ -37618,8 +39251,8 @@ export interface GetZeroTrustGatewayPoliciesResultRuleSettingsBisoAdminControls 
      */
     du: boolean;
     /**
-     * Configure keyboard usage behavior. If this field is absent, keyboard usage remains enabled. Applies only when version == "v2".
-     * Available values: "enabled", "disabled".
+     * Configure keyboard usage behavior. When set to enable*read*only*actions, only approved browser commands (find, copy, print, zoom, and select-all) may execute; other keyboard input is blocked from reaching the page. Copy and print remain subject to their independent controls. If this field is absent, keyboard usage remains enabled. Applies only when version == "v2". The enable*read*only*actions value requires an explicit version of "v2".
+     * Available values: "enabled", "disabled", "enable*read*only_actions".
      */
     keyboard: string;
     /**
@@ -37733,6 +39366,13 @@ export interface GetZeroTrustGatewayPoliciesResultRuleSettingsForensicCopy {
      * Enable sending the copy to storage.
      */
     enabled: boolean;
+}
+
+export interface GetZeroTrustGatewayPoliciesResultRuleSettingsForward {
+    /**
+     * Specify the public Worker ID of the target Worker.
+     */
+    workerId: string;
 }
 
 export interface GetZeroTrustGatewayPoliciesResultRuleSettingsL4override {
@@ -37899,10 +39539,6 @@ export interface GetZeroTrustGatewayPolicyRuleSettings {
      */
     allowChildBypass: boolean;
     /**
-     * Define the settings for the Audit SSH action. Settable only for `l4` rules with `auditSsh` action.
-     */
-    auditSsh: outputs.GetZeroTrustGatewayPolicyRuleSettingsAuditSsh;
-    /**
      * Configure browser isolation behavior. Settable only for `http` rules with the action set to `isolate`.
      */
     bisoAdminControls: outputs.GetZeroTrustGatewayPolicyRuleSettingsBisoAdminControls;
@@ -37942,6 +39578,10 @@ export interface GetZeroTrustGatewayPolicyRuleSettings {
      * Configure whether a copy of the HTTP request will be sent to storage when the rule matches.
      */
     forensicCopy: outputs.GetZeroTrustGatewayPolicyRuleSettingsForensicCopy;
+    /**
+     * Forward matching HTTP requests to a Worker. Required for `http` rules with the action set to `forward`.
+     */
+    forward: outputs.GetZeroTrustGatewayPolicyRuleSettingsForward;
     /**
      * Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dnsResolver` rules.
      */
@@ -38004,13 +39644,6 @@ export interface GetZeroTrustGatewayPolicyRuleSettings {
     untrustedCert: outputs.GetZeroTrustGatewayPolicyRuleSettingsUntrustedCert;
 }
 
-export interface GetZeroTrustGatewayPolicyRuleSettingsAuditSsh {
-    /**
-     * Enable SSH command logging.
-     */
-    commandLogging: boolean;
-}
-
 export interface GetZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
     /**
      * Configure copy behavior. If set to remote*only, users cannot copy isolated content from the remote browser to the local clipboard. If this field is absent, copying remains enabled. Applies only when version == "v2".
@@ -38043,8 +39676,8 @@ export interface GetZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
      */
     du: boolean;
     /**
-     * Configure keyboard usage behavior. If this field is absent, keyboard usage remains enabled. Applies only when version == "v2".
-     * Available values: "enabled", "disabled".
+     * Configure keyboard usage behavior. When set to enable*read*only*actions, only approved browser commands (find, copy, print, zoom, and select-all) may execute; other keyboard input is blocked from reaching the page. Copy and print remain subject to their independent controls. If this field is absent, keyboard usage remains enabled. Applies only when version == "v2". The enable*read*only*actions value requires an explicit version of "v2".
+     * Available values: "enabled", "disabled", "enable*read*only_actions".
      */
     keyboard: string;
     /**
@@ -38158,6 +39791,13 @@ export interface GetZeroTrustGatewayPolicyRuleSettingsForensicCopy {
      * Enable sending the copy to storage.
      */
     enabled: boolean;
+}
+
+export interface GetZeroTrustGatewayPolicyRuleSettingsForward {
+    /**
+     * Specify the public Worker ID of the target Worker.
+     */
+    workerId: string;
 }
 
 export interface GetZeroTrustGatewayPolicyRuleSettingsL4override {
@@ -38320,7 +39960,7 @@ export interface GetZeroTrustGatewayProxyEndpointsResult {
     createdAt: string;
     id: string;
     /**
-     * Specify the list of CIDRs to restrict ingress connections.
+     * For `kind: ip`: Specify the list of CIDRs to restrict ingress connections.
      */
     ips: string[];
     /**
@@ -38917,19 +40557,22 @@ export interface GetZeroTrustResourceLibraryApplicationFilter {
     /**
      * Find complete, case-insensitive application name mentions in a phrase or
      * rule sentence. Misspelled names do not match. Returns matching applications
-     * ranked by relevance. Must be between 2 and 1000 characters. Uses the same
+     * ranked by relevance. Must be between 2 and 1000 characters, with no control
+     * characters other than tab and line breaks. Uses the same
      * filters, fields, and pagination as listing. `search` cannot be combined
      * with lookup. Results are ranked by relevance, so `orderBy` is ignored.
+     * To keep the text out of URLs, send it to `POST .../applications/lookup` instead.
      */
     lookup?: string;
     /**
-     * Number of results to skip. Defaults to 0; negative values are clamped to 0.
+     * Number of results to skip. Defaults to 0; negative values are clamped to 0. Ignored when `cursor` is provided.
      */
     offset: number;
     /**
      * Order results using field:direction format. Supported fields are name, id, human_id,
      * category_id, application_type, application_confidence_score, and gen_ai_score.
-     * Supported directions are asc and desc. Ignored when search is provided; results are
+     * Supported directions are asc and desc. name and applicationType ignore the case of
+     * the letters A to Z, and ties sort by id. Ignored when search is provided; results are
      * ranked by relevance instead. Also ignored when lookup is provided.
      */
     orderBy?: string;
@@ -39043,7 +40686,7 @@ export interface GetZeroTrustRiskBehaviorBehaviors {
     enabled: boolean;
     name: string;
     /**
-     * Available values: "low", "medium", "high".
+     * Available values: "info", "low", "medium", "high".
      */
     riskLevel: string;
 }
@@ -39807,11 +41450,11 @@ export interface GetZoneDnsSettingsInternalDns {
 
 export interface GetZoneDnsSettingsNameservers {
     /**
-     * Identifier of the account-owned Custom Nameserver Set to use for this zone.
+     * For `type: custom`: Identifier of the account-owned Custom Nameserver Set to use for this zone.
      */
     nameserverSetId: string;
     /**
-     * Configured nameserver set number to use for this zone.
+     * For `type: custom.account` or `type: custom.tenant` or `type: custom.zone`: Configured nameserver set number to use for this zone.
      */
     nsSet: number;
     /**
@@ -39913,12 +41556,13 @@ export interface GetZoneFilterAccount {
 
 export interface GetZoneLockdownConfiguration {
     /**
-     * The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.
-     * Available values: "ip", "ipRange".
+     * For `target: ip`: The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.
      */
     target: string;
     /**
-     * The IP address to match. This address will be compared to the IP address of incoming requests.
+     * For `target: ip`: The IP address to match. This address will be compared to the IP address of incoming requests.
+     *
+     * For `target: ipRange`: The IP address range to match. You can only use prefix lengths `/16` and `/24`.
      */
     value: string;
 }
@@ -39995,12 +41639,13 @@ export interface GetZoneLockdownsResult {
 
 export interface GetZoneLockdownsResultConfiguration {
     /**
-     * The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.
-     * Available values: "ip", "ipRange".
+     * For `target: ip`: The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.
      */
     target: string;
     /**
-     * The IP address to match. This address will be compared to the IP address of incoming requests.
+     * For `target: ip`: The IP address to match. This address will be compared to the IP address of incoming requests.
+     *
+     * For `target: ipRange`: The IP address range to match. You can only use prefix lengths `/16` and `/24`.
      */
     value: string;
 }
@@ -40419,7 +42064,7 @@ export interface HealthcheckHttpConfig {
     /**
      * The expected HTTP response codes (e.g. "200") or code ranges (e.g. "2xx" for all codes starting with 2) of the health check.
      */
-    expectedCodes?: string[];
+    expectedCodes: string[];
     /**
      * Follow redirects if the origin returns a 3xx status code.
      */
@@ -40457,7 +42102,13 @@ export interface HealthcheckTcpConfig {
 
 export interface HyperdriveConfigCaching {
     disabled?: boolean;
+    /**
+     * Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
+     */
     maxAge?: number;
+    /**
+     * Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
+     */
     staleWhileRevalidate?: number;
 }
 
@@ -40744,6 +42395,97 @@ export interface LoadBalancerPoolOriginSteering {
     policy: string;
 }
 
+export interface LoadBalancerPoolSet {
+    /**
+     * Disable this specific pool set. It will no longer be evaluated.
+     */
+    disabled: boolean;
+    /**
+     * A collection of fields used to directly respond to the client instead of routing to a pool. When supplied on a rule, that rule stops further rule evaluation.
+     */
+    fixedResponse?: outputs.LoadBalancerPoolSetFixedResponse;
+    /**
+     * Determines which requests a pool set applies to. Set `topology` to match by location or `default: true` to match all requests; the two are mutually exclusive. A pool set with no `match` matches all requests.
+     */
+    match: outputs.LoadBalancerPoolSetMatch;
+    /**
+     * A human-readable name for this pool set.
+     */
+    name?: string;
+    /**
+     * The behavior a pool set applies when its `match` succeeds. A strict subset of a rule's `overrides`: a pool set replaces the topology wholesale with a flat pool list (`pools`), so only the declarative pool-routing fields plus `fallbackPool` and `steeringPolicy` are settable. All fields are optional.
+     */
+    overrides: outputs.LoadBalancerPoolSetOverrides;
+}
+
+export interface LoadBalancerPoolSetFixedResponse {
+    /**
+     * The http 'Content-Type' header to include in the response.
+     */
+    contentType?: string;
+    /**
+     * The http 'Location' header to include in the response.
+     */
+    location?: string;
+    /**
+     * Text to include as the http body.
+     */
+    messageBody?: string;
+    /**
+     * The http status code to respond with.
+     */
+    statusCode?: number;
+}
+
+export interface LoadBalancerPoolSetMatch {
+    /**
+     * When true, matches every request. Cannot be combined with `topology`.
+     */
+    default: boolean;
+    /**
+     * Matches requests by location. Set any combination of `pops`, `countries`, and `regions` (at least one is required); a request matches when its value appears in any populated list (e.g. `regions: ["WNAM"]` with `countries: ["US"]` matches a request in either WNAM or the US).
+     */
+    topology: outputs.LoadBalancerPoolSetMatchTopology;
+}
+
+export interface LoadBalancerPoolSetMatchTopology {
+    /**
+     * A list of ISO 3166-1 alpha-2 country codes. Matches when the request's country is in this list.
+     */
+    countries?: string[];
+    /**
+     * A list of Cloudflare PoP codes. Matches when the request's PoP is in this list.
+     */
+    pops?: string[];
+    /**
+     * A list of Cloudflare region codes (e.g. `WNAM`, `ENAM`, `WEU`). Matches when the request's region is in this list.
+     */
+    regions?: string[];
+}
+
+export interface LoadBalancerPoolSetOverrides {
+    /**
+     * The pool ID to use when all other pools are detected as unhealthy.
+     */
+    fallbackPool?: string;
+    /**
+     * The default weight for pools not listed in `poolWeights`. The declarative alternative to `random_steering.default_weight`; mutually exclusive with `randomSteering`.
+     */
+    poolDefaultWeight: number;
+    /**
+     * A mapping of pool IDs to custom weights, relative to the other pools. The declarative alternative to `random_steering.pool_weights`; mutually exclusive with `randomSteering`.
+     */
+    poolWeights: {[key: string]: number};
+    /**
+     * A flat, ordered list of pool IDs to route the matched audience to. Replaces the resolved topology with exactly these pools. Mutually exclusive with `fixedResponse`.
+     */
+    pools: string[];
+    /**
+     * Steering Policy for this load balancer.
+     */
+    steeringPolicy: string;
+}
+
 export interface LoadBalancerRandomSteering {
     /**
      * The default weight for pools in the load balancer that are not specified in the poolWeights map.
@@ -40777,7 +42519,7 @@ export interface LoadBalancerRule {
      */
     overrides: outputs.LoadBalancerRuleOverrides;
     /**
-     * The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.
+     * The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If all priorities are omitted or zero, the API assigns priorities based on the array order of the rules field.
      */
     priority: number;
     /**
@@ -40831,7 +42573,7 @@ export interface LoadBalancerRuleOverrides {
      */
     popPools: {[key: string]: string[]};
     /**
-     * Configures pool weights.
+     * Configures pool weights for a rule override. An omitted defaultWeight inherits the load balancer's default weight.
      */
     randomSteering: outputs.LoadBalancerRuleOverridesRandomSteering;
     /**
@@ -40881,7 +42623,7 @@ export interface LoadBalancerRuleOverridesLocationStrategy {
 
 export interface LoadBalancerRuleOverridesRandomSteering {
     /**
-     * The default weight for pools in the load balancer that are not specified in the poolWeights map.
+     * The default weight for pools in the load balancer that are not specified in the poolWeights map. An omitted value inherits the load balancer's default weight.
      */
     defaultWeight: number;
     /**
@@ -40948,6 +42690,17 @@ export interface LoadBalancerSessionAffinityAttributes {
      * Available values: "none", "temporary", "sticky".
      */
     zeroDowntimeFailover: string;
+}
+
+export interface LogExplorerDatasetField {
+    /**
+     * Whether the API includes this field in log ingest.
+     */
+    enabled: boolean;
+    /**
+     * Field name. Names are matched without regard to case.
+     */
+    name: string;
 }
 
 export interface LogpushJobOutputOptions {
@@ -41132,6 +42885,17 @@ export interface MagicTransitSiteLanNat {
     staticPrefix?: string;
 }
 
+export interface MagicTransitSiteLanRemoteSubnet {
+    /**
+     * A valid CIDR notation representing an IP range.
+     */
+    localAliasPrefix: string;
+    /**
+     * A valid CIDR notation representing an IP range.
+     */
+    remotePrefix: string;
+}
+
 export interface MagicTransitSiteLanRoutedSubnet {
     nat?: outputs.MagicTransitSiteLanRoutedSubnetNat;
     /**
@@ -41241,6 +43005,10 @@ export interface MagicTransitSiteWanStaticAddressing {
      * A valid CIDR notation representing an IP range.
      */
     secondaryAddress?: string;
+    /**
+     * Gateway address for the secondary connector of a high availability site.
+     */
+    secondaryGatewayAddress?: string;
 }
 
 export interface MagicWanGreTunnelBgp {
@@ -41473,16 +43241,15 @@ export interface MonetizationRulesRule {
      */
     expression: string;
     /**
-     * Optional on input. Include the ID of an existing payment rule to update it in place, preserving its stable identity across the full-ruleset replacement; omit it to create a new rule. An ID that does not match an existing payment rule in the zone is rejected. Rules omitted from the request are deleted.
+     * The unique ID of the zone.
      */
     id?: string;
     /**
-     * Price in the smallest indivisible unit of the configured payment token, encoded as a decimal string. Must be a canonical decimal integer in [1000, 100000000]: no leading zeros, and a bare JSON number is rejected. The price is required for the fixed-price schemes ("exact" and "upto") and must be at least 1000, the smallest amount the payment facilitator can settle ($0.001 for a 6-decimal token such as USDC), and at most 100000000 ($100 for a 6-decimal token). When the scheme is "origin*controlled" the origin server sets pricing dynamically and the rule carries no price: the field must be omitted — any provided value, including "0", is rejected because it would not be enforced. Responses always encode this as a string and omit it for "origin*controlled" rules; the pattern matches exactly the set of values the server accepts.
+     * For `scheme: exact` or `scheme: upto`: Price in the smallest indivisible unit of the configured payment token, encoded as a decimal string. Must be a canonical decimal integer in [1000, 100000000]: no leading zeros, and a bare JSON number is rejected. The price is required for the fixed-price schemes ("exact" and "upto") and must be at least 1000, the smallest amount the payment facilitator can settle ($0.001 for a 6-decimal token such as USDC), and at most 100000000 ($100 for a 6-decimal token). When the scheme is "originControlled" the origin server sets pricing dynamically and the rule carries no price: the field must be omitted — any provided value, including "0", is rejected because it would not be enforced. Responses always encode this as a string and omit it for "originControlled" rules; the pattern matches exactly the set of values the server accepts.
      */
     price?: string;
     /**
-     * X402 payment scheme. "exact" requires the specified payment amount; "upto" permits a payment up to the specified amount. Both fixed-price schemes require the price field.
-     * Available values: "exact", "upto", "originControlled".
+     * For `scheme: exact` or `scheme: upto`: X402 payment scheme. "exact" requires the specified payment amount; "upto" permits a payment up to the specified amount. Both fixed-price schemes require the price field.
      */
     scheme: string;
 }
@@ -41936,6 +43703,7 @@ export interface ObservatoryScheduledTestTestRegion {
 }
 
 export interface OrganizationMeta {
+    areChildAccountsAccessibleByOrgMembers: boolean;
     /**
      * Ordered chain of organization tags from the root organization down to
      * (and including) this organization itself. Root organizations return a
@@ -41950,6 +43718,7 @@ export interface OrganizationMeta {
      * Enable features for Organizations.
      */
     tenantFlags: outputs.OrganizationMetaTenantFlags;
+    tenantType: string;
 }
 
 export interface OrganizationMetaTenantFlags {
@@ -41965,15 +43734,14 @@ export interface OrganizationMetaTenantFlags {
 
 export interface OrganizationParent {
     id: string;
-    name: string;
 }
 
 export interface OrganizationProfile {
-    businessAddress: string;
-    businessEmail: string;
-    businessName: string;
-    businessPhone: string;
-    externalMetadata: string;
+    businessAddress?: string;
+    businessEmail?: string;
+    businessName?: string;
+    businessPhone?: string;
+    externalMetadata?: string;
 }
 
 export interface PageRuleActions {
@@ -42248,7 +44016,7 @@ export interface PagesProjectCanonicalDeploymentEnvVars {
      */
     type: string;
     /**
-     * Environment variable value.
+     * For `type: plainText`: Environment variable value.
      */
     value: string;
 }
@@ -42502,7 +44270,7 @@ export interface PagesProjectDeploymentConfigsPreviewEnvVars {
      */
     type: string;
     /**
-     * Environment variable value.
+     * For `type: plainText`: Environment variable value.
      */
     value: string;
 }
@@ -42701,7 +44469,7 @@ export interface PagesProjectDeploymentConfigsProductionEnvVars {
      */
     type: string;
     /**
-     * Environment variable value.
+     * For `type: plainText`: Environment variable value.
      */
     value: string;
 }
@@ -42908,7 +44676,7 @@ export interface PagesProjectLatestDeploymentEnvVars {
      */
     type: string;
     /**
-     * Environment variable value.
+     * For `type: plainText`: Environment variable value.
      */
     value: string;
 }
@@ -43098,6 +44866,8 @@ export interface PipelineSinkConfig {
     accountId: string;
     /**
      * R2 Bucket to write to
+     *
+     * The R2 Bucket that hosts this catalog
      */
     bucket: string;
     credentials?: outputs.PipelineSinkConfigCredentials;
@@ -43186,7 +44956,7 @@ export interface PipelineSinkConfigRollingPolicy {
 
 export interface PipelineSinkFormat {
     /**
-     * Specifies the compression applied to JSON sink output.
+     * For `type: json`: Specifies the compression applied to JSON sink output.
      * Available values: "uncompressed", "gzip", "snappy", "zstd", "lz4".
      */
     compression?: string;
@@ -43317,7 +45087,7 @@ export interface PipelineTable {
     version: number;
 }
 
-export interface PrecursorEnforcementRule {
+export interface PrecursorRule {
     /**
      * An informative description of the rule.
      */
@@ -43335,11 +45105,10 @@ export interface PrecursorEnforcementRule {
      */
     id: string;
     /**
-     * The override mode Precursor applies to requests matching an enforcement
-     * rule. Unlike `defaultMode`, this cannot be `off`.
-     * Available values: "min-friction", "max-security".
+     * Whether Precursor shows an interstitial when it takes action on a
+     * request.
      */
-    mode: string;
+    showInterstitial: boolean;
 }
 
 export interface QueueConsumer {
@@ -43354,7 +45123,7 @@ export interface QueueConsumer {
     deadLetterQueue: string;
     queueName: string;
     /**
-     * Name of a Worker
+     * For `type: worker`: Name of a Worker
      */
     scriptName: string;
     settings: outputs.QueueConsumerSettings;
@@ -43635,27 +45404,27 @@ export interface R2BucketSippyDestination {
 
 export interface R2BucketSippySource {
     /**
-     * Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
+     * For `r2_bucket_sippy_provider: aws` or `r2_bucket_sippy_provider: s3`: Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
      */
     accessKeyId?: string;
     /**
-     * Access key for the Azure Storage account. Mutually exclusive with sasToken.
+     * For `r2_bucket_sippy_provider: azure`: Access key for the Azure Storage account. Mutually exclusive with sasToken.
      */
     accountKey?: string;
     /**
-     * Name of the Azure Storage account.
+     * For `r2_bucket_sippy_provider: azure`: Name of the Azure Storage account.
      */
     accountName?: string;
     /**
-     * Name of the AWS S3 bucket.
+     * For `r2_bucket_sippy_provider: aws`: Name of the AWS S3 bucket.
      */
     bucket?: string;
     /**
-     * URL to the S3-compatible API of the bucket.
+     * For `r2_bucket_sippy_provider: s3`: URL to the S3-compatible API of the bucket.
      */
     bucketUrl?: string;
     /**
-     * Client email of an IAM credential (ideally scoped to a single GCS bucket).
+     * For `r2_bucket_sippy_provider: gcs`: Client email of an IAM credential (ideally scoped to a single GCS bucket).
      */
     clientEmail?: string;
     /**
@@ -43663,23 +45432,23 @@ export interface R2BucketSippySource {
      */
     cloudProvider?: string;
     /**
-     * Name of the Azure Blob Storage container.
+     * For `r2_bucket_sippy_provider: azure`: Name of the Azure Blob Storage container.
      */
     container?: string;
     /**
-     * Private Key of an IAM credential (ideally scoped to a single GCS bucket).
+     * For `r2_bucket_sippy_provider: gcs`: Private Key of an IAM credential (ideally scoped to a single GCS bucket).
      */
     privateKey?: string;
     /**
-     * AWS region containing the source S3 bucket.
+     * For `r2_bucket_sippy_provider: aws`: AWS region containing the source S3 bucket.
      */
     region?: string;
     /**
-     * Shared Access Signature token for the Azure Storage account. Mutually exclusive with accountKey.
+     * For `r2_bucket_sippy_provider: azure`: Shared Access Signature token for the Azure Storage account. Mutually exclusive with accountKey.
      */
     sasToken?: string;
     /**
-     * Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
+     * For `r2_bucket_sippy_provider: aws` or `r2_bucket_sippy_provider: s3`: Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
      */
     secretAccessKey?: string;
 }
@@ -43695,6 +45464,13 @@ export interface R2CustomDomainStatus {
      * Available values: "initializing", "pending", "active", "deactivated", "error", "unknown".
      */
     ssl: string;
+}
+
+export interface R2DataCatalogCredential {
+    /**
+     * Provides the Cloudflare API token for accessing R2.
+     */
+    token: string;
 }
 
 export interface R2DataCatalogMaintenanceConfig {
@@ -43911,6 +45687,8 @@ export interface RecordData {
     preference?: number;
     /**
      * Priority.
+     *
+     * Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
      */
     priority?: number;
     /**
@@ -43947,10 +45725,15 @@ export interface RecordData {
     tag?: string;
     /**
      * Target.
+     *
+     * A valid hostname.
+     *
+     * The record content.
      */
     target?: string;
     /**
-     * Type.
+     * Record type.
+     * Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
      */
     type?: number;
     /**
@@ -43959,6 +45742,8 @@ export interface RecordData {
     usage?: number;
     /**
      * Value of the record. This field's semantics depend on the chosen tag.
+     *
+     * Value.
      */
     value?: string;
     /**
@@ -43985,7 +45770,7 @@ export interface RecordSettings {
 export interface RiskBehaviorBehaviors {
     enabled: boolean;
     /**
-     * Available values: "low", "medium", "high".
+     * Available values: "info", "low", "medium", "high".
      */
     riskLevel: string;
 }
@@ -44365,6 +46150,14 @@ export interface RulesetRuleActionParameters {
      * Controls how cached responses vary based on request headers. `default` is required and applies to any Vary response header that does not have a per-header override.
      */
     vary?: outputs.RulesetRuleActionParametersVary;
+    /**
+     * Whether to serve the WebMCP bridge script, which exposes the page's tools to browser AI agents.
+     */
+    webmcpEnabled?: boolean;
+    /**
+     * Bundled WebMCP tool packs to activate for matching requests. An empty list disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself.
+     */
+    webmcpPacks?: string[];
 }
 
 export interface RulesetRuleActionParametersAlgorithm {
@@ -45102,6 +46895,13 @@ export interface RulesetRuleRatelimit {
     scoreResponseHeaderName?: string;
 }
 
+export interface ShareExcludedRecipient {
+    /**
+     * The account to exclude from the organization-targeted share.
+     */
+    accountId: string;
+}
+
 export interface ShareRecipient {
     /**
      * Organization identifier.
@@ -45115,15 +46915,15 @@ export interface ShareRecipient {
 
 export interface ShareRecipientResource {
     /**
-     * Share Recipient error message.
+     * Error from the most recent attempt to apply the resource to the recipient. Empty string when no error has been recorded.
      */
     error: string;
     /**
-     * Share Resource identifier.
+     * Identifier assigned by the service that owns the shared resource.
      */
     resourceId: string;
     /**
-     * Resource Version.
+     * Resource version applied to the recipient, if reconciliation has occurred.
      */
     resourceVersion: number;
     /**
@@ -45138,11 +46938,11 @@ export interface ShareResource {
      */
     meta: string;
     /**
-     * Account identifier.
+     * The account that owns the resource. Must match the `accountId` in the path.
      */
     resourceAccountId: string;
     /**
-     * Share Resource identifier.
+     * Identifier assigned by the service that owns the shared resource.
      */
     resourceId: string;
     /**
@@ -45212,17 +47012,16 @@ export interface SpectrumApplicationDns {
 
 export interface SpectrumApplicationEdgeIps {
     /**
-     * The IP versions supported for inbound connections on Spectrum anycast IPs.
+     * For `type: dynamic`: The IP versions supported for inbound connections on Spectrum anycast IPs.
      * Available values: "all", "ipv4", "ipv6".
      */
     connectivity?: string;
     /**
-     * The array of customer owned IPs we broadcast via anycast for this hostname and application.
+     * For `type: static`: The array of customer owned IPs we broadcast via anycast for this hostname and application.
      */
     ips: string[];
     /**
-     * The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.
-     * Available values: "dynamic", "static".
+     * For `type: dynamic`: The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.
      */
     type?: string;
 }
@@ -45925,10 +47724,6 @@ export interface TeamsRuleRuleSettings {
      */
     allowChildBypass?: boolean;
     /**
-     * Define the settings for the Audit SSH action. Settable only for `l4` rules with `auditSsh` action.
-     */
-    auditSsh?: outputs.TeamsRuleRuleSettingsAuditSsh;
-    /**
      * Configure browser isolation behavior. Settable only for `http` rules with the action set to `isolate`.
      */
     bisoAdminControls?: outputs.TeamsRuleRuleSettingsBisoAdminControls;
@@ -45968,6 +47763,10 @@ export interface TeamsRuleRuleSettings {
      * Configure whether a copy of the HTTP request will be sent to storage when the rule matches.
      */
     forensicCopy?: outputs.TeamsRuleRuleSettingsForensicCopy;
+    /**
+     * Forward matching HTTP requests to a Worker. Required for `http` rules with the action set to `forward`.
+     */
+    forward?: outputs.TeamsRuleRuleSettingsForward;
     /**
      * Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dnsResolver` rules.
      */
@@ -46030,13 +47829,6 @@ export interface TeamsRuleRuleSettings {
     untrustedCert?: outputs.TeamsRuleRuleSettingsUntrustedCert;
 }
 
-export interface TeamsRuleRuleSettingsAuditSsh {
-    /**
-     * Enable SSH command logging.
-     */
-    commandLogging?: boolean;
-}
-
 export interface TeamsRuleRuleSettingsBisoAdminControls {
     /**
      * Configure copy behavior. If set to remote*only, users cannot copy isolated content from the remote browser to the local clipboard. If this field is absent, copying remains enabled. Applies only when version == "v2".
@@ -46069,8 +47861,8 @@ export interface TeamsRuleRuleSettingsBisoAdminControls {
      */
     du?: boolean;
     /**
-     * Configure keyboard usage behavior. If this field is absent, keyboard usage remains enabled. Applies only when version == "v2".
-     * Available values: "enabled", "disabled".
+     * Configure keyboard usage behavior. When set to enable*read*only*actions, only approved browser commands (find, copy, print, zoom, and select-all) may execute; other keyboard input is blocked from reaching the page. Copy and print remain subject to their independent controls. If this field is absent, keyboard usage remains enabled. Applies only when version == "v2". The enable*read*only*actions value requires an explicit version of "v2".
+     * Available values: "enabled", "disabled", "enable*read*only_actions".
      */
     keyboard?: string;
     /**
@@ -46184,6 +47976,13 @@ export interface TeamsRuleRuleSettingsForensicCopy {
      * Enable sending the copy to storage.
      */
     enabled?: boolean;
+}
+
+export interface TeamsRuleRuleSettingsForward {
+    /**
+     * Specify the public Worker ID of the target Worker.
+     */
+    workerId: string;
 }
 
 export interface TeamsRuleRuleSettingsL4override {
@@ -46311,16 +48110,16 @@ export interface TokenValidationConfigCredentialsKey {
      */
     alg: string;
     /**
-     * Curve
+     * For `alg: ES256` or `alg: ES384`: Curve
      * Available values: "P-256", "P-384".
      */
     crv?: string;
     /**
-     * RSA exponent
+     * For `alg: RS256` or `alg: RS384` or `alg: RS512` or `alg: PS256` or `alg: PS384` or `alg: PS512`: RSA exponent
      */
     e?: string;
     /**
-     * Symmetric key material. Required for create and PUT update requests.
+     * For `alg: HS256` or `alg: HS384` or `alg: HS512`: Symmetric key material. Required for create and PUT update requests.
      */
     k?: string;
     /**
@@ -46333,15 +48132,15 @@ export interface TokenValidationConfigCredentialsKey {
      */
     kty: string;
     /**
-     * RSA modulus
+     * For `alg: RS256` or `alg: RS384` or `alg: RS512` or `alg: PS256` or `alg: PS384` or `alg: PS512`: RSA modulus
      */
     n?: string;
     /**
-     * X EC coordinate
+     * For `alg: ES256` or `alg: ES384`: X EC coordinate
      */
     x?: string;
     /**
-     * Y EC coordinate
+     * For `alg: ES256` or `alg: ES384`: Y EC coordinate
      */
     y?: string;
 }
@@ -47004,7 +48803,6 @@ export interface WorkerPreviewsBaseConfigPlacement {
     hostname?: string;
     /**
      * Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: "smart", "targeted".
      */
     mode?: string;
     /**
@@ -47294,7 +49092,7 @@ export interface WorkerScriptBinding {
     json?: string;
     /**
      * The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-     * Available values: "eu", "fedramp", "fedramp-high".
+     * Available values: "eu", "fedramp", "fedramp-high", "us".
      */
     jurisdiction?: string;
     /**
@@ -47391,7 +49189,7 @@ export interface WorkerScriptBinding {
      */
     usages?: string[];
     /**
-     * Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version.
+     * Identifier for the version to inherit the binding from. This can be a version ID, or the literal "latest" to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to "latest". Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only "latest" and reject a version ID with error 10057.
      */
     versionId?: string;
     /**
@@ -47460,6 +49258,18 @@ export interface WorkerScriptCacheOptions {
      * Whether caching is enabled for this Worker.
      */
     enabled: boolean;
+}
+
+export interface WorkerScriptCodeUpdateStrategy {
+    /**
+     * Set the maximum number of seconds to wait before forcing the update. When omitted, the default maximum delay applies.
+     */
+    maxDelay?: number;
+    /**
+     * Apply Durable Object code updates immediately.
+     * Available values: "immediate", "deferred".
+     */
+    mode: string;
 }
 
 export interface WorkerScriptExports {
@@ -47708,7 +49518,6 @@ export interface WorkerScriptPlacement {
     lastAnalyzedAt: string;
     /**
      * Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: "smart", "targeted".
      */
     mode?: string;
     /**
@@ -47717,7 +49526,7 @@ export interface WorkerScriptPlacement {
     region: string;
     /**
      * Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
+     * Available values: "SUCCESS", "UNSUPPORTED_APPLICATION", "INSUFFICIENT_INVOCATIONS".
      */
     status: string;
     /**
@@ -47839,187 +49648,207 @@ export interface WorkerVersionAssetsConfig {
 
 export interface WorkerVersionBinding {
     /**
-     * Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
+     * For `type: secretKey`: Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
      */
     algorithm?: string;
     /**
-     * List of allowed destination addresses.
+     * For `type: sendEmail`: List of allowed destination addresses.
      */
     allowedDestinationAddresses?: string[];
     /**
-     * List of allowed sender addresses.
+     * For `type: sendEmail`: List of allowed sender addresses.
      */
     allowedSenderAddresses?: string[];
     /**
-     * ID of the Flagship app to bind to for feature flag evaluation.
+     * For `type: flagship`: ID of the Flagship app to bind to for feature flag evaluation.
      */
     appId?: string;
     /**
-     * R2 bucket to bind to.
+     * For `type: r2Bucket`: R2 bucket to bind to.
      */
     bucketName?: string;
     /**
-     * Identifier of the certificate to bind to.
+     * For `type: mtlsCertificate`: Identifier of the certificate to bind to.
      */
     certificateId?: string;
     /**
-     * The exported class name of the Durable Object.
+     * For `type: durableObjectNamespace`: The exported class name of the Durable Object.
+     *
+     * For `type: workflow`: Class name of the Workflow. Should only be provided if the Workflow belongs to this script.
      */
     className: string;
     /**
-     * Identifier of the D1 database to bind to.
+     * For `type: d1`: Identifier of the D1 database to bind to.
      */
     databaseId: string;
     /**
-     * The name of the dataset to bind to.
+     * For `type: analyticsEngine`: The name of the dataset to bind to.
      */
     dataset?: string;
     /**
-     * Destination address for the email.
+     * For `type: sendEmail`: Destination address for the email.
      */
     destinationAddress?: string;
     /**
-     * The dispatch namespace the Durable Object script belongs to.
+     * For `type: durableObjectNamespace`: The dispatch namespace the Durable Object script belongs to.
      */
     dispatchNamespace?: string;
     /**
-     * Entrypoint to invoke on the target Worker.
+     * For `type: service`: Entrypoint to invoke on the target Worker.
      */
     entrypoint?: string;
     /**
-     * The environment of the scriptName to bind to.
+     * For `type: durableObjectNamespace`: The environment of the scriptName to bind to.
+     *
+     * For `type: service`: Optional environment if the Worker utilizes one.
      */
-    environment?: string;
+    environment: string;
     /**
-     * Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
+     * For `type: secretKey`: Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
      * Available values: "raw", "pkcs8", "spki", "jwk".
      */
     format?: string;
     /**
-     * Identifier of the D1 database to bind to.
+     * For `type: d1`: Identifier of the D1 database to bind to.
+     *
+     * For `type: hyperdrive`: Identifier of the Hyperdrive connection to bind to.
      */
     id?: string;
     /**
-     * Enables Gateway identity for the binding. Requires network*id to be "cf1:network" and cannot be combined with tunnel*id.
+     * For `type: vpcNetwork`: Enables Gateway identity for the binding. Requires networkId to be "cf1:network" and cannot be combined with tunnelId or an explicit "cf1:vnet:<UUID>" network_id.
      * Available values: "runtime-email-alpha".
      */
     identity?: string;
     /**
-     * Name of the Vectorize index to bind to.
+     * For `type: vectorize`: Name of the Vectorize index to bind to.
      */
     indexName?: string;
     /**
-     * The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
+     * For `type: aiSearch`: The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
      */
     instanceName?: string;
     /**
-     * JSON data to use.
+     * For `type: json`: JSON data to use.
      */
     json?: string;
     /**
-     * The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
+     * For `type: r2Bucket`: The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
      * Available values: "eu", "fedramp", "fedramp-high", "us".
      */
     jurisdiction?: string;
     /**
-     * Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
+     * For `type: secretKey`: Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
      */
     keyBase64?: string;
     /**
-     * Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk".
+     * For `type: secretKey`: Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk".
      */
     keyJwk?: string;
     /**
-     * A JavaScript variable name for the binding.
+     * For `type: ai` or `type: aiSearch` or `type: aiSearchNamespace` or `type: messaging` or `type: analyticsEngine` or `type: artifacts` or `type: assets` or `type: browser` or `type: d1` or `type: dataBlob` or `type: dispatchNamespace` or `type: durableObjectNamespace` or `type: hyperdrive` or `type: images` or `type: json` or `type: kvNamespace` or `type: media` or `type: mtlsCertificate` or `type: plainText` or `type: pipelines` or `type: k2` or `type: queue` or `type: ratelimit` or `type: r2Bucket` or `type: secretText` or `type: sendEmail` or `type: service` or `type: textBlob` or `type: vectorize` or `type: versionMetadata` or `type: secretsStoreSecret` or `type: flagship` or `type: secretKey` or `type: workflow` or `type: wasmModule` or `type: vpcService` or `type: vpcNetwork` or `type: workerLoader`: A JavaScript variable name for the binding.
      */
     name: string;
     /**
-     * The namespace the instance belongs to. Defaults to "default" if omitted. Customers who don't use namespaces can simply omit this field.
+     * For `type: aiSearch`: The namespace the instance belongs to. Defaults to "default" if omitted. Customers who don't use namespaces can simply omit this field.
+     *
+     * For `type: aiSearchNamespace`: The user-chosen namespace name. Must exist before deploy -- Wrangler handles auto-creation on deploy failure (R2 bucket pattern). The "default" namespace is auto-created by config-api for new accounts. Grants full access (CRUD + search + chat) to all instances within the namespace.
+     *
+     * For `type: messaging`: The Messaging namespace to bind to.
+     *
+     * For `type: artifacts`: The Artifacts namespace exposed to the Worker in the Worker's account. Must be 2-63 characters, start with an ASCII alphanumeric character, contain only ASCII alphanumeric characters, dots, underscores, and hyphens, and must not end with a hyphen. The namespace does not need to be created before binding it.
+     *
+     * For `type: dispatchNamespace`: The name of the dispatch namespace.
      */
     namespace?: string;
     /**
-     * Namespace identifier tag.
+     * For `type: durableObjectNamespace` or `type: kvNamespace`: Namespace identifier tag.
+     *
+     * For `type: ratelimit`: Identifier of the rate limit namespace to bind to.
      */
     namespaceId: string;
     /**
-     * Identifier of the network to bind to. Only "cf1:network" is currently supported. Mutually exclusive with tunnel_id.
+     * For `type: vpcNetwork`: Identifier of the network to bind to. Use "cf1:network" to select the account's default virtual network at runtime, or "cf1:vnet:<UUID>" to select an explicit virtual network in the Worker's account. Mutually exclusive with tunnel_id.
      */
     networkId?: string;
     /**
-     * The old name of the inherited binding. If set, the binding will be renamed from `oldName` to `name` in the new version. If not set, the binding will keep the same name between versions.
+     * For `type: inherit`: The old name of the inherited binding. If set, the binding will be renamed from `oldName` to `name` in the new version. If not set, the binding will keep the same name between versions.
      */
     oldName?: string;
     /**
-     * Outbound worker.
+     * For `type: dispatchNamespace`: Outbound worker.
      */
     outbound?: outputs.WorkerVersionBindingOutbound;
     /**
-     * The name of the file containing the data content. Only accepted for `service worker syntax` Workers.
+     * For `type: dataBlob`: The name of the file containing the data content. Only accepted for `service worker syntax` Workers.
+     *
+     * For `type: textBlob`: The name of the file containing the text content. Only accepted for `service worker syntax` Workers.
+     *
+     * For `type: wasmModule`: The name of the file containing the WebAssembly module content. Only accepted for `service worker syntax` Workers.
      */
     part?: string;
     /**
-     * Name of the Pipeline to bind to.
+     * For `type: pipelines`: Name of the Pipeline to bind to.
      */
     pipeline?: string;
     /**
-     * Name of the Queue to bind to.
+     * For `type: queue`: Name of the Queue to bind to.
      */
     queueName?: string;
     /**
-     * Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
-     */
-    retry?: outputs.WorkerVersionBindingRetry;
-    /**
-     * The script where the Durable Object is defined, if it is external to this Worker.
+     * For `type: durableObjectNamespace`: The script where the Durable Object is defined, if it is external to this Worker.
+     *
+     * For `type: workflow`: Script name that contains the Workflow. If not provided, defaults to this script name.
      */
     scriptName: string;
     /**
-     * Name of the secret in the store.
+     * For `type: secretsStoreSecret`: Name of the secret in the store.
      */
     secretName?: string;
     /**
-     * Name of Worker to bind to.
+     * For `type: service`: Name of Worker to bind to.
      */
     service?: string;
     /**
-     * Identifier of the VPC service to bind to.
+     * For `type: vpcService`: Identifier of the VPC service to bind to.
      */
     serviceId?: string;
     /**
-     * The rate limit configuration.
+     * For `type: ratelimit`: The rate limit configuration.
      */
     simple?: outputs.WorkerVersionBindingSimple;
     /**
-     * ID of the store containing the secret.
+     * For `type: secretsStoreSecret`: ID of the store containing the secret.
      */
     storeId?: string;
     /**
-     * ID of a K2 stream owned by the account deploying the Worker.
+     * For `type: k2`: ID of a K2 stream owned by the account deploying the Worker.
      */
     stream?: string;
     /**
-     * The text value to use.
+     * For `type: plainText`: The text value to use.
+     *
+     * For `type: secretText`: The secret value to use.
      */
     text?: string;
     /**
-     * UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
+     * For `type: vpcNetwork`: UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
      */
     tunnelId?: string;
     /**
      * The kind of resource that the binding provides.
-     * Available values: "ai", "ai*search", "ai*search*namespace", "messaging", "analytics*engine", "artifacts", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "k2", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "flagship", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
+     * Available values: "ai", "aiSearch", "aiSearchNamespace", "messaging", "analyticsEngine", "artifacts", "assets", "browser", "d1", "dataBlob", "dispatchNamespace", "durableObjectNamespace", "hyperdrive", "inherit", "images", "json", "kvNamespace", "media", "mtlsCertificate", "plainText", "pipelines", "k2", "queue", "ratelimit", "r2Bucket", "secretText", "sendEmail", "service", "textBlob", "vectorize", "versionMetadata", "secretsStoreSecret", "flagship", "secretKey", "workflow", "wasmModule", "vpcService", "vpcNetwork", "workerLoader".
      */
     type: string;
     /**
-     * Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
+     * For `type: secretKey`: Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
      */
     usages?: string[];
     /**
-     * Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version.
+     * For `type: inherit`: Identifier for the version to inherit the binding from. This can be a version ID, or the literal "latest" to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to "latest". Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only "latest" and reject a version ID with error 10057.
      */
     versionId?: string;
     /**
-     * Name of the Workflow to bind to.
+     * For `type: workflow`: Name of the Workflow to bind to.
      */
     workflowName?: string;
 }
@@ -48055,17 +49884,6 @@ export interface WorkerVersionBindingOutboundWorker {
      * Name of the outbound worker.
      */
     service?: string;
-}
-
-export interface WorkerVersionBindingRetry {
-    /**
-     * Maximum number of retries after the initial request, not the total number of attempts. Defaults to 4. Zero disables retries.
-     */
-    maxAttempts?: number;
-    /**
-     * Retry timeout in milliseconds, measured from the start of the call. No retry starts after it expires, and a retry still running when it expires is cancelled. This is not a request timeout; it does not limit the initial request, which is still subject to any timeouts set by your Worker. Defaults to 10000.
-     */
-    timeoutMs?: number;
 }
 
 export interface WorkerVersionBindingSimple {
@@ -48106,47 +49924,69 @@ export interface WorkerVersionContainer {
 
 export interface WorkerVersionExports {
     /**
-     * Cache override for this entrypoint. It applies only to
-     * `type: worker` entries and overrides the Worker's global
-     * `cache_options.enabled` for that entrypoint.
+     * For `type: worker`: Cache override for this entrypoint. Overrides the Worker's
+     * global `cache_options.enabled` for this entrypoint only.
      */
     cache?: outputs.WorkerVersionExportsCache;
     /**
-     * Destination class name for a `state: renamed` tombstone. The
-     * target must appear as a live (`created`) entry in the same
-     * `exports` map. Write-only: never present in GET responses.
+     * For `type: durable-object` and `state: created`: Name of the container (declared in the upload's
+     * `metadata.containers`) that backs this Durable Object. When
+     * set, the namespace is container-enabled. Valid only on live
+     * entries.
+     *
+     * For `state: expecting-transfer`: Name of the container (declared in the upload's
+     * `metadata.containers`) that backs this Durable Object once the
+     * transfer settles. Valid only on live entries.
+     */
+    container?: string;
+    /**
+     * For `state: renamed`: The destination class name. Must differ from the source class
+     * (the map key) and must be declared as a live (`created`) entry
+     * in the same `exports` map. Write-only: never present in GET
+     * responses.
      */
     renamedTo?: string;
     /**
-     * Lifecycle state of the export entry. Defaults to `created`
-     * (a normal, live export) when omitted.
+     * For `state: created`: Live export. May be omitted; defaults to `created`.
+     *
+     * For `state: deleted`: Tombstone that deletes the namespace.
+     *
+     * For `state: renamed`: Tombstone that renames the namespace's class.
+     *
+     * For `state: transferred`: Tombstone that transfers the namespace to another script.
+     *
+     * For `state: expecting-transfer`: Target side of a two-phase transfer.
+     * Available values: "created", "deleted", "renamed", "transferred", "expecting-transfer".
      */
     state?: string;
     /**
-     * Storage backend for a `type: durable-object` export. Required
-     * for live Durable Object entries (`created` and
-     * `expecting-transfer`). `sqlite` selects SQLite-backed storage;
-     * `legacy-kv` selects the legacy key-value storage.
+     * For `type: durable-object` and `state: created`: Durable Object storage backend. `sqlite` is the recommended (and
+     * only) backend for new namespaces. `legacy-kv` is accepted only for
+     * a class whose namespace already exists as KV-backed; the `exports`
+     * flow never provisions a new `legacy-kv` namespace.
+     *
+     * For `type: durable-object` and `state: expecting-transfer`: Durable Object storage backend. `sqlite` is the recommended (and
+     * only) backend for new namespaces. `legacy-kv` is accepted only for
+     * a class whose namespace already exists as KV-backed; the `exports`
+     * flow never provisions a new `legacy-kv` namespace.
      * Available values: "sqlite", "legacy-kv".
      */
     storage?: string;
     /**
-     * Source script for a `state: expecting-transfer` entry. The
-     * namespace on this script is materialised from the source
-     * script's data via the pending-transfer flow. Present on reads
-     * for `expecting-transfer` entries.
+     * For `state: expecting-transfer`: The source script name to receive the namespace from. Must be
+     * in the same account and dispatch-namespace context. Present on
+     * reads for `expecting-transfer` entries.
      */
     transferFrom?: string;
     /**
-     * Destination script for a `state: transferred` tombstone. Must
-     * reference a script in the same account; cross-dispatch-namespace
-     * transfers are rejected. Write-only: never present in GET
-     * responses.
+     * For `state: transferred`: The destination script name. Must be in the same account and
+     * the same dispatch-namespace context (or both non-dispatch).
+     * Cross-dispatch-namespace transfers are rejected. Write-only:
+     * never present in GET responses.
      */
     transferredTo?: string;
     /**
-     * The kind of export.
-     * Available values: "worker", "durable-object".
+     * For `type: worker`: Marks this entry as a Worker entrypoint export.
      */
     type: string;
 }
@@ -48416,7 +50256,6 @@ export interface WorkerVersionPlacement {
     hostname?: string;
     /**
      * Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: "smart", "targeted".
      */
     mode?: string;
     /**
@@ -48459,6 +50298,17 @@ export interface WorkersDeploymentAnnotations {
      * Operation that triggered the creation of the deployment.
      */
     workersTriggeredBy: string;
+}
+
+export interface WorkersDeploymentCodeUpdateStrategy {
+    /**
+     * For `mode: deferred`: Set the maximum number of seconds to wait before forcing the update. When omitted, the default maximum delay applies.
+     */
+    maxDelay?: number;
+    /**
+     * For `mode: immediate`: Apply Durable Object code updates immediately.
+     */
+    mode: string;
 }
 
 export interface WorkersDeploymentVersion {
@@ -48617,7 +50467,7 @@ export interface WorkersScriptBinding {
     json?: string;
     /**
      * The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-     * Available values: "eu", "fedramp", "fedramp-high".
+     * Available values: "eu", "fedramp", "fedramp-high", "us".
      */
     jurisdiction?: string;
     /**
@@ -48714,7 +50564,7 @@ export interface WorkersScriptBinding {
      */
     usages?: string[];
     /**
-     * Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version.
+     * Identifier for the version to inherit the binding from. This can be a version ID, or the literal "latest" to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to "latest". Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only "latest" and reject a version ID with error 10057.
      */
     versionId?: string;
     /**
@@ -48783,6 +50633,18 @@ export interface WorkersScriptCacheOptions {
      * Whether caching is enabled for this Worker.
      */
     enabled: boolean;
+}
+
+export interface WorkersScriptCodeUpdateStrategy {
+    /**
+     * Set the maximum number of seconds to wait before forcing the update. When omitted, the default maximum delay applies.
+     */
+    maxDelay?: number;
+    /**
+     * Apply Durable Object code updates immediately.
+     * Available values: "immediate", "deferred".
+     */
+    mode: string;
 }
 
 export interface WorkersScriptExports {
@@ -49031,7 +50893,6 @@ export interface WorkersScriptPlacement {
     lastAnalyzedAt: string;
     /**
      * Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: "smart", "targeted".
      */
     mode?: string;
     /**
@@ -49040,7 +50901,7 @@ export interface WorkersScriptPlacement {
     region: string;
     /**
      * Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
+     * Available values: "SUCCESS", "UNSUPPORTED_APPLICATION", "INSUFFICIENT_INVOCATIONS".
      */
     status: string;
     /**
@@ -49365,7 +51226,7 @@ export interface ZeroTrustAccessApplicationLandingPageDesign {
 export interface ZeroTrustAccessApplicationMfaConfig {
     /**
      * The authenticators allowed for MFA.
-     * Available values: "totp", "biometrics", "securityKey".
+     * Available values: "totp", "biometrics", "security*key", "piv*key", "ssh*fido2*key".
      */
     allowedAuthenticators?: string[];
     /**
@@ -49446,7 +51307,7 @@ export interface ZeroTrustAccessApplicationPolicy {
      */
     includes?: outputs.ZeroTrustAccessApplicationPolicyInclude[];
     /**
-     * Configures multi-factor authentication (MFA) settings for this policy. For infrastructure applications only `sshPivKey` is a supported authenticator; for other application types use `totp`, `biometrics`, or `securityKey`.
+     * Configures multi-factor authentication (MFA) settings for this policy. For infrastructure applications, supported authenticators are `pivKey` and `sshFido2Key`; for other application types use `totp`, `biometrics`, or `securityKey`.
      */
     mfaConfig?: outputs.ZeroTrustAccessApplicationPolicyMfaConfig;
     /**
@@ -49973,7 +51834,7 @@ export interface ZeroTrustAccessApplicationPolicyIncludeServiceToken {
 export interface ZeroTrustAccessApplicationPolicyMfaConfig {
     /**
      * The authenticators allowed for MFA.
-     * Available values: "totp", "biometrics", "security*key", "ssh*piv_key".
+     * Available values: "totp", "biometrics", "security*key", "piv*key", "ssh*fido2*key".
      */
     allowedAuthenticators?: string[];
     /**
@@ -50627,6 +52488,7 @@ export interface ZeroTrustAccessGroupExclude {
     okta?: outputs.ZeroTrustAccessGroupExcludeOkta;
     saml?: outputs.ZeroTrustAccessGroupExcludeSaml;
     serviceToken?: outputs.ZeroTrustAccessGroupExcludeServiceToken;
+    serviceTokenTag?: outputs.ZeroTrustAccessGroupExcludeServiceTokenTag;
     userRiskScore?: outputs.ZeroTrustAccessGroupExcludeUserRiskScore;
 }
 
@@ -50845,6 +52707,17 @@ export interface ZeroTrustAccessGroupExcludeServiceToken {
     tokenId: string;
 }
 
+export interface ZeroTrustAccessGroupExcludeServiceTokenTag {
+    /**
+     * The tag key to match. Keys are case-sensitive and may contain Unicode letters and digits, underscores, periods, and hyphens.
+     */
+    key: string;
+    /**
+     * The tag value to match. Values are case-sensitive, preserve whitespace, and must not contain NUL characters.
+     */
+    value: string;
+}
+
 export interface ZeroTrustAccessGroupExcludeUserRiskScore {
     /**
      * A list of risk score levels to match. Values can be low, medium, high, or unscored.
@@ -50884,6 +52757,7 @@ export interface ZeroTrustAccessGroupInclude {
     okta?: outputs.ZeroTrustAccessGroupIncludeOkta;
     saml?: outputs.ZeroTrustAccessGroupIncludeSaml;
     serviceToken?: outputs.ZeroTrustAccessGroupIncludeServiceToken;
+    serviceTokenTag?: outputs.ZeroTrustAccessGroupIncludeServiceTokenTag;
     userRiskScore?: outputs.ZeroTrustAccessGroupIncludeUserRiskScore;
 }
 
@@ -51102,6 +52976,17 @@ export interface ZeroTrustAccessGroupIncludeServiceToken {
     tokenId: string;
 }
 
+export interface ZeroTrustAccessGroupIncludeServiceTokenTag {
+    /**
+     * The tag key to match. Keys are case-sensitive and may contain Unicode letters and digits, underscores, periods, and hyphens.
+     */
+    key: string;
+    /**
+     * The tag value to match. Values are case-sensitive, preserve whitespace, and must not contain NUL characters.
+     */
+    value: string;
+}
+
 export interface ZeroTrustAccessGroupIncludeUserRiskScore {
     /**
      * A list of risk score levels to match. Values can be low, medium, high, or unscored.
@@ -51141,6 +53026,7 @@ export interface ZeroTrustAccessGroupRequire {
     okta?: outputs.ZeroTrustAccessGroupRequireOkta;
     saml?: outputs.ZeroTrustAccessGroupRequireSaml;
     serviceToken?: outputs.ZeroTrustAccessGroupRequireServiceToken;
+    serviceTokenTag?: outputs.ZeroTrustAccessGroupRequireServiceTokenTag;
     userRiskScore?: outputs.ZeroTrustAccessGroupRequireUserRiskScore;
 }
 
@@ -51359,6 +53245,17 @@ export interface ZeroTrustAccessGroupRequireServiceToken {
     tokenId: string;
 }
 
+export interface ZeroTrustAccessGroupRequireServiceTokenTag {
+    /**
+     * The tag key to match. Keys are case-sensitive and may contain Unicode letters and digits, underscores, periods, and hyphens.
+     */
+    key: string;
+    /**
+     * The tag value to match. Values are case-sensitive, preserve whitespace, and must not contain NUL characters.
+     */
+    value: string;
+}
+
 export interface ZeroTrustAccessGroupRequireUserRiskScore {
     /**
      * A list of risk score levels to match. Values can be low, medium, high, or unscored.
@@ -51405,6 +53302,8 @@ export interface ZeroTrustAccessIdentityProviderConfig {
     clientId?: string;
     /**
      * Your OAuth Client Secret
+     *
+     * The client secret from the Duo Generic OIDC Relying Party metadata.
      */
     clientSecret?: string;
     /**
@@ -51426,6 +53325,13 @@ export interface ZeroTrustAccessIdentityProviderConfig {
     /**
      * Enable SAML assertion encryption. When enabled, the Identity Provider will encrypt
      * SAML assertions using the certificate from the assigned certificate set.
+     *
+     * To enable encryption:
+     * 1. Create a certificate set via POST to `/identity_providers/{id}/saml_certificate`
+     * 2. Set this field to `true` and include `samlCertificateSetId` in the PUT request
+     * 3. Configure the public certificate in your external Identity Provider
+     *
+     * Note: Requires `samlCertificateSetId` to be set when `true`.
      */
     enableEncryption: boolean;
     /**
@@ -51441,6 +53347,8 @@ export interface ZeroTrustAccessIdentityProviderConfig {
      */
     idpPublicCerts?: string[];
     /**
+     * The issuer URL from the Duo Generic OIDC Relying Party metadata.
+     *
      * IdP Entity ID or Issuer URL
      */
     issuerUrl?: string;
@@ -51473,6 +53381,8 @@ export interface ZeroTrustAccessIdentityProviderConfig {
     pkceEnabled?: boolean;
     /**
      * Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interactionRequired error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
+     *
+     * Configures the prompt behavior for Google authentication.
      * Available values: "login", "selectAccount", "none", "consent".
      */
     prompt?: string;
@@ -51498,7 +53408,7 @@ export interface ZeroTrustAccessIdentityProviderConfig {
      */
     supportGroups?: boolean;
     /**
-     * The tokenEndpoint URL of your IdP
+     * The tokenEndpoint URL of your IdP. Updates that change its origin (scheme, host, or port) require clientSecret in the request. Path-only changes do not require client_secret.
      */
     tokenUrl?: string;
     /**
@@ -51702,6 +53612,7 @@ export interface ZeroTrustAccessPolicyExclude {
     okta?: outputs.ZeroTrustAccessPolicyExcludeOkta;
     saml?: outputs.ZeroTrustAccessPolicyExcludeSaml;
     serviceToken?: outputs.ZeroTrustAccessPolicyExcludeServiceToken;
+    serviceTokenTag?: outputs.ZeroTrustAccessPolicyExcludeServiceTokenTag;
     userRiskScore?: outputs.ZeroTrustAccessPolicyExcludeUserRiskScore;
 }
 
@@ -51920,6 +53831,17 @@ export interface ZeroTrustAccessPolicyExcludeServiceToken {
     tokenId: string;
 }
 
+export interface ZeroTrustAccessPolicyExcludeServiceTokenTag {
+    /**
+     * The tag key to match. Keys are case-sensitive and may contain Unicode letters and digits, underscores, periods, and hyphens.
+     */
+    key: string;
+    /**
+     * The tag value to match. Values are case-sensitive, preserve whitespace, and must not contain NUL characters.
+     */
+    value: string;
+}
+
 export interface ZeroTrustAccessPolicyExcludeUserRiskScore {
     /**
      * A list of risk score levels to match. Values can be low, medium, high, or unscored.
@@ -51959,6 +53881,7 @@ export interface ZeroTrustAccessPolicyInclude {
     okta?: outputs.ZeroTrustAccessPolicyIncludeOkta;
     saml?: outputs.ZeroTrustAccessPolicyIncludeSaml;
     serviceToken?: outputs.ZeroTrustAccessPolicyIncludeServiceToken;
+    serviceTokenTag?: outputs.ZeroTrustAccessPolicyIncludeServiceTokenTag;
     userRiskScore?: outputs.ZeroTrustAccessPolicyIncludeUserRiskScore;
 }
 
@@ -52177,6 +54100,17 @@ export interface ZeroTrustAccessPolicyIncludeServiceToken {
     tokenId: string;
 }
 
+export interface ZeroTrustAccessPolicyIncludeServiceTokenTag {
+    /**
+     * The tag key to match. Keys are case-sensitive and may contain Unicode letters and digits, underscores, periods, and hyphens.
+     */
+    key: string;
+    /**
+     * The tag value to match. Values are case-sensitive, preserve whitespace, and must not contain NUL characters.
+     */
+    value: string;
+}
+
 export interface ZeroTrustAccessPolicyIncludeUserRiskScore {
     /**
      * A list of risk score levels to match. Values can be low, medium, high, or unscored.
@@ -52231,6 +54165,7 @@ export interface ZeroTrustAccessPolicyRequire {
     okta?: outputs.ZeroTrustAccessPolicyRequireOkta;
     saml?: outputs.ZeroTrustAccessPolicyRequireSaml;
     serviceToken?: outputs.ZeroTrustAccessPolicyRequireServiceToken;
+    serviceTokenTag?: outputs.ZeroTrustAccessPolicyRequireServiceTokenTag;
     userRiskScore?: outputs.ZeroTrustAccessPolicyRequireUserRiskScore;
 }
 
@@ -52449,11 +54384,40 @@ export interface ZeroTrustAccessPolicyRequireServiceToken {
     tokenId: string;
 }
 
+export interface ZeroTrustAccessPolicyRequireServiceTokenTag {
+    /**
+     * The tag key to match. Keys are case-sensitive and may contain Unicode letters and digits, underscores, periods, and hyphens.
+     */
+    key: string;
+    /**
+     * The tag value to match. Values are case-sensitive, preserve whitespace, and must not contain NUL characters.
+     */
+    value: string;
+}
+
 export interface ZeroTrustAccessPolicyRequireUserRiskScore {
     /**
      * A list of risk score levels to match. Values can be low, medium, high, or unscored.
      */
     userRiskScores: string[];
+}
+
+export interface ZeroTrustCasbFindingTypeCategory {
+    /**
+     * The type of the observation.
+     * Available values: "Issue", "Insight", "Activity".
+     */
+    observation: string;
+    /**
+     * The product category.
+     * Available values: "SaaS", "Cloud".
+     */
+    product: string;
+    /**
+     * The type of the finding category.
+     * Available values: "Content", "Posture".
+     */
+    type: string;
 }
 
 export interface ZeroTrustCasbIntegrationAnthropic {
@@ -52671,6 +54635,29 @@ export interface ZeroTrustCasbWebhookHeader {
     value?: string;
 }
 
+export interface ZeroTrustCwsDomainAclEntry {
+    /**
+     * Per-domain decision overriding the parent ACL's defaultAction
+     * Available values: "ALLOW", "BLOCK".
+     */
+    action: string;
+    /**
+     * Hostname or domain pattern, capped at 255 UTF-8 bytes
+     */
+    domain: string;
+}
+
+export interface ZeroTrustCwsPolicySetPolicy {
+    /**
+     * Whether this policy should enforce when it matches. Defaults to true; false keeps the policy attached for non-enforcing evaluation.
+     */
+    enforce: boolean;
+    /**
+     * ID of the member policy
+     */
+    policyId: string;
+}
+
 export interface ZeroTrustDeviceCustomProfileBrowserExtensionConfig {
     /**
      * Whether the user may disable the browser extension proxy.
@@ -52726,9 +54713,17 @@ export interface ZeroTrustDeviceCustomProfileFallbackDomain {
 
 export interface ZeroTrustDeviceCustomProfileGlobalAcceleration {
     /**
+     * Whether WARP users may manually override the automatic Global Acceleration decision. Defaults to true when not provided.
+     */
+    allowManualOverride: boolean;
+    /**
      * IP:port entries for the API endpoints.
      */
     apiEndpoints: string[];
+    /**
+     * Automatically switch Global Acceleration regions based on device location. Defaults to false when not provided.
+     */
+    autoswitch: boolean;
     /**
      * Global acceleration settings are used only when "enabled".
      */
@@ -52849,9 +54844,17 @@ export interface ZeroTrustDeviceDefaultProfileFallbackDomain {
 
 export interface ZeroTrustDeviceDefaultProfileGlobalAcceleration {
     /**
+     * Whether WARP users may manually override the automatic Global Acceleration decision. Defaults to true when not provided.
+     */
+    allowManualOverride: boolean;
+    /**
      * IP:port entries for the API endpoints.
      */
     apiEndpoints: string[];
+    /**
+     * Automatically switch Global Acceleration regions based on device location. Defaults to false when not provided.
+     */
+    autoswitch: boolean;
     /**
      * Global acceleration settings are used only when "enabled".
      */
@@ -52947,10 +54950,22 @@ export interface ZeroTrustDevicePostureIntegrationConfig {
     accessClientId?: string;
     /**
      * If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `apiUrl`.
+     *
+     * This secret will be passed in the `CF-Access-Client-Secret` header when hitting the `apiUrl`.
      */
     accessClientSecret?: string;
     /**
      * The Workspace One API URL provided in the Workspace One Admin Dashboard.
+     *
+     * The Crowdstrike API URL.
+     *
+     * The Uptycs API URL.
+     *
+     * The Tanium API URL.
+     *
+     * The SentinelOne S2S API URL.
+     *
+     * The Custom Device Posture Integration  API URL.
      */
     apiUrl?: string;
     /**
@@ -52959,6 +54974,12 @@ export interface ZeroTrustDevicePostureIntegrationConfig {
     authUrl?: string;
     /**
      * The Workspace One client ID provided in the Workspace One Admin Dashboard.
+     *
+     * The Crowdstrike client ID.
+     *
+     * The Intune client ID.
+     *
+     * The Kolide client ID.
      */
     clientId?: string;
     /**
@@ -52967,10 +54988,26 @@ export interface ZeroTrustDevicePostureIntegrationConfig {
     clientKey?: string;
     /**
      * The Workspace One client secret provided in the Workspace One Admin Dashboard.
+     *
+     * The Crowdstrike client secret.
+     *
+     * The Uptycs client secret.
+     *
+     * The Intune client secret.
+     *
+     * The Kolide client secret.
+     *
+     * The Tanium client secret.
+     *
+     * The SentinelOne S2S client secret.
      */
     clientSecret?: string;
     /**
      * The Crowdstrike customer ID.
+     *
+     * The Uptycs customer ID.
+     *
+     * The Intune customer ID.
      */
     customerId?: string;
 }
@@ -53023,7 +55060,7 @@ export interface ZeroTrustDevicePostureRuleInput {
      */
     eidLastSeen?: string;
     /**
-     * Enabled.
+     * Whether the rule is enabled. This is a computed, read-only value. It is false for deprecated Kolide posture rules that still use the issueCount input, and true otherwise.
      */
     enabled?: boolean;
     /**
@@ -53035,7 +55072,7 @@ export interface ZeroTrustDevicePostureRuleInput {
      */
     extendedKeyUsages?: string[];
     /**
-     * List ID.
+     * API UUID.
      */
     id?: string;
     /**
@@ -53062,16 +55099,20 @@ export interface ZeroTrustDevicePostureRuleInput {
     networkStatus?: string;
     /**
      * Operating system.
+     *
+     * Operating System.
      * Available values: "windows", "linux", "mac", "android", "ios", "chromeos".
      */
     operatingSystem?: string;
     /**
      * Agent operational state.
-     * Available values: "na", "partially*disabled", "auto*fully*disabled", "fully*disabled", "auto*partially*disabled", "disabled*error", "db*corruption".
+     * Available values: "na", "partiallyDisabled", "autoFullyDisabled", "fullyDisabled", "autoPartiallyDisabled", "disabledError", "dbCorruption".
      */
     operationalState?: string;
     /**
      * Operator.
+     *
+     * Operator to evaluate riskLevel or eid_last_seen.
      * Available values: "<", "<=", ">", ">=", "==".
      */
     operator?: string;
@@ -53097,6 +55138,8 @@ export interface ZeroTrustDevicePostureRuleInput {
     overall?: string;
     /**
      * File path.
+     *
+     * Path for the application.
      */
     path?: string;
     /**
@@ -53148,6 +55191,8 @@ export interface ZeroTrustDevicePostureRuleInput {
     updateWindowDays?: number;
     /**
      * Version of OS.
+     *
+     * Version.
      */
     version?: string;
     /**
@@ -53271,7 +55316,7 @@ export interface ZeroTrustDlpCustomEntryProfile {
 
 export interface ZeroTrustDlpCustomEntryVariant {
     /**
-     * A customer-facing explanation of what this predefined AI prompt topic represents.
+     * For `type: PromptTopic`: A customer-facing explanation of what this predefined AI prompt topic represents.
      */
     description: string;
     /**
@@ -53279,7 +55324,7 @@ export interface ZeroTrustDlpCustomEntryVariant {
      */
     topicType: string;
     /**
-     * Available values: "PromptTopic", "General".
+     * Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
      */
     type: string;
 }
@@ -53437,7 +55482,7 @@ export interface ZeroTrustDlpEntryProfile {
 
 export interface ZeroTrustDlpEntryVariant {
     /**
-     * A customer-facing explanation of what this predefined AI prompt topic represents.
+     * For `type: PromptTopic`: A customer-facing explanation of what this predefined AI prompt topic represents.
      */
     description: string;
     /**
@@ -53445,7 +55490,7 @@ export interface ZeroTrustDlpEntryVariant {
      */
     topicType: string;
     /**
-     * Available values: "PromptTopic", "General".
+     * Available values: "custom", "predefined", "integration".
      */
     type: string;
 }
@@ -53478,7 +55523,7 @@ export interface ZeroTrustDlpIntegrationEntryProfile {
 
 export interface ZeroTrustDlpIntegrationEntryVariant {
     /**
-     * A customer-facing explanation of what this predefined AI prompt topic represents.
+     * For `type: PromptTopic`: A customer-facing explanation of what this predefined AI prompt topic represents.
      */
     description: string;
     /**
@@ -53519,7 +55564,7 @@ export interface ZeroTrustDlpPredefinedEntryProfile {
 
 export interface ZeroTrustDlpPredefinedEntryVariant {
     /**
-     * A customer-facing explanation of what this predefined AI prompt topic represents.
+     * For `type: PromptTopic`: A customer-facing explanation of what this predefined AI prompt topic represents.
      */
     description: string;
     /**
@@ -53535,6 +55580,39 @@ export interface ZeroTrustDlpPredefinedEntryVariant {
 export interface ZeroTrustDlpPredefinedProfileEntry {
     enabled: boolean;
     id: string;
+}
+
+export interface ZeroTrustDlpProximityValidatorReferencedBy {
+    /**
+     * The detection entries using this validator, ordered by name.
+     */
+    entries: outputs.ZeroTrustDlpProximityValidatorReferencedByEntry[];
+    /**
+     * Number of detection entries this validator is attached to.
+     */
+    entryCount: number;
+}
+
+export interface ZeroTrustDlpProximityValidatorReferencedByEntry {
+    id: string;
+    name: string;
+    /**
+     * The type of a detection entry.
+     * Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+     */
+    type: string;
+}
+
+export interface ZeroTrustDlpProximityValidatorWord {
+    /**
+     * How much a word contributes to a match's confidence when it is found nearby.
+     */
+    weight: string;
+    /**
+     * The word or phrase to look for. Must contain 1–128 characters and is matched
+     * case-insensitively.
+     */
+    word: string;
 }
 
 export interface ZeroTrustDlpSensitivityGroupLevel {
@@ -53730,10 +55808,6 @@ export interface ZeroTrustGatewayPolicyRuleSettings {
      */
     allowChildBypass?: boolean;
     /**
-     * Define the settings for the Audit SSH action. Settable only for `l4` rules with `auditSsh` action.
-     */
-    auditSsh?: outputs.ZeroTrustGatewayPolicyRuleSettingsAuditSsh;
-    /**
      * Configure browser isolation behavior. Settable only for `http` rules with the action set to `isolate`.
      */
     bisoAdminControls?: outputs.ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls;
@@ -53773,6 +55847,10 @@ export interface ZeroTrustGatewayPolicyRuleSettings {
      * Configure whether a copy of the HTTP request will be sent to storage when the rule matches.
      */
     forensicCopy?: outputs.ZeroTrustGatewayPolicyRuleSettingsForensicCopy;
+    /**
+     * Forward matching HTTP requests to a Worker. Required for `http` rules with the action set to `forward`.
+     */
+    forward?: outputs.ZeroTrustGatewayPolicyRuleSettingsForward;
     /**
      * Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dnsResolver` rules.
      */
@@ -53835,13 +55913,6 @@ export interface ZeroTrustGatewayPolicyRuleSettings {
     untrustedCert?: outputs.ZeroTrustGatewayPolicyRuleSettingsUntrustedCert;
 }
 
-export interface ZeroTrustGatewayPolicyRuleSettingsAuditSsh {
-    /**
-     * Enable SSH command logging.
-     */
-    commandLogging?: boolean;
-}
-
 export interface ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
     /**
      * Configure copy behavior. If set to remote*only, users cannot copy isolated content from the remote browser to the local clipboard. If this field is absent, copying remains enabled. Applies only when version == "v2".
@@ -53874,8 +55945,8 @@ export interface ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
      */
     du?: boolean;
     /**
-     * Configure keyboard usage behavior. If this field is absent, keyboard usage remains enabled. Applies only when version == "v2".
-     * Available values: "enabled", "disabled".
+     * Configure keyboard usage behavior. When set to enable*read*only*actions, only approved browser commands (find, copy, print, zoom, and select-all) may execute; other keyboard input is blocked from reaching the page. Copy and print remain subject to their independent controls. If this field is absent, keyboard usage remains enabled. Applies only when version == "v2". The enable*read*only*actions value requires an explicit version of "v2".
+     * Available values: "enabled", "disabled", "enable*read*only_actions".
      */
     keyboard?: string;
     /**
@@ -53989,6 +56060,13 @@ export interface ZeroTrustGatewayPolicyRuleSettingsForensicCopy {
      * Enable sending the copy to storage.
      */
     enabled?: boolean;
+}
+
+export interface ZeroTrustGatewayPolicyRuleSettingsForward {
+    /**
+     * Specify the public Worker ID of the target Worker.
+     */
+    workerId: string;
 }
 
 export interface ZeroTrustGatewayPolicyRuleSettingsL4override {
@@ -54511,7 +56589,7 @@ export interface ZeroTrustOrganizationServiceTokenInactivity {
 export interface ZeroTrustRiskBehaviorBehaviors {
     enabled: boolean;
     /**
-     * Available values: "low", "medium", "high".
+     * Available values: "info", "low", "medium", "high".
      */
     riskLevel: string;
 }
@@ -54856,11 +56934,11 @@ export interface ZoneDnsSettingsInternalDns {
 
 export interface ZoneDnsSettingsNameservers {
     /**
-     * Identifier of the account-owned Custom Nameserver Set to use for this zone.
+     * For `type: custom`: Identifier of the account-owned Custom Nameserver Set to use for this zone.
      */
     nameserverSetId?: string;
     /**
-     * Configured nameserver set number to use for this zone.
+     * For `type: custom.account` or `type: custom.tenant` or `type: custom.zone`: Configured nameserver set number to use for this zone.
      */
     nsSet: number;
     /**
@@ -54903,12 +56981,13 @@ export interface ZoneDnsSettingsSoa {
 
 export interface ZoneLockdownConfiguration {
     /**
-     * The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.
-     * Available values: "ip", "ipRange".
+     * For `target: ip`: The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.
      */
     target?: string;
     /**
-     * The IP address to match. This address will be compared to the IP address of incoming requests.
+     * For `target: ip`: The IP address to match. This address will be compared to the IP address of incoming requests.
+     *
+     * For `target: ipRange`: The IP address range to match. You can only use prefix lengths `/16` and `/24`.
      */
     value?: string;
 }

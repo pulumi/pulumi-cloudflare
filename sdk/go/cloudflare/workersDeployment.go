@@ -14,6 +14,14 @@ import (
 
 // Accepted Permissions
 //
+// - `Individual Workers Admin`
+// - `Individual Workers Content Read-Only`
+// - `Individual Workers Editor`
+// - `Individual Workers Metadata Read-Only`
+// - `Workers Admin`
+// - `Workers Content Read-Only`
+// - `Workers Editor`
+// - `Workers Metadata Read-Only`
 // - `Workers Scripts Read`
 // - `Workers Scripts Write`
 // - `Workers Tail Read`
@@ -45,6 +53,9 @@ import (
 //				Annotations: &cloudflare.WorkersDeploymentAnnotationsArgs{
 //					WorkersMessage: pulumi.String("Deploy bug fix."),
 //				},
+//				CodeUpdateStrategy: &cloudflare.WorkersDeploymentCodeUpdateStrategyArgs{
+//					Mode: pulumi.String("immediate"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -64,15 +75,19 @@ type WorkersDeployment struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId   pulumi.StringOutput                `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// Metadata attached to the deployment.
 	Annotations WorkersDeploymentAnnotationsOutput `pulumi:"annotations"`
 	AuthorEmail pulumi.StringOutput                `pulumi:"authorEmail"`
-	CreatedOn   pulumi.StringOutput                `pulumi:"createdOn"`
+	// Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+	CodeUpdateStrategy WorkersDeploymentCodeUpdateStrategyPtrOutput `pulumi:"codeUpdateStrategy"`
+	CreatedOn          pulumi.StringOutput                          `pulumi:"createdOn"`
 	// If set to true, the deployment will be created even if normally blocked by something such rolling back to an older version when a secret has changed.
 	Force pulumi.BoolPtrOutput `pulumi:"force"`
 	// Name of the script.
 	ScriptName pulumi.StringOutput `pulumi:"scriptName"`
 	Source     pulumi.StringOutput `pulumi:"source"`
+	// Strategy for routing traffic across the listed versions. `percentage` splits traffic according to each version's `percentage`.
 	// Available values: "percentage".
 	Strategy pulumi.StringOutput `pulumi:"strategy"`
 	// Worker versions included in this deployment. Each object must contain a `versionId` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions '[{"versionId":"023e105f-2a42-4f8b-a1c1-73f6a2a30c0f","percentage":100}]'`, or from a JSON file with `--versions @versions.json`.
@@ -122,15 +137,19 @@ func GetWorkersDeployment(ctx *pulumi.Context,
 // Input properties used for looking up and filtering WorkersDeployment resources.
 type workersDeploymentState struct {
 	// Identifier.
-	AccountId   *string                       `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
+	// Metadata attached to the deployment.
 	Annotations *WorkersDeploymentAnnotations `pulumi:"annotations"`
 	AuthorEmail *string                       `pulumi:"authorEmail"`
-	CreatedOn   *string                       `pulumi:"createdOn"`
+	// Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+	CodeUpdateStrategy *WorkersDeploymentCodeUpdateStrategy `pulumi:"codeUpdateStrategy"`
+	CreatedOn          *string                              `pulumi:"createdOn"`
 	// If set to true, the deployment will be created even if normally blocked by something such rolling back to an older version when a secret has changed.
 	Force *bool `pulumi:"force"`
 	// Name of the script.
 	ScriptName *string `pulumi:"scriptName"`
 	Source     *string `pulumi:"source"`
+	// Strategy for routing traffic across the listed versions. `percentage` splits traffic according to each version's `percentage`.
 	// Available values: "percentage".
 	Strategy *string `pulumi:"strategy"`
 	// Worker versions included in this deployment. Each object must contain a `versionId` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions '[{"versionId":"023e105f-2a42-4f8b-a1c1-73f6a2a30c0f","percentage":100}]'`, or from a JSON file with `--versions @versions.json`.
@@ -139,15 +158,19 @@ type workersDeploymentState struct {
 
 type WorkersDeploymentState struct {
 	// Identifier.
-	AccountId   pulumi.StringPtrInput
+	AccountId pulumi.StringPtrInput
+	// Metadata attached to the deployment.
 	Annotations WorkersDeploymentAnnotationsPtrInput
 	AuthorEmail pulumi.StringPtrInput
-	CreatedOn   pulumi.StringPtrInput
+	// Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+	CodeUpdateStrategy WorkersDeploymentCodeUpdateStrategyPtrInput
+	CreatedOn          pulumi.StringPtrInput
 	// If set to true, the deployment will be created even if normally blocked by something such rolling back to an older version when a secret has changed.
 	Force pulumi.BoolPtrInput
 	// Name of the script.
 	ScriptName pulumi.StringPtrInput
 	Source     pulumi.StringPtrInput
+	// Strategy for routing traffic across the listed versions. `percentage` splits traffic according to each version's `percentage`.
 	// Available values: "percentage".
 	Strategy pulumi.StringPtrInput
 	// Worker versions included in this deployment. Each object must contain a `versionId` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions '[{"versionId":"023e105f-2a42-4f8b-a1c1-73f6a2a30c0f","percentage":100}]'`, or from a JSON file with `--versions @versions.json`.
@@ -166,12 +189,16 @@ func WorkersDeploymentExists(ctx *pulumi.Context,
 
 type workersDeploymentArgs struct {
 	// Identifier.
-	AccountId   string                        `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
+	// Metadata attached to the deployment.
 	Annotations *WorkersDeploymentAnnotations `pulumi:"annotations"`
+	// Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+	CodeUpdateStrategy *WorkersDeploymentCodeUpdateStrategy `pulumi:"codeUpdateStrategy"`
 	// If set to true, the deployment will be created even if normally blocked by something such rolling back to an older version when a secret has changed.
 	Force *bool `pulumi:"force"`
 	// Name of the script.
 	ScriptName string `pulumi:"scriptName"`
+	// Strategy for routing traffic across the listed versions. `percentage` splits traffic according to each version's `percentage`.
 	// Available values: "percentage".
 	Strategy string `pulumi:"strategy"`
 	// Worker versions included in this deployment. Each object must contain a `versionId` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions '[{"versionId":"023e105f-2a42-4f8b-a1c1-73f6a2a30c0f","percentage":100}]'`, or from a JSON file with `--versions @versions.json`.
@@ -181,12 +208,16 @@ type workersDeploymentArgs struct {
 // The set of arguments for constructing a WorkersDeployment resource.
 type WorkersDeploymentArgs struct {
 	// Identifier.
-	AccountId   pulumi.StringInput
+	AccountId pulumi.StringInput
+	// Metadata attached to the deployment.
 	Annotations WorkersDeploymentAnnotationsPtrInput
+	// Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+	CodeUpdateStrategy WorkersDeploymentCodeUpdateStrategyPtrInput
 	// If set to true, the deployment will be created even if normally blocked by something such rolling back to an older version when a secret has changed.
 	Force pulumi.BoolPtrInput
 	// Name of the script.
 	ScriptName pulumi.StringInput
+	// Strategy for routing traffic across the listed versions. `percentage` splits traffic according to each version's `percentage`.
 	// Available values: "percentage".
 	Strategy pulumi.StringInput
 	// Worker versions included in this deployment. Each object must contain a `versionId` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions '[{"versionId":"023e105f-2a42-4f8b-a1c1-73f6a2a30c0f","percentage":100}]'`, or from a JSON file with `--versions @versions.json`.
@@ -285,12 +316,18 @@ func (o WorkersDeploymentOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersDeployment) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
+// Metadata attached to the deployment.
 func (o WorkersDeploymentOutput) Annotations() WorkersDeploymentAnnotationsOutput {
 	return o.ApplyT(func(v *WorkersDeployment) WorkersDeploymentAnnotationsOutput { return v.Annotations }).(WorkersDeploymentAnnotationsOutput)
 }
 
 func (o WorkersDeploymentOutput) AuthorEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersDeployment) pulumi.StringOutput { return v.AuthorEmail }).(pulumi.StringOutput)
+}
+
+// Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+func (o WorkersDeploymentOutput) CodeUpdateStrategy() WorkersDeploymentCodeUpdateStrategyPtrOutput {
+	return o.ApplyT(func(v *WorkersDeployment) WorkersDeploymentCodeUpdateStrategyPtrOutput { return v.CodeUpdateStrategy }).(WorkersDeploymentCodeUpdateStrategyPtrOutput)
 }
 
 func (o WorkersDeploymentOutput) CreatedOn() pulumi.StringOutput {
@@ -311,6 +348,7 @@ func (o WorkersDeploymentOutput) Source() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersDeployment) pulumi.StringOutput { return v.Source }).(pulumi.StringOutput)
 }
 
+// Strategy for routing traffic across the listed versions. `percentage` splits traffic according to each version's `percentage`.
 // Available values: "percentage".
 func (o WorkersDeploymentOutput) Strategy() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersDeployment) pulumi.StringOutput { return v.Strategy }).(pulumi.StringOutput)

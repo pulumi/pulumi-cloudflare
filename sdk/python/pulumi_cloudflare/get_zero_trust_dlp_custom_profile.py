@@ -103,7 +103,7 @@ class GetZeroTrustDlpCustomProfileResult:
     @pulumi.getter(name="allowedMatchCount")
     def allowed_match_count(self) -> _builtins.int:
         """
-        Related DLP policies will trigger when the match count exceeds the number set.
+        For `type: custom`: Related DLP policies will trigger when the match count exceeds the number set.
         """
         return pulumi.get(self, "allowed_match_count")
 
@@ -120,7 +120,7 @@ class GetZeroTrustDlpCustomProfileResult:
     @_utilities.deprecated("""This attribute is deprecated.""")
     def context_awareness(self) -> 'outputs.GetZeroTrustDlpCustomProfileContextAwarenessResult':
         """
-        Scan the context of predefined entries to only return matches surrounded by keywords.
+        For `type: custom`: Scan the context of predefined entries to only return matches surrounded by keywords.
         """
         return pulumi.get(self, "context_awareness")
 
@@ -128,7 +128,7 @@ class GetZeroTrustDlpCustomProfileResult:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> _builtins.str:
         """
-        When the profile was created.
+        For `type: custom`: When the profile was created.
         """
         return pulumi.get(self, "created_at")
 
@@ -136,7 +136,7 @@ class GetZeroTrustDlpCustomProfileResult:
     @pulumi.getter(name="dataClasses")
     def data_classes(self) -> Sequence[_builtins.str]:
         """
-        Data classes associated with this profile.
+        For `type: custom`: Data classes associated with this profile.
         """
         return pulumi.get(self, "data_classes")
 
@@ -144,7 +144,7 @@ class GetZeroTrustDlpCustomProfileResult:
     @pulumi.getter(name="dataTags")
     def data_tags(self) -> Sequence[_builtins.str]:
         """
-        Data tags associated with this profile.
+        For `type: custom`: Data tags associated with this profile.
         """
         return pulumi.get(self, "data_tags")
 
@@ -152,7 +152,7 @@ class GetZeroTrustDlpCustomProfileResult:
     @pulumi.getter
     def description(self) -> _builtins.str:
         """
-        The description of the profile.
+        For `type: custom` or `type: integration`: The description of the profile.
         """
         return pulumi.get(self, "description")
 
@@ -179,7 +179,7 @@ class GetZeroTrustDlpCustomProfileResult:
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        The name of the profile.
+        For `type: custom`: The name of the profile.
         """
         return pulumi.get(self, "name")
 
@@ -191,9 +191,6 @@ class GetZeroTrustDlpCustomProfileResult:
     @_builtins.property
     @pulumi.getter(name="openAccess")
     def open_access(self) -> _builtins.bool:
-        """
-        Whether this profile can be accessed by anyone.
-        """
         return pulumi.get(self, "open_access")
 
     @_builtins.property
@@ -204,9 +201,6 @@ class GetZeroTrustDlpCustomProfileResult:
     @_builtins.property
     @pulumi.getter(name="sensitivityLevels")
     def sensitivity_levels(self) -> Sequence['outputs.GetZeroTrustDlpCustomProfileSensitivityLevelResult']:
-        """
-        Sensitivity levels associated with this profile.
-        """
         return pulumi.get(self, "sensitivity_levels")
 
     @_builtins.property
@@ -217,17 +211,11 @@ class GetZeroTrustDlpCustomProfileResult:
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        Available values: "custom", "predefined", "integration".
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> _builtins.str:
-        """
-        When the profile was lasted updated.
-        """
         return pulumi.get(self, "updated_at")
 
 

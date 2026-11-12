@@ -30,7 +30,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly int AssociatingRecipientCount;
         /// <summary>
-        /// When the share was created.
+        /// When the object was created.
         /// </summary>
         public readonly string Created;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Kind;
         /// <summary>
-        /// When the share was modified.
+        /// When the object was last modified.
         /// </summary>
         public readonly string Modified;
         /// <summary>
@@ -69,6 +69,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// Available values: "active", "deleting", "deleted".
         /// </summary>
         public readonly string Status;
+        /// <summary>
+        /// Tags associated with the share. Included in create and update responses when tags are supplied, and in read responses when the `IncludeTagsFrom` parameter is set.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// Available values: "account", "organization".
         /// </summary>
@@ -104,6 +108,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string status,
 
+            ImmutableDictionary<string, string> tags,
+
             string targetType)
         {
             AccountId = accountId;
@@ -120,6 +126,7 @@ namespace Pulumi.Cloudflare.Outputs
             OrganizationId = organizationId;
             Resources = resources;
             Status = status;
+            Tags = tags;
             TargetType = targetType;
         }
     }

@@ -27,7 +27,7 @@ class GetMagicTransitSiteWanResult:
     """
     A collection of values returned by getMagicTransitSiteWan.
     """
-    def __init__(__self__, account_id=None, health_check_rate=None, id=None, load_balance_inner_flows=None, name=None, physport=None, priority=None, site_id=None, static_addressing=None, vlan_tag=None, wan_id=None):
+    def __init__(__self__, account_id=None, health_check_rate=None, id=None, load_balance_inner_flows=None, name=None, physport=None, priority=None, provisioned_download_kbps=None, provisioned_upload_kbps=None, site_id=None, static_addressing=None, vlan_tag=None, wan_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -49,6 +49,12 @@ class GetMagicTransitSiteWanResult:
         if priority and not isinstance(priority, int):
             raise TypeError("Expected argument 'priority' to be a int")
         pulumi.set(__self__, "priority", priority)
+        if provisioned_download_kbps and not isinstance(provisioned_download_kbps, int):
+            raise TypeError("Expected argument 'provisioned_download_kbps' to be a int")
+        pulumi.set(__self__, "provisioned_download_kbps", provisioned_download_kbps)
+        if provisioned_upload_kbps and not isinstance(provisioned_upload_kbps, int):
+            raise TypeError("Expected argument 'provisioned_upload_kbps' to be a int")
+        pulumi.set(__self__, "provisioned_upload_kbps", provisioned_upload_kbps)
         if site_id and not isinstance(site_id, str):
             raise TypeError("Expected argument 'site_id' to be a str")
         pulumi.set(__self__, "site_id", site_id)
@@ -111,6 +117,22 @@ class GetMagicTransitSiteWanResult:
         return pulumi.get(self, "priority")
 
     @_builtins.property
+    @pulumi.getter(name="provisionedDownloadKbps")
+    def provisioned_download_kbps(self) -> _builtins.int:
+        """
+        Provisioned download rate of the WAN circuit in kilobits per second.
+        """
+        return pulumi.get(self, "provisioned_download_kbps")
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedUploadKbps")
+    def provisioned_upload_kbps(self) -> _builtins.int:
+        """
+        Provisioned upload rate of the WAN circuit in kilobits per second.
+        """
+        return pulumi.get(self, "provisioned_upload_kbps")
+
+    @_builtins.property
     @pulumi.getter(name="siteId")
     def site_id(self) -> _builtins.str:
         """
@@ -156,6 +178,8 @@ class AwaitableGetMagicTransitSiteWanResult(GetMagicTransitSiteWanResult):
             name=self.name,
             physport=self.physport,
             priority=self.priority,
+            provisioned_download_kbps=self.provisioned_download_kbps,
+            provisioned_upload_kbps=self.provisioned_upload_kbps,
             site_id=self.site_id,
             static_addressing=self.static_addressing,
             vlan_tag=self.vlan_tag,
@@ -205,6 +229,8 @@ def get_magic_transit_site_wan(account_id: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         physport=pulumi.get(__ret__, 'physport'),
         priority=pulumi.get(__ret__, 'priority'),
+        provisioned_download_kbps=pulumi.get(__ret__, 'provisioned_download_kbps'),
+        provisioned_upload_kbps=pulumi.get(__ret__, 'provisioned_upload_kbps'),
         site_id=pulumi.get(__ret__, 'site_id'),
         static_addressing=pulumi.get(__ret__, 'static_addressing'),
         vlan_tag=pulumi.get(__ret__, 'vlan_tag'),
@@ -251,6 +277,8 @@ def get_magic_transit_site_wan_output(account_id: pulumi.Input[Optional[_builtin
         name=pulumi.get(__response__, 'name'),
         physport=pulumi.get(__response__, 'physport'),
         priority=pulumi.get(__response__, 'priority'),
+        provisioned_download_kbps=pulumi.get(__response__, 'provisioned_download_kbps'),
+        provisioned_upload_kbps=pulumi.get(__response__, 'provisioned_upload_kbps'),
         site_id=pulumi.get(__response__, 'site_id'),
         static_addressing=pulumi.get(__response__, 'static_addressing'),
         vlan_tag=pulumi.get(__response__, 'vlan_tag'),

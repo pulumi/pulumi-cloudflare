@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.AccountArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.AccountState;
+import com.pulumi.cloudflare.outputs.AccountLegacyFlags;
 import com.pulumi.cloudflare.outputs.AccountManagedBy;
 import com.pulumi.cloudflare.outputs.AccountSettings;
 import com.pulumi.cloudflare.outputs.AccountUnit;
@@ -113,6 +114,20 @@ public class Account extends com.pulumi.resources.CustomResource {
         return this.createdOn;
     }
     /**
+     * Legacy account flags.
+     * 
+     */
+    @Export(name="legacyFlags", refs={AccountLegacyFlags.class}, tree="[0]")
+    private Output<AccountLegacyFlags> legacyFlags;
+
+    /**
+     * @return Legacy account flags.
+     * 
+     */
+    public Output<AccountLegacyFlags> legacyFlags() {
+        return this.legacyFlags;
+    }
+    /**
      * Parent container details
      * 
      */
@@ -127,14 +142,14 @@ public class Account extends com.pulumi.resources.CustomResource {
         return this.managedBy;
     }
     /**
-     * Account name
+     * Account name, limited to 65 UTF-8 bytes.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Account name
+     * @return Account name, limited to 65 UTF-8 bytes.
      * 
      */
     public Output<String> name() {
@@ -169,6 +184,7 @@ public class Account extends com.pulumi.resources.CustomResource {
         return this.standalone;
     }
     /**
+     * the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
      * Available values: &#34;standard&#34;, &#34;enterprise&#34;.
      * 
      * @deprecated The &#39;type&#39; field should no longer be set through the API.
@@ -179,7 +195,8 @@ public class Account extends com.pulumi.resources.CustomResource {
     private Output<String> type;
 
     /**
-     * @return Available values: &#34;standard&#34;, &#34;enterprise&#34;.
+     * @return the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
+     * Available values: &#34;standard&#34;, &#34;enterprise&#34;.
      * 
      */
     public Output<String> type() {

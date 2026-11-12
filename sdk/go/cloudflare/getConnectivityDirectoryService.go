@@ -71,8 +71,9 @@ type LookupConnectivityDirectoryServiceResult struct {
 	TcpPort   int    `pulumi:"tcpPort"`
 	// TLS settings for a connectivity service.
 	TlsSettings GetConnectivityDirectoryServiceTlsSettings `pulumi:"tlsSettings"`
-	Type        string                                     `pulumi:"type"`
-	UpdatedAt   string                                     `pulumi:"updatedAt"`
+	// Available values: "tcp", "http".
+	Type      string `pulumi:"type"`
+	UpdatedAt string `pulumi:"updatedAt"`
 }
 
 func LookupConnectivityDirectoryServiceOutput(ctx *pulumi.Context, args LookupConnectivityDirectoryServiceOutputArgs, opts ...pulumi.InvokeOption) LookupConnectivityDirectoryServiceResultOutput {
@@ -161,6 +162,7 @@ func (o LookupConnectivityDirectoryServiceResultOutput) TlsSettings() GetConnect
 	}).(GetConnectivityDirectoryServiceTlsSettingsOutput)
 }
 
+// Available values: "tcp", "http".
 func (o LookupConnectivityDirectoryServiceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectivityDirectoryServiceResult) string { return v.Type }).(pulumi.StringOutput)
 }

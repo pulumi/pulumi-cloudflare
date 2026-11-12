@@ -18,6 +18,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string CertId;
         /// <summary>
+        /// Whether the configured hostname is routable for the domain. If disabled, then requests to the configured hostname will not be routed to the configured Worker. If disabled, then preview routing must be enabled, and only subdomains of the configured hostname will be routable.
+        /// </summary>
+        public readonly bool Enabled;
+        /// <summary>
         /// Worker environment associated with the domain.
         /// </summary>
         public readonly string Environment;
@@ -29,6 +33,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// Immutable ID of the domain.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Whether previews are routable for the domain. If enabled, previews will be routable as subdomains of the configured hostname. For example, if the configured hostname is `app.example.com`, then requests to `my-feature.app.example.com` will be routed to the preview with slug `my-feature`, if such a preview exists. If preview routing is disabled, then hostname routing must be enabled.
+        /// </summary>
+        public readonly bool PreviewsEnabled;
         /// <summary>
         /// Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
         /// </summary>
@@ -46,11 +54,15 @@ namespace Pulumi.Cloudflare.Outputs
         private GetWorkersCustomDomainsResultResult(
             string certId,
 
+            bool enabled,
+
             string environment,
 
             string hostname,
 
             string id,
+
+            bool previewsEnabled,
 
             string service,
 
@@ -59,9 +71,11 @@ namespace Pulumi.Cloudflare.Outputs
             string zoneName)
         {
             CertId = certId;
+            Enabled = enabled;
             Environment = environment;
             Hostname = hostname;
             Id = id;
+            PreviewsEnabled = previewsEnabled;
             Service = service;
             ZoneId = zoneId;
             ZoneName = zoneName;

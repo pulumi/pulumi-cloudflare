@@ -80,14 +80,14 @@ public final class DlpCustomProfileState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * When the profile was created.
+     * For `type: custom`: When the profile was created.
      * 
      */
     @Import(name="createdAt")
     private @Nullable Output<String> createdAt;
 
     /**
-     * @return When the profile was created.
+     * @return For `type: custom`: When the profile was created.
      * 
      */
     public Optional<Output<String>> createdAt() {
@@ -184,14 +184,14 @@ public final class DlpCustomProfileState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Whether this profile can be accessed by anyone.
+     * For `type: predefined`: Whether this profile can be accessed by anyone.
      * 
      */
     @Import(name="openAccess")
     private @Nullable Output<Boolean> openAccess;
 
     /**
-     * @return Whether this profile can be accessed by anyone.
+     * @return For `type: predefined`: Whether this profile can be accessed by anyone.
      * 
      */
     public Optional<Output<Boolean>> openAccess() {
@@ -244,14 +244,14 @@ public final class DlpCustomProfileState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * When the profile was lasted updated.
+     * For `type: custom`: When the profile was lasted updated.
      * 
      */
     @Import(name="updatedAt")
     private @Nullable Output<String> updatedAt;
 
     /**
-     * @return When the profile was lasted updated.
+     * @return For `type: custom`: When the profile was lasted updated.
      * 
      */
     public Optional<Output<String>> updatedAt() {
@@ -375,7 +375,7 @@ public final class DlpCustomProfileState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param createdAt When the profile was created.
+         * @param createdAt For `type: custom`: When the profile was created.
          * 
          * @return builder
          * 
@@ -386,7 +386,7 @@ public final class DlpCustomProfileState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param createdAt When the profile was created.
+         * @param createdAt For `type: custom`: When the profile was created.
          * 
          * @return builder
          * 
@@ -549,7 +549,7 @@ public final class DlpCustomProfileState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param openAccess Whether this profile can be accessed by anyone.
+         * @param openAccess For `type: predefined`: Whether this profile can be accessed by anyone.
          * 
          * @return builder
          * 
@@ -560,7 +560,7 @@ public final class DlpCustomProfileState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param openAccess Whether this profile can be accessed by anyone.
+         * @param openAccess For `type: predefined`: Whether this profile can be accessed by anyone.
          * 
          * @return builder
          * 
@@ -653,7 +653,7 @@ public final class DlpCustomProfileState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param updatedAt When the profile was lasted updated.
+         * @param updatedAt For `type: custom`: When the profile was lasted updated.
          * 
          * @return builder
          * 
@@ -664,7 +664,7 @@ public final class DlpCustomProfileState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param updatedAt When the profile was lasted updated.
+         * @param updatedAt For `type: custom`: When the profile was lasted updated.
          * 
          * @return builder
          * 

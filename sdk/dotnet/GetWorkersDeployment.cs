@@ -14,6 +14,14 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Accepted Permissions
         /// 
+        /// - `Individual Workers Admin`
+        /// - `Individual Workers Content Read-Only`
+        /// - `Individual Workers Editor`
+        /// - `Individual Workers Metadata Read-Only`
+        /// - `Workers Admin`
+        /// - `Workers Content Read-Only`
+        /// - `Workers Editor`
+        /// - `Workers Metadata Read-Only`
         /// - `Workers Scripts Read`
         /// - `Workers Scripts Write`
         /// - `Workers Tail Read`
@@ -44,6 +52,14 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Accepted Permissions
         /// 
+        /// - `Individual Workers Admin`
+        /// - `Individual Workers Content Read-Only`
+        /// - `Individual Workers Editor`
+        /// - `Individual Workers Metadata Read-Only`
+        /// - `Workers Admin`
+        /// - `Workers Content Read-Only`
+        /// - `Workers Editor`
+        /// - `Workers Metadata Read-Only`
         /// - `Workers Scripts Read`
         /// - `Workers Scripts Write`
         /// - `Workers Tail Read`
@@ -74,6 +90,14 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Accepted Permissions
         /// 
+        /// - `Individual Workers Admin`
+        /// - `Individual Workers Content Read-Only`
+        /// - `Individual Workers Editor`
+        /// - `Individual Workers Metadata Read-Only`
+        /// - `Workers Admin`
+        /// - `Workers Content Read-Only`
+        /// - `Workers Editor`
+        /// - `Workers Metadata Read-Only`
         /// - `Workers Scripts Read`
         /// - `Workers Scripts Write`
         /// - `Workers Tail Read`
@@ -157,8 +181,15 @@ namespace Pulumi.Cloudflare
         /// Identifier.
         /// </summary>
         public readonly string AccountId;
+        /// <summary>
+        /// Metadata attached to the deployment.
+        /// </summary>
         public readonly Outputs.GetWorkersDeploymentAnnotationsResult Annotations;
         public readonly string AuthorEmail;
+        /// <summary>
+        /// Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+        /// </summary>
+        public readonly Outputs.GetWorkersDeploymentCodeUpdateStrategyResult CodeUpdateStrategy;
         public readonly string CreatedOn;
         public readonly string DeploymentId;
         /// <summary>
@@ -171,6 +202,7 @@ namespace Pulumi.Cloudflare
         public readonly string ScriptName;
         public readonly string Source;
         /// <summary>
+        /// Strategy for routing traffic across the listed versions. `Percentage` splits traffic according to each version's `Percentage`.
         /// Available values: "percentage".
         /// </summary>
         public readonly string Strategy;
@@ -186,6 +218,8 @@ namespace Pulumi.Cloudflare
             Outputs.GetWorkersDeploymentAnnotationsResult annotations,
 
             string authorEmail,
+
+            Outputs.GetWorkersDeploymentCodeUpdateStrategyResult codeUpdateStrategy,
 
             string createdOn,
 
@@ -204,6 +238,7 @@ namespace Pulumi.Cloudflare
             AccountId = accountId;
             Annotations = annotations;
             AuthorEmail = authorEmail;
+            CodeUpdateStrategy = codeUpdateStrategy;
             CreatedOn = createdOn;
             DeploymentId = deploymentId;
             Id = id;

@@ -32,6 +32,7 @@ namespace Pulumi.Cloudflare
     ///         Name = "Austin Office Location",
     ///         ClientDefault = false,
     ///         DnsDestinationIpsId = "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
+    ///         Dns64Enabled = false,
     ///         EcsSupport = false,
     ///         Endpoints = new Cloudflare.Inputs.ZeroTrustDnsLocationEndpointsArgs
     ///         {
@@ -114,6 +115,12 @@ namespace Pulumi.Cloudflare
 
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.
+        /// </summary>
+        [Output("dns64Enabled")]
+        public Output<bool?> Dns64Enabled { get; private set; } = null!;
 
         /// <summary>
         /// Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.
@@ -247,6 +254,12 @@ namespace Pulumi.Cloudflare
         public Input<bool>? ClientDefault { get; set; }
 
         /// <summary>
+        /// Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.
+        /// </summary>
+        [Input("dns64Enabled")]
+        public Input<bool>? Dns64Enabled { get; set; }
+
+        /// <summary>
         /// Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.
         /// </summary>
         [Input("dnsDestinationIpsId")]
@@ -310,6 +323,12 @@ namespace Pulumi.Cloudflare
 
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
+
+        /// <summary>
+        /// Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.
+        /// </summary>
+        [Input("dns64Enabled")]
+        public Input<bool>? Dns64Enabled { get; set; }
 
         /// <summary>
         /// Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.

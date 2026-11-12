@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  *     shareId: "3fd85f74b32742f1bff64a85009dda07",
  *     meta: JSON.stringify({}),
  *     resourceAccountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     resourceId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     resourceId: "0a679032-bbb2-4b7e-9acc-dd5c5cb27a17",
  *     resourceType: "custom-ruleset",
  * });
  * ```
@@ -71,7 +71,7 @@ export class ShareResource extends pulumi.CustomResource {
      */
     declare public readonly accountId: pulumi.Output<string>;
     /**
-     * When the share was created.
+     * When the object was created.
      */
     declare public /*out*/ readonly created: pulumi.Output<string>;
     /**
@@ -79,15 +79,15 @@ export class ShareResource extends pulumi.CustomResource {
      */
     declare public readonly meta: pulumi.Output<string>;
     /**
-     * When the share was modified.
+     * When the object was last modified.
      */
     declare public /*out*/ readonly modified: pulumi.Output<string>;
     /**
-     * Account identifier.
+     * The account that owns the resource. Must match the `accountId` in the path.
      */
     declare public readonly resourceAccountId: pulumi.Output<string>;
     /**
-     * Share Resource identifier.
+     * Identifier assigned by the service that owns the shared resource.
      */
     declare public readonly resourceId: pulumi.Output<string>;
     /**
@@ -177,7 +177,7 @@ export interface ShareResourceState {
      */
     accountId?: pulumi.Input<string | undefined>;
     /**
-     * When the share was created.
+     * When the object was created.
      */
     created?: pulumi.Input<string | undefined>;
     /**
@@ -185,15 +185,15 @@ export interface ShareResourceState {
      */
     meta?: pulumi.Input<string | undefined>;
     /**
-     * When the share was modified.
+     * When the object was last modified.
      */
     modified?: pulumi.Input<string | undefined>;
     /**
-     * Account identifier.
+     * The account that owns the resource. Must match the `accountId` in the path.
      */
     resourceAccountId?: pulumi.Input<string | undefined>;
     /**
-     * Share Resource identifier.
+     * Identifier assigned by the service that owns the shared resource.
      */
     resourceId?: pulumi.Input<string | undefined>;
     /**
@@ -229,11 +229,11 @@ export interface ShareResourceArgs {
      */
     meta: pulumi.Input<string>;
     /**
-     * Account identifier.
+     * The account that owns the resource. Must match the `accountId` in the path.
      */
     resourceAccountId: pulumi.Input<string>;
     /**
-     * Share Resource identifier.
+     * Identifier assigned by the service that owns the shared resource.
      */
     resourceId: pulumi.Input<string>;
     /**

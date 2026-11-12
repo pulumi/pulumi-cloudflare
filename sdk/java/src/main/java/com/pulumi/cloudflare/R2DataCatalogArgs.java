@@ -3,11 +3,14 @@
 
 package com.pulumi.cloudflare;
 
+import com.pulumi.cloudflare.inputs.R2DataCatalogCredentialArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class R2DataCatalogArgs extends com.pulumi.resources.ResourceArgs {
@@ -44,11 +47,27 @@ public final class R2DataCatalogArgs extends com.pulumi.resources.ResourceArgs {
         return this.bucketName;
     }
 
+    /**
+     * Contains request to store catalog credentials.
+     * 
+     */
+    @Import(name="credential")
+    private @Nullable Output<R2DataCatalogCredentialArgs> credential;
+
+    /**
+     * @return Contains request to store catalog credentials.
+     * 
+     */
+    public Optional<Output<R2DataCatalogCredentialArgs>> credential() {
+        return Optional.ofNullable(this.credential);
+    }
+
     private R2DataCatalogArgs() {}
 
     private R2DataCatalogArgs(R2DataCatalogArgs $) {
         this.accountId = $.accountId;
         this.bucketName = $.bucketName;
+        this.credential = $.credential;
     }
 
     public static Builder builder() {
@@ -109,6 +128,27 @@ public final class R2DataCatalogArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder bucketName(String bucketName) {
             return bucketName(Output.of(bucketName));
+        }
+
+        /**
+         * @param credential Contains request to store catalog credentials.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder credential(@Nullable Output<R2DataCatalogCredentialArgs> credential) {
+            $.credential = credential;
+            return this;
+        }
+
+        /**
+         * @param credential Contains request to store catalog credentials.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder credential(R2DataCatalogCredentialArgs credential) {
+            return credential(Output.of(credential));
         }
 
         public R2DataCatalogArgs build() {

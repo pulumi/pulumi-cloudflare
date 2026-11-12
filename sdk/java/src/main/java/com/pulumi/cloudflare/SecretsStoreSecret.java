@@ -138,18 +138,18 @@ public class SecretsStoreSecret extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The list of services that can use this secret. Valid values are `workers`, `aiGateway`, `dex`, and `access`. Must be listed in alphabetical order.
+     * The list of services that can use this secret, or null when the secret inherits its store&#39;s scopes. Set it to null in a patch to inherit again. An empty list lets no service use the secret. Explicit scopes must be listed in alphabetical order.
      * 
      */
     @Export(name="scopes", refs={List.class,String.class}, tree="[0,1]")
-    private Output<List<String>> scopes;
+    private Output</* @Nullable */ List<String>> scopes;
 
     /**
-     * @return The list of services that can use this secret. Valid values are `workers`, `aiGateway`, `dex`, and `access`. Must be listed in alphabetical order.
+     * @return The list of services that can use this secret, or null when the secret inherits its store&#39;s scopes. Set it to null in a patch to inherit again. An empty list lets no service use the secret. Explicit scopes must be listed in alphabetical order.
      * 
      */
-    public Output<List<String>> scopes() {
-        return this.scopes;
+    public Output<Optional<List<String>>> scopes() {
+        return Codegen.optional(this.scopes);
     }
     /**
      * Available values: &#34;pending&#34;, &#34;active&#34;, &#34;deleted&#34;.

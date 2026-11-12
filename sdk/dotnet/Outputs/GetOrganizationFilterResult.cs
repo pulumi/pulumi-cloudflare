@@ -15,11 +15,24 @@ namespace Pulumi.Cloudflare.Outputs
     {
         public readonly Outputs.GetOrganizationFilterContainingResult? Containing;
         /// <summary>
+        /// Sort direction for the `OrderBy` field. Defaults to `Asc` when `OrderBy` is
+        /// specified.
+        /// Available values: "asc", "desc".
+        /// </summary>
+        public readonly string? Direction;
+        /// <summary>
         /// Only return organizations with the specified IDs (ex. id=foo&amp;id=bar). Send multiple elements
         /// by repeating the query value.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
+        public readonly Outputs.GetOrganizationFilterMemberResult? Member;
         public readonly Outputs.GetOrganizationFilterNameResult? Name;
+        /// <summary>
+        /// Field to order results by. Currently supported values: `Name`.
+        /// When not specified, results are ordered by hierarchy.
+        /// Available values: "name".
+        /// </summary>
+        public readonly string? OrderBy;
         /// <summary>
         /// The amount of items to return. Defaults to 10.
         /// </summary>
@@ -35,9 +48,15 @@ namespace Pulumi.Cloudflare.Outputs
         private GetOrganizationFilterResult(
             Outputs.GetOrganizationFilterContainingResult? containing,
 
+            string? direction,
+
             ImmutableArray<string> ids,
 
+            Outputs.GetOrganizationFilterMemberResult? member,
+
             Outputs.GetOrganizationFilterNameResult? name,
+
+            string? orderBy,
 
             int? pageSize,
 
@@ -46,8 +65,11 @@ namespace Pulumi.Cloudflare.Outputs
             Outputs.GetOrganizationFilterParentResult? parent)
         {
             Containing = containing;
+            Direction = direction;
             Ids = ids;
+            Member = member;
             Name = name;
+            OrderBy = orderBy;
             PageSize = pageSize;
             PageToken = pageToken;
             Parent = parent;

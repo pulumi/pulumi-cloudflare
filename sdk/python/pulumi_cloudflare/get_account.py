@@ -28,7 +28,7 @@ class GetAccountResult:
     """
     A collection of values returned by getAccount.
     """
-    def __init__(__self__, account_id=None, created_on=None, filter=None, id=None, managed_by=None, name=None, settings=None, type=None):
+    def __init__(__self__, account_id=None, created_on=None, filter=None, id=None, legacy_flags=None, managed_by=None, name=None, settings=None, type=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -41,6 +41,9 @@ class GetAccountResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if legacy_flags and not isinstance(legacy_flags, dict):
+            raise TypeError("Expected argument 'legacy_flags' to be a dict")
+        pulumi.set(__self__, "legacy_flags", legacy_flags)
         if managed_by and not isinstance(managed_by, dict):
             raise TypeError("Expected argument 'managed_by' to be a dict")
         pulumi.set(__self__, "managed_by", managed_by)
@@ -82,6 +85,14 @@ class GetAccountResult:
         Account identifier tag.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="legacyFlags")
+    def legacy_flags(self) -> 'outputs.GetAccountLegacyFlagsResult':
+        """
+        Legacy account flags.
+        """
+        return pulumi.get(self, "legacy_flags")
 
     @_builtins.property
     @pulumi.getter(name="managedBy")
@@ -126,6 +137,7 @@ class AwaitableGetAccountResult(GetAccountResult):
             created_on=self.created_on,
             filter=self.filter,
             id=self.id,
+            legacy_flags=self.legacy_flags,
             managed_by=self.managed_by,
             name=self.name,
             settings=self.settings,
@@ -191,6 +203,7 @@ def get_account(account_id: Optional[_builtins.str] = None,
         created_on=pulumi.get(__ret__, 'created_on'),
         filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
+        legacy_flags=pulumi.get(__ret__, 'legacy_flags'),
         managed_by=pulumi.get(__ret__, 'managed_by'),
         name=pulumi.get(__ret__, 'name'),
         settings=pulumi.get(__ret__, 'settings'),
@@ -253,6 +266,7 @@ def get_account_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]
         created_on=pulumi.get(__response__, 'created_on'),
         filter=pulumi.get(__response__, 'filter'),
         id=pulumi.get(__response__, 'id'),
+        legacy_flags=pulumi.get(__response__, 'legacy_flags'),
         managed_by=pulumi.get(__response__, 'managed_by'),
         name=pulumi.get(__response__, 'name'),
         settings=pulumi.get(__response__, 'settings'),

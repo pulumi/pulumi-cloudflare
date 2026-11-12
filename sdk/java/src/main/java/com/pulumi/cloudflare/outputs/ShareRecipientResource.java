@@ -14,17 +14,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ShareRecipientResource {
     /**
-     * @return Share Recipient error message.
+     * @return Error from the most recent attempt to apply the resource to the recipient. Empty string when no error has been recorded.
      * 
      */
     private @Nullable String error;
     /**
-     * @return Share Resource identifier.
+     * @return Identifier assigned by the service that owns the shared resource.
      * 
      */
     private @Nullable String resourceId;
     /**
-     * @return Resource Version.
+     * @return Resource version applied to the recipient, if reconciliation has occurred.
      * 
      */
     private @Nullable Integer resourceVersion;
@@ -36,21 +36,21 @@ public final class ShareRecipientResource {
 
     private ShareRecipientResource() {}
     /**
-     * @return Share Recipient error message.
+     * @return Error from the most recent attempt to apply the resource to the recipient. Empty string when no error has been recorded.
      * 
      */
     public Optional<String> error() {
         return Optional.ofNullable(this.error);
     }
     /**
-     * @return Share Resource identifier.
+     * @return Identifier assigned by the service that owns the shared resource.
      * 
      */
     public Optional<String> resourceId() {
         return Optional.ofNullable(this.resourceId);
     }
     /**
-     * @return Resource Version.
+     * @return Resource version applied to the recipient, if reconciliation has occurred.
      * 
      */
     public Optional<Integer> resourceVersion() {

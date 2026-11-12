@@ -20,6 +20,8 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// R2 Bucket to write to
+        /// 
+        /// The R2 Bucket that hosts this catalog
         /// </summary>
         [Input("bucket", required: true)]
         public Input<string> Bucket { get; set; } = null!;

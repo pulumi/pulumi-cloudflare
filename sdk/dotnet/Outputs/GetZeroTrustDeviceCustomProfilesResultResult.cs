@@ -54,6 +54,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetZeroTrustDeviceCustomProfilesResultDnsSearchSuffixResult> DnsSearchSuffixes;
         /// <summary>
+        /// Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.
+        /// </summary>
+        public readonly bool EnableDeviceCredentialAuthentication;
+        /// <summary>
         /// Whether the policy will be applied to matching devices.
         /// </summary>
         public readonly bool Enabled;
@@ -151,6 +155,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<Outputs.GetZeroTrustDeviceCustomProfilesResultDnsSearchSuffixResult> dnsSearchSuffixes,
 
+            bool enableDeviceCredentialAuthentication,
+
             bool enabled,
 
             bool excludeOfficeIps,
@@ -207,6 +213,7 @@ namespace Pulumi.Cloudflare.Outputs
             Description = description;
             DisableAutoFallback = disableAutoFallback;
             DnsSearchSuffixes = dnsSearchSuffixes;
+            EnableDeviceCredentialAuthentication = enableDeviceCredentialAuthentication;
             Enabled = enabled;
             ExcludeOfficeIps = excludeOfficeIps;
             Excludes = excludes;

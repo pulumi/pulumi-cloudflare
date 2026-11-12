@@ -47,6 +47,9 @@ namespace Pulumi.Cloudflare
     [CloudflareResourceType("cloudflare:index/certificateAuthoritiesHostnameAssociations:CertificateAuthoritiesHostnameAssociations")]
     public partial class CertificateAuthoritiesHostnameAssociations : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Unordered set of hostnames. Hostnames are stored as lowercase punycode.
+        /// </summary>
         [Output("hostnames")]
         public Output<ImmutableArray<string>> Hostnames { get; private set; } = null!;
 
@@ -110,6 +113,10 @@ namespace Pulumi.Cloudflare
     {
         [Input("hostnames")]
         private InputList<string>? _hostnames;
+
+        /// <summary>
+        /// Unordered set of hostnames. Hostnames are stored as lowercase punycode.
+        /// </summary>
         public InputList<string> Hostnames
         {
             get => _hostnames ?? (_hostnames = new InputList<string>());
@@ -138,6 +145,10 @@ namespace Pulumi.Cloudflare
     {
         [Input("hostnames")]
         private InputList<string>? _hostnames;
+
+        /// <summary>
+        /// Unordered set of hostnames. Hostnames are stored as lowercase punycode.
+        /// </summary>
         public InputList<string> Hostnames
         {
             get => _hostnames ?? (_hostnames = new InputList<string>());

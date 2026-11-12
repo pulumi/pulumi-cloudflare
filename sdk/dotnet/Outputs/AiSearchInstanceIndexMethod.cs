@@ -16,17 +16,17 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// Enable keyword (BM25) storage backend.
         /// </summary>
-        public readonly bool Keyword;
+        public readonly bool? Keyword;
         /// <summary>
         /// Enable vector (embedding) storage backend.
         /// </summary>
-        public readonly bool Vector;
+        public readonly bool? Vector;
 
         [OutputConstructor]
         private AiSearchInstanceIndexMethod(
-            bool keyword,
+            bool? keyword,
 
-            bool vector)
+            bool? vector)
         {
             Keyword = keyword;
             Vector = vector;

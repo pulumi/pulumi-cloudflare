@@ -107,7 +107,7 @@ export class DlpCustomProfile extends pulumi.CustomResource {
      */
     declare public readonly contextAwareness: pulumi.Output<outputs.DlpCustomProfileContextAwareness>;
     /**
-     * When the profile was created.
+     * For `type: custom`: When the profile was created.
      */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
@@ -133,7 +133,7 @@ export class DlpCustomProfile extends pulumi.CustomResource {
     declare public readonly name: pulumi.Output<string>;
     declare public readonly ocrEnabled: pulumi.Output<boolean>;
     /**
-     * Whether this profile can be accessed by anyone.
+     * For `type: predefined`: Whether this profile can be accessed by anyone.
      */
     declare public /*out*/ readonly openAccess: pulumi.Output<boolean>;
     /**
@@ -149,7 +149,7 @@ export class DlpCustomProfile extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
-     * When the profile was lasted updated.
+     * For `type: custom`: When the profile was lasted updated.
      */
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
@@ -239,7 +239,7 @@ export interface DlpCustomProfileState {
      */
     contextAwareness?: pulumi.Input<inputs.DlpCustomProfileContextAwareness | undefined>;
     /**
-     * When the profile was created.
+     * For `type: custom`: When the profile was created.
      */
     createdAt?: pulumi.Input<string | undefined>;
     /**
@@ -265,7 +265,7 @@ export interface DlpCustomProfileState {
     name?: pulumi.Input<string | undefined>;
     ocrEnabled?: pulumi.Input<boolean | undefined>;
     /**
-     * Whether this profile can be accessed by anyone.
+     * For `type: predefined`: Whether this profile can be accessed by anyone.
      */
     openAccess?: pulumi.Input<boolean | undefined>;
     /**
@@ -281,7 +281,7 @@ export interface DlpCustomProfileState {
      */
     type?: pulumi.Input<string | undefined>;
     /**
-     * When the profile was lasted updated.
+     * For `type: custom`: When the profile was lasted updated.
      */
     updatedAt?: pulumi.Input<string | undefined>;
 }

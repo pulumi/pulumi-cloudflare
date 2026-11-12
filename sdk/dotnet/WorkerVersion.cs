@@ -12,6 +12,12 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Accepted Permissions
     /// 
+    /// - `Individual Workers Admin`
+    /// - `Individual Workers Content Read-Only`
+    /// - `Individual Workers Editor`
+    /// - `Workers Admin`
+    /// - `Workers Content Read-Only`
+    /// - `Workers Editor`
     /// - `Workers Scripts Read`
     /// - `Workers Scripts Write`
     /// - `Workers Tail Read`
@@ -235,7 +241,9 @@ namespace Pulumi.Cloudflare
         public Output<string?> CompatibilityDate { get; private set; } = null!;
 
         /// <summary>
-        /// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `CompatibilityDate`.
+        /// Enables or disables specific Workers runtime features, such as upcoming features or changes outside the `CompatibilityDate`.
+        /// 
+        /// Responses list only the flags this version sets explicitly and exclude behavior that `CompatibilityDate` enables. Responses omit the field when the list is empty, so a missing field means the version sets zero flags.
         /// </summary>
         [Output("compatibilityFlags")]
         public Output<ImmutableArray<string>> CompatibilityFlags { get; private set; } = null!;
@@ -276,8 +284,8 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.WorkerVersionExportsReconciliation> ExportsReconciliation { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to include the `Modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
-        /// Available values: "modules".
+        /// Optional properties to include in the response. `Modules` includes the `Modules` property, which contains code and may add several megabytes to the response size. `modules,sourcemaps` also includes the version's source maps in `Modules`.
+        /// Available values: "modules", "modules,sourcemaps".
         /// </summary>
         [Output("include")]
         public Output<string?> Include { get; private set; } = null!;
@@ -314,6 +322,10 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Code, sourcemaps, and other content used at runtime.
+        /// 
+        /// Source maps use content type `application/source-map`. Responses include them only when requested with
+        /// `include=modules,sourcemaps`. Workers stores the source map fields used to remap stack traces, so a returned
+        /// source map is equivalent to the uploaded file but not byte-identical.
         /// 
         /// This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
         /// [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
@@ -468,7 +480,9 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _compatibilityFlags;
 
         /// <summary>
-        /// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `CompatibilityDate`.
+        /// Enables or disables specific Workers runtime features, such as upcoming features or changes outside the `CompatibilityDate`.
+        /// 
+        /// Responses list only the flags this version sets explicitly and exclude behavior that `CompatibilityDate` enables. Responses omit the field when the list is empty, so a missing field means the version sets zero flags.
         /// </summary>
         public InputList<string> CompatibilityFlags
         {
@@ -512,8 +526,8 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Whether to include the `Modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
-        /// Available values: "modules".
+        /// Optional properties to include in the response. `Modules` includes the `Modules` property, which contains code and may add several megabytes to the response size. `modules,sourcemaps` also includes the version's source maps in `Modules`.
+        /// Available values: "modules", "modules,sourcemaps".
         /// </summary>
         [Input("include")]
         public Input<string>? Include { get; set; }
@@ -541,6 +555,10 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Code, sourcemaps, and other content used at runtime.
+        /// 
+        /// Source maps use content type `application/source-map`. Responses include them only when requested with
+        /// `include=modules,sourcemaps`. Workers stores the source map fields used to remap stack traces, so a returned
+        /// source map is equivalent to the uploaded file but not byte-identical.
         /// 
         /// This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
         /// [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
@@ -654,7 +672,9 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _compatibilityFlags;
 
         /// <summary>
-        /// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `CompatibilityDate`.
+        /// Enables or disables specific Workers runtime features, such as upcoming features or changes outside the `CompatibilityDate`.
+        /// 
+        /// Responses list only the flags this version sets explicitly and exclude behavior that `CompatibilityDate` enables. Responses omit the field when the list is empty, so a missing field means the version sets zero flags.
         /// </summary>
         public InputList<string> CompatibilityFlags
         {
@@ -710,8 +730,8 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.WorkerVersionExportsReconciliationGetArgs>? ExportsReconciliation { get; set; }
 
         /// <summary>
-        /// Whether to include the `Modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
-        /// Available values: "modules".
+        /// Optional properties to include in the response. `Modules` includes the `Modules` property, which contains code and may add several megabytes to the response size. `modules,sourcemaps` also includes the version's source maps in `Modules`.
+        /// Available values: "modules", "modules,sourcemaps".
         /// </summary>
         [Input("include")]
         public Input<string>? Include { get; set; }
@@ -751,6 +771,10 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Code, sourcemaps, and other content used at runtime.
+        /// 
+        /// Source maps use content type `application/source-map`. Responses include them only when requested with
+        /// `include=modules,sourcemaps`. Workers stores the source map fields used to remap stack traces, so a returned
+        /// source map is equivalent to the uploaded file but not byte-identical.
         /// 
         /// This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
         /// [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure

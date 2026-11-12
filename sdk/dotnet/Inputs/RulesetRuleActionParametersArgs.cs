@@ -580,6 +580,24 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("vary")]
         public Input<Inputs.RulesetRuleActionParametersVaryArgs>? Vary { get; set; }
 
+        /// <summary>
+        /// Whether to serve the WebMCP bridge script, which exposes the page's tools to browser AI agents.
+        /// </summary>
+        [Input("webmcpEnabled")]
+        public Input<bool>? WebmcpEnabled { get; set; }
+
+        [Input("webmcpPacks")]
+        private InputList<string>? _webmcpPacks;
+
+        /// <summary>
+        /// Bundled WebMCP tool packs to activate for matching requests. An empty list disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself.
+        /// </summary>
+        public InputList<string> WebmcpPacks
+        {
+            get => _webmcpPacks ?? (_webmcpPacks = new InputList<string>());
+            set => _webmcpPacks = value;
+        }
+
         public RulesetRuleActionParametersArgs()
         {
         }

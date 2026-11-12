@@ -58,7 +58,7 @@ export interface GetShareResourceResult {
      */
     readonly accountId: string;
     /**
-     * When the share was created.
+     * When the object was created.
      */
     readonly created: string;
     readonly filter?: outputs.GetShareResourceFilter;
@@ -71,7 +71,7 @@ export interface GetShareResourceResult {
      */
     readonly meta: string;
     /**
-     * When the share was modified.
+     * When the object was last modified.
      */
     readonly modified: string;
     /**
@@ -79,7 +79,7 @@ export interface GetShareResourceResult {
      */
     readonly resourceAccountId: string;
     /**
-     * Share Resource identifier.
+     * Identifier assigned by the service that owns the shared resource.
      */
     readonly resourceId: string;
     /**

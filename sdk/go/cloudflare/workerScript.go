@@ -16,6 +16,12 @@ import (
 //
 // - `Workers Scripts Read`
 // - `Workers Scripts Write`
+// - `Individual Workers Admin`
+// - `Individual Workers Content Read-Only`
+// - `Individual Workers Editor`
+// - `Workers Admin`
+// - `Workers Content Read-Only`
+// - `Workers Editor`
 // - `Workers Tail Read`
 //
 // > For more direct control over Workers resources, we recommend the beta `Worker`, `WorkerVersion`, and `WorkersDeployment` resources. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
@@ -66,6 +72,9 @@ import (
 //				CacheOptions: &cloudflare.WorkersScriptCacheOptionsArgs{
 //					Enabled:           pulumi.Bool(true),
 //					CrossVersionCache: pulumi.Bool(true),
+//				},
+//				CodeUpdateStrategy: &cloudflare.WorkersScriptCodeUpdateStrategyArgs{
+//					Mode: pulumi.String("immediate"),
 //				},
 //				CompatibilityDate: pulumi.String("2021-01-01T00:00:00Z"),
 //				CompatibilityFlags: pulumi.StringArray{
@@ -211,7 +220,7 @@ type WorkerScript struct {
 	Assets WorkerScriptAssetsPtrOutput `pulumi:"assets"`
 	// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
 	Bindings WorkerScriptBindingArrayOutput `pulumi:"bindings"`
-	// When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+	// When set to "strict", the upload will fail with error 10057 if any `inherit` type bindings cannot be resolved against the latest uploaded version of the Worker, which may not be the deployed version. Without this, unresolvable inherit bindings are silently dropped.
 	// Available values: "strict".
 	BindingsInherit pulumi.StringPtrOutput `pulumi:"bindingsInherit"`
 	// Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
@@ -221,6 +230,8 @@ type WorkerScript struct {
 	// A `type: worker` entry in the `exports` map can override this
 	// value for a single entrypoint.
 	CacheOptions WorkerScriptCacheOptionsPtrOutput `pulumi:"cacheOptions"`
+	// Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+	CodeUpdateStrategy WorkerScriptCodeUpdateStrategyPtrOutput `pulumi:"codeUpdateStrategy"`
 	// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
 	CompatibilityDate pulumi.StringOutput `pulumi:"compatibilityDate"`
 	// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
@@ -343,7 +354,7 @@ type workerScriptState struct {
 	Assets *WorkerScriptAssets `pulumi:"assets"`
 	// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
 	Bindings []WorkerScriptBinding `pulumi:"bindings"`
-	// When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+	// When set to "strict", the upload will fail with error 10057 if any `inherit` type bindings cannot be resolved against the latest uploaded version of the Worker, which may not be the deployed version. Without this, unresolvable inherit bindings are silently dropped.
 	// Available values: "strict".
 	BindingsInherit *string `pulumi:"bindingsInherit"`
 	// Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
@@ -353,6 +364,8 @@ type workerScriptState struct {
 	// A `type: worker` entry in the `exports` map can override this
 	// value for a single entrypoint.
 	CacheOptions *WorkerScriptCacheOptions `pulumi:"cacheOptions"`
+	// Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+	CodeUpdateStrategy *WorkerScriptCodeUpdateStrategy `pulumi:"codeUpdateStrategy"`
 	// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
 	CompatibilityDate *string `pulumi:"compatibilityDate"`
 	// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
@@ -434,7 +447,7 @@ type WorkerScriptState struct {
 	Assets WorkerScriptAssetsPtrInput
 	// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
 	Bindings WorkerScriptBindingArrayInput
-	// When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+	// When set to "strict", the upload will fail with error 10057 if any `inherit` type bindings cannot be resolved against the latest uploaded version of the Worker, which may not be the deployed version. Without this, unresolvable inherit bindings are silently dropped.
 	// Available values: "strict".
 	BindingsInherit pulumi.StringPtrInput
 	// Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
@@ -444,6 +457,8 @@ type WorkerScriptState struct {
 	// A `type: worker` entry in the `exports` map can override this
 	// value for a single entrypoint.
 	CacheOptions WorkerScriptCacheOptionsPtrInput
+	// Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+	CodeUpdateStrategy WorkerScriptCodeUpdateStrategyPtrInput
 	// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
 	CompatibilityDate pulumi.StringPtrInput
 	// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
@@ -535,7 +550,7 @@ type workerScriptArgs struct {
 	Assets *WorkerScriptAssets `pulumi:"assets"`
 	// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
 	Bindings []WorkerScriptBinding `pulumi:"bindings"`
-	// When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+	// When set to "strict", the upload will fail with error 10057 if any `inherit` type bindings cannot be resolved against the latest uploaded version of the Worker, which may not be the deployed version. Without this, unresolvable inherit bindings are silently dropped.
 	// Available values: "strict".
 	BindingsInherit *string `pulumi:"bindingsInherit"`
 	// Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
@@ -545,6 +560,8 @@ type workerScriptArgs struct {
 	// A `type: worker` entry in the `exports` map can override this
 	// value for a single entrypoint.
 	CacheOptions *WorkerScriptCacheOptions `pulumi:"cacheOptions"`
+	// Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+	CodeUpdateStrategy *WorkerScriptCodeUpdateStrategy `pulumi:"codeUpdateStrategy"`
 	// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
 	CompatibilityDate *string `pulumi:"compatibilityDate"`
 	// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
@@ -600,7 +617,7 @@ type WorkerScriptArgs struct {
 	Assets WorkerScriptAssetsPtrInput
 	// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
 	Bindings WorkerScriptBindingArrayInput
-	// When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+	// When set to "strict", the upload will fail with error 10057 if any `inherit` type bindings cannot be resolved against the latest uploaded version of the Worker, which may not be the deployed version. Without this, unresolvable inherit bindings are silently dropped.
 	// Available values: "strict".
 	BindingsInherit pulumi.StringPtrInput
 	// Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
@@ -610,6 +627,8 @@ type WorkerScriptArgs struct {
 	// A `type: worker` entry in the `exports` map can override this
 	// value for a single entrypoint.
 	CacheOptions WorkerScriptCacheOptionsPtrInput
+	// Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+	CodeUpdateStrategy WorkerScriptCodeUpdateStrategyPtrInput
 	// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
 	CompatibilityDate pulumi.StringPtrInput
 	// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
@@ -762,7 +781,7 @@ func (o WorkerScriptOutput) Bindings() WorkerScriptBindingArrayOutput {
 	return o.ApplyT(func(v *WorkerScript) WorkerScriptBindingArrayOutput { return v.Bindings }).(WorkerScriptBindingArrayOutput)
 }
 
-// When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+// When set to "strict", the upload will fail with error 10057 if any `inherit` type bindings cannot be resolved against the latest uploaded version of the Worker, which may not be the deployed version. Without this, unresolvable inherit bindings are silently dropped.
 // Available values: "strict".
 func (o WorkerScriptOutput) BindingsInherit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkerScript) pulumi.StringPtrOutput { return v.BindingsInherit }).(pulumi.StringPtrOutput)
@@ -779,6 +798,11 @@ func (o WorkerScriptOutput) BodyPart() pulumi.StringOutput {
 // value for a single entrypoint.
 func (o WorkerScriptOutput) CacheOptions() WorkerScriptCacheOptionsPtrOutput {
 	return o.ApplyT(func(v *WorkerScript) WorkerScriptCacheOptionsPtrOutput { return v.CacheOptions }).(WorkerScriptCacheOptionsPtrOutput)
+}
+
+// Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+func (o WorkerScriptOutput) CodeUpdateStrategy() WorkerScriptCodeUpdateStrategyPtrOutput {
+	return o.ApplyT(func(v *WorkerScript) WorkerScriptCodeUpdateStrategyPtrOutput { return v.CodeUpdateStrategy }).(WorkerScriptCodeUpdateStrategyPtrOutput)
 }
 
 // Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.

@@ -70,6 +70,23 @@ public final class GetSharePlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+     * Available values: &#34;api&#34;, &#34;mirror&#34;.
+     * 
+     */
+    @Import(name="includeTagsFrom")
+    private @Nullable String includeTagsFrom;
+
+    /**
+     * @return Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+     * Available values: &#34;api&#34;, &#34;mirror&#34;.
+     * 
+     */
+    public Optional<String> includeTagsFrom() {
+        return Optional.ofNullable(this.includeTagsFrom);
+    }
+
+    /**
      * Share identifier tag.
      * 
      */
@@ -91,6 +108,7 @@ public final class GetSharePlainArgs extends com.pulumi.resources.InvokeArgs {
         this.filter = $.filter;
         this.includeRecipientCounts = $.includeRecipientCounts;
         this.includeResources = $.includeResources;
+        this.includeTagsFrom = $.includeTagsFrom;
         this.shareId = $.shareId;
     }
 
@@ -147,6 +165,18 @@ public final class GetSharePlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder includeResources(@Nullable Boolean includeResources) {
             $.includeResources = includeResources;
+            return this;
+        }
+
+        /**
+         * @param includeTagsFrom Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+         * Available values: &#34;api&#34;, &#34;mirror&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeTagsFrom(@Nullable String includeTagsFrom) {
+            $.includeTagsFrom = includeTagsFrom;
             return this;
         }
 

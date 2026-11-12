@@ -84,7 +84,7 @@ namespace Pulumi.Cloudflare
         public Output<string> CreatedOn { get; private set; } = null!;
 
         /// <summary>
-        /// Components of a MX record.
+        /// For `type: CAA`: Components of a CAA record.
         /// </summary>
         [Output("data")]
         public Output<Outputs.RecordData?> Data { get; private set; } = null!;
@@ -120,7 +120,7 @@ namespace Pulumi.Cloudflare
         public Output<double?> Priority { get; private set; } = null!;
 
         /// <summary>
-        /// Enables private network routing to the origin.
+        /// For `type: A` or `type: AAAA`: Enables private network routing to the origin.
         /// </summary>
         [Output("privateRouting")]
         public Output<bool?> PrivateRouting { get; private set; } = null!;
@@ -237,7 +237,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Content { get; set; }
 
         /// <summary>
-        /// Components of a MX record.
+        /// For `type: CAA`: Components of a CAA record.
         /// </summary>
         [Input("data")]
         public Input<Inputs.RecordDataArgs>? Data { get; set; }
@@ -261,7 +261,7 @@ namespace Pulumi.Cloudflare
         public Input<double>? Priority { get; set; }
 
         /// <summary>
-        /// Enables private network routing to the origin.
+        /// For `type: A` or `type: AAAA`: Enables private network routing to the origin.
         /// </summary>
         [Input("privateRouting")]
         public Input<bool>? PrivateRouting { get; set; }
@@ -342,7 +342,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? CreatedOn { get; set; }
 
         /// <summary>
-        /// Components of a MX record.
+        /// For `type: CAA`: Components of a CAA record.
         /// </summary>
         [Input("data")]
         public Input<Inputs.RecordDataGetArgs>? Data { get; set; }
@@ -378,7 +378,7 @@ namespace Pulumi.Cloudflare
         public Input<double>? Priority { get; set; }
 
         /// <summary>
-        /// Enables private network routing to the origin.
+        /// For `type: A` or `type: AAAA`: Enables private network routing to the origin.
         /// </summary>
         [Input("privateRouting")]
         public Input<bool>? PrivateRouting { get; set; }

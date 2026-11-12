@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ConnectivityDirectoryServiceTlsSettings {
@@ -15,6 +17,16 @@ public final class ConnectivityDirectoryServiceTlsSettings {
      * 
      */
     private String certVerificationMode;
+    /**
+     * @return UUID of the custom CA certificate or chain.
+     * 
+     */
+    private @Nullable String certificateAuthority;
+    /**
+     * @return UUID of the mTLS client certificate and private key.
+     * 
+     */
+    private @Nullable String clientCertificate;
 
     private ConnectivityDirectoryServiceTlsSettings() {}
     /**
@@ -23,6 +35,20 @@ public final class ConnectivityDirectoryServiceTlsSettings {
      */
     public String certVerificationMode() {
         return this.certVerificationMode;
+    }
+    /**
+     * @return UUID of the custom CA certificate or chain.
+     * 
+     */
+    public Optional<String> certificateAuthority() {
+        return Optional.ofNullable(this.certificateAuthority);
+    }
+    /**
+     * @return UUID of the mTLS client certificate and private key.
+     * 
+     */
+    public Optional<String> clientCertificate() {
+        return Optional.ofNullable(this.clientCertificate);
     }
 
     public static Builder builder() {
@@ -35,10 +61,14 @@ public final class ConnectivityDirectoryServiceTlsSettings {
     @CustomType.Builder
     public static final class Builder {
         private String certVerificationMode;
+        private @Nullable String certificateAuthority;
+        private @Nullable String clientCertificate;
         public Builder() {}
         public Builder(ConnectivityDirectoryServiceTlsSettings defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.certVerificationMode = defaults.certVerificationMode;
+    	      this.certificateAuthority = defaults.certificateAuthority;
+    	      this.clientCertificate = defaults.clientCertificate;
         }
 
         @CustomType.Setter
@@ -49,9 +79,23 @@ public final class ConnectivityDirectoryServiceTlsSettings {
             this.certVerificationMode = certVerificationMode;
             return this;
         }
+        @CustomType.Setter
+        public Builder certificateAuthority(@Nullable String certificateAuthority) {
+
+            this.certificateAuthority = certificateAuthority;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder clientCertificate(@Nullable String clientCertificate) {
+
+            this.clientCertificate = clientCertificate;
+            return this;
+        }
         public ConnectivityDirectoryServiceTlsSettings build() {
             final var _resultValue = new ConnectivityDirectoryServiceTlsSettings();
             _resultValue.certVerificationMode = certVerificationMode;
+            _resultValue.certificateAuthority = certificateAuthority;
+            _resultValue.clientCertificate = clientCertificate;
             return _resultValue;
         }
     }

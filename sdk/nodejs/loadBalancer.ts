@@ -12,6 +12,19 @@ import * as utilities from "./utilities";
  * - `Load Balancers Read`
  * - `Load Balancers Write`
  *
+ * ## Planning updates
+ *
+ * On an update, unchanged API defaults can retain their state values instead of
+ * showing `(known after apply)`. This includes unset overrides in unchanged, named
+ * rules. Removing a configured, non-default value still lets the API reset that
+ * value; the plan does not retain the removed setting.
+ *
+ * `modifiedOn` remains unknown because it changes on every write. Other computed
+ * values can remain unknown on creation, when a related setting changes, or when
+ * the provider cannot determine a safe default. For example, changing session
+ * affinity can change its default TTL, and an unconfigured DNS TTL remains unknown
+ * for an unproxied load balancer.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -43,7 +56,38 @@ import * as utilities from "./utilities";
  *         mode: "resolver_ip",
  *         preferEcs: "always",
  *     },
- *     networks: ["string"],
+ *     networks: [
+ *         "cloudflare",
+ *         "jdcloud",
+ *     ],
+ *     poolSets: [{
+ *         disabled: true,
+ *         fixedResponse: {
+ *             contentType: "application/json",
+ *             location: "www.example.com",
+ *             messageBody: "Testing Hello",
+ *             statusCode: 0,
+ *         },
+ *         match: {
+ *             "default": true,
+ *             topology: {
+ *                 countries: ["string"],
+ *                 pops: ["string"],
+ *                 regions: ["WNAM"],
+ *             },
+ *         },
+ *         name: "wnam-primary",
+ *         overrides: {
+ *             fallbackPool: "9290f38c5d07c2e2f4df57b1f61d4196",
+ *             poolDefaultWeight: 0.2,
+ *             poolWeights: {
+ *                 "9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
+ *                 de90f38ced07c2e2f4df50b1f61d4194: 0.3,
+ *             },
+ *             pools: ["17b5962d775c646f3f9725cbc7a53df4"],
+ *             steeringPolicy: "random",
+ *         },
+ *     }],
  *     popPools: {
  *         LAX: [
  *             "de90f38ced07c2e2f4df50b1f61d4194",
@@ -247,6 +291,10 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     declare public readonly networks: pulumi.Output<string[]>;
     /**
+     * An optional list of pool sets, evaluated in array order with first match wins. Pool sets are independent from the standard steering fields (`regionPools` / `countryPools` / `popPools` / `defaultPools` / `steeringPolicy` / `randomSteering` / `fallbackPool` / `rules`). On a PATCH, an empty array (`pool_sets: []`) clears all pool sets, while omitting the field leaves existing pool sets unchanged.
+     */
+    declare public readonly poolSets: pulumi.Output<outputs.LoadBalancerPoolSet[]>;
+    /**
      * Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
      */
     declare public readonly popPools: pulumi.Output<{[key: string]: string[]}>;
@@ -314,6 +362,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["modifiedOn"] = state?.modifiedOn;
             resourceInputs["name"] = state?.name;
             resourceInputs["networks"] = state?.networks;
+            resourceInputs["poolSets"] = state?.poolSets;
             resourceInputs["popPools"] = state?.popPools;
             resourceInputs["proxied"] = state?.proxied;
             resourceInputs["randomSteering"] = state?.randomSteering;
@@ -349,6 +398,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["locationStrategy"] = args?.locationStrategy;
             resourceInputs["name"] = args?.name;
             resourceInputs["networks"] = args?.networks;
+            resourceInputs["poolSets"] = args?.poolSets;
             resourceInputs["popPools"] = args?.popPools;
             resourceInputs["proxied"] = args?.proxied;
             resourceInputs["randomSteering"] = args?.randomSteering;
@@ -411,6 +461,10 @@ export interface LoadBalancerState {
      * List of networks where Load Balancer or Pool is enabled.
      */
     networks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * An optional list of pool sets, evaluated in array order with first match wins. Pool sets are independent from the standard steering fields (`regionPools` / `countryPools` / `popPools` / `defaultPools` / `steeringPolicy` / `randomSteering` / `fallbackPool` / `rules`). On a PATCH, an empty array (`pool_sets: []`) clears all pool sets, while omitting the field leaves existing pool sets unchanged.
+     */
+    poolSets?: pulumi.Input<pulumi.Input<inputs.LoadBalancerPoolSet>[] | undefined>;
     /**
      * Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
      */
@@ -496,6 +550,10 @@ export interface LoadBalancerArgs {
      * List of networks where Load Balancer or Pool is enabled.
      */
     networks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * An optional list of pool sets, evaluated in array order with first match wins. Pool sets are independent from the standard steering fields (`regionPools` / `countryPools` / `popPools` / `defaultPools` / `steeringPolicy` / `randomSteering` / `fallbackPool` / `rules`). On a PATCH, an empty array (`pool_sets: []`) clears all pool sets, while omitting the field leaves existing pool sets unchanged.
+     */
+    poolSets?: pulumi.Input<pulumi.Input<inputs.LoadBalancerPoolSet>[] | undefined>;
     /**
      * Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
      */

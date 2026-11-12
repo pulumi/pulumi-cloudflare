@@ -82,13 +82,19 @@ namespace Pulumi.Cloudflare
         public Output<string> CreatedOn { get; private set; } = null!;
 
         /// <summary>
+        /// Legacy account flags.
+        /// </summary>
+        [Output("legacyFlags")]
+        public Output<Outputs.AccountLegacyFlags> LegacyFlags { get; private set; } = null!;
+
+        /// <summary>
         /// Parent container details
         /// </summary>
         [Output("managedBy")]
         public Output<Outputs.AccountManagedBy> ManagedBy { get; private set; } = null!;
 
         /// <summary>
-        /// Account name
+        /// Account name, limited to 65 UTF-8 bytes.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -106,6 +112,7 @@ namespace Pulumi.Cloudflare
         public Output<bool> Standalone { get; private set; } = null!;
 
         /// <summary>
+        /// the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
         /// Available values: "standard", "enterprise".
         /// </summary>
         [Output("type")]
@@ -170,7 +177,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.AccountManagedByArgs>? ManagedBy { get; set; }
 
         /// <summary>
-        /// Account name
+        /// Account name, limited to 65 UTF-8 bytes.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -188,6 +195,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? Standalone { get; set; }
 
         /// <summary>
+        /// the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
         /// Available values: "standard", "enterprise".
         /// </summary>
         [Input("type")]
@@ -214,13 +222,19 @@ namespace Pulumi.Cloudflare
         public Input<string>? CreatedOn { get; set; }
 
         /// <summary>
+        /// Legacy account flags.
+        /// </summary>
+        [Input("legacyFlags")]
+        public Input<Inputs.AccountLegacyFlagsGetArgs>? LegacyFlags { get; set; }
+
+        /// <summary>
         /// Parent container details
         /// </summary>
         [Input("managedBy")]
         public Input<Inputs.AccountManagedByGetArgs>? ManagedBy { get; set; }
 
         /// <summary>
-        /// Account name
+        /// Account name, limited to 65 UTF-8 bytes.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -238,6 +252,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? Standalone { get; set; }
 
         /// <summary>
+        /// the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
         /// Available values: "standard", "enterprise".
         /// </summary>
         [Input("type")]

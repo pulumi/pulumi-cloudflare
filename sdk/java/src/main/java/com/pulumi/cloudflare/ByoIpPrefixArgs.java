@@ -34,14 +34,14 @@ public final class ByoIpPrefixArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Autonomous System Number (ASN) the prefix will be advertised under.
+     * Autonomous System Number (ASN) the prefix will be advertised under. Use 13335 for Cloudflare&#39;s ASN, or your own ASN as an integer without the AS prefix. The IRR route and RPKI ROA must authorize this ASN.
      * 
      */
     @Import(name="asn", required=true)
     private Output<Integer> asn;
 
     /**
-     * @return Autonomous System Number (ASN) the prefix will be advertised under.
+     * @return Autonomous System Number (ASN) the prefix will be advertised under. Use 13335 for Cloudflare&#39;s ASN, or your own ASN as an integer without the AS prefix. The IRR route and RPKI ROA must authorize this ASN.
      * 
      */
     public Output<Integer> asn() {
@@ -159,7 +159,7 @@ public final class ByoIpPrefixArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param asn Autonomous System Number (ASN) the prefix will be advertised under.
+         * @param asn Autonomous System Number (ASN) the prefix will be advertised under. Use 13335 for Cloudflare&#39;s ASN, or your own ASN as an integer without the AS prefix. The IRR route and RPKI ROA must authorize this ASN.
          * 
          * @return builder
          * 
@@ -170,7 +170,7 @@ public final class ByoIpPrefixArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param asn Autonomous System Number (ASN) the prefix will be advertised under.
+         * @param asn Autonomous System Number (ASN) the prefix will be advertised under. Use 13335 for Cloudflare&#39;s ASN, or your own ASN as an integer without the AS prefix. The IRR route and RPKI ROA must authorize this ASN.
          * 
          * @return builder
          * 

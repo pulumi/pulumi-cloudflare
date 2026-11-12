@@ -22,6 +22,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAiGatewayResult {
     private @Nullable String accountId;
+    /**
+     * @return Require authentication for gateway access. New gateways must have authentication enabled. Once enabled, authentication cannot be disabled.
+     * 
+     */
     private Boolean authentication;
     /**
      * @return Requires customer-provided provider credentials and prevents fallback to Unified Billing.
@@ -33,6 +37,18 @@ public final class GetAiGatewayResult {
     private Boolean collectLogs;
     private String createdAt;
     private GetAiGatewayDlp dlp;
+    /**
+     * @return FedRAMP compliance level: fedramp-medium or fedramp-high.
+     * Available values: &#34;fedramp-medium&#34;, &#34;fedramp-high&#34;.
+     * 
+     */
+    private String fedrampLevel;
+    /**
+     * @return FedRAMP enforcement mode. &#34;prefer&#34; prioritizes compliant connectors but allows fallback. &#34;require&#34; strictly filters.
+     * Available values: &#34;prefer&#34;, &#34;require&#34;.
+     * 
+     */
+    private String fedrampMode;
     private @Nullable GetAiGatewayFilter filter;
     private GetAiGatewayGuardrails guardrails;
     /**
@@ -76,6 +92,10 @@ public final class GetAiGatewayResult {
      */
     private Integer retryMaxAttempts;
     private GetAiGatewaySpendLimits spendLimits;
+    /**
+     * @return Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it.
+     * 
+     */
     private String storeId;
     private GetAiGatewayStripe stripe;
     /**
@@ -90,6 +110,10 @@ public final class GetAiGatewayResult {
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
     }
+    /**
+     * @return Require authentication for gateway access. New gateways must have authentication enabled. Once enabled, authentication cannot be disabled.
+     * 
+     */
     public Boolean authentication() {
         return this.authentication;
     }
@@ -114,6 +138,22 @@ public final class GetAiGatewayResult {
     }
     public GetAiGatewayDlp dlp() {
         return this.dlp;
+    }
+    /**
+     * @return FedRAMP compliance level: fedramp-medium or fedramp-high.
+     * Available values: &#34;fedramp-medium&#34;, &#34;fedramp-high&#34;.
+     * 
+     */
+    public String fedrampLevel() {
+        return this.fedrampLevel;
+    }
+    /**
+     * @return FedRAMP enforcement mode. &#34;prefer&#34; prioritizes compliant connectors but allows fallback. &#34;require&#34; strictly filters.
+     * Available values: &#34;prefer&#34;, &#34;require&#34;.
+     * 
+     */
+    public String fedrampMode() {
+        return this.fedrampMode;
     }
     public Optional<GetAiGatewayFilter> filter() {
         return Optional.ofNullable(this.filter);
@@ -194,6 +234,10 @@ public final class GetAiGatewayResult {
     public GetAiGatewaySpendLimits spendLimits() {
         return this.spendLimits;
     }
+    /**
+     * @return Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it.
+     * 
+     */
     public String storeId() {
         return this.storeId;
     }
@@ -229,6 +273,8 @@ public final class GetAiGatewayResult {
         private Boolean collectLogs;
         private String createdAt;
         private GetAiGatewayDlp dlp;
+        private String fedrampLevel;
+        private String fedrampMode;
         private @Nullable GetAiGatewayFilter filter;
         private GetAiGatewayGuardrails guardrails;
         private String id;
@@ -262,6 +308,8 @@ public final class GetAiGatewayResult {
     	      this.collectLogs = defaults.collectLogs;
     	      this.createdAt = defaults.createdAt;
     	      this.dlp = defaults.dlp;
+    	      this.fedrampLevel = defaults.fedrampLevel;
+    	      this.fedrampMode = defaults.fedrampMode;
     	      this.filter = defaults.filter;
     	      this.guardrails = defaults.guardrails;
     	      this.id = defaults.id;
@@ -346,6 +394,22 @@ public final class GetAiGatewayResult {
               throw new MissingRequiredPropertyException("GetAiGatewayResult", "dlp");
             }
             this.dlp = dlp;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder fedrampLevel(String fedrampLevel) {
+            if (fedrampLevel == null) {
+              throw new MissingRequiredPropertyException("GetAiGatewayResult", "fedrampLevel");
+            }
+            this.fedrampLevel = fedrampLevel;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder fedrampMode(String fedrampMode) {
+            if (fedrampMode == null) {
+              throw new MissingRequiredPropertyException("GetAiGatewayResult", "fedrampMode");
+            }
+            this.fedrampMode = fedrampMode;
             return this;
         }
         @CustomType.Setter
@@ -535,6 +599,8 @@ public final class GetAiGatewayResult {
             _resultValue.collectLogs = collectLogs;
             _resultValue.createdAt = createdAt;
             _resultValue.dlp = dlp;
+            _resultValue.fedrampLevel = fedrampLevel;
+            _resultValue.fedrampMode = fedrampMode;
             _resultValue.filter = filter;
             _resultValue.guardrails = guardrails;
             _resultValue.id = id;

@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  *     behaviors: {
  *         foo: {
  *             enabled: true,
- *             riskLevel: "low",
+ *             riskLevel: "info",
  *         },
  *     },
  * });

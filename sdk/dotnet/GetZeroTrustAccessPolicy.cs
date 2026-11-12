@@ -196,6 +196,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string PolicyId;
         /// <summary>
+        /// The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.
+        /// </summary>
+        public readonly string PolicyResolutionAccountId;
+        /// <summary>
         /// A custom message that will appear on the purpose justification screen.
         /// </summary>
         public readonly string PurposeJustificationPrompt;
@@ -244,6 +248,8 @@ namespace Pulumi.Cloudflare
 
             string policyId,
 
+            string policyResolutionAccountId,
+
             string purposeJustificationPrompt,
 
             bool purposeJustificationRequired,
@@ -270,6 +276,7 @@ namespace Pulumi.Cloudflare
             MfaConfig = mfaConfig;
             Name = name;
             PolicyId = policyId;
+            PolicyResolutionAccountId = policyResolutionAccountId;
             PurposeJustificationPrompt = purposeJustificationPrompt;
             PurposeJustificationRequired = purposeJustificationRequired;
             Requires = requires;

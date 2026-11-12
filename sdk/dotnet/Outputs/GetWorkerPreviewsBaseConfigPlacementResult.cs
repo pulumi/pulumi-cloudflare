@@ -23,7 +23,6 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string Hostname;
         /// <summary>
         /// Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-        /// Available values: "smart", "targeted".
         /// </summary>
         public readonly string Mode;
         /// <summary>

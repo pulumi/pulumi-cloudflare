@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare
         public string? AccountId { get; set; }
 
         /// <summary>
-        /// Filter by exact Search for Agents hostname (case-insensitive).
+        /// Return only instances with this exact Search for Agents hostname (case-insensitive).
         /// </summary>
         [Input("hostname")]
         public string? Hostname { get; set; }
@@ -39,9 +39,6 @@ namespace Pulumi.Cloudflare
         [Input("maxItems")]
         public int? MaxItems { get; set; }
 
-        /// <summary>
-        /// Filter by namespace.
-        /// </summary>
         [Input("namespace")]
         public string? Namespace { get; set; }
 
@@ -77,7 +74,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Filter by exact Search for Agents hostname (case-insensitive).
+        /// Return only instances with this exact Search for Agents hostname (case-insensitive).
         /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
@@ -88,9 +85,6 @@ namespace Pulumi.Cloudflare
         [Input("maxItems")]
         public Input<int>? MaxItems { get; set; }
 
-        /// <summary>
-        /// Filter by namespace.
-        /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
 
@@ -126,17 +120,14 @@ namespace Pulumi.Cloudflare
     {
         public readonly string? AccountId;
         /// <summary>
-        /// Filter by exact Search for Agents hostname (case-insensitive).
+        /// Return only instances with this exact Search for Agents hostname (case-insensitive).
         /// </summary>
         public readonly string? Hostname;
         /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         public readonly int? MaxItems;
-        /// <summary>
-        /// Filter by namespace.
-        /// </summary>
-        public readonly string? Namespace;
+        public readonly string Namespace;
         /// <summary>
         /// Field to order results by.
         /// Available values: "CreatedAt".
@@ -164,7 +155,7 @@ namespace Pulumi.Cloudflare
 
             int? maxItems,
 
-            string? @namespace,
+            string @namespace,
 
             string orderBy,
 

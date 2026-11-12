@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare;
 
 import com.pulumi.cloudflare.inputs.MagicTransitSiteLanNatArgs;
+import com.pulumi.cloudflare.inputs.MagicTransitSiteLanRemoteSubnetArgs;
 import com.pulumi.cloudflare.inputs.MagicTransitSiteLanRoutedSubnetArgs;
 import com.pulumi.cloudflare.inputs.MagicTransitSiteLanStaticAddressingArgs;
 import com.pulumi.core.Output;
@@ -110,6 +111,13 @@ public final class MagicTransitSiteLanArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.physport);
     }
 
+    @Import(name="remoteSubnets")
+    private @Nullable Output<List<MagicTransitSiteLanRemoteSubnetArgs>> remoteSubnets;
+
+    public Optional<Output<List<MagicTransitSiteLanRemoteSubnetArgs>>> remoteSubnets() {
+        return Optional.ofNullable(this.remoteSubnets);
+    }
+
     @Import(name="routedSubnets")
     private @Nullable Output<List<MagicTransitSiteLanRoutedSubnetArgs>> routedSubnets;
 
@@ -173,6 +181,7 @@ public final class MagicTransitSiteLanArgs extends com.pulumi.resources.Resource
         this.name = $.name;
         this.nat = $.nat;
         this.physport = $.physport;
+        this.remoteSubnets = $.remoteSubnets;
         this.routedSubnets = $.routedSubnets;
         this.siteId = $.siteId;
         this.staticAddressing = $.staticAddressing;
@@ -315,6 +324,19 @@ public final class MagicTransitSiteLanArgs extends com.pulumi.resources.Resource
 
         public Builder physport(Integer physport) {
             return physport(Output.of(physport));
+        }
+
+        public Builder remoteSubnets(@Nullable Output<List<MagicTransitSiteLanRemoteSubnetArgs>> remoteSubnets) {
+            $.remoteSubnets = remoteSubnets;
+            return this;
+        }
+
+        public Builder remoteSubnets(List<MagicTransitSiteLanRemoteSubnetArgs> remoteSubnets) {
+            return remoteSubnets(Output.of(remoteSubnets));
+        }
+
+        public Builder remoteSubnets(MagicTransitSiteLanRemoteSubnetArgs... remoteSubnets) {
+            return remoteSubnets(List.of(remoteSubnets));
         }
 
         public Builder routedSubnets(@Nullable Output<List<MagicTransitSiteLanRoutedSubnetArgs>> routedSubnets) {

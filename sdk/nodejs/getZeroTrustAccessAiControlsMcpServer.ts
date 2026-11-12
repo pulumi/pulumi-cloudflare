@@ -83,7 +83,7 @@ export interface GetZeroTrustAccessAiControlsMcpServerResult {
      */
     readonly id: string;
     /**
-     * When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+     * When true, per-user authorization uses the shared Cloudflare callback URL as the 'redirect*uri' instead of the portal callback URL. The default is false. Set 'is*shared*oauth*callback_enabled' to true to enable the shared Cloudflare callback URL for this MCP server.
      */
     readonly isSharedOauthCallbackEnabled: boolean;
     readonly lastSuccessfulSync: string;
@@ -95,6 +95,10 @@ export interface GetZeroTrustAccessAiControlsMcpServerResult {
      */
     readonly name: string;
     readonly prompts: {[key: string]: string}[];
+    /**
+     * Timestamp of the most recent successful admin OAuth registration.
+     */
+    readonly registeredAt: string;
     /**
      * Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
      */

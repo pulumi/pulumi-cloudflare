@@ -163,6 +163,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// Specifies the data-locality jurisdiction of the catalog. The first enable sets it, and it cannot change. Currently always `Default`.
+        /// </summary>
+        public readonly string Jurisdiction;
+        /// <summary>
         /// Configures maintenance for the catalog.
         /// </summary>
         public readonly Outputs.GetR2DataCatalogMaintenanceConfigResult MaintenanceConfig;
@@ -188,6 +192,8 @@ namespace Pulumi.Cloudflare
 
             string id,
 
+            string jurisdiction,
+
             Outputs.GetR2DataCatalogMaintenanceConfigResult maintenanceConfig,
 
             string name,
@@ -199,6 +205,7 @@ namespace Pulumi.Cloudflare
             BucketName = bucketName;
             CredentialStatus = credentialStatus;
             Id = id;
+            Jurisdiction = jurisdiction;
             MaintenanceConfig = maintenanceConfig;
             Name = name;
             Status = status;

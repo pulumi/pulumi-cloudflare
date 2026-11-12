@@ -72,7 +72,7 @@ public final class GetZeroTrustDevicePostureRuleInput {
      */
     private String eidLastSeen;
     /**
-     * @return Enabled.
+     * @return Whether the rule is enabled. This is a computed, read-only value. It is false for deprecated Kolide posture rules that still use the issueCount input, and true otherwise.
      * 
      */
     private Boolean enabled;
@@ -87,7 +87,7 @@ public final class GetZeroTrustDevicePostureRuleInput {
      */
     private List<String> extendedKeyUsages;
     /**
-     * @return List ID.
+     * @return API UUID.
      * 
      */
     private String id;
@@ -120,18 +120,22 @@ public final class GetZeroTrustDevicePostureRuleInput {
     private String networkStatus;
     /**
      * @return Operating system.
+     * 
+     * Operating System.
      * Available values: &#34;windows&#34;, &#34;linux&#34;, &#34;mac&#34;, &#34;android&#34;, &#34;ios&#34;, &#34;chromeos&#34;.
      * 
      */
     private String operatingSystem;
     /**
      * @return Agent operational state.
-     * Available values: &#34;na&#34;, &#34;partially*disabled&#34;, &#34;auto*fully*disabled&#34;, &#34;fully*disabled&#34;, &#34;auto*partially*disabled&#34;, &#34;disabled*error&#34;, &#34;db*corruption&#34;.
+     * Available values: &#34;na&#34;, &#34;partiallyDisabled&#34;, &#34;autoFullyDisabled&#34;, &#34;fullyDisabled&#34;, &#34;autoPartiallyDisabled&#34;, &#34;disabledError&#34;, &#34;dbCorruption&#34;.
      * 
      */
     private String operationalState;
     /**
      * @return Operator.
+     * 
+     * Operator to evaluate riskLevel or eid_last_seen.
      * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
@@ -163,6 +167,8 @@ public final class GetZeroTrustDevicePostureRuleInput {
     private String overall;
     /**
      * @return File path.
+     * 
+     * Path for the application.
      * 
      */
     private String path;
@@ -226,6 +232,8 @@ public final class GetZeroTrustDevicePostureRuleInput {
     private Double updateWindowDays;
     /**
      * @return Version of OS.
+     * 
+     * Version.
      * 
      */
     private String version;
@@ -317,7 +325,7 @@ public final class GetZeroTrustDevicePostureRuleInput {
         return this.eidLastSeen;
     }
     /**
-     * @return Enabled.
+     * @return Whether the rule is enabled. This is a computed, read-only value. It is false for deprecated Kolide posture rules that still use the issueCount input, and true otherwise.
      * 
      */
     public Boolean enabled() {
@@ -338,7 +346,7 @@ public final class GetZeroTrustDevicePostureRuleInput {
         return this.extendedKeyUsages;
     }
     /**
-     * @return List ID.
+     * @return API UUID.
      * 
      */
     public String id() {
@@ -385,6 +393,8 @@ public final class GetZeroTrustDevicePostureRuleInput {
     }
     /**
      * @return Operating system.
+     * 
+     * Operating System.
      * Available values: &#34;windows&#34;, &#34;linux&#34;, &#34;mac&#34;, &#34;android&#34;, &#34;ios&#34;, &#34;chromeos&#34;.
      * 
      */
@@ -393,7 +403,7 @@ public final class GetZeroTrustDevicePostureRuleInput {
     }
     /**
      * @return Agent operational state.
-     * Available values: &#34;na&#34;, &#34;partially*disabled&#34;, &#34;auto*fully*disabled&#34;, &#34;fully*disabled&#34;, &#34;auto*partially*disabled&#34;, &#34;disabled*error&#34;, &#34;db*corruption&#34;.
+     * Available values: &#34;na&#34;, &#34;partiallyDisabled&#34;, &#34;autoFullyDisabled&#34;, &#34;fullyDisabled&#34;, &#34;autoPartiallyDisabled&#34;, &#34;disabledError&#34;, &#34;dbCorruption&#34;.
      * 
      */
     public String operationalState() {
@@ -401,6 +411,8 @@ public final class GetZeroTrustDevicePostureRuleInput {
     }
     /**
      * @return Operator.
+     * 
+     * Operator to evaluate riskLevel or eid_last_seen.
      * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
@@ -444,6 +456,8 @@ public final class GetZeroTrustDevicePostureRuleInput {
     }
     /**
      * @return File path.
+     * 
+     * Path for the application.
      * 
      */
     public String path() {
@@ -531,6 +545,8 @@ public final class GetZeroTrustDevicePostureRuleInput {
     }
     /**
      * @return Version of OS.
+     * 
+     * Version.
      * 
      */
     public String version() {

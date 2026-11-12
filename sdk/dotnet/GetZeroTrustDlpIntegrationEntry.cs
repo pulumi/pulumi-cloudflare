@@ -131,7 +131,7 @@ namespace Pulumi.Cloudflare
     {
         public readonly string? AccountId;
         /// <summary>
-        /// Only applies to custom word lists.
+        /// For `type: ExactData`: Only applies to custom word lists.
         /// Determines if the words should be matched in a case-sensitive manner
         /// Cannot be set to false if secret is true
         /// </summary>
@@ -139,34 +139,26 @@ namespace Pulumi.Cloudflare
         public readonly Outputs.GetZeroTrustDlpIntegrationEntryConfidenceResult Confidence;
         public readonly string CreatedAt;
         /// <summary>
-        /// Whether this entry is deprecated for new use. This is computed from the static catalog and
+        /// For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
         /// emitted only when true.
         /// </summary>
         public readonly bool Deprecated;
+        /// <summary>
+        /// For `type: CustomPromptTopic`: The optional description of the custom prompt topic entry.
+        /// </summary>
         public readonly string Description;
         public readonly bool Enabled;
         public readonly string EntryId;
-        /// <summary>
-        /// The ID of this resource.
-        /// </summary>
         public readonly string Id;
         public readonly string Name;
         public readonly Outputs.GetZeroTrustDlpIntegrationEntryPatternResult Pattern;
         public readonly string ProfileId;
         public readonly ImmutableArray<Outputs.GetZeroTrustDlpIntegrationEntryProfileResult> Profiles;
         public readonly bool Secret;
-        /// <summary>
-        /// Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "WordList".
-        /// </summary>
         public readonly string Type;
         public readonly string UpdatedAt;
-        /// <summary>
-        /// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
-        /// </summary>
         public readonly string UploadStatus;
-        /// <summary>
-        /// A Predefined AI prompt classification topic entry.
-        /// </summary>
+        public readonly ImmutableArray<string> ValidatorIds;
         public readonly Outputs.GetZeroTrustDlpIntegrationEntryVariantResult Variant;
         public readonly ImmutableArray<string> WordLists;
 
@@ -206,6 +198,8 @@ namespace Pulumi.Cloudflare
 
             string uploadStatus,
 
+            ImmutableArray<string> validatorIds,
+
             Outputs.GetZeroTrustDlpIntegrationEntryVariantResult variant,
 
             ImmutableArray<string> wordLists)
@@ -227,6 +221,7 @@ namespace Pulumi.Cloudflare
             Type = type;
             UpdatedAt = updatedAt;
             UploadStatus = uploadStatus;
+            ValidatorIds = validatorIds;
             Variant = variant;
             WordLists = wordLists;
         }

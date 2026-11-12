@@ -25,7 +25,7 @@ public final class QueueConsumer {
     private @Nullable String deadLetterQueue;
     private @Nullable String queueName;
     /**
-     * @return Name of a Worker
+     * @return For `type: worker`: Name of a Worker
      * 
      */
     private @Nullable String scriptName;
@@ -58,7 +58,7 @@ public final class QueueConsumer {
         return Optional.ofNullable(this.queueName);
     }
     /**
-     * @return Name of a Worker
+     * @return For `type: worker`: Name of a Worker
      * 
      */
     public Optional<String> scriptName() {

@@ -28,6 +28,7 @@ class EmailSecurityAllowPolicyArgs:
                  pattern_type: pulumi.Input[_builtins.str],
                  verify_sender: pulumi.Input[_builtins.bool],
                  comments: pulumi.Input[Optional[_builtins.str]] = None,
+                 expires_at: pulumi.Input[Optional[_builtins.str]] = None,
                  is_recipient: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_sender: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_spoof: pulumi.Input[Optional[_builtins.bool]] = None):
@@ -38,7 +39,7 @@ class EmailSecurityAllowPolicyArgs:
         :param pulumi.Input[_builtins.bool] is_acceptable_sender: Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply.
         :param pulumi.Input[_builtins.bool] is_exempt_recipient: Bypasses all detections for messages to this recipient.
         :param pulumi.Input[_builtins.bool] is_trusted_sender: Bypasses all detections and link following for messages from this sender.
-        :param pulumi.Input[_builtins.str] pattern: The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+        :param pulumi.Input[_builtins.str] pattern: The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents. The API also rejects a pattern that equals a domain onboarded to the account, ignoring case.
         :param pulumi.Input[_builtins.str] pattern_type: Type of pattern matching.
                - EMAIL: matches a full email address (e.g. `user@example.com`)
                - DOMAIN: matches a domain name (e.g. `example.com`)
@@ -46,6 +47,7 @@ class EmailSecurityAllowPolicyArgs:
                - UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.
                  Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
         :param pulumi.Input[_builtins.bool] verify_sender: Enforce DMARC, SPF or DKIM authentication. When on, Email Security only honors policies that pass authentication.
+        :param pulumi.Input[_builtins.str] expires_at: Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration.
         :param pulumi.Input[_builtins.bool] is_recipient: Deprecated as of July 1, 2025. Use `is_exempt_recipient` instead. End of life: July 1, 2026.
         :param pulumi.Input[_builtins.bool] is_sender: Deprecated as of July 1, 2025. Use `is_trusted_sender` instead. End of life: July 1, 2026.
         :param pulumi.Input[_builtins.bool] is_spoof: Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026.
@@ -60,6 +62,8 @@ class EmailSecurityAllowPolicyArgs:
         pulumi.set(__self__, "verify_sender", verify_sender)
         if comments is not None:
             pulumi.set(__self__, "comments", comments)
+        if expires_at is not None:
+            pulumi.set(__self__, "expires_at", expires_at)
         if is_recipient is not None:
             warnings.warn("""Use `is_exempt_recipient` instead.""", DeprecationWarning)
             pulumi.log.warn("""is_recipient is deprecated: Use `is_exempt_recipient` instead.""")
@@ -137,7 +141,7 @@ class EmailSecurityAllowPolicyArgs:
     @pulumi.getter
     def pattern(self) -> pulumi.Input[_builtins.str]:
         """
-        The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+        The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents. The API also rejects a pattern that equals a domain onboarded to the account, ignoring case.
         """
         return pulumi.get(self, "pattern")
 
@@ -182,6 +186,18 @@ class EmailSecurityAllowPolicyArgs:
     @comments.setter
     def comments(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comments", value)
+
+    @_builtins.property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration.
+        """
+        return pulumi.get(self, "expires_at")
+
+    @expires_at.setter
+    def expires_at(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "expires_at", value)
 
     @_builtins.property
     @pulumi.getter(name="isRecipient")
@@ -229,6 +245,7 @@ class _EmailSecurityAllowPolicyState:
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  comments: pulumi.Input[Optional[_builtins.str]] = None,
                  created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 expires_at: pulumi.Input[Optional[_builtins.str]] = None,
                  is_acceptable_sender: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_exempt_recipient: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_recipient: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -245,6 +262,7 @@ class _EmailSecurityAllowPolicyState:
         Input properties used for looking up and filtering EmailSecurityAllowPolicy resources.
 
         :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.str] expires_at: Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration.
         :param pulumi.Input[_builtins.bool] is_acceptable_sender: Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply.
         :param pulumi.Input[_builtins.bool] is_exempt_recipient: Bypasses all detections for messages to this recipient.
         :param pulumi.Input[_builtins.bool] is_recipient: Deprecated as of July 1, 2025. Use `is_exempt_recipient` instead. End of life: July 1, 2026.
@@ -252,7 +270,7 @@ class _EmailSecurityAllowPolicyState:
         :param pulumi.Input[_builtins.bool] is_spoof: Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026.
         :param pulumi.Input[_builtins.bool] is_trusted_sender: Bypasses all detections and link following for messages from this sender.
         :param pulumi.Input[_builtins.str] last_modified: Deprecated, use `modified_at` instead. End of life: November 1, 2026.
-        :param pulumi.Input[_builtins.str] pattern: The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+        :param pulumi.Input[_builtins.str] pattern: The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents. The API also rejects a pattern that equals a domain onboarded to the account, ignoring case.
         :param pulumi.Input[_builtins.str] pattern_type: Type of pattern matching.
                - EMAIL: matches a full email address (e.g. `user@example.com`)
                - DOMAIN: matches a domain name (e.g. `example.com`)
@@ -267,6 +285,8 @@ class _EmailSecurityAllowPolicyState:
             pulumi.set(__self__, "comments", comments)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
+        if expires_at is not None:
+            pulumi.set(__self__, "expires_at", expires_at)
         if is_acceptable_sender is not None:
             pulumi.set(__self__, "is_acceptable_sender", is_acceptable_sender)
         if is_exempt_recipient is not None:
@@ -333,6 +353,18 @@ class _EmailSecurityAllowPolicyState:
     @created_at.setter
     def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration.
+        """
+        return pulumi.get(self, "expires_at")
+
+    @expires_at.setter
+    def expires_at(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "expires_at", value)
 
     @_builtins.property
     @pulumi.getter(name="isAcceptableSender")
@@ -444,7 +476,7 @@ class _EmailSecurityAllowPolicyState:
     @pulumi.getter
     def pattern(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+        The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents. The API also rejects a pattern that equals a domain onboarded to the account, ignoring case.
         """
         return pulumi.get(self, "pattern")
 
@@ -490,6 +522,7 @@ class EmailSecurityAllowPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  comments: pulumi.Input[Optional[_builtins.str]] = None,
+                 expires_at: pulumi.Input[Optional[_builtins.str]] = None,
                  is_acceptable_sender: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_exempt_recipient: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_recipient: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -523,6 +556,7 @@ class EmailSecurityAllowPolicy(pulumi.CustomResource):
             pattern_type="EMAIL",
             verify_sender=True,
             comments="Trust all messages send from test@example.com",
+            expires_at="2027-01-01T00:00:00Z",
             is_recipient=False,
             is_sender=True,
             is_spoof=False)
@@ -538,13 +572,14 @@ class EmailSecurityAllowPolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.str] expires_at: Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration.
         :param pulumi.Input[_builtins.bool] is_acceptable_sender: Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply.
         :param pulumi.Input[_builtins.bool] is_exempt_recipient: Bypasses all detections for messages to this recipient.
         :param pulumi.Input[_builtins.bool] is_recipient: Deprecated as of July 1, 2025. Use `is_exempt_recipient` instead. End of life: July 1, 2026.
         :param pulumi.Input[_builtins.bool] is_sender: Deprecated as of July 1, 2025. Use `is_trusted_sender` instead. End of life: July 1, 2026.
         :param pulumi.Input[_builtins.bool] is_spoof: Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026.
         :param pulumi.Input[_builtins.bool] is_trusted_sender: Bypasses all detections and link following for messages from this sender.
-        :param pulumi.Input[_builtins.str] pattern: The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+        :param pulumi.Input[_builtins.str] pattern: The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents. The API also rejects a pattern that equals a domain onboarded to the account, ignoring case.
         :param pulumi.Input[_builtins.str] pattern_type: Type of pattern matching.
                - EMAIL: matches a full email address (e.g. `user@example.com`)
                - DOMAIN: matches a domain name (e.g. `example.com`)
@@ -581,6 +616,7 @@ class EmailSecurityAllowPolicy(pulumi.CustomResource):
             pattern_type="EMAIL",
             verify_sender=True,
             comments="Trust all messages send from test@example.com",
+            expires_at="2027-01-01T00:00:00Z",
             is_recipient=False,
             is_sender=True,
             is_spoof=False)
@@ -610,6 +646,7 @@ class EmailSecurityAllowPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  comments: pulumi.Input[Optional[_builtins.str]] = None,
+                 expires_at: pulumi.Input[Optional[_builtins.str]] = None,
                  is_acceptable_sender: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_exempt_recipient: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_recipient: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -633,6 +670,7 @@ class EmailSecurityAllowPolicy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["comments"] = comments
+            __props__.__dict__["expires_at"] = expires_at
             if is_acceptable_sender is None and not opts.urn:
                 raise TypeError("Missing required property 'is_acceptable_sender'")
             __props__.__dict__["is_acceptable_sender"] = is_acceptable_sender
@@ -673,6 +711,7 @@ class EmailSecurityAllowPolicy(pulumi.CustomResource):
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             comments: pulumi.Input[Optional[_builtins.str]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            expires_at: pulumi.Input[Optional[_builtins.str]] = None,
             is_acceptable_sender: pulumi.Input[Optional[_builtins.bool]] = None,
             is_exempt_recipient: pulumi.Input[Optional[_builtins.bool]] = None,
             is_recipient: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -693,6 +732,7 @@ class EmailSecurityAllowPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.str] expires_at: Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration.
         :param pulumi.Input[_builtins.bool] is_acceptable_sender: Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply.
         :param pulumi.Input[_builtins.bool] is_exempt_recipient: Bypasses all detections for messages to this recipient.
         :param pulumi.Input[_builtins.bool] is_recipient: Deprecated as of July 1, 2025. Use `is_exempt_recipient` instead. End of life: July 1, 2026.
@@ -700,7 +740,7 @@ class EmailSecurityAllowPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] is_spoof: Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026.
         :param pulumi.Input[_builtins.bool] is_trusted_sender: Bypasses all detections and link following for messages from this sender.
         :param pulumi.Input[_builtins.str] last_modified: Deprecated, use `modified_at` instead. End of life: November 1, 2026.
-        :param pulumi.Input[_builtins.str] pattern: The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+        :param pulumi.Input[_builtins.str] pattern: The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents. The API also rejects a pattern that equals a domain onboarded to the account, ignoring case.
         :param pulumi.Input[_builtins.str] pattern_type: Type of pattern matching.
                - EMAIL: matches a full email address (e.g. `user@example.com`)
                - DOMAIN: matches a domain name (e.g. `example.com`)
@@ -716,6 +756,7 @@ class EmailSecurityAllowPolicy(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["comments"] = comments
         __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["expires_at"] = expires_at
         __props__.__dict__["is_acceptable_sender"] = is_acceptable_sender
         __props__.__dict__["is_exempt_recipient"] = is_exempt_recipient
         __props__.__dict__["is_recipient"] = is_recipient
@@ -736,6 +777,7 @@ class EmailSecurityAllowPolicy(pulumi.CustomResource):
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             comments: pulumi.Input[Optional[_builtins.str]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            expires_at: pulumi.Input[Optional[_builtins.str]] = None,
             is_acceptable_sender: pulumi.Input[Optional[_builtins.bool]] = None,
             is_exempt_recipient: pulumi.Input[Optional[_builtins.bool]] = None,
             is_recipient: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -752,6 +794,7 @@ class EmailSecurityAllowPolicy(pulumi.CustomResource):
         __props__["accountId"] = account_id
         __props__["comments"] = comments
         __props__["createdAt"] = created_at
+        __props__["expiresAt"] = expires_at
         __props__["isAcceptableSender"] = is_acceptable_sender
         __props__["isExemptRecipient"] = is_exempt_recipient
         __props__["isRecipient"] = is_recipient
@@ -783,6 +826,14 @@ class EmailSecurityAllowPolicy(pulumi.CustomResource):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration.
+        """
+        return pulumi.get(self, "expires_at")
 
     @_builtins.property
     @pulumi.getter(name="isAcceptableSender")
@@ -858,7 +909,7 @@ class EmailSecurityAllowPolicy(pulumi.CustomResource):
     @pulumi.getter
     def pattern(self) -> pulumi.Output[_builtins.str]:
         """
-        The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+        The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents. The API also rejects a pattern that equals a domain onboarded to the account, ignoring case.
         """
         return pulumi.get(self, "pattern")
 

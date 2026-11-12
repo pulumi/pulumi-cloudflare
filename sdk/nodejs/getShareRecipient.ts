@@ -69,7 +69,7 @@ export interface GetShareRecipientResult {
      */
     readonly associationStatus: string;
     /**
-     * When the share was created.
+     * When the object was created.
      */
     readonly created: string;
     /**
@@ -81,7 +81,7 @@ export interface GetShareRecipientResult {
      */
     readonly includeResources?: boolean;
     /**
-     * When the share was modified.
+     * When the object was last modified.
      */
     readonly modified: string;
     /**

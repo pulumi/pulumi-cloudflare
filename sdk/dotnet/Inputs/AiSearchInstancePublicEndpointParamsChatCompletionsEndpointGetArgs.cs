@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class AiSearchInstancePublicEndpointParamsChatCompletionsEndpointGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Disable chat completions endpoint for this public endpoint
+        /// Disable chat completions endpoint for this public endpoint.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }

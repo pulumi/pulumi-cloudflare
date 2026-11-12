@@ -13,6 +13,7 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetOrganizationsResultMetaResult
     {
+        public readonly bool AreChildAccountsAccessibleByOrgMembers;
         /// <summary>
         /// Ordered chain of organization tags from the root organization down to
         /// (and including) this organization itself. Root organizations return a
@@ -27,18 +28,25 @@ namespace Pulumi.Cloudflare.Outputs
         /// Enable features for Organizations.
         /// </summary>
         public readonly Outputs.GetOrganizationsResultMetaTenantFlagsResult TenantFlags;
+        public readonly string TenantType;
 
         [OutputConstructor]
         private GetOrganizationsResultMetaResult(
+            bool areChildAccountsAccessibleByOrgMembers,
+
             ImmutableArray<string> hierarchyTags,
 
             string managedBy,
 
-            Outputs.GetOrganizationsResultMetaTenantFlagsResult tenantFlags)
+            Outputs.GetOrganizationsResultMetaTenantFlagsResult tenantFlags,
+
+            string tenantType)
         {
+            AreChildAccountsAccessibleByOrgMembers = areChildAccountsAccessibleByOrgMembers;
             HierarchyTags = hierarchyTags;
             ManagedBy = managedBy;
             TenantFlags = tenantFlags;
+            TenantType = tenantType;
         }
     }
 }

@@ -16,10 +16,9 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly Outputs.GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptionsResult DiscoverOptions;
         public readonly Outputs.GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptionsResult ParseOptions;
         /// <summary>
-        /// Available values: "sitemap", "feed-rss", "crawl".
+        /// Available values: "sitemap", "discover".
         /// </summary>
         public readonly string ParseType;
-        public readonly Outputs.GetAiSearchInstancesResultSourceParamsWebCrawlerStoreOptionsResult StoreOptions;
 
         [OutputConstructor]
         private GetAiSearchInstancesResultSourceParamsWebCrawlerResult(
@@ -27,14 +26,11 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptionsResult parseOptions,
 
-            string parseType,
-
-            Outputs.GetAiSearchInstancesResultSourceParamsWebCrawlerStoreOptionsResult storeOptions)
+            string parseType)
         {
             DiscoverOptions = discoverOptions;
             ParseOptions = parseOptions;
             ParseType = parseType;
-            StoreOptions = storeOptions;
         }
     }
 }

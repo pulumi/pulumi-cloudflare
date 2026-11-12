@@ -13,6 +13,12 @@ import (
 
 // Accepted Permissions
 //
+// - `Individual Workers Admin`
+// - `Individual Workers Content Read-Only`
+// - `Individual Workers Editor`
+// - `Workers Admin`
+// - `Workers Content Read-Only`
+// - `Workers Editor`
 // - `Workers Scripts Read`
 // - `Workers Scripts Write`
 // - `Workers Tail Read`

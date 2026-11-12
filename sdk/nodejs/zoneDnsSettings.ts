@@ -23,7 +23,6 @@ import * as utilities from "./utilities";
  * const exampleZoneDnsSettings = new cloudflare.ZoneDnsSettings("example_zone_dns_settings", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     flattenAllCnames: false,
- *     foundationDns: false,
  *     internalDns: {
  *         referenceZoneId: "reference_zone_id",
  *     },
@@ -94,13 +93,6 @@ export class ZoneDnsSettings extends pulumi.CustomResource {
      */
     declare public readonly flattenAllCnames: pulumi.Output<boolean | undefined>;
     /**
-     * Deprecated. Use nameservers.type to configure Advanced Nameservers.
-     *
-     * @deprecated foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
-
-     */
-    declare public readonly foundationDns: pulumi.Output<boolean | undefined>;
-    /**
      * Settings for this internal zone.
      */
     declare public readonly internalDns: pulumi.Output<outputs.ZoneDnsSettingsInternalDns>;
@@ -148,7 +140,6 @@ export class ZoneDnsSettings extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ZoneDnsSettingsState | undefined;
             resourceInputs["flattenAllCnames"] = state?.flattenAllCnames;
-            resourceInputs["foundationDns"] = state?.foundationDns;
             resourceInputs["internalDns"] = state?.internalDns;
             resourceInputs["multiProvider"] = state?.multiProvider;
             resourceInputs["nameservers"] = state?.nameservers;
@@ -163,7 +154,6 @@ export class ZoneDnsSettings extends pulumi.CustomResource {
                 throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["flattenAllCnames"] = args?.flattenAllCnames;
-            resourceInputs["foundationDns"] = args?.foundationDns;
             resourceInputs["internalDns"] = args?.internalDns;
             resourceInputs["multiProvider"] = args?.multiProvider;
             resourceInputs["nameservers"] = args?.nameservers;
@@ -186,13 +176,6 @@ export interface ZoneDnsSettingsState {
      * Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
      */
     flattenAllCnames?: pulumi.Input<boolean | undefined>;
-    /**
-     * Deprecated. Use nameservers.type to configure Advanced Nameservers.
-     *
-     * @deprecated foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
-
-     */
-    foundationDns?: pulumi.Input<boolean | undefined>;
     /**
      * Settings for this internal zone.
      */
@@ -236,13 +219,6 @@ export interface ZoneDnsSettingsArgs {
      * Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
      */
     flattenAllCnames?: pulumi.Input<boolean | undefined>;
-    /**
-     * Deprecated. Use nameservers.type to configure Advanced Nameservers.
-     *
-     * @deprecated foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
-
-     */
-    foundationDns?: pulumi.Input<boolean | undefined>;
     /**
      * Settings for this internal zone.
      */

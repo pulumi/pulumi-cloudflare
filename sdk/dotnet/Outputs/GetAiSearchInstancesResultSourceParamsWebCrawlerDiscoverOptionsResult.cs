@@ -17,7 +17,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly bool IncludeExternalLinks;
         public readonly bool IncludeSubdomains;
         /// <summary>
-        /// Maximum number of pages to crawl. New values are capped at 100000; instances configured before that cap may report a higher stored value, which the crawler clamps at run time.
+        /// Maximum number of pages to crawl. New values have a maximum of 100000; instances configured before that cap may report a higher stored value, which the crawler clamps at run time.
         /// </summary>
         public readonly double Limit;
         public readonly double MaxAge;

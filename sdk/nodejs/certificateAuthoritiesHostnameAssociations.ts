@@ -68,6 +68,9 @@ export class CertificateAuthoritiesHostnameAssociations extends pulumi.CustomRes
         return obj['__pulumiType'] === CertificateAuthoritiesHostnameAssociations.__pulumiType;
     }
 
+    /**
+     * Unordered set of hostnames. Hostnames are stored as lowercase punycode.
+     */
     declare public readonly hostnames: pulumi.Output<string[] | undefined>;
     /**
      * The UUID for a certificate that was uploaded to the mTLS Certificate Management endpoint. If no mtls*certificate*id is given, the hostnames will be associated to your active Cloudflare Managed CA.
@@ -112,6 +115,9 @@ export class CertificateAuthoritiesHostnameAssociations extends pulumi.CustomRes
  * Input properties used for looking up and filtering CertificateAuthoritiesHostnameAssociations resources.
  */
 export interface CertificateAuthoritiesHostnameAssociationsState {
+    /**
+     * Unordered set of hostnames. Hostnames are stored as lowercase punycode.
+     */
     hostnames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The UUID for a certificate that was uploaded to the mTLS Certificate Management endpoint. If no mtls*certificate*id is given, the hostnames will be associated to your active Cloudflare Managed CA.
@@ -127,6 +133,9 @@ export interface CertificateAuthoritiesHostnameAssociationsState {
  * The set of arguments for constructing a CertificateAuthoritiesHostnameAssociations resource.
  */
 export interface CertificateAuthoritiesHostnameAssociationsArgs {
+    /**
+     * Unordered set of hostnames. Hostnames are stored as lowercase punycode.
+     */
     hostnames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The UUID for a certificate that was uploaded to the mTLS Certificate Management endpoint. If no mtls*certificate*id is given, the hostnames will be associated to your active Cloudflare Managed CA.

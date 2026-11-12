@@ -49,7 +49,6 @@ public final class WorkerVersionPlacementArgs extends com.pulumi.resources.Resou
 
     /**
      * Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: &#34;smart&#34;, &#34;targeted&#34;.
      * 
      */
     @Import(name="mode")
@@ -57,7 +56,6 @@ public final class WorkerVersionPlacementArgs extends com.pulumi.resources.Resou
 
     /**
      * @return Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: &#34;smart&#34;, &#34;targeted&#34;.
      * 
      */
     public Optional<Output<String>> mode() {
@@ -166,7 +164,6 @@ public final class WorkerVersionPlacementArgs extends com.pulumi.resources.Resou
 
         /**
          * @param mode Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-         * Available values: &#34;smart&#34;, &#34;targeted&#34;.
          * 
          * @return builder
          * 
@@ -178,7 +175,6 @@ public final class WorkerVersionPlacementArgs extends com.pulumi.resources.Resou
 
         /**
          * @param mode Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-         * Available values: &#34;smart&#34;, &#34;targeted&#34;.
          * 
          * @return builder
          * 

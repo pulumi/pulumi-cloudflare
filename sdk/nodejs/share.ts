@@ -7,6 +7,10 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Resource Sharing Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -16,6 +20,9 @@ import * as utilities from "./utilities";
  * const exampleShare = new cloudflare.Share("example_share", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     name: "My Shared WAF Managed Rule",
+ *     excludedRecipients: [{
+ *         accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     }],
  *     recipients: [{
  *         organizationId: "023e105f4ecef8ad9ca31a8372d0c353",
  *         recipientAccountId: "023e105f4ecef8ad9ca31a8372d0c353",
@@ -23,9 +30,12 @@ import * as utilities from "./utilities";
  *     resources: [{
  *         meta: JSON.stringify({}),
  *         resourceAccountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *         resourceId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *         resourceId: "0a679032-bbb2-4b7e-9acc-dd5c5cb27a17",
  *         resourceType: "custom-ruleset",
  *     }],
+ *     tags: {
+ *         foo: "string",
+ *     },
  * });
  * ```
  *
@@ -91,7 +101,7 @@ export class Share extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly associatingRecipientCount: pulumi.Output<number>;
     /**
-     * When the share was created.
+     * When the object was created.
      */
     declare public /*out*/ readonly created: pulumi.Output<string>;
     /**
@@ -103,6 +113,10 @@ export class Share extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly disassociatingRecipientCount: pulumi.Output<number>;
     /**
+     * Accounts to exclude from an organization-targeted share. Only allowed when `recipients` contains no account entries. The share owner cannot be excluded. Duplicate entries are ignored.
+     */
+    declare public readonly excludedRecipients: pulumi.Output<outputs.ShareExcludedRecipient[] | undefined>;
+    /**
      * Include recipient counts in the response.
      */
     declare public readonly includeRecipientCounts: pulumi.Output<boolean | undefined>;
@@ -111,11 +125,16 @@ export class Share extends pulumi.CustomResource {
      */
     declare public readonly includeResources: pulumi.Output<boolean | undefined>;
     /**
+     * Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+     * Available values: "api", "mirror".
+     */
+    declare public readonly includeTagsFrom: pulumi.Output<string | undefined>;
+    /**
      * Available values: "sent", "received".
      */
     declare public /*out*/ readonly kind: pulumi.Output<string>;
     /**
-     * When the share was modified.
+     * When the object was last modified.
      */
     declare public /*out*/ readonly modified: pulumi.Output<string>;
     /**
@@ -126,12 +145,16 @@ export class Share extends pulumi.CustomResource {
      * Organization identifier.
      */
     declare public /*out*/ readonly organizationId: pulumi.Output<string>;
-    declare public readonly recipients: pulumi.Output<outputs.ShareRecipient[]>;
-    declare public readonly resources: pulumi.Output<outputs.ShareResource[]>;
+    declare public readonly recipients: pulumi.Output<outputs.ShareRecipient[] | undefined>;
+    declare public readonly resources: pulumi.Output<outputs.ShareResource[] | undefined>;
     /**
      * Available values: "active", "deleting", "deleted".
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
+    /**
+     * Tags associated with the share.
+     */
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Available values: "account", "organization".
      */
@@ -157,8 +180,10 @@ export class Share extends pulumi.CustomResource {
             resourceInputs["created"] = state?.created;
             resourceInputs["disassociatedRecipientCount"] = state?.disassociatedRecipientCount;
             resourceInputs["disassociatingRecipientCount"] = state?.disassociatingRecipientCount;
+            resourceInputs["excludedRecipients"] = state?.excludedRecipients;
             resourceInputs["includeRecipientCounts"] = state?.includeRecipientCounts;
             resourceInputs["includeResources"] = state?.includeResources;
+            resourceInputs["includeTagsFrom"] = state?.includeTagsFrom;
             resourceInputs["kind"] = state?.kind;
             resourceInputs["modified"] = state?.modified;
             resourceInputs["name"] = state?.name;
@@ -166,6 +191,7 @@ export class Share extends pulumi.CustomResource {
             resourceInputs["recipients"] = state?.recipients;
             resourceInputs["resources"] = state?.resources;
             resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
             resourceInputs["targetType"] = state?.targetType;
         } else {
             const args = argsOrState as ShareArgs | undefined;
@@ -175,18 +201,15 @@ export class Share extends pulumi.CustomResource {
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if (args?.recipients === undefined && !opts.urn) {
-                throw new Error("Missing required property 'recipients'");
-            }
-            if (args?.resources === undefined && !opts.urn) {
-                throw new Error("Missing required property 'resources'");
-            }
             resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["excludedRecipients"] = args?.excludedRecipients;
             resourceInputs["includeRecipientCounts"] = args?.includeRecipientCounts;
             resourceInputs["includeResources"] = args?.includeResources;
+            resourceInputs["includeTagsFrom"] = args?.includeTagsFrom;
             resourceInputs["name"] = args?.name;
             resourceInputs["recipients"] = args?.recipients;
             resourceInputs["resources"] = args?.resources;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["accountName"] = undefined /*out*/;
             resourceInputs["associatedRecipientCount"] = undefined /*out*/;
             resourceInputs["associatingRecipientCount"] = undefined /*out*/;
@@ -225,7 +248,7 @@ export interface ShareState {
      */
     associatingRecipientCount?: pulumi.Input<number | undefined>;
     /**
-     * When the share was created.
+     * When the object was created.
      */
     created?: pulumi.Input<string | undefined>;
     /**
@@ -237,6 +260,10 @@ export interface ShareState {
      */
     disassociatingRecipientCount?: pulumi.Input<number | undefined>;
     /**
+     * Accounts to exclude from an organization-targeted share. Only allowed when `recipients` contains no account entries. The share owner cannot be excluded. Duplicate entries are ignored.
+     */
+    excludedRecipients?: pulumi.Input<pulumi.Input<inputs.ShareExcludedRecipient>[] | undefined>;
+    /**
      * Include recipient counts in the response.
      */
     includeRecipientCounts?: pulumi.Input<boolean | undefined>;
@@ -245,11 +272,16 @@ export interface ShareState {
      */
     includeResources?: pulumi.Input<boolean | undefined>;
     /**
+     * Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+     * Available values: "api", "mirror".
+     */
+    includeTagsFrom?: pulumi.Input<string | undefined>;
+    /**
      * Available values: "sent", "received".
      */
     kind?: pulumi.Input<string | undefined>;
     /**
-     * When the share was modified.
+     * When the object was last modified.
      */
     modified?: pulumi.Input<string | undefined>;
     /**
@@ -267,6 +299,10 @@ export interface ShareState {
      */
     status?: pulumi.Input<string | undefined>;
     /**
+     * Tags associated with the share.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
      * Available values: "account", "organization".
      */
     targetType?: pulumi.Input<string | undefined>;
@@ -281,6 +317,10 @@ export interface ShareArgs {
      */
     accountId: pulumi.Input<string>;
     /**
+     * Accounts to exclude from an organization-targeted share. Only allowed when `recipients` contains no account entries. The share owner cannot be excluded. Duplicate entries are ignored.
+     */
+    excludedRecipients?: pulumi.Input<pulumi.Input<inputs.ShareExcludedRecipient>[] | undefined>;
+    /**
      * Include recipient counts in the response.
      */
     includeRecipientCounts?: pulumi.Input<boolean | undefined>;
@@ -289,9 +329,18 @@ export interface ShareArgs {
      */
     includeResources?: pulumi.Input<boolean | undefined>;
     /**
+     * Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+     * Available values: "api", "mirror".
+     */
+    includeTagsFrom?: pulumi.Input<string | undefined>;
+    /**
      * The name of the share.
      */
     name: pulumi.Input<string>;
-    recipients: pulumi.Input<pulumi.Input<inputs.ShareRecipient>[]>;
-    resources: pulumi.Input<pulumi.Input<inputs.ShareResource>[]>;
+    recipients?: pulumi.Input<pulumi.Input<inputs.ShareRecipient>[] | undefined>;
+    resources?: pulumi.Input<pulumi.Input<inputs.ShareResource>[] | undefined>;
+    /**
+     * Tags associated with the share.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

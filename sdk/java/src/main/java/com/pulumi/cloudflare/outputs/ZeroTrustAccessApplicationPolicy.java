@@ -45,7 +45,7 @@ public final class ZeroTrustAccessApplicationPolicy {
      */
     private @Nullable List<ZeroTrustAccessApplicationPolicyInclude> includes;
     /**
-     * @return Configures multi-factor authentication (MFA) settings for this policy. For infrastructure applications only `sshPivKey` is a supported authenticator; for other application types use `totp`, `biometrics`, or `securityKey`.
+     * @return Configures multi-factor authentication (MFA) settings for this policy. For infrastructure applications, supported authenticators are `pivKey` and `sshFido2Key`; for other application types use `totp`, `biometrics`, or `securityKey`.
      * 
      */
     private @Nullable ZeroTrustAccessApplicationPolicyMfaConfig mfaConfig;
@@ -103,7 +103,7 @@ public final class ZeroTrustAccessApplicationPolicy {
         return this.includes == null ? List.of() : this.includes;
     }
     /**
-     * @return Configures multi-factor authentication (MFA) settings for this policy. For infrastructure applications only `sshPivKey` is a supported authenticator; for other application types use `totp`, `biometrics`, or `securityKey`.
+     * @return Configures multi-factor authentication (MFA) settings for this policy. For infrastructure applications, supported authenticators are `pivKey` and `sshFido2Key`; for other application types use `totp`, `biometrics`, or `securityKey`.
      * 
      */
     public Optional<ZeroTrustAccessApplicationPolicyMfaConfig> mfaConfig() {

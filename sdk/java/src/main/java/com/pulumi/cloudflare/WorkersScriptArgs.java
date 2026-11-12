@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.inputs.WorkersScriptAnnotationsArgs;
 import com.pulumi.cloudflare.inputs.WorkersScriptAssetsArgs;
 import com.pulumi.cloudflare.inputs.WorkersScriptBindingArgs;
 import com.pulumi.cloudflare.inputs.WorkersScriptCacheOptionsArgs;
+import com.pulumi.cloudflare.inputs.WorkersScriptCodeUpdateStrategyArgs;
 import com.pulumi.cloudflare.inputs.WorkersScriptExportsArgs;
 import com.pulumi.cloudflare.inputs.WorkersScriptFilesArgs;
 import com.pulumi.cloudflare.inputs.WorkersScriptLimitsArgs;
@@ -92,7 +93,7 @@ public final class WorkersScriptArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When set to &#34;strict&#34;, the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+     * When set to &#34;strict&#34;, the upload will fail with error 10057 if any `inherit` type bindings cannot be resolved against the latest uploaded version of the Worker, which may not be the deployed version. Without this, unresolvable inherit bindings are silently dropped.
      * Available values: &#34;strict&#34;.
      * 
      */
@@ -100,7 +101,7 @@ public final class WorkersScriptArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> bindingsInherit;
 
     /**
-     * @return When set to &#34;strict&#34;, the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+     * @return When set to &#34;strict&#34;, the upload will fail with error 10057 if any `inherit` type bindings cannot be resolved against the latest uploaded version of the Worker, which may not be the deployed version. Without this, unresolvable inherit bindings are silently dropped.
      * Available values: &#34;strict&#34;.
      * 
      */
@@ -142,6 +143,21 @@ public final class WorkersScriptArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<WorkersScriptCacheOptionsArgs>> cacheOptions() {
         return Optional.ofNullable(this.cacheOptions);
+    }
+
+    /**
+     * Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+     * 
+     */
+    @Import(name="codeUpdateStrategy")
+    private @Nullable Output<WorkersScriptCodeUpdateStrategyArgs> codeUpdateStrategy;
+
+    /**
+     * @return Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+     * 
+     */
+    public Optional<Output<WorkersScriptCodeUpdateStrategyArgs>> codeUpdateStrategy() {
+        return Optional.ofNullable(this.codeUpdateStrategy);
     }
 
     /**
@@ -471,6 +487,7 @@ public final class WorkersScriptArgs extends com.pulumi.resources.ResourceArgs {
         this.bindingsInherit = $.bindingsInherit;
         this.bodyPart = $.bodyPart;
         this.cacheOptions = $.cacheOptions;
+        this.codeUpdateStrategy = $.codeUpdateStrategy;
         this.compatibilityDate = $.compatibilityDate;
         this.compatibilityFlags = $.compatibilityFlags;
         this.content = $.content;
@@ -607,7 +624,7 @@ public final class WorkersScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bindingsInherit When set to &#34;strict&#34;, the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+         * @param bindingsInherit When set to &#34;strict&#34;, the upload will fail with error 10057 if any `inherit` type bindings cannot be resolved against the latest uploaded version of the Worker, which may not be the deployed version. Without this, unresolvable inherit bindings are silently dropped.
          * Available values: &#34;strict&#34;.
          * 
          * @return builder
@@ -619,7 +636,7 @@ public final class WorkersScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bindingsInherit When set to &#34;strict&#34;, the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+         * @param bindingsInherit When set to &#34;strict&#34;, the upload will fail with error 10057 if any `inherit` type bindings cannot be resolved against the latest uploaded version of the Worker, which may not be the deployed version. Without this, unresolvable inherit bindings are silently dropped.
          * Available values: &#34;strict&#34;.
          * 
          * @return builder
@@ -675,6 +692,27 @@ public final class WorkersScriptArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder cacheOptions(WorkersScriptCacheOptionsArgs cacheOptions) {
             return cacheOptions(Output.of(cacheOptions));
+        }
+
+        /**
+         * @param codeUpdateStrategy Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder codeUpdateStrategy(@Nullable Output<WorkersScriptCodeUpdateStrategyArgs> codeUpdateStrategy) {
+            $.codeUpdateStrategy = codeUpdateStrategy;
+            return this;
+        }
+
+        /**
+         * @param codeUpdateStrategy Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder codeUpdateStrategy(WorkersScriptCodeUpdateStrategyArgs codeUpdateStrategy) {
+            return codeUpdateStrategy(Output.of(codeUpdateStrategy));
         }
 
         /**

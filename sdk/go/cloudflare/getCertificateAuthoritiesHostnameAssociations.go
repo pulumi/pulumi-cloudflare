@@ -62,6 +62,7 @@ type LookupCertificateAuthoritiesHostnameAssociationsArgs struct {
 
 // A collection of values returned by getCertificateAuthoritiesHostnameAssociations.
 type LookupCertificateAuthoritiesHostnameAssociationsResult struct {
+	// Hostnames are returned in lowercase punycode, in no particular order. Null when there are no associations.
 	Hostnames []string `pulumi:"hostnames"`
 	// Identifier.
 	Id string `pulumi:"id"`
@@ -103,6 +104,7 @@ func (o LookupCertificateAuthoritiesHostnameAssociationsResultOutput) ToLookupCe
 	return o
 }
 
+// Hostnames are returned in lowercase punycode, in no particular order. Null when there are no associations.
 func (o LookupCertificateAuthoritiesHostnameAssociationsResultOutput) Hostnames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupCertificateAuthoritiesHostnameAssociationsResult) []string { return v.Hostnames }).(pulumi.StringArrayOutput)
 }

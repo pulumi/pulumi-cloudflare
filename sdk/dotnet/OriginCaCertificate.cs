@@ -48,6 +48,7 @@ namespace Pulumi.Cloudflare
     ///         },
     ///         RequestType = "origin-rsa",
     ///         RequestedValidity = 5475.0,
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///     });
     /// 
     /// });
@@ -100,6 +101,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("requestedValidity")]
         public Output<double> RequestedValidity { get; private set; } = null!;
+
+        /// <summary>
+        /// When the certificate was revoked.
+        /// </summary>
+        [Output("revokedAt")]
+        public Output<string> RevokedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Identifier of the zone whose keyless servers the certificate is for. Required when `RequestType` is `keyless-certificate`; ignored otherwise.
+        /// </summary>
+        [Output("zoneId")]
+        public Output<string?> ZoneId { get; private set; } = null!;
 
 
         /// <summary>
@@ -180,6 +193,12 @@ namespace Pulumi.Cloudflare
         [Input("requestedValidity")]
         public Input<double>? RequestedValidity { get; set; }
 
+        /// <summary>
+        /// Identifier of the zone whose keyless servers the certificate is for. Required when `RequestType` is `keyless-certificate`; ignored otherwise.
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
+
         public OriginCaCertificateArgs()
         {
         }
@@ -232,6 +251,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("requestedValidity")]
         public Input<double>? RequestedValidity { get; set; }
+
+        /// <summary>
+        /// When the certificate was revoked.
+        /// </summary>
+        [Input("revokedAt")]
+        public Input<string>? RevokedAt { get; set; }
+
+        /// <summary>
+        /// Identifier of the zone whose keyless servers the certificate is for. Required when `RequestType` is `keyless-certificate`; ignored otherwise.
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public OriginCaCertificateState()
         {

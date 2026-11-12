@@ -29,7 +29,6 @@ public final class GetWorkersScriptsResultPlacement {
     private String lastAnalyzedAt;
     /**
      * @return Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: &#34;smart&#34;, &#34;targeted&#34;.
      * 
      */
     private String mode;
@@ -40,7 +39,7 @@ public final class GetWorkersScriptsResultPlacement {
     private String region;
     /**
      * @return Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: &#34;SUCCESS&#34;, &#34;UNSUPPORTED*APPLICATION&#34;, &#34;INSUFFICIENT*INVOCATIONS&#34;.
+     * Available values: &#34;SUCCESS&#34;, &#34;UNSUPPORTED_APPLICATION&#34;, &#34;INSUFFICIENT_INVOCATIONS&#34;.
      * 
      */
     private String status;
@@ -74,7 +73,6 @@ public final class GetWorkersScriptsResultPlacement {
     }
     /**
      * @return Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: &#34;smart&#34;, &#34;targeted&#34;.
      * 
      */
     public String mode() {
@@ -89,7 +87,7 @@ public final class GetWorkersScriptsResultPlacement {
     }
     /**
      * @return Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: &#34;SUCCESS&#34;, &#34;UNSUPPORTED*APPLICATION&#34;, &#34;INSUFFICIENT*INVOCATIONS&#34;.
+     * Available values: &#34;SUCCESS&#34;, &#34;UNSUPPORTED_APPLICATION&#34;, &#34;INSUFFICIENT_INVOCATIONS&#34;.
      * 
      */
     public String status() {

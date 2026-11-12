@@ -13,12 +13,20 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetWorkersDeploymentsResultDeploymentResult
     {
+        /// <summary>
+        /// Metadata attached to the deployment.
+        /// </summary>
         public readonly Outputs.GetWorkersDeploymentsResultDeploymentAnnotationsResult Annotations;
         public readonly string AuthorEmail;
+        /// <summary>
+        /// Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+        /// </summary>
+        public readonly Outputs.GetWorkersDeploymentsResultDeploymentCodeUpdateStrategyResult CodeUpdateStrategy;
         public readonly string CreatedOn;
         public readonly string Id;
         public readonly string Source;
         /// <summary>
+        /// Strategy for routing traffic across the listed versions. `Percentage` splits traffic according to each version's `Percentage`.
         /// Available values: "percentage".
         /// </summary>
         public readonly string Strategy;
@@ -33,6 +41,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string authorEmail,
 
+            Outputs.GetWorkersDeploymentsResultDeploymentCodeUpdateStrategyResult codeUpdateStrategy,
+
             string createdOn,
 
             string id,
@@ -45,6 +55,7 @@ namespace Pulumi.Cloudflare.Outputs
         {
             Annotations = annotations;
             AuthorEmail = authorEmail;
+            CodeUpdateStrategy = codeUpdateStrategy;
             CreatedOn = createdOn;
             Id = id;
             Source = source;

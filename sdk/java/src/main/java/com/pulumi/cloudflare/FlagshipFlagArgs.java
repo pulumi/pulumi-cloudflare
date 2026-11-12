@@ -8,6 +8,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -111,6 +112,21 @@ public final class FlagshipFlagArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Key-value metadata associated with the flag. `null` or an empty object clears existing metadata; omission semantics depend on the endpoint (PUT clears it, PATCH preserves it).
+     * 
+     */
+    @Import(name="metadata")
+    private @Nullable Output<Object> metadata;
+
+    /**
+     * @return Key-value metadata associated with the flag. `null` or an empty object clears existing metadata; omission semantics depend on the endpoint (PUT clears it, PATCH preserves it).
+     * 
+     */
+    public Optional<Output<Object>> metadata() {
+        return Optional.ofNullable(this.metadata);
+    }
+
+    /**
      * Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `defaultVariation`.
      * 
      */
@@ -172,6 +188,7 @@ public final class FlagshipFlagArgs extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.enabled = $.enabled;
         this.key = $.key;
+        this.metadata = $.metadata;
         this.rules = $.rules;
         this.type = $.type;
         this.variations = $.variations;
@@ -319,6 +336,27 @@ public final class FlagshipFlagArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder key(String key) {
             return key(Output.of(key));
+        }
+
+        /**
+         * @param metadata Key-value metadata associated with the flag. `null` or an empty object clears existing metadata; omission semantics depend on the endpoint (PUT clears it, PATCH preserves it).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metadata(@Nullable Output<Object> metadata) {
+            $.metadata = metadata;
+            return this;
+        }
+
+        /**
+         * @param metadata Key-value metadata associated with the flag. `null` or an empty object clears existing metadata; omission semantics depend on the endpoint (PUT clears it, PATCH preserves it).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metadata(Object metadata) {
+            return metadata(Output.of(metadata));
         }
 
         /**

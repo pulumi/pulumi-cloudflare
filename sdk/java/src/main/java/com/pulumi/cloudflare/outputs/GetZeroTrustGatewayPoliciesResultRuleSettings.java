@@ -3,13 +3,13 @@
 
 package com.pulumi.cloudflare.outputs;
 
-import com.pulumi.cloudflare.outputs.GetZeroTrustGatewayPoliciesResultRuleSettingsAuditSsh;
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewayPoliciesResultRuleSettingsBisoAdminControls;
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewayPoliciesResultRuleSettingsBlockPage;
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewayPoliciesResultRuleSettingsCheckSession;
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewayPoliciesResultRuleSettingsDnsResolvers;
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewayPoliciesResultRuleSettingsEgress;
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewayPoliciesResultRuleSettingsForensicCopy;
+import com.pulumi.cloudflare.outputs.GetZeroTrustGatewayPoliciesResultRuleSettingsForward;
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewayPoliciesResultRuleSettingsL4override;
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewayPoliciesResultRuleSettingsNotificationSettings;
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewayPoliciesResultRuleSettingsPayloadLog;
@@ -37,11 +37,6 @@ public final class GetZeroTrustGatewayPoliciesResultRuleSettings {
      * 
      */
     private Boolean allowChildBypass;
-    /**
-     * @return Define the settings for the Audit SSH action. Settable only for `l4` rules with `auditSsh` action.
-     * 
-     */
-    private GetZeroTrustGatewayPoliciesResultRuleSettingsAuditSsh auditSsh;
     /**
      * @return Configure browser isolation behavior. Settable only for `http` rules with the action set to `isolate`.
      * 
@@ -92,6 +87,11 @@ public final class GetZeroTrustGatewayPoliciesResultRuleSettings {
      * 
      */
     private GetZeroTrustGatewayPoliciesResultRuleSettingsForensicCopy forensicCopy;
+    /**
+     * @return Forward matching HTTP requests to a Worker. Required for `http` rules with the action set to `forward`.
+     * 
+     */
+    private GetZeroTrustGatewayPoliciesResultRuleSettingsForward forward;
     /**
      * @return Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dnsResolver` rules.
      * 
@@ -184,13 +184,6 @@ public final class GetZeroTrustGatewayPoliciesResultRuleSettings {
         return this.allowChildBypass;
     }
     /**
-     * @return Define the settings for the Audit SSH action. Settable only for `l4` rules with `auditSsh` action.
-     * 
-     */
-    public GetZeroTrustGatewayPoliciesResultRuleSettingsAuditSsh auditSsh() {
-        return this.auditSsh;
-    }
-    /**
      * @return Configure browser isolation behavior. Settable only for `http` rules with the action set to `isolate`.
      * 
      */
@@ -259,6 +252,13 @@ public final class GetZeroTrustGatewayPoliciesResultRuleSettings {
      */
     public GetZeroTrustGatewayPoliciesResultRuleSettingsForensicCopy forensicCopy() {
         return this.forensicCopy;
+    }
+    /**
+     * @return Forward matching HTTP requests to a Worker. Required for `http` rules with the action set to `forward`.
+     * 
+     */
+    public GetZeroTrustGatewayPoliciesResultRuleSettingsForward forward() {
+        return this.forward;
     }
     /**
      * @return Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dnsResolver` rules.
@@ -377,7 +377,6 @@ public final class GetZeroTrustGatewayPoliciesResultRuleSettings {
     public static final class Builder {
         private Map<String,List<String>> addHeaders;
         private Boolean allowChildBypass;
-        private GetZeroTrustGatewayPoliciesResultRuleSettingsAuditSsh auditSsh;
         private GetZeroTrustGatewayPoliciesResultRuleSettingsBisoAdminControls bisoAdminControls;
         private GetZeroTrustGatewayPoliciesResultRuleSettingsBlockPage blockPage;
         private Boolean blockPageEnabled;
@@ -388,6 +387,7 @@ public final class GetZeroTrustGatewayPoliciesResultRuleSettings {
         private GetZeroTrustGatewayPoliciesResultRuleSettingsDnsResolvers dnsResolvers;
         private GetZeroTrustGatewayPoliciesResultRuleSettingsEgress egress;
         private GetZeroTrustGatewayPoliciesResultRuleSettingsForensicCopy forensicCopy;
+        private GetZeroTrustGatewayPoliciesResultRuleSettingsForward forward;
         private Boolean ignoreCnameCategoryMatches;
         private Boolean insecureDisableDnssecValidation;
         private Boolean ipCategories;
@@ -408,7 +408,6 @@ public final class GetZeroTrustGatewayPoliciesResultRuleSettings {
     	      Objects.requireNonNull(defaults);
     	      this.addHeaders = defaults.addHeaders;
     	      this.allowChildBypass = defaults.allowChildBypass;
-    	      this.auditSsh = defaults.auditSsh;
     	      this.bisoAdminControls = defaults.bisoAdminControls;
     	      this.blockPage = defaults.blockPage;
     	      this.blockPageEnabled = defaults.blockPageEnabled;
@@ -419,6 +418,7 @@ public final class GetZeroTrustGatewayPoliciesResultRuleSettings {
     	      this.dnsResolvers = defaults.dnsResolvers;
     	      this.egress = defaults.egress;
     	      this.forensicCopy = defaults.forensicCopy;
+    	      this.forward = defaults.forward;
     	      this.ignoreCnameCategoryMatches = defaults.ignoreCnameCategoryMatches;
     	      this.insecureDisableDnssecValidation = defaults.insecureDisableDnssecValidation;
     	      this.ipCategories = defaults.ipCategories;
@@ -450,14 +450,6 @@ public final class GetZeroTrustGatewayPoliciesResultRuleSettings {
               throw new MissingRequiredPropertyException("GetZeroTrustGatewayPoliciesResultRuleSettings", "allowChildBypass");
             }
             this.allowChildBypass = allowChildBypass;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder auditSsh(GetZeroTrustGatewayPoliciesResultRuleSettingsAuditSsh auditSsh) {
-            if (auditSsh == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustGatewayPoliciesResultRuleSettings", "auditSsh");
-            }
-            this.auditSsh = auditSsh;
             return this;
         }
         @CustomType.Setter
@@ -541,6 +533,14 @@ public final class GetZeroTrustGatewayPoliciesResultRuleSettings {
               throw new MissingRequiredPropertyException("GetZeroTrustGatewayPoliciesResultRuleSettings", "forensicCopy");
             }
             this.forensicCopy = forensicCopy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder forward(GetZeroTrustGatewayPoliciesResultRuleSettingsForward forward) {
+            if (forward == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustGatewayPoliciesResultRuleSettings", "forward");
+            }
+            this.forward = forward;
             return this;
         }
         @CustomType.Setter
@@ -670,7 +670,6 @@ public final class GetZeroTrustGatewayPoliciesResultRuleSettings {
             final var _resultValue = new GetZeroTrustGatewayPoliciesResultRuleSettings();
             _resultValue.addHeaders = addHeaders;
             _resultValue.allowChildBypass = allowChildBypass;
-            _resultValue.auditSsh = auditSsh;
             _resultValue.bisoAdminControls = bisoAdminControls;
             _resultValue.blockPage = blockPage;
             _resultValue.blockPageEnabled = blockPageEnabled;
@@ -681,6 +680,7 @@ public final class GetZeroTrustGatewayPoliciesResultRuleSettings {
             _resultValue.dnsResolvers = dnsResolvers;
             _resultValue.egress = egress;
             _resultValue.forensicCopy = forensicCopy;
+            _resultValue.forward = forward;
             _resultValue.ignoreCnameCategoryMatches = ignoreCnameCategoryMatches;
             _resultValue.insecureDisableDnssecValidation = insecureDisableDnssecValidation;
             _resultValue.ipCategories = ipCategories;

@@ -12,29 +12,19 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAiSearchInstancesResultRetrievalOptions {
-    /**
-     * @return Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to &#39;asc&#39; for numeric/datetime fields and &#39;exists&#39; for text/boolean fields. Fields must match &#39;timestamp&#39; or a defined custom*metadata field.
-     * 
-     */
     private List<GetAiSearchInstancesResultRetrievalOptionsBoostBy> boostBies;
     /**
-     * @return Controls which documents are candidates for BM25 scoring. &#39;and&#39; restricts candidates to documents containing all query terms; &#39;or&#39; includes any document containing at least one term, ranked by BM25 relevance. Defaults to &#39;and&#39;.
-     * Available values: &#34;and&#34;, &#34;or&#34;.
+     * @return Available values: &#34;and&#34;, &#34;or&#34;.
      * 
      */
     private String keywordMatchMode;
 
     private GetAiSearchInstancesResultRetrievalOptions() {}
-    /**
-     * @return Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to &#39;asc&#39; for numeric/datetime fields and &#39;exists&#39; for text/boolean fields. Fields must match &#39;timestamp&#39; or a defined custom*metadata field.
-     * 
-     */
     public List<GetAiSearchInstancesResultRetrievalOptionsBoostBy> boostBies() {
         return this.boostBies;
     }
     /**
-     * @return Controls which documents are candidates for BM25 scoring. &#39;and&#39; restricts candidates to documents containing all query terms; &#39;or&#39; includes any document containing at least one term, ranked by BM25 relevance. Defaults to &#39;and&#39;.
-     * Available values: &#34;and&#34;, &#34;or&#34;.
+     * @return Available values: &#34;and&#34;, &#34;or&#34;.
      * 
      */
     public String keywordMatchMode() {

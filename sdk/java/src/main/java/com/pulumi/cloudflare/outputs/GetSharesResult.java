@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 @CustomType
@@ -34,7 +35,7 @@ public final class GetSharesResult {
      */
     private Integer associatingRecipientCount;
     /**
-     * @return When the share was created.
+     * @return When the object was created.
      * 
      */
     private String created;
@@ -59,7 +60,7 @@ public final class GetSharesResult {
      */
     private String kind;
     /**
-     * @return When the share was modified.
+     * @return When the object was last modified.
      * 
      */
     private String modified;
@@ -83,6 +84,11 @@ public final class GetSharesResult {
      * 
      */
     private String status;
+    /**
+     * @return Tags associated with the share. Included in create and update responses when tags are supplied, and in read responses when the `includeTagsFrom` parameter is set.
+     * 
+     */
+    private Map<String,String> tags;
     /**
      * @return Available values: &#34;account&#34;, &#34;organization&#34;.
      * 
@@ -119,7 +125,7 @@ public final class GetSharesResult {
         return this.associatingRecipientCount;
     }
     /**
-     * @return When the share was created.
+     * @return When the object was created.
      * 
      */
     public String created() {
@@ -154,7 +160,7 @@ public final class GetSharesResult {
         return this.kind;
     }
     /**
-     * @return When the share was modified.
+     * @return When the object was last modified.
      * 
      */
     public String modified() {
@@ -189,6 +195,13 @@ public final class GetSharesResult {
         return this.status;
     }
     /**
+     * @return Tags associated with the share. Included in create and update responses when tags are supplied, and in read responses when the `includeTagsFrom` parameter is set.
+     * 
+     */
+    public Map<String,String> tags() {
+        return this.tags;
+    }
+    /**
      * @return Available values: &#34;account&#34;, &#34;organization&#34;.
      * 
      */
@@ -219,6 +232,7 @@ public final class GetSharesResult {
         private String organizationId;
         private List<GetSharesResultResource> resources;
         private String status;
+        private Map<String,String> tags;
         private String targetType;
         public Builder() {}
         public Builder(GetSharesResult defaults) {
@@ -237,6 +251,7 @@ public final class GetSharesResult {
     	      this.organizationId = defaults.organizationId;
     	      this.resources = defaults.resources;
     	      this.status = defaults.status;
+    	      this.tags = defaults.tags;
     	      this.targetType = defaults.targetType;
         }
 
@@ -356,6 +371,14 @@ public final class GetSharesResult {
             return this;
         }
         @CustomType.Setter
+        public Builder tags(Map<String,String> tags) {
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetSharesResult", "tags");
+            }
+            this.tags = tags;
+            return this;
+        }
+        @CustomType.Setter
         public Builder targetType(String targetType) {
             if (targetType == null) {
               throw new MissingRequiredPropertyException("GetSharesResult", "targetType");
@@ -379,6 +402,7 @@ public final class GetSharesResult {
             _resultValue.organizationId = organizationId;
             _resultValue.resources = resources;
             _resultValue.status = status;
+            _resultValue.tags = tags;
             _resultValue.targetType = targetType;
             return _resultValue;
         }

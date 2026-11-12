@@ -79,7 +79,7 @@ type LookupCustomOriginTrustStoreResult struct {
 	// Status of the zone's custom SSL.
 	// Available values: "initializing", "pending*deployment", "active", "pending*deletion", "deleted", "expired".
 	Status string `pulumi:"status"`
-	// When the certificate was last modified.
+	// When the certificate was last modified. Only returned when uploading a certificate.
 	UpdatedAt string `pulumi:"updatedAt"`
 	// When the certificate was uploaded to Cloudflare.
 	UploadedOn string `pulumi:"uploadedOn"`
@@ -160,7 +160,7 @@ func (o LookupCustomOriginTrustStoreResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomOriginTrustStoreResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// When the certificate was last modified.
+// When the certificate was last modified. Only returned when uploading a certificate.
 func (o LookupCustomOriginTrustStoreResultOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomOriginTrustStoreResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
