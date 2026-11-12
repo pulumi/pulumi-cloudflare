@@ -14,11 +14,6 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetFlagshipFlagsResultRuleConditionClauseClauseClauseClauseClauseResult
     {
         public readonly string Attribute;
-        public readonly ImmutableArray<string> Clauses;
-        /// <summary>
-        /// Available values: "AND", "OR".
-        /// </summary>
-        public readonly string LogicalOperator;
         /// <summary>
         /// Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "NotHas".
         /// </summary>
@@ -32,17 +27,11 @@ namespace Pulumi.Cloudflare.Outputs
         private GetFlagshipFlagsResultRuleConditionClauseClauseClauseClauseClauseResult(
             string attribute,
 
-            ImmutableArray<string> clauses,
-
-            string logicalOperator,
-
             string @operator,
 
             string value)
         {
             Attribute = attribute;
-            Clauses = clauses;
-            LogicalOperator = logicalOperator;
             Operator = @operator;
             Value = value;
         }

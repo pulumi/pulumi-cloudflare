@@ -96,6 +96,7 @@ namespace Pulumi.Cloudflare
     ///             MfaDisabled = false,
     ///             SessionDuration = "24h",
     ///         },
+    ///         PolicyResolutionAccountId = "policy_resolution_account_id",
     ///         PurposeJustificationPrompt = "Please enter a justification for entering this protected domain.",
     ///         PurposeJustificationRequired = true,
     ///         Requires = new[]
@@ -126,12 +127,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
-
-        /// <summary>
-        /// Number of access applications currently using this policy.
-        /// </summary>
-        [Output("appCount")]
-        public Output<int> AppCount { get; private set; } = null!;
 
         /// <summary>
         /// Administrators who can approve a temporary authentication request.
@@ -190,6 +185,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.
+        /// </summary>
+        [Output("policyResolutionAccountId")]
+        public Output<string?> PolicyResolutionAccountId { get; private set; } = null!;
 
         /// <summary>
         /// A custom message that will appear on the purpose justification screen.
@@ -351,6 +352,12 @@ namespace Pulumi.Cloudflare
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
+        /// The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.
+        /// </summary>
+        [Input("policyResolutionAccountId")]
+        public Input<string>? PolicyResolutionAccountId { get; set; }
+
+        /// <summary>
         /// A custom message that will appear on the purpose justification screen.
         /// </summary>
         [Input("purposeJustificationPrompt")]
@@ -393,12 +400,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
-
-        /// <summary>
-        /// Number of access applications currently using this policy.
-        /// </summary>
-        [Input("appCount")]
-        public Input<int>? AppCount { get; set; }
 
         [Input("approvalGroups")]
         private InputList<Inputs.AccessPolicyApprovalGroupGetArgs>? _approvalGroups;
@@ -475,6 +476,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.
+        /// </summary>
+        [Input("policyResolutionAccountId")]
+        public Input<string>? PolicyResolutionAccountId { get; set; }
 
         /// <summary>
         /// A custom message that will appear on the purpose justification screen.

@@ -71,6 +71,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AiSearchNamespace{}
 	case "cloudflare:index/aiSearchToken:AiSearchToken":
 		r = &AiSearchToken{}
+	case "cloudflare:index/aiSecurity:AiSecurity":
+		r = &AiSecurity{}
+	case "cloudflare:index/aiSecurityCustomTopics:AiSecurityCustomTopics":
+		r = &AiSecurityCustomTopics{}
 	case "cloudflare:index/apiShield:ApiShield":
 		r = &ApiShield{}
 	case "cloudflare:index/apiShieldDiscoveryOperation:ApiShieldDiscoveryOperation":
@@ -233,6 +237,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &LoadBalancerMonitorGroup{}
 	case "cloudflare:index/loadBalancerPool:LoadBalancerPool":
 		r = &LoadBalancerPool{}
+	case "cloudflare:index/logExplorerDataset:LogExplorerDataset":
+		r = &LogExplorerDataset{}
 	case "cloudflare:index/logpullRetention:LogpullRetention":
 		r = &LogpullRetention{}
 	case "cloudflare:index/logpushJob:LogpushJob":
@@ -507,6 +513,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ZeroTrustAccessShortLivedCertificate{}
 	case "cloudflare:index/zeroTrustAccessTag:ZeroTrustAccessTag":
 		r = &ZeroTrustAccessTag{}
+	case "cloudflare:index/zeroTrustCasbFindingType:ZeroTrustCasbFindingType":
+		r = &ZeroTrustCasbFindingType{}
 	case "cloudflare:index/zeroTrustCasbIntegration:ZeroTrustCasbIntegration":
 		r = &ZeroTrustCasbIntegration{}
 	case "cloudflare:index/zeroTrustCasbPolicy:ZeroTrustCasbPolicy":
@@ -515,6 +523,28 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ZeroTrustCasbWebhook{}
 	case "cloudflare:index/zeroTrustConnectivitySettings:ZeroTrustConnectivitySettings":
 		r = &ZeroTrustConnectivitySettings{}
+	case "cloudflare:index/zeroTrustCwsBasicAuthCredential:ZeroTrustCwsBasicAuthCredential":
+		r = &ZeroTrustCwsBasicAuthCredential{}
+	case "cloudflare:index/zeroTrustCwsBasicAuthSecret:ZeroTrustCwsBasicAuthSecret":
+		r = &ZeroTrustCwsBasicAuthSecret{}
+	case "cloudflare:index/zeroTrustCwsDeployment:ZeroTrustCwsDeployment":
+		r = &ZeroTrustCwsDeployment{}
+	case "cloudflare:index/zeroTrustCwsDomainAcl:ZeroTrustCwsDomainAcl":
+		r = &ZeroTrustCwsDomainAcl{}
+	case "cloudflare:index/zeroTrustCwsPolicy:ZeroTrustCwsPolicy":
+		r = &ZeroTrustCwsPolicy{}
+	case "cloudflare:index/zeroTrustCwsPolicySet:ZeroTrustCwsPolicySet":
+		r = &ZeroTrustCwsPolicySet{}
+	case "cloudflare:index/zeroTrustCwsRegoMetadata:ZeroTrustCwsRegoMetadata":
+		r = &ZeroTrustCwsRegoMetadata{}
+	case "cloudflare:index/zeroTrustCwsRegoModule:ZeroTrustCwsRegoModule":
+		r = &ZeroTrustCwsRegoModule{}
+	case "cloudflare:index/zeroTrustCwsTenantStructure:ZeroTrustCwsTenantStructure":
+		r = &ZeroTrustCwsTenantStructure{}
+	case "cloudflare:index/zeroTrustCwsTenantStructureNode:ZeroTrustCwsTenantStructureNode":
+		r = &ZeroTrustCwsTenantStructureNode{}
+	case "cloudflare:index/zeroTrustCwsWorkload:ZeroTrustCwsWorkload":
+		r = &ZeroTrustCwsWorkload{}
 	case "cloudflare:index/zeroTrustDeviceCustomProfile:ZeroTrustDeviceCustomProfile":
 		r = &ZeroTrustDeviceCustomProfile{}
 	case "cloudflare:index/zeroTrustDeviceCustomProfileLocalDomainFallback:ZeroTrustDeviceCustomProfileLocalDomainFallback":
@@ -563,6 +593,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ZeroTrustDlpPredefinedEntry{}
 	case "cloudflare:index/zeroTrustDlpPredefinedProfile:ZeroTrustDlpPredefinedProfile":
 		r = &ZeroTrustDlpPredefinedProfile{}
+	case "cloudflare:index/zeroTrustDlpProximityValidator:ZeroTrustDlpProximityValidator":
+		r = &ZeroTrustDlpProximityValidator{}
 	case "cloudflare:index/zeroTrustDlpSensitivityGroup:ZeroTrustDlpSensitivityGroup":
 		r = &ZeroTrustDlpSensitivityGroup{}
 	case "cloudflare:index/zeroTrustDlpSensitivityLevel:ZeroTrustDlpSensitivityLevel":
@@ -593,6 +625,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ZeroTrustNetworkHostnameRoute{}
 	case "cloudflare:index/zeroTrustOrganization:ZeroTrustOrganization":
 		r = &ZeroTrustOrganization{}
+	case "cloudflare:index/zeroTrustOrganizationTrustSettings:ZeroTrustOrganizationTrustSettings":
+		r = &ZeroTrustOrganizationTrustSettings{}
 	case "cloudflare:index/zeroTrustResourceLibraryApplication:ZeroTrustResourceLibraryApplication":
 		r = &ZeroTrustResourceLibraryApplication{}
 	case "cloudflare:index/zeroTrustRiskBehavior:ZeroTrustRiskBehavior":
@@ -789,6 +823,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/aiSearchToken",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/aiSecurity",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/aiSecurityCustomTopics",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -1194,6 +1238,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/loadBalancerPool",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/logExplorerDataset",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -1883,6 +1932,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/zeroTrustCasbFindingType",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/zeroTrustCasbIntegration",
 		&module{version},
 	)
@@ -1899,6 +1953,61 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/zeroTrustConnectivitySettings",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustCwsBasicAuthCredential",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustCwsBasicAuthSecret",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustCwsDeployment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustCwsDomainAcl",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustCwsPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustCwsPolicySet",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustCwsRegoMetadata",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustCwsRegoModule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustCwsTenantStructure",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustCwsTenantStructureNode",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustCwsWorkload",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -2023,6 +2132,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/zeroTrustDlpProximityValidator",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/zeroTrustDlpSensitivityGroup",
 		&module{version},
 	)
@@ -2094,6 +2208,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/zeroTrustOrganization",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustOrganizationTrustSettings",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

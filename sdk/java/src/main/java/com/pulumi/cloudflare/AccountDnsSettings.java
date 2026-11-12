@@ -55,7 +55,6 @@ import javax.annotation.Nullable;
  *             .enforceDnsOnly(false)
  *             .zoneDefaults(AccountDnsSettingsZoneDefaultsArgs.builder()
  *                 .flattenAllCnames(false)
- *                 .foundationDns(false)
  *                 .internalDns(AccountDnsSettingsZoneDefaultsInternalDnsArgs.builder()
  *                     .referenceZoneId("reference_zone_id")
  *                     .build())

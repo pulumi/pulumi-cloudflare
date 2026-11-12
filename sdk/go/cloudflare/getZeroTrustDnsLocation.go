@@ -65,6 +65,7 @@ type LookupZeroTrustDnsLocationResult struct {
 	AccountId                 *string                          `pulumi:"accountId"`
 	ClientDefault             bool                             `pulumi:"clientDefault"`
 	CreatedAt                 string                           `pulumi:"createdAt"`
+	Dns64Enabled              bool                             `pulumi:"dns64Enabled"`
 	DnsDestinationIpsId       string                           `pulumi:"dnsDestinationIpsId"`
 	DnsDestinationIpv6BlockId string                           `pulumi:"dnsDestinationIpv6BlockId"`
 	DohSubdomain              string                           `pulumi:"dohSubdomain"`
@@ -123,6 +124,10 @@ func (o LookupZeroTrustDnsLocationResultOutput) ClientDefault() pulumi.BoolOutpu
 
 func (o LookupZeroTrustDnsLocationResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDnsLocationResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+func (o LookupZeroTrustDnsLocationResultOutput) Dns64Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupZeroTrustDnsLocationResult) bool { return v.Dns64Enabled }).(pulumi.BoolOutput)
 }
 
 func (o LookupZeroTrustDnsLocationResultOutput) DnsDestinationIpsId() pulumi.StringOutput {

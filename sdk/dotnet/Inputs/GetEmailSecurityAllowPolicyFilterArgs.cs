@@ -20,6 +20,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Direction { get; set; }
 
         /// <summary>
+        /// Filter to return only expired policies (`True`) or only policies that still apply (`False`). Omit to return both.
+        /// </summary>
+        [Input("expired")]
+        public Input<bool>? Expired { get; set; }
+
+        /// <summary>
         /// Filter to show only policies where messages from the sender are exempted from Spam, Spoof, and Bulk dispositions (not Malicious or Suspicious).
         /// </summary>
         [Input("isAcceptableSender")]

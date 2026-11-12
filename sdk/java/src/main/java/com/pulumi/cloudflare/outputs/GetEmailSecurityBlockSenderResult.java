@@ -17,6 +17,7 @@ public final class GetEmailSecurityBlockSenderResult {
     private String accountId;
     private String comments;
     private String createdAt;
+    private String expiresAt;
     private @Nullable GetEmailSecurityBlockSenderFilter filter;
     private String id;
     private Boolean isRegex;
@@ -40,6 +41,9 @@ public final class GetEmailSecurityBlockSenderResult {
     }
     public String createdAt() {
         return this.createdAt;
+    }
+    public String expiresAt() {
+        return this.expiresAt;
     }
     public Optional<GetEmailSecurityBlockSenderFilter> filter() {
         return Optional.ofNullable(this.filter);
@@ -83,6 +87,7 @@ public final class GetEmailSecurityBlockSenderResult {
         private String accountId;
         private String comments;
         private String createdAt;
+        private String expiresAt;
         private @Nullable GetEmailSecurityBlockSenderFilter filter;
         private String id;
         private Boolean isRegex;
@@ -97,6 +102,7 @@ public final class GetEmailSecurityBlockSenderResult {
     	      this.accountId = defaults.accountId;
     	      this.comments = defaults.comments;
     	      this.createdAt = defaults.createdAt;
+    	      this.expiresAt = defaults.expiresAt;
     	      this.filter = defaults.filter;
     	      this.id = defaults.id;
     	      this.isRegex = defaults.isRegex;
@@ -129,6 +135,14 @@ public final class GetEmailSecurityBlockSenderResult {
               throw new MissingRequiredPropertyException("GetEmailSecurityBlockSenderResult", "createdAt");
             }
             this.createdAt = createdAt;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder expiresAt(String expiresAt) {
+            if (expiresAt == null) {
+              throw new MissingRequiredPropertyException("GetEmailSecurityBlockSenderResult", "expiresAt");
+            }
+            this.expiresAt = expiresAt;
             return this;
         }
         @CustomType.Setter
@@ -196,6 +210,7 @@ public final class GetEmailSecurityBlockSenderResult {
             _resultValue.accountId = accountId;
             _resultValue.comments = comments;
             _resultValue.createdAt = createdAt;
+            _resultValue.expiresAt = expiresAt;
             _resultValue.filter = filter;
             _resultValue.id = id;
             _resultValue.isRegex = isRegex;

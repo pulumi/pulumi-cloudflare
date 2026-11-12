@@ -29,6 +29,7 @@ class FlagshipFlagArgs:
                  rules: pulumi.Input[Sequence[pulumi.Input['FlagshipFlagRuleArgs']]],
                  variations: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]],
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: Optional[Any] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a FlagshipFlag resource.
@@ -41,6 +42,7 @@ class FlagshipFlagArgs:
         :param pulumi.Input[Sequence[pulumi.Input['FlagshipFlagRuleArgs']]] rules: Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] variations: Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller.
         :param pulumi.Input[_builtins.str] description: Optional operator-facing description. It does not affect flag evaluation.
+        :param Any metadata: Key-value metadata associated with the flag. `null` or an empty object clears existing metadata; omission semantics depend on the endpoint (PUT clears it, PATCH preserves it).
         :param pulumi.Input[_builtins.str] type: Deprecated compatibility field. Omit it; the API ignores this value and infers the type from the flag's variations.
                Available values: "boolean", "string", "number", "json".
         """
@@ -53,6 +55,8 @@ class FlagshipFlagArgs:
         pulumi.set(__self__, "variations", variations)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
         if type is not None:
             warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
             pulumi.log.warn("""type is deprecated: This attribute is deprecated.""")
@@ -157,6 +161,18 @@ class FlagshipFlagArgs:
 
     @_builtins.property
     @pulumi.getter
+    def metadata(self) -> Optional[Any]:
+        """
+        Key-value metadata associated with the flag. `null` or an empty object clears existing metadata; omission semantics depend on the endpoint (PUT clears it, PATCH preserves it).
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[Any]):
+        pulumi.set(self, "metadata", value)
+
+    @_builtins.property
+    @pulumi.getter
     @_utilities.deprecated("""This attribute is deprecated.""")
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -179,6 +195,7 @@ class _FlagshipFlagState:
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: Optional[Any] = None,
                  rules: pulumi.Input[Optional[Sequence[pulumi.Input['FlagshipFlagRuleArgs']]]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  updated_at: pulumi.Input[Optional[_builtins.str]] = None,
@@ -193,6 +210,7 @@ class _FlagshipFlagState:
         :param pulumi.Input[_builtins.str] description: Optional operator-facing description. It does not affect flag evaluation.
         :param pulumi.Input[_builtins.bool] enabled: When false, the flag bypasses all rules and always serves `default_variation`.
         :param pulumi.Input[_builtins.str] key: Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
+        :param Any metadata: Key-value metadata associated with the flag. `null` or an empty object clears existing metadata; omission semantics depend on the endpoint (PUT clears it, PATCH preserves it).
         :param pulumi.Input[Sequence[pulumi.Input['FlagshipFlagRuleArgs']]] rules: Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`.
         :param pulumi.Input[_builtins.str] type: Deprecated compatibility field. Omit it; the API ignores this value and infers the type from the flag's variations.
                Available values: "boolean", "string", "number", "json".
@@ -210,6 +228,8 @@ class _FlagshipFlagState:
             pulumi.set(__self__, "enabled", enabled)
         if key is not None:
             pulumi.set(__self__, "key", key)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if type is not None:
@@ -298,6 +318,18 @@ class _FlagshipFlagState:
 
     @_builtins.property
     @pulumi.getter
+    def metadata(self) -> Optional[Any]:
+        """
+        Key-value metadata associated with the flag. `null` or an empty object clears existing metadata; omission semantics depend on the endpoint (PUT clears it, PATCH preserves it).
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[Any]):
+        pulumi.set(self, "metadata", value)
+
+    @_builtins.property
+    @pulumi.getter
     def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FlagshipFlagRuleArgs']]]]:
         """
         Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`.
@@ -365,6 +397,7 @@ class FlagshipFlag(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: Optional[Any] = None,
                  rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlagshipFlagRuleArgs', 'FlagshipFlagRuleArgsDict', 'outputs.FlagshipFlagRule']]]]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  variations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -404,6 +437,9 @@ class FlagshipFlag(pulumi.CustomResource):
                 "foo": "string",
             },
             description="description",
+            metadata={
+                "foo": True,
+            },
             type="boolean")
         ```
 
@@ -422,6 +458,7 @@ class FlagshipFlag(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: Optional operator-facing description. It does not affect flag evaluation.
         :param pulumi.Input[_builtins.bool] enabled: When false, the flag bypasses all rules and always serves `default_variation`.
         :param pulumi.Input[_builtins.str] key: Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
+        :param Any metadata: Key-value metadata associated with the flag. `null` or an empty object clears existing metadata; omission semantics depend on the endpoint (PUT clears it, PATCH preserves it).
         :param pulumi.Input[Sequence[pulumi.Input[Union['FlagshipFlagRuleArgs', 'FlagshipFlagRuleArgsDict', 'outputs.FlagshipFlagRule']]]] rules: Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`.
         :param pulumi.Input[_builtins.str] type: Deprecated compatibility field. Omit it; the API ignores this value and infers the type from the flag's variations.
                Available values: "boolean", "string", "number", "json".
@@ -468,6 +505,9 @@ class FlagshipFlag(pulumi.CustomResource):
                 "foo": "string",
             },
             description="description",
+            metadata={
+                "foo": True,
+            },
             type="boolean")
         ```
 
@@ -499,6 +539,7 @@ class FlagshipFlag(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: Optional[Any] = None,
                  rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlagshipFlagRuleArgs', 'FlagshipFlagRuleArgsDict', 'outputs.FlagshipFlagRule']]]]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  variations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -527,6 +568,7 @@ class FlagshipFlag(pulumi.CustomResource):
             if key is None and not opts.urn:
                 raise TypeError("Missing required property 'key'")
             __props__.__dict__["key"] = key
+            __props__.__dict__["metadata"] = metadata
             if rules is None and not opts.urn:
                 raise TypeError("Missing required property 'rules'")
             __props__.__dict__["rules"] = rules
@@ -552,6 +594,7 @@ class FlagshipFlag(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             key: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata: Optional[Any] = None,
             rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlagshipFlagRuleArgs', 'FlagshipFlagRuleArgsDict', 'outputs.FlagshipFlagRule']]]]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             updated_at: pulumi.Input[Optional[_builtins.str]] = None,
@@ -570,6 +613,7 @@ class FlagshipFlag(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: Optional operator-facing description. It does not affect flag evaluation.
         :param pulumi.Input[_builtins.bool] enabled: When false, the flag bypasses all rules and always serves `default_variation`.
         :param pulumi.Input[_builtins.str] key: Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
+        :param Any metadata: Key-value metadata associated with the flag. `null` or an empty object clears existing metadata; omission semantics depend on the endpoint (PUT clears it, PATCH preserves it).
         :param pulumi.Input[Sequence[pulumi.Input[Union['FlagshipFlagRuleArgs', 'FlagshipFlagRuleArgsDict', 'outputs.FlagshipFlagRule']]]] rules: Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`.
         :param pulumi.Input[_builtins.str] type: Deprecated compatibility field. Omit it; the API ignores this value and infers the type from the flag's variations.
                Available values: "boolean", "string", "number", "json".
@@ -585,6 +629,7 @@ class FlagshipFlag(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["enabled"] = enabled
         __props__.__dict__["key"] = key
+        __props__.__dict__["metadata"] = metadata
         __props__.__dict__["rules"] = rules
         __props__.__dict__["type"] = type
         __props__.__dict__["updated_at"] = updated_at
@@ -601,6 +646,7 @@ class FlagshipFlag(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             key: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata: Optional[Any] = None,
             rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlagshipFlagRuleArgs', 'FlagshipFlagRuleArgsDict', 'outputs.FlagshipFlagRule']]]]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             updated_at: pulumi.Input[Optional[_builtins.str]] = None,
@@ -613,6 +659,7 @@ class FlagshipFlag(pulumi.CustomResource):
         __props__["description"] = description
         __props__["enabled"] = enabled
         __props__["key"] = key
+        __props__["metadata"] = metadata
         __props__["rules"] = rules
         __props__["type"] = type
         __props__["updatedAt"] = updated_at
@@ -667,6 +714,14 @@ class FlagshipFlag(pulumi.CustomResource):
         Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
         """
         return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def metadata(self) -> pulumi.Output[Optional[Any]]:
+        """
+        Key-value metadata associated with the flag. `null` or an empty object clears existing metadata; omission semantics depend on the endpoint (PUT clears it, PATCH preserves it).
+        """
+        return pulumi.get(self, "metadata")
 
     @_builtins.property
     @pulumi.getter

@@ -28,6 +28,7 @@ import com.pulumi.cloudflare.outputs.GetZeroTrustAccessPoliciesResultRequireOidc
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessPoliciesResultRequireOkta;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessPoliciesResultRequireSaml;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessPoliciesResultRequireServiceToken;
+import com.pulumi.cloudflare.outputs.GetZeroTrustAccessPoliciesResultRequireServiceTokenTag;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessPoliciesResultRequireUserRiskScore;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -68,6 +69,7 @@ public final class GetZeroTrustAccessPoliciesResultRequire {
     private GetZeroTrustAccessPoliciesResultRequireOkta okta;
     private GetZeroTrustAccessPoliciesResultRequireSaml saml;
     private GetZeroTrustAccessPoliciesResultRequireServiceToken serviceToken;
+    private GetZeroTrustAccessPoliciesResultRequireServiceTokenTag serviceTokenTag;
     private GetZeroTrustAccessPoliciesResultRequireUserRiskScore userRiskScore;
 
     private GetZeroTrustAccessPoliciesResultRequire() {}
@@ -154,6 +156,9 @@ public final class GetZeroTrustAccessPoliciesResultRequire {
     public GetZeroTrustAccessPoliciesResultRequireServiceToken serviceToken() {
         return this.serviceToken;
     }
+    public GetZeroTrustAccessPoliciesResultRequireServiceTokenTag serviceTokenTag() {
+        return this.serviceTokenTag;
+    }
     public GetZeroTrustAccessPoliciesResultRequireUserRiskScore userRiskScore() {
         return this.userRiskScore;
     }
@@ -192,6 +197,7 @@ public final class GetZeroTrustAccessPoliciesResultRequire {
         private GetZeroTrustAccessPoliciesResultRequireOkta okta;
         private GetZeroTrustAccessPoliciesResultRequireSaml saml;
         private GetZeroTrustAccessPoliciesResultRequireServiceToken serviceToken;
+        private GetZeroTrustAccessPoliciesResultRequireServiceTokenTag serviceTokenTag;
         private GetZeroTrustAccessPoliciesResultRequireUserRiskScore userRiskScore;
         public Builder() {}
         public Builder(GetZeroTrustAccessPoliciesResultRequire defaults) {
@@ -221,6 +227,7 @@ public final class GetZeroTrustAccessPoliciesResultRequire {
     	      this.okta = defaults.okta;
     	      this.saml = defaults.saml;
     	      this.serviceToken = defaults.serviceToken;
+    	      this.serviceTokenTag = defaults.serviceTokenTag;
     	      this.userRiskScore = defaults.userRiskScore;
         }
 
@@ -425,6 +432,14 @@ public final class GetZeroTrustAccessPoliciesResultRequire {
             return this;
         }
         @CustomType.Setter
+        public Builder serviceTokenTag(GetZeroTrustAccessPoliciesResultRequireServiceTokenTag serviceTokenTag) {
+            if (serviceTokenTag == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessPoliciesResultRequire", "serviceTokenTag");
+            }
+            this.serviceTokenTag = serviceTokenTag;
+            return this;
+        }
+        @CustomType.Setter
         public Builder userRiskScore(GetZeroTrustAccessPoliciesResultRequireUserRiskScore userRiskScore) {
             if (userRiskScore == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessPoliciesResultRequire", "userRiskScore");
@@ -459,6 +474,7 @@ public final class GetZeroTrustAccessPoliciesResultRequire {
             _resultValue.okta = okta;
             _resultValue.saml = saml;
             _resultValue.serviceToken = serviceToken;
+            _resultValue.serviceTokenTag = serviceTokenTag;
             _resultValue.userRiskScore = userRiskScore;
             return _resultValue;
         }

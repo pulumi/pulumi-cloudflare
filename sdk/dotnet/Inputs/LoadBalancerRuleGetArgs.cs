@@ -43,7 +43,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<Inputs.LoadBalancerRuleOverridesGetArgs>? Overrides { get; set; }
 
         /// <summary>
-        /// The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.
+        /// The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If all priorities are omitted or zero, the API assigns priorities based on the array order of the rules field.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }

@@ -14,27 +14,27 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class R2BucketSippySource
     {
         /// <summary>
-        /// Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
+        /// For `r2_bucket_sippy_provider: aws` or `r2_bucket_sippy_provider: s3`: Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
         /// </summary>
         public readonly string? AccessKeyId;
         /// <summary>
-        /// Access key for the Azure Storage account. Mutually exclusive with sasToken.
+        /// For `r2_bucket_sippy_provider: azure`: Access key for the Azure Storage account. Mutually exclusive with sasToken.
         /// </summary>
         public readonly string? AccountKey;
         /// <summary>
-        /// Name of the Azure Storage account.
+        /// For `r2_bucket_sippy_provider: azure`: Name of the Azure Storage account.
         /// </summary>
         public readonly string? AccountName;
         /// <summary>
-        /// Name of the AWS S3 bucket.
+        /// For `r2_bucket_sippy_provider: aws`: Name of the AWS S3 bucket.
         /// </summary>
         public readonly string? Bucket;
         /// <summary>
-        /// URL to the S3-compatible API of the bucket.
+        /// For `r2_bucket_sippy_provider: s3`: URL to the S3-compatible API of the bucket.
         /// </summary>
         public readonly string? BucketUrl;
         /// <summary>
-        /// Client email of an IAM credential (ideally scoped to a single GCS bucket).
+        /// For `r2_bucket_sippy_provider: gcs`: Client email of an IAM credential (ideally scoped to a single GCS bucket).
         /// </summary>
         public readonly string? ClientEmail;
         /// <summary>
@@ -42,23 +42,23 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? CloudProvider;
         /// <summary>
-        /// Name of the Azure Blob Storage container.
+        /// For `r2_bucket_sippy_provider: azure`: Name of the Azure Blob Storage container.
         /// </summary>
         public readonly string? Container;
         /// <summary>
-        /// Private Key of an IAM credential (ideally scoped to a single GCS bucket).
+        /// For `r2_bucket_sippy_provider: gcs`: Private Key of an IAM credential (ideally scoped to a single GCS bucket).
         /// </summary>
         public readonly string? PrivateKey;
         /// <summary>
-        /// AWS region containing the source S3 bucket.
+        /// For `r2_bucket_sippy_provider: aws`: AWS region containing the source S3 bucket.
         /// </summary>
         public readonly string? Region;
         /// <summary>
-        /// Shared Access Signature token for the Azure Storage account. Mutually exclusive with accountKey.
+        /// For `r2_bucket_sippy_provider: azure`: Shared Access Signature token for the Azure Storage account. Mutually exclusive with accountKey.
         /// </summary>
         public readonly string? SasToken;
         /// <summary>
-        /// Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
+        /// For `r2_bucket_sippy_provider: aws` or `r2_bucket_sippy_provider: s3`: Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
         /// </summary>
         public readonly string? SecretAccessKey;
 

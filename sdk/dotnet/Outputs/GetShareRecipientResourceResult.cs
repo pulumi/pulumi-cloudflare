@@ -14,15 +14,15 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetShareRecipientResourceResult
     {
         /// <summary>
-        /// Share Recipient error message.
+        /// Error from the most recent attempt to apply the resource to the recipient. Empty string when no error has been recorded.
         /// </summary>
         public readonly string Error;
         /// <summary>
-        /// Share Resource identifier.
+        /// Identifier assigned by the service that owns the shared resource.
         /// </summary>
         public readonly string ResourceId;
         /// <summary>
-        /// Resource Version.
+        /// Resource version applied to the recipient, if reconciliation has occurred.
         /// </summary>
         public readonly int ResourceVersion;
         /// <summary>

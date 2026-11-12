@@ -122,32 +122,64 @@ public class ByoIpPrefix extends com.pulumi.resources.CustomResource {
         return this.advertisedModifiedAt;
     }
     /**
-     * Approval state of the prefix (P = pending, V = active).
+     * Approval state of the prefix (P = pending, V = approved). Approval does not advertise the prefix or activate traffic.
      * 
      */
     @Export(name="approved", refs={String.class}, tree="[0]")
     private Output<String> approved;
 
     /**
-     * @return Approval state of the prefix (P = pending, V = active).
+     * @return Approval state of the prefix (P = pending, V = approved). Approval does not advertise the prefix or activate traffic.
      * 
      */
     public Output<String> approved() {
         return this.approved;
     }
     /**
-     * Autonomous System Number (ASN) the prefix will be advertised under.
+     * Autonomous System Number (ASN) the prefix will be advertised under. Use 13335 for Cloudflare&#39;s ASN, or your own ASN as an integer without the AS prefix. The IRR route and RPKI ROA must authorize this ASN.
      * 
      */
     @Export(name="asn", refs={Integer.class}, tree="[0]")
     private Output<Integer> asn;
 
     /**
-     * @return Autonomous System Number (ASN) the prefix will be advertised under.
+     * @return Autonomous System Number (ASN) the prefix will be advertised under. Use 13335 for Cloudflare&#39;s ASN, or your own ASN as an integer without the AS prefix. The IRR route and RPKI ROA must authorize this ASN.
      * 
      */
     public Output<Integer> asn() {
         return this.asn;
+    }
+    /**
+     * State of ASN ownership validation for a customer-owned Autonomous System Number (ASN). Returned when an ASN ownership validation result exists. Omitted when validation does not apply, such as for Cloudflare-owned ASNs. Verification is reused for prefixes with the same account and ASN. Refer to [ASN ownership validation states](https://developers.cloudflare.com/byoip/troubleshooting/prefix-validation/#asn-ownership-validation) for state meanings and resolutions.
+     * Available values: &#34;pending&#34;, &#34;valid&#34;, &#34;missing&#34;, &#34;invalid&#34;.
+     * 
+     */
+    @Export(name="asnOwnershipValidationState", refs={String.class}, tree="[0]")
+    private Output<String> asnOwnershipValidationState;
+
+    /**
+     * @return State of ASN ownership validation for a customer-owned Autonomous System Number (ASN). Returned when an ASN ownership validation result exists. Omitted when validation does not apply, such as for Cloudflare-owned ASNs. Verification is reused for prefixes with the same account and ASN. Refer to [ASN ownership validation states](https://developers.cloudflare.com/byoip/troubleshooting/prefix-validation/#asn-ownership-validation) for state meanings and resolutions.
+     * Available values: &#34;pending&#34;, &#34;valid&#34;, &#34;missing&#34;, &#34;invalid&#34;.
+     * 
+     */
+    public Output<String> asnOwnershipValidationState() {
+        return this.asnOwnershipValidationState;
+    }
+    /**
+     * State of Autonomous System Provider Authorization (ASPA) validation for a customer-owned ASN. Returned when an ASPA validation result exists. Publishing an ASPA is optional. A published ASPA must authorize AS13335 as a provider. An invalid result blocks approval. If omitted, no ASPA validation result is available. Omission does not indicate successful validation or confirm that no ASPA exists. Refer to [ASPA validation states](https://developers.cloudflare.com/byoip/troubleshooting/prefix-validation/#aspa-validation) for state meanings and resolutions, and [ASPA authorization](https://developers.cloudflare.com/byoip/concepts/route-filtering-rpki/#aspa-authorization) for publication guidance.
+     * Available values: &#34;pending&#34;, &#34;valid&#34;, &#34;invalid&#34;.
+     * 
+     */
+    @Export(name="aspaValidationState", refs={String.class}, tree="[0]")
+    private Output<String> aspaValidationState;
+
+    /**
+     * @return State of Autonomous System Provider Authorization (ASPA) validation for a customer-owned ASN. Returned when an ASPA validation result exists. Publishing an ASPA is optional. A published ASPA must authorize AS13335 as a provider. An invalid result blocks approval. If omitted, no ASPA validation result is available. Omission does not indicate successful validation or confirm that no ASPA exists. Refer to [ASPA validation states](https://developers.cloudflare.com/byoip/troubleshooting/prefix-validation/#aspa-validation) for state meanings and resolutions, and [ASPA authorization](https://developers.cloudflare.com/byoip/concepts/route-filtering-rpki/#aspa-authorization) for publication guidance.
+     * Available values: &#34;pending&#34;, &#34;valid&#34;, &#34;invalid&#34;.
+     * 
+     */
+    public Output<String> aspaValidationState() {
+        return this.aspaValidationState;
     }
     /**
      * IP Prefix in Classless Inter-Domain Routing format.
@@ -280,14 +312,14 @@ public class ByoIpPrefix extends com.pulumi.resources.CustomResource {
         return this.ownershipValidationState;
     }
     /**
-     * Token provided to demonstrate ownership of the prefix.
+     * Token used to verify ownership of the prefix and, when applicable, its ASN. Use the same token for both checks. Refer to the [BYOIP onboarding guide](https://developers.cloudflare.com/byoip/get-started/) for verification instructions.
      * 
      */
     @Export(name="ownershipValidationToken", refs={String.class}, tree="[0]")
     private Output<String> ownershipValidationToken;
 
     /**
-     * @return Token provided to demonstrate ownership of the prefix.
+     * @return Token used to verify ownership of the prefix and, when applicable, its ASN. Use the same token for both checks. Refer to the [BYOIP onboarding guide](https://developers.cloudflare.com/byoip/get-started/) for verification instructions.
      * 
      */
     public Output<String> ownershipValidationToken() {

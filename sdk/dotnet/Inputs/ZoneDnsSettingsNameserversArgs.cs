@@ -13,13 +13,13 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZoneDnsSettingsNameserversArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier of the account-owned Custom Nameserver Set to use for this zone.
+        /// For `type: custom`: Identifier of the account-owned Custom Nameserver Set to use for this zone.
         /// </summary>
         [Input("nameserverSetId")]
         public Input<string>? NameserverSetId { get; set; }
 
         /// <summary>
-        /// Configured nameserver set number to use for this zone.
+        /// For `type: custom.account` or `type: custom.tenant` or `type: custom.zone`: Configured nameserver set number to use for this zone.
         /// </summary>
         [Input("nsSet")]
         public Input<int>? NsSet { get; set; }

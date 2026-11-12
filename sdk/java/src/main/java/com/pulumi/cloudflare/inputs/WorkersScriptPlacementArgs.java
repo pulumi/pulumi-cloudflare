@@ -64,7 +64,6 @@ public final class WorkersScriptPlacementArgs extends com.pulumi.resources.Resou
 
     /**
      * Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: &#34;smart&#34;, &#34;targeted&#34;.
      * 
      */
     @Import(name="mode")
@@ -72,7 +71,6 @@ public final class WorkersScriptPlacementArgs extends com.pulumi.resources.Resou
 
     /**
      * @return Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: &#34;smart&#34;, &#34;targeted&#34;.
      * 
      */
     public Optional<Output<String>> mode() {
@@ -96,7 +94,7 @@ public final class WorkersScriptPlacementArgs extends com.pulumi.resources.Resou
 
     /**
      * Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: &#34;SUCCESS&#34;, &#34;UNSUPPORTED*APPLICATION&#34;, &#34;INSUFFICIENT*INVOCATIONS&#34;.
+     * Available values: &#34;SUCCESS&#34;, &#34;UNSUPPORTED_APPLICATION&#34;, &#34;INSUFFICIENT_INVOCATIONS&#34;.
      * 
      */
     @Import(name="status")
@@ -104,7 +102,7 @@ public final class WorkersScriptPlacementArgs extends com.pulumi.resources.Resou
 
     /**
      * @return Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: &#34;SUCCESS&#34;, &#34;UNSUPPORTED*APPLICATION&#34;, &#34;INSUFFICIENT*INVOCATIONS&#34;.
+     * Available values: &#34;SUCCESS&#34;, &#34;UNSUPPORTED_APPLICATION&#34;, &#34;INSUFFICIENT_INVOCATIONS&#34;.
      * 
      */
     public Optional<Output<String>> status() {
@@ -221,7 +219,6 @@ public final class WorkersScriptPlacementArgs extends com.pulumi.resources.Resou
 
         /**
          * @param mode Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-         * Available values: &#34;smart&#34;, &#34;targeted&#34;.
          * 
          * @return builder
          * 
@@ -233,7 +230,6 @@ public final class WorkersScriptPlacementArgs extends com.pulumi.resources.Resou
 
         /**
          * @param mode Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-         * Available values: &#34;smart&#34;, &#34;targeted&#34;.
          * 
          * @return builder
          * 
@@ -265,7 +261,7 @@ public final class WorkersScriptPlacementArgs extends com.pulumi.resources.Resou
 
         /**
          * @param status Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-         * Available values: &#34;SUCCESS&#34;, &#34;UNSUPPORTED*APPLICATION&#34;, &#34;INSUFFICIENT*INVOCATIONS&#34;.
+         * Available values: &#34;SUCCESS&#34;, &#34;UNSUPPORTED_APPLICATION&#34;, &#34;INSUFFICIENT_INVOCATIONS&#34;.
          * 
          * @return builder
          * 
@@ -277,7 +273,7 @@ public final class WorkersScriptPlacementArgs extends com.pulumi.resources.Resou
 
         /**
          * @param status Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-         * Available values: &#34;SUCCESS&#34;, &#34;UNSUPPORTED*APPLICATION&#34;, &#34;INSUFFICIENT*INVOCATIONS&#34;.
+         * Available values: &#34;SUCCESS&#34;, &#34;UNSUPPORTED_APPLICATION&#34;, &#34;INSUFFICIENT_INVOCATIONS&#34;.
          * 
          * @return builder
          * 

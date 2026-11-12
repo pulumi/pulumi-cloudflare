@@ -53,12 +53,12 @@ import (
 type TotalTls struct {
 	pulumi.CustomResourceState
 
-	// The Certificate Authority that Total TLS certificates will be issued through.
+	// The Certificate Authority that Total TLS certificates will be issued through. Not returned in responses when Total TLS is disabled.
 	// Available values: "google", "lets*encrypt", "ssl*com".
 	CertificateAuthority pulumi.StringPtrOutput `pulumi:"certificateAuthority"`
 	// If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
-	// The validity period in days for the certificates ordered via Total TLS.
+	// The validity period in days for the certificates ordered via Total TLS. Not returned when Total TLS is disabled.
 	// Available values: 90.
 	ValidityPeriod pulumi.IntOutput `pulumi:"validityPeriod"`
 	// Identifier.
@@ -101,12 +101,12 @@ func GetTotalTls(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TotalTls resources.
 type totalTlsState struct {
-	// The Certificate Authority that Total TLS certificates will be issued through.
+	// The Certificate Authority that Total TLS certificates will be issued through. Not returned in responses when Total TLS is disabled.
 	// Available values: "google", "lets*encrypt", "ssl*com".
 	CertificateAuthority *string `pulumi:"certificateAuthority"`
 	// If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
 	Enabled *bool `pulumi:"enabled"`
-	// The validity period in days for the certificates ordered via Total TLS.
+	// The validity period in days for the certificates ordered via Total TLS. Not returned when Total TLS is disabled.
 	// Available values: 90.
 	ValidityPeriod *int `pulumi:"validityPeriod"`
 	// Identifier.
@@ -114,12 +114,12 @@ type totalTlsState struct {
 }
 
 type TotalTlsState struct {
-	// The Certificate Authority that Total TLS certificates will be issued through.
+	// The Certificate Authority that Total TLS certificates will be issued through. Not returned in responses when Total TLS is disabled.
 	// Available values: "google", "lets*encrypt", "ssl*com".
 	CertificateAuthority pulumi.StringPtrInput
 	// If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
 	Enabled pulumi.BoolPtrInput
-	// The validity period in days for the certificates ordered via Total TLS.
+	// The validity period in days for the certificates ordered via Total TLS. Not returned when Total TLS is disabled.
 	// Available values: 90.
 	ValidityPeriod pulumi.IntPtrInput
 	// Identifier.
@@ -137,7 +137,7 @@ func TotalTlsExists(ctx *pulumi.Context,
 }
 
 type totalTlsArgs struct {
-	// The Certificate Authority that Total TLS certificates will be issued through.
+	// The Certificate Authority that Total TLS certificates will be issued through. Not returned in responses when Total TLS is disabled.
 	// Available values: "google", "lets*encrypt", "ssl*com".
 	CertificateAuthority *string `pulumi:"certificateAuthority"`
 	// If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
@@ -148,7 +148,7 @@ type totalTlsArgs struct {
 
 // The set of arguments for constructing a TotalTls resource.
 type TotalTlsArgs struct {
-	// The Certificate Authority that Total TLS certificates will be issued through.
+	// The Certificate Authority that Total TLS certificates will be issued through. Not returned in responses when Total TLS is disabled.
 	// Available values: "google", "lets*encrypt", "ssl*com".
 	CertificateAuthority pulumi.StringPtrInput
 	// If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
@@ -244,7 +244,7 @@ func (o TotalTlsOutput) ToTotalTlsOutputWithContext(ctx context.Context) TotalTl
 	return o
 }
 
-// The Certificate Authority that Total TLS certificates will be issued through.
+// The Certificate Authority that Total TLS certificates will be issued through. Not returned in responses when Total TLS is disabled.
 // Available values: "google", "lets*encrypt", "ssl*com".
 func (o TotalTlsOutput) CertificateAuthority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TotalTls) pulumi.StringPtrOutput { return v.CertificateAuthority }).(pulumi.StringPtrOutput)
@@ -255,7 +255,7 @@ func (o TotalTlsOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *TotalTls) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// The validity period in days for the certificates ordered via Total TLS.
+// The validity period in days for the certificates ordered via Total TLS. Not returned when Total TLS is disabled.
 // Available values: 90.
 func (o TotalTlsOutput) ValidityPeriod() pulumi.IntOutput {
 	return o.ApplyT(func(v *TotalTls) pulumi.IntOutput { return v.ValidityPeriod }).(pulumi.IntOutput)

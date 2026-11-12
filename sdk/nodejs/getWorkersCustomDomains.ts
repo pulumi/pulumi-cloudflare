@@ -20,22 +20,25 @@ import * as utilities from "./utilities";
  *
  * const exampleWorkersCustomDomains = cloudflare.getWorkersCustomDomains({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     enabled: true,
  *     environment: "production",
  *     hostname: "app.example.com",
+ *     previewsEnabled: false,
  *     service: "my-worker",
  *     zoneId: "593c9c94de529bbbfaac7c53ced0447d",
  *     zoneName: "example.com",
  * });
  * ```
  */
-export function getWorkersCustomDomains(args?: GetWorkersCustomDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkersCustomDomainsResult> {
-    args = args || {};
+export function getWorkersCustomDomains(args: GetWorkersCustomDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkersCustomDomainsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getWorkersCustomDomains:getWorkersCustomDomains", {
         "accountId": args.accountId,
+        "enabled": args.enabled,
         "environment": args.environment,
         "hostname": args.hostname,
         "maxItems": args.maxItems,
+        "previewsEnabled": args.previewsEnabled,
         "service": args.service,
         "zoneId": args.zoneId,
         "zoneName": args.zoneName,
@@ -49,7 +52,11 @@ export interface GetWorkersCustomDomainsArgs {
     /**
      * Identifier.
      */
-    accountId?: string;
+    accountId: string;
+    /**
+     * Whether the configured hostname is routable for the domain.
+     */
+    enabled?: boolean;
     /**
      * Worker environment associated with the domain.
      */
@@ -62,6 +69,10 @@ export interface GetWorkersCustomDomainsArgs {
      * Max items to fetch, default: 1000
      */
     maxItems?: number;
+    /**
+     * Whether previews are routable for the domain.
+     */
+    previewsEnabled?: boolean;
     /**
      * Name of the Worker associated with the domain.
      */
@@ -83,7 +94,11 @@ export interface GetWorkersCustomDomainsResult {
     /**
      * Identifier.
      */
-    readonly accountId?: string;
+    readonly accountId: string;
+    /**
+     * Whether the configured hostname is routable for the domain.
+     */
+    readonly enabled?: boolean;
     /**
      * Worker environment associated with the domain.
      */
@@ -96,6 +111,10 @@ export interface GetWorkersCustomDomainsResult {
      * Max items to fetch, default: 1000
      */
     readonly maxItems?: number;
+    /**
+     * Whether previews are routable for the domain.
+     */
+    readonly previewsEnabled?: boolean;
     /**
      * The items returned by the data source
      */
@@ -127,22 +146,25 @@ export interface GetWorkersCustomDomainsResult {
  *
  * const exampleWorkersCustomDomains = cloudflare.getWorkersCustomDomains({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     enabled: true,
  *     environment: "production",
  *     hostname: "app.example.com",
+ *     previewsEnabled: false,
  *     service: "my-worker",
  *     zoneId: "593c9c94de529bbbfaac7c53ced0447d",
  *     zoneName: "example.com",
  * });
  * ```
  */
-export function getWorkersCustomDomainsOutput(args?: GetWorkersCustomDomainsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkersCustomDomainsResult> {
-    args = args || {};
+export function getWorkersCustomDomainsOutput(args: GetWorkersCustomDomainsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkersCustomDomainsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getWorkersCustomDomains:getWorkersCustomDomains", {
         "accountId": args.accountId,
+        "enabled": args.enabled,
         "environment": args.environment,
         "hostname": args.hostname,
         "maxItems": args.maxItems,
+        "previewsEnabled": args.previewsEnabled,
         "service": args.service,
         "zoneId": args.zoneId,
         "zoneName": args.zoneName,
@@ -156,7 +178,11 @@ export interface GetWorkersCustomDomainsOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
+    /**
+     * Whether the configured hostname is routable for the domain.
+     */
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Worker environment associated with the domain.
      */
@@ -169,6 +195,10 @@ export interface GetWorkersCustomDomainsOutputArgs {
      * Max items to fetch, default: 1000
      */
     maxItems?: pulumi.Input<number | undefined>;
+    /**
+     * Whether previews are routable for the domain.
+     */
+    previewsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the Worker associated with the domain.
      */

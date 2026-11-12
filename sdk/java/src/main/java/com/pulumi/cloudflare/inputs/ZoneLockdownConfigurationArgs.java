@@ -16,16 +16,14 @@ public final class ZoneLockdownConfigurationArgs extends com.pulumi.resources.Re
     public static final ZoneLockdownConfigurationArgs Empty = new ZoneLockdownConfigurationArgs();
 
     /**
-     * The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.
-     * Available values: &#34;ip&#34;, &#34;ipRange&#34;.
+     * For `target: ip`: The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.
      * 
      */
     @Import(name="target")
     private @Nullable Output<String> target;
 
     /**
-     * @return The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.
-     * Available values: &#34;ip&#34;, &#34;ipRange&#34;.
+     * @return For `target: ip`: The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.
      * 
      */
     public Optional<Output<String>> target() {
@@ -33,14 +31,18 @@ public final class ZoneLockdownConfigurationArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The IP address to match. This address will be compared to the IP address of incoming requests.
+     * For `target: ip`: The IP address to match. This address will be compared to the IP address of incoming requests.
+     * 
+     * For `target: ipRange`: The IP address range to match. You can only use prefix lengths `/16` and `/24`.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return The IP address to match. This address will be compared to the IP address of incoming requests.
+     * @return For `target: ip`: The IP address to match. This address will be compared to the IP address of incoming requests.
+     * 
+     * For `target: ipRange`: The IP address range to match. You can only use prefix lengths `/16` and `/24`.
      * 
      */
     public Optional<Output<String>> value() {
@@ -73,8 +75,7 @@ public final class ZoneLockdownConfigurationArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param target The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.
-         * Available values: &#34;ip&#34;, &#34;ipRange&#34;.
+         * @param target For `target: ip`: The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.
          * 
          * @return builder
          * 
@@ -85,8 +86,7 @@ public final class ZoneLockdownConfigurationArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param target The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.
-         * Available values: &#34;ip&#34;, &#34;ipRange&#34;.
+         * @param target For `target: ip`: The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.
          * 
          * @return builder
          * 
@@ -96,7 +96,9 @@ public final class ZoneLockdownConfigurationArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param value The IP address to match. This address will be compared to the IP address of incoming requests.
+         * @param value For `target: ip`: The IP address to match. This address will be compared to the IP address of incoming requests.
+         * 
+         * For `target: ipRange`: The IP address range to match. You can only use prefix lengths `/16` and `/24`.
          * 
          * @return builder
          * 
@@ -107,7 +109,9 @@ public final class ZoneLockdownConfigurationArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param value The IP address to match. This address will be compared to the IP address of incoming requests.
+         * @param value For `target: ip`: The IP address to match. This address will be compared to the IP address of incoming requests.
+         * 
+         * For `target: ipRange`: The IP address range to match. You can only use prefix lengths `/16` and `/24`.
          * 
          * @return builder
          * 

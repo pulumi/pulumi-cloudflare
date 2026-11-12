@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZeroTrustDlpCustomProfileEntryResult
     {
         /// <summary>
-        /// Only applies to custom word lists.
+        /// For `type: ExactData`: Only applies to custom word lists.
         /// Determines if the words should be matched in a case-sensitive manner
         /// Cannot be set to false if secret is true
         /// </summary>
@@ -22,24 +22,44 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly Outputs.GetZeroTrustDlpCustomProfileEntryConfidenceResult Confidence;
         public readonly string CreatedAt;
         /// <summary>
-        /// Whether this entry is deprecated for new use. This is computed from the static catalog and
+        /// For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
         /// emitted only when true.
         /// </summary>
         public readonly bool Deprecated;
+        /// <summary>
+        /// For `type: CustomPromptTopic`: The optional description of the custom prompt topic entry.
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// If true, scan the context of predefined entries to only return matches surrounded by keywords.
+        /// </summary>
         public readonly bool Enabled;
+        /// <summary>
+        /// The ID of this resource.
+        /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// For `type: custom`: The name of the profile.
+        /// </summary>
         public readonly string Name;
         public readonly Outputs.GetZeroTrustDlpCustomProfileEntryPatternResult Pattern;
         public readonly string ProfileId;
         public readonly bool Secret;
         /// <summary>
-        /// Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "WordList".
+        /// Available values: "custom", "CustomPromptTopic", "predefined", "integration", "ExactData", "DocumentFingerprint", "WordList".
         /// </summary>
         public readonly string Type;
         public readonly string UpdatedAt;
         /// <summary>
-        /// A Predefined AI prompt classification topic entry.
+        /// For `type: custom`: Validators this entry references, by id, at most 10. An empty list means the entry
+        /// references none.
+        /// 
+        /// Returned by the entry endpoints. Not returned on entries embedded in other responses, such
+        /// as profiles.
+        /// </summary>
+        public readonly ImmutableArray<string> ValidatorIds;
+        /// <summary>
+        /// For `type: predefined`: A Predefined AI prompt classification topic entry.
         /// </summary>
         public readonly Outputs.GetZeroTrustDlpCustomProfileEntryVariantResult Variant;
         public readonly ImmutableArray<string> WordLists;
@@ -72,6 +92,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string updatedAt,
 
+            ImmutableArray<string> validatorIds,
+
             Outputs.GetZeroTrustDlpCustomProfileEntryVariantResult variant,
 
             ImmutableArray<string> wordLists)
@@ -89,6 +111,7 @@ namespace Pulumi.Cloudflare.Outputs
             Secret = secret;
             Type = type;
             UpdatedAt = updatedAt;
+            ValidatorIds = validatorIds;
             Variant = variant;
             WordLists = wordLists;
         }

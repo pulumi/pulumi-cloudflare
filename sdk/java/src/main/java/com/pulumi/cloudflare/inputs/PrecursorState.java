@@ -3,9 +3,10 @@
 
 package com.pulumi.cloudflare.inputs;
 
-import com.pulumi.cloudflare.inputs.PrecursorEnforcementRuleArgs;
+import com.pulumi.cloudflare.inputs.PrecursorRuleArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -18,49 +19,56 @@ public final class PrecursorState extends com.pulumi.resources.ResourceArgs {
     public static final PrecursorState Empty = new PrecursorState();
 
     /**
-     * The zone-level Precursor enforcement mode applied to requests that do
-     * not match a more specific enforcement rule.
-     * Available values: &#34;off&#34;, &#34;min-friction&#34;, &#34;max-security&#34;.
-     * 
-     * @deprecated This attribute is deprecated.
+     * Controls Precursor detection for the zone. `off` disables detection,
+     * `monitor` records detections without affecting bot scores, and `arm`
+     * allows detections to affect bot scores.
+     * Available values: &#34;off&#34;, &#34;monitor&#34;, &#34;arm&#34;.
      * 
      */
-    @Deprecated
-    @Import(name="defaultMode")
-    private @Nullable Output<String> defaultMode;
+    @Import(name="mode")
+    private @Nullable Output<String> mode;
 
     /**
-     * @return The zone-level Precursor enforcement mode applied to requests that do
-     * not match a more specific enforcement rule.
-     * Available values: &#34;off&#34;, &#34;min-friction&#34;, &#34;max-security&#34;.
-     * 
-     * @deprecated This attribute is deprecated.
+     * @return Controls Precursor detection for the zone. `off` disables detection,
+     * `monitor` records detections without affecting bot scores, and `arm`
+     * allows detections to affect bot scores.
+     * Available values: &#34;off&#34;, &#34;monitor&#34;, &#34;arm&#34;.
      * 
      */
-    @Deprecated
-    public Optional<Output<String>> defaultMode() {
-        return Optional.ofNullable(this.defaultMode);
+    public Optional<Output<String>> mode() {
+        return Optional.ofNullable(this.mode);
     }
 
     /**
-     * The ordered list of enforcement rules for the zone.
-     * 
-     * @deprecated This attribute is deprecated.
+     * The ordered list of Precursor rules for the zone.
      * 
      */
-    @Deprecated
-    @Import(name="enforcementRules")
-    private @Nullable Output<List<PrecursorEnforcementRuleArgs>> enforcementRules;
+    @Import(name="rules")
+    private @Nullable Output<List<PrecursorRuleArgs>> rules;
 
     /**
-     * @return The ordered list of enforcement rules for the zone.
-     * 
-     * @deprecated This attribute is deprecated.
+     * @return The ordered list of Precursor rules for the zone.
      * 
      */
-    @Deprecated
-    public Optional<Output<List<PrecursorEnforcementRuleArgs>>> enforcementRules() {
-        return Optional.ofNullable(this.enforcementRules);
+    public Optional<Output<List<PrecursorRuleArgs>>> rules() {
+        return Optional.ofNullable(this.rules);
+    }
+
+    /**
+     * Whether Precursor shows an interstitial when it takes action on a
+     * request.
+     * 
+     */
+    @Import(name="showInterstitial")
+    private @Nullable Output<Boolean> showInterstitial;
+
+    /**
+     * @return Whether Precursor shows an interstitial when it takes action on a
+     * request.
+     * 
+     */
+    public Optional<Output<Boolean>> showInterstitial() {
+        return Optional.ofNullable(this.showInterstitial);
     }
 
     /**
@@ -81,8 +89,9 @@ public final class PrecursorState extends com.pulumi.resources.ResourceArgs {
     private PrecursorState() {}
 
     private PrecursorState(PrecursorState $) {
-        this.defaultMode = $.defaultMode;
-        this.enforcementRules = $.enforcementRules;
+        this.mode = $.mode;
+        this.rules = $.rules;
+        this.showInterstitial = $.showInterstitial;
         this.zoneId = $.zoneId;
     }
 
@@ -105,74 +114,84 @@ public final class PrecursorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultMode The zone-level Precursor enforcement mode applied to requests that do
-         * not match a more specific enforcement rule.
-         * Available values: &#34;off&#34;, &#34;min-friction&#34;, &#34;max-security&#34;.
+         * @param mode Controls Precursor detection for the zone. `off` disables detection,
+         * `monitor` records detections without affecting bot scores, and `arm`
+         * allows detections to affect bot scores.
+         * Available values: &#34;off&#34;, &#34;monitor&#34;, &#34;arm&#34;.
          * 
          * @return builder
          * 
-         * @deprecated This attribute is deprecated.
-         * 
          */
-        @Deprecated
-        public Builder defaultMode(@Nullable Output<String> defaultMode) {
-            $.defaultMode = defaultMode;
+        public Builder mode(@Nullable Output<String> mode) {
+            $.mode = mode;
             return this;
         }
 
         /**
-         * @param defaultMode The zone-level Precursor enforcement mode applied to requests that do
-         * not match a more specific enforcement rule.
-         * Available values: &#34;off&#34;, &#34;min-friction&#34;, &#34;max-security&#34;.
+         * @param mode Controls Precursor detection for the zone. `off` disables detection,
+         * `monitor` records detections without affecting bot scores, and `arm`
+         * allows detections to affect bot scores.
+         * Available values: &#34;off&#34;, &#34;monitor&#34;, &#34;arm&#34;.
          * 
          * @return builder
          * 
-         * @deprecated This attribute is deprecated.
-         * 
          */
-        @Deprecated
-        public Builder defaultMode(String defaultMode) {
-            return defaultMode(Output.of(defaultMode));
+        public Builder mode(String mode) {
+            return mode(Output.of(mode));
         }
 
         /**
-         * @param enforcementRules The ordered list of enforcement rules for the zone.
+         * @param rules The ordered list of Precursor rules for the zone.
          * 
          * @return builder
          * 
-         * @deprecated This attribute is deprecated.
-         * 
          */
-        @Deprecated
-        public Builder enforcementRules(@Nullable Output<List<PrecursorEnforcementRuleArgs>> enforcementRules) {
-            $.enforcementRules = enforcementRules;
+        public Builder rules(@Nullable Output<List<PrecursorRuleArgs>> rules) {
+            $.rules = rules;
             return this;
         }
 
         /**
-         * @param enforcementRules The ordered list of enforcement rules for the zone.
+         * @param rules The ordered list of Precursor rules for the zone.
          * 
          * @return builder
          * 
-         * @deprecated This attribute is deprecated.
-         * 
          */
-        @Deprecated
-        public Builder enforcementRules(List<PrecursorEnforcementRuleArgs> enforcementRules) {
-            return enforcementRules(Output.of(enforcementRules));
+        public Builder rules(List<PrecursorRuleArgs> rules) {
+            return rules(Output.of(rules));
         }
 
         /**
-         * @param enforcementRules The ordered list of enforcement rules for the zone.
+         * @param rules The ordered list of Precursor rules for the zone.
          * 
          * @return builder
          * 
-         * @deprecated This attribute is deprecated.
+         */
+        public Builder rules(PrecursorRuleArgs... rules) {
+            return rules(List.of(rules));
+        }
+
+        /**
+         * @param showInterstitial Whether Precursor shows an interstitial when it takes action on a
+         * request.
+         * 
+         * @return builder
          * 
          */
-        @Deprecated
-        public Builder enforcementRules(PrecursorEnforcementRuleArgs... enforcementRules) {
-            return enforcementRules(List.of(enforcementRules));
+        public Builder showInterstitial(@Nullable Output<Boolean> showInterstitial) {
+            $.showInterstitial = showInterstitial;
+            return this;
+        }
+
+        /**
+         * @param showInterstitial Whether Precursor shows an interstitial when it takes action on a
+         * request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder showInterstitial(Boolean showInterstitial) {
+            return showInterstitial(Output.of(showInterstitial));
         }
 
         /**

@@ -140,14 +140,14 @@ public class CustomOriginTrustStore extends com.pulumi.resources.CustomResource 
         return this.status;
     }
     /**
-     * When the certificate was last modified.
+     * When the certificate was last modified. Only returned when uploading a certificate.
      * 
      */
     @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;
 
     /**
-     * @return When the certificate was last modified.
+     * @return When the certificate was last modified. Only returned when uploading a certificate.
      * 
      */
     public Output<String> updatedAt() {

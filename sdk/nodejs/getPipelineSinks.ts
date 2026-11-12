@@ -21,6 +21,7 @@ import * as utilities from "./utilities";
  * const examplePipelineSinks = cloudflare.getPipelineSinks({
  *     accountId: "0123105f4ecef8ad9ca31a8372d0c353",
  *     name: "x",
+ *     orderBy: "name",
  *     pipelineId: "pipeline_id",
  * });
  * ```
@@ -30,8 +31,10 @@ export function getPipelineSinks(args?: GetPipelineSinksArgs, opts?: pulumi.Invo
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getPipelineSinks:getPipelineSinks", {
         "accountId": args.accountId,
+        "direction": args.direction,
         "maxItems": args.maxItems,
         "name": args.name,
+        "orderBy": args.orderBy,
         "pipelineId": args.pipelineId,
     }, opts);
 }
@@ -45,6 +48,11 @@ export interface GetPipelineSinksArgs {
      */
     accountId?: string;
     /**
+     * Sort direction.
+     * Available values: "asc", "desc".
+     */
+    direction?: string;
+    /**
      * Max items to fetch, default: 1000
      */
     maxItems?: number;
@@ -52,6 +60,11 @@ export interface GetPipelineSinksArgs {
      * Filters sinks by name (case-insensitive substring).
      */
     name?: string;
+    /**
+     * Sorts sinks by this field. Defaults to `createdAt`.
+     * Available values: "name", "createdAt".
+     */
+    orderBy?: string;
     pipelineId?: string;
 }
 
@@ -64,6 +77,11 @@ export interface GetPipelineSinksResult {
      */
     readonly accountId?: string;
     /**
+     * Sort direction.
+     * Available values: "asc", "desc".
+     */
+    readonly direction: string;
+    /**
      * Max items to fetch, default: 1000
      */
     readonly maxItems?: number;
@@ -71,6 +89,11 @@ export interface GetPipelineSinksResult {
      * Filters sinks by name (case-insensitive substring).
      */
     readonly name?: string;
+    /**
+     * Sorts sinks by this field. Defaults to `createdAt`.
+     * Available values: "name", "createdAt".
+     */
+    readonly orderBy?: string;
     readonly pipelineId?: string;
     /**
      * The items returned by the data source
@@ -92,6 +115,7 @@ export interface GetPipelineSinksResult {
  * const examplePipelineSinks = cloudflare.getPipelineSinks({
  *     accountId: "0123105f4ecef8ad9ca31a8372d0c353",
  *     name: "x",
+ *     orderBy: "name",
  *     pipelineId: "pipeline_id",
  * });
  * ```
@@ -101,8 +125,10 @@ export function getPipelineSinksOutput(args?: GetPipelineSinksOutputArgs, opts?:
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getPipelineSinks:getPipelineSinks", {
         "accountId": args.accountId,
+        "direction": args.direction,
         "maxItems": args.maxItems,
         "name": args.name,
+        "orderBy": args.orderBy,
         "pipelineId": args.pipelineId,
     }, opts);
 }
@@ -116,6 +142,11 @@ export interface GetPipelineSinksOutputArgs {
      */
     accountId?: pulumi.Input<string | undefined>;
     /**
+     * Sort direction.
+     * Available values: "asc", "desc".
+     */
+    direction?: pulumi.Input<string | undefined>;
+    /**
      * Max items to fetch, default: 1000
      */
     maxItems?: pulumi.Input<number | undefined>;
@@ -123,5 +154,10 @@ export interface GetPipelineSinksOutputArgs {
      * Filters sinks by name (case-insensitive substring).
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Sorts sinks by this field. Defaults to `createdAt`.
+     * Available values: "name", "createdAt".
+     */
+    orderBy?: pulumi.Input<string | undefined>;
     pipelineId?: pulumi.Input<string | undefined>;
 }

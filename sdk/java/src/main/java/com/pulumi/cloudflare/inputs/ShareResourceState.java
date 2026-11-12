@@ -32,14 +32,14 @@ public final class ShareResourceState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * When the share was created.
+     * When the object was created.
      * 
      */
     @Import(name="created")
     private @Nullable Output<String> created;
 
     /**
-     * @return When the share was created.
+     * @return When the object was created.
      * 
      */
     public Optional<Output<String>> created() {
@@ -62,14 +62,14 @@ public final class ShareResourceState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * When the share was modified.
+     * When the object was last modified.
      * 
      */
     @Import(name="modified")
     private @Nullable Output<String> modified;
 
     /**
-     * @return When the share was modified.
+     * @return When the object was last modified.
      * 
      */
     public Optional<Output<String>> modified() {
@@ -77,14 +77,14 @@ public final class ShareResourceState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Account identifier.
+     * The account that owns the resource. Must match the `accountId` in the path.
      * 
      */
     @Import(name="resourceAccountId")
     private @Nullable Output<String> resourceAccountId;
 
     /**
-     * @return Account identifier.
+     * @return The account that owns the resource. Must match the `accountId` in the path.
      * 
      */
     public Optional<Output<String>> resourceAccountId() {
@@ -92,14 +92,14 @@ public final class ShareResourceState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Share Resource identifier.
+     * Identifier assigned by the service that owns the shared resource.
      * 
      */
     @Import(name="resourceId")
     private @Nullable Output<String> resourceId;
 
     /**
-     * @return Share Resource identifier.
+     * @return Identifier assigned by the service that owns the shared resource.
      * 
      */
     public Optional<Output<String>> resourceId() {
@@ -225,7 +225,7 @@ public final class ShareResourceState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param created When the share was created.
+         * @param created When the object was created.
          * 
          * @return builder
          * 
@@ -236,7 +236,7 @@ public final class ShareResourceState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param created When the share was created.
+         * @param created When the object was created.
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class ShareResourceState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param modified When the share was modified.
+         * @param modified When the object was last modified.
          * 
          * @return builder
          * 
@@ -278,7 +278,7 @@ public final class ShareResourceState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param modified When the share was modified.
+         * @param modified When the object was last modified.
          * 
          * @return builder
          * 
@@ -288,7 +288,7 @@ public final class ShareResourceState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param resourceAccountId Account identifier.
+         * @param resourceAccountId The account that owns the resource. Must match the `accountId` in the path.
          * 
          * @return builder
          * 
@@ -299,7 +299,7 @@ public final class ShareResourceState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param resourceAccountId Account identifier.
+         * @param resourceAccountId The account that owns the resource. Must match the `accountId` in the path.
          * 
          * @return builder
          * 
@@ -309,7 +309,7 @@ public final class ShareResourceState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param resourceId Share Resource identifier.
+         * @param resourceId Identifier assigned by the service that owns the shared resource.
          * 
          * @return builder
          * 
@@ -320,7 +320,7 @@ public final class ShareResourceState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param resourceId Share Resource identifier.
+         * @param resourceId Identifier assigned by the service that owns the shared resource.
          * 
          * @return builder
          * 

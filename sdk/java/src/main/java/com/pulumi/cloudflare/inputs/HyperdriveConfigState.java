@@ -56,9 +56,17 @@ public final class HyperdriveConfigState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.createdOn);
     }
 
+    /**
+     * Selects a PlanetScale database and provisions credentials managed by Cloudflare when creating a Hyperdrive configuration. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. The selection is returned as read-only metadata and cannot be changed with replace or update operations.
+     * 
+     */
     @Import(name="integration")
     private @Nullable Output<String> integration;
 
+    /**
+     * @return Selects a PlanetScale database and provisions credentials managed by Cloudflare when creating a Hyperdrive configuration. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. The selection is returned as read-only metadata and cannot be changed with replace or update operations.
+     * 
+     */
     public Optional<Output<String>> integration() {
         return Optional.ofNullable(this.integration);
     }
@@ -237,11 +245,23 @@ public final class HyperdriveConfigState extends com.pulumi.resources.ResourceAr
             return createdOn(Output.of(createdOn));
         }
 
+        /**
+         * @param integration Selects a PlanetScale database and provisions credentials managed by Cloudflare when creating a Hyperdrive configuration. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. The selection is returned as read-only metadata and cannot be changed with replace or update operations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder integration(@Nullable Output<String> integration) {
             $.integration = integration;
             return this;
         }
 
+        /**
+         * @param integration Selects a PlanetScale database and provisions credentials managed by Cloudflare when creating a Hyperdrive configuration. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. The selection is returned as read-only metadata and cannot be changed with replace or update operations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder integration(String integration) {
             return integration(Output.of(integration));
         }

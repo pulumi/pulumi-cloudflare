@@ -14,89 +14,139 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WorkerVersionExports {
     /**
-     * @return Cache override for this entrypoint. It applies only to
-     * `type: worker` entries and overrides the Worker&#39;s global
-     * `cache_options.enabled` for that entrypoint.
+     * @return For `type: worker`: Cache override for this entrypoint. Overrides the Worker&#39;s
+     * global `cache_options.enabled` for this entrypoint only.
      * 
      */
     private @Nullable WorkerVersionExportsCache cache;
     /**
-     * @return Destination class name for a `state: renamed` tombstone. The
-     * target must appear as a live (`created`) entry in the same
-     * `exports` map. Write-only: never present in GET responses.
+     * @return For `type: durable-object` and `state: created`: Name of the container (declared in the upload&#39;s
+     * `metadata.containers`) that backs this Durable Object. When
+     * set, the namespace is container-enabled. Valid only on live
+     * entries.
+     * 
+     * For `state: expecting-transfer`: Name of the container (declared in the upload&#39;s
+     * `metadata.containers`) that backs this Durable Object once the
+     * transfer settles. Valid only on live entries.
+     * 
+     */
+    private @Nullable String container;
+    /**
+     * @return For `state: renamed`: The destination class name. Must differ from the source class
+     * (the map key) and must be declared as a live (`created`) entry
+     * in the same `exports` map. Write-only: never present in GET
+     * responses.
      * 
      */
     private @Nullable String renamedTo;
     /**
-     * @return Lifecycle state of the export entry. Defaults to `created`
-     * (a normal, live export) when omitted.
+     * @return For `state: created`: Live export. May be omitted; defaults to `created`.
+     * 
+     * For `state: deleted`: Tombstone that deletes the namespace.
+     * 
+     * For `state: renamed`: Tombstone that renames the namespace&#39;s class.
+     * 
+     * For `state: transferred`: Tombstone that transfers the namespace to another script.
+     * 
+     * For `state: expecting-transfer`: Target side of a two-phase transfer.
+     * Available values: &#34;created&#34;, &#34;deleted&#34;, &#34;renamed&#34;, &#34;transferred&#34;, &#34;expecting-transfer&#34;.
      * 
      */
     private @Nullable String state;
     /**
-     * @return Storage backend for a `type: durable-object` export. Required
-     * for live Durable Object entries (`created` and
-     * `expecting-transfer`). `sqlite` selects SQLite-backed storage;
-     * `legacy-kv` selects the legacy key-value storage.
+     * @return For `type: durable-object` and `state: created`: Durable Object storage backend. `sqlite` is the recommended (and
+     * only) backend for new namespaces. `legacy-kv` is accepted only for
+     * a class whose namespace already exists as KV-backed; the `exports`
+     * flow never provisions a new `legacy-kv` namespace.
+     * 
+     * For `type: durable-object` and `state: expecting-transfer`: Durable Object storage backend. `sqlite` is the recommended (and
+     * only) backend for new namespaces. `legacy-kv` is accepted only for
+     * a class whose namespace already exists as KV-backed; the `exports`
+     * flow never provisions a new `legacy-kv` namespace.
      * Available values: &#34;sqlite&#34;, &#34;legacy-kv&#34;.
      * 
      */
     private @Nullable String storage;
     /**
-     * @return Source script for a `state: expecting-transfer` entry. The
-     * namespace on this script is materialised from the source
-     * script&#39;s data via the pending-transfer flow. Present on reads
-     * for `expecting-transfer` entries.
+     * @return For `state: expecting-transfer`: The source script name to receive the namespace from. Must be
+     * in the same account and dispatch-namespace context. Present on
+     * reads for `expecting-transfer` entries.
      * 
      */
     private @Nullable String transferFrom;
     /**
-     * @return Destination script for a `state: transferred` tombstone. Must
-     * reference a script in the same account; cross-dispatch-namespace
-     * transfers are rejected. Write-only: never present in GET
-     * responses.
+     * @return For `state: transferred`: The destination script name. Must be in the same account and
+     * the same dispatch-namespace context (or both non-dispatch).
+     * Cross-dispatch-namespace transfers are rejected. Write-only:
+     * never present in GET responses.
      * 
      */
     private @Nullable String transferredTo;
     /**
-     * @return The kind of export.
-     * Available values: &#34;worker&#34;, &#34;durable-object&#34;.
+     * @return For `type: worker`: Marks this entry as a Worker entrypoint export.
      * 
      */
     private String type;
 
     private WorkerVersionExports() {}
     /**
-     * @return Cache override for this entrypoint. It applies only to
-     * `type: worker` entries and overrides the Worker&#39;s global
-     * `cache_options.enabled` for that entrypoint.
+     * @return For `type: worker`: Cache override for this entrypoint. Overrides the Worker&#39;s
+     * global `cache_options.enabled` for this entrypoint only.
      * 
      */
     public Optional<WorkerVersionExportsCache> cache() {
         return Optional.ofNullable(this.cache);
     }
     /**
-     * @return Destination class name for a `state: renamed` tombstone. The
-     * target must appear as a live (`created`) entry in the same
-     * `exports` map. Write-only: never present in GET responses.
+     * @return For `type: durable-object` and `state: created`: Name of the container (declared in the upload&#39;s
+     * `metadata.containers`) that backs this Durable Object. When
+     * set, the namespace is container-enabled. Valid only on live
+     * entries.
+     * 
+     * For `state: expecting-transfer`: Name of the container (declared in the upload&#39;s
+     * `metadata.containers`) that backs this Durable Object once the
+     * transfer settles. Valid only on live entries.
+     * 
+     */
+    public Optional<String> container() {
+        return Optional.ofNullable(this.container);
+    }
+    /**
+     * @return For `state: renamed`: The destination class name. Must differ from the source class
+     * (the map key) and must be declared as a live (`created`) entry
+     * in the same `exports` map. Write-only: never present in GET
+     * responses.
      * 
      */
     public Optional<String> renamedTo() {
         return Optional.ofNullable(this.renamedTo);
     }
     /**
-     * @return Lifecycle state of the export entry. Defaults to `created`
-     * (a normal, live export) when omitted.
+     * @return For `state: created`: Live export. May be omitted; defaults to `created`.
+     * 
+     * For `state: deleted`: Tombstone that deletes the namespace.
+     * 
+     * For `state: renamed`: Tombstone that renames the namespace&#39;s class.
+     * 
+     * For `state: transferred`: Tombstone that transfers the namespace to another script.
+     * 
+     * For `state: expecting-transfer`: Target side of a two-phase transfer.
+     * Available values: &#34;created&#34;, &#34;deleted&#34;, &#34;renamed&#34;, &#34;transferred&#34;, &#34;expecting-transfer&#34;.
      * 
      */
     public Optional<String> state() {
         return Optional.ofNullable(this.state);
     }
     /**
-     * @return Storage backend for a `type: durable-object` export. Required
-     * for live Durable Object entries (`created` and
-     * `expecting-transfer`). `sqlite` selects SQLite-backed storage;
-     * `legacy-kv` selects the legacy key-value storage.
+     * @return For `type: durable-object` and `state: created`: Durable Object storage backend. `sqlite` is the recommended (and
+     * only) backend for new namespaces. `legacy-kv` is accepted only for
+     * a class whose namespace already exists as KV-backed; the `exports`
+     * flow never provisions a new `legacy-kv` namespace.
+     * 
+     * For `type: durable-object` and `state: expecting-transfer`: Durable Object storage backend. `sqlite` is the recommended (and
+     * only) backend for new namespaces. `legacy-kv` is accepted only for
+     * a class whose namespace already exists as KV-backed; the `exports`
+     * flow never provisions a new `legacy-kv` namespace.
      * Available values: &#34;sqlite&#34;, &#34;legacy-kv&#34;.
      * 
      */
@@ -104,28 +154,26 @@ public final class WorkerVersionExports {
         return Optional.ofNullable(this.storage);
     }
     /**
-     * @return Source script for a `state: expecting-transfer` entry. The
-     * namespace on this script is materialised from the source
-     * script&#39;s data via the pending-transfer flow. Present on reads
-     * for `expecting-transfer` entries.
+     * @return For `state: expecting-transfer`: The source script name to receive the namespace from. Must be
+     * in the same account and dispatch-namespace context. Present on
+     * reads for `expecting-transfer` entries.
      * 
      */
     public Optional<String> transferFrom() {
         return Optional.ofNullable(this.transferFrom);
     }
     /**
-     * @return Destination script for a `state: transferred` tombstone. Must
-     * reference a script in the same account; cross-dispatch-namespace
-     * transfers are rejected. Write-only: never present in GET
-     * responses.
+     * @return For `state: transferred`: The destination script name. Must be in the same account and
+     * the same dispatch-namespace context (or both non-dispatch).
+     * Cross-dispatch-namespace transfers are rejected. Write-only:
+     * never present in GET responses.
      * 
      */
     public Optional<String> transferredTo() {
         return Optional.ofNullable(this.transferredTo);
     }
     /**
-     * @return The kind of export.
-     * Available values: &#34;worker&#34;, &#34;durable-object&#34;.
+     * @return For `type: worker`: Marks this entry as a Worker entrypoint export.
      * 
      */
     public String type() {
@@ -142,6 +190,7 @@ public final class WorkerVersionExports {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable WorkerVersionExportsCache cache;
+        private @Nullable String container;
         private @Nullable String renamedTo;
         private @Nullable String state;
         private @Nullable String storage;
@@ -152,6 +201,7 @@ public final class WorkerVersionExports {
         public Builder(WorkerVersionExports defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cache = defaults.cache;
+    	      this.container = defaults.container;
     	      this.renamedTo = defaults.renamedTo;
     	      this.state = defaults.state;
     	      this.storage = defaults.storage;
@@ -164,6 +214,12 @@ public final class WorkerVersionExports {
         public Builder cache(@Nullable WorkerVersionExportsCache cache) {
 
             this.cache = cache;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder container(@Nullable String container) {
+
+            this.container = container;
             return this;
         }
         @CustomType.Setter
@@ -207,6 +263,7 @@ public final class WorkerVersionExports {
         public WorkerVersionExports build() {
             final var _resultValue = new WorkerVersionExports();
             _resultValue.cache = cache;
+            _resultValue.container = container;
             _resultValue.renamedTo = renamedTo;
             _resultValue.state = state;
             _resultValue.storage = storage;

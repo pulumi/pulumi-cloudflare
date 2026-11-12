@@ -70,13 +70,13 @@ type LookupShareRecipientResult struct {
 	// target state set by the API; the background reconciliation workflow
 	// drives `currentAssociationStatus` toward it.
 	AssociationStatus string `pulumi:"associationStatus"`
-	// When the share was created.
+	// When the object was created.
 	Created string `pulumi:"created"`
 	// Share Recipient identifier tag.
 	Id string `pulumi:"id"`
 	// Include resources in the response.
 	IncludeResources *bool `pulumi:"includeResources"`
-	// When the share was modified.
+	// When the object was last modified.
 	Modified string `pulumi:"modified"`
 	// Share Recipient identifier tag.
 	RecipientId string                      `pulumi:"recipientId"`
@@ -134,7 +134,7 @@ func (o LookupShareRecipientResultOutput) AssociationStatus() pulumi.StringOutpu
 	return o.ApplyT(func(v LookupShareRecipientResult) string { return v.AssociationStatus }).(pulumi.StringOutput)
 }
 
-// When the share was created.
+// When the object was created.
 func (o LookupShareRecipientResultOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupShareRecipientResult) string { return v.Created }).(pulumi.StringOutput)
 }
@@ -149,7 +149,7 @@ func (o LookupShareRecipientResultOutput) IncludeResources() pulumi.BoolPtrOutpu
 	return o.ApplyT(func(v LookupShareRecipientResult) *bool { return v.IncludeResources }).(pulumi.BoolPtrOutput)
 }
 
-// When the share was modified.
+// When the object was last modified.
 func (o LookupShareRecipientResultOutput) Modified() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupShareRecipientResult) string { return v.Modified }).(pulumi.StringOutput)
 }

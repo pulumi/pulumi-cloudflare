@@ -19,6 +19,8 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string AccountId;
         /// <summary>
         /// R2 Bucket to write to
+        /// 
+        /// The R2 Bucket that hosts this catalog
         /// </summary>
         public readonly string Bucket;
         public readonly Outputs.PipelineSinkConfigCredentials? Credentials;

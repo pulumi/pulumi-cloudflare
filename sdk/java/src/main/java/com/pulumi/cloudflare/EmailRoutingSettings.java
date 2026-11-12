@@ -12,7 +12,6 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -150,18 +149,18 @@ public class EmailRoutingSettings extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+     * Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. When omitted, preserves the existing setting.
      * 
      */
     @Export(name="supportSubaddress", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> supportSubaddress;
+    private Output<Boolean> supportSubaddress;
 
     /**
-     * @return Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+     * @return Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. When omitted, preserves the existing setting.
      * 
      */
-    public Output<Optional<Boolean>> supportSubaddress() {
-        return Codegen.optional(this.supportSubaddress);
+    public Output<Boolean> supportSubaddress() {
+        return this.supportSubaddress;
     }
     /**
      * Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)

@@ -36,6 +36,9 @@ namespace Pulumi.Cloudflare
         [Input("id")]
         public string? Id { get; set; }
 
+        [Input("namespace")]
+        public string? Namespace { get; set; }
+
         public GetAiSearchInstanceArgs()
         {
         }
@@ -55,6 +58,9 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
+
+        [Input("namespace")]
+        public Input<string>? Namespace { get; set; }
 
         public GetAiSearchInstanceInvokeArgs()
         {
@@ -104,7 +110,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
+        /// Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances. When set, both vector and keyword are required.
         /// </summary>
         public readonly Outputs.GetAiSearchInstanceIndexMethodResult IndexMethod;
         public readonly Outputs.GetAiSearchInstanceIndexingOptionsResult IndexingOptions;
@@ -125,12 +131,15 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string RewriteModel;
         public readonly bool RewriteQuery;
+        /// <summary>
+        /// Minimum similarity score a chunk must reach to be returned. Defaults to 0.4.
+        /// </summary>
         public readonly double ScoreThreshold;
         public readonly string Source;
         public readonly Outputs.GetAiSearchInstanceSourceParamsResult SourceParams;
         public readonly string Status;
         /// <summary>
-        /// Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+        /// Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). Defaults to 86400 (24h).
         /// Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
         /// </summary>
         public readonly double SyncInterval;

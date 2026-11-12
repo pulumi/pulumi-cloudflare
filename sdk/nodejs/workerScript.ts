@@ -11,6 +11,12 @@ import * as utilities from "./utilities";
  *
  * - `Workers Scripts Read`
  * - `Workers Scripts Write`
+ * - `Individual Workers Admin`
+ * - `Individual Workers Content Read-Only`
+ * - `Individual Workers Editor`
+ * - `Workers Admin`
+ * - `Workers Content Read-Only`
+ * - `Workers Editor`
  * - `Workers Tail Read`
  *
  * > For more direct control over Workers resources, we recommend the beta `cloudflare.Worker`, `cloudflare.WorkerVersion`, and `cloudflare.WorkersDeployment` resources. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
@@ -51,6 +57,9 @@ import * as utilities from "./utilities";
  *     cacheOptions: {
  *         enabled: true,
  *         crossVersionCache: true,
+ *     },
+ *     codeUpdateStrategy: {
+ *         mode: "immediate",
  *     },
  *     compatibilityDate: "2021-01-01T00:00:00Z",
  *     compatibilityFlags: ["nodejs_compat"],
@@ -212,7 +221,7 @@ export class WorkerScript extends pulumi.CustomResource {
      */
     declare public readonly bindings: pulumi.Output<outputs.WorkerScriptBinding[]>;
     /**
-     * When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+     * When set to "strict", the upload will fail with error 10057 if any `inherit` type bindings cannot be resolved against the latest uploaded version of the Worker, which may not be the deployed version. Without this, unresolvable inherit bindings are silently dropped.
      * Available values: "strict".
      */
     declare public readonly bindingsInherit: pulumi.Output<string | undefined>;
@@ -227,6 +236,10 @@ export class WorkerScript extends pulumi.CustomResource {
      * value for a single entrypoint.
      */
     declare public readonly cacheOptions: pulumi.Output<outputs.WorkerScriptCacheOptions | undefined>;
+    /**
+     * Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+     */
+    declare public readonly codeUpdateStrategy: pulumi.Output<outputs.WorkerScriptCodeUpdateStrategy | undefined>;
     /**
      * Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
      */
@@ -385,6 +398,7 @@ export class WorkerScript extends pulumi.CustomResource {
             resourceInputs["bindingsInherit"] = state?.bindingsInherit;
             resourceInputs["bodyPart"] = state?.bodyPart;
             resourceInputs["cacheOptions"] = state?.cacheOptions;
+            resourceInputs["codeUpdateStrategy"] = state?.codeUpdateStrategy;
             resourceInputs["compatibilityDate"] = state?.compatibilityDate;
             resourceInputs["compatibilityFlags"] = state?.compatibilityFlags;
             resourceInputs["content"] = state?.content;
@@ -433,6 +447,7 @@ export class WorkerScript extends pulumi.CustomResource {
             resourceInputs["bindingsInherit"] = args?.bindingsInherit;
             resourceInputs["bodyPart"] = args?.bodyPart;
             resourceInputs["cacheOptions"] = args?.cacheOptions;
+            resourceInputs["codeUpdateStrategy"] = args?.codeUpdateStrategy;
             resourceInputs["compatibilityDate"] = args?.compatibilityDate;
             resourceInputs["compatibilityFlags"] = args?.compatibilityFlags;
             resourceInputs["content"] = args?.content;
@@ -495,7 +510,7 @@ export interface WorkerScriptState {
      */
     bindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptBinding>[] | undefined>;
     /**
-     * When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+     * When set to "strict", the upload will fail with error 10057 if any `inherit` type bindings cannot be resolved against the latest uploaded version of the Worker, which may not be the deployed version. Without this, unresolvable inherit bindings are silently dropped.
      * Available values: "strict".
      */
     bindingsInherit?: pulumi.Input<string | undefined>;
@@ -510,6 +525,10 @@ export interface WorkerScriptState {
      * value for a single entrypoint.
      */
     cacheOptions?: pulumi.Input<inputs.WorkerScriptCacheOptions | undefined>;
+    /**
+     * Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+     */
+    codeUpdateStrategy?: pulumi.Input<inputs.WorkerScriptCodeUpdateStrategy | undefined>;
     /**
      * Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
      */
@@ -667,7 +686,7 @@ export interface WorkerScriptArgs {
      */
     bindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptBinding>[] | undefined>;
     /**
-     * When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+     * When set to "strict", the upload will fail with error 10057 if any `inherit` type bindings cannot be resolved against the latest uploaded version of the Worker, which may not be the deployed version. Without this, unresolvable inherit bindings are silently dropped.
      * Available values: "strict".
      */
     bindingsInherit?: pulumi.Input<string | undefined>;
@@ -682,6 +701,10 @@ export interface WorkerScriptArgs {
      * value for a single entrypoint.
      */
     cacheOptions?: pulumi.Input<inputs.WorkerScriptCacheOptions | undefined>;
+    /**
+     * Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+     */
+    codeUpdateStrategy?: pulumi.Input<inputs.WorkerScriptCodeUpdateStrategy | undefined>;
     /**
      * Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
      */

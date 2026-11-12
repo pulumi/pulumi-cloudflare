@@ -29,7 +29,7 @@ public final class ZeroTrustDlpPredefinedEntryState extends com.pulumi.resources
     }
 
     /**
-     * Only applies to custom word lists.
+     * For `type: exactData`: Only applies to custom word lists.
      * Determines if the words should be matched in a case-sensitive manner
      * Cannot be set to false if secret is true
      * 
@@ -38,7 +38,7 @@ public final class ZeroTrustDlpPredefinedEntryState extends com.pulumi.resources
     private @Nullable Output<Boolean> caseSensitive;
 
     /**
-     * @return Only applies to custom word lists.
+     * @return For `type: exactData`: Only applies to custom word lists.
      * Determines if the words should be matched in a case-sensitive manner
      * Cannot be set to false if secret is true
      * 
@@ -62,7 +62,7 @@ public final class ZeroTrustDlpPredefinedEntryState extends com.pulumi.resources
     }
 
     /**
-     * Whether this entry is deprecated for new use. This is computed from the static catalog and
+     * For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
      * emitted only when true.
      * 
      */
@@ -70,7 +70,7 @@ public final class ZeroTrustDlpPredefinedEntryState extends com.pulumi.resources
     private @Nullable Output<Boolean> deprecated;
 
     /**
-     * @return Whether this entry is deprecated for new use. This is computed from the static catalog and
+     * @return For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
      * emitted only when true.
      * 
      */
@@ -78,9 +78,17 @@ public final class ZeroTrustDlpPredefinedEntryState extends com.pulumi.resources
         return Optional.ofNullable(this.deprecated);
     }
 
+    /**
+     * For `type: customPromptTopic`: The optional description of the custom prompt topic entry.
+     * 
+     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
+    /**
+     * @return For `type: customPromptTopic`: The optional description of the custom prompt topic entry.
+     * 
+     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
@@ -145,14 +153,14 @@ public final class ZeroTrustDlpPredefinedEntryState extends com.pulumi.resources
     }
 
     /**
-     * Available values: &#34;custom&#34;, &#34;custom*prompt*topic&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;, &#34;wordList&#34;.
+     * Available values: &#34;custom&#34;, &#34;customPromptTopic&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exactData&#34;, &#34;documentFingerprint&#34;, &#34;wordList&#34;.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Available values: &#34;custom&#34;, &#34;custom*prompt*topic&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;, &#34;wordList&#34;.
+     * @return Available values: &#34;custom&#34;, &#34;customPromptTopic&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exactData&#34;, &#34;documentFingerprint&#34;, &#34;wordList&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -182,14 +190,37 @@ public final class ZeroTrustDlpPredefinedEntryState extends com.pulumi.resources
     }
 
     /**
-     * A Predefined AI prompt classification topic entry.
+     * For `type: custom`: Validators this entry references, by id, at most 10. An empty list means the entry
+     * references none.
+     * 
+     * Returned by the entry endpoints. Not returned on entries embedded in other responses, such
+     * as profiles.
+     * 
+     */
+    @Import(name="validatorIds")
+    private @Nullable Output<List<String>> validatorIds;
+
+    /**
+     * @return For `type: custom`: Validators this entry references, by id, at most 10. An empty list means the entry
+     * references none.
+     * 
+     * Returned by the entry endpoints. Not returned on entries embedded in other responses, such
+     * as profiles.
+     * 
+     */
+    public Optional<Output<List<String>>> validatorIds() {
+        return Optional.ofNullable(this.validatorIds);
+    }
+
+    /**
+     * For `type: predefined`: A Predefined AI prompt classification topic entry.
      * 
      */
     @Import(name="variant")
     private @Nullable Output<ZeroTrustDlpPredefinedEntryVariantArgs> variant;
 
     /**
-     * @return A Predefined AI prompt classification topic entry.
+     * @return For `type: predefined`: A Predefined AI prompt classification topic entry.
      * 
      */
     public Optional<Output<ZeroTrustDlpPredefinedEntryVariantArgs>> variant() {
@@ -222,6 +253,7 @@ public final class ZeroTrustDlpPredefinedEntryState extends com.pulumi.resources
         this.type = $.type;
         this.updatedAt = $.updatedAt;
         this.uploadStatus = $.uploadStatus;
+        this.validatorIds = $.validatorIds;
         this.variant = $.variant;
         this.wordLists = $.wordLists;
     }
@@ -254,7 +286,7 @@ public final class ZeroTrustDlpPredefinedEntryState extends com.pulumi.resources
         }
 
         /**
-         * @param caseSensitive Only applies to custom word lists.
+         * @param caseSensitive For `type: exactData`: Only applies to custom word lists.
          * Determines if the words should be matched in a case-sensitive manner
          * Cannot be set to false if secret is true
          * 
@@ -267,7 +299,7 @@ public final class ZeroTrustDlpPredefinedEntryState extends com.pulumi.resources
         }
 
         /**
-         * @param caseSensitive Only applies to custom word lists.
+         * @param caseSensitive For `type: exactData`: Only applies to custom word lists.
          * Determines if the words should be matched in a case-sensitive manner
          * Cannot be set to false if secret is true
          * 
@@ -297,7 +329,7 @@ public final class ZeroTrustDlpPredefinedEntryState extends com.pulumi.resources
         }
 
         /**
-         * @param deprecated Whether this entry is deprecated for new use. This is computed from the static catalog and
+         * @param deprecated For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
          * emitted only when true.
          * 
          * @return builder
@@ -309,7 +341,7 @@ public final class ZeroTrustDlpPredefinedEntryState extends com.pulumi.resources
         }
 
         /**
-         * @param deprecated Whether this entry is deprecated for new use. This is computed from the static catalog and
+         * @param deprecated For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
          * emitted only when true.
          * 
          * @return builder
@@ -319,11 +351,23 @@ public final class ZeroTrustDlpPredefinedEntryState extends com.pulumi.resources
             return deprecated(Output.of(deprecated));
         }
 
+        /**
+         * @param description For `type: customPromptTopic`: The optional description of the custom prompt topic entry.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
+        /**
+         * @param description For `type: customPromptTopic`: The optional description of the custom prompt topic entry.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
@@ -410,7 +454,7 @@ public final class ZeroTrustDlpPredefinedEntryState extends com.pulumi.resources
         }
 
         /**
-         * @param type Available values: &#34;custom&#34;, &#34;custom*prompt*topic&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;, &#34;wordList&#34;.
+         * @param type Available values: &#34;custom&#34;, &#34;customPromptTopic&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exactData&#34;, &#34;documentFingerprint&#34;, &#34;wordList&#34;.
          * 
          * @return builder
          * 
@@ -421,7 +465,7 @@ public final class ZeroTrustDlpPredefinedEntryState extends com.pulumi.resources
         }
 
         /**
-         * @param type Available values: &#34;custom&#34;, &#34;custom*prompt*topic&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;, &#34;wordList&#34;.
+         * @param type Available values: &#34;custom&#34;, &#34;customPromptTopic&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exactData&#34;, &#34;documentFingerprint&#34;, &#34;wordList&#34;.
          * 
          * @return builder
          * 
@@ -461,7 +505,50 @@ public final class ZeroTrustDlpPredefinedEntryState extends com.pulumi.resources
         }
 
         /**
-         * @param variant A Predefined AI prompt classification topic entry.
+         * @param validatorIds For `type: custom`: Validators this entry references, by id, at most 10. An empty list means the entry
+         * references none.
+         * 
+         * Returned by the entry endpoints. Not returned on entries embedded in other responses, such
+         * as profiles.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder validatorIds(@Nullable Output<List<String>> validatorIds) {
+            $.validatorIds = validatorIds;
+            return this;
+        }
+
+        /**
+         * @param validatorIds For `type: custom`: Validators this entry references, by id, at most 10. An empty list means the entry
+         * references none.
+         * 
+         * Returned by the entry endpoints. Not returned on entries embedded in other responses, such
+         * as profiles.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder validatorIds(List<String> validatorIds) {
+            return validatorIds(Output.of(validatorIds));
+        }
+
+        /**
+         * @param validatorIds For `type: custom`: Validators this entry references, by id, at most 10. An empty list means the entry
+         * references none.
+         * 
+         * Returned by the entry endpoints. Not returned on entries embedded in other responses, such
+         * as profiles.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder validatorIds(String... validatorIds) {
+            return validatorIds(List.of(validatorIds));
+        }
+
+        /**
+         * @param variant For `type: predefined`: A Predefined AI prompt classification topic entry.
          * 
          * @return builder
          * 
@@ -472,7 +559,7 @@ public final class ZeroTrustDlpPredefinedEntryState extends com.pulumi.resources
         }
 
         /**
-         * @param variant A Predefined AI prompt classification topic entry.
+         * @param variant For `type: predefined`: A Predefined AI prompt classification topic entry.
          * 
          * @return builder
          * 

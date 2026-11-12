@@ -13,6 +13,12 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class GetWorkersCustomDomainFilterArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// Whether the configured hostname is routable for the domain.
+        /// </summary>
+        [Input("enabled")]
+        public bool? Enabled { get; set; }
+
+        /// <summary>
         /// Worker environment associated with the domain.
         /// </summary>
         [Input("environment")]
@@ -23,6 +29,12 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("hostname")]
         public string? Hostname { get; set; }
+
+        /// <summary>
+        /// Whether previews are routable for the domain.
+        /// </summary>
+        [Input("previewsEnabled")]
+        public bool? PreviewsEnabled { get; set; }
 
         /// <summary>
         /// Name of the Worker associated with the domain.

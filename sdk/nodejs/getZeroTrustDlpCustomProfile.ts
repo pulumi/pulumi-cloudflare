@@ -47,7 +47,7 @@ export interface GetZeroTrustDlpCustomProfileResult {
     readonly accountId?: string;
     readonly aiContextEnabled: boolean;
     /**
-     * Related DLP policies will trigger when the match count exceeds the number set.
+     * For `type: custom`: Related DLP policies will trigger when the match count exceeds the number set.
      */
     readonly allowedMatchCount: number;
     /**
@@ -55,25 +55,25 @@ export interface GetZeroTrustDlpCustomProfileResult {
      */
     readonly confidenceThreshold: string;
     /**
-     * Scan the context of predefined entries to only return matches surrounded by keywords.
+     * For `type: custom`: Scan the context of predefined entries to only return matches surrounded by keywords.
      *
      * @deprecated This attribute is deprecated.
      */
     readonly contextAwareness: outputs.GetZeroTrustDlpCustomProfileContextAwareness;
     /**
-     * When the profile was created.
+     * For `type: custom`: When the profile was created.
      */
     readonly createdAt: string;
     /**
-     * Data classes associated with this profile.
+     * For `type: custom`: Data classes associated with this profile.
      */
     readonly dataClasses: string[];
     /**
-     * Data tags associated with this profile.
+     * For `type: custom`: Data tags associated with this profile.
      */
     readonly dataTags: string[];
     /**
-     * The description of the profile.
+     * For `type: custom` or `type: integration`: The description of the profile.
      */
     readonly description: string;
     /**
@@ -86,27 +86,15 @@ export interface GetZeroTrustDlpCustomProfileResult {
     readonly id: string;
     readonly integrationId: string;
     /**
-     * The name of the profile.
+     * For `type: custom`: The name of the profile.
      */
     readonly name: string;
     readonly ocrEnabled: boolean;
-    /**
-     * Whether this profile can be accessed by anyone.
-     */
     readonly openAccess: boolean;
     readonly profileId: string;
-    /**
-     * Sensitivity levels associated with this profile.
-     */
     readonly sensitivityLevels: outputs.GetZeroTrustDlpCustomProfileSensitivityLevel[];
     readonly sharedEntries: outputs.GetZeroTrustDlpCustomProfileSharedEntry[];
-    /**
-     * Available values: "custom", "predefined", "integration".
-     */
     readonly type: string;
-    /**
-     * When the profile was lasted updated.
-     */
     readonly updatedAt: string;
 }
 /**

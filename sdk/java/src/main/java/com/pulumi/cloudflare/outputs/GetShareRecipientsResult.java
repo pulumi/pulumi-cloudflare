@@ -26,7 +26,7 @@ public final class GetShareRecipientsResult {
      */
     private String associationStatus;
     /**
-     * @return When the share was created.
+     * @return When the object was created.
      * 
      */
     private String created;
@@ -36,7 +36,7 @@ public final class GetShareRecipientsResult {
      */
     private String id;
     /**
-     * @return When the share was modified.
+     * @return When the object was last modified.
      * 
      */
     private String modified;
@@ -61,7 +61,7 @@ public final class GetShareRecipientsResult {
         return this.associationStatus;
     }
     /**
-     * @return When the share was created.
+     * @return When the object was created.
      * 
      */
     public String created() {
@@ -75,7 +75,7 @@ public final class GetShareRecipientsResult {
         return this.id;
     }
     /**
-     * @return When the share was modified.
+     * @return When the object was last modified.
      * 
      */
     public String modified() {

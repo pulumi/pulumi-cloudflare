@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetAiSearchNamespacesResultPublicEndpointParamsChatCompletionsEndpointResult
     {
         /// <summary>
-        /// Disable chat completions endpoint for this public endpoint
+        /// Disable chat completions endpoint for this public endpoint.
         /// </summary>
         public readonly bool Disabled;
 

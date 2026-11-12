@@ -22,6 +22,10 @@ import javax.annotation.Nullable;
  * 
  * - `User Details Write`
  * 
+ * User API tokens can list and create Organizations, but reading, updating, or deleting an Organization requires a Global API key and your registered email address. The `cloudflare.Organization` Terraform resource therefore requires a Global API key for its full lifecycle.
+ * 
+ * See [Organizations authentication limitations](https://developers.cloudflare.com/fundamentals/organizations/limitations/#api-authentication) for credential compatibility by operation. Each endpoint’s **Security** section lists its supported authentication methods, with **Accepted Permissions** where applicable.
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -49,7 +53,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleOrganization = new Organization("exampleOrganization", OrganizationArgs.builder()
- *             .name("name")
+ *             .name("x")
  *             .parent(OrganizationParentArgs.builder()
  *                 .id("a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8")
  *                 .build())
@@ -88,21 +92,51 @@ public class Organization extends com.pulumi.resources.CustomResource {
     public Output<OrganizationMeta> meta() {
         return this.meta;
     }
+    /**
+     * The Organization name, limited to 65 UTF-8 bytes.
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return The Organization name, limited to 65 UTF-8 bytes.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
     @Export(name="parent", refs={OrganizationParent.class}, tree="[0]")
-    private Output<OrganizationParent> parent;
+    private Output</* @Nullable */ OrganizationParent> parent;
 
-    public Output<OrganizationParent> parent() {
-        return this.parent;
+    public Output<Optional<OrganizationParent>> parent() {
+        return Codegen.optional(this.parent);
     }
+    /**
+     * The current parent Organization ID. A different value is rejected; this endpoint cannot move an Organization.
+     * 
+     */
+    @Export(name="parentId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> parentId;
+
+    /**
+     * @return The current parent Organization ID. A different value is rejected; this endpoint cannot move an Organization.
+     * 
+     */
+    public Output<Optional<String>> parentId() {
+        return Codegen.optional(this.parentId);
+    }
+    /**
+     * Optional profile fields, each limited to 1,000 UTF-8 bytes. An empty profile is ignored.
+     * 
+     */
     @Export(name="profile", refs={OrganizationProfile.class}, tree="[0]")
     private Output</* @Nullable */ OrganizationProfile> profile;
 
+    /**
+     * @return Optional profile fields, each limited to 1,000 UTF-8 bytes. An empty profile is ignored.
+     * 
+     */
     public Output<Optional<OrganizationProfile>> profile() {
         return Codegen.optional(this.profile);
     }

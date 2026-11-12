@@ -9,6 +9,12 @@ import * as utilities from "./utilities";
 /**
  * Accepted Permissions
  *
+ * - `Individual Workers Admin`
+ * - `Individual Workers Content Read-Only`
+ * - `Individual Workers Editor`
+ * - `Workers Admin`
+ * - `Workers Content Read-Only`
+ * - `Workers Editor`
  * - `Workers Scripts Read`
  * - `Workers Scripts Write`
  * - `Workers Tail Read`
@@ -195,7 +201,9 @@ export class WorkerVersion extends pulumi.CustomResource {
      */
     declare public readonly compatibilityDate: pulumi.Output<string | undefined>;
     /**
-     * Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
+     * Enables or disables specific Workers runtime features, such as upcoming features or changes outside the `compatibilityDate`.
+     *
+     * Responses list only the flags this version sets explicitly and exclude behavior that `compatibilityDate` enables. Responses omit the field when the list is empty, so a missing field means the version sets zero flags.
      */
     declare public readonly compatibilityFlags: pulumi.Output<string[]>;
     /**
@@ -224,8 +232,8 @@ export class WorkerVersion extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly exportsReconciliation: pulumi.Output<outputs.WorkerVersionExportsReconciliation>;
     /**
-     * Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
-     * Available values: "modules".
+     * Optional properties to include in the response. `modules` includes the `modules` property, which contains code and may add several megabytes to the response size. `modules,sourcemaps` also includes the version's source maps in `modules`.
+     * Available values: "modules", "modules,sourcemaps".
      */
     declare public readonly include: pulumi.Output<string | undefined>;
     /**
@@ -250,6 +258,10 @@ export class WorkerVersion extends pulumi.CustomResource {
     declare public readonly migrations: pulumi.Output<outputs.WorkerVersionMigrations | undefined>;
     /**
      * Code, sourcemaps, and other content used at runtime.
+     *
+     * Source maps use content type `application/source-map`. Responses include them only when requested with
+     * `include=modules,sourcemaps`. Workers stores the source map fields used to remap stack traces, so a returned
+     * source map is equivalent to the uploaded file but not byte-identical.
      *
      * This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
      * [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
@@ -419,7 +431,9 @@ export interface WorkerVersionState {
      */
     compatibilityDate?: pulumi.Input<string | undefined>;
     /**
-     * Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
+     * Enables or disables specific Workers runtime features, such as upcoming features or changes outside the `compatibilityDate`.
+     *
+     * Responses list only the flags this version sets explicitly and exclude behavior that `compatibilityDate` enables. Responses omit the field when the list is empty, so a missing field means the version sets zero flags.
      */
     compatibilityFlags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -448,8 +462,8 @@ export interface WorkerVersionState {
      */
     exportsReconciliation?: pulumi.Input<inputs.WorkerVersionExportsReconciliation | undefined>;
     /**
-     * Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
-     * Available values: "modules".
+     * Optional properties to include in the response. `modules` includes the `modules` property, which contains code and may add several megabytes to the response size. `modules,sourcemaps` also includes the version's source maps in `modules`.
+     * Available values: "modules", "modules,sourcemaps".
      */
     include?: pulumi.Input<string | undefined>;
     /**
@@ -474,6 +488,10 @@ export interface WorkerVersionState {
     migrations?: pulumi.Input<inputs.WorkerVersionMigrations | undefined>;
     /**
      * Code, sourcemaps, and other content used at runtime.
+     *
+     * Source maps use content type `application/source-map`. Responses include them only when requested with
+     * `include=modules,sourcemaps`. Workers stores the source map fields used to remap stack traces, so a returned
+     * source map is equivalent to the uploaded file but not byte-identical.
      *
      * This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
      * [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
@@ -551,7 +569,9 @@ export interface WorkerVersionArgs {
      */
     compatibilityDate?: pulumi.Input<string | undefined>;
     /**
-     * Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
+     * Enables or disables specific Workers runtime features, such as upcoming features or changes outside the `compatibilityDate`.
+     *
+     * Responses list only the flags this version sets explicitly and exclude behavior that `compatibilityDate` enables. Responses omit the field when the list is empty, so a missing field means the version sets zero flags.
      */
     compatibilityFlags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -572,8 +592,8 @@ export interface WorkerVersionArgs {
      */
     exports?: pulumi.Input<{[key: string]: pulumi.Input<inputs.WorkerVersionExports>} | undefined>;
     /**
-     * Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
-     * Available values: "modules".
+     * Optional properties to include in the response. `modules` includes the `modules` property, which contains code and may add several megabytes to the response size. `modules,sourcemaps` also includes the version's source maps in `modules`.
+     * Available values: "modules", "modules,sourcemaps".
      */
     include?: pulumi.Input<string | undefined>;
     /**
@@ -590,6 +610,10 @@ export interface WorkerVersionArgs {
     migrations?: pulumi.Input<inputs.WorkerVersionMigrations | undefined>;
     /**
      * Code, sourcemaps, and other content used at runtime.
+     *
+     * Source maps use content type `application/source-map`. Responses include them only when requested with
+     * `include=modules,sourcemaps`. Workers stores the source map fields used to remap stack traces, so a returned
+     * source map is equivalent to the uploaded file but not byte-identical.
      *
      * This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
      * [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure

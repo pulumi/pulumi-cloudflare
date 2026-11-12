@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetLoadBalancerRuleOverridesRandomSteeringResult
     {
         /// <summary>
-        /// The default weight for pools in the load balancer that are not specified in the PoolWeights map.
+        /// The default weight for pools in the load balancer that are not specified in the PoolWeights map. An omitted value inherits the load balancer's default weight.
         /// </summary>
         public readonly double DefaultWeight;
         /// <summary>

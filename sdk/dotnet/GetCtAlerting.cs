@@ -127,7 +127,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetCtAlertingResult
     {
         /// <summary>
-        /// Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma.
+        /// Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. Omitted from responses when no addresses are configured.
         /// </summary>
         public readonly ImmutableArray<string> Emails;
         /// <summary>

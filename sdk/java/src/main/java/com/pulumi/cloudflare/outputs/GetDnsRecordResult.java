@@ -34,15 +34,7 @@ public final class GetDnsRecordResult {
      * 
      */
     private String content;
-    /**
-     * @return When the record was created.
-     * 
-     */
     private String createdOn;
-    /**
-     * @return Components of a MX record.
-     * 
-     */
     private GetDnsRecordData data;
     /**
      * @return Identifier.
@@ -50,76 +42,23 @@ public final class GetDnsRecordResult {
      */
     private @Nullable String dnsRecordId;
     private @Nullable GetDnsRecordFilter filter;
-    /**
-     * @return Identifier.
-     * 
-     */
     private String id;
     /**
      * @return Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
      * 
      */
     private Boolean includeShadowMetadata;
-    /**
-     * @return Extra Cloudflare-specific metadata about the record.
-     * 
-     */
     private GetDnsRecordMeta meta;
-    /**
-     * @return When the record was last modified.
-     * 
-     */
     private String modifiedOn;
-    /**
-     * @return Complete DNS record name, including the zone name, in Punycode.
-     * 
-     */
     private String name;
-    /**
-     * @return Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
-     * 
-     */
     private Double priority;
-    /**
-     * @return Enables private network routing to the origin.
-     * 
-     */
     private Boolean privateRouting;
-    /**
-     * @return Whether the record can be proxied by Cloudflare or not.
-     * 
-     */
     private Boolean proxiable;
-    /**
-     * @return Whether the record is receiving the performance and security benefits of Cloudflare.
-     * 
-     */
     private Boolean proxied;
-    /**
-     * @return Settings for the DNS record.
-     * 
-     */
     private GetDnsRecordSettings settings;
-    /**
-     * @return Custom tags for the DNS record. This field has no effect on DNS responses.
-     * 
-     */
     private List<String> tags;
-    /**
-     * @return When the record tags were last modified. Omitted if there are no tags.
-     * 
-     */
     private String tagsModifiedOn;
-    /**
-     * @return Time To Live (TTL) of the DNS record in seconds. Setting to 1 means &#39;automatic&#39;. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
-     * 
-     */
     private Double ttl;
-    /**
-     * @return Record type.
-     * Available values: &#34;A&#34;, &#34;AAAA&#34;, &#34;CNAME&#34;, &#34;MX&#34;, &#34;NS&#34;, &#34;OPENPGPKEY&#34;, &#34;PTR&#34;, &#34;TXT&#34;, &#34;CAA&#34;, &#34;CERT&#34;, &#34;DNSKEY&#34;, &#34;DS&#34;, &#34;HTTPS&#34;, &#34;LOC&#34;, &#34;NAPTR&#34;, &#34;SMIMEA&#34;, &#34;SRV&#34;, &#34;SSHFP&#34;, &#34;SVCB&#34;, &#34;TLSA&#34;, &#34;URI&#34;.
-     * 
-     */
     private String type;
     /**
      * @return Identifier.
@@ -149,17 +88,9 @@ public final class GetDnsRecordResult {
     public String content() {
         return this.content;
     }
-    /**
-     * @return When the record was created.
-     * 
-     */
     public String createdOn() {
         return this.createdOn;
     }
-    /**
-     * @return Components of a MX record.
-     * 
-     */
     public GetDnsRecordData data() {
         return this.data;
     }
@@ -173,10 +104,6 @@ public final class GetDnsRecordResult {
     public Optional<GetDnsRecordFilter> filter() {
         return Optional.ofNullable(this.filter);
     }
-    /**
-     * @return Identifier.
-     * 
-     */
     public String id() {
         return this.id;
     }
@@ -187,88 +114,39 @@ public final class GetDnsRecordResult {
     public Boolean includeShadowMetadata() {
         return this.includeShadowMetadata;
     }
-    /**
-     * @return Extra Cloudflare-specific metadata about the record.
-     * 
-     */
     public GetDnsRecordMeta meta() {
         return this.meta;
     }
-    /**
-     * @return When the record was last modified.
-     * 
-     */
     public String modifiedOn() {
         return this.modifiedOn;
     }
-    /**
-     * @return Complete DNS record name, including the zone name, in Punycode.
-     * 
-     */
     public String name() {
         return this.name;
     }
-    /**
-     * @return Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
-     * 
-     */
     public Double priority() {
         return this.priority;
     }
-    /**
-     * @return Enables private network routing to the origin.
-     * 
-     */
     public Boolean privateRouting() {
         return this.privateRouting;
     }
-    /**
-     * @return Whether the record can be proxied by Cloudflare or not.
-     * 
-     */
     public Boolean proxiable() {
         return this.proxiable;
     }
-    /**
-     * @return Whether the record is receiving the performance and security benefits of Cloudflare.
-     * 
-     */
     public Boolean proxied() {
         return this.proxied;
     }
-    /**
-     * @return Settings for the DNS record.
-     * 
-     */
     public GetDnsRecordSettings settings() {
         return this.settings;
     }
-    /**
-     * @return Custom tags for the DNS record. This field has no effect on DNS responses.
-     * 
-     */
     public List<String> tags() {
         return this.tags;
     }
-    /**
-     * @return When the record tags were last modified. Omitted if there are no tags.
-     * 
-     */
     public String tagsModifiedOn() {
         return this.tagsModifiedOn;
     }
-    /**
-     * @return Time To Live (TTL) of the DNS record in seconds. Setting to 1 means &#39;automatic&#39;. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
-     * 
-     */
     public Double ttl() {
         return this.ttl;
     }
-    /**
-     * @return Record type.
-     * Available values: &#34;A&#34;, &#34;AAAA&#34;, &#34;CNAME&#34;, &#34;MX&#34;, &#34;NS&#34;, &#34;OPENPGPKEY&#34;, &#34;PTR&#34;, &#34;TXT&#34;, &#34;CAA&#34;, &#34;CERT&#34;, &#34;DNSKEY&#34;, &#34;DS&#34;, &#34;HTTPS&#34;, &#34;LOC&#34;, &#34;NAPTR&#34;, &#34;SMIMEA&#34;, &#34;SRV&#34;, &#34;SSHFP&#34;, &#34;SVCB&#34;, &#34;TLSA&#34;, &#34;URI&#34;.
-     * 
-     */
     public String type() {
         return this.type;
     }

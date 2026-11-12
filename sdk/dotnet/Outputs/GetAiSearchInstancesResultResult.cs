@@ -14,9 +14,6 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetAiSearchInstancesResultResult
     {
         public readonly string AiGatewayId;
-        /// <summary>
-        /// Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
-        /// </summary>
         public readonly string AisearchModel;
         public readonly bool Cache;
         /// <summary>
@@ -24,18 +21,15 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string CacheThreshold;
         /// <summary>
-        /// Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
         /// Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
         /// </summary>
         public readonly double CacheTtl;
-        public readonly int ChunkOverlap;
-        public readonly int ChunkSize;
+        public readonly bool Chunk;
+        public readonly double ChunkOverlap;
+        public readonly double ChunkSize;
         public readonly string CreatedAt;
         public readonly string CreatedBy;
         public readonly ImmutableArray<Outputs.GetAiSearchInstancesResultCustomMetadataResult> CustomMetadatas;
-        /// <summary>
-        /// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "google-ai-studio/gemini-embedding-2", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
-        /// </summary>
         public readonly string EmbeddingModel;
         public readonly bool Enable;
         public readonly double EngineVersion;
@@ -43,21 +37,12 @@ namespace Pulumi.Cloudflare.Outputs
         /// Available values: "max", "rrf".
         /// </summary>
         public readonly string FusionMethod;
-        /// <summary>
-        /// Deprecated — use IndexMethod instead.
-        /// </summary>
         public readonly bool HybridSearchEnabled;
-        /// <summary>
-        /// AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
-        /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Controls which storage backends are used during indexing. Defaults to vector-only.
-        /// </summary>
         public readonly Outputs.GetAiSearchInstancesResultIndexMethodResult IndexMethod;
         public readonly Outputs.GetAiSearchInstancesResultIndexingOptionsResult IndexingOptions;
         public readonly string LastActivity;
-        public readonly int MaxNumResults;
+        public readonly double MaxNumResults;
         public readonly Outputs.GetAiSearchInstancesResultMetadataResult Metadata;
         public readonly string ModifiedAt;
         public readonly string ModifiedBy;
@@ -66,25 +51,23 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string PublicEndpointId;
         public readonly Outputs.GetAiSearchInstancesResultPublicEndpointParamsResult PublicEndpointParams;
         public readonly bool Reranking;
-        /// <summary>
-        /// Available values: "@cf/baai/bge-reranker-base", "".
-        /// </summary>
         public readonly string RerankingModel;
         public readonly Outputs.GetAiSearchInstancesResultRetrievalOptionsResult RetrievalOptions;
-        /// <summary>
-        /// Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
-        /// </summary>
         public readonly string RewriteModel;
         public readonly bool RewriteQuery;
         public readonly double ScoreThreshold;
         public readonly string Source;
         public readonly Outputs.GetAiSearchInstancesResultSourceParamsResult SourceParams;
         public readonly string Status;
+        public readonly bool Summarization;
+        public readonly string SummarizationModel;
         /// <summary>
-        /// Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
         /// Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
         /// </summary>
         public readonly double SyncInterval;
+        public readonly string SystemPromptAisearch;
+        public readonly string SystemPromptIndexSummarization;
+        public readonly string SystemPromptRewriteQuery;
         public readonly string TokenId;
         /// <summary>
         /// Available values: "r2", "web-crawler".
@@ -103,9 +86,11 @@ namespace Pulumi.Cloudflare.Outputs
 
             double cacheTtl,
 
-            int chunkOverlap,
+            bool chunk,
 
-            int chunkSize,
+            double chunkOverlap,
+
+            double chunkSize,
 
             string createdAt,
 
@@ -131,7 +116,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             string lastActivity,
 
-            int maxNumResults,
+            double maxNumResults,
 
             Outputs.GetAiSearchInstancesResultMetadataResult metadata,
 
@@ -165,7 +150,17 @@ namespace Pulumi.Cloudflare.Outputs
 
             string status,
 
+            bool summarization,
+
+            string summarizationModel,
+
             double syncInterval,
+
+            string systemPromptAisearch,
+
+            string systemPromptIndexSummarization,
+
+            string systemPromptRewriteQuery,
 
             string tokenId,
 
@@ -176,6 +171,7 @@ namespace Pulumi.Cloudflare.Outputs
             Cache = cache;
             CacheThreshold = cacheThreshold;
             CacheTtl = cacheTtl;
+            Chunk = chunk;
             ChunkOverlap = chunkOverlap;
             ChunkSize = chunkSize;
             CreatedAt = createdAt;
@@ -207,7 +203,12 @@ namespace Pulumi.Cloudflare.Outputs
             Source = source;
             SourceParams = sourceParams;
             Status = status;
+            Summarization = summarization;
+            SummarizationModel = summarizationModel;
             SyncInterval = syncInterval;
+            SystemPromptAisearch = systemPromptAisearch;
+            SystemPromptIndexSummarization = systemPromptIndexSummarization;
+            SystemPromptRewriteQuery = systemPromptRewriteQuery;
             TokenId = tokenId;
             Type = type;
         }

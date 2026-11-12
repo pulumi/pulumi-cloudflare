@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class PipelineSinkFormatArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies the compression applied to JSON sink output.
+        /// For `type: json`: Specifies the compression applied to JSON sink output.
         /// Available values: "uncompressed", "gzip", "snappy", "zstd", "lz4".
         /// </summary>
         [Input("compression")]

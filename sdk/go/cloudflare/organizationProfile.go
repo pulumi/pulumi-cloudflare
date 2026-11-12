@@ -49,12 +49,12 @@ import (
 type OrganizationProfile struct {
 	pulumi.CustomResourceState
 
-	BusinessAddress  pulumi.StringOutput `pulumi:"businessAddress"`
-	BusinessEmail    pulumi.StringOutput `pulumi:"businessEmail"`
-	BusinessName     pulumi.StringOutput `pulumi:"businessName"`
-	BusinessPhone    pulumi.StringOutput `pulumi:"businessPhone"`
-	ExternalMetadata pulumi.StringOutput `pulumi:"externalMetadata"`
-	OrganizationId   pulumi.StringOutput `pulumi:"organizationId"`
+	BusinessAddress  pulumi.StringPtrOutput `pulumi:"businessAddress"`
+	BusinessEmail    pulumi.StringPtrOutput `pulumi:"businessEmail"`
+	BusinessName     pulumi.StringPtrOutput `pulumi:"businessName"`
+	BusinessPhone    pulumi.StringPtrOutput `pulumi:"businessPhone"`
+	ExternalMetadata pulumi.StringPtrOutput `pulumi:"externalMetadata"`
+	OrganizationId   pulumi.StringOutput    `pulumi:"organizationId"`
 }
 
 // NewOrganizationProfile registers a new resource with the given unique name, arguments, and options.
@@ -64,21 +64,6 @@ func NewOrganizationProfile(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.BusinessAddress == nil {
-		return nil, errors.New("invalid value for required argument 'BusinessAddress'")
-	}
-	if args.BusinessEmail == nil {
-		return nil, errors.New("invalid value for required argument 'BusinessEmail'")
-	}
-	if args.BusinessName == nil {
-		return nil, errors.New("invalid value for required argument 'BusinessName'")
-	}
-	if args.BusinessPhone == nil {
-		return nil, errors.New("invalid value for required argument 'BusinessPhone'")
-	}
-	if args.ExternalMetadata == nil {
-		return nil, errors.New("invalid value for required argument 'ExternalMetadata'")
-	}
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
@@ -133,21 +118,21 @@ func OrganizationProfileExists(ctx *pulumi.Context,
 }
 
 type organizationProfileArgs struct {
-	BusinessAddress  string `pulumi:"businessAddress"`
-	BusinessEmail    string `pulumi:"businessEmail"`
-	BusinessName     string `pulumi:"businessName"`
-	BusinessPhone    string `pulumi:"businessPhone"`
-	ExternalMetadata string `pulumi:"externalMetadata"`
-	OrganizationId   string `pulumi:"organizationId"`
+	BusinessAddress  *string `pulumi:"businessAddress"`
+	BusinessEmail    *string `pulumi:"businessEmail"`
+	BusinessName     *string `pulumi:"businessName"`
+	BusinessPhone    *string `pulumi:"businessPhone"`
+	ExternalMetadata *string `pulumi:"externalMetadata"`
+	OrganizationId   string  `pulumi:"organizationId"`
 }
 
 // The set of arguments for constructing a OrganizationProfile resource.
 type OrganizationProfileArgs struct {
-	BusinessAddress  pulumi.StringInput
-	BusinessEmail    pulumi.StringInput
-	BusinessName     pulumi.StringInput
-	BusinessPhone    pulumi.StringInput
-	ExternalMetadata pulumi.StringInput
+	BusinessAddress  pulumi.StringPtrInput
+	BusinessEmail    pulumi.StringPtrInput
+	BusinessName     pulumi.StringPtrInput
+	BusinessPhone    pulumi.StringPtrInput
+	ExternalMetadata pulumi.StringPtrInput
 	OrganizationId   pulumi.StringInput
 }
 
@@ -238,24 +223,24 @@ func (o OrganizationProfileOutput) ToOrganizationProfileOutputWithContext(ctx co
 	return o
 }
 
-func (o OrganizationProfileOutput) BusinessAddress() pulumi.StringOutput {
-	return o.ApplyT(func(v *OrganizationProfile) pulumi.StringOutput { return v.BusinessAddress }).(pulumi.StringOutput)
+func (o OrganizationProfileOutput) BusinessAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrganizationProfile) pulumi.StringPtrOutput { return v.BusinessAddress }).(pulumi.StringPtrOutput)
 }
 
-func (o OrganizationProfileOutput) BusinessEmail() pulumi.StringOutput {
-	return o.ApplyT(func(v *OrganizationProfile) pulumi.StringOutput { return v.BusinessEmail }).(pulumi.StringOutput)
+func (o OrganizationProfileOutput) BusinessEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrganizationProfile) pulumi.StringPtrOutput { return v.BusinessEmail }).(pulumi.StringPtrOutput)
 }
 
-func (o OrganizationProfileOutput) BusinessName() pulumi.StringOutput {
-	return o.ApplyT(func(v *OrganizationProfile) pulumi.StringOutput { return v.BusinessName }).(pulumi.StringOutput)
+func (o OrganizationProfileOutput) BusinessName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrganizationProfile) pulumi.StringPtrOutput { return v.BusinessName }).(pulumi.StringPtrOutput)
 }
 
-func (o OrganizationProfileOutput) BusinessPhone() pulumi.StringOutput {
-	return o.ApplyT(func(v *OrganizationProfile) pulumi.StringOutput { return v.BusinessPhone }).(pulumi.StringOutput)
+func (o OrganizationProfileOutput) BusinessPhone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrganizationProfile) pulumi.StringPtrOutput { return v.BusinessPhone }).(pulumi.StringPtrOutput)
 }
 
-func (o OrganizationProfileOutput) ExternalMetadata() pulumi.StringOutput {
-	return o.ApplyT(func(v *OrganizationProfile) pulumi.StringOutput { return v.ExternalMetadata }).(pulumi.StringOutput)
+func (o OrganizationProfileOutput) ExternalMetadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrganizationProfile) pulumi.StringPtrOutput { return v.ExternalMetadata }).(pulumi.StringPtrOutput)
 }
 
 func (o OrganizationProfileOutput) OrganizationId() pulumi.StringOutput {

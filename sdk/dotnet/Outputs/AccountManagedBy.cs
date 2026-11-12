@@ -21,15 +21,29 @@ namespace Pulumi.Cloudflare.Outputs
         /// Name of the parent Organization, if one exists
         /// </summary>
         public readonly string? ParentOrgName;
+        /// <summary>
+        /// ID of the root Organization, if one exists
+        /// </summary>
+        public readonly string? RootOrgId;
+        /// <summary>
+        /// Indicates whether the parent Organization hierarchy should be displayed
+        /// </summary>
+        public readonly bool? ShouldDisplayParentOrgs;
 
         [OutputConstructor]
         private AccountManagedBy(
             string? parentOrgId,
 
-            string? parentOrgName)
+            string? parentOrgName,
+
+            string? rootOrgId,
+
+            bool? shouldDisplayParentOrgs)
         {
             ParentOrgId = parentOrgId;
             ParentOrgName = parentOrgName;
+            RootOrgId = rootOrgId;
+            ShouldDisplayParentOrgs = shouldDisplayParentOrgs;
         }
     }
 }

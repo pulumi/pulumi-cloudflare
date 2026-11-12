@@ -45,11 +45,16 @@ public final class GetOriginCaCertificatesResult {
      */
     private String requestType;
     /**
-     * @return The number of days for which the certificate should be valid.
+     * @return The number of days for which the certificate was requested to be valid. Only returned in the Create Certificate response, where it echoes the requested value. Not returned when getting or listing certificates.
      * Available values: 7, 30, 90, 365, 730, 1095, 5475.
      * 
      */
     private Double requestedValidity;
+    /**
+     * @return When the certificate was revoked.
+     * 
+     */
+    private String revokedAt;
 
     private GetOriginCaCertificatesResult() {}
     /**
@@ -97,12 +102,19 @@ public final class GetOriginCaCertificatesResult {
         return this.requestType;
     }
     /**
-     * @return The number of days for which the certificate should be valid.
+     * @return The number of days for which the certificate was requested to be valid. Only returned in the Create Certificate response, where it echoes the requested value. Not returned when getting or listing certificates.
      * Available values: 7, 30, 90, 365, 730, 1095, 5475.
      * 
      */
     public Double requestedValidity() {
         return this.requestedValidity;
+    }
+    /**
+     * @return When the certificate was revoked.
+     * 
+     */
+    public String revokedAt() {
+        return this.revokedAt;
     }
 
     public static Builder builder() {
@@ -121,6 +133,7 @@ public final class GetOriginCaCertificatesResult {
         private String id;
         private String requestType;
         private Double requestedValidity;
+        private String revokedAt;
         public Builder() {}
         public Builder(GetOriginCaCertificatesResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -131,6 +144,7 @@ public final class GetOriginCaCertificatesResult {
     	      this.id = defaults.id;
     	      this.requestType = defaults.requestType;
     	      this.requestedValidity = defaults.requestedValidity;
+    	      this.revokedAt = defaults.revokedAt;
         }
 
         @CustomType.Setter
@@ -192,6 +206,14 @@ public final class GetOriginCaCertificatesResult {
             this.requestedValidity = requestedValidity;
             return this;
         }
+        @CustomType.Setter
+        public Builder revokedAt(String revokedAt) {
+            if (revokedAt == null) {
+              throw new MissingRequiredPropertyException("GetOriginCaCertificatesResult", "revokedAt");
+            }
+            this.revokedAt = revokedAt;
+            return this;
+        }
         public GetOriginCaCertificatesResult build() {
             final var _resultValue = new GetOriginCaCertificatesResult();
             _resultValue.certificate = certificate;
@@ -201,6 +223,7 @@ public final class GetOriginCaCertificatesResult {
             _resultValue.id = id;
             _resultValue.requestType = requestType;
             _resultValue.requestedValidity = requestedValidity;
+            _resultValue.revokedAt = revokedAt;
             return _resultValue;
         }
     }

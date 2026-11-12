@@ -28,7 +28,7 @@ class GetZeroTrustDnsLocationResult:
     """
     A collection of values returned by getZeroTrustDnsLocation.
     """
-    def __init__(__self__, account_id=None, client_default=None, created_at=None, dns_destination_ips_id=None, dns_destination_ipv6_block_id=None, doh_subdomain=None, ecs_support=None, endpoints=None, filter=None, id=None, ip=None, ipv4_destination=None, ipv4_destination_backup=None, location_id=None, max_ttl=None, name=None, networks=None, updated_at=None):
+    def __init__(__self__, account_id=None, client_default=None, created_at=None, dns64_enabled=None, dns_destination_ips_id=None, dns_destination_ipv6_block_id=None, doh_subdomain=None, ecs_support=None, endpoints=None, filter=None, id=None, ip=None, ipv4_destination=None, ipv4_destination_backup=None, location_id=None, max_ttl=None, name=None, networks=None, updated_at=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -38,6 +38,9 @@ class GetZeroTrustDnsLocationResult:
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
+        if dns64_enabled and not isinstance(dns64_enabled, bool):
+            raise TypeError("Expected argument 'dns64_enabled' to be a bool")
+        pulumi.set(__self__, "dns64_enabled", dns64_enabled)
         if dns_destination_ips_id and not isinstance(dns_destination_ips_id, str):
             raise TypeError("Expected argument 'dns_destination_ips_id' to be a str")
         pulumi.set(__self__, "dns_destination_ips_id", dns_destination_ips_id)
@@ -98,6 +101,11 @@ class GetZeroTrustDnsLocationResult:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> _builtins.str:
         return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="dns64Enabled")
+    def dns64_enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "dns64_enabled")
 
     @_builtins.property
     @pulumi.getter(name="dnsDestinationIpsId")
@@ -184,6 +192,7 @@ class AwaitableGetZeroTrustDnsLocationResult(GetZeroTrustDnsLocationResult):
             account_id=self.account_id,
             client_default=self.client_default,
             created_at=self.created_at,
+            dns64_enabled=self.dns64_enabled,
             dns_destination_ips_id=self.dns_destination_ips_id,
             dns_destination_ipv6_block_id=self.dns_destination_ipv6_block_id,
             doh_subdomain=self.doh_subdomain,
@@ -233,6 +242,7 @@ def get_zero_trust_dns_location(account_id: Optional[_builtins.str] = None,
         account_id=pulumi.get(__ret__, 'account_id'),
         client_default=pulumi.get(__ret__, 'client_default'),
         created_at=pulumi.get(__ret__, 'created_at'),
+        dns64_enabled=pulumi.get(__ret__, 'dns64_enabled'),
         dns_destination_ips_id=pulumi.get(__ret__, 'dns_destination_ips_id'),
         dns_destination_ipv6_block_id=pulumi.get(__ret__, 'dns_destination_ipv6_block_id'),
         doh_subdomain=pulumi.get(__ret__, 'doh_subdomain'),
@@ -279,6 +289,7 @@ def get_zero_trust_dns_location_output(account_id: pulumi.Input[Optional[Optiona
         account_id=pulumi.get(__response__, 'account_id'),
         client_default=pulumi.get(__response__, 'client_default'),
         created_at=pulumi.get(__response__, 'created_at'),
+        dns64_enabled=pulumi.get(__response__, 'dns64_enabled'),
         dns_destination_ips_id=pulumi.get(__response__, 'dns_destination_ips_id'),
         dns_destination_ipv6_block_id=pulumi.get(__response__, 'dns_destination_ipv6_block_id'),
         doh_subdomain=pulumi.get(__response__, 'doh_subdomain'),

@@ -51,6 +51,9 @@ export interface GetAiGatewayArgs {
  */
 export interface GetAiGatewayResult {
     readonly accountId?: string;
+    /**
+     * Require authentication for gateway access. New gateways must have authentication enabled. Once enabled, authentication cannot be disabled.
+     */
     readonly authentication: boolean;
     /**
      * Requires customer-provided provider credentials and prevents fallback to Unified Billing.
@@ -61,6 +64,16 @@ export interface GetAiGatewayResult {
     readonly collectLogs: boolean;
     readonly createdAt: string;
     readonly dlp: outputs.GetAiGatewayDlp;
+    /**
+     * FedRAMP compliance level: fedramp-medium or fedramp-high.
+     * Available values: "fedramp-medium", "fedramp-high".
+     */
+    readonly fedrampLevel: string;
+    /**
+     * FedRAMP enforcement mode. "prefer" prioritizes compliant connectors but allows fallback. "require" strictly filters.
+     * Available values: "prefer", "require".
+     */
+    readonly fedrampMode: string;
     readonly filter?: outputs.GetAiGatewayFilter;
     readonly guardrails: outputs.GetAiGatewayGuardrails;
     /**
@@ -98,6 +111,9 @@ export interface GetAiGatewayResult {
      */
     readonly retryMaxAttempts: number;
     readonly spendLimits: outputs.GetAiGatewaySpendLimits;
+    /**
+     * Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it.
+     */
     readonly storeId: string;
     readonly stripe: outputs.GetAiGatewayStripe;
     /**

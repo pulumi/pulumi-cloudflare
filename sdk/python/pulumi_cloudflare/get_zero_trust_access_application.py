@@ -357,7 +357,7 @@ class GetZeroTrustAccessApplicationResult:
     @pulumi.getter(name="mfaConfig")
     def mfa_config(self) -> 'outputs.GetZeroTrustAccessApplicationMfaConfigResult':
         """
-        Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+        Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, rdp, and infrastructure application types. For infrastructure applications, supported authenticators are `piv_key` and `ssh_fido2_key`; for other application types use `totp`, `biometrics`, or `security_key`.
         """
         return pulumi.get(self, "mfa_config")
 

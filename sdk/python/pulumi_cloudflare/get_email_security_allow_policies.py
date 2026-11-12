@@ -27,13 +27,16 @@ class GetEmailSecurityAllowPoliciesResult:
     """
     A collection of values returned by getEmailSecurityAllowPolicies.
     """
-    def __init__(__self__, account_id=None, direction=None, is_acceptable_sender=None, is_exempt_recipient=None, is_trusted_sender=None, max_items=None, order=None, pattern=None, pattern_type=None, results=None, search=None, verify_sender=None):
+    def __init__(__self__, account_id=None, direction=None, expired=None, is_acceptable_sender=None, is_exempt_recipient=None, is_trusted_sender=None, max_items=None, order=None, pattern=None, pattern_type=None, results=None, search=None, verify_sender=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
         if direction and not isinstance(direction, str):
             raise TypeError("Expected argument 'direction' to be a str")
         pulumi.set(__self__, "direction", direction)
+        if expired and not isinstance(expired, bool):
+            raise TypeError("Expected argument 'expired' to be a bool")
+        pulumi.set(__self__, "expired", expired)
         if is_acceptable_sender and not isinstance(is_acceptable_sender, bool):
             raise TypeError("Expected argument 'is_acceptable_sender' to be a bool")
         pulumi.set(__self__, "is_acceptable_sender", is_acceptable_sender)
@@ -74,6 +77,11 @@ class GetEmailSecurityAllowPoliciesResult:
     @pulumi.getter
     def direction(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "direction")
+
+    @_builtins.property
+    @pulumi.getter
+    def expired(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "expired")
 
     @_builtins.property
     @pulumi.getter(name="isAcceptableSender")
@@ -134,6 +142,7 @@ class AwaitableGetEmailSecurityAllowPoliciesResult(GetEmailSecurityAllowPolicies
         return GetEmailSecurityAllowPoliciesResult(
             account_id=self.account_id,
             direction=self.direction,
+            expired=self.expired,
             is_acceptable_sender=self.is_acceptable_sender,
             is_exempt_recipient=self.is_exempt_recipient,
             is_trusted_sender=self.is_trusted_sender,
@@ -148,6 +157,7 @@ class AwaitableGetEmailSecurityAllowPoliciesResult(GetEmailSecurityAllowPolicies
 
 def get_email_security_allow_policies(account_id: Optional[_builtins.str] = None,
                                       direction: Optional[_builtins.str] = None,
+                                      expired: Optional[_builtins.bool] = None,
                                       is_acceptable_sender: Optional[_builtins.bool] = None,
                                       is_exempt_recipient: Optional[_builtins.bool] = None,
                                       is_trusted_sender: Optional[_builtins.bool] = None,
@@ -172,6 +182,7 @@ def get_email_security_allow_policies(account_id: Optional[_builtins.str] = None
 
     example_email_security_allow_policies = cloudflare.get_email_security_allow_policies(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         direction="asc",
+        expired=True,
         is_acceptable_sender=True,
         is_exempt_recipient=True,
         is_trusted_sender=True,
@@ -185,6 +196,7 @@ def get_email_security_allow_policies(account_id: Optional[_builtins.str] = None
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['direction'] = direction
+    __args__['expired'] = expired
     __args__['isAcceptableSender'] = is_acceptable_sender
     __args__['isExemptRecipient'] = is_exempt_recipient
     __args__['isTrustedSender'] = is_trusted_sender
@@ -200,6 +212,7 @@ def get_email_security_allow_policies(account_id: Optional[_builtins.str] = None
     return AwaitableGetEmailSecurityAllowPoliciesResult(
         account_id=pulumi.get(__ret__, 'account_id'),
         direction=pulumi.get(__ret__, 'direction'),
+        expired=pulumi.get(__ret__, 'expired'),
         is_acceptable_sender=pulumi.get(__ret__, 'is_acceptable_sender'),
         is_exempt_recipient=pulumi.get(__ret__, 'is_exempt_recipient'),
         is_trusted_sender=pulumi.get(__ret__, 'is_trusted_sender'),
@@ -212,6 +225,7 @@ def get_email_security_allow_policies(account_id: Optional[_builtins.str] = None
         verify_sender=pulumi.get(__ret__, 'verify_sender'))
 def get_email_security_allow_policies_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
                                              direction: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                             expired: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                                              is_acceptable_sender: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                                              is_exempt_recipient: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                                              is_trusted_sender: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
@@ -236,6 +250,7 @@ def get_email_security_allow_policies_output(account_id: pulumi.Input[Optional[_
 
     example_email_security_allow_policies = cloudflare.get_email_security_allow_policies(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         direction="asc",
+        expired=True,
         is_acceptable_sender=True,
         is_exempt_recipient=True,
         is_trusted_sender=True,
@@ -249,6 +264,7 @@ def get_email_security_allow_policies_output(account_id: pulumi.Input[Optional[_
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['direction'] = direction
+    __args__['expired'] = expired
     __args__['isAcceptableSender'] = is_acceptable_sender
     __args__['isExemptRecipient'] = is_exempt_recipient
     __args__['isTrustedSender'] = is_trusted_sender
@@ -263,6 +279,7 @@ def get_email_security_allow_policies_output(account_id: pulumi.Input[Optional[_
     return __ret__.apply(lambda __response__: GetEmailSecurityAllowPoliciesResult(
         account_id=pulumi.get(__response__, 'account_id'),
         direction=pulumi.get(__response__, 'direction'),
+        expired=pulumi.get(__response__, 'expired'),
         is_acceptable_sender=pulumi.get(__response__, 'is_acceptable_sender'),
         is_exempt_recipient=pulumi.get(__response__, 'is_exempt_recipient'),
         is_trusted_sender=pulumi.get(__response__, 'is_trusted_sender'),

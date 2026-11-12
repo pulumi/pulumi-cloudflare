@@ -45,12 +45,20 @@ public final class GetAiSearchInstanceArgs extends com.pulumi.resources.InvokeAr
         return Optional.ofNullable(this.id);
     }
 
+    @Import(name="namespace")
+    private @Nullable Output<String> namespace;
+
+    public Optional<Output<String>> namespace() {
+        return Optional.ofNullable(this.namespace);
+    }
+
     private GetAiSearchInstanceArgs() {}
 
     private GetAiSearchInstanceArgs(GetAiSearchInstanceArgs $) {
         this.accountId = $.accountId;
         this.filter = $.filter;
         this.id = $.id;
+        this.namespace = $.namespace;
     }
 
     public static Builder builder() {
@@ -108,6 +116,15 @@ public final class GetAiSearchInstanceArgs extends com.pulumi.resources.InvokeAr
          */
         public Builder id(String id) {
             return id(Output.of(id));
+        }
+
+        public Builder namespace(@Nullable Output<String> namespace) {
+            $.namespace = namespace;
+            return this;
+        }
+
+        public Builder namespace(String namespace) {
+            return namespace(Output.of(namespace));
         }
 
         public GetAiSearchInstanceArgs build() {

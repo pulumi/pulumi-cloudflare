@@ -13,10 +13,24 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class GetPipelineStreamFilterInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Sort direction.
+        /// Available values: "asc", "desc".
+        /// </summary>
+        [Input("direction", required: true)]
+        public Input<string> Direction { get; set; } = null!;
+
+        /// <summary>
         /// Filters streams by name (case-insensitive substring).
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Sorts streams by this field. Defaults to `CreatedAt`.
+        /// Available values: "name", "CreatedAt".
+        /// </summary>
+        [Input("orderBy")]
+        public Input<string>? OrderBy { get; set; }
 
         /// <summary>
         /// Specifies the public ID of the pipeline.

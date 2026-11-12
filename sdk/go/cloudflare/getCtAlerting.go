@@ -59,7 +59,7 @@ type LookupCtAlertingArgs struct {
 
 // A collection of values returned by getCtAlerting.
 type LookupCtAlertingResult struct {
-	// Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma.
+	// Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. Omitted from responses when no addresses are configured.
 	Emails []string `pulumi:"emails"`
 	// Whether CT alerting is enabled for the zone.
 	Enabled bool `pulumi:"enabled"`
@@ -99,7 +99,7 @@ func (o LookupCtAlertingResultOutput) ToLookupCtAlertingResultOutputWithContext(
 	return o
 }
 
-// Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma.
+// Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. Omitted from responses when no addresses are configured.
 func (o LookupCtAlertingResultOutput) Emails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupCtAlertingResult) []string { return v.Emails }).(pulumi.StringArrayOutput)
 }

@@ -14,6 +14,10 @@ namespace Pulumi.Cloudflare
     /// 
     /// - `User Details Write`
     /// 
+    /// User API tokens can list and create Organizations, but reading, updating, or deleting an Organization requires a Global API key and your registered email address. The `cloudflare.Organization` Terraform resource therefore requires a Global API key for its full lifecycle.
+    /// 
+    /// See [Organizations authentication limitations](https://developers.cloudflare.com/fundamentals/organizations/limitations/#api-authentication) for credential compatibility by operation. Each endpoint’s **Security** section lists its supported authentication methods, with **Accepted Permissions** where applicable.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -26,7 +30,7 @@ namespace Pulumi.Cloudflare
     /// {
     ///     var exampleOrganization = new Cloudflare.Organization("example_organization", new()
     ///     {
-    ///         Name = "name",
+    ///         Name = "x",
     ///         Parent = new Cloudflare.Inputs.OrganizationParentArgs
     ///         {
     ///             Id = "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
@@ -59,12 +63,24 @@ namespace Pulumi.Cloudflare
         [Output("meta")]
         public Output<Outputs.OrganizationMeta> Meta { get; private set; } = null!;
 
+        /// <summary>
+        /// The Organization name, limited to 65 UTF-8 bytes.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         [Output("parent")]
-        public Output<Outputs.OrganizationParent> Parent { get; private set; } = null!;
+        public Output<Outputs.OrganizationParent?> Parent { get; private set; } = null!;
 
+        /// <summary>
+        /// The current parent Organization ID. A different value is rejected; this endpoint cannot move an Organization.
+        /// </summary>
+        [Output("parentId")]
+        public Output<string?> ParentId { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional profile fields, each limited to 1,000 UTF-8 bytes. An empty profile is ignored.
+        /// </summary>
         [Output("profile")]
         public Output<Outputs.OrganizationProfile?> Profile { get; private set; } = null!;
 
@@ -114,12 +130,24 @@ namespace Pulumi.Cloudflare
 
     public sealed class OrganizationArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The Organization name, limited to 65 UTF-8 bytes.
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         [Input("parent")]
         public Input<Inputs.OrganizationParentArgs>? Parent { get; set; }
 
+        /// <summary>
+        /// The current parent Organization ID. A different value is rejected; this endpoint cannot move an Organization.
+        /// </summary>
+        [Input("parentId")]
+        public Input<string>? ParentId { get; set; }
+
+        /// <summary>
+        /// Optional profile fields, each limited to 1,000 UTF-8 bytes. An empty profile is ignored.
+        /// </summary>
         [Input("profile")]
         public Input<Inputs.OrganizationProfileArgs>? Profile { get; set; }
 
@@ -137,12 +165,24 @@ namespace Pulumi.Cloudflare
         [Input("meta")]
         public Input<Inputs.OrganizationMetaGetArgs>? Meta { get; set; }
 
+        /// <summary>
+        /// The Organization name, limited to 65 UTF-8 bytes.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("parent")]
         public Input<Inputs.OrganizationParentGetArgs>? Parent { get; set; }
 
+        /// <summary>
+        /// The current parent Organization ID. A different value is rejected; this endpoint cannot move an Organization.
+        /// </summary>
+        [Input("parentId")]
+        public Input<string>? ParentId { get; set; }
+
+        /// <summary>
+        /// Optional profile fields, each limited to 1,000 UTF-8 bytes. An empty profile is ignored.
+        /// </summary>
         [Input("profile")]
         public Input<Inputs.OrganizationProfileGetArgs>? Profile { get; set; }
 

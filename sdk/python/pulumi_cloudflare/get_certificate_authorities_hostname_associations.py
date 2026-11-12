@@ -43,6 +43,9 @@ class GetCertificateAuthoritiesHostnameAssociationsResult:
     @_builtins.property
     @pulumi.getter
     def hostnames(self) -> Sequence[_builtins.str]:
+        """
+        Hostnames are returned in lowercase punycode, in no particular order. Null when there are no associations.
+        """
         return pulumi.get(self, "hostnames")
 
     @_builtins.property

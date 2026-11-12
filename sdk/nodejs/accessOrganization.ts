@@ -30,6 +30,7 @@ import * as utilities from "./utilities";
  *     },
  *     denyUnmatchedRequests: true,
  *     denyUnmatchedRequestsExemptedZoneNames: ["example.com"],
+ *     disableEndUserAppCreation: false,
  *     isUiReadOnly: true,
  *     loginDesign: {
  *         backgroundColor: "#c5ed1b",
@@ -151,6 +152,10 @@ export class AccessOrganization extends pulumi.CustomResource {
      */
     declare public readonly denyUnmatchedRequestsExemptedZoneNames: pulumi.Output<string[] | undefined>;
     /**
+     * Whether creation of end user applications is disabled for this organization.
+     */
+    declare public readonly disableEndUserAppCreation: pulumi.Output<boolean>;
+    /**
      * Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
      */
     declare public readonly isUiReadOnly: pulumi.Output<boolean>;
@@ -235,6 +240,7 @@ export class AccessOrganization extends pulumi.CustomResource {
             resourceInputs["customPages"] = state?.customPages;
             resourceInputs["denyUnmatchedRequests"] = state?.denyUnmatchedRequests;
             resourceInputs["denyUnmatchedRequestsExemptedZoneNames"] = state?.denyUnmatchedRequestsExemptedZoneNames;
+            resourceInputs["disableEndUserAppCreation"] = state?.disableEndUserAppCreation;
             resourceInputs["isUiReadOnly"] = state?.isUiReadOnly;
             resourceInputs["loginDesign"] = state?.loginDesign;
             resourceInputs["mfaConfig"] = state?.mfaConfig;
@@ -260,6 +266,7 @@ export class AccessOrganization extends pulumi.CustomResource {
             resourceInputs["customPages"] = args?.customPages;
             resourceInputs["denyUnmatchedRequests"] = args?.denyUnmatchedRequests;
             resourceInputs["denyUnmatchedRequestsExemptedZoneNames"] = args?.denyUnmatchedRequestsExemptedZoneNames;
+            resourceInputs["disableEndUserAppCreation"] = args?.disableEndUserAppCreation;
             resourceInputs["isUiReadOnly"] = args?.isUiReadOnly;
             resourceInputs["loginDesign"] = args?.loginDesign;
             resourceInputs["mfaConfig"] = args?.mfaConfig;
@@ -313,6 +320,10 @@ export interface AccessOrganizationState {
      * Contains zone names to exempt from the `denyUnmatchedRequests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
      */
     denyUnmatchedRequestsExemptedZoneNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Whether creation of end user applications is disabled for this organization.
+     */
+    disableEndUserAppCreation?: pulumi.Input<boolean | undefined>;
     /**
      * Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
      */
@@ -405,6 +416,10 @@ export interface AccessOrganizationArgs {
      * Contains zone names to exempt from the `denyUnmatchedRequests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
      */
     denyUnmatchedRequestsExemptedZoneNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Whether creation of end user applications is disabled for this organization.
+     */
+    disableEndUserAppCreation?: pulumi.Input<boolean | undefined>;
     /**
      * Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
      */

@@ -4,7 +4,6 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.WorkerVersionBindingOutboundArgs;
-import com.pulumi.cloudflare.inputs.WorkerVersionBindingRetryArgs;
 import com.pulumi.cloudflare.inputs.WorkerVersionBindingSimpleArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -21,14 +20,14 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     public static final WorkerVersionBindingArgs Empty = new WorkerVersionBindingArgs();
 
     /**
-     * Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
+     * For `type: secretKey`: Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
      * 
      */
     @Import(name="algorithm")
     private @Nullable Output<String> algorithm;
 
     /**
-     * @return Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
+     * @return For `type: secretKey`: Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
      * 
      */
     public Optional<Output<String>> algorithm() {
@@ -36,14 +35,14 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * List of allowed destination addresses.
+     * For `type: sendEmail`: List of allowed destination addresses.
      * 
      */
     @Import(name="allowedDestinationAddresses")
     private @Nullable Output<List<String>> allowedDestinationAddresses;
 
     /**
-     * @return List of allowed destination addresses.
+     * @return For `type: sendEmail`: List of allowed destination addresses.
      * 
      */
     public Optional<Output<List<String>>> allowedDestinationAddresses() {
@@ -51,14 +50,14 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * List of allowed sender addresses.
+     * For `type: sendEmail`: List of allowed sender addresses.
      * 
      */
     @Import(name="allowedSenderAddresses")
     private @Nullable Output<List<String>> allowedSenderAddresses;
 
     /**
-     * @return List of allowed sender addresses.
+     * @return For `type: sendEmail`: List of allowed sender addresses.
      * 
      */
     public Optional<Output<List<String>>> allowedSenderAddresses() {
@@ -66,14 +65,14 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * ID of the Flagship app to bind to for feature flag evaluation.
+     * For `type: flagship`: ID of the Flagship app to bind to for feature flag evaluation.
      * 
      */
     @Import(name="appId")
     private @Nullable Output<String> appId;
 
     /**
-     * @return ID of the Flagship app to bind to for feature flag evaluation.
+     * @return For `type: flagship`: ID of the Flagship app to bind to for feature flag evaluation.
      * 
      */
     public Optional<Output<String>> appId() {
@@ -81,14 +80,14 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * R2 bucket to bind to.
+     * For `type: r2Bucket`: R2 bucket to bind to.
      * 
      */
     @Import(name="bucketName")
     private @Nullable Output<String> bucketName;
 
     /**
-     * @return R2 bucket to bind to.
+     * @return For `type: r2Bucket`: R2 bucket to bind to.
      * 
      */
     public Optional<Output<String>> bucketName() {
@@ -96,14 +95,14 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Identifier of the certificate to bind to.
+     * For `type: mtlsCertificate`: Identifier of the certificate to bind to.
      * 
      */
     @Import(name="certificateId")
     private @Nullable Output<String> certificateId;
 
     /**
-     * @return Identifier of the certificate to bind to.
+     * @return For `type: mtlsCertificate`: Identifier of the certificate to bind to.
      * 
      */
     public Optional<Output<String>> certificateId() {
@@ -111,14 +110,18 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The exported class name of the Durable Object.
+     * For `type: durableObjectNamespace`: The exported class name of the Durable Object.
+     * 
+     * For `type: workflow`: Class name of the Workflow. Should only be provided if the Workflow belongs to this script.
      * 
      */
     @Import(name="className")
     private @Nullable Output<String> className;
 
     /**
-     * @return The exported class name of the Durable Object.
+     * @return For `type: durableObjectNamespace`: The exported class name of the Durable Object.
+     * 
+     * For `type: workflow`: Class name of the Workflow. Should only be provided if the Workflow belongs to this script.
      * 
      */
     public Optional<Output<String>> className() {
@@ -126,14 +129,14 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Identifier of the D1 database to bind to.
+     * For `type: d1`: Identifier of the D1 database to bind to.
      * 
      */
     @Import(name="databaseId")
     private @Nullable Output<String> databaseId;
 
     /**
-     * @return Identifier of the D1 database to bind to.
+     * @return For `type: d1`: Identifier of the D1 database to bind to.
      * 
      */
     public Optional<Output<String>> databaseId() {
@@ -141,14 +144,14 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The name of the dataset to bind to.
+     * For `type: analyticsEngine`: The name of the dataset to bind to.
      * 
      */
     @Import(name="dataset")
     private @Nullable Output<String> dataset;
 
     /**
-     * @return The name of the dataset to bind to.
+     * @return For `type: analyticsEngine`: The name of the dataset to bind to.
      * 
      */
     public Optional<Output<String>> dataset() {
@@ -156,14 +159,14 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Destination address for the email.
+     * For `type: sendEmail`: Destination address for the email.
      * 
      */
     @Import(name="destinationAddress")
     private @Nullable Output<String> destinationAddress;
 
     /**
-     * @return Destination address for the email.
+     * @return For `type: sendEmail`: Destination address for the email.
      * 
      */
     public Optional<Output<String>> destinationAddress() {
@@ -171,14 +174,14 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The dispatch namespace the Durable Object script belongs to.
+     * For `type: durableObjectNamespace`: The dispatch namespace the Durable Object script belongs to.
      * 
      */
     @Import(name="dispatchNamespace")
     private @Nullable Output<String> dispatchNamespace;
 
     /**
-     * @return The dispatch namespace the Durable Object script belongs to.
+     * @return For `type: durableObjectNamespace`: The dispatch namespace the Durable Object script belongs to.
      * 
      */
     public Optional<Output<String>> dispatchNamespace() {
@@ -186,14 +189,14 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Entrypoint to invoke on the target Worker.
+     * For `type: service`: Entrypoint to invoke on the target Worker.
      * 
      */
     @Import(name="entrypoint")
     private @Nullable Output<String> entrypoint;
 
     /**
-     * @return Entrypoint to invoke on the target Worker.
+     * @return For `type: service`: Entrypoint to invoke on the target Worker.
      * 
      */
     public Optional<Output<String>> entrypoint() {
@@ -201,14 +204,18 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The environment of the scriptName to bind to.
+     * For `type: durableObjectNamespace`: The environment of the scriptName to bind to.
+     * 
+     * For `type: service`: Optional environment if the Worker utilizes one.
      * 
      */
     @Import(name="environment")
     private @Nullable Output<String> environment;
 
     /**
-     * @return The environment of the scriptName to bind to.
+     * @return For `type: durableObjectNamespace`: The environment of the scriptName to bind to.
+     * 
+     * For `type: service`: Optional environment if the Worker utilizes one.
      * 
      */
     public Optional<Output<String>> environment() {
@@ -216,7 +223,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
+     * For `type: secretKey`: Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
      * Available values: &#34;raw&#34;, &#34;pkcs8&#34;, &#34;spki&#34;, &#34;jwk&#34;.
      * 
      */
@@ -224,7 +231,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<String> format;
 
     /**
-     * @return Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
+     * @return For `type: secretKey`: Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
      * Available values: &#34;raw&#34;, &#34;pkcs8&#34;, &#34;spki&#34;, &#34;jwk&#34;.
      * 
      */
@@ -233,14 +240,18 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Identifier of the D1 database to bind to.
+     * For `type: d1`: Identifier of the D1 database to bind to.
+     * 
+     * For `type: hyperdrive`: Identifier of the Hyperdrive connection to bind to.
      * 
      */
     @Import(name="id")
     private @Nullable Output<String> id;
 
     /**
-     * @return Identifier of the D1 database to bind to.
+     * @return For `type: d1`: Identifier of the D1 database to bind to.
+     * 
+     * For `type: hyperdrive`: Identifier of the Hyperdrive connection to bind to.
      * 
      */
     public Optional<Output<String>> id() {
@@ -248,7 +259,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Enables Gateway identity for the binding. Requires network*id to be &#34;cf1:network&#34; and cannot be combined with tunnel*id.
+     * For `type: vpcNetwork`: Enables Gateway identity for the binding. Requires networkId to be &#34;cf1:network&#34; and cannot be combined with tunnelId or an explicit &#34;cf1:vnet:&lt;UUID&gt;&#34; network_id.
      * Available values: &#34;runtime-email-alpha&#34;.
      * 
      */
@@ -256,7 +267,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<String> identity;
 
     /**
-     * @return Enables Gateway identity for the binding. Requires network*id to be &#34;cf1:network&#34; and cannot be combined with tunnel*id.
+     * @return For `type: vpcNetwork`: Enables Gateway identity for the binding. Requires networkId to be &#34;cf1:network&#34; and cannot be combined with tunnelId or an explicit &#34;cf1:vnet:&lt;UUID&gt;&#34; network_id.
      * Available values: &#34;runtime-email-alpha&#34;.
      * 
      */
@@ -265,14 +276,14 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Name of the Vectorize index to bind to.
+     * For `type: vectorize`: Name of the Vectorize index to bind to.
      * 
      */
     @Import(name="indexName")
     private @Nullable Output<String> indexName;
 
     /**
-     * @return Name of the Vectorize index to bind to.
+     * @return For `type: vectorize`: Name of the Vectorize index to bind to.
      * 
      */
     public Optional<Output<String>> indexName() {
@@ -280,14 +291,14 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
+     * For `type: aiSearch`: The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
      * 
      */
     @Import(name="instanceName")
     private @Nullable Output<String> instanceName;
 
     /**
-     * @return The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
+     * @return For `type: aiSearch`: The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
      * 
      */
     public Optional<Output<String>> instanceName() {
@@ -295,14 +306,14 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * JSON data to use.
+     * For `type: json`: JSON data to use.
      * 
      */
     @Import(name="json")
     private @Nullable Output<String> json;
 
     /**
-     * @return JSON data to use.
+     * @return For `type: json`: JSON data to use.
      * 
      */
     public Optional<Output<String>> json() {
@@ -310,7 +321,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
+     * For `type: r2Bucket`: The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
      * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;fedramp-high&#34;, &#34;us&#34;.
      * 
      */
@@ -318,7 +329,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<String> jurisdiction;
 
     /**
-     * @return The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
+     * @return For `type: r2Bucket`: The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
      * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;fedramp-high&#34;, &#34;us&#34;.
      * 
      */
@@ -327,14 +338,14 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Base64-encoded key data. Required if `format` is &#34;raw&#34;, &#34;pkcs8&#34;, or &#34;spki&#34;.
+     * For `type: secretKey`: Base64-encoded key data. Required if `format` is &#34;raw&#34;, &#34;pkcs8&#34;, or &#34;spki&#34;.
      * 
      */
     @Import(name="keyBase64")
     private @Nullable Output<String> keyBase64;
 
     /**
-     * @return Base64-encoded key data. Required if `format` is &#34;raw&#34;, &#34;pkcs8&#34;, or &#34;spki&#34;.
+     * @return For `type: secretKey`: Base64-encoded key data. Required if `format` is &#34;raw&#34;, &#34;pkcs8&#34;, or &#34;spki&#34;.
      * 
      */
     public Optional<Output<String>> keyBase64() {
@@ -342,14 +353,14 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is &#34;jwk&#34;.
+     * For `type: secretKey`: Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is &#34;jwk&#34;.
      * 
      */
     @Import(name="keyJwk")
     private @Nullable Output<String> keyJwk;
 
     /**
-     * @return Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is &#34;jwk&#34;.
+     * @return For `type: secretKey`: Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is &#34;jwk&#34;.
      * 
      */
     public Optional<Output<String>> keyJwk() {
@@ -357,14 +368,14 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * A JavaScript variable name for the binding.
+     * For `type: ai` or `type: aiSearch` or `type: aiSearchNamespace` or `type: messaging` or `type: analyticsEngine` or `type: artifacts` or `type: assets` or `type: browser` or `type: d1` or `type: dataBlob` or `type: dispatchNamespace` or `type: durableObjectNamespace` or `type: hyperdrive` or `type: images` or `type: json` or `type: kvNamespace` or `type: media` or `type: mtlsCertificate` or `type: plainText` or `type: pipelines` or `type: k2` or `type: queue` or `type: ratelimit` or `type: r2Bucket` or `type: secretText` or `type: sendEmail` or `type: service` or `type: textBlob` or `type: vectorize` or `type: versionMetadata` or `type: secretsStoreSecret` or `type: flagship` or `type: secretKey` or `type: workflow` or `type: wasmModule` or `type: vpcService` or `type: vpcNetwork` or `type: workerLoader`: A JavaScript variable name for the binding.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return A JavaScript variable name for the binding.
+     * @return For `type: ai` or `type: aiSearch` or `type: aiSearchNamespace` or `type: messaging` or `type: analyticsEngine` or `type: artifacts` or `type: assets` or `type: browser` or `type: d1` or `type: dataBlob` or `type: dispatchNamespace` or `type: durableObjectNamespace` or `type: hyperdrive` or `type: images` or `type: json` or `type: kvNamespace` or `type: media` or `type: mtlsCertificate` or `type: plainText` or `type: pipelines` or `type: k2` or `type: queue` or `type: ratelimit` or `type: r2Bucket` or `type: secretText` or `type: sendEmail` or `type: service` or `type: textBlob` or `type: vectorize` or `type: versionMetadata` or `type: secretsStoreSecret` or `type: flagship` or `type: secretKey` or `type: workflow` or `type: wasmModule` or `type: vpcService` or `type: vpcNetwork` or `type: workerLoader`: A JavaScript variable name for the binding.
      * 
      */
     public Output<String> name() {
@@ -372,14 +383,30 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The namespace the instance belongs to. Defaults to &#34;default&#34; if omitted. Customers who don&#39;t use namespaces can simply omit this field.
+     * For `type: aiSearch`: The namespace the instance belongs to. Defaults to &#34;default&#34; if omitted. Customers who don&#39;t use namespaces can simply omit this field.
+     * 
+     * For `type: aiSearchNamespace`: The user-chosen namespace name. Must exist before deploy -- Wrangler handles auto-creation on deploy failure (R2 bucket pattern). The &#34;default&#34; namespace is auto-created by config-api for new accounts. Grants full access (CRUD + search + chat) to all instances within the namespace.
+     * 
+     * For `type: messaging`: The Messaging namespace to bind to.
+     * 
+     * For `type: artifacts`: The Artifacts namespace exposed to the Worker in the Worker&#39;s account. Must be 2-63 characters, start with an ASCII alphanumeric character, contain only ASCII alphanumeric characters, dots, underscores, and hyphens, and must not end with a hyphen. The namespace does not need to be created before binding it.
+     * 
+     * For `type: dispatchNamespace`: The name of the dispatch namespace.
      * 
      */
     @Import(name="namespace")
     private @Nullable Output<String> namespace;
 
     /**
-     * @return The namespace the instance belongs to. Defaults to &#34;default&#34; if omitted. Customers who don&#39;t use namespaces can simply omit this field.
+     * @return For `type: aiSearch`: The namespace the instance belongs to. Defaults to &#34;default&#34; if omitted. Customers who don&#39;t use namespaces can simply omit this field.
+     * 
+     * For `type: aiSearchNamespace`: The user-chosen namespace name. Must exist before deploy -- Wrangler handles auto-creation on deploy failure (R2 bucket pattern). The &#34;default&#34; namespace is auto-created by config-api for new accounts. Grants full access (CRUD + search + chat) to all instances within the namespace.
+     * 
+     * For `type: messaging`: The Messaging namespace to bind to.
+     * 
+     * For `type: artifacts`: The Artifacts namespace exposed to the Worker in the Worker&#39;s account. Must be 2-63 characters, start with an ASCII alphanumeric character, contain only ASCII alphanumeric characters, dots, underscores, and hyphens, and must not end with a hyphen. The namespace does not need to be created before binding it.
+     * 
+     * For `type: dispatchNamespace`: The name of the dispatch namespace.
      * 
      */
     public Optional<Output<String>> namespace() {
@@ -387,14 +414,18 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Namespace identifier tag.
+     * For `type: durableObjectNamespace` or `type: kvNamespace`: Namespace identifier tag.
+     * 
+     * For `type: ratelimit`: Identifier of the rate limit namespace to bind to.
      * 
      */
     @Import(name="namespaceId")
     private @Nullable Output<String> namespaceId;
 
     /**
-     * @return Namespace identifier tag.
+     * @return For `type: durableObjectNamespace` or `type: kvNamespace`: Namespace identifier tag.
+     * 
+     * For `type: ratelimit`: Identifier of the rate limit namespace to bind to.
      * 
      */
     public Optional<Output<String>> namespaceId() {
@@ -402,14 +433,14 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Identifier of the network to bind to. Only &#34;cf1:network&#34; is currently supported. Mutually exclusive with tunnel_id.
+     * For `type: vpcNetwork`: Identifier of the network to bind to. Use &#34;cf1:network&#34; to select the account&#39;s default virtual network at runtime, or &#34;cf1:vnet:&lt;UUID&gt;&#34; to select an explicit virtual network in the Worker&#39;s account. Mutually exclusive with tunnel_id.
      * 
      */
     @Import(name="networkId")
     private @Nullable Output<String> networkId;
 
     /**
-     * @return Identifier of the network to bind to. Only &#34;cf1:network&#34; is currently supported. Mutually exclusive with tunnel_id.
+     * @return For `type: vpcNetwork`: Identifier of the network to bind to. Use &#34;cf1:network&#34; to select the account&#39;s default virtual network at runtime, or &#34;cf1:vnet:&lt;UUID&gt;&#34; to select an explicit virtual network in the Worker&#39;s account. Mutually exclusive with tunnel_id.
      * 
      */
     public Optional<Output<String>> networkId() {
@@ -417,14 +448,14 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The old name of the inherited binding. If set, the binding will be renamed from `oldName` to `name` in the new version. If not set, the binding will keep the same name between versions.
+     * For `type: inherit`: The old name of the inherited binding. If set, the binding will be renamed from `oldName` to `name` in the new version. If not set, the binding will keep the same name between versions.
      * 
      */
     @Import(name="oldName")
     private @Nullable Output<String> oldName;
 
     /**
-     * @return The old name of the inherited binding. If set, the binding will be renamed from `oldName` to `name` in the new version. If not set, the binding will keep the same name between versions.
+     * @return For `type: inherit`: The old name of the inherited binding. If set, the binding will be renamed from `oldName` to `name` in the new version. If not set, the binding will keep the same name between versions.
      * 
      */
     public Optional<Output<String>> oldName() {
@@ -432,14 +463,14 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Outbound worker.
+     * For `type: dispatchNamespace`: Outbound worker.
      * 
      */
     @Import(name="outbound")
     private @Nullable Output<WorkerVersionBindingOutboundArgs> outbound;
 
     /**
-     * @return Outbound worker.
+     * @return For `type: dispatchNamespace`: Outbound worker.
      * 
      */
     public Optional<Output<WorkerVersionBindingOutboundArgs>> outbound() {
@@ -447,14 +478,22 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The name of the file containing the data content. Only accepted for `service worker syntax` Workers.
+     * For `type: dataBlob`: The name of the file containing the data content. Only accepted for `service worker syntax` Workers.
+     * 
+     * For `type: textBlob`: The name of the file containing the text content. Only accepted for `service worker syntax` Workers.
+     * 
+     * For `type: wasmModule`: The name of the file containing the WebAssembly module content. Only accepted for `service worker syntax` Workers.
      * 
      */
     @Import(name="part")
     private @Nullable Output<String> part;
 
     /**
-     * @return The name of the file containing the data content. Only accepted for `service worker syntax` Workers.
+     * @return For `type: dataBlob`: The name of the file containing the data content. Only accepted for `service worker syntax` Workers.
+     * 
+     * For `type: textBlob`: The name of the file containing the text content. Only accepted for `service worker syntax` Workers.
+     * 
+     * For `type: wasmModule`: The name of the file containing the WebAssembly module content. Only accepted for `service worker syntax` Workers.
      * 
      */
     public Optional<Output<String>> part() {
@@ -462,14 +501,14 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Name of the Pipeline to bind to.
+     * For `type: pipelines`: Name of the Pipeline to bind to.
      * 
      */
     @Import(name="pipeline")
     private @Nullable Output<String> pipeline;
 
     /**
-     * @return Name of the Pipeline to bind to.
+     * @return For `type: pipelines`: Name of the Pipeline to bind to.
      * 
      */
     public Optional<Output<String>> pipeline() {
@@ -477,14 +516,14 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Name of the Queue to bind to.
+     * For `type: queue`: Name of the Queue to bind to.
      * 
      */
     @Import(name="queueName")
     private @Nullable Output<String> queueName;
 
     /**
-     * @return Name of the Queue to bind to.
+     * @return For `type: queue`: Name of the Queue to bind to.
      * 
      */
     public Optional<Output<String>> queueName() {
@@ -492,29 +531,18 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
+     * For `type: durableObjectNamespace`: The script where the Durable Object is defined, if it is external to this Worker.
      * 
-     */
-    @Import(name="retry")
-    private @Nullable Output<WorkerVersionBindingRetryArgs> retry;
-
-    /**
-     * @return Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
-     * 
-     */
-    public Optional<Output<WorkerVersionBindingRetryArgs>> retry() {
-        return Optional.ofNullable(this.retry);
-    }
-
-    /**
-     * The script where the Durable Object is defined, if it is external to this Worker.
+     * For `type: workflow`: Script name that contains the Workflow. If not provided, defaults to this script name.
      * 
      */
     @Import(name="scriptName")
     private @Nullable Output<String> scriptName;
 
     /**
-     * @return The script where the Durable Object is defined, if it is external to this Worker.
+     * @return For `type: durableObjectNamespace`: The script where the Durable Object is defined, if it is external to this Worker.
+     * 
+     * For `type: workflow`: Script name that contains the Workflow. If not provided, defaults to this script name.
      * 
      */
     public Optional<Output<String>> scriptName() {
@@ -522,14 +550,14 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Name of the secret in the store.
+     * For `type: secretsStoreSecret`: Name of the secret in the store.
      * 
      */
     @Import(name="secretName")
     private @Nullable Output<String> secretName;
 
     /**
-     * @return Name of the secret in the store.
+     * @return For `type: secretsStoreSecret`: Name of the secret in the store.
      * 
      */
     public Optional<Output<String>> secretName() {
@@ -537,14 +565,14 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Name of Worker to bind to.
+     * For `type: service`: Name of Worker to bind to.
      * 
      */
     @Import(name="service")
     private @Nullable Output<String> service;
 
     /**
-     * @return Name of Worker to bind to.
+     * @return For `type: service`: Name of Worker to bind to.
      * 
      */
     public Optional<Output<String>> service() {
@@ -552,14 +580,14 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Identifier of the VPC service to bind to.
+     * For `type: vpcService`: Identifier of the VPC service to bind to.
      * 
      */
     @Import(name="serviceId")
     private @Nullable Output<String> serviceId;
 
     /**
-     * @return Identifier of the VPC service to bind to.
+     * @return For `type: vpcService`: Identifier of the VPC service to bind to.
      * 
      */
     public Optional<Output<String>> serviceId() {
@@ -567,14 +595,14 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The rate limit configuration.
+     * For `type: ratelimit`: The rate limit configuration.
      * 
      */
     @Import(name="simple")
     private @Nullable Output<WorkerVersionBindingSimpleArgs> simple;
 
     /**
-     * @return The rate limit configuration.
+     * @return For `type: ratelimit`: The rate limit configuration.
      * 
      */
     public Optional<Output<WorkerVersionBindingSimpleArgs>> simple() {
@@ -582,14 +610,14 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * ID of the store containing the secret.
+     * For `type: secretsStoreSecret`: ID of the store containing the secret.
      * 
      */
     @Import(name="storeId")
     private @Nullable Output<String> storeId;
 
     /**
-     * @return ID of the store containing the secret.
+     * @return For `type: secretsStoreSecret`: ID of the store containing the secret.
      * 
      */
     public Optional<Output<String>> storeId() {
@@ -597,14 +625,14 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * ID of a K2 stream owned by the account deploying the Worker.
+     * For `type: k2`: ID of a K2 stream owned by the account deploying the Worker.
      * 
      */
     @Import(name="stream")
     private @Nullable Output<String> stream;
 
     /**
-     * @return ID of a K2 stream owned by the account deploying the Worker.
+     * @return For `type: k2`: ID of a K2 stream owned by the account deploying the Worker.
      * 
      */
     public Optional<Output<String>> stream() {
@@ -612,14 +640,18 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The text value to use.
+     * For `type: plainText`: The text value to use.
+     * 
+     * For `type: secretText`: The secret value to use.
      * 
      */
     @Import(name="text")
     private @Nullable Output<String> text;
 
     /**
-     * @return The text value to use.
+     * @return For `type: plainText`: The text value to use.
+     * 
+     * For `type: secretText`: The secret value to use.
      * 
      */
     public Optional<Output<String>> text() {
@@ -627,14 +659,14 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
+     * For `type: vpcNetwork`: UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
      * 
      */
     @Import(name="tunnelId")
     private @Nullable Output<String> tunnelId;
 
     /**
-     * @return UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
+     * @return For `type: vpcNetwork`: UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
      * 
      */
     public Optional<Output<String>> tunnelId() {
@@ -643,7 +675,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
 
     /**
      * The kind of resource that the binding provides.
-     * Available values: &#34;ai&#34;, &#34;ai*search&#34;, &#34;ai*search*namespace&#34;, &#34;messaging&#34;, &#34;analytics*engine&#34;, &#34;artifacts&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;data*blob&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;media&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;k2&#34;, &#34;queue&#34;, &#34;ratelimit&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;send*email&#34;, &#34;service&#34;, &#34;text*blob&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;flagship&#34;, &#34;secret*key&#34;, &#34;workflow&#34;, &#34;wasm*module&#34;, &#34;vpc*service&#34;, &#34;vpc*network&#34;.
+     * Available values: &#34;ai&#34;, &#34;aiSearch&#34;, &#34;aiSearchNamespace&#34;, &#34;messaging&#34;, &#34;analyticsEngine&#34;, &#34;artifacts&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;dataBlob&#34;, &#34;dispatchNamespace&#34;, &#34;durableObjectNamespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kvNamespace&#34;, &#34;media&#34;, &#34;mtlsCertificate&#34;, &#34;plainText&#34;, &#34;pipelines&#34;, &#34;k2&#34;, &#34;queue&#34;, &#34;ratelimit&#34;, &#34;r2Bucket&#34;, &#34;secretText&#34;, &#34;sendEmail&#34;, &#34;service&#34;, &#34;textBlob&#34;, &#34;vectorize&#34;, &#34;versionMetadata&#34;, &#34;secretsStoreSecret&#34;, &#34;flagship&#34;, &#34;secretKey&#34;, &#34;workflow&#34;, &#34;wasmModule&#34;, &#34;vpcService&#34;, &#34;vpcNetwork&#34;, &#34;workerLoader&#34;.
      * 
      */
     @Import(name="type", required=true)
@@ -651,7 +683,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return The kind of resource that the binding provides.
-     * Available values: &#34;ai&#34;, &#34;ai*search&#34;, &#34;ai*search*namespace&#34;, &#34;messaging&#34;, &#34;analytics*engine&#34;, &#34;artifacts&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;data*blob&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;media&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;k2&#34;, &#34;queue&#34;, &#34;ratelimit&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;send*email&#34;, &#34;service&#34;, &#34;text*blob&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;flagship&#34;, &#34;secret*key&#34;, &#34;workflow&#34;, &#34;wasm*module&#34;, &#34;vpc*service&#34;, &#34;vpc*network&#34;.
+     * Available values: &#34;ai&#34;, &#34;aiSearch&#34;, &#34;aiSearchNamespace&#34;, &#34;messaging&#34;, &#34;analyticsEngine&#34;, &#34;artifacts&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;dataBlob&#34;, &#34;dispatchNamespace&#34;, &#34;durableObjectNamespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kvNamespace&#34;, &#34;media&#34;, &#34;mtlsCertificate&#34;, &#34;plainText&#34;, &#34;pipelines&#34;, &#34;k2&#34;, &#34;queue&#34;, &#34;ratelimit&#34;, &#34;r2Bucket&#34;, &#34;secretText&#34;, &#34;sendEmail&#34;, &#34;service&#34;, &#34;textBlob&#34;, &#34;vectorize&#34;, &#34;versionMetadata&#34;, &#34;secretsStoreSecret&#34;, &#34;flagship&#34;, &#34;secretKey&#34;, &#34;workflow&#34;, &#34;wasmModule&#34;, &#34;vpcService&#34;, &#34;vpcNetwork&#34;, &#34;workerLoader&#34;.
      * 
      */
     public Output<String> type() {
@@ -659,14 +691,14 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
+     * For `type: secretKey`: Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
      * 
      */
     @Import(name="usages")
     private @Nullable Output<List<String>> usages;
 
     /**
-     * @return Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
+     * @return For `type: secretKey`: Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
      * 
      */
     public Optional<Output<List<String>>> usages() {
@@ -674,14 +706,14 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Identifier for the version to inherit the binding from, which can be the version ID or the literal &#34;latest&#34; to inherit from the latest version. Defaults to inheriting the binding from the latest version.
+     * For `type: inherit`: Identifier for the version to inherit the binding from. This can be a version ID, or the literal &#34;latest&#34; to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to &#34;latest&#34;. Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only &#34;latest&#34; and reject a version ID with error 10057.
      * 
      */
     @Import(name="versionId")
     private @Nullable Output<String> versionId;
 
     /**
-     * @return Identifier for the version to inherit the binding from, which can be the version ID or the literal &#34;latest&#34; to inherit from the latest version. Defaults to inheriting the binding from the latest version.
+     * @return For `type: inherit`: Identifier for the version to inherit the binding from. This can be a version ID, or the literal &#34;latest&#34; to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to &#34;latest&#34;. Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only &#34;latest&#34; and reject a version ID with error 10057.
      * 
      */
     public Optional<Output<String>> versionId() {
@@ -689,14 +721,14 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Name of the Workflow to bind to.
+     * For `type: workflow`: Name of the Workflow to bind to.
      * 
      */
     @Import(name="workflowName")
     private @Nullable Output<String> workflowName;
 
     /**
-     * @return Name of the Workflow to bind to.
+     * @return For `type: workflow`: Name of the Workflow to bind to.
      * 
      */
     public Optional<Output<String>> workflowName() {
@@ -737,7 +769,6 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         this.part = $.part;
         this.pipeline = $.pipeline;
         this.queueName = $.queueName;
-        this.retry = $.retry;
         this.scriptName = $.scriptName;
         this.secretName = $.secretName;
         this.service = $.service;
@@ -772,7 +803,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param algorithm Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
+         * @param algorithm For `type: secretKey`: Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
          * 
          * @return builder
          * 
@@ -783,7 +814,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param algorithm Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
+         * @param algorithm For `type: secretKey`: Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
          * 
          * @return builder
          * 
@@ -793,7 +824,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param allowedDestinationAddresses List of allowed destination addresses.
+         * @param allowedDestinationAddresses For `type: sendEmail`: List of allowed destination addresses.
          * 
          * @return builder
          * 
@@ -804,7 +835,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param allowedDestinationAddresses List of allowed destination addresses.
+         * @param allowedDestinationAddresses For `type: sendEmail`: List of allowed destination addresses.
          * 
          * @return builder
          * 
@@ -814,7 +845,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param allowedDestinationAddresses List of allowed destination addresses.
+         * @param allowedDestinationAddresses For `type: sendEmail`: List of allowed destination addresses.
          * 
          * @return builder
          * 
@@ -824,7 +855,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param allowedSenderAddresses List of allowed sender addresses.
+         * @param allowedSenderAddresses For `type: sendEmail`: List of allowed sender addresses.
          * 
          * @return builder
          * 
@@ -835,7 +866,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param allowedSenderAddresses List of allowed sender addresses.
+         * @param allowedSenderAddresses For `type: sendEmail`: List of allowed sender addresses.
          * 
          * @return builder
          * 
@@ -845,7 +876,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param allowedSenderAddresses List of allowed sender addresses.
+         * @param allowedSenderAddresses For `type: sendEmail`: List of allowed sender addresses.
          * 
          * @return builder
          * 
@@ -855,7 +886,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param appId ID of the Flagship app to bind to for feature flag evaluation.
+         * @param appId For `type: flagship`: ID of the Flagship app to bind to for feature flag evaluation.
          * 
          * @return builder
          * 
@@ -866,7 +897,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param appId ID of the Flagship app to bind to for feature flag evaluation.
+         * @param appId For `type: flagship`: ID of the Flagship app to bind to for feature flag evaluation.
          * 
          * @return builder
          * 
@@ -876,7 +907,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param bucketName R2 bucket to bind to.
+         * @param bucketName For `type: r2Bucket`: R2 bucket to bind to.
          * 
          * @return builder
          * 
@@ -887,7 +918,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param bucketName R2 bucket to bind to.
+         * @param bucketName For `type: r2Bucket`: R2 bucket to bind to.
          * 
          * @return builder
          * 
@@ -897,7 +928,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param certificateId Identifier of the certificate to bind to.
+         * @param certificateId For `type: mtlsCertificate`: Identifier of the certificate to bind to.
          * 
          * @return builder
          * 
@@ -908,7 +939,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param certificateId Identifier of the certificate to bind to.
+         * @param certificateId For `type: mtlsCertificate`: Identifier of the certificate to bind to.
          * 
          * @return builder
          * 
@@ -918,7 +949,9 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param className The exported class name of the Durable Object.
+         * @param className For `type: durableObjectNamespace`: The exported class name of the Durable Object.
+         * 
+         * For `type: workflow`: Class name of the Workflow. Should only be provided if the Workflow belongs to this script.
          * 
          * @return builder
          * 
@@ -929,7 +962,9 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param className The exported class name of the Durable Object.
+         * @param className For `type: durableObjectNamespace`: The exported class name of the Durable Object.
+         * 
+         * For `type: workflow`: Class name of the Workflow. Should only be provided if the Workflow belongs to this script.
          * 
          * @return builder
          * 
@@ -939,7 +974,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param databaseId Identifier of the D1 database to bind to.
+         * @param databaseId For `type: d1`: Identifier of the D1 database to bind to.
          * 
          * @return builder
          * 
@@ -950,7 +985,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param databaseId Identifier of the D1 database to bind to.
+         * @param databaseId For `type: d1`: Identifier of the D1 database to bind to.
          * 
          * @return builder
          * 
@@ -960,7 +995,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param dataset The name of the dataset to bind to.
+         * @param dataset For `type: analyticsEngine`: The name of the dataset to bind to.
          * 
          * @return builder
          * 
@@ -971,7 +1006,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param dataset The name of the dataset to bind to.
+         * @param dataset For `type: analyticsEngine`: The name of the dataset to bind to.
          * 
          * @return builder
          * 
@@ -981,7 +1016,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param destinationAddress Destination address for the email.
+         * @param destinationAddress For `type: sendEmail`: Destination address for the email.
          * 
          * @return builder
          * 
@@ -992,7 +1027,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param destinationAddress Destination address for the email.
+         * @param destinationAddress For `type: sendEmail`: Destination address for the email.
          * 
          * @return builder
          * 
@@ -1002,7 +1037,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param dispatchNamespace The dispatch namespace the Durable Object script belongs to.
+         * @param dispatchNamespace For `type: durableObjectNamespace`: The dispatch namespace the Durable Object script belongs to.
          * 
          * @return builder
          * 
@@ -1013,7 +1048,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param dispatchNamespace The dispatch namespace the Durable Object script belongs to.
+         * @param dispatchNamespace For `type: durableObjectNamespace`: The dispatch namespace the Durable Object script belongs to.
          * 
          * @return builder
          * 
@@ -1023,7 +1058,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param entrypoint Entrypoint to invoke on the target Worker.
+         * @param entrypoint For `type: service`: Entrypoint to invoke on the target Worker.
          * 
          * @return builder
          * 
@@ -1034,7 +1069,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param entrypoint Entrypoint to invoke on the target Worker.
+         * @param entrypoint For `type: service`: Entrypoint to invoke on the target Worker.
          * 
          * @return builder
          * 
@@ -1044,7 +1079,9 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param environment The environment of the scriptName to bind to.
+         * @param environment For `type: durableObjectNamespace`: The environment of the scriptName to bind to.
+         * 
+         * For `type: service`: Optional environment if the Worker utilizes one.
          * 
          * @return builder
          * 
@@ -1055,7 +1092,9 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param environment The environment of the scriptName to bind to.
+         * @param environment For `type: durableObjectNamespace`: The environment of the scriptName to bind to.
+         * 
+         * For `type: service`: Optional environment if the Worker utilizes one.
          * 
          * @return builder
          * 
@@ -1065,7 +1104,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param format Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
+         * @param format For `type: secretKey`: Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
          * Available values: &#34;raw&#34;, &#34;pkcs8&#34;, &#34;spki&#34;, &#34;jwk&#34;.
          * 
          * @return builder
@@ -1077,7 +1116,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param format Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
+         * @param format For `type: secretKey`: Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
          * Available values: &#34;raw&#34;, &#34;pkcs8&#34;, &#34;spki&#34;, &#34;jwk&#34;.
          * 
          * @return builder
@@ -1088,7 +1127,9 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param id Identifier of the D1 database to bind to.
+         * @param id For `type: d1`: Identifier of the D1 database to bind to.
+         * 
+         * For `type: hyperdrive`: Identifier of the Hyperdrive connection to bind to.
          * 
          * @return builder
          * 
@@ -1099,7 +1140,9 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param id Identifier of the D1 database to bind to.
+         * @param id For `type: d1`: Identifier of the D1 database to bind to.
+         * 
+         * For `type: hyperdrive`: Identifier of the Hyperdrive connection to bind to.
          * 
          * @return builder
          * 
@@ -1109,7 +1152,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param identity Enables Gateway identity for the binding. Requires network*id to be &#34;cf1:network&#34; and cannot be combined with tunnel*id.
+         * @param identity For `type: vpcNetwork`: Enables Gateway identity for the binding. Requires networkId to be &#34;cf1:network&#34; and cannot be combined with tunnelId or an explicit &#34;cf1:vnet:&lt;UUID&gt;&#34; network_id.
          * Available values: &#34;runtime-email-alpha&#34;.
          * 
          * @return builder
@@ -1121,7 +1164,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param identity Enables Gateway identity for the binding. Requires network*id to be &#34;cf1:network&#34; and cannot be combined with tunnel*id.
+         * @param identity For `type: vpcNetwork`: Enables Gateway identity for the binding. Requires networkId to be &#34;cf1:network&#34; and cannot be combined with tunnelId or an explicit &#34;cf1:vnet:&lt;UUID&gt;&#34; network_id.
          * Available values: &#34;runtime-email-alpha&#34;.
          * 
          * @return builder
@@ -1132,7 +1175,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param indexName Name of the Vectorize index to bind to.
+         * @param indexName For `type: vectorize`: Name of the Vectorize index to bind to.
          * 
          * @return builder
          * 
@@ -1143,7 +1186,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param indexName Name of the Vectorize index to bind to.
+         * @param indexName For `type: vectorize`: Name of the Vectorize index to bind to.
          * 
          * @return builder
          * 
@@ -1153,7 +1196,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param instanceName The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
+         * @param instanceName For `type: aiSearch`: The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
          * 
          * @return builder
          * 
@@ -1164,7 +1207,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param instanceName The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
+         * @param instanceName For `type: aiSearch`: The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
          * 
          * @return builder
          * 
@@ -1174,7 +1217,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param json JSON data to use.
+         * @param json For `type: json`: JSON data to use.
          * 
          * @return builder
          * 
@@ -1185,7 +1228,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param json JSON data to use.
+         * @param json For `type: json`: JSON data to use.
          * 
          * @return builder
          * 
@@ -1195,7 +1238,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param jurisdiction The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
+         * @param jurisdiction For `type: r2Bucket`: The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
          * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;fedramp-high&#34;, &#34;us&#34;.
          * 
          * @return builder
@@ -1207,7 +1250,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param jurisdiction The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
+         * @param jurisdiction For `type: r2Bucket`: The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
          * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;fedramp-high&#34;, &#34;us&#34;.
          * 
          * @return builder
@@ -1218,7 +1261,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param keyBase64 Base64-encoded key data. Required if `format` is &#34;raw&#34;, &#34;pkcs8&#34;, or &#34;spki&#34;.
+         * @param keyBase64 For `type: secretKey`: Base64-encoded key data. Required if `format` is &#34;raw&#34;, &#34;pkcs8&#34;, or &#34;spki&#34;.
          * 
          * @return builder
          * 
@@ -1229,7 +1272,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param keyBase64 Base64-encoded key data. Required if `format` is &#34;raw&#34;, &#34;pkcs8&#34;, or &#34;spki&#34;.
+         * @param keyBase64 For `type: secretKey`: Base64-encoded key data. Required if `format` is &#34;raw&#34;, &#34;pkcs8&#34;, or &#34;spki&#34;.
          * 
          * @return builder
          * 
@@ -1239,7 +1282,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param keyJwk Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is &#34;jwk&#34;.
+         * @param keyJwk For `type: secretKey`: Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is &#34;jwk&#34;.
          * 
          * @return builder
          * 
@@ -1250,7 +1293,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param keyJwk Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is &#34;jwk&#34;.
+         * @param keyJwk For `type: secretKey`: Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is &#34;jwk&#34;.
          * 
          * @return builder
          * 
@@ -1260,7 +1303,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name A JavaScript variable name for the binding.
+         * @param name For `type: ai` or `type: aiSearch` or `type: aiSearchNamespace` or `type: messaging` or `type: analyticsEngine` or `type: artifacts` or `type: assets` or `type: browser` or `type: d1` or `type: dataBlob` or `type: dispatchNamespace` or `type: durableObjectNamespace` or `type: hyperdrive` or `type: images` or `type: json` or `type: kvNamespace` or `type: media` or `type: mtlsCertificate` or `type: plainText` or `type: pipelines` or `type: k2` or `type: queue` or `type: ratelimit` or `type: r2Bucket` or `type: secretText` or `type: sendEmail` or `type: service` or `type: textBlob` or `type: vectorize` or `type: versionMetadata` or `type: secretsStoreSecret` or `type: flagship` or `type: secretKey` or `type: workflow` or `type: wasmModule` or `type: vpcService` or `type: vpcNetwork` or `type: workerLoader`: A JavaScript variable name for the binding.
          * 
          * @return builder
          * 
@@ -1271,7 +1314,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name A JavaScript variable name for the binding.
+         * @param name For `type: ai` or `type: aiSearch` or `type: aiSearchNamespace` or `type: messaging` or `type: analyticsEngine` or `type: artifacts` or `type: assets` or `type: browser` or `type: d1` or `type: dataBlob` or `type: dispatchNamespace` or `type: durableObjectNamespace` or `type: hyperdrive` or `type: images` or `type: json` or `type: kvNamespace` or `type: media` or `type: mtlsCertificate` or `type: plainText` or `type: pipelines` or `type: k2` or `type: queue` or `type: ratelimit` or `type: r2Bucket` or `type: secretText` or `type: sendEmail` or `type: service` or `type: textBlob` or `type: vectorize` or `type: versionMetadata` or `type: secretsStoreSecret` or `type: flagship` or `type: secretKey` or `type: workflow` or `type: wasmModule` or `type: vpcService` or `type: vpcNetwork` or `type: workerLoader`: A JavaScript variable name for the binding.
          * 
          * @return builder
          * 
@@ -1281,7 +1324,15 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param namespace The namespace the instance belongs to. Defaults to &#34;default&#34; if omitted. Customers who don&#39;t use namespaces can simply omit this field.
+         * @param namespace For `type: aiSearch`: The namespace the instance belongs to. Defaults to &#34;default&#34; if omitted. Customers who don&#39;t use namespaces can simply omit this field.
+         * 
+         * For `type: aiSearchNamespace`: The user-chosen namespace name. Must exist before deploy -- Wrangler handles auto-creation on deploy failure (R2 bucket pattern). The &#34;default&#34; namespace is auto-created by config-api for new accounts. Grants full access (CRUD + search + chat) to all instances within the namespace.
+         * 
+         * For `type: messaging`: The Messaging namespace to bind to.
+         * 
+         * For `type: artifacts`: The Artifacts namespace exposed to the Worker in the Worker&#39;s account. Must be 2-63 characters, start with an ASCII alphanumeric character, contain only ASCII alphanumeric characters, dots, underscores, and hyphens, and must not end with a hyphen. The namespace does not need to be created before binding it.
+         * 
+         * For `type: dispatchNamespace`: The name of the dispatch namespace.
          * 
          * @return builder
          * 
@@ -1292,7 +1343,15 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param namespace The namespace the instance belongs to. Defaults to &#34;default&#34; if omitted. Customers who don&#39;t use namespaces can simply omit this field.
+         * @param namespace For `type: aiSearch`: The namespace the instance belongs to. Defaults to &#34;default&#34; if omitted. Customers who don&#39;t use namespaces can simply omit this field.
+         * 
+         * For `type: aiSearchNamespace`: The user-chosen namespace name. Must exist before deploy -- Wrangler handles auto-creation on deploy failure (R2 bucket pattern). The &#34;default&#34; namespace is auto-created by config-api for new accounts. Grants full access (CRUD + search + chat) to all instances within the namespace.
+         * 
+         * For `type: messaging`: The Messaging namespace to bind to.
+         * 
+         * For `type: artifacts`: The Artifacts namespace exposed to the Worker in the Worker&#39;s account. Must be 2-63 characters, start with an ASCII alphanumeric character, contain only ASCII alphanumeric characters, dots, underscores, and hyphens, and must not end with a hyphen. The namespace does not need to be created before binding it.
+         * 
+         * For `type: dispatchNamespace`: The name of the dispatch namespace.
          * 
          * @return builder
          * 
@@ -1302,7 +1361,9 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param namespaceId Namespace identifier tag.
+         * @param namespaceId For `type: durableObjectNamespace` or `type: kvNamespace`: Namespace identifier tag.
+         * 
+         * For `type: ratelimit`: Identifier of the rate limit namespace to bind to.
          * 
          * @return builder
          * 
@@ -1313,7 +1374,9 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param namespaceId Namespace identifier tag.
+         * @param namespaceId For `type: durableObjectNamespace` or `type: kvNamespace`: Namespace identifier tag.
+         * 
+         * For `type: ratelimit`: Identifier of the rate limit namespace to bind to.
          * 
          * @return builder
          * 
@@ -1323,7 +1386,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param networkId Identifier of the network to bind to. Only &#34;cf1:network&#34; is currently supported. Mutually exclusive with tunnel_id.
+         * @param networkId For `type: vpcNetwork`: Identifier of the network to bind to. Use &#34;cf1:network&#34; to select the account&#39;s default virtual network at runtime, or &#34;cf1:vnet:&lt;UUID&gt;&#34; to select an explicit virtual network in the Worker&#39;s account. Mutually exclusive with tunnel_id.
          * 
          * @return builder
          * 
@@ -1334,7 +1397,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param networkId Identifier of the network to bind to. Only &#34;cf1:network&#34; is currently supported. Mutually exclusive with tunnel_id.
+         * @param networkId For `type: vpcNetwork`: Identifier of the network to bind to. Use &#34;cf1:network&#34; to select the account&#39;s default virtual network at runtime, or &#34;cf1:vnet:&lt;UUID&gt;&#34; to select an explicit virtual network in the Worker&#39;s account. Mutually exclusive with tunnel_id.
          * 
          * @return builder
          * 
@@ -1344,7 +1407,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param oldName The old name of the inherited binding. If set, the binding will be renamed from `oldName` to `name` in the new version. If not set, the binding will keep the same name between versions.
+         * @param oldName For `type: inherit`: The old name of the inherited binding. If set, the binding will be renamed from `oldName` to `name` in the new version. If not set, the binding will keep the same name between versions.
          * 
          * @return builder
          * 
@@ -1355,7 +1418,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param oldName The old name of the inherited binding. If set, the binding will be renamed from `oldName` to `name` in the new version. If not set, the binding will keep the same name between versions.
+         * @param oldName For `type: inherit`: The old name of the inherited binding. If set, the binding will be renamed from `oldName` to `name` in the new version. If not set, the binding will keep the same name between versions.
          * 
          * @return builder
          * 
@@ -1365,7 +1428,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param outbound Outbound worker.
+         * @param outbound For `type: dispatchNamespace`: Outbound worker.
          * 
          * @return builder
          * 
@@ -1376,7 +1439,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param outbound Outbound worker.
+         * @param outbound For `type: dispatchNamespace`: Outbound worker.
          * 
          * @return builder
          * 
@@ -1386,7 +1449,11 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param part The name of the file containing the data content. Only accepted for `service worker syntax` Workers.
+         * @param part For `type: dataBlob`: The name of the file containing the data content. Only accepted for `service worker syntax` Workers.
+         * 
+         * For `type: textBlob`: The name of the file containing the text content. Only accepted for `service worker syntax` Workers.
+         * 
+         * For `type: wasmModule`: The name of the file containing the WebAssembly module content. Only accepted for `service worker syntax` Workers.
          * 
          * @return builder
          * 
@@ -1397,7 +1464,11 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param part The name of the file containing the data content. Only accepted for `service worker syntax` Workers.
+         * @param part For `type: dataBlob`: The name of the file containing the data content. Only accepted for `service worker syntax` Workers.
+         * 
+         * For `type: textBlob`: The name of the file containing the text content. Only accepted for `service worker syntax` Workers.
+         * 
+         * For `type: wasmModule`: The name of the file containing the WebAssembly module content. Only accepted for `service worker syntax` Workers.
          * 
          * @return builder
          * 
@@ -1407,7 +1478,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param pipeline Name of the Pipeline to bind to.
+         * @param pipeline For `type: pipelines`: Name of the Pipeline to bind to.
          * 
          * @return builder
          * 
@@ -1418,7 +1489,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param pipeline Name of the Pipeline to bind to.
+         * @param pipeline For `type: pipelines`: Name of the Pipeline to bind to.
          * 
          * @return builder
          * 
@@ -1428,7 +1499,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param queueName Name of the Queue to bind to.
+         * @param queueName For `type: queue`: Name of the Queue to bind to.
          * 
          * @return builder
          * 
@@ -1439,7 +1510,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param queueName Name of the Queue to bind to.
+         * @param queueName For `type: queue`: Name of the Queue to bind to.
          * 
          * @return builder
          * 
@@ -1449,28 +1520,9 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param retry Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
+         * @param scriptName For `type: durableObjectNamespace`: The script where the Durable Object is defined, if it is external to this Worker.
          * 
-         * @return builder
-         * 
-         */
-        public Builder retry(@Nullable Output<WorkerVersionBindingRetryArgs> retry) {
-            $.retry = retry;
-            return this;
-        }
-
-        /**
-         * @param retry Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder retry(WorkerVersionBindingRetryArgs retry) {
-            return retry(Output.of(retry));
-        }
-
-        /**
-         * @param scriptName The script where the Durable Object is defined, if it is external to this Worker.
+         * For `type: workflow`: Script name that contains the Workflow. If not provided, defaults to this script name.
          * 
          * @return builder
          * 
@@ -1481,7 +1533,9 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param scriptName The script where the Durable Object is defined, if it is external to this Worker.
+         * @param scriptName For `type: durableObjectNamespace`: The script where the Durable Object is defined, if it is external to this Worker.
+         * 
+         * For `type: workflow`: Script name that contains the Workflow. If not provided, defaults to this script name.
          * 
          * @return builder
          * 
@@ -1491,7 +1545,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param secretName Name of the secret in the store.
+         * @param secretName For `type: secretsStoreSecret`: Name of the secret in the store.
          * 
          * @return builder
          * 
@@ -1502,7 +1556,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param secretName Name of the secret in the store.
+         * @param secretName For `type: secretsStoreSecret`: Name of the secret in the store.
          * 
          * @return builder
          * 
@@ -1512,7 +1566,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param service Name of Worker to bind to.
+         * @param service For `type: service`: Name of Worker to bind to.
          * 
          * @return builder
          * 
@@ -1523,7 +1577,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param service Name of Worker to bind to.
+         * @param service For `type: service`: Name of Worker to bind to.
          * 
          * @return builder
          * 
@@ -1533,7 +1587,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param serviceId Identifier of the VPC service to bind to.
+         * @param serviceId For `type: vpcService`: Identifier of the VPC service to bind to.
          * 
          * @return builder
          * 
@@ -1544,7 +1598,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param serviceId Identifier of the VPC service to bind to.
+         * @param serviceId For `type: vpcService`: Identifier of the VPC service to bind to.
          * 
          * @return builder
          * 
@@ -1554,7 +1608,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param simple The rate limit configuration.
+         * @param simple For `type: ratelimit`: The rate limit configuration.
          * 
          * @return builder
          * 
@@ -1565,7 +1619,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param simple The rate limit configuration.
+         * @param simple For `type: ratelimit`: The rate limit configuration.
          * 
          * @return builder
          * 
@@ -1575,7 +1629,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param storeId ID of the store containing the secret.
+         * @param storeId For `type: secretsStoreSecret`: ID of the store containing the secret.
          * 
          * @return builder
          * 
@@ -1586,7 +1640,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param storeId ID of the store containing the secret.
+         * @param storeId For `type: secretsStoreSecret`: ID of the store containing the secret.
          * 
          * @return builder
          * 
@@ -1596,7 +1650,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param stream ID of a K2 stream owned by the account deploying the Worker.
+         * @param stream For `type: k2`: ID of a K2 stream owned by the account deploying the Worker.
          * 
          * @return builder
          * 
@@ -1607,7 +1661,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param stream ID of a K2 stream owned by the account deploying the Worker.
+         * @param stream For `type: k2`: ID of a K2 stream owned by the account deploying the Worker.
          * 
          * @return builder
          * 
@@ -1617,7 +1671,9 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param text The text value to use.
+         * @param text For `type: plainText`: The text value to use.
+         * 
+         * For `type: secretText`: The secret value to use.
          * 
          * @return builder
          * 
@@ -1628,7 +1684,9 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param text The text value to use.
+         * @param text For `type: plainText`: The text value to use.
+         * 
+         * For `type: secretText`: The secret value to use.
          * 
          * @return builder
          * 
@@ -1638,7 +1696,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param tunnelId UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
+         * @param tunnelId For `type: vpcNetwork`: UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
          * 
          * @return builder
          * 
@@ -1649,7 +1707,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param tunnelId UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
+         * @param tunnelId For `type: vpcNetwork`: UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
          * 
          * @return builder
          * 
@@ -1660,7 +1718,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param type The kind of resource that the binding provides.
-         * Available values: &#34;ai&#34;, &#34;ai*search&#34;, &#34;ai*search*namespace&#34;, &#34;messaging&#34;, &#34;analytics*engine&#34;, &#34;artifacts&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;data*blob&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;media&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;k2&#34;, &#34;queue&#34;, &#34;ratelimit&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;send*email&#34;, &#34;service&#34;, &#34;text*blob&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;flagship&#34;, &#34;secret*key&#34;, &#34;workflow&#34;, &#34;wasm*module&#34;, &#34;vpc*service&#34;, &#34;vpc*network&#34;.
+         * Available values: &#34;ai&#34;, &#34;aiSearch&#34;, &#34;aiSearchNamespace&#34;, &#34;messaging&#34;, &#34;analyticsEngine&#34;, &#34;artifacts&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;dataBlob&#34;, &#34;dispatchNamespace&#34;, &#34;durableObjectNamespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kvNamespace&#34;, &#34;media&#34;, &#34;mtlsCertificate&#34;, &#34;plainText&#34;, &#34;pipelines&#34;, &#34;k2&#34;, &#34;queue&#34;, &#34;ratelimit&#34;, &#34;r2Bucket&#34;, &#34;secretText&#34;, &#34;sendEmail&#34;, &#34;service&#34;, &#34;textBlob&#34;, &#34;vectorize&#34;, &#34;versionMetadata&#34;, &#34;secretsStoreSecret&#34;, &#34;flagship&#34;, &#34;secretKey&#34;, &#34;workflow&#34;, &#34;wasmModule&#34;, &#34;vpcService&#34;, &#34;vpcNetwork&#34;, &#34;workerLoader&#34;.
          * 
          * @return builder
          * 
@@ -1672,7 +1730,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param type The kind of resource that the binding provides.
-         * Available values: &#34;ai&#34;, &#34;ai*search&#34;, &#34;ai*search*namespace&#34;, &#34;messaging&#34;, &#34;analytics*engine&#34;, &#34;artifacts&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;data*blob&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;media&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;k2&#34;, &#34;queue&#34;, &#34;ratelimit&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;send*email&#34;, &#34;service&#34;, &#34;text*blob&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;flagship&#34;, &#34;secret*key&#34;, &#34;workflow&#34;, &#34;wasm*module&#34;, &#34;vpc*service&#34;, &#34;vpc*network&#34;.
+         * Available values: &#34;ai&#34;, &#34;aiSearch&#34;, &#34;aiSearchNamespace&#34;, &#34;messaging&#34;, &#34;analyticsEngine&#34;, &#34;artifacts&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;dataBlob&#34;, &#34;dispatchNamespace&#34;, &#34;durableObjectNamespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kvNamespace&#34;, &#34;media&#34;, &#34;mtlsCertificate&#34;, &#34;plainText&#34;, &#34;pipelines&#34;, &#34;k2&#34;, &#34;queue&#34;, &#34;ratelimit&#34;, &#34;r2Bucket&#34;, &#34;secretText&#34;, &#34;sendEmail&#34;, &#34;service&#34;, &#34;textBlob&#34;, &#34;vectorize&#34;, &#34;versionMetadata&#34;, &#34;secretsStoreSecret&#34;, &#34;flagship&#34;, &#34;secretKey&#34;, &#34;workflow&#34;, &#34;wasmModule&#34;, &#34;vpcService&#34;, &#34;vpcNetwork&#34;, &#34;workerLoader&#34;.
          * 
          * @return builder
          * 
@@ -1682,7 +1740,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param usages Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
+         * @param usages For `type: secretKey`: Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
          * 
          * @return builder
          * 
@@ -1693,7 +1751,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param usages Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
+         * @param usages For `type: secretKey`: Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
          * 
          * @return builder
          * 
@@ -1703,7 +1761,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param usages Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
+         * @param usages For `type: secretKey`: Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
          * 
          * @return builder
          * 
@@ -1713,7 +1771,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param versionId Identifier for the version to inherit the binding from, which can be the version ID or the literal &#34;latest&#34; to inherit from the latest version. Defaults to inheriting the binding from the latest version.
+         * @param versionId For `type: inherit`: Identifier for the version to inherit the binding from. This can be a version ID, or the literal &#34;latest&#34; to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to &#34;latest&#34;. Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only &#34;latest&#34; and reject a version ID with error 10057.
          * 
          * @return builder
          * 
@@ -1724,7 +1782,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param versionId Identifier for the version to inherit the binding from, which can be the version ID or the literal &#34;latest&#34; to inherit from the latest version. Defaults to inheriting the binding from the latest version.
+         * @param versionId For `type: inherit`: Identifier for the version to inherit the binding from. This can be a version ID, or the literal &#34;latest&#34; to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to &#34;latest&#34;. Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only &#34;latest&#34; and reject a version ID with error 10057.
          * 
          * @return builder
          * 
@@ -1734,7 +1792,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param workflowName Name of the Workflow to bind to.
+         * @param workflowName For `type: workflow`: Name of the Workflow to bind to.
          * 
          * @return builder
          * 
@@ -1745,7 +1803,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param workflowName Name of the Workflow to bind to.
+         * @param workflowName For `type: workflow`: Name of the Workflow to bind to.
          * 
          * @return builder
          * 

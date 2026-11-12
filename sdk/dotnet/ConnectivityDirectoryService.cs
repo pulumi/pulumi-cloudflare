@@ -38,6 +38,8 @@ namespace Pulumi.Cloudflare
     ///         TlsSettings = new Cloudflare.Inputs.ConnectivityDirectoryServiceTlsSettingsArgs
     ///         {
     ///             CertVerificationMode = "verify_full",
+    ///             CertificateAuthority = "705db030-8247-489b-80dd-0d6256e5950d",
+    ///             ClientCertificate = "a493fbb4-34bc-4218-a63c-61a9323ac725",
     ///         },
     ///     });
     /// 

@@ -59,7 +59,7 @@ public final class GetZeroTrustAccessAiControlsMcpServerResult {
      */
     private String id;
     /**
-     * @return When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker&#39;s per-env rollout mode KV key.
+     * @return When true, per-user authorization uses the shared Cloudflare callback URL as the &#39;redirect*uri&#39; instead of the portal callback URL. The default is false. Set &#39;is*shared*oauth*callback_enabled&#39; to true to enable the shared Cloudflare callback URL for this MCP server.
      * 
      */
     private Boolean isSharedOauthCallbackEnabled;
@@ -73,6 +73,11 @@ public final class GetZeroTrustAccessAiControlsMcpServerResult {
      */
     private String name;
     private List<Map<String,String>> prompts;
+    /**
+     * @return Timestamp of the most recent successful admin OAuth registration.
+     * 
+     */
+    private String registeredAt;
     /**
      * @return Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
      * 
@@ -160,7 +165,7 @@ public final class GetZeroTrustAccessAiControlsMcpServerResult {
         return this.id;
     }
     /**
-     * @return When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker&#39;s per-env rollout mode KV key.
+     * @return When true, per-user authorization uses the shared Cloudflare callback URL as the &#39;redirect*uri&#39; instead of the portal callback URL. The default is false. Set &#39;is*shared*oauth*callback_enabled&#39; to true to enable the shared Cloudflare callback URL for this MCP server.
      * 
      */
     public Boolean isSharedOauthCallbackEnabled() {
@@ -187,6 +192,13 @@ public final class GetZeroTrustAccessAiControlsMcpServerResult {
     }
     public List<Map<String,String>> prompts() {
         return this.prompts;
+    }
+    /**
+     * @return Timestamp of the most recent successful admin OAuth registration.
+     * 
+     */
+    public String registeredAt() {
+        return this.registeredAt;
     }
     /**
      * @return Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
@@ -249,6 +261,7 @@ public final class GetZeroTrustAccessAiControlsMcpServerResult {
         private String modifiedBy;
         private String name;
         private List<Map<String,String>> prompts;
+        private String registeredAt;
         private Boolean secureWebGateway;
         private String status;
         private List<Map<String,String>> tools;
@@ -276,6 +289,7 @@ public final class GetZeroTrustAccessAiControlsMcpServerResult {
     	      this.modifiedBy = defaults.modifiedBy;
     	      this.name = defaults.name;
     	      this.prompts = defaults.prompts;
+    	      this.registeredAt = defaults.registeredAt;
     	      this.secureWebGateway = defaults.secureWebGateway;
     	      this.status = defaults.status;
     	      this.tools = defaults.tools;
@@ -432,6 +446,14 @@ public final class GetZeroTrustAccessAiControlsMcpServerResult {
             return this;
         }
         @CustomType.Setter
+        public Builder registeredAt(String registeredAt) {
+            if (registeredAt == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessAiControlsMcpServerResult", "registeredAt");
+            }
+            this.registeredAt = registeredAt;
+            return this;
+        }
+        @CustomType.Setter
         public Builder secureWebGateway(Boolean secureWebGateway) {
             if (secureWebGateway == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessAiControlsMcpServerResult", "secureWebGateway");
@@ -498,6 +520,7 @@ public final class GetZeroTrustAccessAiControlsMcpServerResult {
             _resultValue.modifiedBy = modifiedBy;
             _resultValue.name = name;
             _resultValue.prompts = prompts;
+            _resultValue.registeredAt = registeredAt;
             _resultValue.secureWebGateway = secureWebGateway;
             _resultValue.status = status;
             _resultValue.tools = tools;

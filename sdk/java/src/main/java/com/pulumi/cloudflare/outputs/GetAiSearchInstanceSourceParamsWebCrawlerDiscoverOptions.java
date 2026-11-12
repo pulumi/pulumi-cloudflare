@@ -18,7 +18,7 @@ public final class GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptions {
      */
     private Double depth;
     /**
-     * @return Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own.
+     * @return Follow links that point outside the source domain. Must stay `false` because discover crawls only cover the zone you own.
      * 
      */
     private Boolean includeExternalLinks;
@@ -53,7 +53,7 @@ public final class GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptions {
         return this.depth;
     }
     /**
-     * @return Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own.
+     * @return Follow links that point outside the source domain. Must stay `false` because discover crawls only cover the zone you own.
      * 
      */
     public Boolean includeExternalLinks() {

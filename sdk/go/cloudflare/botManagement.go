@@ -32,7 +32,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewBotManagement(ctx, "example_bot_management", &cloudflare.BotManagementArgs{
-//				ZoneId:                   pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				ZoneId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				AiAgents: &cloudflare.BotManagementAiAgentsArgs{
+//					AnthropicAgent: pulumi.String("block"),
+//					GoogleAgent:    pulumi.String("block"),
+//					Instinct:       pulumi.String("block"),
+//					Muse:           pulumi.String("block"),
+//					OpenaiAgent:    pulumi.String("block"),
+//				},
 //				AiBotsMigrationOptOut:    pulumi.Bool(false),
 //				AiBotsProtection:         pulumi.String("block"),
 //				Aisearch:                 pulumi.String("block"),
@@ -64,6 +71,8 @@ import (
 type BotManagement struct {
 	pulumi.CustomResourceState
 
+	// Configure blocking behavior for supported personal AI agents.
+	AiAgents BotManagementAiAgentsOutput `pulumi:"aiAgents"`
 	// Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
 	AiBotsMigrationOptOut pulumi.BoolOutput `pulumi:"aiBotsMigrationOptOut"`
 	// Enable rule to block AI Scrapers and Crawlers.
@@ -159,6 +168,8 @@ func GetBotManagement(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering BotManagement resources.
 type botManagementState struct {
+	// Configure blocking behavior for supported personal AI agents.
+	AiAgents *BotManagementAiAgents `pulumi:"aiAgents"`
 	// Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
 	AiBotsMigrationOptOut *bool `pulumi:"aiBotsMigrationOptOut"`
 	// Enable rule to block AI Scrapers and Crawlers.
@@ -222,6 +233,8 @@ type botManagementState struct {
 }
 
 type BotManagementState struct {
+	// Configure blocking behavior for supported personal AI agents.
+	AiAgents BotManagementAiAgentsPtrInput
 	// Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
 	AiBotsMigrationOptOut pulumi.BoolPtrInput
 	// Enable rule to block AI Scrapers and Crawlers.
@@ -295,6 +308,8 @@ func BotManagementExists(ctx *pulumi.Context,
 }
 
 type botManagementArgs struct {
+	// Configure blocking behavior for supported personal AI agents.
+	AiAgents *BotManagementAiAgents `pulumi:"aiAgents"`
 	// Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
 	AiBotsMigrationOptOut *bool `pulumi:"aiBotsMigrationOptOut"`
 	// Enable rule to block AI Scrapers and Crawlers.
@@ -355,6 +370,8 @@ type botManagementArgs struct {
 
 // The set of arguments for constructing a BotManagement resource.
 type BotManagementArgs struct {
+	// Configure blocking behavior for supported personal AI agents.
+	AiAgents BotManagementAiAgentsPtrInput
 	// Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
 	AiBotsMigrationOptOut pulumi.BoolPtrInput
 	// Enable rule to block AI Scrapers and Crawlers.
@@ -498,6 +515,11 @@ func (o BotManagementOutput) ToBotManagementOutput() BotManagementOutput {
 
 func (o BotManagementOutput) ToBotManagementOutputWithContext(ctx context.Context) BotManagementOutput {
 	return o
+}
+
+// Configure blocking behavior for supported personal AI agents.
+func (o BotManagementOutput) AiAgents() BotManagementAiAgentsOutput {
+	return o.ApplyT(func(v *BotManagement) BotManagementAiAgentsOutput { return v.AiAgents }).(BotManagementAiAgentsOutput)
 }
 
 // Temporary migration flag tracking zones opted out of AI bots managed-rule updates.

@@ -95,14 +95,14 @@ public final class LoadBalancerRuleArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.
+     * The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If all priorities are omitted or zero, the API assigns priorities based on the array order of the rules field.
      * 
      */
     @Import(name="priority")
     private @Nullable Output<Integer> priority;
 
     /**
-     * @return The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.
+     * @return The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If all priorities are omitted or zero, the API assigns priorities based on the array order of the rules field.
      * 
      */
     public Optional<Output<Integer>> priority() {
@@ -260,7 +260,7 @@ public final class LoadBalancerRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param priority The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.
+         * @param priority The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If all priorities are omitted or zero, the API assigns priorities based on the array order of the rules field.
          * 
          * @return builder
          * 
@@ -271,7 +271,7 @@ public final class LoadBalancerRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param priority The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.
+         * @param priority The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If all priorities are omitted or zero, the API assigns priorities based on the array order of the rules field.
          * 
          * @return builder
          * 

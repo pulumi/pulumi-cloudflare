@@ -14,6 +14,11 @@ public final class GetEmailSecurityAllowPoliciesResult {
     private String comments;
     private String createdAt;
     /**
+     * @return Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration.
+     * 
+     */
+    private String expiresAt;
+    /**
      * @return Allow policy identifier.
      * 
      */
@@ -68,7 +73,7 @@ public final class GetEmailSecurityAllowPoliciesResult {
     private String lastModified;
     private String modifiedAt;
     /**
-     * @return The pattern value to match. The format depends on `patternType`: a valid email address for EMAIL (e.g. `user{@literal @}example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+     * @return The pattern value to match. The format depends on `patternType`: a valid email address for EMAIL (e.g. `user{@literal @}example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents. The API also rejects a pattern that equals a domain onboarded to the account, ignoring case.
      * 
      */
     private String pattern;
@@ -94,6 +99,13 @@ public final class GetEmailSecurityAllowPoliciesResult {
     }
     public String createdAt() {
         return this.createdAt;
+    }
+    /**
+     * @return Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration.
+     * 
+     */
+    public String expiresAt() {
+        return this.expiresAt;
     }
     /**
      * @return Allow policy identifier.
@@ -170,7 +182,7 @@ public final class GetEmailSecurityAllowPoliciesResult {
         return this.modifiedAt;
     }
     /**
-     * @return The pattern value to match. The format depends on `patternType`: a valid email address for EMAIL (e.g. `user{@literal @}example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+     * @return The pattern value to match. The format depends on `patternType`: a valid email address for EMAIL (e.g. `user{@literal @}example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents. The API also rejects a pattern that equals a domain onboarded to the account, ignoring case.
      * 
      */
     public String pattern() {
@@ -207,6 +219,7 @@ public final class GetEmailSecurityAllowPoliciesResult {
     public static final class Builder {
         private String comments;
         private String createdAt;
+        private String expiresAt;
         private String id;
         private Boolean isAcceptableSender;
         private Boolean isExemptRecipient;
@@ -225,6 +238,7 @@ public final class GetEmailSecurityAllowPoliciesResult {
     	      Objects.requireNonNull(defaults);
     	      this.comments = defaults.comments;
     	      this.createdAt = defaults.createdAt;
+    	      this.expiresAt = defaults.expiresAt;
     	      this.id = defaults.id;
     	      this.isAcceptableSender = defaults.isAcceptableSender;
     	      this.isExemptRecipient = defaults.isExemptRecipient;
@@ -254,6 +268,14 @@ public final class GetEmailSecurityAllowPoliciesResult {
               throw new MissingRequiredPropertyException("GetEmailSecurityAllowPoliciesResult", "createdAt");
             }
             this.createdAt = createdAt;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder expiresAt(String expiresAt) {
+            if (expiresAt == null) {
+              throw new MissingRequiredPropertyException("GetEmailSecurityAllowPoliciesResult", "expiresAt");
+            }
+            this.expiresAt = expiresAt;
             return this;
         }
         @CustomType.Setter
@@ -364,6 +386,7 @@ public final class GetEmailSecurityAllowPoliciesResult {
             final var _resultValue = new GetEmailSecurityAllowPoliciesResult();
             _resultValue.comments = comments;
             _resultValue.createdAt = createdAt;
+            _resultValue.expiresAt = expiresAt;
             _resultValue.id = id;
             _resultValue.isAcceptableSender = isAcceptableSender;
             _resultValue.isExemptRecipient = isExemptRecipient;

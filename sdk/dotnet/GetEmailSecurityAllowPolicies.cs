@@ -31,6 +31,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Direction = "asc",
+        ///         Expired = true,
         ///         IsAcceptableSender = true,
         ///         IsExemptRecipient = true,
         ///         IsTrustedSender = true,
@@ -67,6 +68,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Direction = "asc",
+        ///         Expired = true,
         ///         IsAcceptableSender = true,
         ///         IsExemptRecipient = true,
         ///         IsTrustedSender = true,
@@ -103,6 +105,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Direction = "asc",
+        ///         Expired = true,
         ///         IsAcceptableSender = true,
         ///         IsExemptRecipient = true,
         ///         IsTrustedSender = true,
@@ -128,6 +131,9 @@ namespace Pulumi.Cloudflare
 
         [Input("direction")]
         public string? Direction { get; set; }
+
+        [Input("expired")]
+        public bool? Expired { get; set; }
 
         [Input("isAcceptableSender")]
         public bool? IsAcceptableSender { get; set; }
@@ -170,6 +176,9 @@ namespace Pulumi.Cloudflare
         [Input("direction")]
         public Input<string>? Direction { get; set; }
 
+        [Input("expired")]
+        public Input<bool>? Expired { get; set; }
+
         [Input("isAcceptableSender")]
         public Input<bool>? IsAcceptableSender { get; set; }
 
@@ -209,6 +218,7 @@ namespace Pulumi.Cloudflare
     {
         public readonly string AccountId;
         public readonly string? Direction;
+        public readonly bool? Expired;
         public readonly bool? IsAcceptableSender;
         public readonly bool? IsExemptRecipient;
         public readonly bool? IsTrustedSender;
@@ -225,6 +235,8 @@ namespace Pulumi.Cloudflare
             string accountId,
 
             string? direction,
+
+            bool? expired,
 
             bool? isAcceptableSender,
 
@@ -248,6 +260,7 @@ namespace Pulumi.Cloudflare
         {
             AccountId = accountId;
             Direction = direction;
+            Expired = expired;
             IsAcceptableSender = isAcceptableSender;
             IsExemptRecipient = isExemptRecipient;
             IsTrustedSender = isTrustedSender;

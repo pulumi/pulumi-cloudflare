@@ -51,6 +51,12 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// Available values: "FLAG", "BLOCK".
         /// </summary>
+        [Input("s14")]
+        public Input<string>? S14 { get; set; }
+
+        /// <summary>
+        /// Available values: "FLAG", "BLOCK".
+        /// </summary>
         [Input("s2")]
         public Input<string>? S2 { get; set; }
 

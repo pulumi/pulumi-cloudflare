@@ -67,7 +67,7 @@ type SecretsStoreSecret struct {
 	Modified pulumi.StringOutput `pulumi:"modified"`
 	// The name of the secret
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The list of services that can use this secret. Valid values are `workers`, `aiGateway`, `dex`, and `access`. Must be listed in alphabetical order.
+	// The list of services that can use this secret, or null when the secret inherits its store's scopes. Set it to null in a patch to inherit again. An empty list lets no service use the secret. Explicit scopes must be listed in alphabetical order.
 	Scopes pulumi.StringArrayOutput `pulumi:"scopes"`
 	// Available values: "pending", "active", "deleted".
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -89,9 +89,6 @@ func NewSecretsStoreSecret(ctx *pulumi.Context,
 	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
-	}
-	if args.Scopes == nil {
-		return nil, errors.New("invalid value for required argument 'Scopes'")
 	}
 	if args.StoreId == nil {
 		return nil, errors.New("invalid value for required argument 'StoreId'")
@@ -139,7 +136,7 @@ type secretsStoreSecretState struct {
 	Modified *string `pulumi:"modified"`
 	// The name of the secret
 	Name *string `pulumi:"name"`
-	// The list of services that can use this secret. Valid values are `workers`, `aiGateway`, `dex`, and `access`. Must be listed in alphabetical order.
+	// The list of services that can use this secret, or null when the secret inherits its store's scopes. Set it to null in a patch to inherit again. An empty list lets no service use the secret. Explicit scopes must be listed in alphabetical order.
 	Scopes []string `pulumi:"scopes"`
 	// Available values: "pending", "active", "deleted".
 	Status *string `pulumi:"status"`
@@ -160,7 +157,7 @@ type SecretsStoreSecretState struct {
 	Modified pulumi.StringPtrInput
 	// The name of the secret
 	Name pulumi.StringPtrInput
-	// The list of services that can use this secret. Valid values are `workers`, `aiGateway`, `dex`, and `access`. Must be listed in alphabetical order.
+	// The list of services that can use this secret, or null when the secret inherits its store's scopes. Set it to null in a patch to inherit again. An empty list lets no service use the secret. Explicit scopes must be listed in alphabetical order.
 	Scopes pulumi.StringArrayInput
 	// Available values: "pending", "active", "deleted".
 	Status pulumi.StringPtrInput
@@ -187,7 +184,7 @@ type secretsStoreSecretArgs struct {
 	Comment *string `pulumi:"comment"`
 	// The name of the secret
 	Name string `pulumi:"name"`
-	// The list of services that can use this secret. Valid values are `workers`, `aiGateway`, `dex`, and `access`. Must be listed in alphabetical order.
+	// The list of services that can use this secret, or null when the secret inherits its store's scopes. Set it to null in a patch to inherit again. An empty list lets no service use the secret. Explicit scopes must be listed in alphabetical order.
 	Scopes []string `pulumi:"scopes"`
 	// Store Identifier
 	StoreId string `pulumi:"storeId"`
@@ -203,7 +200,7 @@ type SecretsStoreSecretArgs struct {
 	Comment pulumi.StringPtrInput
 	// The name of the secret
 	Name pulumi.StringInput
-	// The list of services that can use this secret. Valid values are `workers`, `aiGateway`, `dex`, and `access`. Must be listed in alphabetical order.
+	// The list of services that can use this secret, or null when the secret inherits its store's scopes. Set it to null in a patch to inherit again. An empty list lets no service use the secret. Explicit scopes must be listed in alphabetical order.
 	Scopes pulumi.StringArrayInput
 	// Store Identifier
 	StoreId pulumi.StringInput
@@ -323,7 +320,7 @@ func (o SecretsStoreSecretOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecretsStoreSecret) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The list of services that can use this secret. Valid values are `workers`, `aiGateway`, `dex`, and `access`. Must be listed in alphabetical order.
+// The list of services that can use this secret, or null when the secret inherits its store's scopes. Set it to null in a patch to inherit again. An empty list lets no service use the secret. Explicit scopes must be listed in alphabetical order.
 func (o SecretsStoreSecretOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SecretsStoreSecret) pulumi.StringArrayOutput { return v.Scopes }).(pulumi.StringArrayOutput)
 }

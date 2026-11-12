@@ -15,6 +15,19 @@ namespace Pulumi.Cloudflare
     /// - `Load Balancers Read`
     /// - `Load Balancers Write`
     /// 
+    /// ## Planning updates
+    /// 
+    /// On an update, unchanged API defaults can retain their state values instead of
+    /// showing `(known after apply)`. This includes unset overrides in unchanged, named
+    /// rules. Removing a configured, non-default value still lets the API reset that
+    /// value; the plan does not retain the removed setting.
+    /// 
+    /// `ModifiedOn` remains unknown because it changes on every write. Other computed
+    /// values can remain unknown on creation, when a related setting changes, or when
+    /// the provider cannot determine a safe default. For example, changing session
+    /// affinity can change its default TTL, and an unconfigured DNS TTL remains unknown
+    /// for an unproxied load balancer.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -61,7 +74,57 @@ namespace Pulumi.Cloudflare
     ///         },
     ///         Networks = new[]
     ///         {
-    ///             "string",
+    ///             "cloudflare",
+    ///             "jdcloud",
+    ///         },
+    ///         PoolSets = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.LoadBalancerPoolSetArgs
+    ///             {
+    ///                 Disabled = true,
+    ///                 FixedResponse = new Cloudflare.Inputs.LoadBalancerPoolSetFixedResponseArgs
+    ///                 {
+    ///                     ContentType = "application/json",
+    ///                     Location = "www.example.com",
+    ///                     MessageBody = "Testing Hello",
+    ///                     StatusCode = 0,
+    ///                 },
+    ///                 Match = new Cloudflare.Inputs.LoadBalancerPoolSetMatchArgs
+    ///                 {
+    ///                     Default = true,
+    ///                     Topology = new Cloudflare.Inputs.LoadBalancerPoolSetMatchTopologyArgs
+    ///                     {
+    ///                         Countries = new[]
+    ///                         {
+    ///                             "string",
+    ///                         },
+    ///                         Pops = new[]
+    ///                         {
+    ///                             "string",
+    ///                         },
+    ///                         Regions = new[]
+    ///                         {
+    ///                             "WNAM",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Name = "wnam-primary",
+    ///                 Overrides = new Cloudflare.Inputs.LoadBalancerPoolSetOverridesArgs
+    ///                 {
+    ///                     FallbackPool = "9290f38c5d07c2e2f4df57b1f61d4196",
+    ///                     PoolDefaultWeight = 0.2,
+    ///                     PoolWeights = 
+    ///                     {
+    ///                         { "9290f38c5d07c2e2f4df57b1f61d4196", 0.5 },
+    ///                         { "de90f38ced07c2e2f4df50b1f61d4194", 0.3 },
+    ///                     },
+    ///                     Pools = new[]
+    ///                     {
+    ///                         "17b5962d775c646f3f9725cbc7a53df4",
+    ///                     },
+    ///                     SteeringPolicy = "random",
+    ///                 },
+    ///             },
     ///         },
     ///         PopPools = 
     ///         {
@@ -306,6 +369,12 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<string>> Networks { get; private set; } = null!;
 
         /// <summary>
+        /// An optional list of pool sets, evaluated in array order with first match wins. Pool sets are independent from the standard steering fields (`RegionPools` / `CountryPools` / `PopPools` / `DefaultPools` / `SteeringPolicy` / `RandomSteering` / `FallbackPool` / `Rules`). On a PATCH, an empty array (`pool_sets: []`) clears all pool sets, while omitting the field leaves existing pool sets unchanged.
+        /// </summary>
+        [Output("poolSets")]
+        public Output<ImmutableArray<Outputs.LoadBalancerPoolSet>> PoolSets { get; private set; } = null!;
+
+        /// <summary>
         /// Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
         /// </summary>
         [Output("popPools")]
@@ -490,6 +559,18 @@ namespace Pulumi.Cloudflare
             set => _networks = value;
         }
 
+        [Input("poolSets")]
+        private InputList<Inputs.LoadBalancerPoolSetArgs>? _poolSets;
+
+        /// <summary>
+        /// An optional list of pool sets, evaluated in array order with first match wins. Pool sets are independent from the standard steering fields (`RegionPools` / `CountryPools` / `PopPools` / `DefaultPools` / `SteeringPolicy` / `RandomSteering` / `FallbackPool` / `Rules`). On a PATCH, an empty array (`pool_sets: []`) clears all pool sets, while omitting the field leaves existing pool sets unchanged.
+        /// </summary>
+        public InputList<Inputs.LoadBalancerPoolSetArgs> PoolSets
+        {
+            get => _poolSets ?? (_poolSets = new InputList<Inputs.LoadBalancerPoolSetArgs>());
+            set => _poolSets = value;
+        }
+
         [Input("popPools")]
         private InputMap<ImmutableArray<string>>? _popPools;
 
@@ -656,6 +737,18 @@ namespace Pulumi.Cloudflare
         {
             get => _networks ?? (_networks = new InputList<string>());
             set => _networks = value;
+        }
+
+        [Input("poolSets")]
+        private InputList<Inputs.LoadBalancerPoolSetGetArgs>? _poolSets;
+
+        /// <summary>
+        /// An optional list of pool sets, evaluated in array order with first match wins. Pool sets are independent from the standard steering fields (`RegionPools` / `CountryPools` / `PopPools` / `DefaultPools` / `SteeringPolicy` / `RandomSteering` / `FallbackPool` / `Rules`). On a PATCH, an empty array (`pool_sets: []`) clears all pool sets, while omitting the field leaves existing pool sets unchanged.
+        /// </summary>
+        public InputList<Inputs.LoadBalancerPoolSetGetArgs> PoolSets
+        {
+            get => _poolSets ?? (_poolSets = new InputList<Inputs.LoadBalancerPoolSetGetArgs>());
+            set => _poolSets = value;
         }
 
         [Input("popPools")]

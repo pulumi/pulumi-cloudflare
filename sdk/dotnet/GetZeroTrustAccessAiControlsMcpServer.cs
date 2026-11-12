@@ -174,7 +174,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the RedirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+        /// When true, per-user authorization uses the shared Cloudflare callback URL as the 'redirect*uri' instead of the portal callback URL. The default is false. Set 'is*shared*oauth*callback_enabled' to true to enable the shared Cloudflare callback URL for this MCP server.
         /// </summary>
         public readonly bool IsSharedOauthCallbackEnabled;
         public readonly string LastSuccessfulSync;
@@ -186,6 +186,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Name;
         public readonly ImmutableArray<ImmutableDictionary<string, string>> Prompts;
+        /// <summary>
+        /// Timestamp of the most recent successful admin OAuth registration.
+        /// </summary>
+        public readonly string RegisteredAt;
         /// <summary>
         /// Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
         /// </summary>
@@ -245,6 +249,8 @@ namespace Pulumi.Cloudflare
 
             ImmutableArray<ImmutableDictionary<string, string>> prompts,
 
+            string registeredAt,
+
             bool secureWebGateway,
 
             string status,
@@ -274,6 +280,7 @@ namespace Pulumi.Cloudflare
             ModifiedBy = modifiedBy;
             Name = name;
             Prompts = prompts;
+            RegisteredAt = registeredAt;
             SecureWebGateway = secureWebGateway;
             Status = status;
             Tools = tools;

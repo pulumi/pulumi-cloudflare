@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Zone Observability Read`
+ * - `Zone Observability Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -53,6 +58,11 @@ export interface GetZoneTracingRulesResult {
     readonly zoneId: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Zone Observability Read`
+ * - `Zone Observability Write`
+ *
  * ## Example Usage
  *
  * ```typescript

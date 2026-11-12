@@ -26,7 +26,8 @@ type LookupAiSearchInstanceArgs struct {
 	AccountId *string                    `pulumi:"accountId"`
 	Filter    *GetAiSearchInstanceFilter `pulumi:"filter"`
 	// The ID of this resource.
-	Id *string `pulumi:"id"`
+	Id        *string `pulumi:"id"`
+	Namespace *string `pulumi:"namespace"`
 }
 
 // A collection of values returned by getAiSearchInstance.
@@ -58,7 +59,7 @@ type LookupAiSearchInstanceResult struct {
 	HybridSearchEnabled bool `pulumi:"hybridSearchEnabled"`
 	// The ID of this resource.
 	Id string `pulumi:"id"`
-	// Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
+	// Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances. When set, both vector and keyword are required.
 	IndexMethod          GetAiSearchInstanceIndexMethod          `pulumi:"indexMethod"`
 	IndexingOptions      GetAiSearchInstanceIndexingOptions      `pulumi:"indexingOptions"`
 	LastActivity         string                                  `pulumi:"lastActivity"`
@@ -74,13 +75,14 @@ type LookupAiSearchInstanceResult struct {
 	RerankingModel       string                                  `pulumi:"rerankingModel"`
 	RetrievalOptions     GetAiSearchInstanceRetrievalOptions     `pulumi:"retrievalOptions"`
 	// A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.
-	RewriteModel   string                          `pulumi:"rewriteModel"`
-	RewriteQuery   bool                            `pulumi:"rewriteQuery"`
+	RewriteModel string `pulumi:"rewriteModel"`
+	RewriteQuery bool   `pulumi:"rewriteQuery"`
+	// Minimum similarity score a chunk must reach to be returned. Defaults to 0.4.
 	ScoreThreshold float64                         `pulumi:"scoreThreshold"`
 	Source         string                          `pulumi:"source"`
 	SourceParams   GetAiSearchInstanceSourceParams `pulumi:"sourceParams"`
 	Status         string                          `pulumi:"status"`
-	// Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+	// Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). Defaults to 86400 (24h).
 	// Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
 	SyncInterval float64 `pulumi:"syncInterval"`
 	TokenId      string  `pulumi:"tokenId"`
@@ -99,7 +101,8 @@ type LookupAiSearchInstanceOutputArgs struct {
 	AccountId pulumi.StringPtrInput             `pulumi:"accountId"`
 	Filter    GetAiSearchInstanceFilterPtrInput `pulumi:"filter"`
 	// The ID of this resource.
-	Id pulumi.StringPtrInput `pulumi:"id"`
+	Id        pulumi.StringPtrInput `pulumi:"id"`
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
 }
 
 func (LookupAiSearchInstanceOutputArgs) ElementType() reflect.Type {
@@ -202,7 +205,7 @@ func (o LookupAiSearchInstanceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiSearchInstanceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
+// Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances. When set, both vector and keyword are required.
 func (o LookupAiSearchInstanceResultOutput) IndexMethod() GetAiSearchInstanceIndexMethodOutput {
 	return o.ApplyT(func(v LookupAiSearchInstanceResult) GetAiSearchInstanceIndexMethod { return v.IndexMethod }).(GetAiSearchInstanceIndexMethodOutput)
 }
@@ -270,6 +273,7 @@ func (o LookupAiSearchInstanceResultOutput) RewriteQuery() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupAiSearchInstanceResult) bool { return v.RewriteQuery }).(pulumi.BoolOutput)
 }
 
+// Minimum similarity score a chunk must reach to be returned. Defaults to 0.4.
 func (o LookupAiSearchInstanceResultOutput) ScoreThreshold() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupAiSearchInstanceResult) float64 { return v.ScoreThreshold }).(pulumi.Float64Output)
 }
@@ -286,7 +290,7 @@ func (o LookupAiSearchInstanceResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiSearchInstanceResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+// Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). Defaults to 86400 (24h).
 // Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
 func (o LookupAiSearchInstanceResultOutput) SyncInterval() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupAiSearchInstanceResult) float64 { return v.SyncInterval }).(pulumi.Float64Output)

@@ -9,14 +9,26 @@ import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ZeroTrustDeviceCustomProfileGlobalAcceleration {
+    /**
+     * @return Whether WARP users may manually override the automatic Global Acceleration decision. Defaults to true when not provided.
+     * 
+     */
+    private @Nullable Boolean allowManualOverride;
     /**
      * @return IP:port entries for the API endpoints.
      * 
      */
     private List<String> apiEndpoints;
+    /**
+     * @return Automatically switch Global Acceleration regions based on device location. Defaults to false when not provided.
+     * 
+     */
+    private @Nullable Boolean autoswitch;
     /**
      * @return Global acceleration settings are used only when &#34;enabled&#34;.
      * 
@@ -35,11 +47,25 @@ public final class ZeroTrustDeviceCustomProfileGlobalAcceleration {
 
     private ZeroTrustDeviceCustomProfileGlobalAcceleration() {}
     /**
+     * @return Whether WARP users may manually override the automatic Global Acceleration decision. Defaults to true when not provided.
+     * 
+     */
+    public Optional<Boolean> allowManualOverride() {
+        return Optional.ofNullable(this.allowManualOverride);
+    }
+    /**
      * @return IP:port entries for the API endpoints.
      * 
      */
     public List<String> apiEndpoints() {
         return this.apiEndpoints;
+    }
+    /**
+     * @return Automatically switch Global Acceleration regions based on device location. Defaults to false when not provided.
+     * 
+     */
+    public Optional<Boolean> autoswitch() {
+        return Optional.ofNullable(this.autoswitch);
     }
     /**
      * @return Global acceleration settings are used only when &#34;enabled&#34;.
@@ -72,19 +98,29 @@ public final class ZeroTrustDeviceCustomProfileGlobalAcceleration {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean allowManualOverride;
         private List<String> apiEndpoints;
+        private @Nullable Boolean autoswitch;
         private Boolean enabled;
         private List<String> masqueEndpoints;
         private List<String> wireguardEndpoints;
         public Builder() {}
         public Builder(ZeroTrustDeviceCustomProfileGlobalAcceleration defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.allowManualOverride = defaults.allowManualOverride;
     	      this.apiEndpoints = defaults.apiEndpoints;
+    	      this.autoswitch = defaults.autoswitch;
     	      this.enabled = defaults.enabled;
     	      this.masqueEndpoints = defaults.masqueEndpoints;
     	      this.wireguardEndpoints = defaults.wireguardEndpoints;
         }
 
+        @CustomType.Setter
+        public Builder allowManualOverride(@Nullable Boolean allowManualOverride) {
+
+            this.allowManualOverride = allowManualOverride;
+            return this;
+        }
         @CustomType.Setter
         public Builder apiEndpoints(List<String> apiEndpoints) {
             if (apiEndpoints == null) {
@@ -95,6 +131,12 @@ public final class ZeroTrustDeviceCustomProfileGlobalAcceleration {
         }
         public Builder apiEndpoints(String... apiEndpoints) {
             return apiEndpoints(List.of(apiEndpoints));
+        }
+        @CustomType.Setter
+        public Builder autoswitch(@Nullable Boolean autoswitch) {
+
+            this.autoswitch = autoswitch;
+            return this;
         }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
@@ -128,7 +170,9 @@ public final class ZeroTrustDeviceCustomProfileGlobalAcceleration {
         }
         public ZeroTrustDeviceCustomProfileGlobalAcceleration build() {
             final var _resultValue = new ZeroTrustDeviceCustomProfileGlobalAcceleration();
+            _resultValue.allowManualOverride = allowManualOverride;
             _resultValue.apiEndpoints = apiEndpoints;
+            _resultValue.autoswitch = autoswitch;
             _resultValue.enabled = enabled;
             _resultValue.masqueEndpoints = masqueEndpoints;
             _resultValue.wireguardEndpoints = wireguardEndpoints;

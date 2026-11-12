@@ -19,10 +19,22 @@ public final class ZeroTrustDevicePostureIntegrationConfig {
     /**
      * @return If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `apiUrl`.
      * 
+     * This secret will be passed in the `CF-Access-Client-Secret` header when hitting the `apiUrl`.
+     * 
      */
     private @Nullable String accessClientSecret;
     /**
      * @return The Workspace One API URL provided in the Workspace One Admin Dashboard.
+     * 
+     * The Crowdstrike API URL.
+     * 
+     * The Uptycs API URL.
+     * 
+     * The Tanium API URL.
+     * 
+     * The SentinelOne S2S API URL.
+     * 
+     * The Custom Device Posture Integration  API URL.
      * 
      */
     private @Nullable String apiUrl;
@@ -34,6 +46,12 @@ public final class ZeroTrustDevicePostureIntegrationConfig {
     /**
      * @return The Workspace One client ID provided in the Workspace One Admin Dashboard.
      * 
+     * The Crowdstrike client ID.
+     * 
+     * The Intune client ID.
+     * 
+     * The Kolide client ID.
+     * 
      */
     private @Nullable String clientId;
     /**
@@ -44,10 +62,26 @@ public final class ZeroTrustDevicePostureIntegrationConfig {
     /**
      * @return The Workspace One client secret provided in the Workspace One Admin Dashboard.
      * 
+     * The Crowdstrike client secret.
+     * 
+     * The Uptycs client secret.
+     * 
+     * The Intune client secret.
+     * 
+     * The Kolide client secret.
+     * 
+     * The Tanium client secret.
+     * 
+     * The SentinelOne S2S client secret.
+     * 
      */
     private @Nullable String clientSecret;
     /**
      * @return The Crowdstrike customer ID.
+     * 
+     * The Uptycs customer ID.
+     * 
+     * The Intune customer ID.
      * 
      */
     private @Nullable String customerId;
@@ -63,12 +97,24 @@ public final class ZeroTrustDevicePostureIntegrationConfig {
     /**
      * @return If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `apiUrl`.
      * 
+     * This secret will be passed in the `CF-Access-Client-Secret` header when hitting the `apiUrl`.
+     * 
      */
     public Optional<String> accessClientSecret() {
         return Optional.ofNullable(this.accessClientSecret);
     }
     /**
      * @return The Workspace One API URL provided in the Workspace One Admin Dashboard.
+     * 
+     * The Crowdstrike API URL.
+     * 
+     * The Uptycs API URL.
+     * 
+     * The Tanium API URL.
+     * 
+     * The SentinelOne S2S API URL.
+     * 
+     * The Custom Device Posture Integration  API URL.
      * 
      */
     public Optional<String> apiUrl() {
@@ -84,6 +130,12 @@ public final class ZeroTrustDevicePostureIntegrationConfig {
     /**
      * @return The Workspace One client ID provided in the Workspace One Admin Dashboard.
      * 
+     * The Crowdstrike client ID.
+     * 
+     * The Intune client ID.
+     * 
+     * The Kolide client ID.
+     * 
      */
     public Optional<String> clientId() {
         return Optional.ofNullable(this.clientId);
@@ -98,12 +150,28 @@ public final class ZeroTrustDevicePostureIntegrationConfig {
     /**
      * @return The Workspace One client secret provided in the Workspace One Admin Dashboard.
      * 
+     * The Crowdstrike client secret.
+     * 
+     * The Uptycs client secret.
+     * 
+     * The Intune client secret.
+     * 
+     * The Kolide client secret.
+     * 
+     * The Tanium client secret.
+     * 
+     * The SentinelOne S2S client secret.
+     * 
      */
     public Optional<String> clientSecret() {
         return Optional.ofNullable(this.clientSecret);
     }
     /**
      * @return The Crowdstrike customer ID.
+     * 
+     * The Uptycs customer ID.
+     * 
+     * The Intune customer ID.
      * 
      */
     public Optional<String> customerId() {

@@ -9,6 +9,14 @@ import * as utilities from "./utilities";
 /**
  * Accepted Permissions
  *
+ * - `Individual Workers Admin`
+ * - `Individual Workers Content Read-Only`
+ * - `Individual Workers Editor`
+ * - `Individual Workers Metadata Read-Only`
+ * - `Workers Admin`
+ * - `Workers Content Read-Only`
+ * - `Workers Editor`
+ * - `Workers Metadata Read-Only`
  * - `Workers Scripts Read`
  * - `Workers Scripts Write`
  * - `Workers Tail Read`
@@ -58,8 +66,15 @@ export interface GetWorkersDeploymentResult {
      * Identifier.
      */
     readonly accountId: string;
+    /**
+     * Metadata attached to the deployment.
+     */
     readonly annotations: outputs.GetWorkersDeploymentAnnotations;
     readonly authorEmail: string;
+    /**
+     * Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+     */
+    readonly codeUpdateStrategy: outputs.GetWorkersDeploymentCodeUpdateStrategy;
     readonly createdOn: string;
     readonly deploymentId: string;
     /**
@@ -72,6 +87,7 @@ export interface GetWorkersDeploymentResult {
     readonly scriptName: string;
     readonly source: string;
     /**
+     * Strategy for routing traffic across the listed versions. `percentage` splits traffic according to each version's `percentage`.
      * Available values: "percentage".
      */
     readonly strategy: string;
@@ -83,6 +99,14 @@ export interface GetWorkersDeploymentResult {
 /**
  * Accepted Permissions
  *
+ * - `Individual Workers Admin`
+ * - `Individual Workers Content Read-Only`
+ * - `Individual Workers Editor`
+ * - `Individual Workers Metadata Read-Only`
+ * - `Workers Admin`
+ * - `Workers Content Read-Only`
+ * - `Workers Editor`
+ * - `Workers Metadata Read-Only`
  * - `Workers Scripts Read`
  * - `Workers Scripts Write`
  * - `Workers Tail Read`

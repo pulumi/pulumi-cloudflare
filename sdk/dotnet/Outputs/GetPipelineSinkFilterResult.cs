@@ -14,18 +14,34 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetPipelineSinkFilterResult
     {
         /// <summary>
+        /// Sort direction.
+        /// Available values: "asc", "desc".
+        /// </summary>
+        public readonly string Direction;
+        /// <summary>
         /// Filters sinks by name (case-insensitive substring).
         /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// Sorts sinks by this field. Defaults to `CreatedAt`.
+        /// Available values: "name", "CreatedAt".
+        /// </summary>
+        public readonly string? OrderBy;
         public readonly string? PipelineId;
 
         [OutputConstructor]
         private GetPipelineSinkFilterResult(
+            string direction,
+
             string? name,
+
+            string? orderBy,
 
             string? pipelineId)
         {
+            Direction = direction;
             Name = name;
+            OrderBy = orderBy;
             PipelineId = pipelineId;
         }
     }

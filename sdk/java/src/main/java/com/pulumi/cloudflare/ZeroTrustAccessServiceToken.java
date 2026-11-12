@@ -15,6 +15,7 @@ import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -55,6 +56,7 @@ import javax.annotation.Nullable;
  *             .duration("60m")
  *             .enabled(true)
  *             .previousClientSecretExpiresAt("2014-01-01T05:20:00.12345Z")
+ *             .tags(Map.of("environment", "production"))
  *             .build());
  * 
  *     }
@@ -114,14 +116,14 @@ public class ZeroTrustAccessServiceToken extends com.pulumi.resources.CustomReso
         return this.clientSecret;
     }
     /**
-     * A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`.
+     * A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`. If the service token was reported as leaked, `previousClientSecretExpiresAt` is not required, may not be in the future, and the previous secret is discarded immediately.
      * 
      */
     @Export(name="clientSecretVersion", refs={Double.class}, tree="[0]")
     private Output<Double> clientSecretVersion;
 
     /**
-     * @return A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`.
+     * @return A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`. If the service token was reported as leaked, `previousClientSecretExpiresAt` is not required, may not be in the future, and the previous secret is discarded immediately.
      * 
      */
     public Output<Double> clientSecretVersion() {
@@ -142,14 +144,14 @@ public class ZeroTrustAccessServiceToken extends com.pulumi.resources.CustomReso
         return this.duration;
     }
     /**
-     * Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+     * Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled. A service token reported as leaked is disabled automatically and cannot be re-enabled until its secret is rotated; attempting to do so returns a 409. Defaults to enabled when omitted on create.
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
-     * @return Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+     * @return Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled. A service token reported as leaked is disabled automatically and cannot be re-enabled until its secret is rotated; attempting to do so returns a 409. Defaults to enabled when omitted on create.
      * 
      */
     public Output<Boolean> enabled() {
@@ -160,6 +162,48 @@ public class ZeroTrustAccessServiceToken extends com.pulumi.resources.CustomReso
 
     public Output<String> expiresAt() {
         return this.expiresAt;
+    }
+    /**
+     * Where the leaked `clientSecret` was found, if provided by the reporter. Omitted if the token has not been reported as leaked.
+     * 
+     */
+    @Export(name="leakReportUrl", refs={String.class}, tree="[0]")
+    private Output<String> leakReportUrl;
+
+    /**
+     * @return Where the leaked `clientSecret` was found, if provided by the reporter. Omitted if the token has not been reported as leaked.
+     * 
+     */
+    public Output<String> leakReportUrl() {
+        return this.leakReportUrl;
+    }
+    /**
+     * When a secret scanning partner reported this service token&#39;s `clientSecret` as leaked. A leaked service token is disabled and must be rotated before it can be re-enabled. Cleared once the secret is rotated. Omitted if the token has not been reported as leaked.
+     * 
+     */
+    @Export(name="leakReportedAt", refs={String.class}, tree="[0]")
+    private Output<String> leakReportedAt;
+
+    /**
+     * @return When a secret scanning partner reported this service token&#39;s `clientSecret` as leaked. A leaked service token is disabled and must be rotated before it can be re-enabled. Cleared once the secret is rotated. Omitted if the token has not been reported as leaked.
+     * 
+     */
+    public Output<String> leakReportedAt() {
+        return this.leakReportedAt;
+    }
+    /**
+     * The secret scanning partner that reported the leak. Omitted if the token has not been reported as leaked.
+     * 
+     */
+    @Export(name="leakReporter", refs={String.class}, tree="[0]")
+    private Output<String> leakReporter;
+
+    /**
+     * @return The secret scanning partner that reported the leak. Omitted if the token has not been reported as leaked.
+     * 
+     */
+    public Output<String> leakReporter() {
+        return this.leakReporter;
     }
     /**
      * The name of the service token.
@@ -176,18 +220,32 @@ public class ZeroTrustAccessServiceToken extends com.pulumi.resources.CustomReso
         return this.name;
     }
     /**
-     * The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+     * The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise. Rotating a service token that was reported as leaked discards the previous secret entirely, so no grace period can be set.
      * 
      */
     @Export(name="previousClientSecretExpiresAt", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> previousClientSecretExpiresAt;
 
     /**
-     * @return The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+     * @return The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise. Rotating a service token that was reported as leaked discards the previous secret entirely, so no grace period can be set.
      * 
      */
     public Output<Optional<String>> previousClientSecretExpiresAt() {
         return Codegen.optional(this.previousClientSecretExpiresAt);
+    }
+    /**
+     * Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
     }
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.

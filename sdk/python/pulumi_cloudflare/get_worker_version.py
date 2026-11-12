@@ -327,6 +327,12 @@ def get_worker_version(account_id: Optional[_builtins.str] = None,
     """
     Accepted Permissions
 
+    - `Individual Workers Admin`
+    - `Individual Workers Content Read-Only`
+    - `Individual Workers Editor`
+    - `Workers Admin`
+    - `Workers Content Read-Only`
+    - `Workers Editor`
     - `Workers Scripts Read`
     - `Workers Scripts Write`
     - `Workers Tail Read`
@@ -396,6 +402,12 @@ def get_worker_version_output(account_id: pulumi.Input[Optional[_builtins.str]] 
     """
     Accepted Permissions
 
+    - `Individual Workers Admin`
+    - `Individual Workers Content Read-Only`
+    - `Individual Workers Editor`
+    - `Workers Admin`
+    - `Workers Content Read-Only`
+    - `Workers Editor`
     - `Workers Scripts Read`
     - `Workers Scripts Write`
     - `Workers Tail Read`

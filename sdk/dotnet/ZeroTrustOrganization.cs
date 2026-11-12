@@ -42,6 +42,7 @@ namespace Pulumi.Cloudflare
     ///         {
     ///             "example.com",
     ///         },
+    ///         DisableEndUserAppCreation = false,
     ///         IsUiReadOnly = true,
     ///         LoginDesign = new Cloudflare.Inputs.ZeroTrustOrganizationLoginDesignArgs
     ///         {
@@ -145,6 +146,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("denyUnmatchedRequestsExemptedZoneNames")]
         public Output<ImmutableArray<string>> DenyUnmatchedRequestsExemptedZoneNames { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether creation of end user applications is disabled for this organization.
+        /// </summary>
+        [Output("disableEndUserAppCreation")]
+        public Output<bool> DisableEndUserAppCreation { get; private set; } = null!;
 
         /// <summary>
         /// Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
@@ -335,6 +342,12 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
+        /// Whether creation of end user applications is disabled for this organization.
+        /// </summary>
+        [Input("disableEndUserAppCreation")]
+        public Input<bool>? DisableEndUserAppCreation { get; set; }
+
+        /// <summary>
         /// Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
         /// </summary>
         [Input("isUiReadOnly")]
@@ -473,6 +486,12 @@ namespace Pulumi.Cloudflare
             get => _denyUnmatchedRequestsExemptedZoneNames ?? (_denyUnmatchedRequestsExemptedZoneNames = new InputList<string>());
             set => _denyUnmatchedRequestsExemptedZoneNames = value;
         }
+
+        /// <summary>
+        /// Whether creation of end user applications is disabled for this organization.
+        /// </summary>
+        [Input("disableEndUserAppCreation")]
+        public Input<bool>? DisableEndUserAppCreation { get; set; }
 
         /// <summary>
         /// Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.

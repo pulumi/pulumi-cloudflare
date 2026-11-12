@@ -45,14 +45,14 @@ public final class ShareResourceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Account identifier.
+     * The account that owns the resource. Must match the `accountId` in the path.
      * 
      */
     @Import(name="resourceAccountId", required=true)
     private Output<String> resourceAccountId;
 
     /**
-     * @return Account identifier.
+     * @return The account that owns the resource. Must match the `accountId` in the path.
      * 
      */
     public Output<String> resourceAccountId() {
@@ -60,14 +60,14 @@ public final class ShareResourceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Share Resource identifier.
+     * Identifier assigned by the service that owns the shared resource.
      * 
      */
     @Import(name="resourceId", required=true)
     private Output<String> resourceId;
 
     /**
-     * @return Share Resource identifier.
+     * @return Identifier assigned by the service that owns the shared resource.
      * 
      */
     public Output<String> resourceId() {
@@ -178,7 +178,7 @@ public final class ShareResourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceAccountId Account identifier.
+         * @param resourceAccountId The account that owns the resource. Must match the `accountId` in the path.
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class ShareResourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceAccountId Account identifier.
+         * @param resourceAccountId The account that owns the resource. Must match the `accountId` in the path.
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class ShareResourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceId Share Resource identifier.
+         * @param resourceId Identifier assigned by the service that owns the shared resource.
          * 
          * @return builder
          * 
@@ -210,7 +210,7 @@ public final class ShareResourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceId Share Resource identifier.
+         * @param resourceId Identifier assigned by the service that owns the shared resource.
          * 
          * @return builder
          * 

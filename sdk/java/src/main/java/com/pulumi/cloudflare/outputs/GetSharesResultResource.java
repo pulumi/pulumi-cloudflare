@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetSharesResultResource {
     /**
-     * @return When the share was created.
+     * @return When the object was created.
      * 
      */
     private String created;
@@ -27,7 +27,7 @@ public final class GetSharesResultResource {
      */
     private String meta;
     /**
-     * @return When the share was modified.
+     * @return When the object was last modified.
      * 
      */
     private String modified;
@@ -37,7 +37,7 @@ public final class GetSharesResultResource {
      */
     private String resourceAccountId;
     /**
-     * @return Share Resource identifier.
+     * @return Identifier assigned by the service that owns the shared resource.
      * 
      */
     private String resourceId;
@@ -61,7 +61,7 @@ public final class GetSharesResultResource {
 
     private GetSharesResultResource() {}
     /**
-     * @return When the share was created.
+     * @return When the object was created.
      * 
      */
     public String created() {
@@ -82,7 +82,7 @@ public final class GetSharesResultResource {
         return this.meta;
     }
     /**
-     * @return When the share was modified.
+     * @return When the object was last modified.
      * 
      */
     public String modified() {
@@ -96,7 +96,7 @@ public final class GetSharesResultResource {
         return this.resourceAccountId;
     }
     /**
-     * @return Share Resource identifier.
+     * @return Identifier assigned by the service that owns the shared resource.
      * 
      */
     public String resourceId() {

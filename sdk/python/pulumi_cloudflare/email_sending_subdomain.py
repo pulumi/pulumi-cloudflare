@@ -26,7 +26,7 @@ class EmailSendingSubdomainArgs:
         """
         The set of arguments for constructing a EmailSendingSubdomain resource.
 
-        :param pulumi.Input[_builtins.str] name: The domain name within the zone. A wildcard is allowed only as the complete leftmost label (`*.example.com`) and requires the account wildcard Email Sending entitlement.
+        :param pulumi.Input[_builtins.str] name: The domain name within the zone. A wildcard is allowed only as the complete leftmost label (`*.example.com`) and requires the account wildcard Email Sending entitlement. The derived Return-Path hostname, including its bounce prefix, must be at most 201 characters after ASCII conversion; wildcards use the base hostname.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         :param pulumi.Input[_builtins.bool] drop_suppressed_recipients: Whether a send request that includes a recipient suppressed on
                this subdomain drops that recipient and still delivers to the
@@ -44,7 +44,7 @@ class EmailSendingSubdomainArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
         """
-        The domain name within the zone. A wildcard is allowed only as the complete leftmost label (`*.example.com`) and requires the account wildcard Email Sending entitlement.
+        The domain name within the zone. A wildcard is allowed only as the complete leftmost label (`*.example.com`) and requires the account wildcard Email Sending entitlement. The derived Return-Path hostname, including its bounce prefix, must be at most 201 characters after ASCII conversion; wildcards use the base hostname.
         """
         return pulumi.get(self, "name")
 
@@ -114,7 +114,7 @@ class _EmailSendingSubdomainState:
                rest, instead of failing the entire request.
         :param pulumi.Input[_builtins.bool] enabled: Whether Email Sending is enabled on this subdomain.
         :param pulumi.Input[_builtins.str] modified: The date and time the destination address was last modified.
-        :param pulumi.Input[_builtins.str] name: The domain name within the zone. A wildcard is allowed only as the complete leftmost label (`*.example.com`) and requires the account wildcard Email Sending entitlement.
+        :param pulumi.Input[_builtins.str] name: The domain name within the zone. A wildcard is allowed only as the complete leftmost label (`*.example.com`) and requires the account wildcard Email Sending entitlement. The derived Return-Path hostname, including its bounce prefix, must be at most 201 characters after ASCII conversion; wildcards use the base hostname.
         :param pulumi.Input[_builtins.bool] preview_enabled: Whether sent messages from this subdomain can be previewed in the activity log.
         :param pulumi.Input[_builtins.str] return_path_domain: The return-path domain used for bounce handling. Wildcard rows use `cf-bounce.<base>`.
         :param pulumi.Input[_builtins.str] tag: Sending subdomain identifier.
@@ -207,7 +207,7 @@ class _EmailSendingSubdomainState:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The domain name within the zone. A wildcard is allowed only as the complete leftmost label (`*.example.com`) and requires the account wildcard Email Sending entitlement.
+        The domain name within the zone. A wildcard is allowed only as the complete leftmost label (`*.example.com`) and requires the account wildcard Email Sending entitlement. The derived Return-Path hostname, including its bounce prefix, must be at most 201 characters after ASCII conversion; wildcards use the base hostname.
         """
         return pulumi.get(self, "name")
 
@@ -299,7 +299,7 @@ class EmailSendingSubdomain(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] drop_suppressed_recipients: Whether a send request that includes a recipient suppressed on
                this subdomain drops that recipient and still delivers to the
                rest, instead of failing the entire request.
-        :param pulumi.Input[_builtins.str] name: The domain name within the zone. A wildcard is allowed only as the complete leftmost label (`*.example.com`) and requires the account wildcard Email Sending entitlement.
+        :param pulumi.Input[_builtins.str] name: The domain name within the zone. A wildcard is allowed only as the complete leftmost label (`*.example.com`) and requires the account wildcard Email Sending entitlement. The derived Return-Path hostname, including its bounce prefix, must be at most 201 characters after ASCII conversion; wildcards use the base hostname.
         :param pulumi.Input[_builtins.bool] preview_enabled: Whether sent messages from this subdomain can be previewed in the activity log.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
@@ -404,7 +404,7 @@ class EmailSendingSubdomain(pulumi.CustomResource):
                rest, instead of failing the entire request.
         :param pulumi.Input[_builtins.bool] enabled: Whether Email Sending is enabled on this subdomain.
         :param pulumi.Input[_builtins.str] modified: The date and time the destination address was last modified.
-        :param pulumi.Input[_builtins.str] name: The domain name within the zone. A wildcard is allowed only as the complete leftmost label (`*.example.com`) and requires the account wildcard Email Sending entitlement.
+        :param pulumi.Input[_builtins.str] name: The domain name within the zone. A wildcard is allowed only as the complete leftmost label (`*.example.com`) and requires the account wildcard Email Sending entitlement. The derived Return-Path hostname, including its bounce prefix, must be at most 201 characters after ASCII conversion; wildcards use the base hostname.
         :param pulumi.Input[_builtins.bool] preview_enabled: Whether sent messages from this subdomain can be previewed in the activity log.
         :param pulumi.Input[_builtins.str] return_path_domain: The return-path domain used for bounce handling. Wildcard rows use `cf-bounce.<base>`.
         :param pulumi.Input[_builtins.str] tag: Sending subdomain identifier.
@@ -498,7 +498,7 @@ class EmailSendingSubdomain(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        The domain name within the zone. A wildcard is allowed only as the complete leftmost label (`*.example.com`) and requires the account wildcard Email Sending entitlement.
+        The domain name within the zone. A wildcard is allowed only as the complete leftmost label (`*.example.com`) and requires the account wildcard Email Sending entitlement. The derived Return-Path hostname, including its bounce prefix, must be at most 201 characters after ASCII conversion; wildcards use the base hostname.
         """
         return pulumi.get(self, "name")
 

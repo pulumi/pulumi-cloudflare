@@ -12,8 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetAiSearchInstancesResultIndexingOptions {
     /**
-     * @return Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter.
-     * Available values: &#34;porter&#34;, &#34;trigram&#34;.
+     * @return Available values: &#34;porter&#34;, &#34;trigram&#34;.
      * 
      */
     private String keywordTokenizer;
@@ -21,8 +20,7 @@ public final class GetAiSearchInstancesResultIndexingOptions {
 
     private GetAiSearchInstancesResultIndexingOptions() {}
     /**
-     * @return Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter.
-     * Available values: &#34;porter&#34;, &#34;trigram&#34;.
+     * @return Available values: &#34;porter&#34;, &#34;trigram&#34;.
      * 
      */
     public String keywordTokenizer() {

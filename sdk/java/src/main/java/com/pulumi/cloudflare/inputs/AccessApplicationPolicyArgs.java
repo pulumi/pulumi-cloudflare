@@ -100,14 +100,14 @@ public final class AccessApplicationPolicyArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Configures multi-factor authentication (MFA) settings for this policy. For infrastructure applications only `sshPivKey` is a supported authenticator; for other application types use `totp`, `biometrics`, or `securityKey`.
+     * Configures multi-factor authentication (MFA) settings for this policy. For infrastructure applications, supported authenticators are `pivKey` and `sshFido2Key`; for other application types use `totp`, `biometrics`, or `securityKey`.
      * 
      */
     @Import(name="mfaConfig")
     private @Nullable Output<AccessApplicationPolicyMfaConfigArgs> mfaConfig;
 
     /**
-     * @return Configures multi-factor authentication (MFA) settings for this policy. For infrastructure applications only `sshPivKey` is a supported authenticator; for other application types use `totp`, `biometrics`, or `securityKey`.
+     * @return Configures multi-factor authentication (MFA) settings for this policy. For infrastructure applications, supported authenticators are `pivKey` and `sshFido2Key`; for other application types use `totp`, `biometrics`, or `securityKey`.
      * 
      */
     public Optional<Output<AccessApplicationPolicyMfaConfigArgs>> mfaConfig() {
@@ -319,7 +319,7 @@ public final class AccessApplicationPolicyArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param mfaConfig Configures multi-factor authentication (MFA) settings for this policy. For infrastructure applications only `sshPivKey` is a supported authenticator; for other application types use `totp`, `biometrics`, or `securityKey`.
+         * @param mfaConfig Configures multi-factor authentication (MFA) settings for this policy. For infrastructure applications, supported authenticators are `pivKey` and `sshFido2Key`; for other application types use `totp`, `biometrics`, or `securityKey`.
          * 
          * @return builder
          * 
@@ -330,7 +330,7 @@ public final class AccessApplicationPolicyArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param mfaConfig Configures multi-factor authentication (MFA) settings for this policy. For infrastructure applications only `sshPivKey` is a supported authenticator; for other application types use `totp`, `biometrics`, or `securityKey`.
+         * @param mfaConfig Configures multi-factor authentication (MFA) settings for this policy. For infrastructure applications, supported authenticators are `pivKey` and `sshFido2Key`; for other application types use `totp`, `biometrics`, or `securityKey`.
          * 
          * @return builder
          * 

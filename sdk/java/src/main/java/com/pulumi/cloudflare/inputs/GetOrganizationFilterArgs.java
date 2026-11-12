@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.GetOrganizationFilterContainingArgs;
+import com.pulumi.cloudflare.inputs.GetOrganizationFilterMemberArgs;
 import com.pulumi.cloudflare.inputs.GetOrganizationFilterNameArgs;
 import com.pulumi.cloudflare.inputs.GetOrganizationFilterParentArgs;
 import com.pulumi.core.Output;
@@ -28,6 +29,25 @@ public final class GetOrganizationFilterArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * Sort direction for the `orderBy` field. Defaults to `asc` when `orderBy` is
+     * specified.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    @Import(name="direction")
+    private @Nullable Output<String> direction;
+
+    /**
+     * @return Sort direction for the `orderBy` field. Defaults to `asc` when `orderBy` is
+     * specified.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    public Optional<Output<String>> direction() {
+        return Optional.ofNullable(this.direction);
+    }
+
+    /**
      * Only return organizations with the specified IDs (ex. id=foo&amp;id=bar). Send multiple elements
      * by repeating the query value.
      * 
@@ -44,11 +64,37 @@ public final class GetOrganizationFilterArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.ids);
     }
 
+    @Import(name="member")
+    private @Nullable Output<GetOrganizationFilterMemberArgs> member;
+
+    public Optional<Output<GetOrganizationFilterMemberArgs>> member() {
+        return Optional.ofNullable(this.member);
+    }
+
     @Import(name="name")
     private @Nullable Output<GetOrganizationFilterNameArgs> name;
 
     public Optional<Output<GetOrganizationFilterNameArgs>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * Field to order results by. Currently supported values: `name`.
+     * When not specified, results are ordered by hierarchy.
+     * Available values: &#34;name&#34;.
+     * 
+     */
+    @Import(name="orderBy")
+    private @Nullable Output<String> orderBy;
+
+    /**
+     * @return Field to order results by. Currently supported values: `name`.
+     * When not specified, results are ordered by hierarchy.
+     * Available values: &#34;name&#34;.
+     * 
+     */
+    public Optional<Output<String>> orderBy() {
+        return Optional.ofNullable(this.orderBy);
     }
 
     /**
@@ -94,8 +140,11 @@ public final class GetOrganizationFilterArgs extends com.pulumi.resources.Resour
 
     private GetOrganizationFilterArgs(GetOrganizationFilterArgs $) {
         this.containing = $.containing;
+        this.direction = $.direction;
         this.ids = $.ids;
+        this.member = $.member;
         this.name = $.name;
+        this.orderBy = $.orderBy;
         this.pageSize = $.pageSize;
         this.pageToken = $.pageToken;
         this.parent = $.parent;
@@ -126,6 +175,31 @@ public final class GetOrganizationFilterArgs extends com.pulumi.resources.Resour
 
         public Builder containing(GetOrganizationFilterContainingArgs containing) {
             return containing(Output.of(containing));
+        }
+
+        /**
+         * @param direction Sort direction for the `orderBy` field. Defaults to `asc` when `orderBy` is
+         * specified.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder direction(@Nullable Output<String> direction) {
+            $.direction = direction;
+            return this;
+        }
+
+        /**
+         * @param direction Sort direction for the `orderBy` field. Defaults to `asc` when `orderBy` is
+         * specified.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder direction(String direction) {
+            return direction(Output.of(direction));
         }
 
         /**
@@ -162,6 +236,15 @@ public final class GetOrganizationFilterArgs extends com.pulumi.resources.Resour
             return ids(List.of(ids));
         }
 
+        public Builder member(@Nullable Output<GetOrganizationFilterMemberArgs> member) {
+            $.member = member;
+            return this;
+        }
+
+        public Builder member(GetOrganizationFilterMemberArgs member) {
+            return member(Output.of(member));
+        }
+
         public Builder name(@Nullable Output<GetOrganizationFilterNameArgs> name) {
             $.name = name;
             return this;
@@ -169,6 +252,31 @@ public final class GetOrganizationFilterArgs extends com.pulumi.resources.Resour
 
         public Builder name(GetOrganizationFilterNameArgs name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param orderBy Field to order results by. Currently supported values: `name`.
+         * When not specified, results are ordered by hierarchy.
+         * Available values: &#34;name&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orderBy(@Nullable Output<String> orderBy) {
+            $.orderBy = orderBy;
+            return this;
+        }
+
+        /**
+         * @param orderBy Field to order results by. Currently supported values: `name`.
+         * When not specified, results are ordered by hierarchy.
+         * Available values: &#34;name&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orderBy(String orderBy) {
+            return orderBy(Output.of(orderBy));
         }
 
         /**

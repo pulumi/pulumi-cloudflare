@@ -10,29 +10,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAiSearchInstancesResultIndexMethod {
-    /**
-     * @return Enable keyword (BM25) storage backend.
-     * 
-     */
     private Boolean keyword;
-    /**
-     * @return Enable vector (embedding) storage backend.
-     * 
-     */
     private Boolean vector;
 
     private GetAiSearchInstancesResultIndexMethod() {}
-    /**
-     * @return Enable keyword (BM25) storage backend.
-     * 
-     */
     public Boolean keyword() {
         return this.keyword;
     }
-    /**
-     * @return Enable vector (embedding) storage backend.
-     * 
-     */
     public Boolean vector() {
         return this.vector;
     }

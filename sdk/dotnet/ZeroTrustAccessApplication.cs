@@ -151,7 +151,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> LogoUrl { get; private set; } = null!;
 
         /// <summary>
-        /// Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+        /// Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, rdp, and infrastructure application types. For infrastructure applications, supported authenticators are `PivKey` and `SshFido2Key`; for other application types use `Totp`, `Biometrics`, or `SecurityKey`.
         /// </summary>
         [Output("mfaConfig")]
         public Output<Outputs.ZeroTrustAccessApplicationMfaConfig?> MfaConfig { get; private set; } = null!;
@@ -466,7 +466,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? LogoUrl { get; set; }
 
         /// <summary>
-        /// Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+        /// Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, rdp, and infrastructure application types. For infrastructure applications, supported authenticators are `PivKey` and `SshFido2Key`; for other application types use `Totp`, `Biometrics`, or `SecurityKey`.
         /// </summary>
         [Input("mfaConfig")]
         public Input<Inputs.ZeroTrustAccessApplicationMfaConfigArgs>? MfaConfig { get; set; }
@@ -770,7 +770,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? LogoUrl { get; set; }
 
         /// <summary>
-        /// Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+        /// Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, rdp, and infrastructure application types. For infrastructure applications, supported authenticators are `PivKey` and `SshFido2Key`; for other application types use `Totp`, `Biometrics`, or `SecurityKey`.
         /// </summary>
         [Input("mfaConfig")]
         public Input<Inputs.ZeroTrustAccessApplicationMfaConfigGetArgs>? MfaConfig { get; set; }

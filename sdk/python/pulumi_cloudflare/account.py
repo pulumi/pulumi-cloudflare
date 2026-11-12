@@ -30,11 +30,12 @@ class AccountArgs:
         """
         The set of arguments for constructing a Account resource.
 
-        :param pulumi.Input[_builtins.str] name: Account name
+        :param pulumi.Input[_builtins.str] name: Account name, limited to 65 UTF-8 bytes.
         :param pulumi.Input['AccountManagedByArgs'] managed_by: Parent container details
         :param pulumi.Input['AccountSettingsArgs'] settings: Account settings
         :param pulumi.Input[_builtins.bool] standalone: Set to `true` and omit `unit` to create a standalone Free Account. If provided, this field must be `true`.
-        :param pulumi.Input[_builtins.str] type: Available values: "standard", "enterprise".
+        :param pulumi.Input[_builtins.str] type: the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
+               Available values: "standard", "enterprise".
         :param pulumi.Input['AccountUnitArgs'] unit: Information related to the tenant unit. Provide its ID and omit `standalone` to create the Account within an Organization. See https://developers.cloudflare.com/tenant/how-to/manage-accounts/.
         """
         pulumi.set(__self__, "name", name)
@@ -56,7 +57,7 @@ class AccountArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
         """
-        Account name
+        Account name, limited to 65 UTF-8 bytes.
         """
         return pulumi.get(self, "name")
 
@@ -105,6 +106,7 @@ class AccountArgs:
     @_utilities.deprecated("""The 'type' field should no longer be set through the API.""")
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
+        the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
         Available values: "standard", "enterprise".
         """
         return pulumi.get(self, "type")
@@ -130,6 +132,7 @@ class AccountArgs:
 class _AccountState:
     def __init__(__self__, *,
                  created_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 legacy_flags: pulumi.Input[Optional['AccountLegacyFlagsArgs']] = None,
                  managed_by: pulumi.Input[Optional['AccountManagedByArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  settings: pulumi.Input[Optional['AccountSettingsArgs']] = None,
@@ -140,15 +143,19 @@ class _AccountState:
         Input properties used for looking up and filtering Account resources.
 
         :param pulumi.Input[_builtins.str] created_on: Timestamp for the creation of the account
+        :param pulumi.Input['AccountLegacyFlagsArgs'] legacy_flags: Legacy account flags.
         :param pulumi.Input['AccountManagedByArgs'] managed_by: Parent container details
-        :param pulumi.Input[_builtins.str] name: Account name
+        :param pulumi.Input[_builtins.str] name: Account name, limited to 65 UTF-8 bytes.
         :param pulumi.Input['AccountSettingsArgs'] settings: Account settings
         :param pulumi.Input[_builtins.bool] standalone: Set to `true` and omit `unit` to create a standalone Free Account. If provided, this field must be `true`.
-        :param pulumi.Input[_builtins.str] type: Available values: "standard", "enterprise".
+        :param pulumi.Input[_builtins.str] type: the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
+               Available values: "standard", "enterprise".
         :param pulumi.Input['AccountUnitArgs'] unit: Information related to the tenant unit. Provide its ID and omit `standalone` to create the Account within an Organization. See https://developers.cloudflare.com/tenant/how-to/manage-accounts/.
         """
         if created_on is not None:
             pulumi.set(__self__, "created_on", created_on)
+        if legacy_flags is not None:
+            pulumi.set(__self__, "legacy_flags", legacy_flags)
         if managed_by is not None:
             pulumi.set(__self__, "managed_by", managed_by)
         if name is not None:
@@ -178,6 +185,18 @@ class _AccountState:
         pulumi.set(self, "created_on", value)
 
     @_builtins.property
+    @pulumi.getter(name="legacyFlags")
+    def legacy_flags(self) -> pulumi.Input[Optional['AccountLegacyFlagsArgs']]:
+        """
+        Legacy account flags.
+        """
+        return pulumi.get(self, "legacy_flags")
+
+    @legacy_flags.setter
+    def legacy_flags(self, value: pulumi.Input[Optional['AccountLegacyFlagsArgs']]):
+        pulumi.set(self, "legacy_flags", value)
+
+    @_builtins.property
     @pulumi.getter(name="managedBy")
     def managed_by(self) -> pulumi.Input[Optional['AccountManagedByArgs']]:
         """
@@ -193,7 +212,7 @@ class _AccountState:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Account name
+        Account name, limited to 65 UTF-8 bytes.
         """
         return pulumi.get(self, "name")
 
@@ -230,6 +249,7 @@ class _AccountState:
     @_utilities.deprecated("""The 'type' field should no longer be set through the API.""")
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
+        the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
         Available values: "standard", "enterprise".
         """
         return pulumi.get(self, "type")
@@ -322,10 +342,11 @@ class Account(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['AccountManagedByArgs', 'AccountManagedByArgsDict', 'outputs.AccountManagedBy']] managed_by: Parent container details
-        :param pulumi.Input[_builtins.str] name: Account name
+        :param pulumi.Input[_builtins.str] name: Account name, limited to 65 UTF-8 bytes.
         :param pulumi.Input[Union['AccountSettingsArgs', 'AccountSettingsArgsDict', 'outputs.AccountSettings']] settings: Account settings
         :param pulumi.Input[_builtins.bool] standalone: Set to `true` and omit `unit` to create a standalone Free Account. If provided, this field must be `true`.
-        :param pulumi.Input[_builtins.str] type: Available values: "standard", "enterprise".
+        :param pulumi.Input[_builtins.str] type: the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
+               Available values: "standard", "enterprise".
         :param pulumi.Input[Union['AccountUnitArgs', 'AccountUnitArgsDict', 'outputs.AccountUnit']] unit: Information related to the tenant unit. Provide its ID and omit `standalone` to create the Account within an Organization. See https://developers.cloudflare.com/tenant/how-to/manage-accounts/.
         """
         ...
@@ -428,6 +449,7 @@ class Account(pulumi.CustomResource):
             __props__.__dict__["type"] = type
             __props__.__dict__["unit"] = unit
             __props__.__dict__["created_on"] = None
+            __props__.__dict__["legacy_flags"] = None
         super(Account, __self__).__init__(
             'cloudflare:index/account:Account',
             resource_name,
@@ -439,6 +461,7 @@ class Account(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            legacy_flags: pulumi.Input[Optional[Union['AccountLegacyFlagsArgs', 'AccountLegacyFlagsArgsDict', 'outputs.AccountLegacyFlags']]] = None,
             managed_by: pulumi.Input[Optional[Union['AccountManagedByArgs', 'AccountManagedByArgsDict', 'outputs.AccountManagedBy']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             settings: pulumi.Input[Optional[Union['AccountSettingsArgs', 'AccountSettingsArgsDict', 'outputs.AccountSettings']]] = None,
@@ -453,11 +476,13 @@ class Account(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] created_on: Timestamp for the creation of the account
+        :param pulumi.Input[Union['AccountLegacyFlagsArgs', 'AccountLegacyFlagsArgsDict', 'outputs.AccountLegacyFlags']] legacy_flags: Legacy account flags.
         :param pulumi.Input[Union['AccountManagedByArgs', 'AccountManagedByArgsDict', 'outputs.AccountManagedBy']] managed_by: Parent container details
-        :param pulumi.Input[_builtins.str] name: Account name
+        :param pulumi.Input[_builtins.str] name: Account name, limited to 65 UTF-8 bytes.
         :param pulumi.Input[Union['AccountSettingsArgs', 'AccountSettingsArgsDict', 'outputs.AccountSettings']] settings: Account settings
         :param pulumi.Input[_builtins.bool] standalone: Set to `true` and omit `unit` to create a standalone Free Account. If provided, this field must be `true`.
-        :param pulumi.Input[_builtins.str] type: Available values: "standard", "enterprise".
+        :param pulumi.Input[_builtins.str] type: the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
+               Available values: "standard", "enterprise".
         :param pulumi.Input[Union['AccountUnitArgs', 'AccountUnitArgsDict', 'outputs.AccountUnit']] unit: Information related to the tenant unit. Provide its ID and omit `standalone` to create the Account within an Organization. See https://developers.cloudflare.com/tenant/how-to/manage-accounts/.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -465,6 +490,7 @@ class Account(pulumi.CustomResource):
         __props__ = _AccountState.__new__(_AccountState)
 
         __props__.__dict__["created_on"] = created_on
+        __props__.__dict__["legacy_flags"] = legacy_flags
         __props__.__dict__["managed_by"] = managed_by
         __props__.__dict__["name"] = name
         __props__.__dict__["settings"] = settings
@@ -477,6 +503,7 @@ class Account(pulumi.CustomResource):
     def exists(id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            legacy_flags: pulumi.Input[Optional[Union['AccountLegacyFlagsArgs', 'AccountLegacyFlagsArgsDict', 'outputs.AccountLegacyFlags']]] = None,
             managed_by: pulumi.Input[Optional[Union['AccountManagedByArgs', 'AccountManagedByArgsDict', 'outputs.AccountManagedBy']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             settings: pulumi.Input[Optional[Union['AccountSettingsArgs', 'AccountSettingsArgsDict', 'outputs.AccountSettings']]] = None,
@@ -485,6 +512,7 @@ class Account(pulumi.CustomResource):
             unit: pulumi.Input[Optional[Union['AccountUnitArgs', 'AccountUnitArgsDict', 'outputs.AccountUnit']]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
         __props__["createdOn"] = created_on
+        __props__["legacyFlags"] = legacy_flags
         __props__["managedBy"] = managed_by
         __props__["name"] = name
         __props__["settings"] = settings
@@ -502,6 +530,14 @@ class Account(pulumi.CustomResource):
         return pulumi.get(self, "created_on")
 
     @_builtins.property
+    @pulumi.getter(name="legacyFlags")
+    def legacy_flags(self) -> pulumi.Output['outputs.AccountLegacyFlags']:
+        """
+        Legacy account flags.
+        """
+        return pulumi.get(self, "legacy_flags")
+
+    @_builtins.property
     @pulumi.getter(name="managedBy")
     def managed_by(self) -> pulumi.Output['outputs.AccountManagedBy']:
         """
@@ -513,7 +549,7 @@ class Account(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Account name
+        Account name, limited to 65 UTF-8 bytes.
         """
         return pulumi.get(self, "name")
 
@@ -538,6 +574,7 @@ class Account(pulumi.CustomResource):
     @_utilities.deprecated("""The 'type' field should no longer be set through the API.""")
     def type(self) -> pulumi.Output[_builtins.str]:
         """
+        the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
         Available values: "standard", "enterprise".
         """
         return pulumi.get(self, "type")

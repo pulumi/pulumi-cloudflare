@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.cloudflare.outputs.GetEmailSecurityBlockSendersResult;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -17,6 +18,7 @@ import javax.annotation.Nullable;
 public final class GetEmailSecurityBlockSendersInvokeResult {
     private String accountId;
     private @Nullable String direction;
+    private @Nullable Boolean expired;
     private @Nullable Integer maxItems;
     private @Nullable String order;
     private @Nullable String pattern;
@@ -30,6 +32,9 @@ public final class GetEmailSecurityBlockSendersInvokeResult {
     }
     public Optional<String> direction() {
         return Optional.ofNullable(this.direction);
+    }
+    public Optional<Boolean> expired() {
+        return Optional.ofNullable(this.expired);
     }
     public Optional<Integer> maxItems() {
         return Optional.ofNullable(this.maxItems);
@@ -61,6 +66,7 @@ public final class GetEmailSecurityBlockSendersInvokeResult {
     public static final class Builder {
         private String accountId;
         private @Nullable String direction;
+        private @Nullable Boolean expired;
         private @Nullable Integer maxItems;
         private @Nullable String order;
         private @Nullable String pattern;
@@ -72,6 +78,7 @@ public final class GetEmailSecurityBlockSendersInvokeResult {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.direction = defaults.direction;
+    	      this.expired = defaults.expired;
     	      this.maxItems = defaults.maxItems;
     	      this.order = defaults.order;
     	      this.pattern = defaults.pattern;
@@ -92,6 +99,12 @@ public final class GetEmailSecurityBlockSendersInvokeResult {
         public Builder direction(@Nullable String direction) {
 
             this.direction = direction;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder expired(@Nullable Boolean expired) {
+
+            this.expired = expired;
             return this;
         }
         @CustomType.Setter
@@ -139,6 +152,7 @@ public final class GetEmailSecurityBlockSendersInvokeResult {
             final var _resultValue = new GetEmailSecurityBlockSendersInvokeResult();
             _resultValue.accountId = accountId;
             _resultValue.direction = direction;
+            _resultValue.expired = expired;
             _resultValue.maxItems = maxItems;
             _resultValue.order = order;
             _resultValue.pattern = pattern;

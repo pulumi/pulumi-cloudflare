@@ -28,7 +28,7 @@ class GetOriginCaCertificateResult:
     """
     A collection of values returned by getOriginCaCertificate.
     """
-    def __init__(__self__, certificate=None, certificate_id=None, csr=None, expires_on=None, filter=None, hostnames=None, id=None, request_type=None, requested_validity=None):
+    def __init__(__self__, certificate=None, certificate_id=None, csr=None, expires_on=None, filter=None, hostnames=None, id=None, request_type=None, requested_validity=None, revoked_at=None):
         if certificate and not isinstance(certificate, str):
             raise TypeError("Expected argument 'certificate' to be a str")
         pulumi.set(__self__, "certificate", certificate)
@@ -56,6 +56,9 @@ class GetOriginCaCertificateResult:
         if requested_validity and not isinstance(requested_validity, float):
             raise TypeError("Expected argument 'requested_validity' to be a float")
         pulumi.set(__self__, "requested_validity", requested_validity)
+        if revoked_at and not isinstance(revoked_at, str):
+            raise TypeError("Expected argument 'revoked_at' to be a str")
+        pulumi.set(__self__, "revoked_at", revoked_at)
 
     @_builtins.property
     @pulumi.getter
@@ -124,10 +127,18 @@ class GetOriginCaCertificateResult:
     @pulumi.getter(name="requestedValidity")
     def requested_validity(self) -> _builtins.float:
         """
-        The number of days for which the certificate should be valid.
+        The number of days for which the certificate was requested to be valid. Only returned in the Create Certificate response, where it echoes the requested value. Not returned when getting or listing certificates.
         Available values: 7, 30, 90, 365, 730, 1095, 5475.
         """
         return pulumi.get(self, "requested_validity")
+
+    @_builtins.property
+    @pulumi.getter(name="revokedAt")
+    def revoked_at(self) -> _builtins.str:
+        """
+        When the certificate was revoked.
+        """
+        return pulumi.get(self, "revoked_at")
 
 
 class AwaitableGetOriginCaCertificateResult(GetOriginCaCertificateResult):
@@ -144,7 +155,8 @@ class AwaitableGetOriginCaCertificateResult(GetOriginCaCertificateResult):
             hostnames=self.hostnames,
             id=self.id,
             request_type=self.request_type,
-            requested_validity=self.requested_validity)
+            requested_validity=self.requested_validity,
+            revoked_at=self.revoked_at)
 
 
 def get_origin_ca_certificate(certificate_id: Optional[_builtins.str] = None,
@@ -178,7 +190,8 @@ def get_origin_ca_certificate(certificate_id: Optional[_builtins.str] = None,
         hostnames=pulumi.get(__ret__, 'hostnames'),
         id=pulumi.get(__ret__, 'id'),
         request_type=pulumi.get(__ret__, 'request_type'),
-        requested_validity=pulumi.get(__ret__, 'requested_validity'))
+        requested_validity=pulumi.get(__ret__, 'requested_validity'),
+        revoked_at=pulumi.get(__ret__, 'revoked_at'))
 def get_origin_ca_certificate_output(certificate_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                      filter: pulumi.Input[Optional[Optional[Union['GetOriginCaCertificateFilterArgs', 'GetOriginCaCertificateFilterArgsDict', 'outputs.GetOriginCaCertificateFilterResult']]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOriginCaCertificateResult]:
@@ -209,4 +222,5 @@ def get_origin_ca_certificate_output(certificate_id: pulumi.Input[Optional[Optio
         hostnames=pulumi.get(__response__, 'hostnames'),
         id=pulumi.get(__response__, 'id'),
         request_type=pulumi.get(__response__, 'request_type'),
-        requested_validity=pulumi.get(__response__, 'requested_validity')))
+        requested_validity=pulumi.get(__response__, 'requested_validity'),
+        revoked_at=pulumi.get(__response__, 'revoked_at')))

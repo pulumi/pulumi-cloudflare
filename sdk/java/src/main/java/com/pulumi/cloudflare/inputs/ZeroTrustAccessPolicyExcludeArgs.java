@@ -28,6 +28,7 @@ import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyExcludeOidcArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyExcludeOktaArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyExcludeSamlArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyExcludeServiceTokenArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyExcludeServiceTokenTagArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyExcludeUserRiskScoreArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -231,6 +232,13 @@ public final class ZeroTrustAccessPolicyExcludeArgs extends com.pulumi.resources
         return Optional.ofNullable(this.serviceToken);
     }
 
+    @Import(name="serviceTokenTag")
+    private @Nullable Output<ZeroTrustAccessPolicyExcludeServiceTokenTagArgs> serviceTokenTag;
+
+    public Optional<Output<ZeroTrustAccessPolicyExcludeServiceTokenTagArgs>> serviceTokenTag() {
+        return Optional.ofNullable(this.serviceTokenTag);
+    }
+
     @Import(name="userRiskScore")
     private @Nullable Output<ZeroTrustAccessPolicyExcludeUserRiskScoreArgs> userRiskScore;
 
@@ -266,6 +274,7 @@ public final class ZeroTrustAccessPolicyExcludeArgs extends com.pulumi.resources
         this.okta = $.okta;
         this.saml = $.saml;
         this.serviceToken = $.serviceToken;
+        this.serviceTokenTag = $.serviceTokenTag;
         this.userRiskScore = $.userRiskScore;
     }
 
@@ -534,6 +543,15 @@ public final class ZeroTrustAccessPolicyExcludeArgs extends com.pulumi.resources
 
         public Builder serviceToken(ZeroTrustAccessPolicyExcludeServiceTokenArgs serviceToken) {
             return serviceToken(Output.of(serviceToken));
+        }
+
+        public Builder serviceTokenTag(@Nullable Output<ZeroTrustAccessPolicyExcludeServiceTokenTagArgs> serviceTokenTag) {
+            $.serviceTokenTag = serviceTokenTag;
+            return this;
+        }
+
+        public Builder serviceTokenTag(ZeroTrustAccessPolicyExcludeServiceTokenTagArgs serviceTokenTag) {
+            return serviceTokenTag(Output.of(serviceTokenTag));
         }
 
         public Builder userRiskScore(@Nullable Output<ZeroTrustAccessPolicyExcludeUserRiskScoreArgs> userRiskScore) {

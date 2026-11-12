@@ -54,14 +54,14 @@ public final class GetZeroTrustResourceLibraryCategoriesPlainArgs extends com.pu
     }
 
     /**
-     * Number of results to skip. Defaults to 0; negative values are clamped to 0.
+     * Number of results to skip. Defaults to 0; negative values are clamped to 0. Ignored when `cursor` is provided.
      * 
      */
     @Import(name="offset")
     private @Nullable Integer offset;
 
     /**
-     * @return Number of results to skip. Defaults to 0; negative values are clamped to 0.
+     * @return Number of results to skip. Defaults to 0; negative values are clamped to 0. Ignored when `cursor` is provided.
      * 
      */
     public Optional<Integer> offset() {
@@ -123,7 +123,7 @@ public final class GetZeroTrustResourceLibraryCategoriesPlainArgs extends com.pu
         }
 
         /**
-         * @param offset Number of results to skip. Defaults to 0; negative values are clamped to 0.
+         * @param offset Number of results to skip. Defaults to 0; negative values are clamped to 0. Ignored when `cursor` is provided.
          * 
          * @return builder
          * 

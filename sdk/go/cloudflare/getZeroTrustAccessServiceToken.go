@@ -72,16 +72,24 @@ type LookupZeroTrustAccessServiceTokenResult struct {
 	ClientId string `pulumi:"clientId"`
 	// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
 	Duration string `pulumi:"duration"`
-	// Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+	// Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled. A service token reported as leaked is disabled automatically and cannot be re-enabled until its secret is rotated; attempting to do so returns a 409. Defaults to enabled when omitted on create.
 	Enabled   bool                                  `pulumi:"enabled"`
 	ExpiresAt string                                `pulumi:"expiresAt"`
 	Filter    *GetZeroTrustAccessServiceTokenFilter `pulumi:"filter"`
 	// UUID.
 	Id string `pulumi:"id"`
+	// Where the leaked `clientSecret` was found, if provided by the reporter. Omitted if the token has not been reported as leaked.
+	LeakReportUrl string `pulumi:"leakReportUrl"`
+	// When a secret scanning partner reported this service token's `clientSecret` as leaked. A leaked service token is disabled and must be rotated before it can be re-enabled. Cleared once the secret is rotated. Omitted if the token has not been reported as leaked.
+	LeakReportedAt string `pulumi:"leakReportedAt"`
+	// The secret scanning partner that reported the leak. Omitted if the token has not been reported as leaked.
+	LeakReporter string `pulumi:"leakReporter"`
 	// The name of the service token.
 	Name string `pulumi:"name"`
 	// UUID.
 	ServiceTokenId *string `pulumi:"serviceTokenId"`
+	// Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.
+	Tags map[string]string `pulumi:"tags"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -136,7 +144,7 @@ func (o LookupZeroTrustAccessServiceTokenResultOutput) Duration() pulumi.StringO
 	return o.ApplyT(func(v LookupZeroTrustAccessServiceTokenResult) string { return v.Duration }).(pulumi.StringOutput)
 }
 
-// Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+// Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled. A service token reported as leaked is disabled automatically and cannot be re-enabled until its secret is rotated; attempting to do so returns a 409. Defaults to enabled when omitted on create.
 func (o LookupZeroTrustAccessServiceTokenResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessServiceTokenResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -154,6 +162,21 @@ func (o LookupZeroTrustAccessServiceTokenResultOutput) Id() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupZeroTrustAccessServiceTokenResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Where the leaked `clientSecret` was found, if provided by the reporter. Omitted if the token has not been reported as leaked.
+func (o LookupZeroTrustAccessServiceTokenResultOutput) LeakReportUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessServiceTokenResult) string { return v.LeakReportUrl }).(pulumi.StringOutput)
+}
+
+// When a secret scanning partner reported this service token's `clientSecret` as leaked. A leaked service token is disabled and must be rotated before it can be re-enabled. Cleared once the secret is rotated. Omitted if the token has not been reported as leaked.
+func (o LookupZeroTrustAccessServiceTokenResultOutput) LeakReportedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessServiceTokenResult) string { return v.LeakReportedAt }).(pulumi.StringOutput)
+}
+
+// The secret scanning partner that reported the leak. Omitted if the token has not been reported as leaked.
+func (o LookupZeroTrustAccessServiceTokenResultOutput) LeakReporter() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessServiceTokenResult) string { return v.LeakReporter }).(pulumi.StringOutput)
+}
+
 // The name of the service token.
 func (o LookupZeroTrustAccessServiceTokenResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessServiceTokenResult) string { return v.Name }).(pulumi.StringOutput)
@@ -162,6 +185,11 @@ func (o LookupZeroTrustAccessServiceTokenResultOutput) Name() pulumi.StringOutpu
 // UUID.
 func (o LookupZeroTrustAccessServiceTokenResultOutput) ServiceTokenId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessServiceTokenResult) *string { return v.ServiceTokenId }).(pulumi.StringPtrOutput)
+}
+
+// Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.
+func (o LookupZeroTrustAccessServiceTokenResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessServiceTokenResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.

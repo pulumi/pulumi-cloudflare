@@ -87,7 +87,7 @@ public class ArgoTieredCaching extends com.pulumi.resources.CustomResource {
         return this.modifiedOn;
     }
     /**
-     * Enables Tiered Caching.
+     * Enables or disables Tiered Cache.
      * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
@@ -95,7 +95,7 @@ public class ArgoTieredCaching extends com.pulumi.resources.CustomResource {
     private Output<String> value;
 
     /**
-     * @return Enables Tiered Caching.
+     * @return Enables or disables Tiered Cache.
      * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */

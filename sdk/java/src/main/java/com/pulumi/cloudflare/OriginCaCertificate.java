@@ -13,6 +13,7 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Double;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -66,6 +67,7 @@ import javax.annotation.Nullable;
  *                 "sub.example.com")
  *             .requestType("origin-rsa")
  *             .requestedValidity(5475.0)
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .build());
  * 
  *     }
@@ -171,6 +173,34 @@ public class OriginCaCertificate extends com.pulumi.resources.CustomResource {
      */
     public Output<Double> requestedValidity() {
         return this.requestedValidity;
+    }
+    /**
+     * When the certificate was revoked.
+     * 
+     */
+    @Export(name="revokedAt", refs={String.class}, tree="[0]")
+    private Output<String> revokedAt;
+
+    /**
+     * @return When the certificate was revoked.
+     * 
+     */
+    public Output<String> revokedAt() {
+        return this.revokedAt;
+    }
+    /**
+     * Identifier of the zone whose keyless servers the certificate is for. Required when `requestType` is `keyless-certificate`; ignored otherwise.
+     * 
+     */
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> zoneId;
+
+    /**
+     * @return Identifier of the zone whose keyless servers the certificate is for. Required when `requestType` is `keyless-certificate`; ignored otherwise.
+     * 
+     */
+    public Output<Optional<String>> zoneId() {
+        return Codegen.optional(this.zoneId);
     }
 
     /**

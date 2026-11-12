@@ -16,14 +16,14 @@ public final class ZeroTrustDlpPredefinedEntryVariantArgs extends com.pulumi.res
     public static final ZeroTrustDlpPredefinedEntryVariantArgs Empty = new ZeroTrustDlpPredefinedEntryVariantArgs();
 
     /**
-     * A customer-facing explanation of what this predefined AI prompt topic represents.
+     * For `type: PromptTopic`: A customer-facing explanation of what this predefined AI prompt topic represents.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return A customer-facing explanation of what this predefined AI prompt topic represents.
+     * @return For `type: PromptTopic`: A customer-facing explanation of what this predefined AI prompt topic represents.
      * 
      */
     public Optional<Output<String>> description() {
@@ -87,7 +87,7 @@ public final class ZeroTrustDlpPredefinedEntryVariantArgs extends com.pulumi.res
         }
 
         /**
-         * @param description A customer-facing explanation of what this predefined AI prompt topic represents.
+         * @param description For `type: PromptTopic`: A customer-facing explanation of what this predefined AI prompt topic represents.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class ZeroTrustDlpPredefinedEntryVariantArgs extends com.pulumi.res
         }
 
         /**
-         * @param description A customer-facing explanation of what this predefined AI prompt topic represents.
+         * @param description For `type: PromptTopic`: A customer-facing explanation of what this predefined AI prompt topic represents.
          * 
          * @return builder
          * 

@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare;
 
 import com.pulumi.cloudflare.inputs.WorkersDeploymentAnnotationsArgs;
+import com.pulumi.cloudflare.inputs.WorkersDeploymentCodeUpdateStrategyArgs;
 import com.pulumi.cloudflare.inputs.WorkersDeploymentVersionArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -35,11 +36,34 @@ public final class WorkersDeploymentArgs extends com.pulumi.resources.ResourceAr
         return this.accountId;
     }
 
+    /**
+     * Metadata attached to the deployment.
+     * 
+     */
     @Import(name="annotations")
     private @Nullable Output<WorkersDeploymentAnnotationsArgs> annotations;
 
+    /**
+     * @return Metadata attached to the deployment.
+     * 
+     */
     public Optional<Output<WorkersDeploymentAnnotationsArgs>> annotations() {
         return Optional.ofNullable(this.annotations);
+    }
+
+    /**
+     * Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+     * 
+     */
+    @Import(name="codeUpdateStrategy")
+    private @Nullable Output<WorkersDeploymentCodeUpdateStrategyArgs> codeUpdateStrategy;
+
+    /**
+     * @return Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+     * 
+     */
+    public Optional<Output<WorkersDeploymentCodeUpdateStrategyArgs>> codeUpdateStrategy() {
+        return Optional.ofNullable(this.codeUpdateStrategy);
     }
 
     /**
@@ -73,6 +97,7 @@ public final class WorkersDeploymentArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Strategy for routing traffic across the listed versions. `percentage` splits traffic according to each version&#39;s `percentage`.
      * Available values: &#34;percentage&#34;.
      * 
      */
@@ -80,7 +105,8 @@ public final class WorkersDeploymentArgs extends com.pulumi.resources.ResourceAr
     private Output<String> strategy;
 
     /**
-     * @return Available values: &#34;percentage&#34;.
+     * @return Strategy for routing traffic across the listed versions. `percentage` splits traffic according to each version&#39;s `percentage`.
+     * Available values: &#34;percentage&#34;.
      * 
      */
     public Output<String> strategy() {
@@ -107,6 +133,7 @@ public final class WorkersDeploymentArgs extends com.pulumi.resources.ResourceAr
     private WorkersDeploymentArgs(WorkersDeploymentArgs $) {
         this.accountId = $.accountId;
         this.annotations = $.annotations;
+        this.codeUpdateStrategy = $.codeUpdateStrategy;
         this.force = $.force;
         this.scriptName = $.scriptName;
         this.strategy = $.strategy;
@@ -152,13 +179,46 @@ public final class WorkersDeploymentArgs extends com.pulumi.resources.ResourceAr
             return accountId(Output.of(accountId));
         }
 
+        /**
+         * @param annotations Metadata attached to the deployment.
+         * 
+         * @return builder
+         * 
+         */
         public Builder annotations(@Nullable Output<WorkersDeploymentAnnotationsArgs> annotations) {
             $.annotations = annotations;
             return this;
         }
 
+        /**
+         * @param annotations Metadata attached to the deployment.
+         * 
+         * @return builder
+         * 
+         */
         public Builder annotations(WorkersDeploymentAnnotationsArgs annotations) {
             return annotations(Output.of(annotations));
+        }
+
+        /**
+         * @param codeUpdateStrategy Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder codeUpdateStrategy(@Nullable Output<WorkersDeploymentCodeUpdateStrategyArgs> codeUpdateStrategy) {
+            $.codeUpdateStrategy = codeUpdateStrategy;
+            return this;
+        }
+
+        /**
+         * @param codeUpdateStrategy Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder codeUpdateStrategy(WorkersDeploymentCodeUpdateStrategyArgs codeUpdateStrategy) {
+            return codeUpdateStrategy(Output.of(codeUpdateStrategy));
         }
 
         /**
@@ -204,7 +264,8 @@ public final class WorkersDeploymentArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param strategy Available values: &#34;percentage&#34;.
+         * @param strategy Strategy for routing traffic across the listed versions. `percentage` splits traffic according to each version&#39;s `percentage`.
+         * Available values: &#34;percentage&#34;.
          * 
          * @return builder
          * 
@@ -215,7 +276,8 @@ public final class WorkersDeploymentArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param strategy Available values: &#34;percentage&#34;.
+         * @param strategy Strategy for routing traffic across the listed versions. `percentage` splits traffic according to each version&#39;s `percentage`.
+         * Available values: &#34;percentage&#34;.
          * 
          * @return builder
          * 

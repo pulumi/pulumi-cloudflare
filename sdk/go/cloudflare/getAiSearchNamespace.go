@@ -23,8 +23,9 @@ func LookupAiSearchNamespace(ctx *pulumi.Context, args *LookupAiSearchNamespaceA
 
 // A collection of arguments for invoking getAiSearchNamespace.
 type LookupAiSearchNamespaceArgs struct {
-	AccountId string `pulumi:"accountId"`
-	Name      string `pulumi:"name"`
+	AccountId string                      `pulumi:"accountId"`
+	Filter    *GetAiSearchNamespaceFilter `pulumi:"filter"`
+	Name      *string                     `pulumi:"name"`
 }
 
 // A collection of values returned by getAiSearchNamespace.
@@ -32,7 +33,10 @@ type LookupAiSearchNamespaceResult struct {
 	AccountId string `pulumi:"accountId"`
 	CreatedAt string `pulumi:"createdAt"`
 	// Optional description for the namespace. Max 256 characters.
-	Description          string                                   `pulumi:"description"`
+	Description string                      `pulumi:"description"`
+	Filter      *GetAiSearchNamespaceFilter `pulumi:"filter"`
+	// The ID of this resource.
+	Id                   string                                   `pulumi:"id"`
 	Name                 string                                   `pulumi:"name"`
 	PublicEndpointId     string                                   `pulumi:"publicEndpointId"`
 	PublicEndpointParams GetAiSearchNamespacePublicEndpointParams `pulumi:"publicEndpointParams"`
@@ -45,8 +49,9 @@ func LookupAiSearchNamespaceOutput(ctx *pulumi.Context, args LookupAiSearchNames
 
 // A collection of arguments for invoking getAiSearchNamespace.
 type LookupAiSearchNamespaceOutputArgs struct {
-	AccountId pulumi.StringInput `pulumi:"accountId"`
-	Name      pulumi.StringInput `pulumi:"name"`
+	AccountId pulumi.StringInput                 `pulumi:"accountId"`
+	Filter    GetAiSearchNamespaceFilterPtrInput `pulumi:"filter"`
+	Name      pulumi.StringPtrInput              `pulumi:"name"`
 }
 
 func (LookupAiSearchNamespaceOutputArgs) ElementType() reflect.Type {
@@ -79,6 +84,15 @@ func (o LookupAiSearchNamespaceResultOutput) CreatedAt() pulumi.StringOutput {
 // Optional description for the namespace. Max 256 characters.
 func (o LookupAiSearchNamespaceResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiSearchNamespaceResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupAiSearchNamespaceResultOutput) Filter() GetAiSearchNamespaceFilterPtrOutput {
+	return o.ApplyT(func(v LookupAiSearchNamespaceResult) *GetAiSearchNamespaceFilter { return v.Filter }).(GetAiSearchNamespaceFilterPtrOutput)
+}
+
+// The ID of this resource.
+func (o LookupAiSearchNamespaceResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAiSearchNamespaceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o LookupAiSearchNamespaceResultOutput) Name() pulumi.StringOutput {

@@ -105,11 +105,15 @@ export class Account extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createdOn: pulumi.Output<string>;
     /**
+     * Legacy account flags.
+     */
+    declare public /*out*/ readonly legacyFlags: pulumi.Output<outputs.AccountLegacyFlags>;
+    /**
      * Parent container details
      */
     declare public readonly managedBy: pulumi.Output<outputs.AccountManagedBy>;
     /**
-     * Account name
+     * Account name, limited to 65 UTF-8 bytes.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -121,6 +125,7 @@ export class Account extends pulumi.CustomResource {
      */
     declare public readonly standalone: pulumi.Output<boolean>;
     /**
+     * the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
      * Available values: "standard", "enterprise".
      *
      * @deprecated The 'type' field should no longer be set through the API.
@@ -145,6 +150,7 @@ export class Account extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as AccountState | undefined;
             resourceInputs["createdOn"] = state?.createdOn;
+            resourceInputs["legacyFlags"] = state?.legacyFlags;
             resourceInputs["managedBy"] = state?.managedBy;
             resourceInputs["name"] = state?.name;
             resourceInputs["settings"] = state?.settings;
@@ -163,6 +169,7 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["type"] = args?.type;
             resourceInputs["unit"] = args?.unit;
             resourceInputs["createdOn"] = undefined /*out*/;
+            resourceInputs["legacyFlags"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Account.__pulumiType, name, resourceInputs, opts);
@@ -178,11 +185,15 @@ export interface AccountState {
      */
     createdOn?: pulumi.Input<string | undefined>;
     /**
+     * Legacy account flags.
+     */
+    legacyFlags?: pulumi.Input<inputs.AccountLegacyFlags | undefined>;
+    /**
      * Parent container details
      */
     managedBy?: pulumi.Input<inputs.AccountManagedBy | undefined>;
     /**
-     * Account name
+     * Account name, limited to 65 UTF-8 bytes.
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -194,6 +205,7 @@ export interface AccountState {
      */
     standalone?: pulumi.Input<boolean | undefined>;
     /**
+     * the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
      * Available values: "standard", "enterprise".
      *
      * @deprecated The 'type' field should no longer be set through the API.
@@ -214,7 +226,7 @@ export interface AccountArgs {
      */
     managedBy?: pulumi.Input<inputs.AccountManagedBy | undefined>;
     /**
-     * Account name
+     * Account name, limited to 65 UTF-8 bytes.
      */
     name: pulumi.Input<string>;
     /**
@@ -226,6 +238,7 @@ export interface AccountArgs {
      */
     standalone?: pulumi.Input<boolean | undefined>;
     /**
+     * the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
      * Available values: "standard", "enterprise".
      *
      * @deprecated The 'type' field should no longer be set through the API.

@@ -36,7 +36,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetWorkersCustomDomainResult> InvokeAsync(GetWorkersCustomDomainArgs? args = null, InvokeOptions? options = null)
+        public static Task<GetWorkersCustomDomainResult> InvokeAsync(GetWorkersCustomDomainArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkersCustomDomainResult>("cloudflare:index/getWorkersCustomDomain:getWorkersCustomDomain", args ?? new GetWorkersCustomDomainArgs(), options.WithDefaults());
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetWorkersCustomDomainResult> Invoke(GetWorkersCustomDomainInvokeArgs? args = null, InvokeOptions? options = null)
+        public static Output<GetWorkersCustomDomainResult> Invoke(GetWorkersCustomDomainInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkersCustomDomainResult>("cloudflare:index/getWorkersCustomDomain:getWorkersCustomDomain", args ?? new GetWorkersCustomDomainInvokeArgs(), options.WithDefaults());
 
         /// <summary>
@@ -102,8 +102,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId")]
-        public string? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public string AccountId { get; set; } = null!;
 
         /// <summary>
         /// ID of the domain.
@@ -125,8 +125,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// ID of the domain.
@@ -150,7 +150,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string? AccountId;
+        public readonly string AccountId;
         /// <summary>
         /// ID of the TLS certificate issued for the domain.
         /// </summary>
@@ -159,6 +159,10 @@ namespace Pulumi.Cloudflare
         /// ID of the domain.
         /// </summary>
         public readonly string? DomainId;
+        /// <summary>
+        /// Whether the configured hostname is routable for the domain. If disabled, then requests to the configured hostname will not be routed to the configured Worker. If disabled, then preview routing must be enabled, and only subdomains of the configured hostname will be routable.
+        /// </summary>
+        public readonly bool Enabled;
         /// <summary>
         /// Worker environment associated with the domain.
         /// </summary>
@@ -172,6 +176,10 @@ namespace Pulumi.Cloudflare
         /// ID of the domain.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Whether previews are routable for the domain. If enabled, previews will be routable as subdomains of the configured hostname. For example, if the configured hostname is `app.example.com`, then requests to `my-feature.app.example.com` will be routed to the preview with slug `my-feature`, if such a preview exists. If preview routing is disabled, then hostname routing must be enabled.
+        /// </summary>
+        public readonly bool PreviewsEnabled;
         /// <summary>
         /// Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
         /// </summary>
@@ -187,11 +195,13 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetWorkersCustomDomainResult(
-            string? accountId,
+            string accountId,
 
             string certId,
 
             string? domainId,
+
+            bool enabled,
 
             string environment,
 
@@ -200,6 +210,8 @@ namespace Pulumi.Cloudflare
             string hostname,
 
             string id,
+
+            bool previewsEnabled,
 
             string service,
 
@@ -210,10 +222,12 @@ namespace Pulumi.Cloudflare
             AccountId = accountId;
             CertId = certId;
             DomainId = domainId;
+            Enabled = enabled;
             Environment = environment;
             Filter = filter;
             Hostname = hostname;
             Id = id;
+            PreviewsEnabled = previewsEnabled;
             Service = service;
             ZoneId = zoneId;
             ZoneName = zoneName;

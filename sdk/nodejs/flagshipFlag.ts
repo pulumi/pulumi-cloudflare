@@ -41,6 +41,9 @@ import * as utilities from "./utilities";
  *         foo: "string",
  *     },
  *     description: "description",
+ *     metadata: {
+ *         foo: true,
+ *     },
  *     type: "boolean",
  * });
  * ```
@@ -115,6 +118,10 @@ export class FlagshipFlag extends pulumi.CustomResource {
      */
     declare public readonly key: pulumi.Output<string>;
     /**
+     * Key-value metadata associated with the flag. `null` or an empty object clears existing metadata; omission semantics depend on the endpoint (PUT clears it, PATCH preserves it).
+     */
+    declare public readonly metadata: pulumi.Output<any | undefined>;
+    /**
      * Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `defaultVariation`.
      */
     declare public readonly rules: pulumi.Output<outputs.FlagshipFlagRule[]>;
@@ -151,6 +158,7 @@ export class FlagshipFlag extends pulumi.CustomResource {
             resourceInputs["description"] = state?.description;
             resourceInputs["enabled"] = state?.enabled;
             resourceInputs["key"] = state?.key;
+            resourceInputs["metadata"] = state?.metadata;
             resourceInputs["rules"] = state?.rules;
             resourceInputs["type"] = state?.type;
             resourceInputs["updatedAt"] = state?.updatedAt;
@@ -185,6 +193,7 @@ export class FlagshipFlag extends pulumi.CustomResource {
             resourceInputs["description"] = args?.description;
             resourceInputs["enabled"] = args?.enabled;
             resourceInputs["key"] = args?.key;
+            resourceInputs["metadata"] = args?.metadata;
             resourceInputs["rules"] = args?.rules;
             resourceInputs["type"] = args?.type;
             resourceInputs["variations"] = args?.variations;
@@ -224,6 +233,10 @@ export interface FlagshipFlagState {
      * Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
      */
     key?: pulumi.Input<string | undefined>;
+    /**
+     * Key-value metadata associated with the flag. `null` or an empty object clears existing metadata; omission semantics depend on the endpoint (PUT clears it, PATCH preserves it).
+     */
+    metadata?: any | undefined;
     /**
      * Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `defaultVariation`.
      */
@@ -271,6 +284,10 @@ export interface FlagshipFlagArgs {
      * Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
      */
     key: pulumi.Input<string>;
+    /**
+     * Key-value metadata associated with the flag. `null` or an empty object clears existing metadata; omission semantics depend on the endpoint (PUT clears it, PATCH preserves it).
+     */
+    metadata?: any | undefined;
     /**
      * Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `defaultVariation`.
      */

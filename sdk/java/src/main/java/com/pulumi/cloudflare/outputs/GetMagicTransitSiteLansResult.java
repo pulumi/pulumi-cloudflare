@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetMagicTransitSiteLansResultNat;
+import com.pulumi.cloudflare.outputs.GetMagicTransitSiteLansResultRemoteSubnet;
 import com.pulumi.cloudflare.outputs.GetMagicTransitSiteLansResultRoutedSubnet;
 import com.pulumi.cloudflare.outputs.GetMagicTransitSiteLansResultStaticAddressing;
 import com.pulumi.core.annotations.CustomType;
@@ -40,6 +41,7 @@ public final class GetMagicTransitSiteLansResult {
     private String name;
     private GetMagicTransitSiteLansResultNat nat;
     private Integer physport;
+    private List<GetMagicTransitSiteLansResultRemoteSubnet> remoteSubnets;
     private List<GetMagicTransitSiteLansResultRoutedSubnet> routedSubnets;
     /**
      * @return Identifier
@@ -98,6 +100,9 @@ public final class GetMagicTransitSiteLansResult {
     public Integer physport() {
         return this.physport;
     }
+    public List<GetMagicTransitSiteLansResultRemoteSubnet> remoteSubnets() {
+        return this.remoteSubnets;
+    }
     public List<GetMagicTransitSiteLansResultRoutedSubnet> routedSubnets() {
         return this.routedSubnets;
     }
@@ -140,6 +145,7 @@ public final class GetMagicTransitSiteLansResult {
         private String name;
         private GetMagicTransitSiteLansResultNat nat;
         private Integer physport;
+        private List<GetMagicTransitSiteLansResultRemoteSubnet> remoteSubnets;
         private List<GetMagicTransitSiteLansResultRoutedSubnet> routedSubnets;
         private String siteId;
         private GetMagicTransitSiteLansResultStaticAddressing staticAddressing;
@@ -155,6 +161,7 @@ public final class GetMagicTransitSiteLansResult {
     	      this.name = defaults.name;
     	      this.nat = defaults.nat;
     	      this.physport = defaults.physport;
+    	      this.remoteSubnets = defaults.remoteSubnets;
     	      this.routedSubnets = defaults.routedSubnets;
     	      this.siteId = defaults.siteId;
     	      this.staticAddressing = defaults.staticAddressing;
@@ -226,6 +233,17 @@ public final class GetMagicTransitSiteLansResult {
             return this;
         }
         @CustomType.Setter
+        public Builder remoteSubnets(List<GetMagicTransitSiteLansResultRemoteSubnet> remoteSubnets) {
+            if (remoteSubnets == null) {
+              throw new MissingRequiredPropertyException("GetMagicTransitSiteLansResult", "remoteSubnets");
+            }
+            this.remoteSubnets = remoteSubnets;
+            return this;
+        }
+        public Builder remoteSubnets(GetMagicTransitSiteLansResultRemoteSubnet... remoteSubnets) {
+            return remoteSubnets(List.of(remoteSubnets));
+        }
+        @CustomType.Setter
         public Builder routedSubnets(List<GetMagicTransitSiteLansResultRoutedSubnet> routedSubnets) {
             if (routedSubnets == null) {
               throw new MissingRequiredPropertyException("GetMagicTransitSiteLansResult", "routedSubnets");
@@ -270,6 +288,7 @@ public final class GetMagicTransitSiteLansResult {
             _resultValue.name = name;
             _resultValue.nat = nat;
             _resultValue.physport = physport;
+            _resultValue.remoteSubnets = remoteSubnets;
             _resultValue.routedSubnets = routedSubnets;
             _resultValue.siteId = siteId;
             _resultValue.staticAddressing = staticAddressing;

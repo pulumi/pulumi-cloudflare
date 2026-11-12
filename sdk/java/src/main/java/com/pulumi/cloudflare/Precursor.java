@@ -6,13 +6,15 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.PrecursorArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.PrecursorState;
-import com.pulumi.cloudflare.outputs.PrecursorEnforcementRule;
+import com.pulumi.cloudflare.outputs.PrecursorRule;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -27,7 +29,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.Precursor;
  * import com.pulumi.cloudflare.PrecursorArgs;
- * import com.pulumi.cloudflare.inputs.PrecursorEnforcementRuleArgs;
+ * import com.pulumi.cloudflare.inputs.PrecursorRuleArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -43,13 +45,14 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) }{{@code
  *         var examplePrecursor = new Precursor("examplePrecursor", PrecursorArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .defaultMode("min-friction")
- *             .enforcementRules(PrecursorEnforcementRuleArgs.builder()
+ *             .mode("monitor")
+ *             .rules(PrecursorRuleArgs.builder()
  *                 .expression("http.request.uri.path eq }&#92;{@code "/login}&#92;{@code "")
- *                 .mode("max-security")
- *                 .description("Ease friction on the login path")
+ *                 .showInterstitial(true)
+ *                 .description("Show an interstitial on the login path")
  *                 .enabled(true)
  *                 .build())
+ *             .showInterstitial(true)
  *             .build());
  * 
  *     }}{@code
@@ -60,49 +63,61 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/precursor:Precursor example &#39;&lt;zone_id&gt;&#39;
+ * $ pulumi import cloudflare:index/precursor:Precursor example &#39;&lt;zone_id&gt;/&lt;cloudflare_version&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/precursor:Precursor")
 public class Precursor extends com.pulumi.resources.CustomResource {
     /**
-     * The zone-level Precursor enforcement mode applied to requests that do
-     * not match a more specific enforcement rule.
-     * Available values: &#34;off&#34;, &#34;min-friction&#34;, &#34;max-security&#34;.
-     * 
-     * @deprecated This attribute is deprecated.
+     * Controls Precursor detection for the zone. `off` disables detection,
+     * `monitor` records detections without affecting bot scores, and `arm`
+     * allows detections to affect bot scores.
+     * Available values: &#34;off&#34;, &#34;monitor&#34;, &#34;arm&#34;.
      * 
      */
-    @Deprecated
-    @Export(name="defaultMode", refs={String.class}, tree="[0]")
-    private Output<String> defaultMode;
+    @Export(name="mode", refs={String.class}, tree="[0]")
+    private Output<String> mode;
 
     /**
-     * @return The zone-level Precursor enforcement mode applied to requests that do
-     * not match a more specific enforcement rule.
-     * Available values: &#34;off&#34;, &#34;min-friction&#34;, &#34;max-security&#34;.
+     * @return Controls Precursor detection for the zone. `off` disables detection,
+     * `monitor` records detections without affecting bot scores, and `arm`
+     * allows detections to affect bot scores.
+     * Available values: &#34;off&#34;, &#34;monitor&#34;, &#34;arm&#34;.
      * 
      */
-    public Output<String> defaultMode() {
-        return this.defaultMode;
+    public Output<String> mode() {
+        return this.mode;
     }
     /**
-     * The ordered list of enforcement rules for the zone.
-     * 
-     * @deprecated This attribute is deprecated.
+     * The ordered list of Precursor rules for the zone.
      * 
      */
-    @Deprecated
-    @Export(name="enforcementRules", refs={List.class,PrecursorEnforcementRule.class}, tree="[0,1]")
-    private Output<List<PrecursorEnforcementRule>> enforcementRules;
+    @Export(name="rules", refs={List.class,PrecursorRule.class}, tree="[0,1]")
+    private Output<List<PrecursorRule>> rules;
 
     /**
-     * @return The ordered list of enforcement rules for the zone.
+     * @return The ordered list of Precursor rules for the zone.
      * 
      */
-    public Output<List<PrecursorEnforcementRule>> enforcementRules() {
-        return this.enforcementRules;
+    public Output<List<PrecursorRule>> rules() {
+        return this.rules;
+    }
+    /**
+     * Whether Precursor shows an interstitial when it takes action on a
+     * request.
+     * 
+     */
+    @Export(name="showInterstitial", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> showInterstitial;
+
+    /**
+     * @return Whether Precursor shows an interstitial when it takes action on a
+     * request.
+     * 
+     */
+    public Output<Optional<Boolean>> showInterstitial() {
+        return Codegen.optional(this.showInterstitial);
     }
     /**
      * Identifier.

@@ -16,33 +16,18 @@ public final class GetAiSearchInstanceFilter extends com.pulumi.resources.Invoke
     public static final GetAiSearchInstanceFilter Empty = new GetAiSearchInstanceFilter();
 
     /**
-     * Filter by exact Search for Agents hostname (case-insensitive).
+     * Return only instances with this exact Search for Agents hostname (case-insensitive).
      * 
      */
     @Import(name="hostname")
     private @Nullable String hostname;
 
     /**
-     * @return Filter by exact Search for Agents hostname (case-insensitive).
+     * @return Return only instances with this exact Search for Agents hostname (case-insensitive).
      * 
      */
     public Optional<String> hostname() {
         return Optional.ofNullable(this.hostname);
-    }
-
-    /**
-     * Filter by namespace.
-     * 
-     */
-    @Import(name="namespace")
-    private @Nullable String namespace;
-
-    /**
-     * @return Filter by namespace.
-     * 
-     */
-    public Optional<String> namespace() {
-        return Optional.ofNullable(this.namespace);
     }
 
     /**
@@ -98,7 +83,6 @@ public final class GetAiSearchInstanceFilter extends com.pulumi.resources.Invoke
 
     private GetAiSearchInstanceFilter(GetAiSearchInstanceFilter $) {
         this.hostname = $.hostname;
-        this.namespace = $.namespace;
         this.orderBy = $.orderBy;
         this.orderByDirection = $.orderByDirection;
         this.search = $.search;
@@ -123,24 +107,13 @@ public final class GetAiSearchInstanceFilter extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param hostname Filter by exact Search for Agents hostname (case-insensitive).
+         * @param hostname Return only instances with this exact Search for Agents hostname (case-insensitive).
          * 
          * @return builder
          * 
          */
         public Builder hostname(@Nullable String hostname) {
             $.hostname = hostname;
-            return this;
-        }
-
-        /**
-         * @param namespace Filter by namespace.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder namespace(@Nullable String namespace) {
-            $.namespace = namespace;
             return this;
         }
 

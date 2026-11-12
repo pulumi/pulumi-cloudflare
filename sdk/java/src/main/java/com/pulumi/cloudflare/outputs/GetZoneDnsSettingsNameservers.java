@@ -12,12 +12,12 @@ import java.util.Objects;
 @CustomType
 public final class GetZoneDnsSettingsNameservers {
     /**
-     * @return Identifier of the account-owned Custom Nameserver Set to use for this zone.
+     * @return For `type: custom`: Identifier of the account-owned Custom Nameserver Set to use for this zone.
      * 
      */
     private String nameserverSetId;
     /**
-     * @return Configured nameserver set number to use for this zone.
+     * @return For `type: custom.account` or `type: custom.tenant` or `type: custom.zone`: Configured nameserver set number to use for this zone.
      * 
      */
     private Integer nsSet;
@@ -30,14 +30,14 @@ public final class GetZoneDnsSettingsNameservers {
 
     private GetZoneDnsSettingsNameservers() {}
     /**
-     * @return Identifier of the account-owned Custom Nameserver Set to use for this zone.
+     * @return For `type: custom`: Identifier of the account-owned Custom Nameserver Set to use for this zone.
      * 
      */
     public String nameserverSetId() {
         return this.nameserverSetId;
     }
     /**
-     * @return Configured nameserver set number to use for this zone.
+     * @return For `type: custom.account` or `type: custom.tenant` or `type: custom.zone`: Configured nameserver set number to use for this zone.
      * 
      */
     public Integer nsSet() {

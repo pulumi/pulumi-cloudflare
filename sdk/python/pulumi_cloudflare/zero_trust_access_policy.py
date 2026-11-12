@@ -31,6 +31,7 @@ class ZeroTrustAccessPolicyArgs:
                  includes: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessPolicyIncludeArgs']]]] = None,
                  isolation_required: pulumi.Input[Optional[_builtins.bool]] = None,
                  mfa_config: pulumi.Input[Optional['ZeroTrustAccessPolicyMfaConfigArgs']] = None,
+                 policy_resolution_account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  purpose_justification_prompt: pulumi.Input[Optional[_builtins.str]] = None,
                  purpose_justification_required: pulumi.Input[Optional[_builtins.bool]] = None,
                  requires: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessPolicyRequireArgs']]]] = None,
@@ -49,6 +50,7 @@ class ZeroTrustAccessPolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyIncludeArgs']]] includes: Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
         :param pulumi.Input[_builtins.bool] isolation_required: Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
         :param pulumi.Input['ZeroTrustAccessPolicyMfaConfigArgs'] mfa_config: Configures multi-factor authentication (MFA) settings.
+        :param pulumi.Input[_builtins.str] policy_resolution_account_id: The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.
         :param pulumi.Input[_builtins.str] purpose_justification_prompt: A custom message that will appear on the purpose justification screen.
         :param pulumi.Input[_builtins.bool] purpose_justification_required: Require users to enter a justification when they log in to the application.
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyRequireArgs']]] requires: Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
@@ -71,6 +73,8 @@ class ZeroTrustAccessPolicyArgs:
             pulumi.set(__self__, "isolation_required", isolation_required)
         if mfa_config is not None:
             pulumi.set(__self__, "mfa_config", mfa_config)
+        if policy_resolution_account_id is not None:
+            pulumi.set(__self__, "policy_resolution_account_id", policy_resolution_account_id)
         if purpose_justification_prompt is not None:
             pulumi.set(__self__, "purpose_justification_prompt", purpose_justification_prompt)
         if purpose_justification_required is not None:
@@ -202,6 +206,18 @@ class ZeroTrustAccessPolicyArgs:
         pulumi.set(self, "mfa_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="policyResolutionAccountId")
+    def policy_resolution_account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.
+        """
+        return pulumi.get(self, "policy_resolution_account_id")
+
+    @policy_resolution_account_id.setter
+    def policy_resolution_account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "policy_resolution_account_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="purposeJustificationPrompt")
     def purpose_justification_prompt(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -254,7 +270,6 @@ class ZeroTrustAccessPolicyArgs:
 class _ZeroTrustAccessPolicyState:
     def __init__(__self__, *,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 app_count: pulumi.Input[Optional[_builtins.int]] = None,
                  approval_groups: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessPolicyApprovalGroupArgs']]]] = None,
                  approval_required: pulumi.Input[Optional[_builtins.bool]] = None,
                  connection_rules: pulumi.Input[Optional['ZeroTrustAccessPolicyConnectionRulesArgs']] = None,
@@ -265,6 +280,7 @@ class _ZeroTrustAccessPolicyState:
                  isolation_required: pulumi.Input[Optional[_builtins.bool]] = None,
                  mfa_config: pulumi.Input[Optional['ZeroTrustAccessPolicyMfaConfigArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_resolution_account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  purpose_justification_prompt: pulumi.Input[Optional[_builtins.str]] = None,
                  purpose_justification_required: pulumi.Input[Optional[_builtins.bool]] = None,
                  requires: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessPolicyRequireArgs']]]] = None,
@@ -275,7 +291,6 @@ class _ZeroTrustAccessPolicyState:
         Input properties used for looking up and filtering ZeroTrustAccessPolicy resources.
 
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[_builtins.int] app_count: Number of access applications currently using this policy.
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyApprovalGroupArgs']]] approval_groups: Administrators who can approve a temporary authentication request.
         :param pulumi.Input[_builtins.bool] approval_required: Requires the user to request access from an administrator at the start of each session.
         :param pulumi.Input['ZeroTrustAccessPolicyConnectionRulesArgs'] connection_rules: The rules that define how users may connect to targets secured by your application.
@@ -286,6 +301,7 @@ class _ZeroTrustAccessPolicyState:
         :param pulumi.Input[_builtins.bool] isolation_required: Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
         :param pulumi.Input['ZeroTrustAccessPolicyMfaConfigArgs'] mfa_config: Configures multi-factor authentication (MFA) settings.
         :param pulumi.Input[_builtins.str] name: The name of the Access policy.
+        :param pulumi.Input[_builtins.str] policy_resolution_account_id: The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.
         :param pulumi.Input[_builtins.str] purpose_justification_prompt: A custom message that will appear on the purpose justification screen.
         :param pulumi.Input[_builtins.bool] purpose_justification_required: Require users to enter a justification when they log in to the application.
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyRequireArgs']]] requires: Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
@@ -293,8 +309,6 @@ class _ZeroTrustAccessPolicyState:
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
-        if app_count is not None:
-            pulumi.set(__self__, "app_count", app_count)
         if approval_groups is not None:
             pulumi.set(__self__, "approval_groups", approval_groups)
         if approval_required is not None:
@@ -315,6 +329,8 @@ class _ZeroTrustAccessPolicyState:
             pulumi.set(__self__, "mfa_config", mfa_config)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if policy_resolution_account_id is not None:
+            pulumi.set(__self__, "policy_resolution_account_id", policy_resolution_account_id)
         if purpose_justification_prompt is not None:
             pulumi.set(__self__, "purpose_justification_prompt", purpose_justification_prompt)
         if purpose_justification_required is not None:
@@ -339,18 +355,6 @@ class _ZeroTrustAccessPolicyState:
     @account_id.setter
     def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="appCount")
-    def app_count(self) -> pulumi.Input[Optional[_builtins.int]]:
-        """
-        Number of access applications currently using this policy.
-        """
-        return pulumi.get(self, "app_count")
-
-    @app_count.setter
-    def app_count(self, value: pulumi.Input[Optional[_builtins.int]]):
-        pulumi.set(self, "app_count", value)
 
     @_builtins.property
     @pulumi.getter(name="approvalGroups")
@@ -471,6 +475,18 @@ class _ZeroTrustAccessPolicyState:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="policyResolutionAccountId")
+    def policy_resolution_account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.
+        """
+        return pulumi.get(self, "policy_resolution_account_id")
+
+    @policy_resolution_account_id.setter
+    def policy_resolution_account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "policy_resolution_account_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="purposeJustificationPrompt")
     def purpose_justification_prompt(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -553,6 +569,7 @@ class ZeroTrustAccessPolicy(pulumi.CustomResource):
                  isolation_required: pulumi.Input[Optional[_builtins.bool]] = None,
                  mfa_config: pulumi.Input[Optional[Union['ZeroTrustAccessPolicyMfaConfigArgs', 'ZeroTrustAccessPolicyMfaConfigArgsDict', 'outputs.ZeroTrustAccessPolicyMfaConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_resolution_account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  purpose_justification_prompt: pulumi.Input[Optional[_builtins.str]] = None,
                  purpose_justification_required: pulumi.Input[Optional[_builtins.bool]] = None,
                  requires: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessPolicyRequireArgs', 'ZeroTrustAccessPolicyRequireArgsDict', 'outputs.ZeroTrustAccessPolicyRequire']]]]] = None,
@@ -621,6 +638,7 @@ class ZeroTrustAccessPolicy(pulumi.CustomResource):
                 "mfa_disabled": False,
                 "session_duration": "24h",
             },
+            policy_resolution_account_id="policy_resolution_account_id",
             purpose_justification_prompt="Please enter a justification for entering this protected domain.",
             purpose_justification_required=True,
             requires=[{
@@ -649,6 +667,7 @@ class ZeroTrustAccessPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] isolation_required: Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
         :param pulumi.Input[Union['ZeroTrustAccessPolicyMfaConfigArgs', 'ZeroTrustAccessPolicyMfaConfigArgsDict', 'outputs.ZeroTrustAccessPolicyMfaConfig']] mfa_config: Configures multi-factor authentication (MFA) settings.
         :param pulumi.Input[_builtins.str] name: The name of the Access policy.
+        :param pulumi.Input[_builtins.str] policy_resolution_account_id: The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.
         :param pulumi.Input[_builtins.str] purpose_justification_prompt: A custom message that will appear on the purpose justification screen.
         :param pulumi.Input[_builtins.bool] purpose_justification_required: Require users to enter a justification when they log in to the application.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessPolicyRequireArgs', 'ZeroTrustAccessPolicyRequireArgsDict', 'outputs.ZeroTrustAccessPolicyRequire']]]] requires: Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
@@ -723,6 +742,7 @@ class ZeroTrustAccessPolicy(pulumi.CustomResource):
                 "mfa_disabled": False,
                 "session_duration": "24h",
             },
+            policy_resolution_account_id="policy_resolution_account_id",
             purpose_justification_prompt="Please enter a justification for entering this protected domain.",
             purpose_justification_required=True,
             requires=[{
@@ -763,6 +783,7 @@ class ZeroTrustAccessPolicy(pulumi.CustomResource):
                  isolation_required: pulumi.Input[Optional[_builtins.bool]] = None,
                  mfa_config: pulumi.Input[Optional[Union['ZeroTrustAccessPolicyMfaConfigArgs', 'ZeroTrustAccessPolicyMfaConfigArgsDict', 'outputs.ZeroTrustAccessPolicyMfaConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_resolution_account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  purpose_justification_prompt: pulumi.Input[Optional[_builtins.str]] = None,
                  purpose_justification_required: pulumi.Input[Optional[_builtins.bool]] = None,
                  requires: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessPolicyRequireArgs', 'ZeroTrustAccessPolicyRequireArgsDict', 'outputs.ZeroTrustAccessPolicyRequire']]]]] = None,
@@ -792,11 +813,11 @@ class ZeroTrustAccessPolicy(pulumi.CustomResource):
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
+            __props__.__dict__["policy_resolution_account_id"] = policy_resolution_account_id
             __props__.__dict__["purpose_justification_prompt"] = purpose_justification_prompt
             __props__.__dict__["purpose_justification_required"] = purpose_justification_required
             __props__.__dict__["requires"] = requires
             __props__.__dict__["session_duration"] = session_duration
-            __props__.__dict__["app_count"] = None
             __props__.__dict__["created_at"] = None
             __props__.__dict__["reusable"] = None
             __props__.__dict__["updated_at"] = None
@@ -813,7 +834,6 @@ class ZeroTrustAccessPolicy(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
-            app_count: pulumi.Input[Optional[_builtins.int]] = None,
             approval_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessPolicyApprovalGroupArgs', 'ZeroTrustAccessPolicyApprovalGroupArgsDict', 'outputs.ZeroTrustAccessPolicyApprovalGroup']]]]] = None,
             approval_required: pulumi.Input[Optional[_builtins.bool]] = None,
             connection_rules: pulumi.Input[Optional[Union['ZeroTrustAccessPolicyConnectionRulesArgs', 'ZeroTrustAccessPolicyConnectionRulesArgsDict', 'outputs.ZeroTrustAccessPolicyConnectionRules']]] = None,
@@ -824,6 +844,7 @@ class ZeroTrustAccessPolicy(pulumi.CustomResource):
             isolation_required: pulumi.Input[Optional[_builtins.bool]] = None,
             mfa_config: pulumi.Input[Optional[Union['ZeroTrustAccessPolicyMfaConfigArgs', 'ZeroTrustAccessPolicyMfaConfigArgsDict', 'outputs.ZeroTrustAccessPolicyMfaConfig']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_resolution_account_id: pulumi.Input[Optional[_builtins.str]] = None,
             purpose_justification_prompt: pulumi.Input[Optional[_builtins.str]] = None,
             purpose_justification_required: pulumi.Input[Optional[_builtins.bool]] = None,
             requires: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessPolicyRequireArgs', 'ZeroTrustAccessPolicyRequireArgsDict', 'outputs.ZeroTrustAccessPolicyRequire']]]]] = None,
@@ -838,7 +859,6 @@ class ZeroTrustAccessPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[_builtins.int] app_count: Number of access applications currently using this policy.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessPolicyApprovalGroupArgs', 'ZeroTrustAccessPolicyApprovalGroupArgsDict', 'outputs.ZeroTrustAccessPolicyApprovalGroup']]]] approval_groups: Administrators who can approve a temporary authentication request.
         :param pulumi.Input[_builtins.bool] approval_required: Requires the user to request access from an administrator at the start of each session.
         :param pulumi.Input[Union['ZeroTrustAccessPolicyConnectionRulesArgs', 'ZeroTrustAccessPolicyConnectionRulesArgsDict', 'outputs.ZeroTrustAccessPolicyConnectionRules']] connection_rules: The rules that define how users may connect to targets secured by your application.
@@ -849,6 +869,7 @@ class ZeroTrustAccessPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] isolation_required: Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
         :param pulumi.Input[Union['ZeroTrustAccessPolicyMfaConfigArgs', 'ZeroTrustAccessPolicyMfaConfigArgsDict', 'outputs.ZeroTrustAccessPolicyMfaConfig']] mfa_config: Configures multi-factor authentication (MFA) settings.
         :param pulumi.Input[_builtins.str] name: The name of the Access policy.
+        :param pulumi.Input[_builtins.str] policy_resolution_account_id: The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.
         :param pulumi.Input[_builtins.str] purpose_justification_prompt: A custom message that will appear on the purpose justification screen.
         :param pulumi.Input[_builtins.bool] purpose_justification_required: Require users to enter a justification when they log in to the application.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessPolicyRequireArgs', 'ZeroTrustAccessPolicyRequireArgsDict', 'outputs.ZeroTrustAccessPolicyRequire']]]] requires: Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
@@ -859,7 +880,6 @@ class ZeroTrustAccessPolicy(pulumi.CustomResource):
         __props__ = _ZeroTrustAccessPolicyState.__new__(_ZeroTrustAccessPolicyState)
 
         __props__.__dict__["account_id"] = account_id
-        __props__.__dict__["app_count"] = app_count
         __props__.__dict__["approval_groups"] = approval_groups
         __props__.__dict__["approval_required"] = approval_required
         __props__.__dict__["connection_rules"] = connection_rules
@@ -870,6 +890,7 @@ class ZeroTrustAccessPolicy(pulumi.CustomResource):
         __props__.__dict__["isolation_required"] = isolation_required
         __props__.__dict__["mfa_config"] = mfa_config
         __props__.__dict__["name"] = name
+        __props__.__dict__["policy_resolution_account_id"] = policy_resolution_account_id
         __props__.__dict__["purpose_justification_prompt"] = purpose_justification_prompt
         __props__.__dict__["purpose_justification_required"] = purpose_justification_required
         __props__.__dict__["requires"] = requires
@@ -882,7 +903,6 @@ class ZeroTrustAccessPolicy(pulumi.CustomResource):
     def exists(id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
-            app_count: pulumi.Input[Optional[_builtins.int]] = None,
             approval_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessPolicyApprovalGroupArgs', 'ZeroTrustAccessPolicyApprovalGroupArgsDict', 'outputs.ZeroTrustAccessPolicyApprovalGroup']]]]] = None,
             approval_required: pulumi.Input[Optional[_builtins.bool]] = None,
             connection_rules: pulumi.Input[Optional[Union['ZeroTrustAccessPolicyConnectionRulesArgs', 'ZeroTrustAccessPolicyConnectionRulesArgsDict', 'outputs.ZeroTrustAccessPolicyConnectionRules']]] = None,
@@ -893,6 +913,7 @@ class ZeroTrustAccessPolicy(pulumi.CustomResource):
             isolation_required: pulumi.Input[Optional[_builtins.bool]] = None,
             mfa_config: pulumi.Input[Optional[Union['ZeroTrustAccessPolicyMfaConfigArgs', 'ZeroTrustAccessPolicyMfaConfigArgsDict', 'outputs.ZeroTrustAccessPolicyMfaConfig']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_resolution_account_id: pulumi.Input[Optional[_builtins.str]] = None,
             purpose_justification_prompt: pulumi.Input[Optional[_builtins.str]] = None,
             purpose_justification_required: pulumi.Input[Optional[_builtins.bool]] = None,
             requires: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessPolicyRequireArgs', 'ZeroTrustAccessPolicyRequireArgsDict', 'outputs.ZeroTrustAccessPolicyRequire']]]]] = None,
@@ -901,7 +922,6 @@ class ZeroTrustAccessPolicy(pulumi.CustomResource):
             updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
         __props__["accountId"] = account_id
-        __props__["appCount"] = app_count
         __props__["approvalGroups"] = approval_groups
         __props__["approvalRequired"] = approval_required
         __props__["connectionRules"] = connection_rules
@@ -912,6 +932,7 @@ class ZeroTrustAccessPolicy(pulumi.CustomResource):
         __props__["isolationRequired"] = isolation_required
         __props__["mfaConfig"] = mfa_config
         __props__["name"] = name
+        __props__["policyResolutionAccountId"] = policy_resolution_account_id
         __props__["purposeJustificationPrompt"] = purpose_justification_prompt
         __props__["purposeJustificationRequired"] = purpose_justification_required
         __props__["requires"] = requires
@@ -927,14 +948,6 @@ class ZeroTrustAccessPolicy(pulumi.CustomResource):
         Identifier.
         """
         return pulumi.get(self, "account_id")
-
-    @_builtins.property
-    @pulumi.getter(name="appCount")
-    def app_count(self) -> pulumi.Output[_builtins.int]:
-        """
-        Number of access applications currently using this policy.
-        """
-        return pulumi.get(self, "app_count")
 
     @_builtins.property
     @pulumi.getter(name="approvalGroups")
@@ -1013,6 +1026,14 @@ class ZeroTrustAccessPolicy(pulumi.CustomResource):
         The name of the Access policy.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="policyResolutionAccountId")
+    def policy_resolution_account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.
+        """
+        return pulumi.get(self, "policy_resolution_account_id")
 
     @_builtins.property
     @pulumi.getter(name="purposeJustificationPrompt")

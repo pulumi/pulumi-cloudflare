@@ -27,39 +27,22 @@ class GetPrecursorResult:
     """
     A collection of values returned by getPrecursor.
     """
-    def __init__(__self__, default_mode=None, enforcement_rules=None, id=None, zone_id=None):
-        if default_mode and not isinstance(default_mode, str):
-            raise TypeError("Expected argument 'default_mode' to be a str")
-        pulumi.set(__self__, "default_mode", default_mode)
-        if enforcement_rules and not isinstance(enforcement_rules, list):
-            raise TypeError("Expected argument 'enforcement_rules' to be a list")
-        pulumi.set(__self__, "enforcement_rules", enforcement_rules)
+    def __init__(__self__, id=None, mode=None, rules=None, show_interstitial=None, zone_id=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if mode and not isinstance(mode, str):
+            raise TypeError("Expected argument 'mode' to be a str")
+        pulumi.set(__self__, "mode", mode)
+        if rules and not isinstance(rules, list):
+            raise TypeError("Expected argument 'rules' to be a list")
+        pulumi.set(__self__, "rules", rules)
+        if show_interstitial and not isinstance(show_interstitial, bool):
+            raise TypeError("Expected argument 'show_interstitial' to be a bool")
+        pulumi.set(__self__, "show_interstitial", show_interstitial)
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         pulumi.set(__self__, "zone_id", zone_id)
-
-    @_builtins.property
-    @pulumi.getter(name="defaultMode")
-    @_utilities.deprecated("""This attribute is deprecated.""")
-    def default_mode(self) -> _builtins.str:
-        """
-        The zone-level Precursor enforcement mode applied to requests that do
-        not match a more specific enforcement rule.
-        Available values: "off", "min-friction", "max-security".
-        """
-        return pulumi.get(self, "default_mode")
-
-    @_builtins.property
-    @pulumi.getter(name="enforcementRules")
-    @_utilities.deprecated("""This attribute is deprecated.""")
-    def enforcement_rules(self) -> Sequence['outputs.GetPrecursorEnforcementRuleResult']:
-        """
-        The ordered list of enforcement rules for the zone.
-        """
-        return pulumi.get(self, "enforcement_rules")
 
     @_builtins.property
     @pulumi.getter
@@ -68,6 +51,34 @@ class GetPrecursorResult:
         Identifier.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> _builtins.str:
+        """
+        Controls Precursor detection for the zone. `off` disables detection,
+        `monitor` records detections without affecting bot scores, and `arm`
+        allows detections to affect bot scores.
+        Available values: "off", "monitor", "arm".
+        """
+        return pulumi.get(self, "mode")
+
+    @_builtins.property
+    @pulumi.getter
+    def rules(self) -> Sequence['outputs.GetPrecursorRuleResult']:
+        """
+        The ordered list of Precursor rules for the zone.
+        """
+        return pulumi.get(self, "rules")
+
+    @_builtins.property
+    @pulumi.getter(name="showInterstitial")
+    def show_interstitial(self) -> _builtins.bool:
+        """
+        Whether Precursor shows an interstitial when it takes action on a
+        request.
+        """
+        return pulumi.get(self, "show_interstitial")
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
@@ -84,9 +95,10 @@ class AwaitableGetPrecursorResult(GetPrecursorResult):
         if False:
             yield self
         return GetPrecursorResult(
-            default_mode=self.default_mode,
-            enforcement_rules=self.enforcement_rules,
             id=self.id,
+            mode=self.mode,
+            rules=self.rules,
+            show_interstitial=self.show_interstitial,
             zone_id=self.zone_id)
 
 
@@ -111,9 +123,10 @@ def get_precursor(zone_id: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getPrecursor:getPrecursor', __args__, opts=opts, typ=GetPrecursorResult).value
 
     return AwaitableGetPrecursorResult(
-        default_mode=pulumi.get(__ret__, 'default_mode'),
-        enforcement_rules=pulumi.get(__ret__, 'enforcement_rules'),
         id=pulumi.get(__ret__, 'id'),
+        mode=pulumi.get(__ret__, 'mode'),
+        rules=pulumi.get(__ret__, 'rules'),
+        show_interstitial=pulumi.get(__ret__, 'show_interstitial'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_precursor_output(zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPrecursorResult]:
@@ -135,7 +148,8 @@ def get_precursor_output(zone_id: pulumi.Input[Optional[_builtins.str]] = None,
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getPrecursor:getPrecursor', __args__, opts=opts, typ=GetPrecursorResult)
     return __ret__.apply(lambda __response__: GetPrecursorResult(
-        default_mode=pulumi.get(__response__, 'default_mode'),
-        enforcement_rules=pulumi.get(__response__, 'enforcement_rules'),
         id=pulumi.get(__response__, 'id'),
+        mode=pulumi.get(__response__, 'mode'),
+        rules=pulumi.get(__response__, 'rules'),
+        show_interstitial=pulumi.get(__response__, 'show_interstitial'),
         zone_id=pulumi.get(__response__, 'zone_id')))

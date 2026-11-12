@@ -13,9 +13,6 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetAiSearchInstancesResultPublicEndpointParamsSearchEndpointResult
     {
-        /// <summary>
-        /// Disable search endpoint for this public endpoint
-        /// </summary>
         public readonly bool Disabled;
 
         [OutputConstructor]

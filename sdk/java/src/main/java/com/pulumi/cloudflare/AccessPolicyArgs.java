@@ -177,6 +177,21 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.
+     * 
+     */
+    @Import(name="policyResolutionAccountId")
+    private @Nullable Output<String> policyResolutionAccountId;
+
+    /**
+     * @return The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.
+     * 
+     */
+    public Optional<Output<String>> policyResolutionAccountId() {
+        return Optional.ofNullable(this.policyResolutionAccountId);
+    }
+
+    /**
      * A custom message that will appear on the purpose justification screen.
      * 
      */
@@ -249,6 +264,7 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         this.isolationRequired = $.isolationRequired;
         this.mfaConfig = $.mfaConfig;
         this.name = $.name;
+        this.policyResolutionAccountId = $.policyResolutionAccountId;
         this.purposeJustificationPrompt = $.purposeJustificationPrompt;
         this.purposeJustificationRequired = $.purposeJustificationRequired;
         this.requires = $.requires;
@@ -513,6 +529,27 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param policyResolutionAccountId The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policyResolutionAccountId(@Nullable Output<String> policyResolutionAccountId) {
+            $.policyResolutionAccountId = policyResolutionAccountId;
+            return this;
+        }
+
+        /**
+         * @param policyResolutionAccountId The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policyResolutionAccountId(String policyResolutionAccountId) {
+            return policyResolutionAccountId(Output.of(policyResolutionAccountId));
         }
 
         /**

@@ -21,6 +21,7 @@ import * as utilities from "./utilities";
  * const exampleEmailSecurityBlockSenders = cloudflare.getEmailSecurityBlockSenders({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     direction: "asc",
+ *     expired: true,
  *     order: "pattern",
  *     pattern: "pattern",
  *     patternType: "EMAIL",
@@ -33,6 +34,7 @@ export function getEmailSecurityBlockSenders(args: GetEmailSecurityBlockSendersA
     return pulumi.runtime.invoke("cloudflare:index/getEmailSecurityBlockSenders:getEmailSecurityBlockSenders", {
         "accountId": args.accountId,
         "direction": args.direction,
+        "expired": args.expired,
         "maxItems": args.maxItems,
         "order": args.order,
         "pattern": args.pattern,
@@ -47,6 +49,7 @@ export function getEmailSecurityBlockSenders(args: GetEmailSecurityBlockSendersA
 export interface GetEmailSecurityBlockSendersArgs {
     accountId: string;
     direction?: string;
+    expired?: boolean;
     maxItems?: number;
     order?: string;
     pattern?: string;
@@ -60,6 +63,7 @@ export interface GetEmailSecurityBlockSendersArgs {
 export interface GetEmailSecurityBlockSendersResult {
     readonly accountId: string;
     readonly direction?: string;
+    readonly expired?: boolean;
     readonly maxItems?: number;
     readonly order?: string;
     readonly pattern?: string;
@@ -82,6 +86,7 @@ export interface GetEmailSecurityBlockSendersResult {
  * const exampleEmailSecurityBlockSenders = cloudflare.getEmailSecurityBlockSenders({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     direction: "asc",
+ *     expired: true,
  *     order: "pattern",
  *     pattern: "pattern",
  *     patternType: "EMAIL",
@@ -94,6 +99,7 @@ export function getEmailSecurityBlockSendersOutput(args: GetEmailSecurityBlockSe
     return pulumi.runtime.invokeOutput("cloudflare:index/getEmailSecurityBlockSenders:getEmailSecurityBlockSenders", {
         "accountId": args.accountId,
         "direction": args.direction,
+        "expired": args.expired,
         "maxItems": args.maxItems,
         "order": args.order,
         "pattern": args.pattern,
@@ -108,6 +114,7 @@ export function getEmailSecurityBlockSendersOutput(args: GetEmailSecurityBlockSe
 export interface GetEmailSecurityBlockSendersOutputArgs {
     accountId: pulumi.Input<string>;
     direction?: pulumi.Input<string | undefined>;
+    expired?: pulumi.Input<boolean | undefined>;
     maxItems?: pulumi.Input<number | undefined>;
     order?: pulumi.Input<string | undefined>;
     pattern?: pulumi.Input<string | undefined>;

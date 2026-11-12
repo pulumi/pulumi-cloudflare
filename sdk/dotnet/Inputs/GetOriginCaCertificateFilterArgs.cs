@@ -13,18 +13,6 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class GetOriginCaCertificateFilterInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Limit to the number of records returned.
-        /// </summary>
-        [Input("limit")]
-        public Input<int>? Limit { get; set; }
-
-        /// <summary>
-        /// Offset the results.
-        /// </summary>
-        [Input("offset")]
-        public Input<int>? Offset { get; set; }
-
-        /// <summary>
         /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]

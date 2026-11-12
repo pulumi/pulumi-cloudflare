@@ -33,6 +33,7 @@ import (
 //			_, err := cloudflare.GetPipelineSinks(ctx, &cloudflare.LookupPipelineSinksArgs{
 //				AccountId:  pulumi.StringRef("0123105f4ecef8ad9ca31a8372d0c353"),
 //				Name:       pulumi.StringRef("x"),
+//				OrderBy:    pulumi.StringRef("name"),
 //				PipelineId: pulumi.StringRef("pipeline_id"),
 //			}, nil)
 //			if err != nil {
@@ -57,10 +58,16 @@ func LookupPipelineSinks(ctx *pulumi.Context, args *LookupPipelineSinksArgs, opt
 type LookupPipelineSinksArgs struct {
 	// Specifies the public ID of the account.
 	AccountId *string `pulumi:"accountId"`
+	// Sort direction.
+	// Available values: "asc", "desc".
+	Direction *string `pulumi:"direction"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Filters sinks by name (case-insensitive substring).
-	Name       *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// Sorts sinks by this field. Defaults to `createdAt`.
+	// Available values: "name", "createdAt".
+	OrderBy    *string `pulumi:"orderBy"`
 	PipelineId *string `pulumi:"pipelineId"`
 }
 
@@ -68,10 +75,16 @@ type LookupPipelineSinksArgs struct {
 type LookupPipelineSinksResult struct {
 	// Specifies the public ID of the account.
 	AccountId *string `pulumi:"accountId"`
+	// Sort direction.
+	// Available values: "asc", "desc".
+	Direction string `pulumi:"direction"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Filters sinks by name (case-insensitive substring).
-	Name       *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// Sorts sinks by this field. Defaults to `createdAt`.
+	// Available values: "name", "createdAt".
+	OrderBy    *string `pulumi:"orderBy"`
 	PipelineId *string `pulumi:"pipelineId"`
 	// The items returned by the data source
 	Results []GetPipelineSinksResult `pulumi:"results"`
@@ -86,10 +99,16 @@ func LookupPipelineSinksOutput(ctx *pulumi.Context, args LookupPipelineSinksOutp
 type LookupPipelineSinksOutputArgs struct {
 	// Specifies the public ID of the account.
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	// Sort direction.
+	// Available values: "asc", "desc".
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 	// Filters sinks by name (case-insensitive substring).
-	Name       pulumi.StringPtrInput `pulumi:"name"`
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Sorts sinks by this field. Defaults to `createdAt`.
+	// Available values: "name", "createdAt".
+	OrderBy    pulumi.StringPtrInput `pulumi:"orderBy"`
 	PipelineId pulumi.StringPtrInput `pulumi:"pipelineId"`
 }
 
@@ -117,6 +136,12 @@ func (o LookupPipelineSinksResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPipelineSinksResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
+// Sort direction.
+// Available values: "asc", "desc".
+func (o LookupPipelineSinksResultOutput) Direction() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPipelineSinksResult) string { return v.Direction }).(pulumi.StringOutput)
+}
+
 // Max items to fetch, default: 1000
 func (o LookupPipelineSinksResultOutput) MaxItems() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupPipelineSinksResult) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
@@ -125,6 +150,12 @@ func (o LookupPipelineSinksResultOutput) MaxItems() pulumi.IntPtrOutput {
 // Filters sinks by name (case-insensitive substring).
 func (o LookupPipelineSinksResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPipelineSinksResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Sorts sinks by this field. Defaults to `createdAt`.
+// Available values: "name", "createdAt".
+func (o LookupPipelineSinksResultOutput) OrderBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupPipelineSinksResult) *string { return v.OrderBy }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupPipelineSinksResultOutput) PipelineId() pulumi.StringPtrOutput {

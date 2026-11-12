@@ -9,6 +9,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -60,6 +61,21 @@ public final class ZeroTrustDlpCustomEntryArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.profileId);
     }
 
+    /**
+     * Validators the new entry should reference, by id, at most 10.
+     * 
+     */
+    @Import(name="validatorIds")
+    private @Nullable Output<List<String>> validatorIds;
+
+    /**
+     * @return Validators the new entry should reference, by id, at most 10.
+     * 
+     */
+    public Optional<Output<List<String>>> validatorIds() {
+        return Optional.ofNullable(this.validatorIds);
+    }
+
     private ZeroTrustDlpCustomEntryArgs() {}
 
     private ZeroTrustDlpCustomEntryArgs(ZeroTrustDlpCustomEntryArgs $) {
@@ -69,6 +85,7 @@ public final class ZeroTrustDlpCustomEntryArgs extends com.pulumi.resources.Reso
         this.name = $.name;
         this.pattern = $.pattern;
         this.profileId = $.profileId;
+        this.validatorIds = $.validatorIds;
     }
 
     public static Builder builder() {
@@ -141,6 +158,37 @@ public final class ZeroTrustDlpCustomEntryArgs extends com.pulumi.resources.Reso
 
         public Builder profileId(String profileId) {
             return profileId(Output.of(profileId));
+        }
+
+        /**
+         * @param validatorIds Validators the new entry should reference, by id, at most 10.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder validatorIds(@Nullable Output<List<String>> validatorIds) {
+            $.validatorIds = validatorIds;
+            return this;
+        }
+
+        /**
+         * @param validatorIds Validators the new entry should reference, by id, at most 10.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder validatorIds(List<String> validatorIds) {
+            return validatorIds(Output.of(validatorIds));
+        }
+
+        /**
+         * @param validatorIds Validators the new entry should reference, by id, at most 10.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder validatorIds(String... validatorIds) {
+            return validatorIds(List.of(validatorIds));
         }
 
         public ZeroTrustDlpCustomEntryArgs build() {

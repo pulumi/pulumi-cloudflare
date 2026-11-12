@@ -457,6 +457,13 @@ class ZeroTrustResourceLibraryApplication(pulumi.CustomResource):
                  support_domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Resource Library Read`
+        - `Resource Library Write`
+        - `Zero Trust Read`
+        - `Zero Trust Write`
+
         ## Example Usage
 
         ```python
@@ -510,6 +517,13 @@ class ZeroTrustResourceLibraryApplication(pulumi.CustomResource):
                  args: ZeroTrustResourceLibraryApplicationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Resource Library Read`
+        - `Resource Library Write`
+        - `Zero Trust Read`
+        - `Zero Trust Write`
+
         ## Example Usage
 
         ```python

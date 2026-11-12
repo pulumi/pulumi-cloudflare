@@ -12,6 +12,13 @@ namespace Pulumi.Cloudflare
     public static class GetZeroTrustResourceLibraryCategory
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Resource Library Read`
+        /// - `Resource Library Write`
+        /// - `Zero Trust Read`
+        /// - `Zero Trust Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +42,13 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustResourceLibraryCategoryResult>("cloudflare:index/getZeroTrustResourceLibraryCategory:getZeroTrustResourceLibraryCategory", args ?? new GetZeroTrustResourceLibraryCategoryArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Resource Library Read`
+        /// - `Resource Library Write`
+        /// - `Zero Trust Read`
+        /// - `Zero Trust Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +72,13 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustResourceLibraryCategoryResult>("cloudflare:index/getZeroTrustResourceLibraryCategory:getZeroTrustResourceLibraryCategory", args ?? new GetZeroTrustResourceLibraryCategoryInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Resource Library Read`
+        /// - `Resource Library Write`
+        /// - `Zero Trust Read`
+        /// - `Zero Trust Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

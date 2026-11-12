@@ -13,7 +13,7 @@ import java.util.Objects;
 public final class GetAiSearchNamespacePublicEndpointParamsMcp {
     private String description;
     /**
-     * @return Disable MCP endpoint for this public endpoint
+     * @return Disable MCP endpoint for this public endpoint.
      * 
      */
     private Boolean disabled;
@@ -23,7 +23,7 @@ public final class GetAiSearchNamespacePublicEndpointParamsMcp {
         return this.description;
     }
     /**
-     * @return Disable MCP endpoint for this public endpoint
+     * @return Disable MCP endpoint for this public endpoint.
      * 
      */
     public Boolean disabled() {

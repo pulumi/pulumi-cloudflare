@@ -18,7 +18,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly double? Depth;
         /// <summary>
-        /// Follow links that point outside the source domain. Must stay `False` — discover crawls are restricted to the zone you own.
+        /// Follow links that point outside the source domain. Must stay `False` because discover crawls only cover the zone you own.
         /// </summary>
         public readonly bool? IncludeExternalLinks;
         /// <summary>

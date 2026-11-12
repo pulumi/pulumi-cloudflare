@@ -5,46 +5,13 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetOriginCaCertificateFilter extends com.pulumi.resources.InvokeArgs {
 
     public static final GetOriginCaCertificateFilter Empty = new GetOriginCaCertificateFilter();
-
-    /**
-     * Limit to the number of records returned.
-     * 
-     */
-    @Import(name="limit")
-    private @Nullable Integer limit;
-
-    /**
-     * @return Limit to the number of records returned.
-     * 
-     */
-    public Optional<Integer> limit() {
-        return Optional.ofNullable(this.limit);
-    }
-
-    /**
-     * Offset the results.
-     * 
-     */
-    @Import(name="offset")
-    private @Nullable Integer offset;
-
-    /**
-     * @return Offset the results.
-     * 
-     */
-    public Optional<Integer> offset() {
-        return Optional.ofNullable(this.offset);
-    }
 
     /**
      * Identifier.
@@ -64,8 +31,6 @@ public final class GetOriginCaCertificateFilter extends com.pulumi.resources.Inv
     private GetOriginCaCertificateFilter() {}
 
     private GetOriginCaCertificateFilter(GetOriginCaCertificateFilter $) {
-        this.limit = $.limit;
-        this.offset = $.offset;
         this.zoneId = $.zoneId;
     }
 
@@ -85,28 +50,6 @@ public final class GetOriginCaCertificateFilter extends com.pulumi.resources.Inv
 
         public Builder(GetOriginCaCertificateFilter defaults) {
             $ = new GetOriginCaCertificateFilter(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param limit Limit to the number of records returned.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder limit(@Nullable Integer limit) {
-            $.limit = limit;
-            return this;
-        }
-
-        /**
-         * @param offset Offset the results.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder offset(@Nullable Integer offset) {
-            $.offset = offset;
-            return this;
         }
 
         /**

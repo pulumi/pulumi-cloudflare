@@ -65,9 +65,17 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="cloudflare:index/certificateAuthoritiesHostnameAssociations:CertificateAuthoritiesHostnameAssociations")
 public class CertificateAuthoritiesHostnameAssociations extends com.pulumi.resources.CustomResource {
+    /**
+     * Unordered set of hostnames. Hostnames are stored as lowercase punycode.
+     * 
+     */
     @Export(name="hostnames", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> hostnames;
 
+    /**
+     * @return Unordered set of hostnames. Hostnames are stored as lowercase punycode.
+     * 
+     */
     public Output<Optional<List<String>>> hostnames() {
         return Codegen.optional(this.hostnames);
     }

@@ -5,10 +5,8 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsArgs;
 import com.pulumi.cloudflare.inputs.AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs;
-import com.pulumi.cloudflare.inputs.AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -20,14 +18,14 @@ public final class AiSearchInstanceSourceParamsWebCrawlerArgs extends com.pulumi
     public static final AiSearchInstanceSourceParamsWebCrawlerArgs Empty = new AiSearchInstanceSourceParamsWebCrawlerArgs();
 
     /**
-     * Options for parse*type &#39;discover&#39;, where Browser Run discovers URLs by link following and sitemaps. Ignored for &#39;sitemap&#39;.
+     * Options for parse*type &#39;discover&#39;, where Browser Run discovers URLs through link following and sitemaps. Ignored for &#39;sitemap&#39;.
      * 
      */
     @Import(name="discoverOptions")
     private @Nullable Output<AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsArgs> discoverOptions;
 
     /**
-     * @return Options for parse*type &#39;discover&#39;, where Browser Run discovers URLs by link following and sitemaps. Ignored for &#39;sitemap&#39;.
+     * @return Options for parse*type &#39;discover&#39;, where Browser Run discovers URLs through link following and sitemaps. Ignored for &#39;sitemap&#39;.
      * 
      */
     public Optional<Output<AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsArgs>> discoverOptions() {
@@ -42,7 +40,7 @@ public final class AiSearchInstanceSourceParamsWebCrawlerArgs extends com.pulumi
     }
 
     /**
-     * How URLs are discovered. &#39;sitemap&#39; reads XML sitemaps; &#39;discover&#39; follows links recursively and requires the source to be a Verified zone on this account.
+     * How the crawler finds URLs. &#39;sitemap&#39; reads XML sitemaps; &#39;discover&#39; follows links recursively and requires the source to belong to a Verified zone on this account.
      * Available values: &#34;sitemap&#34;, &#34;discover&#34;.
      * 
      */
@@ -50,19 +48,12 @@ public final class AiSearchInstanceSourceParamsWebCrawlerArgs extends com.pulumi
     private @Nullable Output<String> parseType;
 
     /**
-     * @return How URLs are discovered. &#39;sitemap&#39; reads XML sitemaps; &#39;discover&#39; follows links recursively and requires the source to be a Verified zone on this account.
+     * @return How the crawler finds URLs. &#39;sitemap&#39; reads XML sitemaps; &#39;discover&#39; follows links recursively and requires the source to belong to a Verified zone on this account.
      * Available values: &#34;sitemap&#34;, &#34;discover&#34;.
      * 
      */
     public Optional<Output<String>> parseType() {
         return Optional.ofNullable(this.parseType);
-    }
-
-    @Import(name="storeOptions", required=true)
-    private Output<AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs> storeOptions;
-
-    public Output<AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs> storeOptions() {
-        return this.storeOptions;
     }
 
     private AiSearchInstanceSourceParamsWebCrawlerArgs() {}
@@ -71,7 +62,6 @@ public final class AiSearchInstanceSourceParamsWebCrawlerArgs extends com.pulumi
         this.discoverOptions = $.discoverOptions;
         this.parseOptions = $.parseOptions;
         this.parseType = $.parseType;
-        this.storeOptions = $.storeOptions;
     }
 
     public static Builder builder() {
@@ -93,7 +83,7 @@ public final class AiSearchInstanceSourceParamsWebCrawlerArgs extends com.pulumi
         }
 
         /**
-         * @param discoverOptions Options for parse*type &#39;discover&#39;, where Browser Run discovers URLs by link following and sitemaps. Ignored for &#39;sitemap&#39;.
+         * @param discoverOptions Options for parse*type &#39;discover&#39;, where Browser Run discovers URLs through link following and sitemaps. Ignored for &#39;sitemap&#39;.
          * 
          * @return builder
          * 
@@ -104,7 +94,7 @@ public final class AiSearchInstanceSourceParamsWebCrawlerArgs extends com.pulumi
         }
 
         /**
-         * @param discoverOptions Options for parse*type &#39;discover&#39;, where Browser Run discovers URLs by link following and sitemaps. Ignored for &#39;sitemap&#39;.
+         * @param discoverOptions Options for parse*type &#39;discover&#39;, where Browser Run discovers URLs through link following and sitemaps. Ignored for &#39;sitemap&#39;.
          * 
          * @return builder
          * 
@@ -123,7 +113,7 @@ public final class AiSearchInstanceSourceParamsWebCrawlerArgs extends com.pulumi
         }
 
         /**
-         * @param parseType How URLs are discovered. &#39;sitemap&#39; reads XML sitemaps; &#39;discover&#39; follows links recursively and requires the source to be a Verified zone on this account.
+         * @param parseType How the crawler finds URLs. &#39;sitemap&#39; reads XML sitemaps; &#39;discover&#39; follows links recursively and requires the source to belong to a Verified zone on this account.
          * Available values: &#34;sitemap&#34;, &#34;discover&#34;.
          * 
          * @return builder
@@ -135,7 +125,7 @@ public final class AiSearchInstanceSourceParamsWebCrawlerArgs extends com.pulumi
         }
 
         /**
-         * @param parseType How URLs are discovered. &#39;sitemap&#39; reads XML sitemaps; &#39;discover&#39; follows links recursively and requires the source to be a Verified zone on this account.
+         * @param parseType How the crawler finds URLs. &#39;sitemap&#39; reads XML sitemaps; &#39;discover&#39; follows links recursively and requires the source to belong to a Verified zone on this account.
          * Available values: &#34;sitemap&#34;, &#34;discover&#34;.
          * 
          * @return builder
@@ -145,19 +135,7 @@ public final class AiSearchInstanceSourceParamsWebCrawlerArgs extends com.pulumi
             return parseType(Output.of(parseType));
         }
 
-        public Builder storeOptions(Output<AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs> storeOptions) {
-            $.storeOptions = storeOptions;
-            return this;
-        }
-
-        public Builder storeOptions(AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs storeOptions) {
-            return storeOptions(Output.of(storeOptions));
-        }
-
         public AiSearchInstanceSourceParamsWebCrawlerArgs build() {
-            if ($.storeOptions == null) {
-                throw new MissingRequiredPropertyException("AiSearchInstanceSourceParamsWebCrawlerArgs", "storeOptions");
-            }
             return $;
         }
     }

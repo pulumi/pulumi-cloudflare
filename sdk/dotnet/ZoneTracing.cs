@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Zone Observability Read`
+    /// - `Zone Observability Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

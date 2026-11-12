@@ -38,7 +38,7 @@ import (
 //				ShareId:           pulumi.String("3fd85f74b32742f1bff64a85009dda07"),
 //				Meta:              pulumi.String(json0),
 //				ResourceAccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				ResourceId:        pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				ResourceId:        pulumi.String("0a679032-bbb2-4b7e-9acc-dd5c5cb27a17"),
 //				ResourceType:      pulumi.String("custom-ruleset"),
 //			})
 //			if err != nil {
@@ -60,15 +60,15 @@ type ShareResource struct {
 
 	// Account identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// When the share was created.
+	// When the object was created.
 	Created pulumi.StringOutput `pulumi:"created"`
 	// Resource Metadata.
 	Meta pulumi.StringOutput `pulumi:"meta"`
-	// When the share was modified.
+	// When the object was last modified.
 	Modified pulumi.StringOutput `pulumi:"modified"`
-	// Account identifier.
+	// The account that owns the resource. Must match the `accountId` in the path.
 	ResourceAccountId pulumi.StringOutput `pulumi:"resourceAccountId"`
-	// Share Resource identifier.
+	// Identifier assigned by the service that owns the shared resource.
 	ResourceId pulumi.StringOutput `pulumi:"resourceId"`
 	// Resource Type.
 	// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
@@ -132,15 +132,15 @@ func GetShareResource(ctx *pulumi.Context,
 type shareResourceState struct {
 	// Account identifier.
 	AccountId *string `pulumi:"accountId"`
-	// When the share was created.
+	// When the object was created.
 	Created *string `pulumi:"created"`
 	// Resource Metadata.
 	Meta *string `pulumi:"meta"`
-	// When the share was modified.
+	// When the object was last modified.
 	Modified *string `pulumi:"modified"`
-	// Account identifier.
+	// The account that owns the resource. Must match the `accountId` in the path.
 	ResourceAccountId *string `pulumi:"resourceAccountId"`
-	// Share Resource identifier.
+	// Identifier assigned by the service that owns the shared resource.
 	ResourceId *string `pulumi:"resourceId"`
 	// Resource Type.
 	// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
@@ -157,15 +157,15 @@ type shareResourceState struct {
 type ShareResourceState struct {
 	// Account identifier.
 	AccountId pulumi.StringPtrInput
-	// When the share was created.
+	// When the object was created.
 	Created pulumi.StringPtrInput
 	// Resource Metadata.
 	Meta pulumi.StringPtrInput
-	// When the share was modified.
+	// When the object was last modified.
 	Modified pulumi.StringPtrInput
-	// Account identifier.
+	// The account that owns the resource. Must match the `accountId` in the path.
 	ResourceAccountId pulumi.StringPtrInput
-	// Share Resource identifier.
+	// Identifier assigned by the service that owns the shared resource.
 	ResourceId pulumi.StringPtrInput
 	// Resource Type.
 	// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
@@ -194,9 +194,9 @@ type shareResourceArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// Resource Metadata.
 	Meta string `pulumi:"meta"`
-	// Account identifier.
+	// The account that owns the resource. Must match the `accountId` in the path.
 	ResourceAccountId string `pulumi:"resourceAccountId"`
-	// Share Resource identifier.
+	// Identifier assigned by the service that owns the shared resource.
 	ResourceId string `pulumi:"resourceId"`
 	// Resource Type.
 	// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
@@ -211,9 +211,9 @@ type ShareResourceArgs struct {
 	AccountId pulumi.StringInput
 	// Resource Metadata.
 	Meta pulumi.StringInput
-	// Account identifier.
+	// The account that owns the resource. Must match the `accountId` in the path.
 	ResourceAccountId pulumi.StringInput
-	// Share Resource identifier.
+	// Identifier assigned by the service that owns the shared resource.
 	ResourceId pulumi.StringInput
 	// Resource Type.
 	// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
@@ -314,7 +314,7 @@ func (o ShareResourceOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ShareResource) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// When the share was created.
+// When the object was created.
 func (o ShareResourceOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v *ShareResource) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)
 }
@@ -324,17 +324,17 @@ func (o ShareResourceOutput) Meta() pulumi.StringOutput {
 	return o.ApplyT(func(v *ShareResource) pulumi.StringOutput { return v.Meta }).(pulumi.StringOutput)
 }
 
-// When the share was modified.
+// When the object was last modified.
 func (o ShareResourceOutput) Modified() pulumi.StringOutput {
 	return o.ApplyT(func(v *ShareResource) pulumi.StringOutput { return v.Modified }).(pulumi.StringOutput)
 }
 
-// Account identifier.
+// The account that owns the resource. Must match the `accountId` in the path.
 func (o ShareResourceOutput) ResourceAccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ShareResource) pulumi.StringOutput { return v.ResourceAccountId }).(pulumi.StringOutput)
 }
 
-// Share Resource identifier.
+// Identifier assigned by the service that owns the shared resource.
 func (o ShareResourceOutput) ResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ShareResource) pulumi.StringOutput { return v.ResourceId }).(pulumi.StringOutput)
 }

@@ -13,16 +13,32 @@ import javax.annotation.Nullable;
 @CustomType
 public final class HyperdriveConfigCaching {
     private @Nullable Boolean disabled;
+    /**
+     * @return Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
+     * 
+     */
     private @Nullable Integer maxAge;
+    /**
+     * @return Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
+     * 
+     */
     private @Nullable Integer staleWhileRevalidate;
 
     private HyperdriveConfigCaching() {}
     public Optional<Boolean> disabled() {
         return Optional.ofNullable(this.disabled);
     }
+    /**
+     * @return Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
+     * 
+     */
     public Optional<Integer> maxAge() {
         return Optional.ofNullable(this.maxAge);
     }
+    /**
+     * @return Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
+     * 
+     */
     public Optional<Integer> staleWhileRevalidate() {
         return Optional.ofNullable(this.staleWhileRevalidate);
     }

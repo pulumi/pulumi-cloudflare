@@ -18,11 +18,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Meta;
         /// <summary>
-        /// Account identifier.
+        /// The account that owns the resource. Must match the `AccountId` in the path.
         /// </summary>
         public readonly string ResourceAccountId;
         /// <summary>
-        /// Share Resource identifier.
+        /// Identifier assigned by the service that owns the shared resource.
         /// </summary>
         public readonly string ResourceId;
         /// <summary>

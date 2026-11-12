@@ -61,7 +61,7 @@ type LookupZeroTrustGatewayPolicyResult struct {
 	// Specify the Cloudflare account identifier.
 	AccountId *string `pulumi:"accountId"`
 	// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
-	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
+	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect", "forward".
 	Action    string `pulumi:"action"`
 	CreatedAt string `pulumi:"createdAt"`
 	// Indicate the date of deletion, if any.
@@ -145,7 +145,7 @@ func (o LookupZeroTrustGatewayPolicyResultOutput) AccountId() pulumi.StringPtrOu
 }
 
 // Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
-// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
+// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect", "forward".
 func (o LookupZeroTrustGatewayPolicyResultOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) string { return v.Action }).(pulumi.StringOutput)
 }

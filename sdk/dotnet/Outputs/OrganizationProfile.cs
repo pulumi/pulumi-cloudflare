@@ -13,23 +13,23 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class OrganizationProfile
     {
-        public readonly string BusinessAddress;
-        public readonly string BusinessEmail;
-        public readonly string BusinessName;
-        public readonly string BusinessPhone;
-        public readonly string ExternalMetadata;
+        public readonly string? BusinessAddress;
+        public readonly string? BusinessEmail;
+        public readonly string? BusinessName;
+        public readonly string? BusinessPhone;
+        public readonly string? ExternalMetadata;
 
         [OutputConstructor]
         private OrganizationProfile(
-            string businessAddress,
+            string? businessAddress,
 
-            string businessEmail,
+            string? businessEmail,
 
-            string businessName,
+            string? businessName,
 
-            string businessPhone,
+            string? businessPhone,
 
-            string externalMetadata)
+            string? externalMetadata)
         {
             BusinessAddress = businessAddress;
             BusinessEmail = businessEmail;

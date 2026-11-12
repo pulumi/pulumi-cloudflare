@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.OrganizationMetaTenantFlags;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -13,6 +14,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OrganizationMeta {
+    private @Nullable Boolean areChildAccountsAccessibleByOrgMembers;
     /**
      * @return Ordered chain of organization tags from the root organization down to
      * (and including) this organization itself. Root organizations return a
@@ -29,8 +31,12 @@ public final class OrganizationMeta {
      * 
      */
     private @Nullable OrganizationMetaTenantFlags tenantFlags;
+    private @Nullable String tenantType;
 
     private OrganizationMeta() {}
+    public Optional<Boolean> areChildAccountsAccessibleByOrgMembers() {
+        return Optional.ofNullable(this.areChildAccountsAccessibleByOrgMembers);
+    }
     /**
      * @return Ordered chain of organization tags from the root organization down to
      * (and including) this organization itself. Root organizations return a
@@ -53,6 +59,9 @@ public final class OrganizationMeta {
     public Optional<OrganizationMetaTenantFlags> tenantFlags() {
         return Optional.ofNullable(this.tenantFlags);
     }
+    public Optional<String> tenantType() {
+        return Optional.ofNullable(this.tenantType);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -63,17 +72,27 @@ public final class OrganizationMeta {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean areChildAccountsAccessibleByOrgMembers;
         private @Nullable List<String> hierarchyTags;
         private @Nullable String managedBy;
         private @Nullable OrganizationMetaTenantFlags tenantFlags;
+        private @Nullable String tenantType;
         public Builder() {}
         public Builder(OrganizationMeta defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.areChildAccountsAccessibleByOrgMembers = defaults.areChildAccountsAccessibleByOrgMembers;
     	      this.hierarchyTags = defaults.hierarchyTags;
     	      this.managedBy = defaults.managedBy;
     	      this.tenantFlags = defaults.tenantFlags;
+    	      this.tenantType = defaults.tenantType;
         }
 
+        @CustomType.Setter
+        public Builder areChildAccountsAccessibleByOrgMembers(@Nullable Boolean areChildAccountsAccessibleByOrgMembers) {
+
+            this.areChildAccountsAccessibleByOrgMembers = areChildAccountsAccessibleByOrgMembers;
+            return this;
+        }
         @CustomType.Setter
         public Builder hierarchyTags(@Nullable List<String> hierarchyTags) {
 
@@ -95,11 +114,19 @@ public final class OrganizationMeta {
             this.tenantFlags = tenantFlags;
             return this;
         }
+        @CustomType.Setter
+        public Builder tenantType(@Nullable String tenantType) {
+
+            this.tenantType = tenantType;
+            return this;
+        }
         public OrganizationMeta build() {
             final var _resultValue = new OrganizationMeta();
+            _resultValue.areChildAccountsAccessibleByOrgMembers = areChildAccountsAccessibleByOrgMembers;
             _resultValue.hierarchyTags = hierarchyTags;
             _resultValue.managedBy = managedBy;
             _resultValue.tenantFlags = tenantFlags;
+            _resultValue.tenantType = tenantType;
             return _resultValue;
         }
     }

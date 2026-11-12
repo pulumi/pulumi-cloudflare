@@ -51,6 +51,7 @@ import javax.annotation.Nullable;
  *             .pattern("test}{@literal @}{@code example.com")
  *             .patternType("EMAIL")
  *             .comments("Block sender with email test}{@literal @}{@code example.com")
+ *             .expiresAt("2027-01-01T00:00:00Z")
  *             .build());
  * 
  *     }}{@code
@@ -92,6 +93,20 @@ public class EmailSecurityBlockSender extends com.pulumi.resources.CustomResourc
 
     public Output<String> createdAt() {
         return this.createdAt;
+    }
+    /**
+     * Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration.
+     * 
+     */
+    @Export(name="expiresAt", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> expiresAt;
+
+    /**
+     * @return Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration.
+     * 
+     */
+    public Output<Optional<String>> expiresAt() {
+        return Codegen.optional(this.expiresAt);
     }
     /**
      * Whether `pattern` is a regular expression instead of a literal value.

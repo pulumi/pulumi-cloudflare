@@ -71,7 +71,7 @@ type QueueConsumer struct {
 	// A Resource identifier.
 	QueueId   pulumi.StringOutput `pulumi:"queueId"`
 	QueueName pulumi.StringOutput `pulumi:"queueName"`
-	// Name of a Worker
+	// For `type: worker`: Name of a Worker
 	ScriptName pulumi.StringOutput         `pulumi:"scriptName"`
 	Settings   QueueConsumerSettingsOutput `pulumi:"settings"`
 	// Available values: "worker", "httpPull", "notification".
@@ -126,7 +126,7 @@ type queueConsumerState struct {
 	// A Resource identifier.
 	QueueId   *string `pulumi:"queueId"`
 	QueueName *string `pulumi:"queueName"`
-	// Name of a Worker
+	// For `type: worker`: Name of a Worker
 	ScriptName *string                `pulumi:"scriptName"`
 	Settings   *QueueConsumerSettings `pulumi:"settings"`
 	// Available values: "worker", "httpPull", "notification".
@@ -143,7 +143,7 @@ type QueueConsumerState struct {
 	// A Resource identifier.
 	QueueId   pulumi.StringPtrInput
 	QueueName pulumi.StringPtrInput
-	// Name of a Worker
+	// For `type: worker`: Name of a Worker
 	ScriptName pulumi.StringPtrInput
 	Settings   QueueConsumerSettingsPtrInput
 	// Available values: "worker", "httpPull", "notification".
@@ -166,7 +166,7 @@ type queueConsumerArgs struct {
 	DeadLetterQueue *string `pulumi:"deadLetterQueue"`
 	// A Resource identifier.
 	QueueId string `pulumi:"queueId"`
-	// Name of a Worker
+	// For `type: worker`: Name of a Worker
 	ScriptName *string                `pulumi:"scriptName"`
 	Settings   *QueueConsumerSettings `pulumi:"settings"`
 	// Available values: "worker", "httpPull", "notification".
@@ -180,7 +180,7 @@ type QueueConsumerArgs struct {
 	DeadLetterQueue pulumi.StringPtrInput
 	// A Resource identifier.
 	QueueId pulumi.StringInput
-	// Name of a Worker
+	// For `type: worker`: Name of a Worker
 	ScriptName pulumi.StringPtrInput
 	Settings   QueueConsumerSettingsPtrInput
 	// Available values: "worker", "httpPull", "notification".
@@ -301,7 +301,7 @@ func (o QueueConsumerOutput) QueueName() pulumi.StringOutput {
 	return o.ApplyT(func(v *QueueConsumer) pulumi.StringOutput { return v.QueueName }).(pulumi.StringOutput)
 }
 
-// Name of a Worker
+// For `type: worker`: Name of a Worker
 func (o QueueConsumerOutput) ScriptName() pulumi.StringOutput {
 	return o.ApplyT(func(v *QueueConsumer) pulumi.StringOutput { return v.ScriptName }).(pulumi.StringOutput)
 }

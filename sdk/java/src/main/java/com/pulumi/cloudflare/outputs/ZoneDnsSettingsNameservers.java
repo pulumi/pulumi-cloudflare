@@ -14,12 +14,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZoneDnsSettingsNameservers {
     /**
-     * @return Identifier of the account-owned Custom Nameserver Set to use for this zone.
+     * @return For `type: custom`: Identifier of the account-owned Custom Nameserver Set to use for this zone.
      * 
      */
     private @Nullable String nameserverSetId;
     /**
-     * @return Configured nameserver set number to use for this zone.
+     * @return For `type: custom.account` or `type: custom.tenant` or `type: custom.zone`: Configured nameserver set number to use for this zone.
      * 
      */
     private @Nullable Integer nsSet;
@@ -32,14 +32,14 @@ public final class ZoneDnsSettingsNameservers {
 
     private ZoneDnsSettingsNameservers() {}
     /**
-     * @return Identifier of the account-owned Custom Nameserver Set to use for this zone.
+     * @return For `type: custom`: Identifier of the account-owned Custom Nameserver Set to use for this zone.
      * 
      */
     public Optional<String> nameserverSetId() {
         return Optional.ofNullable(this.nameserverSetId);
     }
     /**
-     * @return Configured nameserver set number to use for this zone.
+     * @return For `type: custom.account` or `type: custom.tenant` or `type: custom.zone`: Configured nameserver set number to use for this zone.
      * 
      */
     public Optional<Integer> nsSet() {

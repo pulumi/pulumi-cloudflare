@@ -24,7 +24,7 @@ public final class GetQueueConsumer {
     private String deadLetterQueue;
     private String queueName;
     /**
-     * @return Name of a Worker
+     * @return For `type: worker`: Name of a Worker
      * 
      */
     private String scriptName;
@@ -57,7 +57,7 @@ public final class GetQueueConsumer {
         return this.queueName;
     }
     /**
-     * @return Name of a Worker
+     * @return For `type: worker`: Name of a Worker
      * 
      */
     public String scriptName() {

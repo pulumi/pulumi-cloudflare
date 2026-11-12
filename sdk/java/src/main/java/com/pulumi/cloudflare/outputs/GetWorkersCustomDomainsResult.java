@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 
@@ -15,6 +16,11 @@ public final class GetWorkersCustomDomainsResult {
      * 
      */
     private String certId;
+    /**
+     * @return Whether the configured hostname is routable for the domain. If disabled, then requests to the configured hostname will not be routed to the configured Worker. If disabled, then preview routing must be enabled, and only subdomains of the configured hostname will be routable.
+     * 
+     */
+    private Boolean enabled;
     /**
      * @return Worker environment associated with the domain.
      * 
@@ -33,6 +39,11 @@ public final class GetWorkersCustomDomainsResult {
      * 
      */
     private String id;
+    /**
+     * @return Whether previews are routable for the domain. If enabled, previews will be routable as subdomains of the configured hostname. For example, if the configured hostname is `app.example.com`, then requests to `my-feature.app.example.com` will be routed to the preview with slug `my-feature`, if such a preview exists. If preview routing is disabled, then hostname routing must be enabled.
+     * 
+     */
+    private Boolean previewsEnabled;
     /**
      * @return Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
      * 
@@ -58,6 +69,13 @@ public final class GetWorkersCustomDomainsResult {
         return this.certId;
     }
     /**
+     * @return Whether the configured hostname is routable for the domain. If disabled, then requests to the configured hostname will not be routed to the configured Worker. If disabled, then preview routing must be enabled, and only subdomains of the configured hostname will be routable.
+     * 
+     */
+    public Boolean enabled() {
+        return this.enabled;
+    }
+    /**
      * @return Worker environment associated with the domain.
      * 
      * @deprecated This attribute is deprecated.
@@ -80,6 +98,13 @@ public final class GetWorkersCustomDomainsResult {
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return Whether previews are routable for the domain. If enabled, previews will be routable as subdomains of the configured hostname. For example, if the configured hostname is `app.example.com`, then requests to `my-feature.app.example.com` will be routed to the preview with slug `my-feature`, if such a preview exists. If preview routing is disabled, then hostname routing must be enabled.
+     * 
+     */
+    public Boolean previewsEnabled() {
+        return this.previewsEnabled;
     }
     /**
      * @return Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
@@ -113,9 +138,11 @@ public final class GetWorkersCustomDomainsResult {
     @CustomType.Builder
     public static final class Builder {
         private String certId;
+        private Boolean enabled;
         private String environment;
         private String hostname;
         private String id;
+        private Boolean previewsEnabled;
         private String service;
         private String zoneId;
         private String zoneName;
@@ -123,9 +150,11 @@ public final class GetWorkersCustomDomainsResult {
         public Builder(GetWorkersCustomDomainsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.certId = defaults.certId;
+    	      this.enabled = defaults.enabled;
     	      this.environment = defaults.environment;
     	      this.hostname = defaults.hostname;
     	      this.id = defaults.id;
+    	      this.previewsEnabled = defaults.previewsEnabled;
     	      this.service = defaults.service;
     	      this.zoneId = defaults.zoneId;
     	      this.zoneName = defaults.zoneName;
@@ -137,6 +166,14 @@ public final class GetWorkersCustomDomainsResult {
               throw new MissingRequiredPropertyException("GetWorkersCustomDomainsResult", "certId");
             }
             this.certId = certId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enabled(Boolean enabled) {
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetWorkersCustomDomainsResult", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
@@ -161,6 +198,14 @@ public final class GetWorkersCustomDomainsResult {
               throw new MissingRequiredPropertyException("GetWorkersCustomDomainsResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder previewsEnabled(Boolean previewsEnabled) {
+            if (previewsEnabled == null) {
+              throw new MissingRequiredPropertyException("GetWorkersCustomDomainsResult", "previewsEnabled");
+            }
+            this.previewsEnabled = previewsEnabled;
             return this;
         }
         @CustomType.Setter
@@ -190,9 +235,11 @@ public final class GetWorkersCustomDomainsResult {
         public GetWorkersCustomDomainsResult build() {
             final var _resultValue = new GetWorkersCustomDomainsResult();
             _resultValue.certId = certId;
+            _resultValue.enabled = enabled;
             _resultValue.environment = environment;
             _resultValue.hostname = hostname;
             _resultValue.id = id;
+            _resultValue.previewsEnabled = previewsEnabled;
             _resultValue.service = service;
             _resultValue.zoneId = zoneId;
             _resultValue.zoneName = zoneName;

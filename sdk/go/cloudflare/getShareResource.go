@@ -63,18 +63,18 @@ type LookupShareResourceArgs struct {
 type LookupShareResourceResult struct {
 	// Account identifier.
 	AccountId string `pulumi:"accountId"`
-	// When the share was created.
+	// When the object was created.
 	Created string                  `pulumi:"created"`
 	Filter  *GetShareResourceFilter `pulumi:"filter"`
 	// Share Resource identifier.
 	Id string `pulumi:"id"`
 	// Resource Metadata.
 	Meta string `pulumi:"meta"`
-	// When the share was modified.
+	// When the object was last modified.
 	Modified string `pulumi:"modified"`
 	// Account identifier.
 	ResourceAccountId string `pulumi:"resourceAccountId"`
-	// Share Resource identifier.
+	// Identifier assigned by the service that owns the shared resource.
 	ResourceId string `pulumi:"resourceId"`
 	// Resource Type.
 	// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
@@ -130,7 +130,7 @@ func (o LookupShareResourceResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupShareResourceResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// When the share was created.
+// When the object was created.
 func (o LookupShareResourceResultOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupShareResourceResult) string { return v.Created }).(pulumi.StringOutput)
 }
@@ -149,7 +149,7 @@ func (o LookupShareResourceResultOutput) Meta() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupShareResourceResult) string { return v.Meta }).(pulumi.StringOutput)
 }
 
-// When the share was modified.
+// When the object was last modified.
 func (o LookupShareResourceResultOutput) Modified() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupShareResourceResult) string { return v.Modified }).(pulumi.StringOutput)
 }
@@ -159,7 +159,7 @@ func (o LookupShareResourceResultOutput) ResourceAccountId() pulumi.StringOutput
 	return o.ApplyT(func(v LookupShareResourceResult) string { return v.ResourceAccountId }).(pulumi.StringOutput)
 }
 
-// Share Resource identifier.
+// Identifier assigned by the service that owns the shared resource.
 func (o LookupShareResourceResultOutput) ResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupShareResourceResult) string { return v.ResourceId }).(pulumi.StringOutput)
 }

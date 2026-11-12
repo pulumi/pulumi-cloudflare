@@ -18,7 +18,6 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -111,6 +110,7 @@ import javax.annotation.Nullable;
  *                 .mfaDisabled(false)
  *                 .sessionDuration("24h")
  *                 .build())
+ *             .policyResolutionAccountId("policy_resolution_account_id")
  *             .purposeJustificationPrompt("Please enter a justification for entering this protected domain.")
  *             .purposeJustificationRequired(true)
  *             .requires(ZeroTrustAccessPolicyRequireArgs.builder()
@@ -150,20 +150,6 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
      */
     public Output<String> accountId() {
         return this.accountId;
-    }
-    /**
-     * Number of access applications currently using this policy.
-     * 
-     */
-    @Export(name="appCount", refs={Integer.class}, tree="[0]")
-    private Output<Integer> appCount;
-
-    /**
-     * @return Number of access applications currently using this policy.
-     * 
-     */
-    public Output<Integer> appCount() {
-        return this.appCount;
     }
     /**
      * Administrators who can approve a temporary authentication request.
@@ -298,6 +284,20 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.
+     * 
+     */
+    @Export(name="policyResolutionAccountId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> policyResolutionAccountId;
+
+    /**
+     * @return The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.
+     * 
+     */
+    public Output<Optional<String>> policyResolutionAccountId() {
+        return Codegen.optional(this.policyResolutionAccountId);
     }
     /**
      * A custom message that will appear on the purpose justification screen.

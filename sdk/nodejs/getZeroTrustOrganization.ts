@@ -78,6 +78,10 @@ export interface GetZeroTrustOrganizationResult {
      */
     readonly denyUnmatchedRequestsExemptedZoneNames: string[];
     /**
+     * Whether creation of end user applications is disabled for this organization.
+     */
+    readonly disableEndUserAppCreation: boolean;
+    /**
      * Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
      */
     readonly isUiReadOnly: boolean;

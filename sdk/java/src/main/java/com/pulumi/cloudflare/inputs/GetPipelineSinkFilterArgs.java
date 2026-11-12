@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,23 @@ import javax.annotation.Nullable;
 public final class GetPipelineSinkFilterArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final GetPipelineSinkFilterArgs Empty = new GetPipelineSinkFilterArgs();
+
+    /**
+     * Sort direction.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    @Import(name="direction", required=true)
+    private Output<String> direction;
+
+    /**
+     * @return Sort direction.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    public Output<String> direction() {
+        return this.direction;
+    }
 
     /**
      * Filters sinks by name (case-insensitive substring).
@@ -30,6 +48,23 @@ public final class GetPipelineSinkFilterArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Sorts sinks by this field. Defaults to `createdAt`.
+     * Available values: &#34;name&#34;, &#34;createdAt&#34;.
+     * 
+     */
+    @Import(name="orderBy")
+    private @Nullable Output<String> orderBy;
+
+    /**
+     * @return Sorts sinks by this field. Defaults to `createdAt`.
+     * Available values: &#34;name&#34;, &#34;createdAt&#34;.
+     * 
+     */
+    public Optional<Output<String>> orderBy() {
+        return Optional.ofNullable(this.orderBy);
+    }
+
     @Import(name="pipelineId")
     private @Nullable Output<String> pipelineId;
 
@@ -40,7 +75,9 @@ public final class GetPipelineSinkFilterArgs extends com.pulumi.resources.Resour
     private GetPipelineSinkFilterArgs() {}
 
     private GetPipelineSinkFilterArgs(GetPipelineSinkFilterArgs $) {
+        this.direction = $.direction;
         this.name = $.name;
+        this.orderBy = $.orderBy;
         this.pipelineId = $.pipelineId;
     }
 
@@ -60,6 +97,29 @@ public final class GetPipelineSinkFilterArgs extends com.pulumi.resources.Resour
 
         public Builder(GetPipelineSinkFilterArgs defaults) {
             $ = new GetPipelineSinkFilterArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param direction Sort direction.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder direction(Output<String> direction) {
+            $.direction = direction;
+            return this;
+        }
+
+        /**
+         * @param direction Sort direction.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder direction(String direction) {
+            return direction(Output.of(direction));
         }
 
         /**
@@ -83,6 +143,29 @@ public final class GetPipelineSinkFilterArgs extends com.pulumi.resources.Resour
             return name(Output.of(name));
         }
 
+        /**
+         * @param orderBy Sorts sinks by this field. Defaults to `createdAt`.
+         * Available values: &#34;name&#34;, &#34;createdAt&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orderBy(@Nullable Output<String> orderBy) {
+            $.orderBy = orderBy;
+            return this;
+        }
+
+        /**
+         * @param orderBy Sorts sinks by this field. Defaults to `createdAt`.
+         * Available values: &#34;name&#34;, &#34;createdAt&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orderBy(String orderBy) {
+            return orderBy(Output.of(orderBy));
+        }
+
         public Builder pipelineId(@Nullable Output<String> pipelineId) {
             $.pipelineId = pipelineId;
             return this;
@@ -93,6 +176,9 @@ public final class GetPipelineSinkFilterArgs extends com.pulumi.resources.Resour
         }
 
         public GetPipelineSinkFilterArgs build() {
+            if ($.direction == null) {
+                throw new MissingRequiredPropertyException("GetPipelineSinkFilterArgs", "direction");
+            }
             return $;
         }
     }

@@ -28,6 +28,14 @@ namespace Pulumi.Cloudflare
     ///     var exampleBotManagement = new Cloudflare.BotManagement("example_bot_management", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         AiAgents = new Cloudflare.Inputs.BotManagementAiAgentsArgs
+    ///         {
+    ///             AnthropicAgent = "block",
+    ///             GoogleAgent = "block",
+    ///             Instinct = "block",
+    ///             Muse = "block",
+    ///             OpenaiAgent = "block",
+    ///         },
     ///         AiBotsMigrationOptOut = false,
     ///         AiBotsProtection = "block",
     ///         Aisearch = "block",
@@ -55,6 +63,12 @@ namespace Pulumi.Cloudflare
     [CloudflareResourceType("cloudflare:index/botManagement:BotManagement")]
     public partial class BotManagement : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Configure blocking behavior for supported personal AI agents.
+        /// </summary>
+        [Output("aiAgents")]
+        public Output<Outputs.BotManagementAiAgents> AiAgents { get; private set; } = null!;
+
         /// <summary>
         /// Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
         /// </summary>
@@ -258,6 +272,12 @@ namespace Pulumi.Cloudflare
     public sealed class BotManagementArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Configure blocking behavior for supported personal AI agents.
+        /// </summary>
+        [Input("aiAgents")]
+        public Input<Inputs.BotManagementAiAgentsArgs>? AiAgents { get; set; }
+
+        /// <summary>
         /// Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
         /// </summary>
         [Input("aiBotsMigrationOptOut")]
@@ -409,6 +429,12 @@ namespace Pulumi.Cloudflare
 
     public sealed class BotManagementState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Configure blocking behavior for supported personal AI agents.
+        /// </summary>
+        [Input("aiAgents")]
+        public Input<Inputs.BotManagementAiAgentsGetArgs>? AiAgents { get; set; }
+
         /// <summary>
         /// Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
         /// </summary>

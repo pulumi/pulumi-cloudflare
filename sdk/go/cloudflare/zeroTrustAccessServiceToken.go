@@ -38,6 +38,9 @@ import (
 //				Duration:                      pulumi.String("60m"),
 //				Enabled:                       pulumi.Bool(true),
 //				PreviousClientSecretExpiresAt: pulumi.String("2014-01-01T05:20:00.12345Z"),
+//				Tags: pulumi.StringMap{
+//					"environment": pulumi.String("production"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -62,17 +65,25 @@ type ZeroTrustAccessServiceToken struct {
 	ClientId pulumi.StringOutput `pulumi:"clientId"`
 	// The Client Secret for the service token. Access will check for this value in the `CF-Access-Client-Secret` request header.
 	ClientSecret pulumi.StringOutput `pulumi:"clientSecret"`
-	// A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`.
+	// A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`. If the service token was reported as leaked, `previousClientSecretExpiresAt` is not required, may not be in the future, and the previous secret is discarded immediately.
 	ClientSecretVersion pulumi.Float64Output `pulumi:"clientSecretVersion"`
 	// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
 	Duration pulumi.StringOutput `pulumi:"duration"`
-	// Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+	// Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled. A service token reported as leaked is disabled automatically and cannot be re-enabled until its secret is rotated; attempting to do so returns a 409. Defaults to enabled when omitted on create.
 	Enabled   pulumi.BoolOutput   `pulumi:"enabled"`
 	ExpiresAt pulumi.StringOutput `pulumi:"expiresAt"`
+	// Where the leaked `clientSecret` was found, if provided by the reporter. Omitted if the token has not been reported as leaked.
+	LeakReportUrl pulumi.StringOutput `pulumi:"leakReportUrl"`
+	// When a secret scanning partner reported this service token's `clientSecret` as leaked. A leaked service token is disabled and must be rotated before it can be re-enabled. Cleared once the secret is rotated. Omitted if the token has not been reported as leaked.
+	LeakReportedAt pulumi.StringOutput `pulumi:"leakReportedAt"`
+	// The secret scanning partner that reported the leak. Omitted if the token has not been reported as leaked.
+	LeakReporter pulumi.StringOutput `pulumi:"leakReporter"`
 	// The name of the service token.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+	// The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise. Rotating a service token that was reported as leaked discards the previous secret entirely, so no grace period can be set.
 	PreviousClientSecretExpiresAt pulumi.StringPtrOutput `pulumi:"previousClientSecretExpiresAt"`
+	// Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
@@ -126,17 +137,25 @@ type zeroTrustAccessServiceTokenState struct {
 	ClientId *string `pulumi:"clientId"`
 	// The Client Secret for the service token. Access will check for this value in the `CF-Access-Client-Secret` request header.
 	ClientSecret *string `pulumi:"clientSecret"`
-	// A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`.
+	// A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`. If the service token was reported as leaked, `previousClientSecretExpiresAt` is not required, may not be in the future, and the previous secret is discarded immediately.
 	ClientSecretVersion *float64 `pulumi:"clientSecretVersion"`
 	// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
 	Duration *string `pulumi:"duration"`
-	// Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+	// Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled. A service token reported as leaked is disabled automatically and cannot be re-enabled until its secret is rotated; attempting to do so returns a 409. Defaults to enabled when omitted on create.
 	Enabled   *bool   `pulumi:"enabled"`
 	ExpiresAt *string `pulumi:"expiresAt"`
+	// Where the leaked `clientSecret` was found, if provided by the reporter. Omitted if the token has not been reported as leaked.
+	LeakReportUrl *string `pulumi:"leakReportUrl"`
+	// When a secret scanning partner reported this service token's `clientSecret` as leaked. A leaked service token is disabled and must be rotated before it can be re-enabled. Cleared once the secret is rotated. Omitted if the token has not been reported as leaked.
+	LeakReportedAt *string `pulumi:"leakReportedAt"`
+	// The secret scanning partner that reported the leak. Omitted if the token has not been reported as leaked.
+	LeakReporter *string `pulumi:"leakReporter"`
 	// The name of the service token.
 	Name *string `pulumi:"name"`
-	// The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+	// The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise. Rotating a service token that was reported as leaked discards the previous secret entirely, so no grace period can be set.
 	PreviousClientSecretExpiresAt *string `pulumi:"previousClientSecretExpiresAt"`
+	// Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.
+	Tags map[string]string `pulumi:"tags"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -148,17 +167,25 @@ type ZeroTrustAccessServiceTokenState struct {
 	ClientId pulumi.StringPtrInput
 	// The Client Secret for the service token. Access will check for this value in the `CF-Access-Client-Secret` request header.
 	ClientSecret pulumi.StringPtrInput
-	// A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`.
+	// A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`. If the service token was reported as leaked, `previousClientSecretExpiresAt` is not required, may not be in the future, and the previous secret is discarded immediately.
 	ClientSecretVersion pulumi.Float64PtrInput
 	// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
 	Duration pulumi.StringPtrInput
-	// Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+	// Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled. A service token reported as leaked is disabled automatically and cannot be re-enabled until its secret is rotated; attempting to do so returns a 409. Defaults to enabled when omitted on create.
 	Enabled   pulumi.BoolPtrInput
 	ExpiresAt pulumi.StringPtrInput
+	// Where the leaked `clientSecret` was found, if provided by the reporter. Omitted if the token has not been reported as leaked.
+	LeakReportUrl pulumi.StringPtrInput
+	// When a secret scanning partner reported this service token's `clientSecret` as leaked. A leaked service token is disabled and must be rotated before it can be re-enabled. Cleared once the secret is rotated. Omitted if the token has not been reported as leaked.
+	LeakReportedAt pulumi.StringPtrInput
+	// The secret scanning partner that reported the leak. Omitted if the token has not been reported as leaked.
+	LeakReporter pulumi.StringPtrInput
 	// The name of the service token.
 	Name pulumi.StringPtrInput
-	// The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+	// The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise. Rotating a service token that was reported as leaked discards the previous secret entirely, so no grace period can be set.
 	PreviousClientSecretExpiresAt pulumi.StringPtrInput
+	// Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.
+	Tags pulumi.StringMapInput
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput
 }
@@ -176,16 +203,18 @@ func ZeroTrustAccessServiceTokenExists(ctx *pulumi.Context,
 type zeroTrustAccessServiceTokenArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
-	// A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`.
+	// A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`. If the service token was reported as leaked, `previousClientSecretExpiresAt` is not required, may not be in the future, and the previous secret is discarded immediately.
 	ClientSecretVersion *float64 `pulumi:"clientSecretVersion"`
 	// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
 	Duration *string `pulumi:"duration"`
-	// Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+	// Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled. A service token reported as leaked is disabled automatically and cannot be re-enabled until its secret is rotated; attempting to do so returns a 409. Defaults to enabled when omitted on create.
 	Enabled *bool `pulumi:"enabled"`
 	// The name of the service token.
 	Name string `pulumi:"name"`
-	// The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+	// The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise. Rotating a service token that was reported as leaked discards the previous secret entirely, so no grace period can be set.
 	PreviousClientSecretExpiresAt *string `pulumi:"previousClientSecretExpiresAt"`
+	// Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.
+	Tags map[string]string `pulumi:"tags"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -194,16 +223,18 @@ type zeroTrustAccessServiceTokenArgs struct {
 type ZeroTrustAccessServiceTokenArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput
-	// A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`.
+	// A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`. If the service token was reported as leaked, `previousClientSecretExpiresAt` is not required, may not be in the future, and the previous secret is discarded immediately.
 	ClientSecretVersion pulumi.Float64PtrInput
 	// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
 	Duration pulumi.StringPtrInput
-	// Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+	// Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled. A service token reported as leaked is disabled automatically and cannot be re-enabled until its secret is rotated; attempting to do so returns a 409. Defaults to enabled when omitted on create.
 	Enabled pulumi.BoolPtrInput
 	// The name of the service token.
 	Name pulumi.StringInput
-	// The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+	// The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise. Rotating a service token that was reported as leaked discards the previous secret entirely, so no grace period can be set.
 	PreviousClientSecretExpiresAt pulumi.StringPtrInput
+	// Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.
+	Tags pulumi.StringMapInput
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput
 }
@@ -310,7 +341,7 @@ func (o ZeroTrustAccessServiceTokenOutput) ClientSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessServiceToken) pulumi.StringOutput { return v.ClientSecret }).(pulumi.StringOutput)
 }
 
-// A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`.
+// A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`. If the service token was reported as leaked, `previousClientSecretExpiresAt` is not required, may not be in the future, and the previous secret is discarded immediately.
 func (o ZeroTrustAccessServiceTokenOutput) ClientSecretVersion() pulumi.Float64Output {
 	return o.ApplyT(func(v *ZeroTrustAccessServiceToken) pulumi.Float64Output { return v.ClientSecretVersion }).(pulumi.Float64Output)
 }
@@ -320,7 +351,7 @@ func (o ZeroTrustAccessServiceTokenOutput) Duration() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessServiceToken) pulumi.StringOutput { return v.Duration }).(pulumi.StringOutput)
 }
 
-// Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+// Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled. A service token reported as leaked is disabled automatically and cannot be re-enabled until its secret is rotated; attempting to do so returns a 409. Defaults to enabled when omitted on create.
 func (o ZeroTrustAccessServiceTokenOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessServiceToken) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -329,14 +360,34 @@ func (o ZeroTrustAccessServiceTokenOutput) ExpiresAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessServiceToken) pulumi.StringOutput { return v.ExpiresAt }).(pulumi.StringOutput)
 }
 
+// Where the leaked `clientSecret` was found, if provided by the reporter. Omitted if the token has not been reported as leaked.
+func (o ZeroTrustAccessServiceTokenOutput) LeakReportUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessServiceToken) pulumi.StringOutput { return v.LeakReportUrl }).(pulumi.StringOutput)
+}
+
+// When a secret scanning partner reported this service token's `clientSecret` as leaked. A leaked service token is disabled and must be rotated before it can be re-enabled. Cleared once the secret is rotated. Omitted if the token has not been reported as leaked.
+func (o ZeroTrustAccessServiceTokenOutput) LeakReportedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessServiceToken) pulumi.StringOutput { return v.LeakReportedAt }).(pulumi.StringOutput)
+}
+
+// The secret scanning partner that reported the leak. Omitted if the token has not been reported as leaked.
+func (o ZeroTrustAccessServiceTokenOutput) LeakReporter() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessServiceToken) pulumi.StringOutput { return v.LeakReporter }).(pulumi.StringOutput)
+}
+
 // The name of the service token.
 func (o ZeroTrustAccessServiceTokenOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessServiceToken) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+// The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise. Rotating a service token that was reported as leaked discards the previous secret entirely, so no grace period can be set.
 func (o ZeroTrustAccessServiceTokenOutput) PreviousClientSecretExpiresAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessServiceToken) pulumi.StringPtrOutput { return v.PreviousClientSecretExpiresAt }).(pulumi.StringPtrOutput)
+}
+
+// Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.
+func (o ZeroTrustAccessServiceTokenOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessServiceToken) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.

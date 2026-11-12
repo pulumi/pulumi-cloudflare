@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? QueueName { get; set; }
 
         /// <summary>
-        /// Name of a Worker
+        /// For `type: worker`: Name of a Worker
         /// </summary>
         [Input("scriptName")]
         public Input<string>? ScriptName { get; set; }

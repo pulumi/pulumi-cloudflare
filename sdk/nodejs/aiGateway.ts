@@ -41,6 +41,7 @@ import * as utilities from "./utilities";
  *             s11: "FLAG",
  *             s12: "FLAG",
  *             s13: "FLAG",
+ *             s14: "FLAG",
  *             s2: "FLAG",
  *             s3: "FLAG",
  *             s4: "FLAG",
@@ -57,6 +58,7 @@ import * as utilities from "./utilities";
  *             s11: "FLAG",
  *             s12: "FLAG",
  *             s13: "FLAG",
+ *             s14: "FLAG",
  *             s2: "FLAG",
  *             s3: "FLAG",
  *             s4: "FLAG",
@@ -170,6 +172,9 @@ export class AiGateway extends pulumi.CustomResource {
      * Unique identifier of the AI Gateway within the account.
      */
     declare public readonly aiGatewayId: pulumi.Output<string>;
+    /**
+     * Require authentication for gateway access. New gateways must have authentication enabled. Once enabled, authentication cannot be disabled.
+     */
     declare public readonly authentication: pulumi.Output<boolean>;
     /**
      * Requires customer-provided provider credentials and prevents fallback to Unified Billing.
@@ -180,6 +185,16 @@ export class AiGateway extends pulumi.CustomResource {
     declare public readonly collectLogs: pulumi.Output<boolean>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     declare public readonly dlp: pulumi.Output<outputs.AiGatewayDlp | undefined>;
+    /**
+     * FedRAMP compliance level: fedramp-medium or fedramp-high.
+     * Available values: "fedramp-medium", "fedramp-high".
+     */
+    declare public /*out*/ readonly fedrampLevel: pulumi.Output<string>;
+    /**
+     * FedRAMP enforcement mode. "prefer" prioritizes compliant connectors but allows fallback. "require" strictly filters.
+     * Available values: "prefer", "require".
+     */
+    declare public /*out*/ readonly fedrampMode: pulumi.Output<string>;
     declare public readonly guardrails: pulumi.Output<outputs.AiGatewayGuardrails | undefined>;
     declare public /*out*/ readonly isDefault: pulumi.Output<boolean>;
     declare public readonly logClassification: pulumi.Output<boolean>;
@@ -212,6 +227,9 @@ export class AiGateway extends pulumi.CustomResource {
      */
     declare public readonly retryMaxAttempts: pulumi.Output<number | undefined>;
     declare public readonly spendLimits: pulumi.Output<outputs.AiGatewaySpendLimits>;
+    /**
+     * Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it.
+     */
     declare public readonly storeId: pulumi.Output<string>;
     declare public readonly stripe: pulumi.Output<outputs.AiGatewayStripe | undefined>;
     /**
@@ -243,6 +261,8 @@ export class AiGateway extends pulumi.CustomResource {
             resourceInputs["collectLogs"] = state?.collectLogs;
             resourceInputs["createdAt"] = state?.createdAt;
             resourceInputs["dlp"] = state?.dlp;
+            resourceInputs["fedrampLevel"] = state?.fedrampLevel;
+            resourceInputs["fedrampMode"] = state?.fedrampMode;
             resourceInputs["guardrails"] = state?.guardrails;
             resourceInputs["isDefault"] = state?.isDefault;
             resourceInputs["logClassification"] = state?.logClassification;
@@ -313,6 +333,8 @@ export class AiGateway extends pulumi.CustomResource {
             resourceInputs["workersAiBillingMode"] = args?.workersAiBillingMode;
             resourceInputs["zdr"] = args?.zdr;
             resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["fedrampLevel"] = undefined /*out*/;
+            resourceInputs["fedrampMode"] = undefined /*out*/;
             resourceInputs["isDefault"] = undefined /*out*/;
             resourceInputs["modifiedAt"] = undefined /*out*/;
         }
@@ -330,6 +352,9 @@ export interface AiGatewayState {
      * Unique identifier of the AI Gateway within the account.
      */
     aiGatewayId?: pulumi.Input<string | undefined>;
+    /**
+     * Require authentication for gateway access. New gateways must have authentication enabled. Once enabled, authentication cannot be disabled.
+     */
     authentication?: pulumi.Input<boolean | undefined>;
     /**
      * Requires customer-provided provider credentials and prevents fallback to Unified Billing.
@@ -340,6 +365,16 @@ export interface AiGatewayState {
     collectLogs?: pulumi.Input<boolean | undefined>;
     createdAt?: pulumi.Input<string | undefined>;
     dlp?: pulumi.Input<inputs.AiGatewayDlp | undefined>;
+    /**
+     * FedRAMP compliance level: fedramp-medium or fedramp-high.
+     * Available values: "fedramp-medium", "fedramp-high".
+     */
+    fedrampLevel?: pulumi.Input<string | undefined>;
+    /**
+     * FedRAMP enforcement mode. "prefer" prioritizes compliant connectors but allows fallback. "require" strictly filters.
+     * Available values: "prefer", "require".
+     */
+    fedrampMode?: pulumi.Input<string | undefined>;
     guardrails?: pulumi.Input<inputs.AiGatewayGuardrails | undefined>;
     isDefault?: pulumi.Input<boolean | undefined>;
     logClassification?: pulumi.Input<boolean | undefined>;
@@ -372,6 +407,9 @@ export interface AiGatewayState {
      */
     retryMaxAttempts?: pulumi.Input<number | undefined>;
     spendLimits?: pulumi.Input<inputs.AiGatewaySpendLimits | undefined>;
+    /**
+     * Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it.
+     */
     storeId?: pulumi.Input<string | undefined>;
     stripe?: pulumi.Input<inputs.AiGatewayStripe | undefined>;
     /**
@@ -391,6 +429,9 @@ export interface AiGatewayArgs {
      * Unique identifier of the AI Gateway within the account.
      */
     aiGatewayId: pulumi.Input<string>;
+    /**
+     * Require authentication for gateway access. New gateways must have authentication enabled. Once enabled, authentication cannot be disabled.
+     */
     authentication?: pulumi.Input<boolean | undefined>;
     /**
      * Requires customer-provided provider credentials and prevents fallback to Unified Billing.
@@ -430,6 +471,9 @@ export interface AiGatewayArgs {
      */
     retryMaxAttempts?: pulumi.Input<number | undefined>;
     spendLimits?: pulumi.Input<inputs.AiGatewaySpendLimits | undefined>;
+    /**
+     * Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it.
+     */
     storeId?: pulumi.Input<string | undefined>;
     stripe?: pulumi.Input<inputs.AiGatewayStripe | undefined>;
     /**

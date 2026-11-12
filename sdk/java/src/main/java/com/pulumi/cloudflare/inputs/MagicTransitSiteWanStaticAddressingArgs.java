@@ -61,12 +61,28 @@ public final class MagicTransitSiteWanStaticAddressingArgs extends com.pulumi.re
         return Optional.ofNullable(this.secondaryAddress);
     }
 
+    /**
+     * Gateway address for the secondary connector of a high availability site.
+     * 
+     */
+    @Import(name="secondaryGatewayAddress")
+    private @Nullable Output<String> secondaryGatewayAddress;
+
+    /**
+     * @return Gateway address for the secondary connector of a high availability site.
+     * 
+     */
+    public Optional<Output<String>> secondaryGatewayAddress() {
+        return Optional.ofNullable(this.secondaryGatewayAddress);
+    }
+
     private MagicTransitSiteWanStaticAddressingArgs() {}
 
     private MagicTransitSiteWanStaticAddressingArgs(MagicTransitSiteWanStaticAddressingArgs $) {
         this.address = $.address;
         this.gatewayAddress = $.gatewayAddress;
         this.secondaryAddress = $.secondaryAddress;
+        this.secondaryGatewayAddress = $.secondaryGatewayAddress;
     }
 
     public static Builder builder() {
@@ -148,6 +164,27 @@ public final class MagicTransitSiteWanStaticAddressingArgs extends com.pulumi.re
          */
         public Builder secondaryAddress(String secondaryAddress) {
             return secondaryAddress(Output.of(secondaryAddress));
+        }
+
+        /**
+         * @param secondaryGatewayAddress Gateway address for the secondary connector of a high availability site.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secondaryGatewayAddress(@Nullable Output<String> secondaryGatewayAddress) {
+            $.secondaryGatewayAddress = secondaryGatewayAddress;
+            return this;
+        }
+
+        /**
+         * @param secondaryGatewayAddress Gateway address for the secondary connector of a high availability site.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secondaryGatewayAddress(String secondaryGatewayAddress) {
+            return secondaryGatewayAddress(Output.of(secondaryGatewayAddress));
         }
 
         public MagicTransitSiteWanStaticAddressingArgs build() {

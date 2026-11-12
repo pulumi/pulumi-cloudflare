@@ -27,7 +27,7 @@ class GetMagicTransitSiteLanResult:
     """
     A collection of values returned by getMagicTransitSiteLan.
     """
-    def __init__(__self__, account_id=None, bond_id=None, ha_link=None, id=None, is_breakout=None, is_prioritized=None, lan_id=None, name=None, nat=None, physport=None, routed_subnets=None, site_id=None, static_addressing=None, vlan_tag=None):
+    def __init__(__self__, account_id=None, bond_id=None, ha_link=None, id=None, is_breakout=None, is_prioritized=None, lan_id=None, name=None, nat=None, physport=None, remote_subnets=None, routed_subnets=None, site_id=None, static_addressing=None, vlan_tag=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -58,6 +58,9 @@ class GetMagicTransitSiteLanResult:
         if physport and not isinstance(physport, int):
             raise TypeError("Expected argument 'physport' to be a int")
         pulumi.set(__self__, "physport", physport)
+        if remote_subnets and not isinstance(remote_subnets, list):
+            raise TypeError("Expected argument 'remote_subnets' to be a list")
+        pulumi.set(__self__, "remote_subnets", remote_subnets)
         if routed_subnets and not isinstance(routed_subnets, list):
             raise TypeError("Expected argument 'routed_subnets' to be a list")
         pulumi.set(__self__, "routed_subnets", routed_subnets)
@@ -140,6 +143,11 @@ class GetMagicTransitSiteLanResult:
         return pulumi.get(self, "physport")
 
     @_builtins.property
+    @pulumi.getter(name="remoteSubnets")
+    def remote_subnets(self) -> Sequence['outputs.GetMagicTransitSiteLanRemoteSubnetResult']:
+        return pulumi.get(self, "remote_subnets")
+
+    @_builtins.property
     @pulumi.getter(name="routedSubnets")
     def routed_subnets(self) -> Sequence['outputs.GetMagicTransitSiteLanRoutedSubnetResult']:
         return pulumi.get(self, "routed_subnets")
@@ -185,6 +193,7 @@ class AwaitableGetMagicTransitSiteLanResult(GetMagicTransitSiteLanResult):
             name=self.name,
             nat=self.nat,
             physport=self.physport,
+            remote_subnets=self.remote_subnets,
             routed_subnets=self.routed_subnets,
             site_id=self.site_id,
             static_addressing=self.static_addressing,
@@ -237,6 +246,7 @@ def get_magic_transit_site_lan(account_id: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         nat=pulumi.get(__ret__, 'nat'),
         physport=pulumi.get(__ret__, 'physport'),
+        remote_subnets=pulumi.get(__ret__, 'remote_subnets'),
         routed_subnets=pulumi.get(__ret__, 'routed_subnets'),
         site_id=pulumi.get(__ret__, 'site_id'),
         static_addressing=pulumi.get(__ret__, 'static_addressing'),
@@ -286,6 +296,7 @@ def get_magic_transit_site_lan_output(account_id: pulumi.Input[Optional[_builtin
         name=pulumi.get(__response__, 'name'),
         nat=pulumi.get(__response__, 'nat'),
         physport=pulumi.get(__response__, 'physport'),
+        remote_subnets=pulumi.get(__response__, 'remote_subnets'),
         routed_subnets=pulumi.get(__response__, 'routed_subnets'),
         site_id=pulumi.get(__response__, 'site_id'),
         static_addressing=pulumi.get(__response__, 'static_addressing'),

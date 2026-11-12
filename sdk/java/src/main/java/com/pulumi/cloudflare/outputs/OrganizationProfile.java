@@ -4,33 +4,34 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class OrganizationProfile {
-    private String businessAddress;
-    private String businessEmail;
-    private String businessName;
-    private String businessPhone;
-    private String externalMetadata;
+    private @Nullable String businessAddress;
+    private @Nullable String businessEmail;
+    private @Nullable String businessName;
+    private @Nullable String businessPhone;
+    private @Nullable String externalMetadata;
 
     private OrganizationProfile() {}
-    public String businessAddress() {
-        return this.businessAddress;
+    public Optional<String> businessAddress() {
+        return Optional.ofNullable(this.businessAddress);
     }
-    public String businessEmail() {
-        return this.businessEmail;
+    public Optional<String> businessEmail() {
+        return Optional.ofNullable(this.businessEmail);
     }
-    public String businessName() {
-        return this.businessName;
+    public Optional<String> businessName() {
+        return Optional.ofNullable(this.businessName);
     }
-    public String businessPhone() {
-        return this.businessPhone;
+    public Optional<String> businessPhone() {
+        return Optional.ofNullable(this.businessPhone);
     }
-    public String externalMetadata() {
-        return this.externalMetadata;
+    public Optional<String> externalMetadata() {
+        return Optional.ofNullable(this.externalMetadata);
     }
 
     public static Builder builder() {
@@ -42,11 +43,11 @@ public final class OrganizationProfile {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String businessAddress;
-        private String businessEmail;
-        private String businessName;
-        private String businessPhone;
-        private String externalMetadata;
+        private @Nullable String businessAddress;
+        private @Nullable String businessEmail;
+        private @Nullable String businessName;
+        private @Nullable String businessPhone;
+        private @Nullable String externalMetadata;
         public Builder() {}
         public Builder(OrganizationProfile defaults) {
     	      Objects.requireNonNull(defaults);
@@ -58,42 +59,32 @@ public final class OrganizationProfile {
         }
 
         @CustomType.Setter
-        public Builder businessAddress(String businessAddress) {
-            if (businessAddress == null) {
-              throw new MissingRequiredPropertyException("OrganizationProfile", "businessAddress");
-            }
+        public Builder businessAddress(@Nullable String businessAddress) {
+
             this.businessAddress = businessAddress;
             return this;
         }
         @CustomType.Setter
-        public Builder businessEmail(String businessEmail) {
-            if (businessEmail == null) {
-              throw new MissingRequiredPropertyException("OrganizationProfile", "businessEmail");
-            }
+        public Builder businessEmail(@Nullable String businessEmail) {
+
             this.businessEmail = businessEmail;
             return this;
         }
         @CustomType.Setter
-        public Builder businessName(String businessName) {
-            if (businessName == null) {
-              throw new MissingRequiredPropertyException("OrganizationProfile", "businessName");
-            }
+        public Builder businessName(@Nullable String businessName) {
+
             this.businessName = businessName;
             return this;
         }
         @CustomType.Setter
-        public Builder businessPhone(String businessPhone) {
-            if (businessPhone == null) {
-              throw new MissingRequiredPropertyException("OrganizationProfile", "businessPhone");
-            }
+        public Builder businessPhone(@Nullable String businessPhone) {
+
             this.businessPhone = businessPhone;
             return this;
         }
         @CustomType.Setter
-        public Builder externalMetadata(String externalMetadata) {
-            if (externalMetadata == null) {
-              throw new MissingRequiredPropertyException("OrganizationProfile", "externalMetadata");
-            }
+        public Builder externalMetadata(@Nullable String externalMetadata) {
+
             this.externalMetadata = externalMetadata;
             return this;
         }

@@ -19,10 +19,22 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? AccessClientId;
         /// <summary>
         /// If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `ApiUrl`.
+        /// 
+        /// This secret will be passed in the `CF-Access-Client-Secret` header when hitting the `ApiUrl`.
         /// </summary>
         public readonly string? AccessClientSecret;
         /// <summary>
         /// The Workspace One API URL provided in the Workspace One Admin Dashboard.
+        /// 
+        /// The Crowdstrike API URL.
+        /// 
+        /// The Uptycs API URL.
+        /// 
+        /// The Tanium API URL.
+        /// 
+        /// The SentinelOne S2S API URL.
+        /// 
+        /// The Custom Device Posture Integration  API URL.
         /// </summary>
         public readonly string? ApiUrl;
         /// <summary>
@@ -31,6 +43,12 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? AuthUrl;
         /// <summary>
         /// The Workspace One client ID provided in the Workspace One Admin Dashboard.
+        /// 
+        /// The Crowdstrike client ID.
+        /// 
+        /// The Intune client ID.
+        /// 
+        /// The Kolide client ID.
         /// </summary>
         public readonly string? ClientId;
         /// <summary>
@@ -39,10 +57,26 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? ClientKey;
         /// <summary>
         /// The Workspace One client secret provided in the Workspace One Admin Dashboard.
+        /// 
+        /// The Crowdstrike client secret.
+        /// 
+        /// The Uptycs client secret.
+        /// 
+        /// The Intune client secret.
+        /// 
+        /// The Kolide client secret.
+        /// 
+        /// The Tanium client secret.
+        /// 
+        /// The SentinelOne S2S client secret.
         /// </summary>
         public readonly string? ClientSecret;
         /// <summary>
         /// The Crowdstrike customer ID.
+        /// 
+        /// The Uptycs customer ID.
+        /// 
+        /// The Intune customer ID.
         /// </summary>
         public readonly string? CustomerId;
 

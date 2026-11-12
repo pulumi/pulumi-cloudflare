@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare.Inputs
         private Input<string>? _value;
 
         /// <summary>
-        /// Environment variable value.
+        /// For `type: PlainText`: Environment variable value.
         /// </summary>
         public Input<string>? Value
         {

@@ -16,6 +16,10 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string Comments;
         public readonly string CreatedAt;
         /// <summary>
+        /// Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `Null` to clear the expiration.
+        /// </summary>
+        public readonly string ExpiresAt;
+        /// <summary>
         /// Blocked sender pattern identifier.
         /// </summary>
         public readonly string Id;
@@ -48,6 +52,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string createdAt,
 
+            string expiresAt,
+
             string id,
 
             bool isRegex,
@@ -62,6 +68,7 @@ namespace Pulumi.Cloudflare.Outputs
         {
             Comments = comments;
             CreatedAt = createdAt;
+            ExpiresAt = expiresAt;
             Id = id;
             IsRegex = isRegex;
             LastModified = lastModified;

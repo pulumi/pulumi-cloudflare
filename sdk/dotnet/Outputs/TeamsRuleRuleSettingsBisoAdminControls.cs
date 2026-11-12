@@ -44,8 +44,8 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool? Du;
         /// <summary>
-        /// Configure keyboard usage behavior. If this field is absent, keyboard usage remains enabled. Applies only when version == "v2".
-        /// Available values: "enabled", "disabled".
+        /// Configure keyboard usage behavior. When set to enable*read*only*actions, only approved browser commands (find, copy, print, zoom, and select-all) may execute; other keyboard input is blocked from reaching the page. Copy and print remain subject to their independent controls. If this field is absent, keyboard usage remains enabled. Applies only when version == "v2". The enable*read*only*actions value requires an explicit version of "v2".
+        /// Available values: "enabled", "disabled", "enable*read*only_actions".
         /// </summary>
         public readonly string? Keyboard;
         /// <summary>

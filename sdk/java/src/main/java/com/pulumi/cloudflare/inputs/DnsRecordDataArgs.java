@@ -354,12 +354,16 @@ public final class DnsRecordDataArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Priority.
      * 
+     * Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
+     * 
      */
     @Import(name="priority")
     private @Nullable Output<Double> priority;
 
     /**
      * @return Priority.
+     * 
+     * Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
      * 
      */
     public Optional<Output<Double>> priority() {
@@ -489,6 +493,10 @@ public final class DnsRecordDataArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Target.
      * 
+     * A valid hostname.
+     * 
+     * The record content.
+     * 
      */
     @Import(name="target")
     private @Nullable Output<String> target;
@@ -496,20 +504,26 @@ public final class DnsRecordDataArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Target.
      * 
+     * A valid hostname.
+     * 
+     * The record content.
+     * 
      */
     public Optional<Output<String>> target() {
         return Optional.ofNullable(this.target);
     }
 
     /**
-     * Type.
+     * Record type.
+     * Available values: &#34;A&#34;, &#34;AAAA&#34;, &#34;CNAME&#34;, &#34;MX&#34;, &#34;NS&#34;, &#34;OPENPGPKEY&#34;, &#34;PTR&#34;, &#34;TXT&#34;, &#34;CAA&#34;, &#34;CERT&#34;, &#34;DNSKEY&#34;, &#34;DS&#34;, &#34;HTTPS&#34;, &#34;LOC&#34;, &#34;NAPTR&#34;, &#34;SMIMEA&#34;, &#34;SRV&#34;, &#34;SSHFP&#34;, &#34;SVCB&#34;, &#34;TLSA&#34;, &#34;URI&#34;.
      * 
      */
     @Import(name="type")
     private @Nullable Output<Double> type;
 
     /**
-     * @return Type.
+     * @return Record type.
+     * Available values: &#34;A&#34;, &#34;AAAA&#34;, &#34;CNAME&#34;, &#34;MX&#34;, &#34;NS&#34;, &#34;OPENPGPKEY&#34;, &#34;PTR&#34;, &#34;TXT&#34;, &#34;CAA&#34;, &#34;CERT&#34;, &#34;DNSKEY&#34;, &#34;DS&#34;, &#34;HTTPS&#34;, &#34;LOC&#34;, &#34;NAPTR&#34;, &#34;SMIMEA&#34;, &#34;SRV&#34;, &#34;SSHFP&#34;, &#34;SVCB&#34;, &#34;TLSA&#34;, &#34;URI&#34;.
      * 
      */
     public Optional<Output<Double>> type() {
@@ -534,12 +548,16 @@ public final class DnsRecordDataArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Value of the record. This field&#39;s semantics depend on the chosen tag.
      * 
+     * Value.
+     * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
      * @return Value of the record. This field&#39;s semantics depend on the chosen tag.
+     * 
+     * Value.
      * 
      */
     public Optional<Output<String>> value() {
@@ -1089,6 +1107,8 @@ public final class DnsRecordDataArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param priority Priority.
          * 
+         * Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
+         * 
          * @return builder
          * 
          */
@@ -1099,6 +1119,8 @@ public final class DnsRecordDataArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param priority Priority.
+         * 
+         * Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
          * 
          * @return builder
          * 
@@ -1278,6 +1300,10 @@ public final class DnsRecordDataArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param target Target.
          * 
+         * A valid hostname.
+         * 
+         * The record content.
+         * 
          * @return builder
          * 
          */
@@ -1289,6 +1315,10 @@ public final class DnsRecordDataArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param target Target.
          * 
+         * A valid hostname.
+         * 
+         * The record content.
+         * 
          * @return builder
          * 
          */
@@ -1297,7 +1327,8 @@ public final class DnsRecordDataArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Type.
+         * @param type Record type.
+         * Available values: &#34;A&#34;, &#34;AAAA&#34;, &#34;CNAME&#34;, &#34;MX&#34;, &#34;NS&#34;, &#34;OPENPGPKEY&#34;, &#34;PTR&#34;, &#34;TXT&#34;, &#34;CAA&#34;, &#34;CERT&#34;, &#34;DNSKEY&#34;, &#34;DS&#34;, &#34;HTTPS&#34;, &#34;LOC&#34;, &#34;NAPTR&#34;, &#34;SMIMEA&#34;, &#34;SRV&#34;, &#34;SSHFP&#34;, &#34;SVCB&#34;, &#34;TLSA&#34;, &#34;URI&#34;.
          * 
          * @return builder
          * 
@@ -1308,7 +1339,8 @@ public final class DnsRecordDataArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Type.
+         * @param type Record type.
+         * Available values: &#34;A&#34;, &#34;AAAA&#34;, &#34;CNAME&#34;, &#34;MX&#34;, &#34;NS&#34;, &#34;OPENPGPKEY&#34;, &#34;PTR&#34;, &#34;TXT&#34;, &#34;CAA&#34;, &#34;CERT&#34;, &#34;DNSKEY&#34;, &#34;DS&#34;, &#34;HTTPS&#34;, &#34;LOC&#34;, &#34;NAPTR&#34;, &#34;SMIMEA&#34;, &#34;SRV&#34;, &#34;SSHFP&#34;, &#34;SVCB&#34;, &#34;TLSA&#34;, &#34;URI&#34;.
          * 
          * @return builder
          * 
@@ -1341,6 +1373,8 @@ public final class DnsRecordDataArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param value Value of the record. This field&#39;s semantics depend on the chosen tag.
          * 
+         * Value.
+         * 
          * @return builder
          * 
          */
@@ -1351,6 +1385,8 @@ public final class DnsRecordDataArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param value Value of the record. This field&#39;s semantics depend on the chosen tag.
+         * 
+         * Value.
          * 
          * @return builder
          * 

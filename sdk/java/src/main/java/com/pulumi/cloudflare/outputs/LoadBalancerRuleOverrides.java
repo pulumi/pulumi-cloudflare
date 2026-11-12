@@ -49,7 +49,7 @@ public final class LoadBalancerRuleOverrides {
      */
     private @Nullable Map<String,List<String>> popPools;
     /**
-     * @return Configures pool weights.
+     * @return Configures pool weights for a rule override. An omitted defaultWeight inherits the load balancer&#39;s default weight.
      * 
      */
     private @Nullable LoadBalancerRuleOverridesRandomSteering randomSteering;
@@ -129,7 +129,7 @@ public final class LoadBalancerRuleOverrides {
         return this.popPools == null ? Map.of() : this.popPools;
     }
     /**
-     * @return Configures pool weights.
+     * @return Configures pool weights for a rule override. An omitted defaultWeight inherits the load balancer&#39;s default weight.
      * 
      */
     public Optional<LoadBalancerRuleOverridesRandomSteering> randomSteering() {

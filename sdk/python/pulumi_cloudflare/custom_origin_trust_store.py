@@ -75,7 +75,7 @@ class _CustomOriginTrustStoreState:
         :param pulumi.Input[_builtins.str] signature: The type of hash used for the certificate.
         :param pulumi.Input[_builtins.str] status: Status of the zone's custom SSL.
                Available values: "initializing", "pending*deployment", "active", "pending*deletion", "deleted", "expired".
-        :param pulumi.Input[_builtins.str] updated_at: When the certificate was last modified.
+        :param pulumi.Input[_builtins.str] updated_at: When the certificate was last modified. Only returned when uploading a certificate.
         :param pulumi.Input[_builtins.str] uploaded_on: When the certificate was uploaded to Cloudflare.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
@@ -161,7 +161,7 @@ class _CustomOriginTrustStoreState:
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        When the certificate was last modified.
+        When the certificate was last modified. Only returned when uploading a certificate.
         """
         return pulumi.get(self, "updated_at")
 
@@ -339,7 +339,7 @@ class CustomOriginTrustStore(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] signature: The type of hash used for the certificate.
         :param pulumi.Input[_builtins.str] status: Status of the zone's custom SSL.
                Available values: "initializing", "pending*deployment", "active", "pending*deletion", "deleted", "expired".
-        :param pulumi.Input[_builtins.str] updated_at: When the certificate was last modified.
+        :param pulumi.Input[_builtins.str] updated_at: When the certificate was last modified. Only returned when uploading a certificate.
         :param pulumi.Input[_builtins.str] uploaded_on: When the certificate was uploaded to Cloudflare.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
@@ -424,7 +424,7 @@ class CustomOriginTrustStore(pulumi.CustomResource):
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Output[_builtins.str]:
         """
-        When the certificate was last modified.
+        When the certificate was last modified. Only returned when uploading a certificate.
         """
         return pulumi.get(self, "updated_at")
 

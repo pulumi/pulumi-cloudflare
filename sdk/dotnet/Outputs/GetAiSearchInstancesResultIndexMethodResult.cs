@@ -13,13 +13,7 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetAiSearchInstancesResultIndexMethodResult
     {
-        /// <summary>
-        /// Enable keyword (BM25) storage backend.
-        /// </summary>
         public readonly bool Keyword;
-        /// <summary>
-        /// Enable vector (embedding) storage backend.
-        /// </summary>
         public readonly bool Vector;
 
         [OutputConstructor]

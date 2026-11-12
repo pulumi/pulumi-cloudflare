@@ -14,6 +14,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// - `Workers Scripts Read`
     /// - `Workers Scripts Write`
+    /// - `Individual Workers Admin`
+    /// - `Individual Workers Content Read-Only`
+    /// - `Individual Workers Editor`
+    /// - `Workers Admin`
+    /// - `Workers Content Read-Only`
+    /// - `Workers Editor`
     /// - `Workers Tail Read`
     /// 
     /// &gt; For more direct control over Workers resources, we recommend the beta `cloudflare.Worker`, `cloudflare.WorkerVersion`, and `cloudflare.WorkersDeployment` resources. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
@@ -66,6 +72,10 @@ namespace Pulumi.Cloudflare
     ///         {
     ///             Enabled = true,
     ///             CrossVersionCache = true,
+    ///         },
+    ///         CodeUpdateStrategy = new Cloudflare.Inputs.WorkersScriptCodeUpdateStrategyArgs
+    ///         {
+    ///             Mode = "immediate",
     ///         },
     ///         CompatibilityDate = "2021-01-01T00:00:00Z",
     ///         CompatibilityFlags = new[]
@@ -253,7 +263,7 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.WorkerScriptBinding>> Bindings { get; private set; } = null!;
 
         /// <summary>
-        /// When set to "strict", the upload will fail if any `Inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+        /// When set to "strict", the upload will fail with error 10057 if any `Inherit` type bindings cannot be resolved against the latest uploaded version of the Worker, which may not be the deployed version. Without this, unresolvable inherit bindings are silently dropped.
         /// Available values: "strict".
         /// </summary>
         [Output("bindingsInherit")]
@@ -273,6 +283,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("cacheOptions")]
         public Output<Outputs.WorkerScriptCacheOptions?> CacheOptions { get; private set; } = null!;
+
+        /// <summary>
+        /// Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+        /// </summary>
+        [Output("codeUpdateStrategy")]
+        public Output<Outputs.WorkerScriptCodeUpdateStrategy?> CodeUpdateStrategy { get; private set; } = null!;
 
         /// <summary>
         /// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
@@ -551,7 +567,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// When set to "strict", the upload will fail if any `Inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+        /// When set to "strict", the upload will fail with error 10057 if any `Inherit` type bindings cannot be resolved against the latest uploaded version of the Worker, which may not be the deployed version. Without this, unresolvable inherit bindings are silently dropped.
         /// Available values: "strict".
         /// </summary>
         [Input("bindingsInherit")]
@@ -571,6 +587,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("cacheOptions")]
         public Input<Inputs.WorkerScriptCacheOptionsArgs>? CacheOptions { get; set; }
+
+        /// <summary>
+        /// Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+        /// </summary>
+        [Input("codeUpdateStrategy")]
+        public Input<Inputs.WorkerScriptCodeUpdateStrategyArgs>? CodeUpdateStrategy { get; set; }
 
         /// <summary>
         /// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
@@ -774,7 +796,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// When set to "strict", the upload will fail if any `Inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+        /// When set to "strict", the upload will fail with error 10057 if any `Inherit` type bindings cannot be resolved against the latest uploaded version of the Worker, which may not be the deployed version. Without this, unresolvable inherit bindings are silently dropped.
         /// Available values: "strict".
         /// </summary>
         [Input("bindingsInherit")]
@@ -794,6 +816,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("cacheOptions")]
         public Input<Inputs.WorkerScriptCacheOptionsGetArgs>? CacheOptions { get; set; }
+
+        /// <summary>
+        /// Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+        /// </summary>
+        [Input("codeUpdateStrategy")]
+        public Input<Inputs.WorkerScriptCodeUpdateStrategyGetArgs>? CodeUpdateStrategy { get; set; }
 
         /// <summary>
         /// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.

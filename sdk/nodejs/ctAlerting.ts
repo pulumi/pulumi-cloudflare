@@ -72,7 +72,7 @@ export class CtAlerting extends pulumi.CustomResource {
     }
 
     /**
-     * Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma.
+     * Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. Omitted from responses when no addresses are configured.
      */
     declare public readonly emails: pulumi.Output<string[] | undefined>;
     /**
@@ -122,7 +122,7 @@ export class CtAlerting extends pulumi.CustomResource {
  */
 export interface CtAlertingState {
     /**
-     * Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma.
+     * Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. Omitted from responses when no addresses are configured.
      */
     emails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -140,7 +140,7 @@ export interface CtAlertingState {
  */
 export interface CtAlertingArgs {
     /**
-     * Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma.
+     * Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. Omitted from responses when no addresses are configured.
      */
     emails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**

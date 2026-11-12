@@ -41,19 +41,22 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// Find complete, case-insensitive application name mentions in a phrase or
         /// rule sentence. Misspelled names do not match. Returns matching applications
-        /// ranked by relevance. Must be between 2 and 1000 characters. Uses the same
+        /// ranked by relevance. Must be between 2 and 1000 characters, with no control
+        /// characters other than tab and line breaks. Uses the same
         /// filters, fields, and pagination as listing. `Search` cannot be combined
         /// with lookup. Results are ranked by relevance, so `OrderBy` is ignored.
+        /// To keep the text out of URLs, send it to `POST .../applications/lookup` instead.
         /// </summary>
         public readonly string? Lookup;
         /// <summary>
-        /// Number of results to skip. Defaults to 0; negative values are clamped to 0.
+        /// Number of results to skip. Defaults to 0; negative values are clamped to 0. Ignored when `Cursor` is provided.
         /// </summary>
         public readonly int Offset;
         /// <summary>
         /// Order results using field:direction format. Supported fields are name, id, human_id,
         /// category_id, application_type, application_confidence_score, and gen_ai_score.
-        /// Supported directions are asc and desc. Ignored when search is provided; results are
+        /// Supported directions are asc and desc. name and ApplicationType ignore the case of
+        /// the letters A to Z, and ties sort by id. Ignored when search is provided; results are
         /// ranked by relevance instead. Also ignored when lookup is provided.
         /// </summary>
         public readonly string? OrderBy;

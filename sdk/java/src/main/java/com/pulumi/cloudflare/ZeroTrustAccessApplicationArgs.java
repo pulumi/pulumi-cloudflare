@@ -335,14 +335,14 @@ public final class ZeroTrustAccessApplicationArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+     * Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, rdp, and infrastructure application types. For infrastructure applications, supported authenticators are `pivKey` and `sshFido2Key`; for other application types use `totp`, `biometrics`, or `securityKey`.
      * 
      */
     @Import(name="mfaConfig")
     private @Nullable Output<ZeroTrustAccessApplicationMfaConfigArgs> mfaConfig;
 
     /**
-     * @return Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+     * @return Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, rdp, and infrastructure application types. For infrastructure applications, supported authenticators are `pivKey` and `sshFido2Key`; for other application types use `totp`, `biometrics`, or `securityKey`.
      * 
      */
     public Optional<Output<ZeroTrustAccessApplicationMfaConfigArgs>> mfaConfig() {
@@ -1164,7 +1164,7 @@ public final class ZeroTrustAccessApplicationArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param mfaConfig Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+         * @param mfaConfig Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, rdp, and infrastructure application types. For infrastructure applications, supported authenticators are `pivKey` and `sshFido2Key`; for other application types use `totp`, `biometrics`, or `securityKey`.
          * 
          * @return builder
          * 
@@ -1175,7 +1175,7 @@ public final class ZeroTrustAccessApplicationArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param mfaConfig Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+         * @param mfaConfig Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, rdp, and infrastructure application types. For infrastructure applications, supported authenticators are `pivKey` and `sshFido2Key`; for other application types use `totp`, `biometrics`, or `securityKey`.
          * 
          * @return builder
          * 

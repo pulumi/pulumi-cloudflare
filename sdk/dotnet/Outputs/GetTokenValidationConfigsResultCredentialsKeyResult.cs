@@ -19,12 +19,12 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Alg;
         /// <summary>
-        /// Curve
+        /// For `alg: ES256` or `alg: ES384`: Curve
         /// Available values: "P-256", "P-384".
         /// </summary>
         public readonly string Crv;
         /// <summary>
-        /// RSA exponent
+        /// For `alg: RS256` or `alg: RS384` or `alg: RS512` or `alg: PS256` or `alg: PS384` or `alg: PS512`: RSA exponent
         /// </summary>
         public readonly string E;
         /// <summary>
@@ -37,15 +37,15 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Kty;
         /// <summary>
-        /// RSA modulus
+        /// For `alg: RS256` or `alg: RS384` or `alg: RS512` or `alg: PS256` or `alg: PS384` or `alg: PS512`: RSA modulus
         /// </summary>
         public readonly string N;
         /// <summary>
-        /// X EC coordinate
+        /// For `alg: ES256` or `alg: ES384`: X EC coordinate
         /// </summary>
         public readonly string X;
         /// <summary>
-        /// Y EC coordinate
+        /// For `alg: ES256` or `alg: ES384`: Y EC coordinate
         /// </summary>
         public readonly string Y;
 

@@ -56,7 +56,7 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// Configures multi-factor authentication (MFA) settings for this policy. For infrastructure applications only `SshPivKey` is a supported authenticator; for other application types use `Totp`, `Biometrics`, or `SecurityKey`.
+        /// Configures multi-factor authentication (MFA) settings for this policy. For infrastructure applications, supported authenticators are `PivKey` and `SshFido2Key`; for other application types use `Totp`, `Biometrics`, or `SecurityKey`.
         /// </summary>
         [Input("mfaConfig")]
         public Input<Inputs.ZeroTrustAccessApplicationPolicyMfaConfigArgs>? MfaConfig { get; set; }

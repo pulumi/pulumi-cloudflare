@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetTotalTlsResult {
     /**
-     * @return The Certificate Authority that Total TLS certificates will be issued through.
+     * @return The Certificate Authority that Total TLS certificates will be issued through. Not returned in responses when Total TLS is disabled.
      * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
      * 
      */
@@ -31,7 +31,7 @@ public final class GetTotalTlsResult {
      */
     private String id;
     /**
-     * @return The validity period in days for the certificates ordered via Total TLS.
+     * @return The validity period in days for the certificates ordered via Total TLS. Not returned when Total TLS is disabled.
      * Available values: 90.
      * 
      */
@@ -44,7 +44,7 @@ public final class GetTotalTlsResult {
 
     private GetTotalTlsResult() {}
     /**
-     * @return The Certificate Authority that Total TLS certificates will be issued through.
+     * @return The Certificate Authority that Total TLS certificates will be issued through. Not returned in responses when Total TLS is disabled.
      * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
      * 
      */
@@ -66,7 +66,7 @@ public final class GetTotalTlsResult {
         return this.id;
     }
     /**
-     * @return The validity period in days for the certificates ordered via Total TLS.
+     * @return The validity period in days for the certificates ordered via Total TLS. Not returned when Total TLS is disabled.
      * Available values: 90.
      * 
      */

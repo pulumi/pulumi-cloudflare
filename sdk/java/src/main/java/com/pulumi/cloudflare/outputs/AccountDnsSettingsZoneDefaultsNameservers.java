@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 public final class AccountDnsSettingsZoneDefaultsNameservers {
     /**
      * @return Nameserver type
-     * Available values: &#34;cloudflare.standard&#34;, &#34;cloudflare.standard.random&#34;, &#34;custom.account&#34;, &#34;custom.tenant&#34;.
+     * Available values: &#34;cloudflare.standard&#34;, &#34;cloudflare.advanced&#34;, &#34;cloudflare.standard.random&#34;, &#34;custom.account&#34;, &#34;custom.tenant&#34;.
      * 
      */
     private @Nullable String type;
@@ -21,7 +21,7 @@ public final class AccountDnsSettingsZoneDefaultsNameservers {
     private AccountDnsSettingsZoneDefaultsNameservers() {}
     /**
      * @return Nameserver type
-     * Available values: &#34;cloudflare.standard&#34;, &#34;cloudflare.standard.random&#34;, &#34;custom.account&#34;, &#34;custom.tenant&#34;.
+     * Available values: &#34;cloudflare.standard&#34;, &#34;cloudflare.advanced&#34;, &#34;cloudflare.standard.random&#34;, &#34;custom.account&#34;, &#34;custom.tenant&#34;.
      * 
      */
     public Optional<String> type() {

@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptions;
 import com.pulumi.cloudflare.outputs.GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptions;
-import com.pulumi.cloudflare.outputs.GetAiSearchInstancesResultSourceParamsWebCrawlerStoreOptions;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -16,11 +15,10 @@ public final class GetAiSearchInstancesResultSourceParamsWebCrawler {
     private GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptions discoverOptions;
     private GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptions parseOptions;
     /**
-     * @return Available values: &#34;sitemap&#34;, &#34;feed-rss&#34;, &#34;crawl&#34;.
+     * @return Available values: &#34;sitemap&#34;, &#34;discover&#34;.
      * 
      */
     private String parseType;
-    private GetAiSearchInstancesResultSourceParamsWebCrawlerStoreOptions storeOptions;
 
     private GetAiSearchInstancesResultSourceParamsWebCrawler() {}
     public GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptions discoverOptions() {
@@ -30,14 +28,11 @@ public final class GetAiSearchInstancesResultSourceParamsWebCrawler {
         return this.parseOptions;
     }
     /**
-     * @return Available values: &#34;sitemap&#34;, &#34;feed-rss&#34;, &#34;crawl&#34;.
+     * @return Available values: &#34;sitemap&#34;, &#34;discover&#34;.
      * 
      */
     public String parseType() {
         return this.parseType;
-    }
-    public GetAiSearchInstancesResultSourceParamsWebCrawlerStoreOptions storeOptions() {
-        return this.storeOptions;
     }
 
     public static Builder builder() {
@@ -52,14 +47,12 @@ public final class GetAiSearchInstancesResultSourceParamsWebCrawler {
         private GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptions discoverOptions;
         private GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptions parseOptions;
         private String parseType;
-        private GetAiSearchInstancesResultSourceParamsWebCrawlerStoreOptions storeOptions;
         public Builder() {}
         public Builder(GetAiSearchInstancesResultSourceParamsWebCrawler defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.discoverOptions = defaults.discoverOptions;
     	      this.parseOptions = defaults.parseOptions;
     	      this.parseType = defaults.parseType;
-    	      this.storeOptions = defaults.storeOptions;
         }
 
         @CustomType.Setter
@@ -86,20 +79,11 @@ public final class GetAiSearchInstancesResultSourceParamsWebCrawler {
             this.parseType = parseType;
             return this;
         }
-        @CustomType.Setter
-        public Builder storeOptions(GetAiSearchInstancesResultSourceParamsWebCrawlerStoreOptions storeOptions) {
-            if (storeOptions == null) {
-              throw new MissingRequiredPropertyException("GetAiSearchInstancesResultSourceParamsWebCrawler", "storeOptions");
-            }
-            this.storeOptions = storeOptions;
-            return this;
-        }
         public GetAiSearchInstancesResultSourceParamsWebCrawler build() {
             final var _resultValue = new GetAiSearchInstancesResultSourceParamsWebCrawler();
             _resultValue.discoverOptions = discoverOptions;
             _resultValue.parseOptions = parseOptions;
             _resultValue.parseType = parseType;
-            _resultValue.storeOptions = storeOptions;
             return _resultValue;
         }
     }

@@ -20,6 +20,13 @@ import * as utilities from "./utilities";
  *
  * const exampleBotManagement = new cloudflare.BotManagement("example_bot_management", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     aiAgents: {
+ *         anthropicAgent: "block",
+ *         googleAgent: "block",
+ *         instinct: "block",
+ *         muse: "block",
+ *         openaiAgent: "block",
+ *     },
  *     aiBotsMigrationOptOut: false,
  *     aiBotsProtection: "block",
  *     aisearch: "block",
@@ -81,6 +88,10 @@ export class BotManagement extends pulumi.CustomResource {
         return obj['__pulumiType'] === BotManagement.__pulumiType;
     }
 
+    /**
+     * Configure blocking behavior for supported personal AI agents.
+     */
+    declare public readonly aiAgents: pulumi.Output<outputs.BotManagementAiAgents>;
     /**
      * Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
      */
@@ -203,6 +214,7 @@ export class BotManagement extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BotManagementState | undefined;
+            resourceInputs["aiAgents"] = state?.aiAgents;
             resourceInputs["aiBotsMigrationOptOut"] = state?.aiBotsMigrationOptOut;
             resourceInputs["aiBotsProtection"] = state?.aiBotsProtection;
             resourceInputs["aiTraining"] = state?.aiTraining;
@@ -232,6 +244,7 @@ export class BotManagement extends pulumi.CustomResource {
             if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
+            resourceInputs["aiAgents"] = args?.aiAgents;
             resourceInputs["aiBotsMigrationOptOut"] = args?.aiBotsMigrationOptOut;
             resourceInputs["aiBotsProtection"] = args?.aiBotsProtection;
             resourceInputs["aiTraining"] = args?.aiTraining;
@@ -266,6 +279,10 @@ export class BotManagement extends pulumi.CustomResource {
  * Input properties used for looking up and filtering BotManagement resources.
  */
 export interface BotManagementState {
+    /**
+     * Configure blocking behavior for supported personal AI agents.
+     */
+    aiAgents?: pulumi.Input<inputs.BotManagementAiAgents | undefined>;
     /**
      * Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
      */
@@ -380,6 +397,10 @@ export interface BotManagementState {
  * The set of arguments for constructing a BotManagement resource.
  */
 export interface BotManagementArgs {
+    /**
+     * Configure blocking behavior for supported personal AI agents.
+     */
+    aiAgents?: pulumi.Input<inputs.BotManagementAiAgents | undefined>;
     /**
      * Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
      */

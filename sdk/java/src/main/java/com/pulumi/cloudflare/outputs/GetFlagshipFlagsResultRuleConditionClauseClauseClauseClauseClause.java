@@ -6,18 +6,11 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetFlagshipFlagsResultRuleConditionClauseClauseClauseClauseClause {
     private String attribute;
-    private List<String> clauses;
-    /**
-     * @return Available values: &#34;AND&#34;, &#34;OR&#34;.
-     * 
-     */
-    private String logicalOperator;
     /**
      * @return Available values: &#34;equals&#34;, &#34;not*equals&#34;, &#34;greater*than&#34;, &#34;less*than&#34;, &#34;greater*than*or*equals&#34;, &#34;less*than*or*equals&#34;, &#34;contains&#34;, &#34;starts*with&#34;, &#34;ends*with&#34;, &#34;in&#34;, &#34;not*in&#34;, &#34;has&#34;, &#34;notHas&#34;.
      * 
@@ -32,16 +25,6 @@ public final class GetFlagshipFlagsResultRuleConditionClauseClauseClauseClauseCl
     private GetFlagshipFlagsResultRuleConditionClauseClauseClauseClauseClause() {}
     public String attribute() {
         return this.attribute;
-    }
-    public List<String> clauses() {
-        return this.clauses;
-    }
-    /**
-     * @return Available values: &#34;AND&#34;, &#34;OR&#34;.
-     * 
-     */
-    public String logicalOperator() {
-        return this.logicalOperator;
     }
     /**
      * @return Available values: &#34;equals&#34;, &#34;not*equals&#34;, &#34;greater*than&#34;, &#34;less*than&#34;, &#34;greater*than*or*equals&#34;, &#34;less*than*or*equals&#34;, &#34;contains&#34;, &#34;starts*with&#34;, &#34;ends*with&#34;, &#34;in&#34;, &#34;not*in&#34;, &#34;has&#34;, &#34;notHas&#34;.
@@ -68,16 +51,12 @@ public final class GetFlagshipFlagsResultRuleConditionClauseClauseClauseClauseCl
     @CustomType.Builder
     public static final class Builder {
         private String attribute;
-        private List<String> clauses;
-        private String logicalOperator;
         private String operator;
         private String value;
         public Builder() {}
         public Builder(GetFlagshipFlagsResultRuleConditionClauseClauseClauseClauseClause defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.attribute = defaults.attribute;
-    	      this.clauses = defaults.clauses;
-    	      this.logicalOperator = defaults.logicalOperator;
     	      this.operator = defaults.operator;
     	      this.value = defaults.value;
         }
@@ -88,25 +67,6 @@ public final class GetFlagshipFlagsResultRuleConditionClauseClauseClauseClauseCl
               throw new MissingRequiredPropertyException("GetFlagshipFlagsResultRuleConditionClauseClauseClauseClauseClause", "attribute");
             }
             this.attribute = attribute;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder clauses(List<String> clauses) {
-            if (clauses == null) {
-              throw new MissingRequiredPropertyException("GetFlagshipFlagsResultRuleConditionClauseClauseClauseClauseClause", "clauses");
-            }
-            this.clauses = clauses;
-            return this;
-        }
-        public Builder clauses(String... clauses) {
-            return clauses(List.of(clauses));
-        }
-        @CustomType.Setter
-        public Builder logicalOperator(String logicalOperator) {
-            if (logicalOperator == null) {
-              throw new MissingRequiredPropertyException("GetFlagshipFlagsResultRuleConditionClauseClauseClauseClauseClause", "logicalOperator");
-            }
-            this.logicalOperator = logicalOperator;
             return this;
         }
         @CustomType.Setter
@@ -128,8 +88,6 @@ public final class GetFlagshipFlagsResultRuleConditionClauseClauseClauseClauseCl
         public GetFlagshipFlagsResultRuleConditionClauseClauseClauseClauseClause build() {
             final var _resultValue = new GetFlagshipFlagsResultRuleConditionClauseClauseClauseClauseClause();
             _resultValue.attribute = attribute;
-            _resultValue.clauses = clauses;
-            _resultValue.logicalOperator = logicalOperator;
             _resultValue.operator = operator;
             _resultValue.value = value;
             return _resultValue;

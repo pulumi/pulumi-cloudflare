@@ -109,7 +109,7 @@ type LookupZeroTrustAccessApplicationResult struct {
 	LandingPageDesign GetZeroTrustAccessApplicationLandingPageDesign `pulumi:"landingPageDesign"`
 	// The image URL for the logo shown in the App Launcher dashboard.
 	LogoUrl string `pulumi:"logoUrl"`
-	// Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+	// Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, rdp, and infrastructure application types. For infrastructure applications, supported authenticators are `pivKey` and `sshFido2Key`; for other application types use `totp`, `biometrics`, or `securityKey`.
 	MfaConfig GetZeroTrustAccessApplicationMfaConfig `pulumi:"mfaConfig"`
 	// The name of the application.
 	Name string `pulumi:"name"`
@@ -319,7 +319,7 @@ func (o LookupZeroTrustAccessApplicationResultOutput) LogoUrl() pulumi.StringOut
 	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) string { return v.LogoUrl }).(pulumi.StringOutput)
 }
 
-// Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+// Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, rdp, and infrastructure application types. For infrastructure applications, supported authenticators are `pivKey` and `sshFido2Key`; for other application types use `totp`, `biometrics`, or `securityKey`.
 func (o LookupZeroTrustAccessApplicationResultOutput) MfaConfig() GetZeroTrustAccessApplicationMfaConfigOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) GetZeroTrustAccessApplicationMfaConfig {
 		return v.MfaConfig

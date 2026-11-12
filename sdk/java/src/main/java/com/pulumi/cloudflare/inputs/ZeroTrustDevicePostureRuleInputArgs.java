@@ -189,14 +189,14 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * Enabled.
+     * Whether the rule is enabled. This is a computed, read-only value. It is false for deprecated Kolide posture rules that still use the issueCount input, and true otherwise.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enabled.
+     * @return Whether the rule is enabled. This is a computed, read-only value. It is false for deprecated Kolide posture rules that still use the issueCount input, and true otherwise.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -234,14 +234,14 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * List ID.
+     * API UUID.
      * 
      */
     @Import(name="id")
     private @Nullable Output<String> id;
 
     /**
-     * @return List ID.
+     * @return API UUID.
      * 
      */
     public Optional<Output<String>> id() {
@@ -334,6 +334,8 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
     /**
      * Operating system.
+     * 
+     * Operating System.
      * Available values: &#34;windows&#34;, &#34;linux&#34;, &#34;mac&#34;, &#34;android&#34;, &#34;ios&#34;, &#34;chromeos&#34;.
      * 
      */
@@ -342,6 +344,8 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
     /**
      * @return Operating system.
+     * 
+     * Operating System.
      * Available values: &#34;windows&#34;, &#34;linux&#34;, &#34;mac&#34;, &#34;android&#34;, &#34;ios&#34;, &#34;chromeos&#34;.
      * 
      */
@@ -351,7 +355,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
     /**
      * Agent operational state.
-     * Available values: &#34;na&#34;, &#34;partially*disabled&#34;, &#34;auto*fully*disabled&#34;, &#34;fully*disabled&#34;, &#34;auto*partially*disabled&#34;, &#34;disabled*error&#34;, &#34;db*corruption&#34;.
+     * Available values: &#34;na&#34;, &#34;partiallyDisabled&#34;, &#34;autoFullyDisabled&#34;, &#34;fullyDisabled&#34;, &#34;autoPartiallyDisabled&#34;, &#34;disabledError&#34;, &#34;dbCorruption&#34;.
      * 
      */
     @Import(name="operationalState")
@@ -359,7 +363,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
     /**
      * @return Agent operational state.
-     * Available values: &#34;na&#34;, &#34;partially*disabled&#34;, &#34;auto*fully*disabled&#34;, &#34;fully*disabled&#34;, &#34;auto*partially*disabled&#34;, &#34;disabled*error&#34;, &#34;db*corruption&#34;.
+     * Available values: &#34;na&#34;, &#34;partiallyDisabled&#34;, &#34;autoFullyDisabled&#34;, &#34;fullyDisabled&#34;, &#34;autoPartiallyDisabled&#34;, &#34;disabledError&#34;, &#34;dbCorruption&#34;.
      * 
      */
     public Optional<Output<String>> operationalState() {
@@ -368,6 +372,8 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
     /**
      * Operator.
+     * 
+     * Operator to evaluate riskLevel or eid_last_seen.
      * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
@@ -376,6 +382,8 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
     /**
      * @return Operator.
+     * 
+     * Operator to evaluate riskLevel or eid_last_seen.
      * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
@@ -461,12 +469,16 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     /**
      * File path.
      * 
+     * Path for the application.
+     * 
      */
     @Import(name="path")
     private @Nullable Output<String> path;
 
     /**
      * @return File path.
+     * 
+     * Path for the application.
      * 
      */
     public Optional<Output<String>> path() {
@@ -647,12 +659,16 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     /**
      * Version of OS.
      * 
+     * Version.
+     * 
      */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
      * @return Version of OS.
+     * 
+     * Version.
      * 
      */
     public Optional<Output<String>> version() {
@@ -998,7 +1014,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param enabled Enabled.
+         * @param enabled Whether the rule is enabled. This is a computed, read-only value. It is false for deprecated Kolide posture rules that still use the issueCount input, and true otherwise.
          * 
          * @return builder
          * 
@@ -1009,7 +1025,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param enabled Enabled.
+         * @param enabled Whether the rule is enabled. This is a computed, read-only value. It is false for deprecated Kolide posture rules that still use the issueCount input, and true otherwise.
          * 
          * @return builder
          * 
@@ -1071,7 +1087,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param id List ID.
+         * @param id API UUID.
          * 
          * @return builder
          * 
@@ -1082,7 +1098,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param id List ID.
+         * @param id API UUID.
          * 
          * @return builder
          * 
@@ -1209,6 +1225,8 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
         /**
          * @param operatingSystem Operating system.
+         * 
+         * Operating System.
          * Available values: &#34;windows&#34;, &#34;linux&#34;, &#34;mac&#34;, &#34;android&#34;, &#34;ios&#34;, &#34;chromeos&#34;.
          * 
          * @return builder
@@ -1221,6 +1239,8 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
         /**
          * @param operatingSystem Operating system.
+         * 
+         * Operating System.
          * Available values: &#34;windows&#34;, &#34;linux&#34;, &#34;mac&#34;, &#34;android&#34;, &#34;ios&#34;, &#34;chromeos&#34;.
          * 
          * @return builder
@@ -1232,7 +1252,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
         /**
          * @param operationalState Agent operational state.
-         * Available values: &#34;na&#34;, &#34;partially*disabled&#34;, &#34;auto*fully*disabled&#34;, &#34;fully*disabled&#34;, &#34;auto*partially*disabled&#34;, &#34;disabled*error&#34;, &#34;db*corruption&#34;.
+         * Available values: &#34;na&#34;, &#34;partiallyDisabled&#34;, &#34;autoFullyDisabled&#34;, &#34;fullyDisabled&#34;, &#34;autoPartiallyDisabled&#34;, &#34;disabledError&#34;, &#34;dbCorruption&#34;.
          * 
          * @return builder
          * 
@@ -1244,7 +1264,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
         /**
          * @param operationalState Agent operational state.
-         * Available values: &#34;na&#34;, &#34;partially*disabled&#34;, &#34;auto*fully*disabled&#34;, &#34;fully*disabled&#34;, &#34;auto*partially*disabled&#34;, &#34;disabled*error&#34;, &#34;db*corruption&#34;.
+         * Available values: &#34;na&#34;, &#34;partiallyDisabled&#34;, &#34;autoFullyDisabled&#34;, &#34;fullyDisabled&#34;, &#34;autoPartiallyDisabled&#34;, &#34;disabledError&#34;, &#34;dbCorruption&#34;.
          * 
          * @return builder
          * 
@@ -1255,6 +1275,8 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
         /**
          * @param operator Operator.
+         * 
+         * Operator to evaluate riskLevel or eid_last_seen.
          * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
          * 
          * @return builder
@@ -1267,6 +1289,8 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
         /**
          * @param operator Operator.
+         * 
+         * Operator to evaluate riskLevel or eid_last_seen.
          * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
          * 
          * @return builder
@@ -1384,6 +1408,8 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         /**
          * @param path File path.
          * 
+         * Path for the application.
+         * 
          * @return builder
          * 
          */
@@ -1394,6 +1420,8 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
         /**
          * @param path File path.
+         * 
+         * Path for the application.
          * 
          * @return builder
          * 
@@ -1652,6 +1680,8 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         /**
          * @param version Version of OS.
          * 
+         * Version.
+         * 
          * @return builder
          * 
          */
@@ -1662,6 +1692,8 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
         /**
          * @param version Version of OS.
+         * 
+         * Version.
          * 
          * @return builder
          * 

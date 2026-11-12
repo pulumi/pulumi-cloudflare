@@ -241,6 +241,36 @@ public class SpectrumApplication extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.originWorkerId);
     }
     /**
+     * Name of the Worker origin. Omitted when the Worker is not found or its name cannot be resolved.
+     * 
+     */
+    @Export(name="originWorkerName", refs={String.class}, tree="[0]")
+    private Output<String> originWorkerName;
+
+    /**
+     * @return Name of the Worker origin. Omitted when the Worker is not found or its name cannot be resolved.
+     * 
+     */
+    public Output<String> originWorkerName() {
+        return this.originWorkerName;
+    }
+    /**
+     * Lookup status of the Worker origin. Unknown indicates that its name could not be resolved. Only returned for Worker origins.
+     * Available values: &#34;available&#34;, &#34;notFound&#34;, &#34;unknown&#34;.
+     * 
+     */
+    @Export(name="originWorkerStatus", refs={String.class}, tree="[0]")
+    private Output<String> originWorkerStatus;
+
+    /**
+     * @return Lookup status of the Worker origin. Unknown indicates that its name could not be resolved. Only returned for Worker origins.
+     * Available values: &#34;available&#34;, &#34;notFound&#34;, &#34;unknown&#34;.
+     * 
+     */
+    public Output<String> originWorkerStatus() {
+        return this.originWorkerStatus;
+    }
+    /**
      * The port configuration at Cloudflare&#39;s edge. May specify a single port, for example `&#34;tcp/1000&#34;`, or a range of ports, for example `&#34;tcp/1000-2000&#34;`.
      * 
      */

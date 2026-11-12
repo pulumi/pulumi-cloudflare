@@ -28,6 +28,7 @@ import com.pulumi.cloudflare.inputs.AccessGroupRequireOidcArgs;
 import com.pulumi.cloudflare.inputs.AccessGroupRequireOktaArgs;
 import com.pulumi.cloudflare.inputs.AccessGroupRequireSamlArgs;
 import com.pulumi.cloudflare.inputs.AccessGroupRequireServiceTokenArgs;
+import com.pulumi.cloudflare.inputs.AccessGroupRequireServiceTokenTagArgs;
 import com.pulumi.cloudflare.inputs.AccessGroupRequireUserRiskScoreArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -231,6 +232,13 @@ public final class AccessGroupRequireArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.serviceToken);
     }
 
+    @Import(name="serviceTokenTag")
+    private @Nullable Output<AccessGroupRequireServiceTokenTagArgs> serviceTokenTag;
+
+    public Optional<Output<AccessGroupRequireServiceTokenTagArgs>> serviceTokenTag() {
+        return Optional.ofNullable(this.serviceTokenTag);
+    }
+
     @Import(name="userRiskScore")
     private @Nullable Output<AccessGroupRequireUserRiskScoreArgs> userRiskScore;
 
@@ -266,6 +274,7 @@ public final class AccessGroupRequireArgs extends com.pulumi.resources.ResourceA
         this.okta = $.okta;
         this.saml = $.saml;
         this.serviceToken = $.serviceToken;
+        this.serviceTokenTag = $.serviceTokenTag;
         this.userRiskScore = $.userRiskScore;
     }
 
@@ -534,6 +543,15 @@ public final class AccessGroupRequireArgs extends com.pulumi.resources.ResourceA
 
         public Builder serviceToken(AccessGroupRequireServiceTokenArgs serviceToken) {
             return serviceToken(Output.of(serviceToken));
+        }
+
+        public Builder serviceTokenTag(@Nullable Output<AccessGroupRequireServiceTokenTagArgs> serviceTokenTag) {
+            $.serviceTokenTag = serviceTokenTag;
+            return this;
+        }
+
+        public Builder serviceTokenTag(AccessGroupRequireServiceTokenTagArgs serviceTokenTag) {
+            return serviceTokenTag(Output.of(serviceTokenTag));
         }
 
         public Builder userRiskScore(@Nullable Output<AccessGroupRequireUserRiskScoreArgs> userRiskScore) {

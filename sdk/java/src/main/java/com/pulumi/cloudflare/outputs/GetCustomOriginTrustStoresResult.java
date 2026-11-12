@@ -42,7 +42,7 @@ public final class GetCustomOriginTrustStoresResult {
      */
     private String status;
     /**
-     * @return When the certificate was last modified.
+     * @return When the certificate was last modified. Only returned when uploading a certificate.
      * 
      */
     private String updatedAt;
@@ -97,7 +97,7 @@ public final class GetCustomOriginTrustStoresResult {
         return this.status;
     }
     /**
-     * @return When the certificate was last modified.
+     * @return When the certificate was last modified. Only returned when uploading a certificate.
      * 
      */
     public String updatedAt() {

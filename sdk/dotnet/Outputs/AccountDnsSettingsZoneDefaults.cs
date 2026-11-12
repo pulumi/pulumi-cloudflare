@@ -18,10 +18,6 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool? FlattenAllCnames;
         /// <summary>
-        /// Whether to enable Foundation DNS Advanced Nameservers on the zone.
-        /// </summary>
-        public readonly bool? FoundationDns;
-        /// <summary>
         /// Settings for this internal zone.
         /// </summary>
         public readonly Outputs.AccountDnsSettingsZoneDefaultsInternalDns? InternalDns;
@@ -55,8 +51,6 @@ namespace Pulumi.Cloudflare.Outputs
         private AccountDnsSettingsZoneDefaults(
             bool? flattenAllCnames,
 
-            bool? foundationDns,
-
             Outputs.AccountDnsSettingsZoneDefaultsInternalDns? internalDns,
 
             bool? multiProvider,
@@ -72,7 +66,6 @@ namespace Pulumi.Cloudflare.Outputs
             string? zoneMode)
         {
             FlattenAllCnames = flattenAllCnames;
-            FoundationDns = foundationDns;
             InternalDns = internalDns;
             MultiProvider = multiProvider;
             Nameservers = nameservers;

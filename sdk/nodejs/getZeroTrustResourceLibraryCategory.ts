@@ -5,6 +5,13 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Resource Library Read`
+ * - `Resource Library Write`
+ * - `Zero Trust Read`
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -59,6 +66,13 @@ export interface GetZeroTrustResourceLibraryCategoryResult {
     readonly name: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Resource Library Read`
+ * - `Resource Library Write`
+ * - `Zero Trust Read`
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript

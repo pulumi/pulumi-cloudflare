@@ -212,6 +212,18 @@ namespace Pulumi.Cloudflare
         /// Token identifier tag.
         /// </summary>
         public readonly string? TokenId;
+        /// <summary>
+        /// The prefix of the token value, before the first underscore. Use it with
+        /// `TokenSuffix` to identify a token. Only present for tokens created or
+        /// rolled after this field was added.
+        /// </summary>
+        public readonly string TokenPrefix;
+        /// <summary>
+        /// The last 4 characters of the token value. Use it with `TokenPrefix` to
+        /// identify a token. It is not unique. Only present for tokens created or
+        /// rolled after this field was added.
+        /// </summary>
+        public readonly string TokenSuffix;
 
         [OutputConstructor]
         private GetAccountTokenResult(
@@ -245,7 +257,11 @@ namespace Pulumi.Cloudflare
 
             string status,
 
-            string? tokenId)
+            string? tokenId,
+
+            string tokenPrefix,
+
+            string tokenSuffix)
         {
             AccountId = accountId;
             Condition = condition;
@@ -263,6 +279,8 @@ namespace Pulumi.Cloudflare
             ProvisionerType = provisionerType;
             Status = status;
             TokenId = tokenId;
+            TokenPrefix = tokenPrefix;
+            TokenSuffix = tokenSuffix;
         }
     }
 }

@@ -13,6 +13,14 @@ import (
 
 // Accepted Permissions
 //
+// - `Individual Workers Admin`
+// - `Individual Workers Content Read-Only`
+// - `Individual Workers Editor`
+// - `Individual Workers Metadata Read-Only`
+// - `Workers Admin`
+// - `Workers Content Read-Only`
+// - `Workers Editor`
+// - `Workers Metadata Read-Only`
 // - `Workers Scripts Read`
 // - `Workers Scripts Write`
 // - `Workers Tail Read`
@@ -66,16 +74,20 @@ type LookupWorkersDeploymentArgs struct {
 // A collection of values returned by getWorkersDeployment.
 type LookupWorkersDeploymentResult struct {
 	// Identifier.
-	AccountId    string                          `pulumi:"accountId"`
-	Annotations  GetWorkersDeploymentAnnotations `pulumi:"annotations"`
-	AuthorEmail  string                          `pulumi:"authorEmail"`
-	CreatedOn    string                          `pulumi:"createdOn"`
-	DeploymentId string                          `pulumi:"deploymentId"`
+	AccountId string `pulumi:"accountId"`
+	// Metadata attached to the deployment.
+	Annotations GetWorkersDeploymentAnnotations `pulumi:"annotations"`
+	AuthorEmail string                          `pulumi:"authorEmail"`
+	// Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+	CodeUpdateStrategy GetWorkersDeploymentCodeUpdateStrategy `pulumi:"codeUpdateStrategy"`
+	CreatedOn          string                                 `pulumi:"createdOn"`
+	DeploymentId       string                                 `pulumi:"deploymentId"`
 	// The ID of this resource.
 	Id string `pulumi:"id"`
 	// Name of the script.
 	ScriptName string `pulumi:"scriptName"`
 	Source     string `pulumi:"source"`
+	// Strategy for routing traffic across the listed versions. `percentage` splits traffic according to each version's `percentage`.
 	// Available values: "percentage".
 	Strategy string `pulumi:"strategy"`
 	// Worker versions included in this deployment. Each object must contain a `versionId` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions '[{"versionId":"023e105f-2a42-4f8b-a1c1-73f6a2a30c0f","percentage":100}]'`, or from a JSON file with `--versions @versions.json`.
@@ -120,12 +132,20 @@ func (o LookupWorkersDeploymentResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersDeploymentResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
+// Metadata attached to the deployment.
 func (o LookupWorkersDeploymentResultOutput) Annotations() GetWorkersDeploymentAnnotationsOutput {
 	return o.ApplyT(func(v LookupWorkersDeploymentResult) GetWorkersDeploymentAnnotations { return v.Annotations }).(GetWorkersDeploymentAnnotationsOutput)
 }
 
 func (o LookupWorkersDeploymentResultOutput) AuthorEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersDeploymentResult) string { return v.AuthorEmail }).(pulumi.StringOutput)
+}
+
+// Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+func (o LookupWorkersDeploymentResultOutput) CodeUpdateStrategy() GetWorkersDeploymentCodeUpdateStrategyOutput {
+	return o.ApplyT(func(v LookupWorkersDeploymentResult) GetWorkersDeploymentCodeUpdateStrategy {
+		return v.CodeUpdateStrategy
+	}).(GetWorkersDeploymentCodeUpdateStrategyOutput)
 }
 
 func (o LookupWorkersDeploymentResultOutput) CreatedOn() pulumi.StringOutput {
@@ -150,6 +170,7 @@ func (o LookupWorkersDeploymentResultOutput) Source() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersDeploymentResult) string { return v.Source }).(pulumi.StringOutput)
 }
 
+// Strategy for routing traffic across the listed versions. `percentage` splits traffic according to each version's `percentage`.
 // Available values: "percentage".
 func (o LookupWorkersDeploymentResultOutput) Strategy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersDeploymentResult) string { return v.Strategy }).(pulumi.StringOutput)

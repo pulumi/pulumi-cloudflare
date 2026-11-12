@@ -29,20 +29,10 @@ public final class GetCustomHostnameSsl {
      */
     private String certificateAuthority;
     /**
-     * @return If a custom uploaded certificate is used.
-     * 
-     */
-    private String customCertificate;
-    /**
      * @return The identifier for the Custom CSR that was used.
      * 
      */
     private String customCsrId;
-    /**
-     * @return The key for a custom uploaded certificate.
-     * 
-     */
-    private String customKey;
     /**
      * @return DCV Delegation records for domain validation.
      * 
@@ -132,25 +122,11 @@ public final class GetCustomHostnameSsl {
         return this.certificateAuthority;
     }
     /**
-     * @return If a custom uploaded certificate is used.
-     * 
-     */
-    public String customCertificate() {
-        return this.customCertificate;
-    }
-    /**
      * @return The identifier for the Custom CSR that was used.
      * 
      */
     public String customCsrId() {
         return this.customCsrId;
-    }
-    /**
-     * @return The key for a custom uploaded certificate.
-     * 
-     */
-    public String customKey() {
-        return this.customKey;
     }
     /**
      * @return DCV Delegation records for domain validation.
@@ -264,9 +240,7 @@ public final class GetCustomHostnameSsl {
     public static final class Builder {
         private String bundleMethod;
         private String certificateAuthority;
-        private String customCertificate;
         private String customCsrId;
-        private String customKey;
         private List<GetCustomHostnameSslDcvDelegationRecord> dcvDelegationRecords;
         private String expiresOn;
         private List<String> hosts;
@@ -287,9 +261,7 @@ public final class GetCustomHostnameSsl {
     	      Objects.requireNonNull(defaults);
     	      this.bundleMethod = defaults.bundleMethod;
     	      this.certificateAuthority = defaults.certificateAuthority;
-    	      this.customCertificate = defaults.customCertificate;
     	      this.customCsrId = defaults.customCsrId;
-    	      this.customKey = defaults.customKey;
     	      this.dcvDelegationRecords = defaults.dcvDelegationRecords;
     	      this.expiresOn = defaults.expiresOn;
     	      this.hosts = defaults.hosts;
@@ -324,27 +296,11 @@ public final class GetCustomHostnameSsl {
             return this;
         }
         @CustomType.Setter
-        public Builder customCertificate(String customCertificate) {
-            if (customCertificate == null) {
-              throw new MissingRequiredPropertyException("GetCustomHostnameSsl", "customCertificate");
-            }
-            this.customCertificate = customCertificate;
-            return this;
-        }
-        @CustomType.Setter
         public Builder customCsrId(String customCsrId) {
             if (customCsrId == null) {
               throw new MissingRequiredPropertyException("GetCustomHostnameSsl", "customCsrId");
             }
             this.customCsrId = customCsrId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder customKey(String customKey) {
-            if (customKey == null) {
-              throw new MissingRequiredPropertyException("GetCustomHostnameSsl", "customKey");
-            }
-            this.customKey = customKey;
             return this;
         }
         @CustomType.Setter
@@ -483,9 +439,7 @@ public final class GetCustomHostnameSsl {
             final var _resultValue = new GetCustomHostnameSsl();
             _resultValue.bundleMethod = bundleMethod;
             _resultValue.certificateAuthority = certificateAuthority;
-            _resultValue.customCertificate = customCertificate;
             _resultValue.customCsrId = customCsrId;
-            _resultValue.customKey = customKey;
             _resultValue.dcvDelegationRecords = dcvDelegationRecords;
             _resultValue.expiresOn = expiresOn;
             _resultValue.hosts = hosts;

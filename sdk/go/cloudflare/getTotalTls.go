@@ -59,14 +59,14 @@ type LookupTotalTlsArgs struct {
 
 // A collection of values returned by getTotalTls.
 type LookupTotalTlsResult struct {
-	// The Certificate Authority that Total TLS certificates will be issued through.
+	// The Certificate Authority that Total TLS certificates will be issued through. Not returned in responses when Total TLS is disabled.
 	// Available values: "google", "lets*encrypt", "ssl*com".
 	CertificateAuthority string `pulumi:"certificateAuthority"`
 	// If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
 	Enabled bool `pulumi:"enabled"`
 	// Identifier.
 	Id string `pulumi:"id"`
-	// The validity period in days for the certificates ordered via Total TLS.
+	// The validity period in days for the certificates ordered via Total TLS. Not returned when Total TLS is disabled.
 	// Available values: 90.
 	ValidityPeriod int `pulumi:"validityPeriod"`
 	// Identifier.
@@ -103,7 +103,7 @@ func (o LookupTotalTlsResultOutput) ToLookupTotalTlsResultOutputWithContext(ctx 
 	return o
 }
 
-// The Certificate Authority that Total TLS certificates will be issued through.
+// The Certificate Authority that Total TLS certificates will be issued through. Not returned in responses when Total TLS is disabled.
 // Available values: "google", "lets*encrypt", "ssl*com".
 func (o LookupTotalTlsResultOutput) CertificateAuthority() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTotalTlsResult) string { return v.CertificateAuthority }).(pulumi.StringOutput)
@@ -119,7 +119,7 @@ func (o LookupTotalTlsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTotalTlsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The validity period in days for the certificates ordered via Total TLS.
+// The validity period in days for the certificates ordered via Total TLS. Not returned when Total TLS is disabled.
 // Available values: 90.
 func (o LookupTotalTlsResultOutput) ValidityPeriod() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupTotalTlsResult) int { return v.ValidityPeriod }).(pulumi.IntOutput)

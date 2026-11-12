@@ -36,21 +36,6 @@ public final class AccountDnsSettingsZoneDefaultsArgs extends com.pulumi.resourc
     }
 
     /**
-     * Whether to enable Foundation DNS Advanced Nameservers on the zone.
-     * 
-     */
-    @Import(name="foundationDns")
-    private @Nullable Output<Boolean> foundationDns;
-
-    /**
-     * @return Whether to enable Foundation DNS Advanced Nameservers on the zone.
-     * 
-     */
-    public Optional<Output<Boolean>> foundationDns() {
-        return Optional.ofNullable(this.foundationDns);
-    }
-
-    /**
      * Settings for this internal zone.
      * 
      */
@@ -161,7 +146,6 @@ public final class AccountDnsSettingsZoneDefaultsArgs extends com.pulumi.resourc
 
     private AccountDnsSettingsZoneDefaultsArgs(AccountDnsSettingsZoneDefaultsArgs $) {
         this.flattenAllCnames = $.flattenAllCnames;
-        this.foundationDns = $.foundationDns;
         this.internalDns = $.internalDns;
         this.multiProvider = $.multiProvider;
         this.nameservers = $.nameservers;
@@ -208,27 +192,6 @@ public final class AccountDnsSettingsZoneDefaultsArgs extends com.pulumi.resourc
          */
         public Builder flattenAllCnames(Boolean flattenAllCnames) {
             return flattenAllCnames(Output.of(flattenAllCnames));
-        }
-
-        /**
-         * @param foundationDns Whether to enable Foundation DNS Advanced Nameservers on the zone.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder foundationDns(@Nullable Output<Boolean> foundationDns) {
-            $.foundationDns = foundationDns;
-            return this;
-        }
-
-        /**
-         * @param foundationDns Whether to enable Foundation DNS Advanced Nameservers on the zone.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder foundationDns(Boolean foundationDns) {
-            return foundationDns(Output.of(foundationDns));
         }
 
         /**

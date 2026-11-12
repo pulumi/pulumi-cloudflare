@@ -17,9 +17,17 @@ public final class CertificateAuthoritiesHostnameAssociationsArgs extends com.pu
 
     public static final CertificateAuthoritiesHostnameAssociationsArgs Empty = new CertificateAuthoritiesHostnameAssociationsArgs();
 
+    /**
+     * Unordered set of hostnames. Hostnames are stored as lowercase punycode.
+     * 
+     */
     @Import(name="hostnames")
     private @Nullable Output<List<String>> hostnames;
 
+    /**
+     * @return Unordered set of hostnames. Hostnames are stored as lowercase punycode.
+     * 
+     */
     public Optional<Output<List<String>>> hostnames() {
         return Optional.ofNullable(this.hostnames);
     }
@@ -80,15 +88,33 @@ public final class CertificateAuthoritiesHostnameAssociationsArgs extends com.pu
             $ = new CertificateAuthoritiesHostnameAssociationsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param hostnames Unordered set of hostnames. Hostnames are stored as lowercase punycode.
+         * 
+         * @return builder
+         * 
+         */
         public Builder hostnames(@Nullable Output<List<String>> hostnames) {
             $.hostnames = hostnames;
             return this;
         }
 
+        /**
+         * @param hostnames Unordered set of hostnames. Hostnames are stored as lowercase punycode.
+         * 
+         * @return builder
+         * 
+         */
         public Builder hostnames(List<String> hostnames) {
             return hostnames(Output.of(hostnames));
         }
 
+        /**
+         * @param hostnames Unordered set of hostnames. Hostnames are stored as lowercase punycode.
+         * 
+         * @return builder
+         * 
+         */
         public Builder hostnames(String... hostnames) {
             return hostnames(List.of(hostnames));
         }

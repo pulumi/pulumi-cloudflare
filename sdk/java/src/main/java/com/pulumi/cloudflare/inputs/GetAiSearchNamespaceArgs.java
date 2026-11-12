@@ -3,11 +3,14 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.GetAiSearchNamespaceFilterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetAiSearchNamespaceArgs extends com.pulumi.resources.InvokeArgs {
@@ -21,17 +24,25 @@ public final class GetAiSearchNamespaceArgs extends com.pulumi.resources.InvokeA
         return this.accountId;
     }
 
-    @Import(name="name", required=true)
-    private Output<String> name;
+    @Import(name="filter")
+    private @Nullable Output<GetAiSearchNamespaceFilterArgs> filter;
 
-    public Output<String> name() {
-        return this.name;
+    public Optional<Output<GetAiSearchNamespaceFilterArgs>> filter() {
+        return Optional.ofNullable(this.filter);
+    }
+
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
     private GetAiSearchNamespaceArgs() {}
 
     private GetAiSearchNamespaceArgs(GetAiSearchNamespaceArgs $) {
         this.accountId = $.accountId;
+        this.filter = $.filter;
         this.name = $.name;
     }
 
@@ -62,7 +73,16 @@ public final class GetAiSearchNamespaceArgs extends com.pulumi.resources.InvokeA
             return accountId(Output.of(accountId));
         }
 
-        public Builder name(Output<String> name) {
+        public Builder filter(@Nullable Output<GetAiSearchNamespaceFilterArgs> filter) {
+            $.filter = filter;
+            return this;
+        }
+
+        public Builder filter(GetAiSearchNamespaceFilterArgs filter) {
+            return filter(Output.of(filter));
+        }
+
+        public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
@@ -74,9 +94,6 @@ public final class GetAiSearchNamespaceArgs extends com.pulumi.resources.InvokeA
         public GetAiSearchNamespaceArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetAiSearchNamespaceArgs", "accountId");
-            }
-            if ($.name == null) {
-                throw new MissingRequiredPropertyException("GetAiSearchNamespaceArgs", "name");
             }
             return $;
         }

@@ -15,29 +15,18 @@ namespace Pulumi.Cloudflare
     /// - `Zone Settings Read`
     /// - `Zone Settings Write`
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleObservatoryScheduledTest = new Cloudflare.ObservatoryScheduledTest("example_observatory_scheduled_test", new()
-    ///     {
-    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-    ///         Url = "example.com",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
+    /// 
+    /// Import using ZoneId and url (region defaults to us-central1)
     /// 
     /// ```sh
     /// $ pulumi import cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest example '&lt;zone_id&gt;/&lt;url&gt;'
+    /// ```
+    /// 
+    /// Import with an explicit region (required when the schedule is not in us-central1)
+    /// 
+    /// ```sh
+    /// $ pulumi import cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest example '&lt;zone_id&gt;/&lt;url&gt;/&lt;region&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest")]

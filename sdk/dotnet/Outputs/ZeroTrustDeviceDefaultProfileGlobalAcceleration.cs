@@ -14,9 +14,17 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ZeroTrustDeviceDefaultProfileGlobalAcceleration
     {
         /// <summary>
+        /// Whether WARP users may manually override the automatic Global Acceleration decision. Defaults to true when not provided.
+        /// </summary>
+        public readonly bool? AllowManualOverride;
+        /// <summary>
         /// IP:port entries for the API endpoints.
         /// </summary>
         public readonly ImmutableArray<string> ApiEndpoints;
+        /// <summary>
+        /// Automatically switch Global Acceleration regions based on device location. Defaults to false when not provided.
+        /// </summary>
+        public readonly bool? Autoswitch;
         /// <summary>
         /// Global acceleration settings are used only when "enabled".
         /// </summary>
@@ -32,7 +40,11 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private ZeroTrustDeviceDefaultProfileGlobalAcceleration(
+            bool? allowManualOverride,
+
             ImmutableArray<string> apiEndpoints,
+
+            bool? autoswitch,
 
             bool enabled,
 
@@ -40,7 +52,9 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<string> wireguardEndpoints)
         {
+            AllowManualOverride = allowManualOverride;
             ApiEndpoints = apiEndpoints;
+            Autoswitch = autoswitch;
             Enabled = enabled;
             MasqueEndpoints = masqueEndpoints;
             WireguardEndpoints = wireguardEndpoints;

@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZeroTrustDlpEntryVariantGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A customer-facing explanation of what this predefined AI prompt topic represents.
+        /// For `type: PromptTopic`: A customer-facing explanation of what this predefined AI prompt topic represents.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? TopicType { get; set; }
 
         /// <summary>
-        /// Available values: "PromptTopic", "General".
+        /// Available values: "custom", "predefined", "integration".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

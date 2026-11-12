@@ -13,36 +13,25 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class FlagshipFlagRuleConditionClauseClauseClauseClauseClause
     {
-        public readonly string? Attribute;
-        public readonly ImmutableArray<string> Clauses;
-        /// <summary>
-        /// Available values: "AND", "OR".
-        /// </summary>
-        public readonly string? LogicalOperator;
+        public readonly string Attribute;
         /// <summary>
         /// Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "NotHas".
         /// </summary>
-        public readonly string? Operator;
+        public readonly string Operator;
         /// <summary>
         /// Value to compare against the context attribute. Must be an array for `In` and `NotIn`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
         /// </summary>
-        public readonly string? Value;
+        public readonly string Value;
 
         [OutputConstructor]
         private FlagshipFlagRuleConditionClauseClauseClauseClauseClause(
-            string? attribute,
+            string attribute,
 
-            ImmutableArray<string> clauses,
+            string @operator,
 
-            string? logicalOperator,
-
-            string? @operator,
-
-            string? value)
+            string value)
         {
             Attribute = attribute;
-            Clauses = clauses;
-            LogicalOperator = logicalOperator;
             Operator = @operator;
             Value = value;
         }

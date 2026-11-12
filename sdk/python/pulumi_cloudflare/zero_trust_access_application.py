@@ -84,7 +84,7 @@ class ZeroTrustAccessApplicationArgs:
         :param pulumi.Input[_builtins.bool] http_only_cookie_attribute: Enables the HttpOnly cookie attribute, which increases security against XSS attacks.
         :param pulumi.Input['ZeroTrustAccessApplicationLandingPageDesignArgs'] landing_page_design: The design of the App Launcher landing page shown to users when they log in.
         :param pulumi.Input[_builtins.str] logo_url: The image URL for the logo shown in the App Launcher dashboard.
-        :param pulumi.Input['ZeroTrustAccessApplicationMfaConfigArgs'] mfa_config: Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+        :param pulumi.Input['ZeroTrustAccessApplicationMfaConfigArgs'] mfa_config: Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, rdp, and infrastructure application types. For infrastructure applications, supported authenticators are `piv_key` and `ssh_fido2_key`; for other application types use `totp`, `biometrics`, or `security_key`.
         :param pulumi.Input[_builtins.str] name: The name of the application.
         :param pulumi.Input['ZeroTrustAccessApplicationOauthConfigurationArgs'] oauth_configuration: Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
         :param pulumi.Input[_builtins.bool] options_preflight_bypass: Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
@@ -447,7 +447,7 @@ class ZeroTrustAccessApplicationArgs:
     @pulumi.getter(name="mfaConfig")
     def mfa_config(self) -> pulumi.Input[Optional['ZeroTrustAccessApplicationMfaConfigArgs']]:
         """
-        Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+        Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, rdp, and infrastructure application types. For infrastructure applications, supported authenticators are `piv_key` and `ssh_fido2_key`; for other application types use `totp`, `biometrics`, or `security_key`.
         """
         return pulumi.get(self, "mfa_config")
 
@@ -745,7 +745,7 @@ class _ZeroTrustAccessApplicationState:
         :param pulumi.Input[_builtins.bool] http_only_cookie_attribute: Enables the HttpOnly cookie attribute, which increases security against XSS attacks.
         :param pulumi.Input['ZeroTrustAccessApplicationLandingPageDesignArgs'] landing_page_design: The design of the App Launcher landing page shown to users when they log in.
         :param pulumi.Input[_builtins.str] logo_url: The image URL for the logo shown in the App Launcher dashboard.
-        :param pulumi.Input['ZeroTrustAccessApplicationMfaConfigArgs'] mfa_config: Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+        :param pulumi.Input['ZeroTrustAccessApplicationMfaConfigArgs'] mfa_config: Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, rdp, and infrastructure application types. For infrastructure applications, supported authenticators are `piv_key` and `ssh_fido2_key`; for other application types use `totp`, `biometrics`, or `security_key`.
         :param pulumi.Input[_builtins.str] name: The name of the application.
         :param pulumi.Input['ZeroTrustAccessApplicationOauthConfigurationArgs'] oauth_configuration: Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
         :param pulumi.Input[_builtins.bool] options_preflight_bypass: Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
@@ -1122,7 +1122,7 @@ class _ZeroTrustAccessApplicationState:
     @pulumi.getter(name="mfaConfig")
     def mfa_config(self) -> pulumi.Input[Optional['ZeroTrustAccessApplicationMfaConfigArgs']]:
         """
-        Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+        Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, rdp, and infrastructure application types. For infrastructure applications, supported authenticators are `piv_key` and `ssh_fido2_key`; for other application types use `totp`, `biometrics`, or `security_key`.
         """
         return pulumi.get(self, "mfa_config")
 
@@ -1431,7 +1431,7 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] http_only_cookie_attribute: Enables the HttpOnly cookie attribute, which increases security against XSS attacks.
         :param pulumi.Input[Union['ZeroTrustAccessApplicationLandingPageDesignArgs', 'ZeroTrustAccessApplicationLandingPageDesignArgsDict', 'outputs.ZeroTrustAccessApplicationLandingPageDesign']] landing_page_design: The design of the App Launcher landing page shown to users when they log in.
         :param pulumi.Input[_builtins.str] logo_url: The image URL for the logo shown in the App Launcher dashboard.
-        :param pulumi.Input[Union['ZeroTrustAccessApplicationMfaConfigArgs', 'ZeroTrustAccessApplicationMfaConfigArgsDict', 'outputs.ZeroTrustAccessApplicationMfaConfig']] mfa_config: Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+        :param pulumi.Input[Union['ZeroTrustAccessApplicationMfaConfigArgs', 'ZeroTrustAccessApplicationMfaConfigArgsDict', 'outputs.ZeroTrustAccessApplicationMfaConfig']] mfa_config: Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, rdp, and infrastructure application types. For infrastructure applications, supported authenticators are `piv_key` and `ssh_fido2_key`; for other application types use `totp`, `biometrics`, or `security_key`.
         :param pulumi.Input[_builtins.str] name: The name of the application.
         :param pulumi.Input[Union['ZeroTrustAccessApplicationOauthConfigurationArgs', 'ZeroTrustAccessApplicationOauthConfigurationArgsDict', 'outputs.ZeroTrustAccessApplicationOauthConfiguration']] oauth_configuration: Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
         :param pulumi.Input[_builtins.bool] options_preflight_bypass: Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
@@ -1659,7 +1659,7 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] http_only_cookie_attribute: Enables the HttpOnly cookie attribute, which increases security against XSS attacks.
         :param pulumi.Input[Union['ZeroTrustAccessApplicationLandingPageDesignArgs', 'ZeroTrustAccessApplicationLandingPageDesignArgsDict', 'outputs.ZeroTrustAccessApplicationLandingPageDesign']] landing_page_design: The design of the App Launcher landing page shown to users when they log in.
         :param pulumi.Input[_builtins.str] logo_url: The image URL for the logo shown in the App Launcher dashboard.
-        :param pulumi.Input[Union['ZeroTrustAccessApplicationMfaConfigArgs', 'ZeroTrustAccessApplicationMfaConfigArgsDict', 'outputs.ZeroTrustAccessApplicationMfaConfig']] mfa_config: Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+        :param pulumi.Input[Union['ZeroTrustAccessApplicationMfaConfigArgs', 'ZeroTrustAccessApplicationMfaConfigArgsDict', 'outputs.ZeroTrustAccessApplicationMfaConfig']] mfa_config: Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, rdp, and infrastructure application types. For infrastructure applications, supported authenticators are `piv_key` and `ssh_fido2_key`; for other application types use `totp`, `biometrics`, or `security_key`.
         :param pulumi.Input[_builtins.str] name: The name of the application.
         :param pulumi.Input[Union['ZeroTrustAccessApplicationOauthConfigurationArgs', 'ZeroTrustAccessApplicationOauthConfigurationArgsDict', 'outputs.ZeroTrustAccessApplicationOauthConfiguration']] oauth_configuration: Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
         :param pulumi.Input[_builtins.bool] options_preflight_bypass: Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
@@ -1997,7 +1997,7 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
     @pulumi.getter(name="mfaConfig")
     def mfa_config(self) -> pulumi.Output[Optional['outputs.ZeroTrustAccessApplicationMfaConfig']]:
         """
-        Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+        Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, rdp, and infrastructure application types. For infrastructure applications, supported authenticators are `piv_key` and `ssh_fido2_key`; for other application types use `totp`, `biometrics`, or `security_key`.
         """
         return pulumi.get(self, "mfa_config")
 

@@ -12,6 +12,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Resource Sharing Read`
+//
 // ## Example Usage
 //
 // ```go
@@ -36,6 +40,11 @@ import (
 //			_, err = cloudflare.NewShare(ctx, "example_share", &cloudflare.ShareArgs{
 //				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Name:      pulumi.String("My Shared WAF Managed Rule"),
+//				ExcludedRecipients: cloudflare.ShareExcludedRecipientArray{
+//					&cloudflare.ShareExcludedRecipientArgs{
+//						AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//					},
+//				},
 //				Recipients: cloudflare.ShareRecipientTypeArray{
 //					&cloudflare.ShareRecipientTypeArgs{
 //						OrganizationId:     pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
@@ -46,9 +55,12 @@ import (
 //					&cloudflare.ShareResourceTypeArgs{
 //						Meta:              pulumi.String(json0),
 //						ResourceAccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//						ResourceId:        pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//						ResourceId:        pulumi.String("0a679032-bbb2-4b7e-9acc-dd5c5cb27a17"),
 //						ResourceType:      pulumi.String("custom-ruleset"),
 //					},
+//				},
+//				Tags: pulumi.StringMap{
+//					"foo": pulumi.String("string"),
 //				},
 //			})
 //			if err != nil {
@@ -76,19 +88,24 @@ type Share struct {
 	AssociatedRecipientCount pulumi.IntOutput `pulumi:"associatedRecipientCount"`
 	// The number of recipients in the 'associating' state. This field is only included when requested via the 'include*recipient*counts' parameter.
 	AssociatingRecipientCount pulumi.IntOutput `pulumi:"associatingRecipientCount"`
-	// When the share was created.
+	// When the object was created.
 	Created pulumi.StringOutput `pulumi:"created"`
 	// The number of recipients in the 'disassociated' state. This field is only included when requested via the 'include*recipient*counts' parameter.
 	DisassociatedRecipientCount pulumi.IntOutput `pulumi:"disassociatedRecipientCount"`
 	// The number of recipients in the 'disassociating' state. This field is only included when requested via the 'include*recipient*counts' parameter.
 	DisassociatingRecipientCount pulumi.IntOutput `pulumi:"disassociatingRecipientCount"`
+	// Accounts to exclude from an organization-targeted share. Only allowed when `recipients` contains no account entries. The share owner cannot be excluded. Duplicate entries are ignored.
+	ExcludedRecipients ShareExcludedRecipientArrayOutput `pulumi:"excludedRecipients"`
 	// Include recipient counts in the response.
 	IncludeRecipientCounts pulumi.BoolPtrOutput `pulumi:"includeRecipientCounts"`
 	// Include resources in the response.
 	IncludeResources pulumi.BoolPtrOutput `pulumi:"includeResources"`
+	// Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+	// Available values: "api", "mirror".
+	IncludeTagsFrom pulumi.StringPtrOutput `pulumi:"includeTagsFrom"`
 	// Available values: "sent", "received".
 	Kind pulumi.StringOutput `pulumi:"kind"`
-	// When the share was modified.
+	// When the object was last modified.
 	Modified pulumi.StringOutput `pulumi:"modified"`
 	// The name of the share.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -98,6 +115,8 @@ type Share struct {
 	Resources      ShareResourceTypeArrayOutput  `pulumi:"resources"`
 	// Available values: "active", "deleting", "deleted".
 	Status pulumi.StringOutput `pulumi:"status"`
+	// Tags associated with the share.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Available values: "account", "organization".
 	TargetType pulumi.StringOutput `pulumi:"targetType"`
 }
@@ -114,12 +133,6 @@ func NewShare(ctx *pulumi.Context,
 	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
-	}
-	if args.Recipients == nil {
-		return nil, errors.New("invalid value for required argument 'Recipients'")
-	}
-	if args.Resources == nil {
-		return nil, errors.New("invalid value for required argument 'Resources'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Share
@@ -152,19 +165,24 @@ type shareState struct {
 	AssociatedRecipientCount *int `pulumi:"associatedRecipientCount"`
 	// The number of recipients in the 'associating' state. This field is only included when requested via the 'include*recipient*counts' parameter.
 	AssociatingRecipientCount *int `pulumi:"associatingRecipientCount"`
-	// When the share was created.
+	// When the object was created.
 	Created *string `pulumi:"created"`
 	// The number of recipients in the 'disassociated' state. This field is only included when requested via the 'include*recipient*counts' parameter.
 	DisassociatedRecipientCount *int `pulumi:"disassociatedRecipientCount"`
 	// The number of recipients in the 'disassociating' state. This field is only included when requested via the 'include*recipient*counts' parameter.
 	DisassociatingRecipientCount *int `pulumi:"disassociatingRecipientCount"`
+	// Accounts to exclude from an organization-targeted share. Only allowed when `recipients` contains no account entries. The share owner cannot be excluded. Duplicate entries are ignored.
+	ExcludedRecipients []ShareExcludedRecipient `pulumi:"excludedRecipients"`
 	// Include recipient counts in the response.
 	IncludeRecipientCounts *bool `pulumi:"includeRecipientCounts"`
 	// Include resources in the response.
 	IncludeResources *bool `pulumi:"includeResources"`
+	// Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+	// Available values: "api", "mirror".
+	IncludeTagsFrom *string `pulumi:"includeTagsFrom"`
 	// Available values: "sent", "received".
 	Kind *string `pulumi:"kind"`
-	// When the share was modified.
+	// When the object was last modified.
 	Modified *string `pulumi:"modified"`
 	// The name of the share.
 	Name *string `pulumi:"name"`
@@ -174,6 +192,8 @@ type shareState struct {
 	Resources      []ShareResourceType  `pulumi:"resources"`
 	// Available values: "active", "deleting", "deleted".
 	Status *string `pulumi:"status"`
+	// Tags associated with the share.
+	Tags map[string]string `pulumi:"tags"`
 	// Available values: "account", "organization".
 	TargetType *string `pulumi:"targetType"`
 }
@@ -187,19 +207,24 @@ type ShareState struct {
 	AssociatedRecipientCount pulumi.IntPtrInput
 	// The number of recipients in the 'associating' state. This field is only included when requested via the 'include*recipient*counts' parameter.
 	AssociatingRecipientCount pulumi.IntPtrInput
-	// When the share was created.
+	// When the object was created.
 	Created pulumi.StringPtrInput
 	// The number of recipients in the 'disassociated' state. This field is only included when requested via the 'include*recipient*counts' parameter.
 	DisassociatedRecipientCount pulumi.IntPtrInput
 	// The number of recipients in the 'disassociating' state. This field is only included when requested via the 'include*recipient*counts' parameter.
 	DisassociatingRecipientCount pulumi.IntPtrInput
+	// Accounts to exclude from an organization-targeted share. Only allowed when `recipients` contains no account entries. The share owner cannot be excluded. Duplicate entries are ignored.
+	ExcludedRecipients ShareExcludedRecipientArrayInput
 	// Include recipient counts in the response.
 	IncludeRecipientCounts pulumi.BoolPtrInput
 	// Include resources in the response.
 	IncludeResources pulumi.BoolPtrInput
+	// Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+	// Available values: "api", "mirror".
+	IncludeTagsFrom pulumi.StringPtrInput
 	// Available values: "sent", "received".
 	Kind pulumi.StringPtrInput
-	// When the share was modified.
+	// When the object was last modified.
 	Modified pulumi.StringPtrInput
 	// The name of the share.
 	Name pulumi.StringPtrInput
@@ -209,6 +234,8 @@ type ShareState struct {
 	Resources      ShareResourceTypeArrayInput
 	// Available values: "active", "deleting", "deleted".
 	Status pulumi.StringPtrInput
+	// Tags associated with the share.
+	Tags pulumi.StringMapInput
 	// Available values: "account", "organization".
 	TargetType pulumi.StringPtrInput
 }
@@ -226,28 +253,42 @@ func ShareExists(ctx *pulumi.Context,
 type shareArgs struct {
 	// Account identifier.
 	AccountId string `pulumi:"accountId"`
+	// Accounts to exclude from an organization-targeted share. Only allowed when `recipients` contains no account entries. The share owner cannot be excluded. Duplicate entries are ignored.
+	ExcludedRecipients []ShareExcludedRecipient `pulumi:"excludedRecipients"`
 	// Include recipient counts in the response.
 	IncludeRecipientCounts *bool `pulumi:"includeRecipientCounts"`
 	// Include resources in the response.
 	IncludeResources *bool `pulumi:"includeResources"`
+	// Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+	// Available values: "api", "mirror".
+	IncludeTagsFrom *string `pulumi:"includeTagsFrom"`
 	// The name of the share.
 	Name       string               `pulumi:"name"`
 	Recipients []ShareRecipientType `pulumi:"recipients"`
 	Resources  []ShareResourceType  `pulumi:"resources"`
+	// Tags associated with the share.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Share resource.
 type ShareArgs struct {
 	// Account identifier.
 	AccountId pulumi.StringInput
+	// Accounts to exclude from an organization-targeted share. Only allowed when `recipients` contains no account entries. The share owner cannot be excluded. Duplicate entries are ignored.
+	ExcludedRecipients ShareExcludedRecipientArrayInput
 	// Include recipient counts in the response.
 	IncludeRecipientCounts pulumi.BoolPtrInput
 	// Include resources in the response.
 	IncludeResources pulumi.BoolPtrInput
+	// Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+	// Available values: "api", "mirror".
+	IncludeTagsFrom pulumi.StringPtrInput
 	// The name of the share.
 	Name       pulumi.StringInput
 	Recipients ShareRecipientTypeArrayInput
 	Resources  ShareResourceTypeArrayInput
+	// Tags associated with the share.
+	Tags pulumi.StringMapInput
 }
 
 func (ShareArgs) ElementType() reflect.Type {
@@ -357,7 +398,7 @@ func (o ShareOutput) AssociatingRecipientCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Share) pulumi.IntOutput { return v.AssociatingRecipientCount }).(pulumi.IntOutput)
 }
 
-// When the share was created.
+// When the object was created.
 func (o ShareOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v *Share) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)
 }
@@ -372,6 +413,11 @@ func (o ShareOutput) DisassociatingRecipientCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Share) pulumi.IntOutput { return v.DisassociatingRecipientCount }).(pulumi.IntOutput)
 }
 
+// Accounts to exclude from an organization-targeted share. Only allowed when `recipients` contains no account entries. The share owner cannot be excluded. Duplicate entries are ignored.
+func (o ShareOutput) ExcludedRecipients() ShareExcludedRecipientArrayOutput {
+	return o.ApplyT(func(v *Share) ShareExcludedRecipientArrayOutput { return v.ExcludedRecipients }).(ShareExcludedRecipientArrayOutput)
+}
+
 // Include recipient counts in the response.
 func (o ShareOutput) IncludeRecipientCounts() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Share) pulumi.BoolPtrOutput { return v.IncludeRecipientCounts }).(pulumi.BoolPtrOutput)
@@ -382,12 +428,18 @@ func (o ShareOutput) IncludeResources() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Share) pulumi.BoolPtrOutput { return v.IncludeResources }).(pulumi.BoolPtrOutput)
 }
 
+// Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+// Available values: "api", "mirror".
+func (o ShareOutput) IncludeTagsFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Share) pulumi.StringPtrOutput { return v.IncludeTagsFrom }).(pulumi.StringPtrOutput)
+}
+
 // Available values: "sent", "received".
 func (o ShareOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *Share) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
 
-// When the share was modified.
+// When the object was last modified.
 func (o ShareOutput) Modified() pulumi.StringOutput {
 	return o.ApplyT(func(v *Share) pulumi.StringOutput { return v.Modified }).(pulumi.StringOutput)
 }
@@ -413,6 +465,11 @@ func (o ShareOutput) Resources() ShareResourceTypeArrayOutput {
 // Available values: "active", "deleting", "deleted".
 func (o ShareOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Share) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// Tags associated with the share.
+func (o ShareOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Share) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Available values: "account", "organization".

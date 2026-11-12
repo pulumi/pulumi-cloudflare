@@ -126,16 +126,16 @@ public final class TeamsRuleRuleSettingsBisoAdminControlsArgs extends com.pulumi
     }
 
     /**
-     * Configure keyboard usage behavior. If this field is absent, keyboard usage remains enabled. Applies only when version == &#34;v2&#34;.
-     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
+     * Configure keyboard usage behavior. When set to enable*read*only*actions, only approved browser commands (find, copy, print, zoom, and select-all) may execute; other keyboard input is blocked from reaching the page. Copy and print remain subject to their independent controls. If this field is absent, keyboard usage remains enabled. Applies only when version == &#34;v2&#34;. The enable*read*only*actions value requires an explicit version of &#34;v2&#34;.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;enable*read*only_actions&#34;.
      * 
      */
     @Import(name="keyboard")
     private @Nullable Output<String> keyboard;
 
     /**
-     * @return Configure keyboard usage behavior. If this field is absent, keyboard usage remains enabled. Applies only when version == &#34;v2&#34;.
-     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
+     * @return Configure keyboard usage behavior. When set to enable*read*only*actions, only approved browser commands (find, copy, print, zoom, and select-all) may execute; other keyboard input is blocked from reaching the page. Copy and print remain subject to their independent controls. If this field is absent, keyboard usage remains enabled. Applies only when version == &#34;v2&#34;. The enable*read*only*actions value requires an explicit version of &#34;v2&#34;.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;enable*read*only_actions&#34;.
      * 
      */
     public Optional<Output<String>> keyboard() {
@@ -413,8 +413,8 @@ public final class TeamsRuleRuleSettingsBisoAdminControlsArgs extends com.pulumi
         }
 
         /**
-         * @param keyboard Configure keyboard usage behavior. If this field is absent, keyboard usage remains enabled. Applies only when version == &#34;v2&#34;.
-         * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
+         * @param keyboard Configure keyboard usage behavior. When set to enable*read*only*actions, only approved browser commands (find, copy, print, zoom, and select-all) may execute; other keyboard input is blocked from reaching the page. Copy and print remain subject to their independent controls. If this field is absent, keyboard usage remains enabled. Applies only when version == &#34;v2&#34;. The enable*read*only*actions value requires an explicit version of &#34;v2&#34;.
+         * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;enable*read*only_actions&#34;.
          * 
          * @return builder
          * 
@@ -425,8 +425,8 @@ public final class TeamsRuleRuleSettingsBisoAdminControlsArgs extends com.pulumi
         }
 
         /**
-         * @param keyboard Configure keyboard usage behavior. If this field is absent, keyboard usage remains enabled. Applies only when version == &#34;v2&#34;.
-         * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
+         * @param keyboard Configure keyboard usage behavior. When set to enable*read*only*actions, only approved browser commands (find, copy, print, zoom, and select-all) may execute; other keyboard input is blocked from reaching the page. Copy and print remain subject to their independent controls. If this field is absent, keyboard usage remains enabled. Applies only when version == &#34;v2&#34;. The enable*read*only*actions value requires an explicit version of &#34;v2&#34;.
+         * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;enable*read*only_actions&#34;.
          * 
          * @return builder
          * 

@@ -55,14 +55,14 @@ public final class GetZeroTrustResourceLibraryCategoriesArgs extends com.pulumi.
     }
 
     /**
-     * Number of results to skip. Defaults to 0; negative values are clamped to 0.
+     * Number of results to skip. Defaults to 0; negative values are clamped to 0. Ignored when `cursor` is provided.
      * 
      */
     @Import(name="offset")
     private @Nullable Output<Integer> offset;
 
     /**
-     * @return Number of results to skip. Defaults to 0; negative values are clamped to 0.
+     * @return Number of results to skip. Defaults to 0; negative values are clamped to 0. Ignored when `cursor` is provided.
      * 
      */
     public Optional<Output<Integer>> offset() {
@@ -148,7 +148,7 @@ public final class GetZeroTrustResourceLibraryCategoriesArgs extends com.pulumi.
         }
 
         /**
-         * @param offset Number of results to skip. Defaults to 0; negative values are clamped to 0.
+         * @param offset Number of results to skip. Defaults to 0; negative values are clamped to 0. Ignored when `cursor` is provided.
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class GetZeroTrustResourceLibraryCategoriesArgs extends com.pulumi.
         }
 
         /**
-         * @param offset Number of results to skip. Defaults to 0; negative values are clamped to 0.
+         * @param offset Number of results to skip. Defaults to 0; negative values are clamped to 0. Ignored when `cursor` is provided.
          * 
          * @return builder
          * 

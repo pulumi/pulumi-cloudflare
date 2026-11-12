@@ -84,6 +84,21 @@ public final class OriginCaCertificateArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.requestedValidity);
     }
 
+    /**
+     * Identifier of the zone whose keyless servers the certificate is for. Required when `requestType` is `keyless-certificate`; ignored otherwise.
+     * 
+     */
+    @Import(name="zoneId")
+    private @Nullable Output<String> zoneId;
+
+    /**
+     * @return Identifier of the zone whose keyless servers the certificate is for. Required when `requestType` is `keyless-certificate`; ignored otherwise.
+     * 
+     */
+    public Optional<Output<String>> zoneId() {
+        return Optional.ofNullable(this.zoneId);
+    }
+
     private OriginCaCertificateArgs() {}
 
     private OriginCaCertificateArgs(OriginCaCertificateArgs $) {
@@ -91,6 +106,7 @@ public final class OriginCaCertificateArgs extends com.pulumi.resources.Resource
         this.hostnames = $.hostnames;
         this.requestType = $.requestType;
         this.requestedValidity = $.requestedValidity;
+        this.zoneId = $.zoneId;
     }
 
     public static Builder builder() {
@@ -210,6 +226,27 @@ public final class OriginCaCertificateArgs extends com.pulumi.resources.Resource
          */
         public Builder requestedValidity(Double requestedValidity) {
             return requestedValidity(Output.of(requestedValidity));
+        }
+
+        /**
+         * @param zoneId Identifier of the zone whose keyless servers the certificate is for. Required when `requestType` is `keyless-certificate`; ignored otherwise.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneId(@Nullable Output<String> zoneId) {
+            $.zoneId = zoneId;
+            return this;
+        }
+
+        /**
+         * @param zoneId Identifier of the zone whose keyless servers the certificate is for. Required when `requestType` is `keyless-certificate`; ignored otherwise.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneId(String zoneId) {
+            return zoneId(Output.of(zoneId));
         }
 
         public OriginCaCertificateArgs build() {

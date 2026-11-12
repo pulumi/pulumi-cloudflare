@@ -29,6 +29,10 @@ namespace Pulumi.Cloudflare
     ///     {
     ///         AccountId = "0123456789abcdef0123456789abcdef",
     ///         BucketName = "my-data-bucket",
+    ///         Credential = new Cloudflare.Inputs.R2DataCatalogCredentialArgs
+    ///         {
+    ///             Token = "your-cloudflare-api-token-here",
+    ///         },
     ///     });
     /// 
     /// });
@@ -62,11 +66,23 @@ namespace Pulumi.Cloudflare
         public Output<string> BucketName { get; private set; } = null!;
 
         /// <summary>
+        /// Contains request to store catalog credentials.
+        /// </summary>
+        [Output("credential")]
+        public Output<Outputs.R2DataCatalogCredential?> Credential { get; private set; } = null!;
+
+        /// <summary>
         /// Shows the credential configuration status.
         /// Available values: "present", "absent".
         /// </summary>
         [Output("credentialStatus")]
         public Output<string> CredentialStatus { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies the data-locality jurisdiction of the catalog. The first enable sets it, and it cannot change. Currently always `Default`.
+        /// </summary>
+        [Output("jurisdiction")]
+        public Output<string> Jurisdiction { get; private set; } = null!;
 
         /// <summary>
         /// Configures maintenance for the catalog.
@@ -145,6 +161,12 @@ namespace Pulumi.Cloudflare
         [Input("bucketName", required: true)]
         public Input<string> BucketName { get; set; } = null!;
 
+        /// <summary>
+        /// Contains request to store catalog credentials.
+        /// </summary>
+        [Input("credential")]
+        public Input<Inputs.R2DataCatalogCredentialArgs>? Credential { get; set; }
+
         public R2DataCatalogArgs()
         {
         }
@@ -172,11 +194,23 @@ namespace Pulumi.Cloudflare
         public Input<string>? BucketName { get; set; }
 
         /// <summary>
+        /// Contains request to store catalog credentials.
+        /// </summary>
+        [Input("credential")]
+        public Input<Inputs.R2DataCatalogCredentialGetArgs>? Credential { get; set; }
+
+        /// <summary>
         /// Shows the credential configuration status.
         /// Available values: "present", "absent".
         /// </summary>
         [Input("credentialStatus")]
         public Input<string>? CredentialStatus { get; set; }
+
+        /// <summary>
+        /// Specifies the data-locality jurisdiction of the catalog. The first enable sets it, and it cannot change. Currently always `Default`.
+        /// </summary>
+        [Input("jurisdiction")]
+        public Input<string>? Jurisdiction { get; set; }
 
         /// <summary>
         /// Configures maintenance for the catalog.

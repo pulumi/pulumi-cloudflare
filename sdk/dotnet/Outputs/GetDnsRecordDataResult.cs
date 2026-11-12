@@ -153,6 +153,8 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly double Usage;
         /// <summary>
         /// Value of the record. This field's semantics depend on the chosen tag.
+        /// 
+        /// Value.
         /// </summary>
         public readonly string Value;
         /// <summary>

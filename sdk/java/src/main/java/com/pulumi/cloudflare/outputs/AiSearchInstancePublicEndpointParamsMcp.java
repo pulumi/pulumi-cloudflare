@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 public final class AiSearchInstancePublicEndpointParamsMcp {
     private @Nullable String description;
     /**
-     * @return Disable MCP endpoint for this public endpoint
+     * @return Disable MCP endpoint for this public endpoint.
      * 
      */
     private @Nullable Boolean disabled;
@@ -24,7 +24,7 @@ public final class AiSearchInstancePublicEndpointParamsMcp {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return Disable MCP endpoint for this public endpoint
+     * @return Disable MCP endpoint for this public endpoint.
      * 
      */
     public Optional<Boolean> disabled() {

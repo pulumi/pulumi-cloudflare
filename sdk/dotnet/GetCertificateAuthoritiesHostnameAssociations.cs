@@ -141,6 +141,9 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetCertificateAuthoritiesHostnameAssociationsResult
     {
+        /// <summary>
+        /// Hostnames are returned in lowercase punycode, in no particular order. Null when there are no associations.
+        /// </summary>
         public readonly ImmutableArray<string> Hostnames;
         /// <summary>
         /// Identifier.

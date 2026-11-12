@@ -35,6 +35,23 @@ public final class GetShareFilterArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+     * Available values: &#34;api&#34;, &#34;mirror&#34;.
+     * 
+     */
+    @Import(name="includeTagsFrom")
+    private @Nullable Output<String> includeTagsFrom;
+
+    /**
+     * @return Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+     * Available values: &#34;api&#34;, &#34;mirror&#34;.
+     * 
+     */
+    public Optional<Output<String>> includeTagsFrom() {
+        return Optional.ofNullable(this.includeTagsFrom);
+    }
+
+    /**
      * Filter shares by kind.
      * Available values: &#34;sent&#34;, &#34;received&#34;.
      * 
@@ -136,6 +153,7 @@ public final class GetShareFilterArgs extends com.pulumi.resources.ResourceArgs 
 
     private GetShareFilterArgs(GetShareFilterArgs $) {
         this.direction = $.direction;
+        this.includeTagsFrom = $.includeTagsFrom;
         this.kind = $.kind;
         this.order = $.order;
         this.resourceTypes = $.resourceTypes;
@@ -183,6 +201,29 @@ public final class GetShareFilterArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder direction(String direction) {
             return direction(Output.of(direction));
+        }
+
+        /**
+         * @param includeTagsFrom Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+         * Available values: &#34;api&#34;, &#34;mirror&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeTagsFrom(@Nullable Output<String> includeTagsFrom) {
+            $.includeTagsFrom = includeTagsFrom;
+            return this;
+        }
+
+        /**
+         * @param includeTagsFrom Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+         * Available values: &#34;api&#34;, &#34;mirror&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeTagsFrom(String includeTagsFrom) {
+            return includeTagsFrom(Output.of(includeTagsFrom));
         }
 
         /**

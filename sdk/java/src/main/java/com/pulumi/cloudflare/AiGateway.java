@@ -87,6 +87,7 @@ import javax.annotation.Nullable;
  *                     .s11("FLAG")
  *                     .s12("FLAG")
  *                     .s13("FLAG")
+ *                     .s14("FLAG")
  *                     .s2("FLAG")
  *                     .s3("FLAG")
  *                     .s4("FLAG")
@@ -103,6 +104,7 @@ import javax.annotation.Nullable;
  *                     .s11("FLAG")
  *                     .s12("FLAG")
  *                     .s13("FLAG")
+ *                     .s14("FLAG")
  *                     .s2("FLAG")
  *                     .s3("FLAG")
  *                     .s4("FLAG")
@@ -195,9 +197,17 @@ public class AiGateway extends com.pulumi.resources.CustomResource {
     public Output<String> aiGatewayId() {
         return this.aiGatewayId;
     }
+    /**
+     * Require authentication for gateway access. New gateways must have authentication enabled. Once enabled, authentication cannot be disabled.
+     * 
+     */
     @Export(name="authentication", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> authentication;
 
+    /**
+     * @return Require authentication for gateway access. New gateways must have authentication enabled. Once enabled, authentication cannot be disabled.
+     * 
+     */
     public Output<Boolean> authentication() {
         return this.authentication;
     }
@@ -244,6 +254,38 @@ public class AiGateway extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<AiGatewayDlp>> dlp() {
         return Codegen.optional(this.dlp);
+    }
+    /**
+     * FedRAMP compliance level: fedramp-medium or fedramp-high.
+     * Available values: &#34;fedramp-medium&#34;, &#34;fedramp-high&#34;.
+     * 
+     */
+    @Export(name="fedrampLevel", refs={String.class}, tree="[0]")
+    private Output<String> fedrampLevel;
+
+    /**
+     * @return FedRAMP compliance level: fedramp-medium or fedramp-high.
+     * Available values: &#34;fedramp-medium&#34;, &#34;fedramp-high&#34;.
+     * 
+     */
+    public Output<String> fedrampLevel() {
+        return this.fedrampLevel;
+    }
+    /**
+     * FedRAMP enforcement mode. &#34;prefer&#34; prioritizes compliant connectors but allows fallback. &#34;require&#34; strictly filters.
+     * Available values: &#34;prefer&#34;, &#34;require&#34;.
+     * 
+     */
+    @Export(name="fedrampMode", refs={String.class}, tree="[0]")
+    private Output<String> fedrampMode;
+
+    /**
+     * @return FedRAMP enforcement mode. &#34;prefer&#34; prioritizes compliant connectors but allows fallback. &#34;require&#34; strictly filters.
+     * Available values: &#34;prefer&#34;, &#34;require&#34;.
+     * 
+     */
+    public Output<String> fedrampMode() {
+        return this.fedrampMode;
     }
     @Export(name="guardrails", refs={AiGatewayGuardrails.class}, tree="[0]")
     private Output</* @Nullable */ AiGatewayGuardrails> guardrails;
@@ -383,9 +425,17 @@ public class AiGateway extends com.pulumi.resources.CustomResource {
     public Output<AiGatewaySpendLimits> spendLimits() {
         return this.spendLimits;
     }
+    /**
+     * Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it.
+     * 
+     */
     @Export(name="storeId", refs={String.class}, tree="[0]")
     private Output<String> storeId;
 
+    /**
+     * @return Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it.
+     * 
+     */
     public Output<String> storeId() {
         return this.storeId;
     }

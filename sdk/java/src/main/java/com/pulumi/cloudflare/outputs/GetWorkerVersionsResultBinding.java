@@ -4,7 +4,6 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetWorkerVersionsResultBindingOutbound;
-import com.pulumi.cloudflare.outputs.GetWorkerVersionsResultBindingRetry;
 import com.pulumi.cloudflare.outputs.GetWorkerVersionsResultBindingSimple;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -91,7 +90,7 @@ public final class GetWorkerVersionsResultBinding {
      */
     private String id;
     /**
-     * @return Enables Gateway identity for the binding. Requires network*id to be &#34;cf1:network&#34; and cannot be combined with tunnel*id.
+     * @return Enables Gateway identity for the binding. Requires network*id to be &#34;cf1:network&#34; and cannot be combined with tunnel*id or an explicit &#34;cf1:vnet:&#92;n&#92;n&#34; network_id.
      * Available values: &#34;runtime-email-alpha&#34;.
      * 
      */
@@ -143,7 +142,7 @@ public final class GetWorkerVersionsResultBinding {
      */
     private String namespaceId;
     /**
-     * @return Identifier of the network to bind to. Only &#34;cf1:network&#34; is currently supported. Mutually exclusive with tunnel_id.
+     * @return Identifier of the network to bind to. Use &#34;cf1:network&#34; to select the account&#39;s default virtual network at runtime, or &#34;cf1:vnet:&#92;n&#92;n&#34; to select an explicit virtual network in the Worker&#39;s account. Mutually exclusive with tunnel_id.
      * 
      */
     private String networkId;
@@ -172,11 +171,6 @@ public final class GetWorkerVersionsResultBinding {
      * 
      */
     private String queueName;
-    /**
-     * @return Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
-     * 
-     */
-    private GetWorkerVersionsResultBindingRetry retry;
     /**
      * @return The script where the Durable Object is defined, if it is external to this Worker.
      * 
@@ -234,7 +228,7 @@ public final class GetWorkerVersionsResultBinding {
      */
     private List<String> usages;
     /**
-     * @return Identifier for the version to inherit the binding from, which can be the version ID or the literal &#34;latest&#34; to inherit from the latest version. Defaults to inheriting the binding from the latest version.
+     * @return Identifier for the version to inherit the binding from. This can be a version ID, or the literal &#34;latest&#34; to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to &#34;latest&#34;. Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only &#34;latest&#34; and reject a version ID with error 10057.
      * 
      */
     private String versionId;
@@ -352,7 +346,7 @@ public final class GetWorkerVersionsResultBinding {
         return this.id;
     }
     /**
-     * @return Enables Gateway identity for the binding. Requires network*id to be &#34;cf1:network&#34; and cannot be combined with tunnel*id.
+     * @return Enables Gateway identity for the binding. Requires network*id to be &#34;cf1:network&#34; and cannot be combined with tunnel*id or an explicit &#34;cf1:vnet:&#92;n&#92;n&#34; network_id.
      * Available values: &#34;runtime-email-alpha&#34;.
      * 
      */
@@ -424,7 +418,7 @@ public final class GetWorkerVersionsResultBinding {
         return this.namespaceId;
     }
     /**
-     * @return Identifier of the network to bind to. Only &#34;cf1:network&#34; is currently supported. Mutually exclusive with tunnel_id.
+     * @return Identifier of the network to bind to. Use &#34;cf1:network&#34; to select the account&#39;s default virtual network at runtime, or &#34;cf1:vnet:&#92;n&#92;n&#34; to select an explicit virtual network in the Worker&#39;s account. Mutually exclusive with tunnel_id.
      * 
      */
     public String networkId() {
@@ -464,13 +458,6 @@ public final class GetWorkerVersionsResultBinding {
      */
     public String queueName() {
         return this.queueName;
-    }
-    /**
-     * @return Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
-     * 
-     */
-    public GetWorkerVersionsResultBindingRetry retry() {
-        return this.retry;
     }
     /**
      * @return The script where the Durable Object is defined, if it is external to this Worker.
@@ -551,7 +538,7 @@ public final class GetWorkerVersionsResultBinding {
         return this.usages;
     }
     /**
-     * @return Identifier for the version to inherit the binding from, which can be the version ID or the literal &#34;latest&#34; to inherit from the latest version. Defaults to inheriting the binding from the latest version.
+     * @return Identifier for the version to inherit the binding from. This can be a version ID, or the literal &#34;latest&#34; to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to &#34;latest&#34;. Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only &#34;latest&#34; and reject a version ID with error 10057.
      * 
      */
     public String versionId() {
@@ -605,7 +592,6 @@ public final class GetWorkerVersionsResultBinding {
         private String part;
         private String pipeline;
         private String queueName;
-        private GetWorkerVersionsResultBindingRetry retry;
         private String scriptName;
         private String secretName;
         private String service;
@@ -653,7 +639,6 @@ public final class GetWorkerVersionsResultBinding {
     	      this.part = defaults.part;
     	      this.pipeline = defaults.pipeline;
     	      this.queueName = defaults.queueName;
-    	      this.retry = defaults.retry;
     	      this.scriptName = defaults.scriptName;
     	      this.secretName = defaults.secretName;
     	      this.service = defaults.service;
@@ -924,14 +909,6 @@ public final class GetWorkerVersionsResultBinding {
             return this;
         }
         @CustomType.Setter
-        public Builder retry(GetWorkerVersionsResultBindingRetry retry) {
-            if (retry == null) {
-              throw new MissingRequiredPropertyException("GetWorkerVersionsResultBinding", "retry");
-            }
-            this.retry = retry;
-            return this;
-        }
-        @CustomType.Setter
         public Builder scriptName(String scriptName) {
             if (scriptName == null) {
               throw new MissingRequiredPropertyException("GetWorkerVersionsResultBinding", "scriptName");
@@ -1071,7 +1048,6 @@ public final class GetWorkerVersionsResultBinding {
             _resultValue.part = part;
             _resultValue.pipeline = pipeline;
             _resultValue.queueName = queueName;
-            _resultValue.retry = retry;
             _resultValue.scriptName = scriptName;
             _resultValue.secretName = secretName;
             _resultValue.service = service;

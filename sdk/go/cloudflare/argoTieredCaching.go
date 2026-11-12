@@ -51,7 +51,7 @@ type ArgoTieredCaching struct {
 	Editable pulumi.BoolOutput `pulumi:"editable"`
 	// Last time this setting was modified.
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
-	// Enables Tiered Caching.
+	// Enables or disables Tiered Cache.
 	// Available values: "on", "off".
 	Value pulumi.StringOutput `pulumi:"value"`
 	// Identifier.
@@ -98,7 +98,7 @@ type argoTieredCachingState struct {
 	Editable *bool `pulumi:"editable"`
 	// Last time this setting was modified.
 	ModifiedOn *string `pulumi:"modifiedOn"`
-	// Enables Tiered Caching.
+	// Enables or disables Tiered Cache.
 	// Available values: "on", "off".
 	Value *string `pulumi:"value"`
 	// Identifier.
@@ -110,7 +110,7 @@ type ArgoTieredCachingState struct {
 	Editable pulumi.BoolPtrInput
 	// Last time this setting was modified.
 	ModifiedOn pulumi.StringPtrInput
-	// Enables Tiered Caching.
+	// Enables or disables Tiered Cache.
 	// Available values: "on", "off".
 	Value pulumi.StringPtrInput
 	// Identifier.
@@ -128,7 +128,7 @@ func ArgoTieredCachingExists(ctx *pulumi.Context,
 }
 
 type argoTieredCachingArgs struct {
-	// Enables Tiered Caching.
+	// Enables or disables Tiered Cache.
 	// Available values: "on", "off".
 	Value string `pulumi:"value"`
 	// Identifier.
@@ -137,7 +137,7 @@ type argoTieredCachingArgs struct {
 
 // The set of arguments for constructing a ArgoTieredCaching resource.
 type ArgoTieredCachingArgs struct {
-	// Enables Tiered Caching.
+	// Enables or disables Tiered Cache.
 	// Available values: "on", "off".
 	Value pulumi.StringInput
 	// Identifier.
@@ -241,7 +241,7 @@ func (o ArgoTieredCachingOutput) ModifiedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *ArgoTieredCaching) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
 }
 
-// Enables Tiered Caching.
+// Enables or disables Tiered Cache.
 // Available values: "on", "off".
 func (o ArgoTieredCachingOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v *ArgoTieredCaching) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)

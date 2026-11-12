@@ -3,9 +3,10 @@
 
 package com.pulumi.cloudflare.outputs;
 
-import com.pulumi.cloudflare.outputs.GetPrecursorEnforcementRule;
+import com.pulumi.cloudflare.outputs.GetPrecursorRule;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -13,28 +14,29 @@ import java.util.Objects;
 @CustomType
 public final class GetPrecursorResult {
     /**
-     * @return The zone-level Precursor enforcement mode applied to requests that do
-     * not match a more specific enforcement rule.
-     * Available values: &#34;off&#34;, &#34;min-friction&#34;, &#34;max-security&#34;.
-     * 
-     * @deprecated This attribute is deprecated.
-     * 
-     */
-    @Deprecated
-    private String defaultMode;
-    /**
-     * @return The ordered list of enforcement rules for the zone.
-     * 
-     * @deprecated This attribute is deprecated.
-     * 
-     */
-    @Deprecated
-    private List<GetPrecursorEnforcementRule> enforcementRules;
-    /**
      * @return Identifier.
      * 
      */
     private String id;
+    /**
+     * @return Controls Precursor detection for the zone. `off` disables detection,
+     * `monitor` records detections without affecting bot scores, and `arm`
+     * allows detections to affect bot scores.
+     * Available values: &#34;off&#34;, &#34;monitor&#34;, &#34;arm&#34;.
+     * 
+     */
+    private String mode;
+    /**
+     * @return The ordered list of Precursor rules for the zone.
+     * 
+     */
+    private List<GetPrecursorRule> rules;
+    /**
+     * @return Whether Precursor shows an interstitial when it takes action on a
+     * request.
+     * 
+     */
+    private Boolean showInterstitial;
     /**
      * @return Identifier.
      * 
@@ -43,33 +45,36 @@ public final class GetPrecursorResult {
 
     private GetPrecursorResult() {}
     /**
-     * @return The zone-level Precursor enforcement mode applied to requests that do
-     * not match a more specific enforcement rule.
-     * Available values: &#34;off&#34;, &#34;min-friction&#34;, &#34;max-security&#34;.
-     * 
-     * @deprecated This attribute is deprecated.
-     * 
-     */
-    @Deprecated
-    public String defaultMode() {
-        return this.defaultMode;
-    }
-    /**
-     * @return The ordered list of enforcement rules for the zone.
-     * 
-     * @deprecated This attribute is deprecated.
-     * 
-     */
-    @Deprecated
-    public List<GetPrecursorEnforcementRule> enforcementRules() {
-        return this.enforcementRules;
-    }
-    /**
      * @return Identifier.
      * 
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return Controls Precursor detection for the zone. `off` disables detection,
+     * `monitor` records detections without affecting bot scores, and `arm`
+     * allows detections to affect bot scores.
+     * Available values: &#34;off&#34;, &#34;monitor&#34;, &#34;arm&#34;.
+     * 
+     */
+    public String mode() {
+        return this.mode;
+    }
+    /**
+     * @return The ordered list of Precursor rules for the zone.
+     * 
+     */
+    public List<GetPrecursorRule> rules() {
+        return this.rules;
+    }
+    /**
+     * @return Whether Precursor shows an interstitial when it takes action on a
+     * request.
+     * 
+     */
+    public Boolean showInterstitial() {
+        return this.showInterstitial;
     }
     /**
      * @return Identifier.
@@ -88,44 +93,54 @@ public final class GetPrecursorResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String defaultMode;
-        private List<GetPrecursorEnforcementRule> enforcementRules;
         private String id;
+        private String mode;
+        private List<GetPrecursorRule> rules;
+        private Boolean showInterstitial;
         private String zoneId;
         public Builder() {}
         public Builder(GetPrecursorResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.defaultMode = defaults.defaultMode;
-    	      this.enforcementRules = defaults.enforcementRules;
     	      this.id = defaults.id;
+    	      this.mode = defaults.mode;
+    	      this.rules = defaults.rules;
+    	      this.showInterstitial = defaults.showInterstitial;
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
-        public Builder defaultMode(String defaultMode) {
-            if (defaultMode == null) {
-              throw new MissingRequiredPropertyException("GetPrecursorResult", "defaultMode");
-            }
-            this.defaultMode = defaultMode;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder enforcementRules(List<GetPrecursorEnforcementRule> enforcementRules) {
-            if (enforcementRules == null) {
-              throw new MissingRequiredPropertyException("GetPrecursorResult", "enforcementRules");
-            }
-            this.enforcementRules = enforcementRules;
-            return this;
-        }
-        public Builder enforcementRules(GetPrecursorEnforcementRule... enforcementRules) {
-            return enforcementRules(List.of(enforcementRules));
-        }
         @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetPrecursorResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder mode(String mode) {
+            if (mode == null) {
+              throw new MissingRequiredPropertyException("GetPrecursorResult", "mode");
+            }
+            this.mode = mode;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder rules(List<GetPrecursorRule> rules) {
+            if (rules == null) {
+              throw new MissingRequiredPropertyException("GetPrecursorResult", "rules");
+            }
+            this.rules = rules;
+            return this;
+        }
+        public Builder rules(GetPrecursorRule... rules) {
+            return rules(List.of(rules));
+        }
+        @CustomType.Setter
+        public Builder showInterstitial(Boolean showInterstitial) {
+            if (showInterstitial == null) {
+              throw new MissingRequiredPropertyException("GetPrecursorResult", "showInterstitial");
+            }
+            this.showInterstitial = showInterstitial;
             return this;
         }
         @CustomType.Setter
@@ -138,9 +153,10 @@ public final class GetPrecursorResult {
         }
         public GetPrecursorResult build() {
             final var _resultValue = new GetPrecursorResult();
-            _resultValue.defaultMode = defaultMode;
-            _resultValue.enforcementRules = enforcementRules;
             _resultValue.id = id;
+            _resultValue.mode = mode;
+            _resultValue.rules = rules;
+            _resultValue.showInterstitial = showInterstitial;
             _resultValue.zoneId = zoneId;
             return _resultValue;
         }

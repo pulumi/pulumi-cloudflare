@@ -82,6 +82,11 @@ public final class GetZeroTrustAccessPoliciesResult {
      */
     private String name;
     /**
+     * @return The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.
+     * 
+     */
+    private String policyResolutionAccountId;
+    /**
      * @return A custom message that will appear on the purpose justification screen.
      * 
      */
@@ -194,6 +199,13 @@ public final class GetZeroTrustAccessPoliciesResult {
         return this.name;
     }
     /**
+     * @return The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.
+     * 
+     */
+    public String policyResolutionAccountId() {
+        return this.policyResolutionAccountId;
+    }
+    /**
      * @return A custom message that will appear on the purpose justification screen.
      * 
      */
@@ -250,6 +262,7 @@ public final class GetZeroTrustAccessPoliciesResult {
         private Boolean isolationRequired;
         private GetZeroTrustAccessPoliciesResultMfaConfig mfaConfig;
         private String name;
+        private String policyResolutionAccountId;
         private String purposeJustificationPrompt;
         private Boolean purposeJustificationRequired;
         private List<GetZeroTrustAccessPoliciesResultRequire> requires;
@@ -272,6 +285,7 @@ public final class GetZeroTrustAccessPoliciesResult {
     	      this.isolationRequired = defaults.isolationRequired;
     	      this.mfaConfig = defaults.mfaConfig;
     	      this.name = defaults.name;
+    	      this.policyResolutionAccountId = defaults.policyResolutionAccountId;
     	      this.purposeJustificationPrompt = defaults.purposeJustificationPrompt;
     	      this.purposeJustificationRequired = defaults.purposeJustificationRequired;
     	      this.requires = defaults.requires;
@@ -394,6 +408,14 @@ public final class GetZeroTrustAccessPoliciesResult {
             return this;
         }
         @CustomType.Setter
+        public Builder policyResolutionAccountId(String policyResolutionAccountId) {
+            if (policyResolutionAccountId == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessPoliciesResult", "policyResolutionAccountId");
+            }
+            this.policyResolutionAccountId = policyResolutionAccountId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder purposeJustificationPrompt(String purposeJustificationPrompt) {
             if (purposeJustificationPrompt == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessPoliciesResult", "purposeJustificationPrompt");
@@ -459,6 +481,7 @@ public final class GetZeroTrustAccessPoliciesResult {
             _resultValue.isolationRequired = isolationRequired;
             _resultValue.mfaConfig = mfaConfig;
             _resultValue.name = name;
+            _resultValue.policyResolutionAccountId = policyResolutionAccountId;
             _resultValue.purposeJustificationPrompt = purposeJustificationPrompt;
             _resultValue.purposeJustificationRequired = purposeJustificationRequired;
             _resultValue.requires = requires;

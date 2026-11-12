@@ -30,6 +30,7 @@ class MagicTransitSiteLanArgs:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  nat: pulumi.Input[Optional['MagicTransitSiteLanNatArgs']] = None,
                  physport: pulumi.Input[Optional[_builtins.int]] = None,
+                 remote_subnets: pulumi.Input[Optional[Sequence[pulumi.Input['MagicTransitSiteLanRemoteSubnetArgs']]]] = None,
                  routed_subnets: pulumi.Input[Optional[Sequence[pulumi.Input['MagicTransitSiteLanRoutedSubnetArgs']]]] = None,
                  static_addressing: pulumi.Input[Optional['MagicTransitSiteLanStaticAddressingArgs']] = None,
                  vlan_tag: pulumi.Input[Optional[_builtins.int]] = None):
@@ -60,6 +61,8 @@ class MagicTransitSiteLanArgs:
             pulumi.set(__self__, "nat", nat)
         if physport is not None:
             pulumi.set(__self__, "physport", physport)
+        if remote_subnets is not None:
+            pulumi.set(__self__, "remote_subnets", remote_subnets)
         if routed_subnets is not None:
             pulumi.set(__self__, "routed_subnets", routed_subnets)
         if static_addressing is not None:
@@ -164,6 +167,15 @@ class MagicTransitSiteLanArgs:
         pulumi.set(self, "physport", value)
 
     @_builtins.property
+    @pulumi.getter(name="remoteSubnets")
+    def remote_subnets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['MagicTransitSiteLanRemoteSubnetArgs']]]]:
+        return pulumi.get(self, "remote_subnets")
+
+    @remote_subnets.setter
+    def remote_subnets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['MagicTransitSiteLanRemoteSubnetArgs']]]]):
+        pulumi.set(self, "remote_subnets", value)
+
+    @_builtins.property
     @pulumi.getter(name="routedSubnets")
     def routed_subnets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['MagicTransitSiteLanRoutedSubnetArgs']]]]:
         return pulumi.get(self, "routed_subnets")
@@ -208,6 +220,7 @@ class _MagicTransitSiteLanState:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  nat: pulumi.Input[Optional['MagicTransitSiteLanNatArgs']] = None,
                  physport: pulumi.Input[Optional[_builtins.int]] = None,
+                 remote_subnets: pulumi.Input[Optional[Sequence[pulumi.Input['MagicTransitSiteLanRemoteSubnetArgs']]]] = None,
                  routed_subnets: pulumi.Input[Optional[Sequence[pulumi.Input['MagicTransitSiteLanRoutedSubnetArgs']]]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
                  static_addressing: pulumi.Input[Optional['MagicTransitSiteLanStaticAddressingArgs']] = None,
@@ -239,6 +252,8 @@ class _MagicTransitSiteLanState:
             pulumi.set(__self__, "nat", nat)
         if physport is not None:
             pulumi.set(__self__, "physport", physport)
+        if remote_subnets is not None:
+            pulumi.set(__self__, "remote_subnets", remote_subnets)
         if routed_subnets is not None:
             pulumi.set(__self__, "routed_subnets", routed_subnets)
         if site_id is not None:
@@ -333,6 +348,15 @@ class _MagicTransitSiteLanState:
         pulumi.set(self, "physport", value)
 
     @_builtins.property
+    @pulumi.getter(name="remoteSubnets")
+    def remote_subnets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['MagicTransitSiteLanRemoteSubnetArgs']]]]:
+        return pulumi.get(self, "remote_subnets")
+
+    @remote_subnets.setter
+    def remote_subnets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['MagicTransitSiteLanRemoteSubnetArgs']]]]):
+        pulumi.set(self, "remote_subnets", value)
+
+    @_builtins.property
     @pulumi.getter(name="routedSubnets")
     def routed_subnets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['MagicTransitSiteLanRoutedSubnetArgs']]]]:
         return pulumi.get(self, "routed_subnets")
@@ -392,6 +416,7 @@ class MagicTransitSiteLan(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  nat: pulumi.Input[Optional[Union['MagicTransitSiteLanNatArgs', 'MagicTransitSiteLanNatArgsDict', 'outputs.MagicTransitSiteLanNat']]] = None,
                  physport: pulumi.Input[Optional[_builtins.int]] = None,
+                 remote_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MagicTransitSiteLanRemoteSubnetArgs', 'MagicTransitSiteLanRemoteSubnetArgsDict', 'outputs.MagicTransitSiteLanRemoteSubnet']]]]] = None,
                  routed_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MagicTransitSiteLanRoutedSubnetArgs', 'MagicTransitSiteLanRoutedSubnetArgsDict', 'outputs.MagicTransitSiteLanRoutedSubnet']]]]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
                  static_addressing: pulumi.Input[Optional[Union['MagicTransitSiteLanStaticAddressingArgs', 'MagicTransitSiteLanStaticAddressingArgsDict', 'outputs.MagicTransitSiteLanStaticAddressing']]] = None,
@@ -423,6 +448,10 @@ class MagicTransitSiteLan(pulumi.CustomResource):
                 "static_prefix": "192.0.2.0/24",
             },
             physport=1,
+            remote_subnets=[{
+                "local_alias_prefix": "192.0.2.0/24",
+                "remote_prefix": "192.0.2.0/24",
+            }],
             routed_subnets=[{
                 "next_hop": "192.0.2.1",
                 "prefix": "192.0.2.0/24",
@@ -505,6 +534,10 @@ class MagicTransitSiteLan(pulumi.CustomResource):
                 "static_prefix": "192.0.2.0/24",
             },
             physport=1,
+            remote_subnets=[{
+                "local_alias_prefix": "192.0.2.0/24",
+                "remote_prefix": "192.0.2.0/24",
+            }],
             routed_subnets=[{
                 "next_hop": "192.0.2.1",
                 "prefix": "192.0.2.0/24",
@@ -568,6 +601,7 @@ class MagicTransitSiteLan(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  nat: pulumi.Input[Optional[Union['MagicTransitSiteLanNatArgs', 'MagicTransitSiteLanNatArgsDict', 'outputs.MagicTransitSiteLanNat']]] = None,
                  physport: pulumi.Input[Optional[_builtins.int]] = None,
+                 remote_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MagicTransitSiteLanRemoteSubnetArgs', 'MagicTransitSiteLanRemoteSubnetArgsDict', 'outputs.MagicTransitSiteLanRemoteSubnet']]]]] = None,
                  routed_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MagicTransitSiteLanRoutedSubnetArgs', 'MagicTransitSiteLanRoutedSubnetArgsDict', 'outputs.MagicTransitSiteLanRoutedSubnet']]]]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
                  static_addressing: pulumi.Input[Optional[Union['MagicTransitSiteLanStaticAddressingArgs', 'MagicTransitSiteLanStaticAddressingArgsDict', 'outputs.MagicTransitSiteLanStaticAddressing']]] = None,
@@ -591,6 +625,7 @@ class MagicTransitSiteLan(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["nat"] = nat
             __props__.__dict__["physport"] = physport
+            __props__.__dict__["remote_subnets"] = remote_subnets
             __props__.__dict__["routed_subnets"] = routed_subnets
             if site_id is None and not opts.urn:
                 raise TypeError("Missing required property 'site_id'")
@@ -615,6 +650,7 @@ class MagicTransitSiteLan(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             nat: pulumi.Input[Optional[Union['MagicTransitSiteLanNatArgs', 'MagicTransitSiteLanNatArgsDict', 'outputs.MagicTransitSiteLanNat']]] = None,
             physport: pulumi.Input[Optional[_builtins.int]] = None,
+            remote_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MagicTransitSiteLanRemoteSubnetArgs', 'MagicTransitSiteLanRemoteSubnetArgsDict', 'outputs.MagicTransitSiteLanRemoteSubnet']]]]] = None,
             routed_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MagicTransitSiteLanRoutedSubnetArgs', 'MagicTransitSiteLanRoutedSubnetArgsDict', 'outputs.MagicTransitSiteLanRoutedSubnet']]]]] = None,
             site_id: pulumi.Input[Optional[_builtins.str]] = None,
             static_addressing: pulumi.Input[Optional[Union['MagicTransitSiteLanStaticAddressingArgs', 'MagicTransitSiteLanStaticAddressingArgsDict', 'outputs.MagicTransitSiteLanStaticAddressing']]] = None,
@@ -646,6 +682,7 @@ class MagicTransitSiteLan(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["nat"] = nat
         __props__.__dict__["physport"] = physport
+        __props__.__dict__["remote_subnets"] = remote_subnets
         __props__.__dict__["routed_subnets"] = routed_subnets
         __props__.__dict__["site_id"] = site_id
         __props__.__dict__["static_addressing"] = static_addressing
@@ -663,6 +700,7 @@ class MagicTransitSiteLan(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             nat: pulumi.Input[Optional[Union['MagicTransitSiteLanNatArgs', 'MagicTransitSiteLanNatArgsDict', 'outputs.MagicTransitSiteLanNat']]] = None,
             physport: pulumi.Input[Optional[_builtins.int]] = None,
+            remote_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MagicTransitSiteLanRemoteSubnetArgs', 'MagicTransitSiteLanRemoteSubnetArgsDict', 'outputs.MagicTransitSiteLanRemoteSubnet']]]]] = None,
             routed_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MagicTransitSiteLanRoutedSubnetArgs', 'MagicTransitSiteLanRoutedSubnetArgsDict', 'outputs.MagicTransitSiteLanRoutedSubnet']]]]] = None,
             site_id: pulumi.Input[Optional[_builtins.str]] = None,
             static_addressing: pulumi.Input[Optional[Union['MagicTransitSiteLanStaticAddressingArgs', 'MagicTransitSiteLanStaticAddressingArgsDict', 'outputs.MagicTransitSiteLanStaticAddressing']]] = None,
@@ -676,6 +714,7 @@ class MagicTransitSiteLan(pulumi.CustomResource):
         __props__["name"] = name
         __props__["nat"] = nat
         __props__["physport"] = physport
+        __props__["remoteSubnets"] = remote_subnets
         __props__["routedSubnets"] = routed_subnets
         __props__["siteId"] = site_id
         __props__["staticAddressing"] = static_addressing
@@ -733,6 +772,11 @@ class MagicTransitSiteLan(pulumi.CustomResource):
     @pulumi.getter
     def physport(self) -> pulumi.Output[Optional[_builtins.int]]:
         return pulumi.get(self, "physport")
+
+    @_builtins.property
+    @pulumi.getter(name="remoteSubnets")
+    def remote_subnets(self) -> pulumi.Output[Optional[Sequence['outputs.MagicTransitSiteLanRemoteSubnet']]]:
+        return pulumi.get(self, "remote_subnets")
 
     @_builtins.property
     @pulumi.getter(name="routedSubnets")

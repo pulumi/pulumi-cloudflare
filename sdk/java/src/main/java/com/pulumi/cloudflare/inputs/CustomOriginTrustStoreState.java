@@ -93,14 +93,14 @@ public final class CustomOriginTrustStoreState extends com.pulumi.resources.Reso
     }
 
     /**
-     * When the certificate was last modified.
+     * When the certificate was last modified. Only returned when uploading a certificate.
      * 
      */
     @Import(name="updatedAt")
     private @Nullable Output<String> updatedAt;
 
     /**
-     * @return When the certificate was last modified.
+     * @return When the certificate was last modified. Only returned when uploading a certificate.
      * 
      */
     public Optional<Output<String>> updatedAt() {
@@ -276,7 +276,7 @@ public final class CustomOriginTrustStoreState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param updatedAt When the certificate was last modified.
+         * @param updatedAt When the certificate was last modified. Only returned when uploading a certificate.
          * 
          * @return builder
          * 
@@ -287,7 +287,7 @@ public final class CustomOriginTrustStoreState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param updatedAt When the certificate was last modified.
+         * @param updatedAt When the certificate was last modified. Only returned when uploading a certificate.
          * 
          * @return builder
          * 

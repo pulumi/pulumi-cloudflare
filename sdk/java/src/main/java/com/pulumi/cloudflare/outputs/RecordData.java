@@ -128,6 +128,8 @@ public final class RecordData {
     /**
      * @return Priority.
      * 
+     * Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
+     * 
      */
     private @Nullable Double priority;
     /**
@@ -173,10 +175,15 @@ public final class RecordData {
     /**
      * @return Target.
      * 
+     * A valid hostname.
+     * 
+     * The record content.
+     * 
      */
     private @Nullable String target;
     /**
-     * @return Type.
+     * @return Record type.
+     * Available values: &#34;A&#34;, &#34;AAAA&#34;, &#34;CNAME&#34;, &#34;MX&#34;, &#34;NS&#34;, &#34;OPENPGPKEY&#34;, &#34;PTR&#34;, &#34;TXT&#34;, &#34;CAA&#34;, &#34;CERT&#34;, &#34;DNSKEY&#34;, &#34;DS&#34;, &#34;HTTPS&#34;, &#34;LOC&#34;, &#34;NAPTR&#34;, &#34;SMIMEA&#34;, &#34;SRV&#34;, &#34;SSHFP&#34;, &#34;SVCB&#34;, &#34;TLSA&#34;, &#34;URI&#34;.
      * 
      */
     private @Nullable Double type;
@@ -187,6 +194,8 @@ public final class RecordData {
     private @Nullable Double usage;
     /**
      * @return Value of the record. This field&#39;s semantics depend on the chosen tag.
+     * 
+     * Value.
      * 
      */
     private @Nullable String value;
@@ -356,6 +365,8 @@ public final class RecordData {
     /**
      * @return Priority.
      * 
+     * Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
+     * 
      */
     public Optional<Double> priority() {
         return Optional.ofNullable(this.priority);
@@ -419,12 +430,17 @@ public final class RecordData {
     /**
      * @return Target.
      * 
+     * A valid hostname.
+     * 
+     * The record content.
+     * 
      */
     public Optional<String> target() {
         return Optional.ofNullable(this.target);
     }
     /**
-     * @return Type.
+     * @return Record type.
+     * Available values: &#34;A&#34;, &#34;AAAA&#34;, &#34;CNAME&#34;, &#34;MX&#34;, &#34;NS&#34;, &#34;OPENPGPKEY&#34;, &#34;PTR&#34;, &#34;TXT&#34;, &#34;CAA&#34;, &#34;CERT&#34;, &#34;DNSKEY&#34;, &#34;DS&#34;, &#34;HTTPS&#34;, &#34;LOC&#34;, &#34;NAPTR&#34;, &#34;SMIMEA&#34;, &#34;SRV&#34;, &#34;SSHFP&#34;, &#34;SVCB&#34;, &#34;TLSA&#34;, &#34;URI&#34;.
      * 
      */
     public Optional<Double> type() {
@@ -439,6 +455,8 @@ public final class RecordData {
     }
     /**
      * @return Value of the record. This field&#39;s semantics depend on the chosen tag.
+     * 
+     * Value.
      * 
      */
     public Optional<String> value() {

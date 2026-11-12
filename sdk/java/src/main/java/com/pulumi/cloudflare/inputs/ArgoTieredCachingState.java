@@ -47,7 +47,7 @@ public final class ArgoTieredCachingState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Enables Tiered Caching.
+     * Enables or disables Tiered Cache.
      * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
@@ -55,7 +55,7 @@ public final class ArgoTieredCachingState extends com.pulumi.resources.ResourceA
     private @Nullable Output<String> value;
 
     /**
-     * @return Enables Tiered Caching.
+     * @return Enables or disables Tiered Cache.
      * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
@@ -148,7 +148,7 @@ public final class ArgoTieredCachingState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param value Enables Tiered Caching.
+         * @param value Enables or disables Tiered Cache.
          * Available values: &#34;on&#34;, &#34;off&#34;.
          * 
          * @return builder
@@ -160,7 +160,7 @@ public final class ArgoTieredCachingState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param value Enables Tiered Caching.
+         * @param value Enables or disables Tiered Cache.
          * Available values: &#34;on&#34;, &#34;off&#34;.
          * 
          * @return builder

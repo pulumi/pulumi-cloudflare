@@ -460,6 +460,16 @@ public final class GetRulesetRuleActionParameters {
      * 
      */
     private GetRulesetRuleActionParametersVary vary;
+    /**
+     * @return Whether to serve the WebMCP bridge script, which exposes the page&#39;s tools to browser AI agents.
+     * 
+     */
+    private Boolean webmcpEnabled;
+    /**
+     * @return Bundled WebMCP tool packs to activate for matching requests. An empty list disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself.
+     * 
+     */
+    private List<String> webmcpPacks;
 
     private GetRulesetRuleActionParameters() {}
     /**
@@ -1032,6 +1042,20 @@ public final class GetRulesetRuleActionParameters {
     public GetRulesetRuleActionParametersVary vary() {
         return this.vary;
     }
+    /**
+     * @return Whether to serve the WebMCP bridge script, which exposes the page&#39;s tools to browser AI agents.
+     * 
+     */
+    public Boolean webmcpEnabled() {
+        return this.webmcpEnabled;
+    }
+    /**
+     * @return Bundled WebMCP tool packs to activate for matching requests. An empty list disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself.
+     * 
+     */
+    public List<String> webmcpPacks() {
+        return this.webmcpPacks;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -1122,6 +1146,8 @@ public final class GetRulesetRuleActionParameters {
         private GetRulesetRuleActionParametersUri uri;
         private List<String> values;
         private GetRulesetRuleActionParametersVary vary;
+        private Boolean webmcpEnabled;
+        private List<String> webmcpPacks;
         public Builder() {}
         public Builder(GetRulesetRuleActionParameters defaults) {
     	      Objects.requireNonNull(defaults);
@@ -1205,6 +1231,8 @@ public final class GetRulesetRuleActionParameters {
     	      this.uri = defaults.uri;
     	      this.values = defaults.values;
     	      this.vary = defaults.vary;
+    	      this.webmcpEnabled = defaults.webmcpEnabled;
+    	      this.webmcpPacks = defaults.webmcpPacks;
         }
 
         @CustomType.Setter
@@ -1880,6 +1908,25 @@ public final class GetRulesetRuleActionParameters {
             this.vary = vary;
             return this;
         }
+        @CustomType.Setter
+        public Builder webmcpEnabled(Boolean webmcpEnabled) {
+            if (webmcpEnabled == null) {
+              throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "webmcpEnabled");
+            }
+            this.webmcpEnabled = webmcpEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder webmcpPacks(List<String> webmcpPacks) {
+            if (webmcpPacks == null) {
+              throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "webmcpPacks");
+            }
+            this.webmcpPacks = webmcpPacks;
+            return this;
+        }
+        public Builder webmcpPacks(String... webmcpPacks) {
+            return webmcpPacks(List.of(webmcpPacks));
+        }
         public GetRulesetRuleActionParameters build() {
             final var _resultValue = new GetRulesetRuleActionParameters();
             _resultValue.additionalCacheablePorts = additionalCacheablePorts;
@@ -1962,6 +2009,8 @@ public final class GetRulesetRuleActionParameters {
             _resultValue.uri = uri;
             _resultValue.values = values;
             _resultValue.vary = vary;
+            _resultValue.webmcpEnabled = webmcpEnabled;
+            _resultValue.webmcpPacks = webmcpPacks;
             return _resultValue;
         }
     }

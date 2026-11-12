@@ -94,6 +94,8 @@ type LookupAccountResult struct {
 	Filter    *GetAccountFilter `pulumi:"filter"`
 	// Account identifier tag.
 	Id string `pulumi:"id"`
+	// Legacy account flags.
+	LegacyFlags GetAccountLegacyFlags `pulumi:"legacyFlags"`
 	// Parent container details
 	ManagedBy GetAccountManagedBy `pulumi:"managedBy"`
 	// Account name
@@ -152,6 +154,11 @@ func (o LookupAccountResultOutput) Filter() GetAccountFilterPtrOutput {
 // Account identifier tag.
 func (o LookupAccountResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Legacy account flags.
+func (o LookupAccountResultOutput) LegacyFlags() GetAccountLegacyFlagsOutput {
+	return o.ApplyT(func(v LookupAccountResult) GetAccountLegacyFlags { return v.LegacyFlags }).(GetAccountLegacyFlagsOutput)
 }
 
 // Parent container details

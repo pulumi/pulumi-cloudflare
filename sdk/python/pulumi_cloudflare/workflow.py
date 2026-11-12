@@ -27,12 +27,15 @@ class WorkflowArgs:
                  workflow_name: pulumi.Input[_builtins.str],
                  concurrency: pulumi.Input[Optional['WorkflowConcurrencyArgs']] = None,
                  default_retention: pulumi.Input[Optional['WorkflowDefaultRetentionArgs']] = None,
+                 jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
                  limits: pulumi.Input[Optional['WorkflowLimitsArgs']] = None,
                  schedules: pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowScheduleArgs']]]] = None):
         """
         The set of arguments for constructing a Workflow resource.
 
         :param pulumi.Input['WorkflowDefaultRetentionArgs'] default_retention: Default retention applied to instances of this version when they do not set their own retention.
+        :param pulumi.Input[_builtins.str] jurisdiction: Jurisdiction where instances of this workflow run and store data. Can only be set when the workflow is created and cannot be changed afterwards; omit it to keep the existing jurisdiction.
+               Available values: "eu", "fedramp", "us".
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "class_name", class_name)
@@ -42,6 +45,8 @@ class WorkflowArgs:
             pulumi.set(__self__, "concurrency", concurrency)
         if default_retention is not None:
             pulumi.set(__self__, "default_retention", default_retention)
+        if jurisdiction is not None:
+            pulumi.set(__self__, "jurisdiction", jurisdiction)
         if limits is not None:
             pulumi.set(__self__, "limits", limits)
         if schedules is not None:
@@ -106,6 +111,19 @@ class WorkflowArgs:
 
     @_builtins.property
     @pulumi.getter
+    def jurisdiction(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Jurisdiction where instances of this workflow run and store data. Can only be set when the workflow is created and cannot be changed afterwards; omit it to keep the existing jurisdiction.
+        Available values: "eu", "fedramp", "us".
+        """
+        return pulumi.get(self, "jurisdiction")
+
+    @jurisdiction.setter
+    def jurisdiction(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "jurisdiction", value)
+
+    @_builtins.property
+    @pulumi.getter
     def limits(self) -> pulumi.Input[Optional['WorkflowLimitsArgs']]:
         return pulumi.get(self, "limits")
 
@@ -133,6 +151,7 @@ class _WorkflowState:
                  default_retention: pulumi.Input[Optional['WorkflowDefaultRetentionArgs']] = None,
                  instances: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.float]]]] = None,
                  is_deleted: pulumi.Input[Optional[_builtins.float]] = None,
+                 jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
                  limits: pulumi.Input[Optional['WorkflowLimitsArgs']] = None,
                  modified_on: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -147,6 +166,8 @@ class _WorkflowState:
         Input properties used for looking up and filtering Workflow resources.
 
         :param pulumi.Input['WorkflowDefaultRetentionArgs'] default_retention: Default retention applied to instances of this version when they do not set their own retention.
+        :param pulumi.Input[_builtins.str] jurisdiction: Jurisdiction where instances of this workflow run and store data. Can only be set when the workflow is created and cannot be changed afterwards; omit it to keep the existing jurisdiction.
+               Available values: "eu", "fedramp", "us".
         :param pulumi.Input[_builtins.bool] script_deleted: Whether the bound Worker was deleted, leaving this Workflow inactive.
         """
         if account_id is not None:
@@ -163,6 +184,8 @@ class _WorkflowState:
             pulumi.set(__self__, "instances", instances)
         if is_deleted is not None:
             pulumi.set(__self__, "is_deleted", is_deleted)
+        if jurisdiction is not None:
+            pulumi.set(__self__, "jurisdiction", jurisdiction)
         if limits is not None:
             pulumi.set(__self__, "limits", limits)
         if modified_on is not None:
@@ -249,6 +272,19 @@ class _WorkflowState:
     @is_deleted.setter
     def is_deleted(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "is_deleted", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def jurisdiction(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Jurisdiction where instances of this workflow run and store data. Can only be set when the workflow is created and cannot be changed afterwards; omit it to keep the existing jurisdiction.
+        Available values: "eu", "fedramp", "us".
+        """
+        return pulumi.get(self, "jurisdiction")
+
+    @jurisdiction.setter
+    def jurisdiction(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "jurisdiction", value)
 
     @_builtins.property
     @pulumi.getter
@@ -354,6 +390,7 @@ class Workflow(pulumi.CustomResource):
                  class_name: pulumi.Input[Optional[_builtins.str]] = None,
                  concurrency: pulumi.Input[Optional[Union['WorkflowConcurrencyArgs', 'WorkflowConcurrencyArgsDict', 'outputs.WorkflowConcurrency']]] = None,
                  default_retention: pulumi.Input[Optional[Union['WorkflowDefaultRetentionArgs', 'WorkflowDefaultRetentionArgsDict', 'outputs.WorkflowDefaultRetention']]] = None,
+                 jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
                  limits: pulumi.Input[Optional[Union['WorkflowLimitsArgs', 'WorkflowLimitsArgsDict', 'outputs.WorkflowLimits']]] = None,
                  schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkflowScheduleArgs', 'WorkflowScheduleArgsDict', 'outputs.WorkflowSchedule']]]]] = None,
                  script_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -384,6 +421,7 @@ class Workflow(pulumi.CustomResource):
                 "error_retention": "5 minutes",
                 "success_retention": "5 minutes",
             },
+            jurisdiction="eu",
             limits={
                 "steps": 1,
             },
@@ -402,6 +440,8 @@ class Workflow(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['WorkflowDefaultRetentionArgs', 'WorkflowDefaultRetentionArgsDict', 'outputs.WorkflowDefaultRetention']] default_retention: Default retention applied to instances of this version when they do not set their own retention.
+        :param pulumi.Input[_builtins.str] jurisdiction: Jurisdiction where instances of this workflow run and store data. Can only be set when the workflow is created and cannot be changed afterwards; omit it to keep the existing jurisdiction.
+               Available values: "eu", "fedramp", "us".
         """
         ...
     @overload
@@ -434,6 +474,7 @@ class Workflow(pulumi.CustomResource):
                 "error_retention": "5 minutes",
                 "success_retention": "5 minutes",
             },
+            jurisdiction="eu",
             limits={
                 "steps": 1,
             },
@@ -468,6 +509,7 @@ class Workflow(pulumi.CustomResource):
                  class_name: pulumi.Input[Optional[_builtins.str]] = None,
                  concurrency: pulumi.Input[Optional[Union['WorkflowConcurrencyArgs', 'WorkflowConcurrencyArgsDict', 'outputs.WorkflowConcurrency']]] = None,
                  default_retention: pulumi.Input[Optional[Union['WorkflowDefaultRetentionArgs', 'WorkflowDefaultRetentionArgsDict', 'outputs.WorkflowDefaultRetention']]] = None,
+                 jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
                  limits: pulumi.Input[Optional[Union['WorkflowLimitsArgs', 'WorkflowLimitsArgsDict', 'outputs.WorkflowLimits']]] = None,
                  schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkflowScheduleArgs', 'WorkflowScheduleArgsDict', 'outputs.WorkflowSchedule']]]]] = None,
                  script_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -489,6 +531,7 @@ class Workflow(pulumi.CustomResource):
             __props__.__dict__["class_name"] = class_name
             __props__.__dict__["concurrency"] = concurrency
             __props__.__dict__["default_retention"] = default_retention
+            __props__.__dict__["jurisdiction"] = jurisdiction
             __props__.__dict__["limits"] = limits
             __props__.__dict__["schedules"] = schedules
             if script_name is None and not opts.urn:
@@ -523,6 +566,7 @@ class Workflow(pulumi.CustomResource):
             default_retention: pulumi.Input[Optional[Union['WorkflowDefaultRetentionArgs', 'WorkflowDefaultRetentionArgsDict', 'outputs.WorkflowDefaultRetention']]] = None,
             instances: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.float]]]] = None,
             is_deleted: pulumi.Input[Optional[_builtins.float]] = None,
+            jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
             limits: pulumi.Input[Optional[Union['WorkflowLimitsArgs', 'WorkflowLimitsArgsDict', 'outputs.WorkflowLimits']]] = None,
             modified_on: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -541,6 +585,8 @@ class Workflow(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['WorkflowDefaultRetentionArgs', 'WorkflowDefaultRetentionArgsDict', 'outputs.WorkflowDefaultRetention']] default_retention: Default retention applied to instances of this version when they do not set their own retention.
+        :param pulumi.Input[_builtins.str] jurisdiction: Jurisdiction where instances of this workflow run and store data. Can only be set when the workflow is created and cannot be changed afterwards; omit it to keep the existing jurisdiction.
+               Available values: "eu", "fedramp", "us".
         :param pulumi.Input[_builtins.bool] script_deleted: Whether the bound Worker was deleted, leaving this Workflow inactive.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -554,6 +600,7 @@ class Workflow(pulumi.CustomResource):
         __props__.__dict__["default_retention"] = default_retention
         __props__.__dict__["instances"] = instances
         __props__.__dict__["is_deleted"] = is_deleted
+        __props__.__dict__["jurisdiction"] = jurisdiction
         __props__.__dict__["limits"] = limits
         __props__.__dict__["modified_on"] = modified_on
         __props__.__dict__["name"] = name
@@ -576,6 +623,7 @@ class Workflow(pulumi.CustomResource):
             default_retention: pulumi.Input[Optional[Union['WorkflowDefaultRetentionArgs', 'WorkflowDefaultRetentionArgsDict', 'outputs.WorkflowDefaultRetention']]] = None,
             instances: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.float]]]] = None,
             is_deleted: pulumi.Input[Optional[_builtins.float]] = None,
+            jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
             limits: pulumi.Input[Optional[Union['WorkflowLimitsArgs', 'WorkflowLimitsArgsDict', 'outputs.WorkflowLimits']]] = None,
             modified_on: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -594,6 +642,7 @@ class Workflow(pulumi.CustomResource):
         __props__["defaultRetention"] = default_retention
         __props__["instances"] = instances
         __props__["isDeleted"] = is_deleted
+        __props__["jurisdiction"] = jurisdiction
         __props__["limits"] = limits
         __props__["modifiedOn"] = modified_on
         __props__["name"] = name
@@ -643,6 +692,15 @@ class Workflow(pulumi.CustomResource):
     @pulumi.getter(name="isDeleted")
     def is_deleted(self) -> pulumi.Output[_builtins.float]:
         return pulumi.get(self, "is_deleted")
+
+    @_builtins.property
+    @pulumi.getter
+    def jurisdiction(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Jurisdiction where instances of this workflow run and store data. Can only be set when the workflow is created and cannot be changed afterwards; omit it to keep the existing jurisdiction.
+        Available values: "eu", "fedramp", "us".
+        """
+        return pulumi.get(self, "jurisdiction")
 
     @_builtins.property
     @pulumi.getter

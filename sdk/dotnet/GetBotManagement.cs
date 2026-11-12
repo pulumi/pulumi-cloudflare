@@ -127,6 +127,10 @@ namespace Pulumi.Cloudflare
     public sealed class GetBotManagementResult
     {
         /// <summary>
+        /// Configure blocking behavior for supported personal AI agents.
+        /// </summary>
+        public readonly Outputs.GetBotManagementAiAgentsResult AiAgents;
+        /// <summary>
         /// Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
         /// </summary>
         public readonly bool AiBotsMigrationOptOut;
@@ -241,6 +245,8 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetBotManagementResult(
+            Outputs.GetBotManagementAiAgentsResult aiAgents,
+
             bool aiBotsMigrationOptOut,
 
             string aiBotsProtection,
@@ -291,6 +297,7 @@ namespace Pulumi.Cloudflare
 
             string? zoneId)
         {
+            AiAgents = aiAgents;
             AiBotsMigrationOptOut = aiBotsMigrationOptOut;
             AiBotsProtection = aiBotsProtection;
             AiTraining = aiTraining;

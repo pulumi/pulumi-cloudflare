@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Inputs
     {
         /// <summary>
         /// Nameserver type
-        /// Available values: "cloudflare.standard", "cloudflare.standard.random", "custom.account", "custom.tenant".
+        /// Available values: "cloudflare.standard", "cloudflare.advanced", "cloudflare.standard.random", "custom.account", "custom.tenant".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

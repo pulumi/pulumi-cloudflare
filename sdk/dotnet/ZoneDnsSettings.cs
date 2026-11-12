@@ -31,7 +31,6 @@ namespace Pulumi.Cloudflare
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         FlattenAllCnames = false,
-    ///         FoundationDns = false,
     ///         InternalDns = new Cloudflare.Inputs.ZoneDnsSettingsInternalDnsArgs
     ///         {
     ///             ReferenceZoneId = "reference_zone_id",
@@ -71,12 +70,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("flattenAllCnames")]
         public Output<bool?> FlattenAllCnames { get; private set; } = null!;
-
-        /// <summary>
-        /// Deprecated. Use nameservers.type to configure Advanced Nameservers.
-        /// </summary>
-        [Output("foundationDns")]
-        public Output<bool?> FoundationDns { get; private set; } = null!;
 
         /// <summary>
         /// Settings for this internal zone.
@@ -180,12 +173,6 @@ namespace Pulumi.Cloudflare
         public Input<bool>? FlattenAllCnames { get; set; }
 
         /// <summary>
-        /// Deprecated. Use nameservers.type to configure Advanced Nameservers.
-        /// </summary>
-        [Input("foundationDns")]
-        public Input<bool>? FoundationDns { get; set; }
-
-        /// <summary>
         /// Settings for this internal zone.
         /// </summary>
         [Input("internalDns")]
@@ -247,12 +234,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("flattenAllCnames")]
         public Input<bool>? FlattenAllCnames { get; set; }
-
-        /// <summary>
-        /// Deprecated. Use nameservers.type to configure Advanced Nameservers.
-        /// </summary>
-        [Input("foundationDns")]
-        public Input<bool>? FoundationDns { get; set; }
 
         /// <summary>
         /// Settings for this internal zone.

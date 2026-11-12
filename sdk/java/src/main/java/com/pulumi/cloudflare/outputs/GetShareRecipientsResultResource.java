@@ -13,17 +13,17 @@ import java.util.Objects;
 @CustomType
 public final class GetShareRecipientsResultResource {
     /**
-     * @return Share Recipient error message.
+     * @return Error from the most recent attempt to apply the resource to the recipient. Empty string when no error has been recorded.
      * 
      */
     private String error;
     /**
-     * @return Share Resource identifier.
+     * @return Identifier assigned by the service that owns the shared resource.
      * 
      */
     private String resourceId;
     /**
-     * @return Resource Version.
+     * @return Resource version applied to the recipient, if reconciliation has occurred.
      * 
      */
     private Integer resourceVersion;
@@ -35,21 +35,21 @@ public final class GetShareRecipientsResultResource {
 
     private GetShareRecipientsResultResource() {}
     /**
-     * @return Share Recipient error message.
+     * @return Error from the most recent attempt to apply the resource to the recipient. Empty string when no error has been recorded.
      * 
      */
     public String error() {
         return this.error;
     }
     /**
-     * @return Share Resource identifier.
+     * @return Identifier assigned by the service that owns the shared resource.
      * 
      */
     public String resourceId() {
         return this.resourceId;
     }
     /**
-     * @return Resource Version.
+     * @return Resource version applied to the recipient, if reconciliation has occurred.
      * 
      */
     public Integer resourceVersion() {

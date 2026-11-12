@@ -23,26 +23,41 @@ class ShareArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 recipients: pulumi.Input[Sequence[pulumi.Input['ShareRecipientArgs']]],
-                 resources: pulumi.Input[Sequence[pulumi.Input['ShareResourceArgs']]],
+                 excluded_recipients: pulumi.Input[Optional[Sequence[pulumi.Input['ShareExcludedRecipientArgs']]]] = None,
                  include_recipient_counts: pulumi.Input[Optional[_builtins.bool]] = None,
-                 include_resources: pulumi.Input[Optional[_builtins.bool]] = None):
+                 include_resources: pulumi.Input[Optional[_builtins.bool]] = None,
+                 include_tags_from: pulumi.Input[Optional[_builtins.str]] = None,
+                 recipients: pulumi.Input[Optional[Sequence[pulumi.Input['ShareRecipientArgs']]]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input['ShareResourceArgs']]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Share resource.
 
         :param pulumi.Input[_builtins.str] account_id: Account identifier.
         :param pulumi.Input[_builtins.str] name: The name of the share.
+        :param pulumi.Input[Sequence[pulumi.Input['ShareExcludedRecipientArgs']]] excluded_recipients: Accounts to exclude from an organization-targeted share. Only allowed when `recipients` contains no account entries. The share owner cannot be excluded. Duplicate entries are ignored.
         :param pulumi.Input[_builtins.bool] include_recipient_counts: Include recipient counts in the response.
         :param pulumi.Input[_builtins.bool] include_resources: Include resources in the response.
+        :param pulumi.Input[_builtins.str] include_tags_from: Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+               Available values: "api", "mirror".
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags associated with the share.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "recipients", recipients)
-        pulumi.set(__self__, "resources", resources)
+        if excluded_recipients is not None:
+            pulumi.set(__self__, "excluded_recipients", excluded_recipients)
         if include_recipient_counts is not None:
             pulumi.set(__self__, "include_recipient_counts", include_recipient_counts)
         if include_resources is not None:
             pulumi.set(__self__, "include_resources", include_resources)
+        if include_tags_from is not None:
+            pulumi.set(__self__, "include_tags_from", include_tags_from)
+        if recipients is not None:
+            pulumi.set(__self__, "recipients", recipients)
+        if resources is not None:
+            pulumi.set(__self__, "resources", resources)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -69,22 +84,16 @@ class ShareArgs:
         pulumi.set(self, "name", value)
 
     @_builtins.property
-    @pulumi.getter
-    def recipients(self) -> pulumi.Input[Sequence[pulumi.Input['ShareRecipientArgs']]]:
-        return pulumi.get(self, "recipients")
+    @pulumi.getter(name="excludedRecipients")
+    def excluded_recipients(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ShareExcludedRecipientArgs']]]]:
+        """
+        Accounts to exclude from an organization-targeted share. Only allowed when `recipients` contains no account entries. The share owner cannot be excluded. Duplicate entries are ignored.
+        """
+        return pulumi.get(self, "excluded_recipients")
 
-    @recipients.setter
-    def recipients(self, value: pulumi.Input[Sequence[pulumi.Input['ShareRecipientArgs']]]):
-        pulumi.set(self, "recipients", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def resources(self) -> pulumi.Input[Sequence[pulumi.Input['ShareResourceArgs']]]:
-        return pulumi.get(self, "resources")
-
-    @resources.setter
-    def resources(self, value: pulumi.Input[Sequence[pulumi.Input['ShareResourceArgs']]]):
-        pulumi.set(self, "resources", value)
+    @excluded_recipients.setter
+    def excluded_recipients(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ShareExcludedRecipientArgs']]]]):
+        pulumi.set(self, "excluded_recipients", value)
 
     @_builtins.property
     @pulumi.getter(name="includeRecipientCounts")
@@ -110,6 +119,49 @@ class ShareArgs:
     def include_resources(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "include_resources", value)
 
+    @_builtins.property
+    @pulumi.getter(name="includeTagsFrom")
+    def include_tags_from(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+        Available values: "api", "mirror".
+        """
+        return pulumi.get(self, "include_tags_from")
+
+    @include_tags_from.setter
+    def include_tags_from(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "include_tags_from", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def recipients(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ShareRecipientArgs']]]]:
+        return pulumi.get(self, "recipients")
+
+    @recipients.setter
+    def recipients(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ShareRecipientArgs']]]]):
+        pulumi.set(self, "recipients", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ShareResourceArgs']]]]:
+        return pulumi.get(self, "resources")
+
+    @resources.setter
+    def resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ShareResourceArgs']]]]):
+        pulumi.set(self, "resources", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Tags associated with the share.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
 
 @pulumi.input_type
 class _ShareState:
@@ -121,8 +173,10 @@ class _ShareState:
                  created: pulumi.Input[Optional[_builtins.str]] = None,
                  disassociated_recipient_count: pulumi.Input[Optional[_builtins.int]] = None,
                  disassociating_recipient_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 excluded_recipients: pulumi.Input[Optional[Sequence[pulumi.Input['ShareExcludedRecipientArgs']]]] = None,
                  include_recipient_counts: pulumi.Input[Optional[_builtins.bool]] = None,
                  include_resources: pulumi.Input[Optional[_builtins.bool]] = None,
+                 include_tags_from: pulumi.Input[Optional[_builtins.str]] = None,
                  kind: pulumi.Input[Optional[_builtins.str]] = None,
                  modified: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -130,6 +184,7 @@ class _ShareState:
                  recipients: pulumi.Input[Optional[Sequence[pulumi.Input['ShareRecipientArgs']]]] = None,
                  resources: pulumi.Input[Optional[Sequence[pulumi.Input['ShareResourceArgs']]]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  target_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Share resources.
@@ -138,16 +193,20 @@ class _ShareState:
         :param pulumi.Input[_builtins.str] account_name: The display name of an account.
         :param pulumi.Input[_builtins.int] associated_recipient_count: The number of recipients in the 'associated' state. This field is only included when requested via the 'include*recipient*counts' parameter.
         :param pulumi.Input[_builtins.int] associating_recipient_count: The number of recipients in the 'associating' state. This field is only included when requested via the 'include*recipient*counts' parameter.
-        :param pulumi.Input[_builtins.str] created: When the share was created.
+        :param pulumi.Input[_builtins.str] created: When the object was created.
         :param pulumi.Input[_builtins.int] disassociated_recipient_count: The number of recipients in the 'disassociated' state. This field is only included when requested via the 'include*recipient*counts' parameter.
         :param pulumi.Input[_builtins.int] disassociating_recipient_count: The number of recipients in the 'disassociating' state. This field is only included when requested via the 'include*recipient*counts' parameter.
+        :param pulumi.Input[Sequence[pulumi.Input['ShareExcludedRecipientArgs']]] excluded_recipients: Accounts to exclude from an organization-targeted share. Only allowed when `recipients` contains no account entries. The share owner cannot be excluded. Duplicate entries are ignored.
         :param pulumi.Input[_builtins.bool] include_recipient_counts: Include recipient counts in the response.
         :param pulumi.Input[_builtins.bool] include_resources: Include resources in the response.
+        :param pulumi.Input[_builtins.str] include_tags_from: Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+               Available values: "api", "mirror".
         :param pulumi.Input[_builtins.str] kind: Available values: "sent", "received".
-        :param pulumi.Input[_builtins.str] modified: When the share was modified.
+        :param pulumi.Input[_builtins.str] modified: When the object was last modified.
         :param pulumi.Input[_builtins.str] name: The name of the share.
         :param pulumi.Input[_builtins.str] organization_id: Organization identifier.
         :param pulumi.Input[_builtins.str] status: Available values: "active", "deleting", "deleted".
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags associated with the share.
         :param pulumi.Input[_builtins.str] target_type: Available values: "account", "organization".
         """
         if account_id is not None:
@@ -164,10 +223,14 @@ class _ShareState:
             pulumi.set(__self__, "disassociated_recipient_count", disassociated_recipient_count)
         if disassociating_recipient_count is not None:
             pulumi.set(__self__, "disassociating_recipient_count", disassociating_recipient_count)
+        if excluded_recipients is not None:
+            pulumi.set(__self__, "excluded_recipients", excluded_recipients)
         if include_recipient_counts is not None:
             pulumi.set(__self__, "include_recipient_counts", include_recipient_counts)
         if include_resources is not None:
             pulumi.set(__self__, "include_resources", include_resources)
+        if include_tags_from is not None:
+            pulumi.set(__self__, "include_tags_from", include_tags_from)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
         if modified is not None:
@@ -182,6 +245,8 @@ class _ShareState:
             pulumi.set(__self__, "resources", resources)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if target_type is not None:
             pulumi.set(__self__, "target_type", target_type)
 
@@ -237,7 +302,7 @@ class _ShareState:
     @pulumi.getter
     def created(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        When the share was created.
+        When the object was created.
         """
         return pulumi.get(self, "created")
 
@@ -270,6 +335,18 @@ class _ShareState:
         pulumi.set(self, "disassociating_recipient_count", value)
 
     @_builtins.property
+    @pulumi.getter(name="excludedRecipients")
+    def excluded_recipients(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ShareExcludedRecipientArgs']]]]:
+        """
+        Accounts to exclude from an organization-targeted share. Only allowed when `recipients` contains no account entries. The share owner cannot be excluded. Duplicate entries are ignored.
+        """
+        return pulumi.get(self, "excluded_recipients")
+
+    @excluded_recipients.setter
+    def excluded_recipients(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ShareExcludedRecipientArgs']]]]):
+        pulumi.set(self, "excluded_recipients", value)
+
+    @_builtins.property
     @pulumi.getter(name="includeRecipientCounts")
     def include_recipient_counts(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -294,6 +371,19 @@ class _ShareState:
         pulumi.set(self, "include_resources", value)
 
     @_builtins.property
+    @pulumi.getter(name="includeTagsFrom")
+    def include_tags_from(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+        Available values: "api", "mirror".
+        """
+        return pulumi.get(self, "include_tags_from")
+
+    @include_tags_from.setter
+    def include_tags_from(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "include_tags_from", value)
+
+    @_builtins.property
     @pulumi.getter
     def kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -309,7 +399,7 @@ class _ShareState:
     @pulumi.getter
     def modified(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        When the share was modified.
+        When the object was last modified.
         """
         return pulumi.get(self, "modified")
 
@@ -372,6 +462,18 @@ class _ShareState:
         pulumi.set(self, "status", value)
 
     @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Tags associated with the share.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
     @pulumi.getter(name="targetType")
     def target_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -391,13 +493,20 @@ class Share(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 excluded_recipients: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShareExcludedRecipientArgs', 'ShareExcludedRecipientArgsDict', 'outputs.ShareExcludedRecipient']]]]] = None,
                  include_recipient_counts: pulumi.Input[Optional[_builtins.bool]] = None,
                  include_resources: pulumi.Input[Optional[_builtins.bool]] = None,
+                 include_tags_from: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  recipients: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShareRecipientArgs', 'ShareRecipientArgsDict', 'outputs.ShareRecipient']]]]] = None,
                  resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShareResourceArgs', 'ShareResourceArgsDict', 'outputs.ShareResource']]]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Resource Sharing Read`
+
         ## Example Usage
 
         ```python
@@ -408,6 +517,9 @@ class Share(pulumi.CustomResource):
         example_share = cloudflare.Share("example_share",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="My Shared WAF Managed Rule",
+            excluded_recipients=[{
+                "account_id": "023e105f4ecef8ad9ca31a8372d0c353",
+            }],
             recipients=[{
                 "organization_id": "023e105f4ecef8ad9ca31a8372d0c353",
                 "recipient_account_id": "023e105f4ecef8ad9ca31a8372d0c353",
@@ -415,9 +527,12 @@ class Share(pulumi.CustomResource):
             resources=[{
                 "meta": json.dumps({}),
                 "resource_account_id": "023e105f4ecef8ad9ca31a8372d0c353",
-                "resource_id": "023e105f4ecef8ad9ca31a8372d0c353",
+                "resource_id": "0a679032-bbb2-4b7e-9acc-dd5c5cb27a17",
                 "resource_type": "custom-ruleset",
-            }])
+            }],
+            tags={
+                "foo": "string",
+            })
         ```
 
         ## Import
@@ -430,9 +545,13 @@ class Share(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account identifier.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ShareExcludedRecipientArgs', 'ShareExcludedRecipientArgsDict', 'outputs.ShareExcludedRecipient']]]] excluded_recipients: Accounts to exclude from an organization-targeted share. Only allowed when `recipients` contains no account entries. The share owner cannot be excluded. Duplicate entries are ignored.
         :param pulumi.Input[_builtins.bool] include_recipient_counts: Include recipient counts in the response.
         :param pulumi.Input[_builtins.bool] include_resources: Include resources in the response.
+        :param pulumi.Input[_builtins.str] include_tags_from: Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+               Available values: "api", "mirror".
         :param pulumi.Input[_builtins.str] name: The name of the share.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags associated with the share.
         """
         ...
     @overload
@@ -441,6 +560,10 @@ class Share(pulumi.CustomResource):
                  args: ShareArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Resource Sharing Read`
+
         ## Example Usage
 
         ```python
@@ -451,6 +574,9 @@ class Share(pulumi.CustomResource):
         example_share = cloudflare.Share("example_share",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="My Shared WAF Managed Rule",
+            excluded_recipients=[{
+                "account_id": "023e105f4ecef8ad9ca31a8372d0c353",
+            }],
             recipients=[{
                 "organization_id": "023e105f4ecef8ad9ca31a8372d0c353",
                 "recipient_account_id": "023e105f4ecef8ad9ca31a8372d0c353",
@@ -458,9 +584,12 @@ class Share(pulumi.CustomResource):
             resources=[{
                 "meta": json.dumps({}),
                 "resource_account_id": "023e105f4ecef8ad9ca31a8372d0c353",
-                "resource_id": "023e105f4ecef8ad9ca31a8372d0c353",
+                "resource_id": "0a679032-bbb2-4b7e-9acc-dd5c5cb27a17",
                 "resource_type": "custom-ruleset",
-            }])
+            }],
+            tags={
+                "foo": "string",
+            })
         ```
 
         ## Import
@@ -486,11 +615,14 @@ class Share(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 excluded_recipients: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShareExcludedRecipientArgs', 'ShareExcludedRecipientArgsDict', 'outputs.ShareExcludedRecipient']]]]] = None,
                  include_recipient_counts: pulumi.Input[Optional[_builtins.bool]] = None,
                  include_resources: pulumi.Input[Optional[_builtins.bool]] = None,
+                 include_tags_from: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  recipients: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShareRecipientArgs', 'ShareRecipientArgsDict', 'outputs.ShareRecipient']]]]] = None,
                  resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShareResourceArgs', 'ShareResourceArgsDict', 'outputs.ShareResource']]]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -503,17 +635,16 @@ class Share(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["excluded_recipients"] = excluded_recipients
             __props__.__dict__["include_recipient_counts"] = include_recipient_counts
             __props__.__dict__["include_resources"] = include_resources
+            __props__.__dict__["include_tags_from"] = include_tags_from
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
-            if recipients is None and not opts.urn:
-                raise TypeError("Missing required property 'recipients'")
             __props__.__dict__["recipients"] = recipients
-            if resources is None and not opts.urn:
-                raise TypeError("Missing required property 'resources'")
             __props__.__dict__["resources"] = resources
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["account_name"] = None
             __props__.__dict__["associated_recipient_count"] = None
             __props__.__dict__["associating_recipient_count"] = None
@@ -542,8 +673,10 @@ class Share(pulumi.CustomResource):
             created: pulumi.Input[Optional[_builtins.str]] = None,
             disassociated_recipient_count: pulumi.Input[Optional[_builtins.int]] = None,
             disassociating_recipient_count: pulumi.Input[Optional[_builtins.int]] = None,
+            excluded_recipients: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShareExcludedRecipientArgs', 'ShareExcludedRecipientArgsDict', 'outputs.ShareExcludedRecipient']]]]] = None,
             include_recipient_counts: pulumi.Input[Optional[_builtins.bool]] = None,
             include_resources: pulumi.Input[Optional[_builtins.bool]] = None,
+            include_tags_from: pulumi.Input[Optional[_builtins.str]] = None,
             kind: pulumi.Input[Optional[_builtins.str]] = None,
             modified: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -551,6 +684,7 @@ class Share(pulumi.CustomResource):
             recipients: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShareRecipientArgs', 'ShareRecipientArgsDict', 'outputs.ShareRecipient']]]]] = None,
             resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShareResourceArgs', 'ShareResourceArgsDict', 'outputs.ShareResource']]]]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             target_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'Share':
         """
         Get an existing Share resource's state with the given name, id, and optional extra
@@ -563,16 +697,20 @@ class Share(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_name: The display name of an account.
         :param pulumi.Input[_builtins.int] associated_recipient_count: The number of recipients in the 'associated' state. This field is only included when requested via the 'include*recipient*counts' parameter.
         :param pulumi.Input[_builtins.int] associating_recipient_count: The number of recipients in the 'associating' state. This field is only included when requested via the 'include*recipient*counts' parameter.
-        :param pulumi.Input[_builtins.str] created: When the share was created.
+        :param pulumi.Input[_builtins.str] created: When the object was created.
         :param pulumi.Input[_builtins.int] disassociated_recipient_count: The number of recipients in the 'disassociated' state. This field is only included when requested via the 'include*recipient*counts' parameter.
         :param pulumi.Input[_builtins.int] disassociating_recipient_count: The number of recipients in the 'disassociating' state. This field is only included when requested via the 'include*recipient*counts' parameter.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ShareExcludedRecipientArgs', 'ShareExcludedRecipientArgsDict', 'outputs.ShareExcludedRecipient']]]] excluded_recipients: Accounts to exclude from an organization-targeted share. Only allowed when `recipients` contains no account entries. The share owner cannot be excluded. Duplicate entries are ignored.
         :param pulumi.Input[_builtins.bool] include_recipient_counts: Include recipient counts in the response.
         :param pulumi.Input[_builtins.bool] include_resources: Include resources in the response.
+        :param pulumi.Input[_builtins.str] include_tags_from: Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+               Available values: "api", "mirror".
         :param pulumi.Input[_builtins.str] kind: Available values: "sent", "received".
-        :param pulumi.Input[_builtins.str] modified: When the share was modified.
+        :param pulumi.Input[_builtins.str] modified: When the object was last modified.
         :param pulumi.Input[_builtins.str] name: The name of the share.
         :param pulumi.Input[_builtins.str] organization_id: Organization identifier.
         :param pulumi.Input[_builtins.str] status: Available values: "active", "deleting", "deleted".
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags associated with the share.
         :param pulumi.Input[_builtins.str] target_type: Available values: "account", "organization".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -586,8 +724,10 @@ class Share(pulumi.CustomResource):
         __props__.__dict__["created"] = created
         __props__.__dict__["disassociated_recipient_count"] = disassociated_recipient_count
         __props__.__dict__["disassociating_recipient_count"] = disassociating_recipient_count
+        __props__.__dict__["excluded_recipients"] = excluded_recipients
         __props__.__dict__["include_recipient_counts"] = include_recipient_counts
         __props__.__dict__["include_resources"] = include_resources
+        __props__.__dict__["include_tags_from"] = include_tags_from
         __props__.__dict__["kind"] = kind
         __props__.__dict__["modified"] = modified
         __props__.__dict__["name"] = name
@@ -595,6 +735,7 @@ class Share(pulumi.CustomResource):
         __props__.__dict__["recipients"] = recipients
         __props__.__dict__["resources"] = resources
         __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["target_type"] = target_type
         return Share(resource_name, opts=opts, __props__=__props__)
 
@@ -608,8 +749,10 @@ class Share(pulumi.CustomResource):
             created: pulumi.Input[Optional[_builtins.str]] = None,
             disassociated_recipient_count: pulumi.Input[Optional[_builtins.int]] = None,
             disassociating_recipient_count: pulumi.Input[Optional[_builtins.int]] = None,
+            excluded_recipients: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShareExcludedRecipientArgs', 'ShareExcludedRecipientArgsDict', 'outputs.ShareExcludedRecipient']]]]] = None,
             include_recipient_counts: pulumi.Input[Optional[_builtins.bool]] = None,
             include_resources: pulumi.Input[Optional[_builtins.bool]] = None,
+            include_tags_from: pulumi.Input[Optional[_builtins.str]] = None,
             kind: pulumi.Input[Optional[_builtins.str]] = None,
             modified: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -617,6 +760,7 @@ class Share(pulumi.CustomResource):
             recipients: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShareRecipientArgs', 'ShareRecipientArgsDict', 'outputs.ShareRecipient']]]]] = None,
             resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShareResourceArgs', 'ShareResourceArgsDict', 'outputs.ShareResource']]]]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             target_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
         __props__["accountId"] = account_id
@@ -626,8 +770,10 @@ class Share(pulumi.CustomResource):
         __props__["created"] = created
         __props__["disassociatedRecipientCount"] = disassociated_recipient_count
         __props__["disassociatingRecipientCount"] = disassociating_recipient_count
+        __props__["excludedRecipients"] = excluded_recipients
         __props__["includeRecipientCounts"] = include_recipient_counts
         __props__["includeResources"] = include_resources
+        __props__["includeTagsFrom"] = include_tags_from
         __props__["kind"] = kind
         __props__["modified"] = modified
         __props__["name"] = name
@@ -635,6 +781,7 @@ class Share(pulumi.CustomResource):
         __props__["recipients"] = recipients
         __props__["resources"] = resources
         __props__["status"] = status
+        __props__["tags"] = tags
         __props__["targetType"] = target_type
         return pulumi.runtime.exists_resource(None, 'cloudflare:index/share:Share', id, __props__, opts or pulumi.ResourceOptions())
 
@@ -674,7 +821,7 @@ class Share(pulumi.CustomResource):
     @pulumi.getter
     def created(self) -> pulumi.Output[_builtins.str]:
         """
-        When the share was created.
+        When the object was created.
         """
         return pulumi.get(self, "created")
 
@@ -695,6 +842,14 @@ class Share(pulumi.CustomResource):
         return pulumi.get(self, "disassociating_recipient_count")
 
     @_builtins.property
+    @pulumi.getter(name="excludedRecipients")
+    def excluded_recipients(self) -> pulumi.Output[Optional[Sequence['outputs.ShareExcludedRecipient']]]:
+        """
+        Accounts to exclude from an organization-targeted share. Only allowed when `recipients` contains no account entries. The share owner cannot be excluded. Duplicate entries are ignored.
+        """
+        return pulumi.get(self, "excluded_recipients")
+
+    @_builtins.property
     @pulumi.getter(name="includeRecipientCounts")
     def include_recipient_counts(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
@@ -711,6 +866,15 @@ class Share(pulumi.CustomResource):
         return pulumi.get(self, "include_resources")
 
     @_builtins.property
+    @pulumi.getter(name="includeTagsFrom")
+    def include_tags_from(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+        Available values: "api", "mirror".
+        """
+        return pulumi.get(self, "include_tags_from")
+
+    @_builtins.property
     @pulumi.getter
     def kind(self) -> pulumi.Output[_builtins.str]:
         """
@@ -722,7 +886,7 @@ class Share(pulumi.CustomResource):
     @pulumi.getter
     def modified(self) -> pulumi.Output[_builtins.str]:
         """
-        When the share was modified.
+        When the object was last modified.
         """
         return pulumi.get(self, "modified")
 
@@ -744,12 +908,12 @@ class Share(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def recipients(self) -> pulumi.Output[Sequence['outputs.ShareRecipient']]:
+    def recipients(self) -> pulumi.Output[Optional[Sequence['outputs.ShareRecipient']]]:
         return pulumi.get(self, "recipients")
 
     @_builtins.property
     @pulumi.getter
-    def resources(self) -> pulumi.Output[Sequence['outputs.ShareResource']]:
+    def resources(self) -> pulumi.Output[Optional[Sequence['outputs.ShareResource']]]:
         return pulumi.get(self, "resources")
 
     @_builtins.property
@@ -759,6 +923,14 @@ class Share(pulumi.CustomResource):
         Available values: "active", "deleting", "deleted".
         """
         return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        Tags associated with the share.
+        """
+        return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="targetType")

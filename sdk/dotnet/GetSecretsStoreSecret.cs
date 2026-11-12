@@ -188,7 +188,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The list of services that can use this secret.
+        /// The list of services that can use this secret, or null when the secret inherits its store's scopes. Set it to null in a patch to inherit again. An empty list lets no service use the secret.
         /// </summary>
         public readonly ImmutableArray<string> Scopes;
         /// <summary>

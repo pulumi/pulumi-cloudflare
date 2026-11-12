@@ -45,9 +45,17 @@ public final class AiGatewayState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.aiGatewayId);
     }
 
+    /**
+     * Require authentication for gateway access. New gateways must have authentication enabled. Once enabled, authentication cannot be disabled.
+     * 
+     */
     @Import(name="authentication")
     private @Nullable Output<Boolean> authentication;
 
+    /**
+     * @return Require authentication for gateway access. New gateways must have authentication enabled. Once enabled, authentication cannot be disabled.
+     * 
+     */
     public Optional<Output<Boolean>> authentication() {
         return Optional.ofNullable(this.authentication);
     }
@@ -100,6 +108,40 @@ public final class AiGatewayState extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<AiGatewayDlpArgs>> dlp() {
         return Optional.ofNullable(this.dlp);
+    }
+
+    /**
+     * FedRAMP compliance level: fedramp-medium or fedramp-high.
+     * Available values: &#34;fedramp-medium&#34;, &#34;fedramp-high&#34;.
+     * 
+     */
+    @Import(name="fedrampLevel")
+    private @Nullable Output<String> fedrampLevel;
+
+    /**
+     * @return FedRAMP compliance level: fedramp-medium or fedramp-high.
+     * Available values: &#34;fedramp-medium&#34;, &#34;fedramp-high&#34;.
+     * 
+     */
+    public Optional<Output<String>> fedrampLevel() {
+        return Optional.ofNullable(this.fedrampLevel);
+    }
+
+    /**
+     * FedRAMP enforcement mode. &#34;prefer&#34; prioritizes compliant connectors but allows fallback. &#34;require&#34; strictly filters.
+     * Available values: &#34;prefer&#34;, &#34;require&#34;.
+     * 
+     */
+    @Import(name="fedrampMode")
+    private @Nullable Output<String> fedrampMode;
+
+    /**
+     * @return FedRAMP enforcement mode. &#34;prefer&#34; prioritizes compliant connectors but allows fallback. &#34;require&#34; strictly filters.
+     * Available values: &#34;prefer&#34;, &#34;require&#34;.
+     * 
+     */
+    public Optional<Output<String>> fedrampMode() {
+        return Optional.ofNullable(this.fedrampMode);
     }
 
     @Import(name="guardrails")
@@ -256,9 +298,17 @@ public final class AiGatewayState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.spendLimits);
     }
 
+    /**
+     * Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it.
+     * 
+     */
     @Import(name="storeId")
     private @Nullable Output<String> storeId;
 
+    /**
+     * @return Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it.
+     * 
+     */
     public Optional<Output<String>> storeId() {
         return Optional.ofNullable(this.storeId);
     }
@@ -306,6 +356,8 @@ public final class AiGatewayState extends com.pulumi.resources.ResourceArgs {
         this.collectLogs = $.collectLogs;
         this.createdAt = $.createdAt;
         this.dlp = $.dlp;
+        this.fedrampLevel = $.fedrampLevel;
+        this.fedrampMode = $.fedrampMode;
         this.guardrails = $.guardrails;
         this.isDefault = $.isDefault;
         this.logClassification = $.logClassification;
@@ -376,11 +428,23 @@ public final class AiGatewayState extends com.pulumi.resources.ResourceArgs {
             return aiGatewayId(Output.of(aiGatewayId));
         }
 
+        /**
+         * @param authentication Require authentication for gateway access. New gateways must have authentication enabled. Once enabled, authentication cannot be disabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder authentication(@Nullable Output<Boolean> authentication) {
             $.authentication = authentication;
             return this;
         }
 
+        /**
+         * @param authentication Require authentication for gateway access. New gateways must have authentication enabled. Once enabled, authentication cannot be disabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder authentication(Boolean authentication) {
             return authentication(Output.of(authentication));
         }
@@ -449,6 +513,52 @@ public final class AiGatewayState extends com.pulumi.resources.ResourceArgs {
 
         public Builder dlp(AiGatewayDlpArgs dlp) {
             return dlp(Output.of(dlp));
+        }
+
+        /**
+         * @param fedrampLevel FedRAMP compliance level: fedramp-medium or fedramp-high.
+         * Available values: &#34;fedramp-medium&#34;, &#34;fedramp-high&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fedrampLevel(@Nullable Output<String> fedrampLevel) {
+            $.fedrampLevel = fedrampLevel;
+            return this;
+        }
+
+        /**
+         * @param fedrampLevel FedRAMP compliance level: fedramp-medium or fedramp-high.
+         * Available values: &#34;fedramp-medium&#34;, &#34;fedramp-high&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fedrampLevel(String fedrampLevel) {
+            return fedrampLevel(Output.of(fedrampLevel));
+        }
+
+        /**
+         * @param fedrampMode FedRAMP enforcement mode. &#34;prefer&#34; prioritizes compliant connectors but allows fallback. &#34;require&#34; strictly filters.
+         * Available values: &#34;prefer&#34;, &#34;require&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fedrampMode(@Nullable Output<String> fedrampMode) {
+            $.fedrampMode = fedrampMode;
+            return this;
+        }
+
+        /**
+         * @param fedrampMode FedRAMP enforcement mode. &#34;prefer&#34; prioritizes compliant connectors but allows fallback. &#34;require&#34; strictly filters.
+         * Available values: &#34;prefer&#34;, &#34;require&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fedrampMode(String fedrampMode) {
+            return fedrampMode(Output.of(fedrampMode));
         }
 
         public Builder guardrails(@Nullable Output<AiGatewayGuardrailsArgs> guardrails) {
@@ -661,11 +771,23 @@ public final class AiGatewayState extends com.pulumi.resources.ResourceArgs {
             return spendLimits(Output.of(spendLimits));
         }
 
+        /**
+         * @param storeId Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it.
+         * 
+         * @return builder
+         * 
+         */
         public Builder storeId(@Nullable Output<String> storeId) {
             $.storeId = storeId;
             return this;
         }
 
+        /**
+         * @param storeId Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it.
+         * 
+         * @return builder
+         * 
+         */
         public Builder storeId(String storeId) {
             return storeId(Output.of(storeId));
         }

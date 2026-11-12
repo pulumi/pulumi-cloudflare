@@ -27,7 +27,7 @@ class GetR2DataCatalogResult:
     """
     A collection of values returned by getR2DataCatalog.
     """
-    def __init__(__self__, account_id=None, bucket=None, bucket_name=None, credential_status=None, id=None, maintenance_config=None, name=None, status=None):
+    def __init__(__self__, account_id=None, bucket=None, bucket_name=None, credential_status=None, id=None, jurisdiction=None, maintenance_config=None, name=None, status=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -43,6 +43,9 @@ class GetR2DataCatalogResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if jurisdiction and not isinstance(jurisdiction, str):
+            raise TypeError("Expected argument 'jurisdiction' to be a str")
+        pulumi.set(__self__, "jurisdiction", jurisdiction)
         if maintenance_config and not isinstance(maintenance_config, dict):
             raise TypeError("Expected argument 'maintenance_config' to be a dict")
         pulumi.set(__self__, "maintenance_config", maintenance_config)
@@ -95,6 +98,14 @@ class GetR2DataCatalogResult:
         return pulumi.get(self, "id")
 
     @_builtins.property
+    @pulumi.getter
+    def jurisdiction(self) -> _builtins.str:
+        """
+        Specifies the data-locality jurisdiction of the catalog. The first enable sets it, and it cannot change. Currently always `default`.
+        """
+        return pulumi.get(self, "jurisdiction")
+
+    @_builtins.property
     @pulumi.getter(name="maintenanceConfig")
     def maintenance_config(self) -> 'outputs.GetR2DataCatalogMaintenanceConfigResult':
         """
@@ -131,6 +142,7 @@ class AwaitableGetR2DataCatalogResult(GetR2DataCatalogResult):
             bucket_name=self.bucket_name,
             credential_status=self.credential_status,
             id=self.id,
+            jurisdiction=self.jurisdiction,
             maintenance_config=self.maintenance_config,
             name=self.name,
             status=self.status)
@@ -171,6 +183,7 @@ def get_r2_data_catalog(account_id: Optional[_builtins.str] = None,
         bucket_name=pulumi.get(__ret__, 'bucket_name'),
         credential_status=pulumi.get(__ret__, 'credential_status'),
         id=pulumi.get(__ret__, 'id'),
+        jurisdiction=pulumi.get(__ret__, 'jurisdiction'),
         maintenance_config=pulumi.get(__ret__, 'maintenance_config'),
         name=pulumi.get(__ret__, 'name'),
         status=pulumi.get(__ret__, 'status'))
@@ -208,6 +221,7 @@ def get_r2_data_catalog_output(account_id: pulumi.Input[Optional[Optional[_built
         bucket_name=pulumi.get(__response__, 'bucket_name'),
         credential_status=pulumi.get(__response__, 'credential_status'),
         id=pulumi.get(__response__, 'id'),
+        jurisdiction=pulumi.get(__response__, 'jurisdiction'),
         maintenance_config=pulumi.get(__response__, 'maintenance_config'),
         name=pulumi.get(__response__, 'name'),
         status=pulumi.get(__response__, 'status')))

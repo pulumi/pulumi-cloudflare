@@ -23,7 +23,8 @@ class EmailSecurityBlockSenderArgs:
                  is_regex: pulumi.Input[_builtins.bool],
                  pattern: pulumi.Input[_builtins.str],
                  pattern_type: pulumi.Input[_builtins.str],
-                 comments: pulumi.Input[Optional[_builtins.str]] = None):
+                 comments: pulumi.Input[Optional[_builtins.str]] = None,
+                 expires_at: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EmailSecurityBlockSender resource.
 
@@ -36,6 +37,7 @@ class EmailSecurityBlockSenderArgs:
                - IP: matches a plain IPv4 or IPv6 address (e.g. `1.2.3.4` or `2606:4700:4700::1111`) or CIDR block (e.g. `1.2.3.0/24` or `2606:4700:4700::/48`). The API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
                - UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.
                  Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+        :param pulumi.Input[_builtins.str] expires_at: Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "is_regex", is_regex)
@@ -43,6 +45,8 @@ class EmailSecurityBlockSenderArgs:
         pulumi.set(__self__, "pattern_type", pattern_type)
         if comments is not None:
             pulumi.set(__self__, "comments", comments)
+        if expires_at is not None:
+            pulumi.set(__self__, "expires_at", expires_at)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -106,6 +110,18 @@ class EmailSecurityBlockSenderArgs:
     def comments(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comments", value)
 
+    @_builtins.property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration.
+        """
+        return pulumi.get(self, "expires_at")
+
+    @expires_at.setter
+    def expires_at(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "expires_at", value)
+
 
 @pulumi.input_type
 class _EmailSecurityBlockSenderState:
@@ -113,6 +129,7 @@ class _EmailSecurityBlockSenderState:
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  comments: pulumi.Input[Optional[_builtins.str]] = None,
                  created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 expires_at: pulumi.Input[Optional[_builtins.str]] = None,
                  is_regex: pulumi.Input[Optional[_builtins.bool]] = None,
                  last_modified: pulumi.Input[Optional[_builtins.str]] = None,
                  modified_at: pulumi.Input[Optional[_builtins.str]] = None,
@@ -122,6 +139,7 @@ class _EmailSecurityBlockSenderState:
         Input properties used for looking up and filtering EmailSecurityBlockSender resources.
 
         :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.str] expires_at: Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration.
         :param pulumi.Input[_builtins.bool] is_regex: Whether `pattern` is a regular expression instead of a literal value.
         :param pulumi.Input[_builtins.str] last_modified: Deprecated, use `modified_at` instead. End of life: November 1, 2026.
         :param pulumi.Input[_builtins.str] pattern: The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
@@ -138,6 +156,8 @@ class _EmailSecurityBlockSenderState:
             pulumi.set(__self__, "comments", comments)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
+        if expires_at is not None:
+            pulumi.set(__self__, "expires_at", expires_at)
         if is_regex is not None:
             pulumi.set(__self__, "is_regex", is_regex)
         if last_modified is not None:
@@ -181,6 +201,18 @@ class _EmailSecurityBlockSenderState:
     @created_at.setter
     def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration.
+        """
+        return pulumi.get(self, "expires_at")
+
+    @expires_at.setter
+    def expires_at(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "expires_at", value)
 
     @_builtins.property
     @pulumi.getter(name="isRegex")
@@ -254,6 +286,7 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  comments: pulumi.Input[Optional[_builtins.str]] = None,
+                 expires_at: pulumi.Input[Optional[_builtins.str]] = None,
                  is_regex: pulumi.Input[Optional[_builtins.bool]] = None,
                  pattern: pulumi.Input[Optional[_builtins.str]] = None,
                  pattern_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -275,7 +308,8 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
             is_regex=False,
             pattern="test@example.com",
             pattern_type="EMAIL",
-            comments="Block sender with email test@example.com")
+            comments="Block sender with email test@example.com",
+            expires_at="2027-01-01T00:00:00Z")
         ```
 
         ## Import
@@ -288,6 +322,7 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.str] expires_at: Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration.
         :param pulumi.Input[_builtins.bool] is_regex: Whether `pattern` is a regular expression instead of a literal value.
         :param pulumi.Input[_builtins.str] pattern: The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
         :param pulumi.Input[_builtins.str] pattern_type: Type of pattern matching.
@@ -320,7 +355,8 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
             is_regex=False,
             pattern="test@example.com",
             pattern_type="EMAIL",
-            comments="Block sender with email test@example.com")
+            comments="Block sender with email test@example.com",
+            expires_at="2027-01-01T00:00:00Z")
         ```
 
         ## Import
@@ -347,6 +383,7 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  comments: pulumi.Input[Optional[_builtins.str]] = None,
+                 expires_at: pulumi.Input[Optional[_builtins.str]] = None,
                  is_regex: pulumi.Input[Optional[_builtins.bool]] = None,
                  pattern: pulumi.Input[Optional[_builtins.str]] = None,
                  pattern_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -363,6 +400,7 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["comments"] = comments
+            __props__.__dict__["expires_at"] = expires_at
             if is_regex is None and not opts.urn:
                 raise TypeError("Missing required property 'is_regex'")
             __props__.__dict__["is_regex"] = is_regex
@@ -388,6 +426,7 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             comments: pulumi.Input[Optional[_builtins.str]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            expires_at: pulumi.Input[Optional[_builtins.str]] = None,
             is_regex: pulumi.Input[Optional[_builtins.bool]] = None,
             last_modified: pulumi.Input[Optional[_builtins.str]] = None,
             modified_at: pulumi.Input[Optional[_builtins.str]] = None,
@@ -401,6 +440,7 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.str] expires_at: Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration.
         :param pulumi.Input[_builtins.bool] is_regex: Whether `pattern` is a regular expression instead of a literal value.
         :param pulumi.Input[_builtins.str] last_modified: Deprecated, use `modified_at` instead. End of life: November 1, 2026.
         :param pulumi.Input[_builtins.str] pattern: The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
@@ -418,6 +458,7 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["comments"] = comments
         __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["expires_at"] = expires_at
         __props__.__dict__["is_regex"] = is_regex
         __props__.__dict__["last_modified"] = last_modified
         __props__.__dict__["modified_at"] = modified_at
@@ -431,6 +472,7 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             comments: pulumi.Input[Optional[_builtins.str]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            expires_at: pulumi.Input[Optional[_builtins.str]] = None,
             is_regex: pulumi.Input[Optional[_builtins.bool]] = None,
             last_modified: pulumi.Input[Optional[_builtins.str]] = None,
             modified_at: pulumi.Input[Optional[_builtins.str]] = None,
@@ -440,6 +482,7 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
         __props__["accountId"] = account_id
         __props__["comments"] = comments
         __props__["createdAt"] = created_at
+        __props__["expiresAt"] = expires_at
         __props__["isRegex"] = is_regex
         __props__["lastModified"] = last_modified
         __props__["modifiedAt"] = modified_at
@@ -464,6 +507,14 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration.
+        """
+        return pulumi.get(self, "expires_at")
 
     @_builtins.property
     @pulumi.getter(name="isRegex")

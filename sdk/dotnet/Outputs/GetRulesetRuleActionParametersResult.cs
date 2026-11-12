@@ -343,6 +343,14 @@ namespace Pulumi.Cloudflare.Outputs
         /// Controls how cached responses vary based on request headers. `Default` is required and applies to any Vary response header that does not have a per-header override.
         /// </summary>
         public readonly Outputs.GetRulesetRuleActionParametersVaryResult Vary;
+        /// <summary>
+        /// Whether to serve the WebMCP bridge script, which exposes the page's tools to browser AI agents.
+        /// </summary>
+        public readonly bool WebmcpEnabled;
+        /// <summary>
+        /// Bundled WebMCP tool packs to activate for matching requests. An empty list disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself.
+        /// </summary>
+        public readonly ImmutableArray<string> WebmcpPacks;
 
         [OutputConstructor]
         private GetRulesetRuleActionParametersResult(
@@ -504,7 +512,11 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<string> values,
 
-            Outputs.GetRulesetRuleActionParametersVaryResult vary)
+            Outputs.GetRulesetRuleActionParametersVaryResult vary,
+
+            bool webmcpEnabled,
+
+            ImmutableArray<string> webmcpPacks)
         {
             AdditionalCacheablePorts = additionalCacheablePorts;
             Algorithms = algorithms;
@@ -586,6 +598,8 @@ namespace Pulumi.Cloudflare.Outputs
             Uri = uri;
             Values = values;
             Vary = vary;
+            WebmcpEnabled = webmcpEnabled;
+            WebmcpPacks = webmcpPacks;
         }
     }
 }

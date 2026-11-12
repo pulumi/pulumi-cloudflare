@@ -32,7 +32,6 @@ namespace Pulumi.Cloudflare
     ///         ZoneDefaults = new Cloudflare.Inputs.AccountDnsSettingsZoneDefaultsArgs
     ///         {
     ///             FlattenAllCnames = false,
-    ///             FoundationDns = false,
     ///             InternalDns = new Cloudflare.Inputs.AccountDnsSettingsZoneDefaultsInternalDnsArgs
     ///             {
     ///                 ReferenceZoneId = "reference_zone_id",

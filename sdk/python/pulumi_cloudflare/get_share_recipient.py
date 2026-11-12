@@ -79,7 +79,7 @@ class GetShareRecipientResult:
     @pulumi.getter
     def created(self) -> _builtins.str:
         """
-        When the share was created.
+        When the object was created.
         """
         return pulumi.get(self, "created")
 
@@ -103,7 +103,7 @@ class GetShareRecipientResult:
     @pulumi.getter
     def modified(self) -> _builtins.str:
         """
-        When the share was modified.
+        When the object was last modified.
         """
         return pulumi.get(self, "modified")
 

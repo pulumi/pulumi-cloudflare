@@ -31,6 +31,7 @@ class LoadBalancerArgs:
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  location_strategy: pulumi.Input[Optional['LoadBalancerLocationStrategyArgs']] = None,
                  networks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 pool_sets: pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerPoolSetArgs']]]] = None,
                  pop_pools: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
                  proxied: pulumi.Input[Optional[_builtins.bool]] = None,
                  random_steering: pulumi.Input[Optional['LoadBalancerRandomSteeringArgs']] = None,
@@ -53,6 +54,7 @@ class LoadBalancerArgs:
         :param pulumi.Input[_builtins.bool] enabled: Whether to enable (the default) this load balancer.
         :param pulumi.Input['LoadBalancerLocationStrategyArgs'] location_strategy: Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] networks: List of networks where Load Balancer or Pool is enabled.
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolSetArgs']]] pool_sets: An optional list of pool sets, evaluated in array order with first match wins. Pool sets are independent from the standard steering fields (`region_pools` / `country_pools` / `pop_pools` / `default_pools` / `steering_policy` / `random_steering` / `fallback_pool` / `rules`). On a PATCH, an empty array (`pool_sets: []`) clears all pool sets, while omitting the field leaves existing pool sets unchanged.
         :param pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]] pop_pools: Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
         :param pulumi.Input[_builtins.bool] proxied: Whether the hostname should be gray clouded (false) or orange clouded (true).
         :param pulumi.Input['LoadBalancerRandomSteeringArgs'] random_steering: Configures pool weights.
@@ -81,6 +83,8 @@ class LoadBalancerArgs:
             pulumi.set(__self__, "location_strategy", location_strategy)
         if networks is not None:
             pulumi.set(__self__, "networks", networks)
+        if pool_sets is not None:
+            pulumi.set(__self__, "pool_sets", pool_sets)
         if pop_pools is not None:
             pulumi.set(__self__, "pop_pools", pop_pools)
         if proxied is not None:
@@ -220,6 +224,18 @@ class LoadBalancerArgs:
         pulumi.set(self, "networks", value)
 
     @_builtins.property
+    @pulumi.getter(name="poolSets")
+    def pool_sets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerPoolSetArgs']]]]:
+        """
+        An optional list of pool sets, evaluated in array order with first match wins. Pool sets are independent from the standard steering fields (`region_pools` / `country_pools` / `pop_pools` / `default_pools` / `steering_policy` / `random_steering` / `fallback_pool` / `rules`). On a PATCH, an empty array (`pool_sets: []`) clears all pool sets, while omitting the field leaves existing pool sets unchanged.
+        """
+        return pulumi.get(self, "pool_sets")
+
+    @pool_sets.setter
+    def pool_sets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerPoolSetArgs']]]]):
+        pulumi.set(self, "pool_sets", value)
+
+    @_builtins.property
     @pulumi.getter(name="popPools")
     def pop_pools(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]:
         """
@@ -355,6 +371,7 @@ class _LoadBalancerState:
                  modified_on: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  networks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 pool_sets: pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerPoolSetArgs']]]] = None,
                  pop_pools: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
                  proxied: pulumi.Input[Optional[_builtins.bool]] = None,
                  random_steering: pulumi.Input[Optional['LoadBalancerRandomSteeringArgs']] = None,
@@ -379,6 +396,7 @@ class _LoadBalancerState:
         :param pulumi.Input['LoadBalancerLocationStrategyArgs'] location_strategy: Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected.
         :param pulumi.Input[_builtins.str] name: The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] networks: List of networks where Load Balancer or Pool is enabled.
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolSetArgs']]] pool_sets: An optional list of pool sets, evaluated in array order with first match wins. Pool sets are independent from the standard steering fields (`region_pools` / `country_pools` / `pop_pools` / `default_pools` / `steering_policy` / `random_steering` / `fallback_pool` / `rules`). On a PATCH, an empty array (`pool_sets: []`) clears all pool sets, while omitting the field leaves existing pool sets unchanged.
         :param pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]] pop_pools: Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
         :param pulumi.Input[_builtins.bool] proxied: Whether the hostname should be gray clouded (false) or orange clouded (true).
         :param pulumi.Input['LoadBalancerRandomSteeringArgs'] random_steering: Configures pool weights.
@@ -413,6 +431,8 @@ class _LoadBalancerState:
             pulumi.set(__self__, "name", name)
         if networks is not None:
             pulumi.set(__self__, "networks", networks)
+        if pool_sets is not None:
+            pulumi.set(__self__, "pool_sets", pool_sets)
         if pop_pools is not None:
             pulumi.set(__self__, "pop_pools", pop_pools)
         if proxied is not None:
@@ -563,6 +583,18 @@ class _LoadBalancerState:
     @networks.setter
     def networks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "networks", value)
+
+    @_builtins.property
+    @pulumi.getter(name="poolSets")
+    def pool_sets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerPoolSetArgs']]]]:
+        """
+        An optional list of pool sets, evaluated in array order with first match wins. Pool sets are independent from the standard steering fields (`region_pools` / `country_pools` / `pop_pools` / `default_pools` / `steering_policy` / `random_steering` / `fallback_pool` / `rules`). On a PATCH, an empty array (`pool_sets: []`) clears all pool sets, while omitting the field leaves existing pool sets unchanged.
+        """
+        return pulumi.get(self, "pool_sets")
+
+    @pool_sets.setter
+    def pool_sets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerPoolSetArgs']]]]):
+        pulumi.set(self, "pool_sets", value)
 
     @_builtins.property
     @pulumi.getter(name="popPools")
@@ -719,6 +751,7 @@ class LoadBalancer(pulumi.CustomResource):
                  location_strategy: pulumi.Input[Optional[Union['LoadBalancerLocationStrategyArgs', 'LoadBalancerLocationStrategyArgsDict', 'outputs.LoadBalancerLocationStrategy']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  networks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 pool_sets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerPoolSetArgs', 'LoadBalancerPoolSetArgsDict', 'outputs.LoadBalancerPoolSet']]]]] = None,
                  pop_pools: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
                  proxied: pulumi.Input[Optional[_builtins.bool]] = None,
                  random_steering: pulumi.Input[Optional[Union['LoadBalancerRandomSteeringArgs', 'LoadBalancerRandomSteeringArgsDict', 'outputs.LoadBalancerRandomSteering']]] = None,
@@ -736,6 +769,19 @@ class LoadBalancer(pulumi.CustomResource):
 
         - `Load Balancers Read`
         - `Load Balancers Write`
+
+        ## Planning updates
+
+        On an update, unchanged API defaults can retain their state values instead of
+        showing `(known after apply)`. This includes unset overrides in unchanged, named
+        rules. Removing a configured, non-default value still lets the API reset that
+        value; the plan does not retain the removed setting.
+
+        `modified_on` remains unknown because it changes on every write. Other computed
+        values can remain unknown on creation, when a related setting changes, or when
+        the provider cannot determine a safe default. For example, changing session
+        affinity can change its default TTL, and an unconfigured DNS TTL remains unknown
+        for an unproxied load balancer.
 
         ## Example Usage
 
@@ -768,7 +814,38 @@ class LoadBalancer(pulumi.CustomResource):
                 "mode": "resolver_ip",
                 "prefer_ecs": "always",
             },
-            networks=["string"],
+            networks=[
+                "cloudflare",
+                "jdcloud",
+            ],
+            pool_sets=[{
+                "disabled": True,
+                "fixed_response": {
+                    "content_type": "application/json",
+                    "location": "www.example.com",
+                    "message_body": "Testing Hello",
+                    "status_code": 0,
+                },
+                "match": {
+                    "default": True,
+                    "topology": {
+                        "countries": ["string"],
+                        "pops": ["string"],
+                        "regions": ["WNAM"],
+                    },
+                },
+                "name": "wnam-primary",
+                "overrides": {
+                    "fallback_pool": "9290f38c5d07c2e2f4df57b1f61d4196",
+                    "pool_default_weight": 0.2,
+                    "pool_weights": {
+                        "9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
+                        "de90f38ced07c2e2f4df50b1f61d4194": 0.3,
+                    },
+                    "pools": ["17b5962d775c646f3f9725cbc7a53df4"],
+                    "steering_policy": "random",
+                },
+            }],
             pop_pools={
                 "LAX": [
                     "de90f38ced07c2e2f4df50b1f61d4194",
@@ -905,6 +982,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[Union['LoadBalancerLocationStrategyArgs', 'LoadBalancerLocationStrategyArgsDict', 'outputs.LoadBalancerLocationStrategy']] location_strategy: Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected.
         :param pulumi.Input[_builtins.str] name: The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] networks: List of networks where Load Balancer or Pool is enabled.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPoolSetArgs', 'LoadBalancerPoolSetArgsDict', 'outputs.LoadBalancerPoolSet']]]] pool_sets: An optional list of pool sets, evaluated in array order with first match wins. Pool sets are independent from the standard steering fields (`region_pools` / `country_pools` / `pop_pools` / `default_pools` / `steering_policy` / `random_steering` / `fallback_pool` / `rules`). On a PATCH, an empty array (`pool_sets: []`) clears all pool sets, while omitting the field leaves existing pool sets unchanged.
         :param pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]] pop_pools: Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
         :param pulumi.Input[_builtins.bool] proxied: Whether the hostname should be gray clouded (false) or orange clouded (true).
         :param pulumi.Input[Union['LoadBalancerRandomSteeringArgs', 'LoadBalancerRandomSteeringArgsDict', 'outputs.LoadBalancerRandomSteering']] random_steering: Configures pool weights.
@@ -928,6 +1006,19 @@ class LoadBalancer(pulumi.CustomResource):
 
         - `Load Balancers Read`
         - `Load Balancers Write`
+
+        ## Planning updates
+
+        On an update, unchanged API defaults can retain their state values instead of
+        showing `(known after apply)`. This includes unset overrides in unchanged, named
+        rules. Removing a configured, non-default value still lets the API reset that
+        value; the plan does not retain the removed setting.
+
+        `modified_on` remains unknown because it changes on every write. Other computed
+        values can remain unknown on creation, when a related setting changes, or when
+        the provider cannot determine a safe default. For example, changing session
+        affinity can change its default TTL, and an unconfigured DNS TTL remains unknown
+        for an unproxied load balancer.
 
         ## Example Usage
 
@@ -960,7 +1051,38 @@ class LoadBalancer(pulumi.CustomResource):
                 "mode": "resolver_ip",
                 "prefer_ecs": "always",
             },
-            networks=["string"],
+            networks=[
+                "cloudflare",
+                "jdcloud",
+            ],
+            pool_sets=[{
+                "disabled": True,
+                "fixed_response": {
+                    "content_type": "application/json",
+                    "location": "www.example.com",
+                    "message_body": "Testing Hello",
+                    "status_code": 0,
+                },
+                "match": {
+                    "default": True,
+                    "topology": {
+                        "countries": ["string"],
+                        "pops": ["string"],
+                        "regions": ["WNAM"],
+                    },
+                },
+                "name": "wnam-primary",
+                "overrides": {
+                    "fallback_pool": "9290f38c5d07c2e2f4df57b1f61d4196",
+                    "pool_default_weight": 0.2,
+                    "pool_weights": {
+                        "9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
+                        "de90f38ced07c2e2f4df50b1f61d4194": 0.3,
+                    },
+                    "pools": ["17b5962d775c646f3f9725cbc7a53df4"],
+                    "steering_policy": "random",
+                },
+            }],
             pop_pools={
                 "LAX": [
                     "de90f38ced07c2e2f4df50b1f61d4194",
@@ -1110,6 +1232,7 @@ class LoadBalancer(pulumi.CustomResource):
                  location_strategy: pulumi.Input[Optional[Union['LoadBalancerLocationStrategyArgs', 'LoadBalancerLocationStrategyArgsDict', 'outputs.LoadBalancerLocationStrategy']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  networks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 pool_sets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerPoolSetArgs', 'LoadBalancerPoolSetArgsDict', 'outputs.LoadBalancerPoolSet']]]]] = None,
                  pop_pools: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
                  proxied: pulumi.Input[Optional[_builtins.bool]] = None,
                  random_steering: pulumi.Input[Optional[Union['LoadBalancerRandomSteeringArgs', 'LoadBalancerRandomSteeringArgsDict', 'outputs.LoadBalancerRandomSteering']]] = None,
@@ -1145,6 +1268,7 @@ class LoadBalancer(pulumi.CustomResource):
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["networks"] = networks
+            __props__.__dict__["pool_sets"] = pool_sets
             __props__.__dict__["pop_pools"] = pop_pools
             __props__.__dict__["proxied"] = proxied
             __props__.__dict__["random_steering"] = random_steering
@@ -1182,6 +1306,7 @@ class LoadBalancer(pulumi.CustomResource):
             modified_on: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             networks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            pool_sets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerPoolSetArgs', 'LoadBalancerPoolSetArgsDict', 'outputs.LoadBalancerPoolSet']]]]] = None,
             pop_pools: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
             proxied: pulumi.Input[Optional[_builtins.bool]] = None,
             random_steering: pulumi.Input[Optional[Union['LoadBalancerRandomSteeringArgs', 'LoadBalancerRandomSteeringArgsDict', 'outputs.LoadBalancerRandomSteering']]] = None,
@@ -1210,6 +1335,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[Union['LoadBalancerLocationStrategyArgs', 'LoadBalancerLocationStrategyArgsDict', 'outputs.LoadBalancerLocationStrategy']] location_strategy: Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected.
         :param pulumi.Input[_builtins.str] name: The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] networks: List of networks where Load Balancer or Pool is enabled.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPoolSetArgs', 'LoadBalancerPoolSetArgsDict', 'outputs.LoadBalancerPoolSet']]]] pool_sets: An optional list of pool sets, evaluated in array order with first match wins. Pool sets are independent from the standard steering fields (`region_pools` / `country_pools` / `pop_pools` / `default_pools` / `steering_policy` / `random_steering` / `fallback_pool` / `rules`). On a PATCH, an empty array (`pool_sets: []`) clears all pool sets, while omitting the field leaves existing pool sets unchanged.
         :param pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]] pop_pools: Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
         :param pulumi.Input[_builtins.bool] proxied: Whether the hostname should be gray clouded (false) or orange clouded (true).
         :param pulumi.Input[Union['LoadBalancerRandomSteeringArgs', 'LoadBalancerRandomSteeringArgsDict', 'outputs.LoadBalancerRandomSteering']] random_steering: Configures pool weights.
@@ -1237,6 +1363,7 @@ class LoadBalancer(pulumi.CustomResource):
         __props__.__dict__["modified_on"] = modified_on
         __props__.__dict__["name"] = name
         __props__.__dict__["networks"] = networks
+        __props__.__dict__["pool_sets"] = pool_sets
         __props__.__dict__["pop_pools"] = pop_pools
         __props__.__dict__["proxied"] = proxied
         __props__.__dict__["random_steering"] = random_steering
@@ -1265,6 +1392,7 @@ class LoadBalancer(pulumi.CustomResource):
             modified_on: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             networks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            pool_sets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerPoolSetArgs', 'LoadBalancerPoolSetArgsDict', 'outputs.LoadBalancerPoolSet']]]]] = None,
             pop_pools: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
             proxied: pulumi.Input[Optional[_builtins.bool]] = None,
             random_steering: pulumi.Input[Optional[Union['LoadBalancerRandomSteeringArgs', 'LoadBalancerRandomSteeringArgsDict', 'outputs.LoadBalancerRandomSteering']]] = None,
@@ -1289,6 +1417,7 @@ class LoadBalancer(pulumi.CustomResource):
         __props__["modifiedOn"] = modified_on
         __props__["name"] = name
         __props__["networks"] = networks
+        __props__["poolSets"] = pool_sets
         __props__["popPools"] = pop_pools
         __props__["proxied"] = proxied
         __props__["randomSteering"] = random_steering
@@ -1384,6 +1513,14 @@ class LoadBalancer(pulumi.CustomResource):
         List of networks where Load Balancer or Pool is enabled.
         """
         return pulumi.get(self, "networks")
+
+    @_builtins.property
+    @pulumi.getter(name="poolSets")
+    def pool_sets(self) -> pulumi.Output[Sequence['outputs.LoadBalancerPoolSet']]:
+        """
+        An optional list of pool sets, evaluated in array order with first match wins. Pool sets are independent from the standard steering fields (`region_pools` / `country_pools` / `pop_pools` / `default_pools` / `steering_policy` / `random_steering` / `fallback_pool` / `rules`). On a PATCH, an empty array (`pool_sets: []`) clears all pool sets, while omitting the field leaves existing pool sets unchanged.
+        """
+        return pulumi.get(self, "pool_sets")
 
     @_builtins.property
     @pulumi.getter(name="popPools")

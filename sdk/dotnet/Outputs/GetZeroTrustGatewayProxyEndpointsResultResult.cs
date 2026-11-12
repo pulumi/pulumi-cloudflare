@@ -16,7 +16,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string CreatedAt;
         public readonly string Id;
         /// <summary>
-        /// Specify the list of CIDRs to restrict ingress connections.
+        /// For `kind: ip`: Specify the list of CIDRs to restrict ingress connections.
         /// </summary>
         public readonly ImmutableArray<string> Ips;
         /// <summary>

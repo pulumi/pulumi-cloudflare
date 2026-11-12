@@ -190,6 +190,7 @@ namespace Pulumi.Cloudflare
         public readonly string Name;
         public readonly Outputs.GetMagicTransitSiteLanNatResult Nat;
         public readonly int Physport;
+        public readonly ImmutableArray<Outputs.GetMagicTransitSiteLanRemoteSubnetResult> RemoteSubnets;
         public readonly ImmutableArray<Outputs.GetMagicTransitSiteLanRoutedSubnetResult> RoutedSubnets;
         /// <summary>
         /// Identifier
@@ -226,6 +227,8 @@ namespace Pulumi.Cloudflare
 
             int physport,
 
+            ImmutableArray<Outputs.GetMagicTransitSiteLanRemoteSubnetResult> remoteSubnets,
+
             ImmutableArray<Outputs.GetMagicTransitSiteLanRoutedSubnetResult> routedSubnets,
 
             string siteId,
@@ -244,6 +247,7 @@ namespace Pulumi.Cloudflare
             Name = name;
             Nat = nat;
             Physport = physport;
+            RemoteSubnets = remoteSubnets;
             RoutedSubnets = routedSubnets;
             SiteId = siteId;
             StaticAddressing = staticAddressing;

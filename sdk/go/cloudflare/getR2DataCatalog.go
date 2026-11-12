@@ -73,6 +73,8 @@ type LookupR2DataCatalogResult struct {
 	CredentialStatus string `pulumi:"credentialStatus"`
 	// Specifies the R2 bucket name.
 	Id string `pulumi:"id"`
+	// Specifies the data-locality jurisdiction of the catalog. The first enable sets it, and it cannot change. Currently always `default`.
+	Jurisdiction string `pulumi:"jurisdiction"`
 	// Configures maintenance for the catalog.
 	MaintenanceConfig GetR2DataCatalogMaintenanceConfig `pulumi:"maintenanceConfig"`
 	// Specifies the catalog name (generated from account and bucket name).
@@ -138,6 +140,11 @@ func (o LookupR2DataCatalogResultOutput) CredentialStatus() pulumi.StringOutput 
 // Specifies the R2 bucket name.
 func (o LookupR2DataCatalogResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupR2DataCatalogResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Specifies the data-locality jurisdiction of the catalog. The first enable sets it, and it cannot change. Currently always `default`.
+func (o LookupR2DataCatalogResultOutput) Jurisdiction() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupR2DataCatalogResult) string { return v.Jurisdiction }).(pulumi.StringOutput)
 }
 
 // Configures maintenance for the catalog.

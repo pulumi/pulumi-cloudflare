@@ -98,6 +98,13 @@ def get_zero_trust_resource_library_category(account_id: Optional[_builtins.str]
                                              id: Optional[_builtins.int] = None,
                                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustResourceLibraryCategoryResult:
     """
+    Accepted Permissions
+
+    - `Resource Library Read`
+    - `Resource Library Write`
+    - `Zero Trust Read`
+    - `Zero Trust Write`
+
     ## Example Usage
 
     ```python
@@ -127,6 +134,13 @@ def get_zero_trust_resource_library_category_output(account_id: pulumi.Input[Opt
                                                     id: pulumi.Input[Optional[_builtins.int]] = None,
                                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustResourceLibraryCategoryResult]:
     """
+    Accepted Permissions
+
+    - `Resource Library Read`
+    - `Resource Library Write`
+    - `Zero Trust Read`
+    - `Zero Trust Write`
+
     ## Example Usage
 
     ```python

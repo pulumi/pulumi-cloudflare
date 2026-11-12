@@ -4,7 +4,6 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.WorkerVersionBindingOutbound;
-import com.pulumi.cloudflare.outputs.WorkerVersionBindingRetry;
 import com.pulumi.cloudflare.outputs.WorkerVersionBindingSimple;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -17,329 +16,352 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WorkerVersionBinding {
     /**
-     * @return Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
+     * @return For `type: secretKey`: Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
      * 
      */
     private @Nullable String algorithm;
     /**
-     * @return List of allowed destination addresses.
+     * @return For `type: sendEmail`: List of allowed destination addresses.
      * 
      */
     private @Nullable List<String> allowedDestinationAddresses;
     /**
-     * @return List of allowed sender addresses.
+     * @return For `type: sendEmail`: List of allowed sender addresses.
      * 
      */
     private @Nullable List<String> allowedSenderAddresses;
     /**
-     * @return ID of the Flagship app to bind to for feature flag evaluation.
+     * @return For `type: flagship`: ID of the Flagship app to bind to for feature flag evaluation.
      * 
      */
     private @Nullable String appId;
     /**
-     * @return R2 bucket to bind to.
+     * @return For `type: r2Bucket`: R2 bucket to bind to.
      * 
      */
     private @Nullable String bucketName;
     /**
-     * @return Identifier of the certificate to bind to.
+     * @return For `type: mtlsCertificate`: Identifier of the certificate to bind to.
      * 
      */
     private @Nullable String certificateId;
     /**
-     * @return The exported class name of the Durable Object.
+     * @return For `type: durableObjectNamespace`: The exported class name of the Durable Object.
+     * 
+     * For `type: workflow`: Class name of the Workflow. Should only be provided if the Workflow belongs to this script.
      * 
      */
     private @Nullable String className;
     /**
-     * @return Identifier of the D1 database to bind to.
+     * @return For `type: d1`: Identifier of the D1 database to bind to.
      * 
      */
     private @Nullable String databaseId;
     /**
-     * @return The name of the dataset to bind to.
+     * @return For `type: analyticsEngine`: The name of the dataset to bind to.
      * 
      */
     private @Nullable String dataset;
     /**
-     * @return Destination address for the email.
+     * @return For `type: sendEmail`: Destination address for the email.
      * 
      */
     private @Nullable String destinationAddress;
     /**
-     * @return The dispatch namespace the Durable Object script belongs to.
+     * @return For `type: durableObjectNamespace`: The dispatch namespace the Durable Object script belongs to.
      * 
      */
     private @Nullable String dispatchNamespace;
     /**
-     * @return Entrypoint to invoke on the target Worker.
+     * @return For `type: service`: Entrypoint to invoke on the target Worker.
      * 
      */
     private @Nullable String entrypoint;
     /**
-     * @return The environment of the scriptName to bind to.
+     * @return For `type: durableObjectNamespace`: The environment of the scriptName to bind to.
+     * 
+     * For `type: service`: Optional environment if the Worker utilizes one.
      * 
      */
     private @Nullable String environment;
     /**
-     * @return Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
+     * @return For `type: secretKey`: Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
      * Available values: &#34;raw&#34;, &#34;pkcs8&#34;, &#34;spki&#34;, &#34;jwk&#34;.
      * 
      */
     private @Nullable String format;
     /**
-     * @return Identifier of the D1 database to bind to.
+     * @return For `type: d1`: Identifier of the D1 database to bind to.
+     * 
+     * For `type: hyperdrive`: Identifier of the Hyperdrive connection to bind to.
      * 
      */
     private @Nullable String id;
     /**
-     * @return Enables Gateway identity for the binding. Requires network*id to be &#34;cf1:network&#34; and cannot be combined with tunnel*id.
+     * @return For `type: vpcNetwork`: Enables Gateway identity for the binding. Requires networkId to be &#34;cf1:network&#34; and cannot be combined with tunnelId or an explicit &#34;cf1:vnet:&lt;UUID&gt;&#34; network_id.
      * Available values: &#34;runtime-email-alpha&#34;.
      * 
      */
     private @Nullable String identity;
     /**
-     * @return Name of the Vectorize index to bind to.
+     * @return For `type: vectorize`: Name of the Vectorize index to bind to.
      * 
      */
     private @Nullable String indexName;
     /**
-     * @return The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
+     * @return For `type: aiSearch`: The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
      * 
      */
     private @Nullable String instanceName;
     /**
-     * @return JSON data to use.
+     * @return For `type: json`: JSON data to use.
      * 
      */
     private @Nullable String json;
     /**
-     * @return The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
+     * @return For `type: r2Bucket`: The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
      * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;fedramp-high&#34;, &#34;us&#34;.
      * 
      */
     private @Nullable String jurisdiction;
     /**
-     * @return Base64-encoded key data. Required if `format` is &#34;raw&#34;, &#34;pkcs8&#34;, or &#34;spki&#34;.
+     * @return For `type: secretKey`: Base64-encoded key data. Required if `format` is &#34;raw&#34;, &#34;pkcs8&#34;, or &#34;spki&#34;.
      * 
      */
     private @Nullable String keyBase64;
     /**
-     * @return Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is &#34;jwk&#34;.
+     * @return For `type: secretKey`: Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is &#34;jwk&#34;.
      * 
      */
     private @Nullable String keyJwk;
     /**
-     * @return A JavaScript variable name for the binding.
+     * @return For `type: ai` or `type: aiSearch` or `type: aiSearchNamespace` or `type: messaging` or `type: analyticsEngine` or `type: artifacts` or `type: assets` or `type: browser` or `type: d1` or `type: dataBlob` or `type: dispatchNamespace` or `type: durableObjectNamespace` or `type: hyperdrive` or `type: images` or `type: json` or `type: kvNamespace` or `type: media` or `type: mtlsCertificate` or `type: plainText` or `type: pipelines` or `type: k2` or `type: queue` or `type: ratelimit` or `type: r2Bucket` or `type: secretText` or `type: sendEmail` or `type: service` or `type: textBlob` or `type: vectorize` or `type: versionMetadata` or `type: secretsStoreSecret` or `type: flagship` or `type: secretKey` or `type: workflow` or `type: wasmModule` or `type: vpcService` or `type: vpcNetwork` or `type: workerLoader`: A JavaScript variable name for the binding.
      * 
      */
     private String name;
     /**
-     * @return The namespace the instance belongs to. Defaults to &#34;default&#34; if omitted. Customers who don&#39;t use namespaces can simply omit this field.
+     * @return For `type: aiSearch`: The namespace the instance belongs to. Defaults to &#34;default&#34; if omitted. Customers who don&#39;t use namespaces can simply omit this field.
+     * 
+     * For `type: aiSearchNamespace`: The user-chosen namespace name. Must exist before deploy -- Wrangler handles auto-creation on deploy failure (R2 bucket pattern). The &#34;default&#34; namespace is auto-created by config-api for new accounts. Grants full access (CRUD + search + chat) to all instances within the namespace.
+     * 
+     * For `type: messaging`: The Messaging namespace to bind to.
+     * 
+     * For `type: artifacts`: The Artifacts namespace exposed to the Worker in the Worker&#39;s account. Must be 2-63 characters, start with an ASCII alphanumeric character, contain only ASCII alphanumeric characters, dots, underscores, and hyphens, and must not end with a hyphen. The namespace does not need to be created before binding it.
+     * 
+     * For `type: dispatchNamespace`: The name of the dispatch namespace.
      * 
      */
     private @Nullable String namespace;
     /**
-     * @return Namespace identifier tag.
+     * @return For `type: durableObjectNamespace` or `type: kvNamespace`: Namespace identifier tag.
+     * 
+     * For `type: ratelimit`: Identifier of the rate limit namespace to bind to.
      * 
      */
     private @Nullable String namespaceId;
     /**
-     * @return Identifier of the network to bind to. Only &#34;cf1:network&#34; is currently supported. Mutually exclusive with tunnel_id.
+     * @return For `type: vpcNetwork`: Identifier of the network to bind to. Use &#34;cf1:network&#34; to select the account&#39;s default virtual network at runtime, or &#34;cf1:vnet:&lt;UUID&gt;&#34; to select an explicit virtual network in the Worker&#39;s account. Mutually exclusive with tunnel_id.
      * 
      */
     private @Nullable String networkId;
     /**
-     * @return The old name of the inherited binding. If set, the binding will be renamed from `oldName` to `name` in the new version. If not set, the binding will keep the same name between versions.
+     * @return For `type: inherit`: The old name of the inherited binding. If set, the binding will be renamed from `oldName` to `name` in the new version. If not set, the binding will keep the same name between versions.
      * 
      */
     private @Nullable String oldName;
     /**
-     * @return Outbound worker.
+     * @return For `type: dispatchNamespace`: Outbound worker.
      * 
      */
     private @Nullable WorkerVersionBindingOutbound outbound;
     /**
-     * @return The name of the file containing the data content. Only accepted for `service worker syntax` Workers.
+     * @return For `type: dataBlob`: The name of the file containing the data content. Only accepted for `service worker syntax` Workers.
+     * 
+     * For `type: textBlob`: The name of the file containing the text content. Only accepted for `service worker syntax` Workers.
+     * 
+     * For `type: wasmModule`: The name of the file containing the WebAssembly module content. Only accepted for `service worker syntax` Workers.
      * 
      */
     private @Nullable String part;
     /**
-     * @return Name of the Pipeline to bind to.
+     * @return For `type: pipelines`: Name of the Pipeline to bind to.
      * 
      */
     private @Nullable String pipeline;
     /**
-     * @return Name of the Queue to bind to.
+     * @return For `type: queue`: Name of the Queue to bind to.
      * 
      */
     private @Nullable String queueName;
     /**
-     * @return Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
+     * @return For `type: durableObjectNamespace`: The script where the Durable Object is defined, if it is external to this Worker.
      * 
-     */
-    private @Nullable WorkerVersionBindingRetry retry;
-    /**
-     * @return The script where the Durable Object is defined, if it is external to this Worker.
+     * For `type: workflow`: Script name that contains the Workflow. If not provided, defaults to this script name.
      * 
      */
     private @Nullable String scriptName;
     /**
-     * @return Name of the secret in the store.
+     * @return For `type: secretsStoreSecret`: Name of the secret in the store.
      * 
      */
     private @Nullable String secretName;
     /**
-     * @return Name of Worker to bind to.
+     * @return For `type: service`: Name of Worker to bind to.
      * 
      */
     private @Nullable String service;
     /**
-     * @return Identifier of the VPC service to bind to.
+     * @return For `type: vpcService`: Identifier of the VPC service to bind to.
      * 
      */
     private @Nullable String serviceId;
     /**
-     * @return The rate limit configuration.
+     * @return For `type: ratelimit`: The rate limit configuration.
      * 
      */
     private @Nullable WorkerVersionBindingSimple simple;
     /**
-     * @return ID of the store containing the secret.
+     * @return For `type: secretsStoreSecret`: ID of the store containing the secret.
      * 
      */
     private @Nullable String storeId;
     /**
-     * @return ID of a K2 stream owned by the account deploying the Worker.
+     * @return For `type: k2`: ID of a K2 stream owned by the account deploying the Worker.
      * 
      */
     private @Nullable String stream;
     /**
-     * @return The text value to use.
+     * @return For `type: plainText`: The text value to use.
+     * 
+     * For `type: secretText`: The secret value to use.
      * 
      */
     private @Nullable String text;
     /**
-     * @return UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
+     * @return For `type: vpcNetwork`: UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
      * 
      */
     private @Nullable String tunnelId;
     /**
      * @return The kind of resource that the binding provides.
-     * Available values: &#34;ai&#34;, &#34;ai*search&#34;, &#34;ai*search*namespace&#34;, &#34;messaging&#34;, &#34;analytics*engine&#34;, &#34;artifacts&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;data*blob&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;media&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;k2&#34;, &#34;queue&#34;, &#34;ratelimit&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;send*email&#34;, &#34;service&#34;, &#34;text*blob&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;flagship&#34;, &#34;secret*key&#34;, &#34;workflow&#34;, &#34;wasm*module&#34;, &#34;vpc*service&#34;, &#34;vpc*network&#34;.
+     * Available values: &#34;ai&#34;, &#34;aiSearch&#34;, &#34;aiSearchNamespace&#34;, &#34;messaging&#34;, &#34;analyticsEngine&#34;, &#34;artifacts&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;dataBlob&#34;, &#34;dispatchNamespace&#34;, &#34;durableObjectNamespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kvNamespace&#34;, &#34;media&#34;, &#34;mtlsCertificate&#34;, &#34;plainText&#34;, &#34;pipelines&#34;, &#34;k2&#34;, &#34;queue&#34;, &#34;ratelimit&#34;, &#34;r2Bucket&#34;, &#34;secretText&#34;, &#34;sendEmail&#34;, &#34;service&#34;, &#34;textBlob&#34;, &#34;vectorize&#34;, &#34;versionMetadata&#34;, &#34;secretsStoreSecret&#34;, &#34;flagship&#34;, &#34;secretKey&#34;, &#34;workflow&#34;, &#34;wasmModule&#34;, &#34;vpcService&#34;, &#34;vpcNetwork&#34;, &#34;workerLoader&#34;.
      * 
      */
     private String type;
     /**
-     * @return Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
+     * @return For `type: secretKey`: Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
      * 
      */
     private @Nullable List<String> usages;
     /**
-     * @return Identifier for the version to inherit the binding from, which can be the version ID or the literal &#34;latest&#34; to inherit from the latest version. Defaults to inheriting the binding from the latest version.
+     * @return For `type: inherit`: Identifier for the version to inherit the binding from. This can be a version ID, or the literal &#34;latest&#34; to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to &#34;latest&#34;. Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only &#34;latest&#34; and reject a version ID with error 10057.
      * 
      */
     private @Nullable String versionId;
     /**
-     * @return Name of the Workflow to bind to.
+     * @return For `type: workflow`: Name of the Workflow to bind to.
      * 
      */
     private @Nullable String workflowName;
 
     private WorkerVersionBinding() {}
     /**
-     * @return Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
+     * @return For `type: secretKey`: Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
      * 
      */
     public Optional<String> algorithm() {
         return Optional.ofNullable(this.algorithm);
     }
     /**
-     * @return List of allowed destination addresses.
+     * @return For `type: sendEmail`: List of allowed destination addresses.
      * 
      */
     public List<String> allowedDestinationAddresses() {
         return this.allowedDestinationAddresses == null ? List.of() : this.allowedDestinationAddresses;
     }
     /**
-     * @return List of allowed sender addresses.
+     * @return For `type: sendEmail`: List of allowed sender addresses.
      * 
      */
     public List<String> allowedSenderAddresses() {
         return this.allowedSenderAddresses == null ? List.of() : this.allowedSenderAddresses;
     }
     /**
-     * @return ID of the Flagship app to bind to for feature flag evaluation.
+     * @return For `type: flagship`: ID of the Flagship app to bind to for feature flag evaluation.
      * 
      */
     public Optional<String> appId() {
         return Optional.ofNullable(this.appId);
     }
     /**
-     * @return R2 bucket to bind to.
+     * @return For `type: r2Bucket`: R2 bucket to bind to.
      * 
      */
     public Optional<String> bucketName() {
         return Optional.ofNullable(this.bucketName);
     }
     /**
-     * @return Identifier of the certificate to bind to.
+     * @return For `type: mtlsCertificate`: Identifier of the certificate to bind to.
      * 
      */
     public Optional<String> certificateId() {
         return Optional.ofNullable(this.certificateId);
     }
     /**
-     * @return The exported class name of the Durable Object.
+     * @return For `type: durableObjectNamespace`: The exported class name of the Durable Object.
+     * 
+     * For `type: workflow`: Class name of the Workflow. Should only be provided if the Workflow belongs to this script.
      * 
      */
     public Optional<String> className() {
         return Optional.ofNullable(this.className);
     }
     /**
-     * @return Identifier of the D1 database to bind to.
+     * @return For `type: d1`: Identifier of the D1 database to bind to.
      * 
      */
     public Optional<String> databaseId() {
         return Optional.ofNullable(this.databaseId);
     }
     /**
-     * @return The name of the dataset to bind to.
+     * @return For `type: analyticsEngine`: The name of the dataset to bind to.
      * 
      */
     public Optional<String> dataset() {
         return Optional.ofNullable(this.dataset);
     }
     /**
-     * @return Destination address for the email.
+     * @return For `type: sendEmail`: Destination address for the email.
      * 
      */
     public Optional<String> destinationAddress() {
         return Optional.ofNullable(this.destinationAddress);
     }
     /**
-     * @return The dispatch namespace the Durable Object script belongs to.
+     * @return For `type: durableObjectNamespace`: The dispatch namespace the Durable Object script belongs to.
      * 
      */
     public Optional<String> dispatchNamespace() {
         return Optional.ofNullable(this.dispatchNamespace);
     }
     /**
-     * @return Entrypoint to invoke on the target Worker.
+     * @return For `type: service`: Entrypoint to invoke on the target Worker.
      * 
      */
     public Optional<String> entrypoint() {
         return Optional.ofNullable(this.entrypoint);
     }
     /**
-     * @return The environment of the scriptName to bind to.
+     * @return For `type: durableObjectNamespace`: The environment of the scriptName to bind to.
+     * 
+     * For `type: service`: Optional environment if the Worker utilizes one.
      * 
      */
     public Optional<String> environment() {
         return Optional.ofNullable(this.environment);
     }
     /**
-     * @return Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
+     * @return For `type: secretKey`: Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
      * Available values: &#34;raw&#34;, &#34;pkcs8&#34;, &#34;spki&#34;, &#34;jwk&#34;.
      * 
      */
@@ -347,14 +369,16 @@ public final class WorkerVersionBinding {
         return Optional.ofNullable(this.format);
     }
     /**
-     * @return Identifier of the D1 database to bind to.
+     * @return For `type: d1`: Identifier of the D1 database to bind to.
+     * 
+     * For `type: hyperdrive`: Identifier of the Hyperdrive connection to bind to.
      * 
      */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
     /**
-     * @return Enables Gateway identity for the binding. Requires network*id to be &#34;cf1:network&#34; and cannot be combined with tunnel*id.
+     * @return For `type: vpcNetwork`: Enables Gateway identity for the binding. Requires networkId to be &#34;cf1:network&#34; and cannot be combined with tunnelId or an explicit &#34;cf1:vnet:&lt;UUID&gt;&#34; network_id.
      * Available values: &#34;runtime-email-alpha&#34;.
      * 
      */
@@ -362,28 +386,28 @@ public final class WorkerVersionBinding {
         return Optional.ofNullable(this.identity);
     }
     /**
-     * @return Name of the Vectorize index to bind to.
+     * @return For `type: vectorize`: Name of the Vectorize index to bind to.
      * 
      */
     public Optional<String> indexName() {
         return Optional.ofNullable(this.indexName);
     }
     /**
-     * @return The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
+     * @return For `type: aiSearch`: The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
      * 
      */
     public Optional<String> instanceName() {
         return Optional.ofNullable(this.instanceName);
     }
     /**
-     * @return JSON data to use.
+     * @return For `type: json`: JSON data to use.
      * 
      */
     public Optional<String> json() {
         return Optional.ofNullable(this.json);
     }
     /**
-     * @return The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
+     * @return For `type: r2Bucket`: The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
      * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;fedramp-high&#34;, &#34;us&#34;.
      * 
      */
@@ -391,147 +415,158 @@ public final class WorkerVersionBinding {
         return Optional.ofNullable(this.jurisdiction);
     }
     /**
-     * @return Base64-encoded key data. Required if `format` is &#34;raw&#34;, &#34;pkcs8&#34;, or &#34;spki&#34;.
+     * @return For `type: secretKey`: Base64-encoded key data. Required if `format` is &#34;raw&#34;, &#34;pkcs8&#34;, or &#34;spki&#34;.
      * 
      */
     public Optional<String> keyBase64() {
         return Optional.ofNullable(this.keyBase64);
     }
     /**
-     * @return Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is &#34;jwk&#34;.
+     * @return For `type: secretKey`: Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is &#34;jwk&#34;.
      * 
      */
     public Optional<String> keyJwk() {
         return Optional.ofNullable(this.keyJwk);
     }
     /**
-     * @return A JavaScript variable name for the binding.
+     * @return For `type: ai` or `type: aiSearch` or `type: aiSearchNamespace` or `type: messaging` or `type: analyticsEngine` or `type: artifacts` or `type: assets` or `type: browser` or `type: d1` or `type: dataBlob` or `type: dispatchNamespace` or `type: durableObjectNamespace` or `type: hyperdrive` or `type: images` or `type: json` or `type: kvNamespace` or `type: media` or `type: mtlsCertificate` or `type: plainText` or `type: pipelines` or `type: k2` or `type: queue` or `type: ratelimit` or `type: r2Bucket` or `type: secretText` or `type: sendEmail` or `type: service` or `type: textBlob` or `type: vectorize` or `type: versionMetadata` or `type: secretsStoreSecret` or `type: flagship` or `type: secretKey` or `type: workflow` or `type: wasmModule` or `type: vpcService` or `type: vpcNetwork` or `type: workerLoader`: A JavaScript variable name for the binding.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return The namespace the instance belongs to. Defaults to &#34;default&#34; if omitted. Customers who don&#39;t use namespaces can simply omit this field.
+     * @return For `type: aiSearch`: The namespace the instance belongs to. Defaults to &#34;default&#34; if omitted. Customers who don&#39;t use namespaces can simply omit this field.
+     * 
+     * For `type: aiSearchNamespace`: The user-chosen namespace name. Must exist before deploy -- Wrangler handles auto-creation on deploy failure (R2 bucket pattern). The &#34;default&#34; namespace is auto-created by config-api for new accounts. Grants full access (CRUD + search + chat) to all instances within the namespace.
+     * 
+     * For `type: messaging`: The Messaging namespace to bind to.
+     * 
+     * For `type: artifacts`: The Artifacts namespace exposed to the Worker in the Worker&#39;s account. Must be 2-63 characters, start with an ASCII alphanumeric character, contain only ASCII alphanumeric characters, dots, underscores, and hyphens, and must not end with a hyphen. The namespace does not need to be created before binding it.
+     * 
+     * For `type: dispatchNamespace`: The name of the dispatch namespace.
      * 
      */
     public Optional<String> namespace() {
         return Optional.ofNullable(this.namespace);
     }
     /**
-     * @return Namespace identifier tag.
+     * @return For `type: durableObjectNamespace` or `type: kvNamespace`: Namespace identifier tag.
+     * 
+     * For `type: ratelimit`: Identifier of the rate limit namespace to bind to.
      * 
      */
     public Optional<String> namespaceId() {
         return Optional.ofNullable(this.namespaceId);
     }
     /**
-     * @return Identifier of the network to bind to. Only &#34;cf1:network&#34; is currently supported. Mutually exclusive with tunnel_id.
+     * @return For `type: vpcNetwork`: Identifier of the network to bind to. Use &#34;cf1:network&#34; to select the account&#39;s default virtual network at runtime, or &#34;cf1:vnet:&lt;UUID&gt;&#34; to select an explicit virtual network in the Worker&#39;s account. Mutually exclusive with tunnel_id.
      * 
      */
     public Optional<String> networkId() {
         return Optional.ofNullable(this.networkId);
     }
     /**
-     * @return The old name of the inherited binding. If set, the binding will be renamed from `oldName` to `name` in the new version. If not set, the binding will keep the same name between versions.
+     * @return For `type: inherit`: The old name of the inherited binding. If set, the binding will be renamed from `oldName` to `name` in the new version. If not set, the binding will keep the same name between versions.
      * 
      */
     public Optional<String> oldName() {
         return Optional.ofNullable(this.oldName);
     }
     /**
-     * @return Outbound worker.
+     * @return For `type: dispatchNamespace`: Outbound worker.
      * 
      */
     public Optional<WorkerVersionBindingOutbound> outbound() {
         return Optional.ofNullable(this.outbound);
     }
     /**
-     * @return The name of the file containing the data content. Only accepted for `service worker syntax` Workers.
+     * @return For `type: dataBlob`: The name of the file containing the data content. Only accepted for `service worker syntax` Workers.
+     * 
+     * For `type: textBlob`: The name of the file containing the text content. Only accepted for `service worker syntax` Workers.
+     * 
+     * For `type: wasmModule`: The name of the file containing the WebAssembly module content. Only accepted for `service worker syntax` Workers.
      * 
      */
     public Optional<String> part() {
         return Optional.ofNullable(this.part);
     }
     /**
-     * @return Name of the Pipeline to bind to.
+     * @return For `type: pipelines`: Name of the Pipeline to bind to.
      * 
      */
     public Optional<String> pipeline() {
         return Optional.ofNullable(this.pipeline);
     }
     /**
-     * @return Name of the Queue to bind to.
+     * @return For `type: queue`: Name of the Queue to bind to.
      * 
      */
     public Optional<String> queueName() {
         return Optional.ofNullable(this.queueName);
     }
     /**
-     * @return Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
+     * @return For `type: durableObjectNamespace`: The script where the Durable Object is defined, if it is external to this Worker.
      * 
-     */
-    public Optional<WorkerVersionBindingRetry> retry() {
-        return Optional.ofNullable(this.retry);
-    }
-    /**
-     * @return The script where the Durable Object is defined, if it is external to this Worker.
+     * For `type: workflow`: Script name that contains the Workflow. If not provided, defaults to this script name.
      * 
      */
     public Optional<String> scriptName() {
         return Optional.ofNullable(this.scriptName);
     }
     /**
-     * @return Name of the secret in the store.
+     * @return For `type: secretsStoreSecret`: Name of the secret in the store.
      * 
      */
     public Optional<String> secretName() {
         return Optional.ofNullable(this.secretName);
     }
     /**
-     * @return Name of Worker to bind to.
+     * @return For `type: service`: Name of Worker to bind to.
      * 
      */
     public Optional<String> service() {
         return Optional.ofNullable(this.service);
     }
     /**
-     * @return Identifier of the VPC service to bind to.
+     * @return For `type: vpcService`: Identifier of the VPC service to bind to.
      * 
      */
     public Optional<String> serviceId() {
         return Optional.ofNullable(this.serviceId);
     }
     /**
-     * @return The rate limit configuration.
+     * @return For `type: ratelimit`: The rate limit configuration.
      * 
      */
     public Optional<WorkerVersionBindingSimple> simple() {
         return Optional.ofNullable(this.simple);
     }
     /**
-     * @return ID of the store containing the secret.
+     * @return For `type: secretsStoreSecret`: ID of the store containing the secret.
      * 
      */
     public Optional<String> storeId() {
         return Optional.ofNullable(this.storeId);
     }
     /**
-     * @return ID of a K2 stream owned by the account deploying the Worker.
+     * @return For `type: k2`: ID of a K2 stream owned by the account deploying the Worker.
      * 
      */
     public Optional<String> stream() {
         return Optional.ofNullable(this.stream);
     }
     /**
-     * @return The text value to use.
+     * @return For `type: plainText`: The text value to use.
+     * 
+     * For `type: secretText`: The secret value to use.
      * 
      */
     public Optional<String> text() {
         return Optional.ofNullable(this.text);
     }
     /**
-     * @return UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
+     * @return For `type: vpcNetwork`: UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
      * 
      */
     public Optional<String> tunnelId() {
@@ -539,28 +574,28 @@ public final class WorkerVersionBinding {
     }
     /**
      * @return The kind of resource that the binding provides.
-     * Available values: &#34;ai&#34;, &#34;ai*search&#34;, &#34;ai*search*namespace&#34;, &#34;messaging&#34;, &#34;analytics*engine&#34;, &#34;artifacts&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;data*blob&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;media&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;k2&#34;, &#34;queue&#34;, &#34;ratelimit&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;send*email&#34;, &#34;service&#34;, &#34;text*blob&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;flagship&#34;, &#34;secret*key&#34;, &#34;workflow&#34;, &#34;wasm*module&#34;, &#34;vpc*service&#34;, &#34;vpc*network&#34;.
+     * Available values: &#34;ai&#34;, &#34;aiSearch&#34;, &#34;aiSearchNamespace&#34;, &#34;messaging&#34;, &#34;analyticsEngine&#34;, &#34;artifacts&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;dataBlob&#34;, &#34;dispatchNamespace&#34;, &#34;durableObjectNamespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kvNamespace&#34;, &#34;media&#34;, &#34;mtlsCertificate&#34;, &#34;plainText&#34;, &#34;pipelines&#34;, &#34;k2&#34;, &#34;queue&#34;, &#34;ratelimit&#34;, &#34;r2Bucket&#34;, &#34;secretText&#34;, &#34;sendEmail&#34;, &#34;service&#34;, &#34;textBlob&#34;, &#34;vectorize&#34;, &#34;versionMetadata&#34;, &#34;secretsStoreSecret&#34;, &#34;flagship&#34;, &#34;secretKey&#34;, &#34;workflow&#34;, &#34;wasmModule&#34;, &#34;vpcService&#34;, &#34;vpcNetwork&#34;, &#34;workerLoader&#34;.
      * 
      */
     public String type() {
         return this.type;
     }
     /**
-     * @return Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
+     * @return For `type: secretKey`: Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
      * 
      */
     public List<String> usages() {
         return this.usages == null ? List.of() : this.usages;
     }
     /**
-     * @return Identifier for the version to inherit the binding from, which can be the version ID or the literal &#34;latest&#34; to inherit from the latest version. Defaults to inheriting the binding from the latest version.
+     * @return For `type: inherit`: Identifier for the version to inherit the binding from. This can be a version ID, or the literal &#34;latest&#34; to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to &#34;latest&#34;. Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only &#34;latest&#34; and reject a version ID with error 10057.
      * 
      */
     public Optional<String> versionId() {
         return Optional.ofNullable(this.versionId);
     }
     /**
-     * @return Name of the Workflow to bind to.
+     * @return For `type: workflow`: Name of the Workflow to bind to.
      * 
      */
     public Optional<String> workflowName() {
@@ -607,7 +642,6 @@ public final class WorkerVersionBinding {
         private @Nullable String part;
         private @Nullable String pipeline;
         private @Nullable String queueName;
-        private @Nullable WorkerVersionBindingRetry retry;
         private @Nullable String scriptName;
         private @Nullable String secretName;
         private @Nullable String service;
@@ -655,7 +689,6 @@ public final class WorkerVersionBinding {
     	      this.part = defaults.part;
     	      this.pipeline = defaults.pipeline;
     	      this.queueName = defaults.queueName;
-    	      this.retry = defaults.retry;
     	      this.scriptName = defaults.scriptName;
     	      this.secretName = defaults.secretName;
     	      this.service = defaults.service;
@@ -866,12 +899,6 @@ public final class WorkerVersionBinding {
             return this;
         }
         @CustomType.Setter
-        public Builder retry(@Nullable WorkerVersionBindingRetry retry) {
-
-            this.retry = retry;
-            return this;
-        }
-        @CustomType.Setter
         public Builder scriptName(@Nullable String scriptName) {
 
             this.scriptName = scriptName;
@@ -987,7 +1014,6 @@ public final class WorkerVersionBinding {
             _resultValue.part = part;
             _resultValue.pipeline = pipeline;
             _resultValue.queueName = queueName;
-            _resultValue.retry = retry;
             _resultValue.scriptName = scriptName;
             _resultValue.secretName = secretName;
             _resultValue.service = service;

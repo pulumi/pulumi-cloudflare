@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 public final class GetZeroTrustDlpPredefinedEntryResult {
     private @Nullable String accountId;
     /**
-     * @return Only applies to custom word lists.
+     * @return For `type: exactData`: Only applies to custom word lists.
      * Determines if the words should be matched in a case-sensitive manner
      * Cannot be set to false if secret is true
      * 
@@ -29,39 +29,28 @@ public final class GetZeroTrustDlpPredefinedEntryResult {
     private GetZeroTrustDlpPredefinedEntryConfidence confidence;
     private String createdAt;
     /**
-     * @return Whether this entry is deprecated for new use. This is computed from the static catalog and
+     * @return For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
      * emitted only when true.
      * 
      */
     private Boolean deprecated;
+    /**
+     * @return For `type: customPromptTopic`: The optional description of the custom prompt topic entry.
+     * 
+     */
     private String description;
     private Boolean enabled;
     private String entryId;
-    /**
-     * @return The ID of this resource.
-     * 
-     */
     private String id;
     private String name;
     private GetZeroTrustDlpPredefinedEntryPattern pattern;
     private String profileId;
     private List<GetZeroTrustDlpPredefinedEntryProfile> profiles;
     private Boolean secret;
-    /**
-     * @return Available values: &#34;custom&#34;, &#34;custom*prompt*topic&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;, &#34;wordList&#34;.
-     * 
-     */
     private String type;
     private String updatedAt;
-    /**
-     * @return Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;pending&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
-     * 
-     */
     private String uploadStatus;
-    /**
-     * @return A Predefined AI prompt classification topic entry.
-     * 
-     */
+    private List<String> validatorIds;
     private GetZeroTrustDlpPredefinedEntryVariant variant;
     private List<String> wordLists;
 
@@ -70,7 +59,7 @@ public final class GetZeroTrustDlpPredefinedEntryResult {
         return Optional.ofNullable(this.accountId);
     }
     /**
-     * @return Only applies to custom word lists.
+     * @return For `type: exactData`: Only applies to custom word lists.
      * Determines if the words should be matched in a case-sensitive manner
      * Cannot be set to false if secret is true
      * 
@@ -85,13 +74,17 @@ public final class GetZeroTrustDlpPredefinedEntryResult {
         return this.createdAt;
     }
     /**
-     * @return Whether this entry is deprecated for new use. This is computed from the static catalog and
+     * @return For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
      * emitted only when true.
      * 
      */
     public Boolean deprecated() {
         return this.deprecated;
     }
+    /**
+     * @return For `type: customPromptTopic`: The optional description of the custom prompt topic entry.
+     * 
+     */
     public String description() {
         return this.description;
     }
@@ -101,10 +94,6 @@ public final class GetZeroTrustDlpPredefinedEntryResult {
     public String entryId() {
         return this.entryId;
     }
-    /**
-     * @return The ID of this resource.
-     * 
-     */
     public String id() {
         return this.id;
     }
@@ -123,27 +112,18 @@ public final class GetZeroTrustDlpPredefinedEntryResult {
     public Boolean secret() {
         return this.secret;
     }
-    /**
-     * @return Available values: &#34;custom&#34;, &#34;custom*prompt*topic&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;, &#34;wordList&#34;.
-     * 
-     */
     public String type() {
         return this.type;
     }
     public String updatedAt() {
         return this.updatedAt;
     }
-    /**
-     * @return Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;pending&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
-     * 
-     */
     public String uploadStatus() {
         return this.uploadStatus;
     }
-    /**
-     * @return A Predefined AI prompt classification topic entry.
-     * 
-     */
+    public List<String> validatorIds() {
+        return this.validatorIds;
+    }
     public GetZeroTrustDlpPredefinedEntryVariant variant() {
         return this.variant;
     }
@@ -177,6 +157,7 @@ public final class GetZeroTrustDlpPredefinedEntryResult {
         private String type;
         private String updatedAt;
         private String uploadStatus;
+        private List<String> validatorIds;
         private GetZeroTrustDlpPredefinedEntryVariant variant;
         private List<String> wordLists;
         public Builder() {}
@@ -199,6 +180,7 @@ public final class GetZeroTrustDlpPredefinedEntryResult {
     	      this.type = defaults.type;
     	      this.updatedAt = defaults.updatedAt;
     	      this.uploadStatus = defaults.uploadStatus;
+    	      this.validatorIds = defaults.validatorIds;
     	      this.variant = defaults.variant;
     	      this.wordLists = defaults.wordLists;
         }
@@ -341,6 +323,17 @@ public final class GetZeroTrustDlpPredefinedEntryResult {
             return this;
         }
         @CustomType.Setter
+        public Builder validatorIds(List<String> validatorIds) {
+            if (validatorIds == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDlpPredefinedEntryResult", "validatorIds");
+            }
+            this.validatorIds = validatorIds;
+            return this;
+        }
+        public Builder validatorIds(String... validatorIds) {
+            return validatorIds(List.of(validatorIds));
+        }
+        @CustomType.Setter
         public Builder variant(GetZeroTrustDlpPredefinedEntryVariant variant) {
             if (variant == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustDlpPredefinedEntryResult", "variant");
@@ -378,6 +371,7 @@ public final class GetZeroTrustDlpPredefinedEntryResult {
             _resultValue.type = type;
             _resultValue.updatedAt = updatedAt;
             _resultValue.uploadStatus = uploadStatus;
+            _resultValue.validatorIds = validatorIds;
             _resultValue.variant = variant;
             _resultValue.wordLists = wordLists;
             return _resultValue;

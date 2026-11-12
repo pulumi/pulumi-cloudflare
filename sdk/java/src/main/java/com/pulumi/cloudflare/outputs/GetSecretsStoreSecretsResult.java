@@ -37,7 +37,7 @@ public final class GetSecretsStoreSecretsResult {
      */
     private String name;
     /**
-     * @return The list of services that can use this secret.
+     * @return The list of services that can use this secret, or null when the secret inherits its store&#39;s scopes. Set it to null in a patch to inherit again. An empty list lets no service use the secret.
      * 
      */
     private List<String> scopes;
@@ -89,7 +89,7 @@ public final class GetSecretsStoreSecretsResult {
         return this.name;
     }
     /**
-     * @return The list of services that can use this secret.
+     * @return The list of services that can use this secret, or null when the secret inherits its store&#39;s scopes. Set it to null in a patch to inherit again. An empty list lets no service use the secret.
      * 
      */
     public List<String> scopes() {

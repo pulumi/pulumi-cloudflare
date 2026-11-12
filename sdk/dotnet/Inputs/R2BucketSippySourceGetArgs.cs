@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class R2BucketSippySourceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
+        /// For `r2_bucket_sippy_provider: aws` or `r2_bucket_sippy_provider: s3`: Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
         /// </summary>
         [Input("accessKeyId")]
         public Input<string>? AccessKeyId { get; set; }
@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare.Inputs
         private Input<string>? _accountKey;
 
         /// <summary>
-        /// Access key for the Azure Storage account. Mutually exclusive with sasToken.
+        /// For `r2_bucket_sippy_provider: azure`: Access key for the Azure Storage account. Mutually exclusive with sasToken.
         /// </summary>
         public Input<string>? AccountKey
         {
@@ -35,25 +35,25 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// Name of the Azure Storage account.
+        /// For `r2_bucket_sippy_provider: azure`: Name of the Azure Storage account.
         /// </summary>
         [Input("accountName")]
         public Input<string>? AccountName { get; set; }
 
         /// <summary>
-        /// Name of the AWS S3 bucket.
+        /// For `r2_bucket_sippy_provider: aws`: Name of the AWS S3 bucket.
         /// </summary>
         [Input("bucket")]
         public Input<string>? Bucket { get; set; }
 
         /// <summary>
-        /// URL to the S3-compatible API of the bucket.
+        /// For `r2_bucket_sippy_provider: s3`: URL to the S3-compatible API of the bucket.
         /// </summary>
         [Input("bucketUrl")]
         public Input<string>? BucketUrl { get; set; }
 
         /// <summary>
-        /// Client email of an IAM credential (ideally scoped to a single GCS bucket).
+        /// For `r2_bucket_sippy_provider: gcs`: Client email of an IAM credential (ideally scoped to a single GCS bucket).
         /// </summary>
         [Input("clientEmail")]
         public Input<string>? ClientEmail { get; set; }
@@ -65,7 +65,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? CloudProvider { get; set; }
 
         /// <summary>
-        /// Name of the Azure Blob Storage container.
+        /// For `r2_bucket_sippy_provider: azure`: Name of the Azure Blob Storage container.
         /// </summary>
         [Input("container")]
         public Input<string>? Container { get; set; }
@@ -74,7 +74,7 @@ namespace Pulumi.Cloudflare.Inputs
         private Input<string>? _privateKey;
 
         /// <summary>
-        /// Private Key of an IAM credential (ideally scoped to a single GCS bucket).
+        /// For `r2_bucket_sippy_provider: gcs`: Private Key of an IAM credential (ideally scoped to a single GCS bucket).
         /// </summary>
         public Input<string>? PrivateKey
         {
@@ -87,7 +87,7 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// AWS region containing the source S3 bucket.
+        /// For `r2_bucket_sippy_provider: aws`: AWS region containing the source S3 bucket.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -96,7 +96,7 @@ namespace Pulumi.Cloudflare.Inputs
         private Input<string>? _sasToken;
 
         /// <summary>
-        /// Shared Access Signature token for the Azure Storage account. Mutually exclusive with accountKey.
+        /// For `r2_bucket_sippy_provider: azure`: Shared Access Signature token for the Azure Storage account. Mutually exclusive with accountKey.
         /// </summary>
         public Input<string>? SasToken
         {
@@ -112,7 +112,7 @@ namespace Pulumi.Cloudflare.Inputs
         private Input<string>? _secretAccessKey;
 
         /// <summary>
-        /// Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
+        /// For `r2_bucket_sippy_provider: aws` or `r2_bucket_sippy_provider: s3`: Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
         /// </summary>
         public Input<string>? SecretAccessKey
         {

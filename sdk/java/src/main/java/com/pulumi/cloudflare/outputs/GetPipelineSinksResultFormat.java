@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetPipelineSinksResultFormat {
     /**
-     * @return Specifies the compression applied to JSON sink output.
+     * @return For `type: json`: Specifies the compression applied to JSON sink output.
      * Available values: &#34;uncompressed&#34;, &#34;gzip&#34;, &#34;snappy&#34;, &#34;zstd&#34;, &#34;lz4&#34;.
      * 
      */
@@ -38,7 +38,7 @@ public final class GetPipelineSinksResultFormat {
 
     private GetPipelineSinksResultFormat() {}
     /**
-     * @return Specifies the compression applied to JSON sink output.
+     * @return For `type: json`: Specifies the compression applied to JSON sink output.
      * Available values: &#34;uncompressed&#34;, &#34;gzip&#34;, &#34;snappy&#34;, &#34;zstd&#34;, &#34;lz4&#34;.
      * 
      */

@@ -71,6 +71,10 @@ export interface GetZeroTrustDeviceDefaultProfileResult {
      */
     readonly dnsSearchSuffixes: outputs.GetZeroTrustDeviceDefaultProfileDnsSearchSuffix[];
     /**
+     * Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.
+     */
+    readonly enableDeviceCredentialAuthentication: boolean;
+    /**
      * Whether the policy will be applied to matching devices.
      */
     readonly enabled: boolean;

@@ -85,14 +85,17 @@ type Account struct {
 
 	// Timestamp for the creation of the account
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
+	// Legacy account flags.
+	LegacyFlags AccountLegacyFlagsOutput `pulumi:"legacyFlags"`
 	// Parent container details
 	ManagedBy AccountManagedByOutput `pulumi:"managedBy"`
-	// Account name
+	// Account name, limited to 65 UTF-8 bytes.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Account settings
 	Settings AccountSettingsOutput `pulumi:"settings"`
 	// Set to `true` and omit `unit` to create a standalone Free Account. If provided, this field must be `true`.
 	Standalone pulumi.BoolOutput `pulumi:"standalone"`
+	// the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
 	// Available values: "standard", "enterprise".
 	//
 	// Deprecated: The 'type' field should no longer be set through the API.
@@ -136,14 +139,17 @@ func GetAccount(ctx *pulumi.Context,
 type accountState struct {
 	// Timestamp for the creation of the account
 	CreatedOn *string `pulumi:"createdOn"`
+	// Legacy account flags.
+	LegacyFlags *AccountLegacyFlags `pulumi:"legacyFlags"`
 	// Parent container details
 	ManagedBy *AccountManagedBy `pulumi:"managedBy"`
-	// Account name
+	// Account name, limited to 65 UTF-8 bytes.
 	Name *string `pulumi:"name"`
 	// Account settings
 	Settings *AccountSettings `pulumi:"settings"`
 	// Set to `true` and omit `unit` to create a standalone Free Account. If provided, this field must be `true`.
 	Standalone *bool `pulumi:"standalone"`
+	// the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
 	// Available values: "standard", "enterprise".
 	//
 	// Deprecated: The 'type' field should no longer be set through the API.
@@ -155,14 +161,17 @@ type accountState struct {
 type AccountState struct {
 	// Timestamp for the creation of the account
 	CreatedOn pulumi.StringPtrInput
+	// Legacy account flags.
+	LegacyFlags AccountLegacyFlagsPtrInput
 	// Parent container details
 	ManagedBy AccountManagedByPtrInput
-	// Account name
+	// Account name, limited to 65 UTF-8 bytes.
 	Name pulumi.StringPtrInput
 	// Account settings
 	Settings AccountSettingsPtrInput
 	// Set to `true` and omit `unit` to create a standalone Free Account. If provided, this field must be `true`.
 	Standalone pulumi.BoolPtrInput
+	// the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
 	// Available values: "standard", "enterprise".
 	//
 	// Deprecated: The 'type' field should no longer be set through the API.
@@ -184,12 +193,13 @@ func AccountExists(ctx *pulumi.Context,
 type accountArgs struct {
 	// Parent container details
 	ManagedBy *AccountManagedBy `pulumi:"managedBy"`
-	// Account name
+	// Account name, limited to 65 UTF-8 bytes.
 	Name string `pulumi:"name"`
 	// Account settings
 	Settings *AccountSettings `pulumi:"settings"`
 	// Set to `true` and omit `unit` to create a standalone Free Account. If provided, this field must be `true`.
 	Standalone *bool `pulumi:"standalone"`
+	// the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
 	// Available values: "standard", "enterprise".
 	//
 	// Deprecated: The 'type' field should no longer be set through the API.
@@ -202,12 +212,13 @@ type accountArgs struct {
 type AccountArgs struct {
 	// Parent container details
 	ManagedBy AccountManagedByPtrInput
-	// Account name
+	// Account name, limited to 65 UTF-8 bytes.
 	Name pulumi.StringInput
 	// Account settings
 	Settings AccountSettingsPtrInput
 	// Set to `true` and omit `unit` to create a standalone Free Account. If provided, this field must be `true`.
 	Standalone pulumi.BoolPtrInput
+	// the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
 	// Available values: "standard", "enterprise".
 	//
 	// Deprecated: The 'type' field should no longer be set through the API.
@@ -308,12 +319,17 @@ func (o AccountOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
+// Legacy account flags.
+func (o AccountOutput) LegacyFlags() AccountLegacyFlagsOutput {
+	return o.ApplyT(func(v *Account) AccountLegacyFlagsOutput { return v.LegacyFlags }).(AccountLegacyFlagsOutput)
+}
+
 // Parent container details
 func (o AccountOutput) ManagedBy() AccountManagedByOutput {
 	return o.ApplyT(func(v *Account) AccountManagedByOutput { return v.ManagedBy }).(AccountManagedByOutput)
 }
 
-// Account name
+// Account name, limited to 65 UTF-8 bytes.
 func (o AccountOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -328,6 +344,7 @@ func (o AccountOutput) Standalone() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Account) pulumi.BoolOutput { return v.Standalone }).(pulumi.BoolOutput)
 }
 
+// the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
 // Available values: "standard", "enterprise".
 //
 // Deprecated: The 'type' field should no longer be set through the API.

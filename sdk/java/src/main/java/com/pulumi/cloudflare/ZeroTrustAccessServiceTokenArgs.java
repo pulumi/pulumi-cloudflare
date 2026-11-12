@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -34,14 +35,14 @@ public final class ZeroTrustAccessServiceTokenArgs extends com.pulumi.resources.
     }
 
     /**
-     * A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`.
+     * A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`. If the service token was reported as leaked, `previousClientSecretExpiresAt` is not required, may not be in the future, and the previous secret is discarded immediately.
      * 
      */
     @Import(name="clientSecretVersion")
     private @Nullable Output<Double> clientSecretVersion;
 
     /**
-     * @return A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`.
+     * @return A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`. If the service token was reported as leaked, `previousClientSecretExpiresAt` is not required, may not be in the future, and the previous secret is discarded immediately.
      * 
      */
     public Optional<Output<Double>> clientSecretVersion() {
@@ -64,14 +65,14 @@ public final class ZeroTrustAccessServiceTokenArgs extends com.pulumi.resources.
     }
 
     /**
-     * Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+     * Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled. A service token reported as leaked is disabled automatically and cannot be re-enabled until its secret is rotated; attempting to do so returns a 409. Defaults to enabled when omitted on create.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+     * @return Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled. A service token reported as leaked is disabled automatically and cannot be re-enabled until its secret is rotated; attempting to do so returns a 409. Defaults to enabled when omitted on create.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -94,18 +95,33 @@ public final class ZeroTrustAccessServiceTokenArgs extends com.pulumi.resources.
     }
 
     /**
-     * The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+     * The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise. Rotating a service token that was reported as leaked discards the previous secret entirely, so no grace period can be set.
      * 
      */
     @Import(name="previousClientSecretExpiresAt")
     private @Nullable Output<String> previousClientSecretExpiresAt;
 
     /**
-     * @return The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+     * @return The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise. Rotating a service token that was reported as leaked discards the previous secret entirely, so no grace period can be set.
      * 
      */
     public Optional<Output<String>> previousClientSecretExpiresAt() {
         return Optional.ofNullable(this.previousClientSecretExpiresAt);
+    }
+
+    /**
+     * Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
     }
 
     /**
@@ -132,6 +148,7 @@ public final class ZeroTrustAccessServiceTokenArgs extends com.pulumi.resources.
         this.enabled = $.enabled;
         this.name = $.name;
         this.previousClientSecretExpiresAt = $.previousClientSecretExpiresAt;
+        this.tags = $.tags;
         this.zoneId = $.zoneId;
     }
 
@@ -175,7 +192,7 @@ public final class ZeroTrustAccessServiceTokenArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param clientSecretVersion A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`.
+         * @param clientSecretVersion A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`. If the service token was reported as leaked, `previousClientSecretExpiresAt` is not required, may not be in the future, and the previous secret is discarded immediately.
          * 
          * @return builder
          * 
@@ -186,7 +203,7 @@ public final class ZeroTrustAccessServiceTokenArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param clientSecretVersion A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`.
+         * @param clientSecretVersion A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`. If the service token was reported as leaked, `previousClientSecretExpiresAt` is not required, may not be in the future, and the previous secret is discarded immediately.
          * 
          * @return builder
          * 
@@ -217,7 +234,7 @@ public final class ZeroTrustAccessServiceTokenArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param enabled Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+         * @param enabled Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled. A service token reported as leaked is disabled automatically and cannot be re-enabled until its secret is rotated; attempting to do so returns a 409. Defaults to enabled when omitted on create.
          * 
          * @return builder
          * 
@@ -228,7 +245,7 @@ public final class ZeroTrustAccessServiceTokenArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param enabled Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+         * @param enabled Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled. A service token reported as leaked is disabled automatically and cannot be re-enabled until its secret is rotated; attempting to do so returns a 409. Defaults to enabled when omitted on create.
          * 
          * @return builder
          * 
@@ -259,7 +276,7 @@ public final class ZeroTrustAccessServiceTokenArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param previousClientSecretExpiresAt The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+         * @param previousClientSecretExpiresAt The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise. Rotating a service token that was reported as leaked discards the previous secret entirely, so no grace period can be set.
          * 
          * @return builder
          * 
@@ -270,13 +287,34 @@ public final class ZeroTrustAccessServiceTokenArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param previousClientSecretExpiresAt The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+         * @param previousClientSecretExpiresAt The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise. Rotating a service token that was reported as leaked discards the previous secret entirely, so no grace period can be set.
          * 
          * @return builder
          * 
          */
         public Builder previousClientSecretExpiresAt(String previousClientSecretExpiresAt) {
             return previousClientSecretExpiresAt(Output.of(previousClientSecretExpiresAt));
+        }
+
+        /**
+         * @param tags Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
         }
 
         /**

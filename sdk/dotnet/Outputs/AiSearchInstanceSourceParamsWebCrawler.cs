@@ -14,16 +14,15 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class AiSearchInstanceSourceParamsWebCrawler
     {
         /// <summary>
-        /// Options for parse*type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'.
+        /// Options for parse*type 'discover', where Browser Run discovers URLs through link following and sitemaps. Ignored for 'sitemap'.
         /// </summary>
         public readonly Outputs.AiSearchInstanceSourceParamsWebCrawlerDiscoverOptions? DiscoverOptions;
         public readonly Outputs.AiSearchInstanceSourceParamsWebCrawlerParseOptions? ParseOptions;
         /// <summary>
-        /// How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account.
+        /// How the crawler finds URLs. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to belong to a Verified zone on this account.
         /// Available values: "sitemap", "discover".
         /// </summary>
         public readonly string? ParseType;
-        public readonly Outputs.AiSearchInstanceSourceParamsWebCrawlerStoreOptions StoreOptions;
 
         [OutputConstructor]
         private AiSearchInstanceSourceParamsWebCrawler(
@@ -31,14 +30,11 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.AiSearchInstanceSourceParamsWebCrawlerParseOptions? parseOptions,
 
-            string? parseType,
-
-            Outputs.AiSearchInstanceSourceParamsWebCrawlerStoreOptions storeOptions)
+            string? parseType)
         {
             DiscoverOptions = discoverOptions;
             ParseOptions = parseOptions;
             ParseType = parseType;
-            StoreOptions = storeOptions;
         }
     }
 }

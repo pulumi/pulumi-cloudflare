@@ -34,6 +34,9 @@ import (
 //			_, err := cloudflare.NewR2DataCatalog(ctx, "example_r2_data_catalog", &cloudflare.R2DataCatalogArgs{
 //				AccountId:  pulumi.String("0123456789abcdef0123456789abcdef"),
 //				BucketName: pulumi.String("my-data-bucket"),
+//				Credential: &cloudflare.R2DataCatalogCredentialArgs{
+//					Token: pulumi.String("your-cloudflare-api-token-here"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -58,9 +61,13 @@ type R2DataCatalog struct {
 	Bucket pulumi.StringOutput `pulumi:"bucket"`
 	// Specifies the R2 bucket name.
 	BucketName pulumi.StringOutput `pulumi:"bucketName"`
+	// Contains request to store catalog credentials.
+	Credential R2DataCatalogCredentialPtrOutput `pulumi:"credential"`
 	// Shows the credential configuration status.
 	// Available values: "present", "absent".
 	CredentialStatus pulumi.StringOutput `pulumi:"credentialStatus"`
+	// Specifies the data-locality jurisdiction of the catalog. The first enable sets it, and it cannot change. Currently always `default`.
+	Jurisdiction pulumi.StringOutput `pulumi:"jurisdiction"`
 	// Configures maintenance for the catalog.
 	MaintenanceConfig R2DataCatalogMaintenanceConfigOutput `pulumi:"maintenanceConfig"`
 	// Specifies the catalog name (generated from account and bucket name).
@@ -112,9 +119,13 @@ type r2dataCatalogState struct {
 	Bucket *string `pulumi:"bucket"`
 	// Specifies the R2 bucket name.
 	BucketName *string `pulumi:"bucketName"`
+	// Contains request to store catalog credentials.
+	Credential *R2DataCatalogCredential `pulumi:"credential"`
 	// Shows the credential configuration status.
 	// Available values: "present", "absent".
 	CredentialStatus *string `pulumi:"credentialStatus"`
+	// Specifies the data-locality jurisdiction of the catalog. The first enable sets it, and it cannot change. Currently always `default`.
+	Jurisdiction *string `pulumi:"jurisdiction"`
 	// Configures maintenance for the catalog.
 	MaintenanceConfig *R2DataCatalogMaintenanceConfig `pulumi:"maintenanceConfig"`
 	// Specifies the catalog name (generated from account and bucket name).
@@ -131,9 +142,13 @@ type R2DataCatalogState struct {
 	Bucket pulumi.StringPtrInput
 	// Specifies the R2 bucket name.
 	BucketName pulumi.StringPtrInput
+	// Contains request to store catalog credentials.
+	Credential R2DataCatalogCredentialPtrInput
 	// Shows the credential configuration status.
 	// Available values: "present", "absent".
 	CredentialStatus pulumi.StringPtrInput
+	// Specifies the data-locality jurisdiction of the catalog. The first enable sets it, and it cannot change. Currently always `default`.
+	Jurisdiction pulumi.StringPtrInput
 	// Configures maintenance for the catalog.
 	MaintenanceConfig R2DataCatalogMaintenanceConfigPtrInput
 	// Specifies the catalog name (generated from account and bucket name).
@@ -158,6 +173,8 @@ type r2dataCatalogArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// Specifies the R2 bucket name.
 	BucketName string `pulumi:"bucketName"`
+	// Contains request to store catalog credentials.
+	Credential *R2DataCatalogCredential `pulumi:"credential"`
 }
 
 // The set of arguments for constructing a R2DataCatalog resource.
@@ -166,6 +183,8 @@ type R2DataCatalogArgs struct {
 	AccountId pulumi.StringInput
 	// Specifies the R2 bucket name.
 	BucketName pulumi.StringInput
+	// Contains request to store catalog credentials.
+	Credential R2DataCatalogCredentialPtrInput
 }
 
 func (R2DataCatalogArgs) ElementType() reflect.Type {
@@ -270,10 +289,20 @@ func (o R2DataCatalogOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v *R2DataCatalog) pulumi.StringOutput { return v.BucketName }).(pulumi.StringOutput)
 }
 
+// Contains request to store catalog credentials.
+func (o R2DataCatalogOutput) Credential() R2DataCatalogCredentialPtrOutput {
+	return o.ApplyT(func(v *R2DataCatalog) R2DataCatalogCredentialPtrOutput { return v.Credential }).(R2DataCatalogCredentialPtrOutput)
+}
+
 // Shows the credential configuration status.
 // Available values: "present", "absent".
 func (o R2DataCatalogOutput) CredentialStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *R2DataCatalog) pulumi.StringOutput { return v.CredentialStatus }).(pulumi.StringOutput)
+}
+
+// Specifies the data-locality jurisdiction of the catalog. The first enable sets it, and it cannot change. Currently always `default`.
+func (o R2DataCatalogOutput) Jurisdiction() pulumi.StringOutput {
+	return o.ApplyT(func(v *R2DataCatalog) pulumi.StringOutput { return v.Jurisdiction }).(pulumi.StringOutput)
 }
 
 // Configures maintenance for the catalog.

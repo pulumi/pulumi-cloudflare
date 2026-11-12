@@ -34,15 +34,27 @@ public final class GetByoIpPrefixesResult {
     @Deprecated
     private String advertisedModifiedAt;
     /**
-     * @return Approval state of the prefix (P = pending, V = active).
+     * @return Approval state of the prefix (P = pending, V = approved). Approval does not advertise the prefix or activate traffic.
      * 
      */
     private String approved;
     /**
-     * @return Autonomous System Number (ASN) the prefix will be advertised under.
+     * @return Autonomous System Number (ASN) the prefix will be advertised under. Use 13335 for Cloudflare&#39;s ASN, or your own ASN as an integer without the AS prefix. The IRR route and RPKI ROA must authorize this ASN.
      * 
      */
     private Integer asn;
+    /**
+     * @return State of ASN ownership validation for a customer-owned Autonomous System Number (ASN). Returned when an ASN ownership validation result exists. Omitted when validation does not apply, such as for Cloudflare-owned ASNs. Verification is reused for prefixes with the same account and ASN. Refer to [ASN ownership validation states](https://developers.cloudflare.com/byoip/troubleshooting/prefix-validation/#asn-ownership-validation) for state meanings and resolutions.
+     * Available values: &#34;pending&#34;, &#34;valid&#34;, &#34;missing&#34;, &#34;invalid&#34;.
+     * 
+     */
+    private String asnOwnershipValidationState;
+    /**
+     * @return State of Autonomous System Provider Authorization (ASPA) validation for a customer-owned ASN. Returned when an ASPA validation result exists. Publishing an ASPA is optional. A published ASPA must authorize AS13335 as a provider. An invalid result blocks approval. If omitted, no ASPA validation result is available. Omission does not indicate successful validation or confirm that no ASPA exists. Refer to [ASPA validation states](https://developers.cloudflare.com/byoip/troubleshooting/prefix-validation/#aspa-validation) for state meanings and resolutions, and [ASPA authorization](https://developers.cloudflare.com/byoip/concepts/route-filtering-rpki/#aspa-authorization) for publication guidance.
+     * Available values: &#34;pending&#34;, &#34;valid&#34;, &#34;invalid&#34;.
+     * 
+     */
+    private String aspaValidationState;
     /**
      * @return IP Prefix in Classless Inter-Domain Routing format.
      * 
@@ -97,7 +109,7 @@ public final class GetByoIpPrefixesResult {
      */
     private String ownershipValidationState;
     /**
-     * @return Token provided to demonstrate ownership of the prefix.
+     * @return Token used to verify ownership of the prefix and, when applicable, its ASN. Use the same token for both checks. Refer to the [BYOIP onboarding guide](https://developers.cloudflare.com/byoip/get-started/) for verification instructions.
      * 
      */
     private String ownershipValidationToken;
@@ -136,18 +148,34 @@ public final class GetByoIpPrefixesResult {
         return this.advertisedModifiedAt;
     }
     /**
-     * @return Approval state of the prefix (P = pending, V = active).
+     * @return Approval state of the prefix (P = pending, V = approved). Approval does not advertise the prefix or activate traffic.
      * 
      */
     public String approved() {
         return this.approved;
     }
     /**
-     * @return Autonomous System Number (ASN) the prefix will be advertised under.
+     * @return Autonomous System Number (ASN) the prefix will be advertised under. Use 13335 for Cloudflare&#39;s ASN, or your own ASN as an integer without the AS prefix. The IRR route and RPKI ROA must authorize this ASN.
      * 
      */
     public Integer asn() {
         return this.asn;
+    }
+    /**
+     * @return State of ASN ownership validation for a customer-owned Autonomous System Number (ASN). Returned when an ASN ownership validation result exists. Omitted when validation does not apply, such as for Cloudflare-owned ASNs. Verification is reused for prefixes with the same account and ASN. Refer to [ASN ownership validation states](https://developers.cloudflare.com/byoip/troubleshooting/prefix-validation/#asn-ownership-validation) for state meanings and resolutions.
+     * Available values: &#34;pending&#34;, &#34;valid&#34;, &#34;missing&#34;, &#34;invalid&#34;.
+     * 
+     */
+    public String asnOwnershipValidationState() {
+        return this.asnOwnershipValidationState;
+    }
+    /**
+     * @return State of Autonomous System Provider Authorization (ASPA) validation for a customer-owned ASN. Returned when an ASPA validation result exists. Publishing an ASPA is optional. A published ASPA must authorize AS13335 as a provider. An invalid result blocks approval. If omitted, no ASPA validation result is available. Omission does not indicate successful validation or confirm that no ASPA exists. Refer to [ASPA validation states](https://developers.cloudflare.com/byoip/troubleshooting/prefix-validation/#aspa-validation) for state meanings and resolutions, and [ASPA authorization](https://developers.cloudflare.com/byoip/concepts/route-filtering-rpki/#aspa-authorization) for publication guidance.
+     * Available values: &#34;pending&#34;, &#34;valid&#34;, &#34;invalid&#34;.
+     * 
+     */
+    public String aspaValidationState() {
+        return this.aspaValidationState;
     }
     /**
      * @return IP Prefix in Classless Inter-Domain Routing format.
@@ -225,7 +253,7 @@ public final class GetByoIpPrefixesResult {
         return this.ownershipValidationState;
     }
     /**
-     * @return Token provided to demonstrate ownership of the prefix.
+     * @return Token used to verify ownership of the prefix and, when applicable, its ASN. Use the same token for both checks. Refer to the [BYOIP onboarding guide](https://developers.cloudflare.com/byoip/get-started/) for verification instructions.
      * 
      */
     public String ownershipValidationToken() {
@@ -253,6 +281,8 @@ public final class GetByoIpPrefixesResult {
         private String advertisedModifiedAt;
         private String approved;
         private Integer asn;
+        private String asnOwnershipValidationState;
+        private String aspaValidationState;
         private String cidr;
         private String createdAt;
         private Boolean delegateLoaCreation;
@@ -274,6 +304,8 @@ public final class GetByoIpPrefixesResult {
     	      this.advertisedModifiedAt = defaults.advertisedModifiedAt;
     	      this.approved = defaults.approved;
     	      this.asn = defaults.asn;
+    	      this.asnOwnershipValidationState = defaults.asnOwnershipValidationState;
+    	      this.aspaValidationState = defaults.aspaValidationState;
     	      this.cidr = defaults.cidr;
     	      this.createdAt = defaults.createdAt;
     	      this.delegateLoaCreation = defaults.delegateLoaCreation;
@@ -327,6 +359,22 @@ public final class GetByoIpPrefixesResult {
               throw new MissingRequiredPropertyException("GetByoIpPrefixesResult", "asn");
             }
             this.asn = asn;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder asnOwnershipValidationState(String asnOwnershipValidationState) {
+            if (asnOwnershipValidationState == null) {
+              throw new MissingRequiredPropertyException("GetByoIpPrefixesResult", "asnOwnershipValidationState");
+            }
+            this.asnOwnershipValidationState = asnOwnershipValidationState;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder aspaValidationState(String aspaValidationState) {
+            if (aspaValidationState == null) {
+              throw new MissingRequiredPropertyException("GetByoIpPrefixesResult", "aspaValidationState");
+            }
+            this.aspaValidationState = aspaValidationState;
             return this;
         }
         @CustomType.Setter
@@ -440,6 +488,8 @@ public final class GetByoIpPrefixesResult {
             _resultValue.advertisedModifiedAt = advertisedModifiedAt;
             _resultValue.approved = approved;
             _resultValue.asn = asn;
+            _resultValue.asnOwnershipValidationState = asnOwnershipValidationState;
+            _resultValue.aspaValidationState = aspaValidationState;
             _resultValue.cidr = cidr;
             _resultValue.createdAt = createdAt;
             _resultValue.delegateLoaCreation = delegateLoaCreation;

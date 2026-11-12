@@ -51,6 +51,8 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string ClientId;
         /// <summary>
         /// Your OAuth Client Secret
+        /// 
+        /// The client secret from the Duo Generic OIDC Relying Party metadata.
         /// </summary>
         public readonly string ClientSecret;
         /// <summary>
@@ -72,6 +74,13 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// Enable SAML assertion encryption. When enabled, the Identity Provider will encrypt
         /// SAML assertions using the certificate from the assigned certificate set.
+        /// 
+        /// To enable encryption:
+        /// 1. Create a certificate set via POST to `/identity_providers/{id}/saml_certificate`
+        /// 2. Set this field to `True` and include `SamlCertificateSetId` in the PUT request
+        /// 3. Configure the public certificate in your external Identity Provider
+        /// 
+        /// Note: Requires `SamlCertificateSetId` to be set when `True`.
         /// </summary>
         public readonly bool EnableEncryption;
         /// <summary>
@@ -87,6 +96,8 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> IdpPublicCerts;
         /// <summary>
+        /// The issuer URL from the Duo Generic OIDC Relying Party metadata.
+        /// 
         /// IdP Entity ID or Issuer URL
         /// </summary>
         public readonly string IssuerUrl;
@@ -119,6 +130,8 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly bool PkceEnabled;
         /// <summary>
         /// Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an InteractionRequired error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
+        /// 
+        /// Configures the prompt behavior for Google authentication.
         /// Available values: "login", "SelectAccount", "none", "consent".
         /// </summary>
         public readonly string Prompt;
@@ -144,7 +157,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool SupportGroups;
         /// <summary>
-        /// The TokenEndpoint URL of your IdP
+        /// The TokenEndpoint URL of your IdP. Updates that change its origin (scheme, host, or port) require ClientSecret in the request. Path-only changes do not require client_secret.
         /// </summary>
         public readonly string TokenUrl;
         /// <summary>

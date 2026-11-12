@@ -7,6 +7,10 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Resource Sharing Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,6 +22,7 @@ import * as utilities from "./utilities";
  *     shareId: "3fd85f74b32742f1bff64a85009dda07",
  *     includeRecipientCounts: true,
  *     includeResources: true,
+ *     includeTagsFrom: "api",
  * });
  * ```
  */
@@ -28,6 +33,7 @@ export function getShare(args: GetShareArgs, opts?: pulumi.InvokeOptions): Promi
         "filter": args.filter,
         "includeRecipientCounts": args.includeRecipientCounts,
         "includeResources": args.includeResources,
+        "includeTagsFrom": args.includeTagsFrom,
         "shareId": args.shareId,
     }, opts);
 }
@@ -49,6 +55,11 @@ export interface GetShareArgs {
      * Include resources in the response.
      */
     includeResources?: boolean;
+    /**
+     * Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+     * Available values: "api", "mirror".
+     */
+    includeTagsFrom?: string;
     /**
      * Share identifier tag.
      */
@@ -76,7 +87,7 @@ export interface GetShareResult {
      */
     readonly associatingRecipientCount: number;
     /**
-     * When the share was created.
+     * When the object was created.
      */
     readonly created: string;
     /**
@@ -101,11 +112,16 @@ export interface GetShareResult {
      */
     readonly includeResources?: boolean;
     /**
+     * Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+     * Available values: "api", "mirror".
+     */
+    readonly includeTagsFrom?: string;
+    /**
      * Available values: "sent", "received".
      */
     readonly kind: string;
     /**
-     * When the share was modified.
+     * When the object was last modified.
      */
     readonly modified: string;
     /**
@@ -129,11 +145,19 @@ export interface GetShareResult {
      */
     readonly status: string;
     /**
+     * Tags associated with the share. Included in create and update responses when tags are supplied, and in read responses when the `includeTagsFrom` parameter is set.
+     */
+    readonly tags: {[key: string]: string};
+    /**
      * Available values: "account", "organization".
      */
     readonly targetType: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Resource Sharing Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -145,6 +169,7 @@ export interface GetShareResult {
  *     shareId: "3fd85f74b32742f1bff64a85009dda07",
  *     includeRecipientCounts: true,
  *     includeResources: true,
+ *     includeTagsFrom: "api",
  * });
  * ```
  */
@@ -155,6 +180,7 @@ export function getShareOutput(args: GetShareOutputArgs, opts?: pulumi.InvokeOut
         "filter": args.filter,
         "includeRecipientCounts": args.includeRecipientCounts,
         "includeResources": args.includeResources,
+        "includeTagsFrom": args.includeTagsFrom,
         "shareId": args.shareId,
     }, opts);
 }
@@ -176,6 +202,11 @@ export interface GetShareOutputArgs {
      * Include resources in the response.
      */
     includeResources?: pulumi.Input<boolean | undefined>;
+    /**
+     * Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+     * Available values: "api", "mirror".
+     */
+    includeTagsFrom?: pulumi.Input<string | undefined>;
     /**
      * Share identifier tag.
      */

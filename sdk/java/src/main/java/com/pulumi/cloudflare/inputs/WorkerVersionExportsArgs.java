@@ -18,18 +18,16 @@ public final class WorkerVersionExportsArgs extends com.pulumi.resources.Resourc
     public static final WorkerVersionExportsArgs Empty = new WorkerVersionExportsArgs();
 
     /**
-     * Cache override for this entrypoint. It applies only to
-     * `type: worker` entries and overrides the Worker&#39;s global
-     * `cache_options.enabled` for that entrypoint.
+     * For `type: worker`: Cache override for this entrypoint. Overrides the Worker&#39;s
+     * global `cache_options.enabled` for this entrypoint only.
      * 
      */
     @Import(name="cache")
     private @Nullable Output<WorkerVersionExportsCacheArgs> cache;
 
     /**
-     * @return Cache override for this entrypoint. It applies only to
-     * `type: worker` entries and overrides the Worker&#39;s global
-     * `cache_options.enabled` for that entrypoint.
+     * @return For `type: worker`: Cache override for this entrypoint. Overrides the Worker&#39;s
+     * global `cache_options.enabled` for this entrypoint only.
      * 
      */
     public Optional<Output<WorkerVersionExportsCacheArgs>> cache() {
@@ -37,18 +35,49 @@ public final class WorkerVersionExportsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Destination class name for a `state: renamed` tombstone. The
-     * target must appear as a live (`created`) entry in the same
-     * `exports` map. Write-only: never present in GET responses.
+     * For `type: durable-object` and `state: created`: Name of the container (declared in the upload&#39;s
+     * `metadata.containers`) that backs this Durable Object. When
+     * set, the namespace is container-enabled. Valid only on live
+     * entries.
+     * 
+     * For `state: expecting-transfer`: Name of the container (declared in the upload&#39;s
+     * `metadata.containers`) that backs this Durable Object once the
+     * transfer settles. Valid only on live entries.
+     * 
+     */
+    @Import(name="container")
+    private @Nullable Output<String> container;
+
+    /**
+     * @return For `type: durable-object` and `state: created`: Name of the container (declared in the upload&#39;s
+     * `metadata.containers`) that backs this Durable Object. When
+     * set, the namespace is container-enabled. Valid only on live
+     * entries.
+     * 
+     * For `state: expecting-transfer`: Name of the container (declared in the upload&#39;s
+     * `metadata.containers`) that backs this Durable Object once the
+     * transfer settles. Valid only on live entries.
+     * 
+     */
+    public Optional<Output<String>> container() {
+        return Optional.ofNullable(this.container);
+    }
+
+    /**
+     * For `state: renamed`: The destination class name. Must differ from the source class
+     * (the map key) and must be declared as a live (`created`) entry
+     * in the same `exports` map. Write-only: never present in GET
+     * responses.
      * 
      */
     @Import(name="renamedTo")
     private @Nullable Output<String> renamedTo;
 
     /**
-     * @return Destination class name for a `state: renamed` tombstone. The
-     * target must appear as a live (`created`) entry in the same
-     * `exports` map. Write-only: never present in GET responses.
+     * @return For `state: renamed`: The destination class name. Must differ from the source class
+     * (the map key) and must be declared as a live (`created`) entry
+     * in the same `exports` map. Write-only: never present in GET
+     * responses.
      * 
      */
     public Optional<Output<String>> renamedTo() {
@@ -56,16 +85,32 @@ public final class WorkerVersionExportsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Lifecycle state of the export entry. Defaults to `created`
-     * (a normal, live export) when omitted.
+     * For `state: created`: Live export. May be omitted; defaults to `created`.
+     * 
+     * For `state: deleted`: Tombstone that deletes the namespace.
+     * 
+     * For `state: renamed`: Tombstone that renames the namespace&#39;s class.
+     * 
+     * For `state: transferred`: Tombstone that transfers the namespace to another script.
+     * 
+     * For `state: expecting-transfer`: Target side of a two-phase transfer.
+     * Available values: &#34;created&#34;, &#34;deleted&#34;, &#34;renamed&#34;, &#34;transferred&#34;, &#34;expecting-transfer&#34;.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return Lifecycle state of the export entry. Defaults to `created`
-     * (a normal, live export) when omitted.
+     * @return For `state: created`: Live export. May be omitted; defaults to `created`.
+     * 
+     * For `state: deleted`: Tombstone that deletes the namespace.
+     * 
+     * For `state: renamed`: Tombstone that renames the namespace&#39;s class.
+     * 
+     * For `state: transferred`: Tombstone that transfers the namespace to another script.
+     * 
+     * For `state: expecting-transfer`: Target side of a two-phase transfer.
+     * Available values: &#34;created&#34;, &#34;deleted&#34;, &#34;renamed&#34;, &#34;transferred&#34;, &#34;expecting-transfer&#34;.
      * 
      */
     public Optional<Output<String>> state() {
@@ -73,10 +118,15 @@ public final class WorkerVersionExportsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Storage backend for a `type: durable-object` export. Required
-     * for live Durable Object entries (`created` and
-     * `expecting-transfer`). `sqlite` selects SQLite-backed storage;
-     * `legacy-kv` selects the legacy key-value storage.
+     * For `type: durable-object` and `state: created`: Durable Object storage backend. `sqlite` is the recommended (and
+     * only) backend for new namespaces. `legacy-kv` is accepted only for
+     * a class whose namespace already exists as KV-backed; the `exports`
+     * flow never provisions a new `legacy-kv` namespace.
+     * 
+     * For `type: durable-object` and `state: expecting-transfer`: Durable Object storage backend. `sqlite` is the recommended (and
+     * only) backend for new namespaces. `legacy-kv` is accepted only for
+     * a class whose namespace already exists as KV-backed; the `exports`
+     * flow never provisions a new `legacy-kv` namespace.
      * Available values: &#34;sqlite&#34;, &#34;legacy-kv&#34;.
      * 
      */
@@ -84,10 +134,15 @@ public final class WorkerVersionExportsArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<String> storage;
 
     /**
-     * @return Storage backend for a `type: durable-object` export. Required
-     * for live Durable Object entries (`created` and
-     * `expecting-transfer`). `sqlite` selects SQLite-backed storage;
-     * `legacy-kv` selects the legacy key-value storage.
+     * @return For `type: durable-object` and `state: created`: Durable Object storage backend. `sqlite` is the recommended (and
+     * only) backend for new namespaces. `legacy-kv` is accepted only for
+     * a class whose namespace already exists as KV-backed; the `exports`
+     * flow never provisions a new `legacy-kv` namespace.
+     * 
+     * For `type: durable-object` and `state: expecting-transfer`: Durable Object storage backend. `sqlite` is the recommended (and
+     * only) backend for new namespaces. `legacy-kv` is accepted only for
+     * a class whose namespace already exists as KV-backed; the `exports`
+     * flow never provisions a new `legacy-kv` namespace.
      * Available values: &#34;sqlite&#34;, &#34;legacy-kv&#34;.
      * 
      */
@@ -96,20 +151,18 @@ public final class WorkerVersionExportsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Source script for a `state: expecting-transfer` entry. The
-     * namespace on this script is materialised from the source
-     * script&#39;s data via the pending-transfer flow. Present on reads
-     * for `expecting-transfer` entries.
+     * For `state: expecting-transfer`: The source script name to receive the namespace from. Must be
+     * in the same account and dispatch-namespace context. Present on
+     * reads for `expecting-transfer` entries.
      * 
      */
     @Import(name="transferFrom")
     private @Nullable Output<String> transferFrom;
 
     /**
-     * @return Source script for a `state: expecting-transfer` entry. The
-     * namespace on this script is materialised from the source
-     * script&#39;s data via the pending-transfer flow. Present on reads
-     * for `expecting-transfer` entries.
+     * @return For `state: expecting-transfer`: The source script name to receive the namespace from. Must be
+     * in the same account and dispatch-namespace context. Present on
+     * reads for `expecting-transfer` entries.
      * 
      */
     public Optional<Output<String>> transferFrom() {
@@ -117,20 +170,20 @@ public final class WorkerVersionExportsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Destination script for a `state: transferred` tombstone. Must
-     * reference a script in the same account; cross-dispatch-namespace
-     * transfers are rejected. Write-only: never present in GET
-     * responses.
+     * For `state: transferred`: The destination script name. Must be in the same account and
+     * the same dispatch-namespace context (or both non-dispatch).
+     * Cross-dispatch-namespace transfers are rejected. Write-only:
+     * never present in GET responses.
      * 
      */
     @Import(name="transferredTo")
     private @Nullable Output<String> transferredTo;
 
     /**
-     * @return Destination script for a `state: transferred` tombstone. Must
-     * reference a script in the same account; cross-dispatch-namespace
-     * transfers are rejected. Write-only: never present in GET
-     * responses.
+     * @return For `state: transferred`: The destination script name. Must be in the same account and
+     * the same dispatch-namespace context (or both non-dispatch).
+     * Cross-dispatch-namespace transfers are rejected. Write-only:
+     * never present in GET responses.
      * 
      */
     public Optional<Output<String>> transferredTo() {
@@ -138,16 +191,14 @@ public final class WorkerVersionExportsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The kind of export.
-     * Available values: &#34;worker&#34;, &#34;durable-object&#34;.
+     * For `type: worker`: Marks this entry as a Worker entrypoint export.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return The kind of export.
-     * Available values: &#34;worker&#34;, &#34;durable-object&#34;.
+     * @return For `type: worker`: Marks this entry as a Worker entrypoint export.
      * 
      */
     public Output<String> type() {
@@ -158,6 +209,7 @@ public final class WorkerVersionExportsArgs extends com.pulumi.resources.Resourc
 
     private WorkerVersionExportsArgs(WorkerVersionExportsArgs $) {
         this.cache = $.cache;
+        this.container = $.container;
         this.renamedTo = $.renamedTo;
         this.state = $.state;
         this.storage = $.storage;
@@ -185,9 +237,8 @@ public final class WorkerVersionExportsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param cache Cache override for this entrypoint. It applies only to
-         * `type: worker` entries and overrides the Worker&#39;s global
-         * `cache_options.enabled` for that entrypoint.
+         * @param cache For `type: worker`: Cache override for this entrypoint. Overrides the Worker&#39;s
+         * global `cache_options.enabled` for this entrypoint only.
          * 
          * @return builder
          * 
@@ -198,9 +249,8 @@ public final class WorkerVersionExportsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param cache Cache override for this entrypoint. It applies only to
-         * `type: worker` entries and overrides the Worker&#39;s global
-         * `cache_options.enabled` for that entrypoint.
+         * @param cache For `type: worker`: Cache override for this entrypoint. Overrides the Worker&#39;s
+         * global `cache_options.enabled` for this entrypoint only.
          * 
          * @return builder
          * 
@@ -210,9 +260,45 @@ public final class WorkerVersionExportsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param renamedTo Destination class name for a `state: renamed` tombstone. The
-         * target must appear as a live (`created`) entry in the same
-         * `exports` map. Write-only: never present in GET responses.
+         * @param container For `type: durable-object` and `state: created`: Name of the container (declared in the upload&#39;s
+         * `metadata.containers`) that backs this Durable Object. When
+         * set, the namespace is container-enabled. Valid only on live
+         * entries.
+         * 
+         * For `state: expecting-transfer`: Name of the container (declared in the upload&#39;s
+         * `metadata.containers`) that backs this Durable Object once the
+         * transfer settles. Valid only on live entries.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder container(@Nullable Output<String> container) {
+            $.container = container;
+            return this;
+        }
+
+        /**
+         * @param container For `type: durable-object` and `state: created`: Name of the container (declared in the upload&#39;s
+         * `metadata.containers`) that backs this Durable Object. When
+         * set, the namespace is container-enabled. Valid only on live
+         * entries.
+         * 
+         * For `state: expecting-transfer`: Name of the container (declared in the upload&#39;s
+         * `metadata.containers`) that backs this Durable Object once the
+         * transfer settles. Valid only on live entries.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder container(String container) {
+            return container(Output.of(container));
+        }
+
+        /**
+         * @param renamedTo For `state: renamed`: The destination class name. Must differ from the source class
+         * (the map key) and must be declared as a live (`created`) entry
+         * in the same `exports` map. Write-only: never present in GET
+         * responses.
          * 
          * @return builder
          * 
@@ -223,9 +309,10 @@ public final class WorkerVersionExportsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param renamedTo Destination class name for a `state: renamed` tombstone. The
-         * target must appear as a live (`created`) entry in the same
-         * `exports` map. Write-only: never present in GET responses.
+         * @param renamedTo For `state: renamed`: The destination class name. Must differ from the source class
+         * (the map key) and must be declared as a live (`created`) entry
+         * in the same `exports` map. Write-only: never present in GET
+         * responses.
          * 
          * @return builder
          * 
@@ -235,8 +322,16 @@ public final class WorkerVersionExportsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param state Lifecycle state of the export entry. Defaults to `created`
-         * (a normal, live export) when omitted.
+         * @param state For `state: created`: Live export. May be omitted; defaults to `created`.
+         * 
+         * For `state: deleted`: Tombstone that deletes the namespace.
+         * 
+         * For `state: renamed`: Tombstone that renames the namespace&#39;s class.
+         * 
+         * For `state: transferred`: Tombstone that transfers the namespace to another script.
+         * 
+         * For `state: expecting-transfer`: Target side of a two-phase transfer.
+         * Available values: &#34;created&#34;, &#34;deleted&#34;, &#34;renamed&#34;, &#34;transferred&#34;, &#34;expecting-transfer&#34;.
          * 
          * @return builder
          * 
@@ -247,8 +342,16 @@ public final class WorkerVersionExportsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param state Lifecycle state of the export entry. Defaults to `created`
-         * (a normal, live export) when omitted.
+         * @param state For `state: created`: Live export. May be omitted; defaults to `created`.
+         * 
+         * For `state: deleted`: Tombstone that deletes the namespace.
+         * 
+         * For `state: renamed`: Tombstone that renames the namespace&#39;s class.
+         * 
+         * For `state: transferred`: Tombstone that transfers the namespace to another script.
+         * 
+         * For `state: expecting-transfer`: Target side of a two-phase transfer.
+         * Available values: &#34;created&#34;, &#34;deleted&#34;, &#34;renamed&#34;, &#34;transferred&#34;, &#34;expecting-transfer&#34;.
          * 
          * @return builder
          * 
@@ -258,10 +361,15 @@ public final class WorkerVersionExportsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param storage Storage backend for a `type: durable-object` export. Required
-         * for live Durable Object entries (`created` and
-         * `expecting-transfer`). `sqlite` selects SQLite-backed storage;
-         * `legacy-kv` selects the legacy key-value storage.
+         * @param storage For `type: durable-object` and `state: created`: Durable Object storage backend. `sqlite` is the recommended (and
+         * only) backend for new namespaces. `legacy-kv` is accepted only for
+         * a class whose namespace already exists as KV-backed; the `exports`
+         * flow never provisions a new `legacy-kv` namespace.
+         * 
+         * For `type: durable-object` and `state: expecting-transfer`: Durable Object storage backend. `sqlite` is the recommended (and
+         * only) backend for new namespaces. `legacy-kv` is accepted only for
+         * a class whose namespace already exists as KV-backed; the `exports`
+         * flow never provisions a new `legacy-kv` namespace.
          * Available values: &#34;sqlite&#34;, &#34;legacy-kv&#34;.
          * 
          * @return builder
@@ -273,10 +381,15 @@ public final class WorkerVersionExportsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param storage Storage backend for a `type: durable-object` export. Required
-         * for live Durable Object entries (`created` and
-         * `expecting-transfer`). `sqlite` selects SQLite-backed storage;
-         * `legacy-kv` selects the legacy key-value storage.
+         * @param storage For `type: durable-object` and `state: created`: Durable Object storage backend. `sqlite` is the recommended (and
+         * only) backend for new namespaces. `legacy-kv` is accepted only for
+         * a class whose namespace already exists as KV-backed; the `exports`
+         * flow never provisions a new `legacy-kv` namespace.
+         * 
+         * For `type: durable-object` and `state: expecting-transfer`: Durable Object storage backend. `sqlite` is the recommended (and
+         * only) backend for new namespaces. `legacy-kv` is accepted only for
+         * a class whose namespace already exists as KV-backed; the `exports`
+         * flow never provisions a new `legacy-kv` namespace.
          * Available values: &#34;sqlite&#34;, &#34;legacy-kv&#34;.
          * 
          * @return builder
@@ -287,10 +400,9 @@ public final class WorkerVersionExportsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param transferFrom Source script for a `state: expecting-transfer` entry. The
-         * namespace on this script is materialised from the source
-         * script&#39;s data via the pending-transfer flow. Present on reads
-         * for `expecting-transfer` entries.
+         * @param transferFrom For `state: expecting-transfer`: The source script name to receive the namespace from. Must be
+         * in the same account and dispatch-namespace context. Present on
+         * reads for `expecting-transfer` entries.
          * 
          * @return builder
          * 
@@ -301,10 +413,9 @@ public final class WorkerVersionExportsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param transferFrom Source script for a `state: expecting-transfer` entry. The
-         * namespace on this script is materialised from the source
-         * script&#39;s data via the pending-transfer flow. Present on reads
-         * for `expecting-transfer` entries.
+         * @param transferFrom For `state: expecting-transfer`: The source script name to receive the namespace from. Must be
+         * in the same account and dispatch-namespace context. Present on
+         * reads for `expecting-transfer` entries.
          * 
          * @return builder
          * 
@@ -314,10 +425,10 @@ public final class WorkerVersionExportsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param transferredTo Destination script for a `state: transferred` tombstone. Must
-         * reference a script in the same account; cross-dispatch-namespace
-         * transfers are rejected. Write-only: never present in GET
-         * responses.
+         * @param transferredTo For `state: transferred`: The destination script name. Must be in the same account and
+         * the same dispatch-namespace context (or both non-dispatch).
+         * Cross-dispatch-namespace transfers are rejected. Write-only:
+         * never present in GET responses.
          * 
          * @return builder
          * 
@@ -328,10 +439,10 @@ public final class WorkerVersionExportsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param transferredTo Destination script for a `state: transferred` tombstone. Must
-         * reference a script in the same account; cross-dispatch-namespace
-         * transfers are rejected. Write-only: never present in GET
-         * responses.
+         * @param transferredTo For `state: transferred`: The destination script name. Must be in the same account and
+         * the same dispatch-namespace context (or both non-dispatch).
+         * Cross-dispatch-namespace transfers are rejected. Write-only:
+         * never present in GET responses.
          * 
          * @return builder
          * 
@@ -341,8 +452,7 @@ public final class WorkerVersionExportsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param type The kind of export.
-         * Available values: &#34;worker&#34;, &#34;durable-object&#34;.
+         * @param type For `type: worker`: Marks this entry as a Worker entrypoint export.
          * 
          * @return builder
          * 
@@ -353,8 +463,7 @@ public final class WorkerVersionExportsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param type The kind of export.
-         * Available values: &#34;worker&#34;, &#34;durable-object&#34;.
+         * @param type For `type: worker`: Marks this entry as a Worker entrypoint export.
          * 
          * @return builder
          * 

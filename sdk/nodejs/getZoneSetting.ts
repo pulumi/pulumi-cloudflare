@@ -26,6 +26,7 @@ import * as utilities from "./utilities";
  * | `alwaysUseHttps` | `"on"` / `"off"` | Reply to all requests for URLs that use "http" with a 301 redirect to the equ... |
  * | `automaticHttpsRewrites` | `"on"` / `"off"` | Enable the Automatic HTTPS Rewrites feature for this zone. |
  * | `automaticPlatformOptimization` | Object | [Automatic Platform Optimization for WordPress](https://developers.cloudflare... |
+ * | `avif` | `"on"` / `"off"` | When the client requesting the image supports the AVIF image codec, and AVIF ... |
  * | `brotli` | `"on"` / `"off"` | When the client requesting an asset supports the Brotli compression algorithm... |
  * | `browserCacheTtl` | Number | Browser Cache TTL (in seconds) specifies how long Cloudflare-cached resources... |
  * | `browserCheck` | `"on"` / `"off"` | Browser Integrity Check is similar to Bad Behavior and looks for common HTTP ... |
@@ -127,11 +128,11 @@ export interface GetZoneSettingArgs {
  */
 export interface GetZoneSettingResult {
     /**
-     * Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).
+     * For `id: 0rtt` or `id: advancedDdos` or `id: alwaysOnline` or `id: alwaysUseHttps` or `id: automaticHttpsRewrites` or `id: brotli` or `id: browserCacheTtl` or `id: browserCheck` or `id: cacheLevel` or `id: challengeTtl` or `id: chinaNetworkEnabled` or `id: contentConverter` or `id: ciphers` or `id: cnameFlattening` or `id: developmentMode` or `id: earlyHints` or `id: edgeCacheTtl` or `id: emailObfuscation` or `id: h2Prioritization` or `id: hotlinkProtection` or `id: http2` or `id: http3` or `id: imageResizing` or `id: ipGeolocation` or `id: ipv6` or `id: maxUpload` or `id: minTlsVersion` or `id: mirage` or `id: nel` or `id: opportunisticEncryption` or `id: opportunisticOnion` or `id: orangeToOrange` or `id: originErrorPagePassThru` or `id: polish` or `id: prefetchPreload` or `id: preRender` or `id: privacyPass` or `id: proxyReadTimeout` or `id: pseudoIpv4` or `id: redirectsForAiTraining` or `id: replaceInsecureJs` or `id: responseBuffering` or `id: rocketLoader` or `id: automaticPlatformOptimization` or `id: searchForAgents` or `id: securityHeader` or `id: securityLevel` or `id: serverSideExclude` or `id: sha1Support` or `id: sortQueryStringForCache` or `id: ssl` or `id: tls12Only` or `id: tls13` or `id: tlsClientAuth` or `id: transformations` or `id: transformationsAllowedOrigins` or `id: trueClientIpHeader` or `id: waf` or `id: webmcpEnabled` or `id: webmcpMcpUrl` or `id: webmcpPacks` or `id: webp` or `id: avif` or `id: websockets`: Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).
      */
     readonly editable: boolean;
     /**
-     * ssl-recommender enrollment setting.
+     * For `id: sslRecommender`: ssl-recommender enrollment setting.
      */
     readonly enabled: boolean;
     /**
@@ -139,22 +140,14 @@ export interface GetZoneSettingResult {
      */
     readonly id: string;
     /**
-     * last time this setting was modified.
+     * For `id: 0rtt` or `id: advancedDdos` or `id: alwaysOnline` or `id: alwaysUseHttps` or `id: automaticHttpsRewrites` or `id: brotli` or `id: browserCacheTtl` or `id: browserCheck` or `id: cacheLevel` or `id: challengeTtl` or `id: chinaNetworkEnabled` or `id: contentConverter` or `id: ciphers` or `id: cnameFlattening` or `id: developmentMode` or `id: earlyHints` or `id: edgeCacheTtl` or `id: emailObfuscation` or `id: h2Prioritization` or `id: hotlinkProtection` or `id: http2` or `id: http3` or `id: imageResizing` or `id: ipGeolocation` or `id: ipv6` or `id: maxUpload` or `id: minTlsVersion` or `id: mirage` or `id: nel` or `id: opportunisticEncryption` or `id: opportunisticOnion` or `id: orangeToOrange` or `id: originErrorPagePassThru` or `id: polish` or `id: prefetchPreload` or `id: preRender` or `id: privacyPass` or `id: proxyReadTimeout` or `id: pseudoIpv4` or `id: redirectsForAiTraining` or `id: replaceInsecureJs` or `id: responseBuffering` or `id: rocketLoader` or `id: automaticPlatformOptimization` or `id: searchForAgents` or `id: securityHeader` or `id: securityLevel` or `id: serverSideExclude` or `id: sha1Support` or `id: sortQueryStringForCache` or `id: ssl` or `id: tls12Only` or `id: tls13` or `id: tlsClientAuth` or `id: transformations` or `id: transformationsAllowedOrigins` or `id: trueClientIpHeader` or `id: waf` or `id: webmcpEnabled` or `id: webmcpMcpUrl` or `id: webmcpPacks` or `id: webp` or `id: avif` or `id: websockets`: last time this setting was modified.
      */
     readonly modifiedOn: string;
     /**
      * Setting name
      */
     readonly settingId: string;
-    /**
-     * Value of the zone setting.
-     * Notes: The interval (in seconds) from when development mode expires (positive integer) or last expired (negative integer) for the domain. If development mode has never been enabled, this value is false.
-     */
     readonly timeRemaining: number;
-    /**
-     * Current value of the zone setting.
-     * Available values: "on", "off".
-     */
     readonly value: string;
     /**
      * Identifier
@@ -183,6 +176,7 @@ export interface GetZoneSettingResult {
  * | `alwaysUseHttps` | `"on"` / `"off"` | Reply to all requests for URLs that use "http" with a 301 redirect to the equ... |
  * | `automaticHttpsRewrites` | `"on"` / `"off"` | Enable the Automatic HTTPS Rewrites feature for this zone. |
  * | `automaticPlatformOptimization` | Object | [Automatic Platform Optimization for WordPress](https://developers.cloudflare... |
+ * | `avif` | `"on"` / `"off"` | When the client requesting the image supports the AVIF image codec, and AVIF ... |
  * | `brotli` | `"on"` / `"off"` | When the client requesting an asset supports the Brotli compression algorithm... |
  * | `browserCacheTtl` | Number | Browser Cache TTL (in seconds) specifies how long Cloudflare-cached resources... |
  * | `browserCheck` | `"on"` / `"off"` | Browser Integrity Check is similar to Bad Behavior and looks for common HTTP ... |

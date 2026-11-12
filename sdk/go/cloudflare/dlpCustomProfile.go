@@ -92,7 +92,7 @@ type DlpCustomProfile struct {
 	//
 	// Deprecated: This attribute is deprecated.
 	ContextAwareness DlpCustomProfileContextAwarenessOutput `pulumi:"contextAwareness"`
-	// When the profile was created.
+	// For `type: custom`: When the profile was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Data class IDs to associate with the profile.
 	DataClasses pulumi.StringArrayOutput `pulumi:"dataClasses"`
@@ -108,7 +108,7 @@ type DlpCustomProfile struct {
 	IntegrationId pulumi.StringOutput              `pulumi:"integrationId"`
 	Name          pulumi.StringOutput              `pulumi:"name"`
 	OcrEnabled    pulumi.BoolOutput                `pulumi:"ocrEnabled"`
-	// Whether this profile can be accessed by anyone.
+	// For `type: predefined`: Whether this profile can be accessed by anyone.
 	OpenAccess pulumi.BoolOutput `pulumi:"openAccess"`
 	// Sensitivity levels to associate with the profile.
 	SensitivityLevels DlpCustomProfileSensitivityLevelArrayOutput `pulumi:"sensitivityLevels"`
@@ -116,7 +116,7 @@ type DlpCustomProfile struct {
 	SharedEntries DlpCustomProfileSharedEntryArrayOutput `pulumi:"sharedEntries"`
 	// Available values: "custom", "predefined", "integration".
 	Type pulumi.StringOutput `pulumi:"type"`
-	// When the profile was lasted updated.
+	// For `type: custom`: When the profile was lasted updated.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 }
 
@@ -171,7 +171,7 @@ type dlpCustomProfileState struct {
 	//
 	// Deprecated: This attribute is deprecated.
 	ContextAwareness *DlpCustomProfileContextAwareness `pulumi:"contextAwareness"`
-	// When the profile was created.
+	// For `type: custom`: When the profile was created.
 	CreatedAt *string `pulumi:"createdAt"`
 	// Data class IDs to associate with the profile.
 	DataClasses []string `pulumi:"dataClasses"`
@@ -187,7 +187,7 @@ type dlpCustomProfileState struct {
 	IntegrationId *string                 `pulumi:"integrationId"`
 	Name          *string                 `pulumi:"name"`
 	OcrEnabled    *bool                   `pulumi:"ocrEnabled"`
-	// Whether this profile can be accessed by anyone.
+	// For `type: predefined`: Whether this profile can be accessed by anyone.
 	OpenAccess *bool `pulumi:"openAccess"`
 	// Sensitivity levels to associate with the profile.
 	SensitivityLevels []DlpCustomProfileSensitivityLevel `pulumi:"sensitivityLevels"`
@@ -195,7 +195,7 @@ type dlpCustomProfileState struct {
 	SharedEntries []DlpCustomProfileSharedEntry `pulumi:"sharedEntries"`
 	// Available values: "custom", "predefined", "integration".
 	Type *string `pulumi:"type"`
-	// When the profile was lasted updated.
+	// For `type: custom`: When the profile was lasted updated.
 	UpdatedAt *string `pulumi:"updatedAt"`
 }
 
@@ -209,7 +209,7 @@ type DlpCustomProfileState struct {
 	//
 	// Deprecated: This attribute is deprecated.
 	ContextAwareness DlpCustomProfileContextAwarenessPtrInput
-	// When the profile was created.
+	// For `type: custom`: When the profile was created.
 	CreatedAt pulumi.StringPtrInput
 	// Data class IDs to associate with the profile.
 	DataClasses pulumi.StringArrayInput
@@ -225,7 +225,7 @@ type DlpCustomProfileState struct {
 	IntegrationId pulumi.StringPtrInput
 	Name          pulumi.StringPtrInput
 	OcrEnabled    pulumi.BoolPtrInput
-	// Whether this profile can be accessed by anyone.
+	// For `type: predefined`: Whether this profile can be accessed by anyone.
 	OpenAccess pulumi.BoolPtrInput
 	// Sensitivity levels to associate with the profile.
 	SensitivityLevels DlpCustomProfileSensitivityLevelArrayInput
@@ -233,7 +233,7 @@ type DlpCustomProfileState struct {
 	SharedEntries DlpCustomProfileSharedEntryArrayInput
 	// Available values: "custom", "predefined", "integration".
 	Type pulumi.StringPtrInput
-	// When the profile was lasted updated.
+	// For `type: custom`: When the profile was lasted updated.
 	UpdatedAt pulumi.StringPtrInput
 }
 
@@ -417,7 +417,7 @@ func (o DlpCustomProfileOutput) ContextAwareness() DlpCustomProfileContextAwaren
 	return o.ApplyT(func(v *DlpCustomProfile) DlpCustomProfileContextAwarenessOutput { return v.ContextAwareness }).(DlpCustomProfileContextAwarenessOutput)
 }
 
-// When the profile was created.
+// For `type: custom`: When the profile was created.
 func (o DlpCustomProfileOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *DlpCustomProfile) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
@@ -457,7 +457,7 @@ func (o DlpCustomProfileOutput) OcrEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *DlpCustomProfile) pulumi.BoolOutput { return v.OcrEnabled }).(pulumi.BoolOutput)
 }
 
-// Whether this profile can be accessed by anyone.
+// For `type: predefined`: Whether this profile can be accessed by anyone.
 func (o DlpCustomProfileOutput) OpenAccess() pulumi.BoolOutput {
 	return o.ApplyT(func(v *DlpCustomProfile) pulumi.BoolOutput { return v.OpenAccess }).(pulumi.BoolOutput)
 }
@@ -477,7 +477,7 @@ func (o DlpCustomProfileOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *DlpCustomProfile) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// When the profile was lasted updated.
+// For `type: custom`: When the profile was lasted updated.
 func (o DlpCustomProfileOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *DlpCustomProfile) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }

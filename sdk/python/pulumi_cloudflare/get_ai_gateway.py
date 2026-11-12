@@ -28,7 +28,7 @@ class GetAiGatewayResult:
     """
     A collection of values returned by getAiGateway.
     """
-    def __init__(__self__, account_id=None, authentication=None, byok_only=None, cache_invalidate_on_update=None, cache_ttl=None, collect_logs=None, created_at=None, dlp=None, filter=None, guardrails=None, id=None, is_default=None, log_classification=None, log_management=None, log_management_strategy=None, logpush=None, logpush_public_key=None, modified_at=None, otels=None, rate_limiting_interval=None, rate_limiting_limit=None, rate_limiting_technique=None, retry_backoff=None, retry_delay=None, retry_max_attempts=None, spend_limits=None, store_id=None, stripe=None, workers_ai_billing_mode=None, zdr=None):
+    def __init__(__self__, account_id=None, authentication=None, byok_only=None, cache_invalidate_on_update=None, cache_ttl=None, collect_logs=None, created_at=None, dlp=None, fedramp_level=None, fedramp_mode=None, filter=None, guardrails=None, id=None, is_default=None, log_classification=None, log_management=None, log_management_strategy=None, logpush=None, logpush_public_key=None, modified_at=None, otels=None, rate_limiting_interval=None, rate_limiting_limit=None, rate_limiting_technique=None, retry_backoff=None, retry_delay=None, retry_max_attempts=None, spend_limits=None, store_id=None, stripe=None, workers_ai_billing_mode=None, zdr=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -53,6 +53,12 @@ class GetAiGatewayResult:
         if dlp and not isinstance(dlp, dict):
             raise TypeError("Expected argument 'dlp' to be a dict")
         pulumi.set(__self__, "dlp", dlp)
+        if fedramp_level and not isinstance(fedramp_level, str):
+            raise TypeError("Expected argument 'fedramp_level' to be a str")
+        pulumi.set(__self__, "fedramp_level", fedramp_level)
+        if fedramp_mode and not isinstance(fedramp_mode, str):
+            raise TypeError("Expected argument 'fedramp_mode' to be a str")
+        pulumi.set(__self__, "fedramp_mode", fedramp_mode)
         if filter and not isinstance(filter, dict):
             raise TypeError("Expected argument 'filter' to be a dict")
         pulumi.set(__self__, "filter", filter)
@@ -128,6 +134,9 @@ class GetAiGatewayResult:
     @_builtins.property
     @pulumi.getter
     def authentication(self) -> _builtins.bool:
+        """
+        Require authentication for gateway access. New gateways must have authentication enabled. Once enabled, authentication cannot be disabled.
+        """
         return pulumi.get(self, "authentication")
 
     @_builtins.property
@@ -162,6 +171,24 @@ class GetAiGatewayResult:
     @pulumi.getter
     def dlp(self) -> 'outputs.GetAiGatewayDlpResult':
         return pulumi.get(self, "dlp")
+
+    @_builtins.property
+    @pulumi.getter(name="fedrampLevel")
+    def fedramp_level(self) -> _builtins.str:
+        """
+        FedRAMP compliance level: fedramp-medium or fedramp-high.
+        Available values: "fedramp-medium", "fedramp-high".
+        """
+        return pulumi.get(self, "fedramp_level")
+
+    @_builtins.property
+    @pulumi.getter(name="fedrampMode")
+    def fedramp_mode(self) -> _builtins.str:
+        """
+        FedRAMP enforcement mode. "prefer" prioritizes compliant connectors but allows fallback. "require" strictly filters.
+        Available values: "prefer", "require".
+        """
+        return pulumi.get(self, "fedramp_mode")
 
     @_builtins.property
     @pulumi.getter
@@ -275,6 +302,9 @@ class GetAiGatewayResult:
     @_builtins.property
     @pulumi.getter(name="storeId")
     def store_id(self) -> _builtins.str:
+        """
+        Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it.
+        """
         return pulumi.get(self, "store_id")
 
     @_builtins.property
@@ -311,6 +341,8 @@ class AwaitableGetAiGatewayResult(GetAiGatewayResult):
             collect_logs=self.collect_logs,
             created_at=self.created_at,
             dlp=self.dlp,
+            fedramp_level=self.fedramp_level,
+            fedramp_mode=self.fedramp_mode,
             filter=self.filter,
             guardrails=self.guardrails,
             id=self.id,
@@ -374,6 +406,8 @@ def get_ai_gateway(account_id: Optional[_builtins.str] = None,
         collect_logs=pulumi.get(__ret__, 'collect_logs'),
         created_at=pulumi.get(__ret__, 'created_at'),
         dlp=pulumi.get(__ret__, 'dlp'),
+        fedramp_level=pulumi.get(__ret__, 'fedramp_level'),
+        fedramp_mode=pulumi.get(__ret__, 'fedramp_mode'),
         filter=pulumi.get(__ret__, 'filter'),
         guardrails=pulumi.get(__ret__, 'guardrails'),
         id=pulumi.get(__ret__, 'id'),
@@ -434,6 +468,8 @@ def get_ai_gateway_output(account_id: pulumi.Input[Optional[Optional[_builtins.s
         collect_logs=pulumi.get(__response__, 'collect_logs'),
         created_at=pulumi.get(__response__, 'created_at'),
         dlp=pulumi.get(__response__, 'dlp'),
+        fedramp_level=pulumi.get(__response__, 'fedramp_level'),
+        fedramp_mode=pulumi.get(__response__, 'fedramp_mode'),
         filter=pulumi.get(__response__, 'filter'),
         guardrails=pulumi.get(__response__, 'guardrails'),
         id=pulumi.get(__response__, 'id'),

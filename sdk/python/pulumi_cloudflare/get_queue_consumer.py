@@ -102,7 +102,7 @@ class GetQueueConsumerResult:
     @pulumi.getter(name="scriptName")
     def script_name(self) -> _builtins.str:
         """
-        Name of a Worker
+        For `type: worker`: Name of a Worker
         """
         return pulumi.get(self, "script_name")
 

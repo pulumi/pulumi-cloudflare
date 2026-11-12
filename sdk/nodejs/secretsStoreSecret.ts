@@ -91,9 +91,9 @@ export class SecretsStoreSecret extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * The list of services that can use this secret. Valid values are `workers`, `aiGateway`, `dex`, and `access`. Must be listed in alphabetical order.
+     * The list of services that can use this secret, or null when the secret inherits its store's scopes. Set it to null in a patch to inherit again. An empty list lets no service use the secret. Explicit scopes must be listed in alphabetical order.
      */
-    declare public readonly scopes: pulumi.Output<string[]>;
+    declare public readonly scopes: pulumi.Output<string[] | undefined>;
     /**
      * Available values: "pending", "active", "deleted".
      */
@@ -136,9 +136,6 @@ export class SecretsStoreSecret extends pulumi.CustomResource {
             }
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
-            }
-            if (args?.scopes === undefined && !opts.urn) {
-                throw new Error("Missing required property 'scopes'");
             }
             if (args?.storeId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'storeId'");
@@ -188,7 +185,7 @@ export interface SecretsStoreSecretState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * The list of services that can use this secret. Valid values are `workers`, `aiGateway`, `dex`, and `access`. Must be listed in alphabetical order.
+     * The list of services that can use this secret, or null when the secret inherits its store's scopes. Set it to null in a patch to inherit again. An empty list lets no service use the secret. Explicit scopes must be listed in alphabetical order.
      */
     scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -222,9 +219,9 @@ export interface SecretsStoreSecretArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * The list of services that can use this secret. Valid values are `workers`, `aiGateway`, `dex`, and `access`. Must be listed in alphabetical order.
+     * The list of services that can use this secret, or null when the secret inherits its store's scopes. Set it to null in a patch to inherit again. An empty list lets no service use the secret. Explicit scopes must be listed in alphabetical order.
      */
-    scopes: pulumi.Input<pulumi.Input<string>[]>;
+    scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Store Identifier
      */

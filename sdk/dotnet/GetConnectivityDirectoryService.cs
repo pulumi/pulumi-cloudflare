@@ -141,6 +141,9 @@ namespace Pulumi.Cloudflare
         /// TLS settings for a connectivity service.
         /// </summary>
         public readonly Outputs.GetConnectivityDirectoryServiceTlsSettingsResult TlsSettings;
+        /// <summary>
+        /// Available values: "tcp", "http".
+        /// </summary>
         public readonly string Type;
         public readonly string UpdatedAt;
 

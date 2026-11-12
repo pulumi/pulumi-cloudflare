@@ -55,55 +55,55 @@ namespace Pulumi.Cloudflare
         /// Sets the time limit, in seconds, that a user can use an override code to bypass WARP.
         /// </summary>
         [Output("disableForTime")]
-        public Output<double?> DisableForTime { get; private set; } = null!;
+        public Output<double> DisableForTime { get; private set; } = null!;
 
         /// <summary>
         /// Controls whether the external emergency disconnect feature is enabled.
         /// </summary>
         [Output("externalEmergencySignalEnabled")]
-        public Output<bool?> ExternalEmergencySignalEnabled { get; private set; } = null!;
+        public Output<bool> ExternalEmergencySignalEnabled { get; private set; } = null!;
 
         /// <summary>
         /// The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external*emergency*signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.
         /// </summary>
         [Output("externalEmergencySignalFingerprint")]
-        public Output<string?> ExternalEmergencySignalFingerprint { get; private set; } = null!;
+        public Output<string> ExternalEmergencySignalFingerprint { get; private set; } = null!;
 
         /// <summary>
         /// The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., "5m", "2m30s", "1h"). Minimum 30 seconds.
         /// </summary>
         [Output("externalEmergencySignalInterval")]
-        public Output<string?> ExternalEmergencySignalInterval { get; private set; } = null!;
+        public Output<string> ExternalEmergencySignalInterval { get; private set; } = null!;
 
         /// <summary>
         /// The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.
         /// </summary>
         [Output("externalEmergencySignalUrl")]
-        public Output<string?> ExternalEmergencySignalUrl { get; private set; } = null!;
+        public Output<string> ExternalEmergencySignalUrl { get; private set; } = null!;
 
         /// <summary>
         /// Enable gateway proxy filtering on TCP.
         /// </summary>
         [Output("gatewayProxyEnabled")]
-        public Output<bool?> GatewayProxyEnabled { get; private set; } = null!;
+        public Output<bool> GatewayProxyEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Enable gateway proxy filtering on UDP.
         /// </summary>
         [Output("gatewayUdpProxyEnabled")]
-        public Output<bool?> GatewayUdpProxyEnabled { get; private set; } = null!;
+        public Output<bool> GatewayUdpProxyEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Enable installation of cloudflare managed root certificate.
         /// </summary>
         [Output("rootCertificateInstallationEnabled")]
-        public Output<bool?> RootCertificateInstallationEnabled { get; private set; } = null!;
+        public Output<bool> RootCertificateInstallationEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Enable using CGNAT virtual IPv4.
         /// </summary>
         [Output("useZtVirtualIp")]
-        public Output<bool?> UseZtVirtualIp { get; private set; } = null!;
+        public Output<bool> UseZtVirtualIp { get; private set; } = null!;
 
 
         /// <summary>

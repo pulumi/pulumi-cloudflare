@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class LoadBalancerRuleOverridesRandomSteeringArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The default weight for pools in the load balancer that are not specified in the PoolWeights map.
+        /// The default weight for pools in the load balancer that are not specified in the PoolWeights map. An omitted value inherits the load balancer's default weight.
         /// </summary>
         [Input("defaultWeight")]
         public Input<double>? DefaultWeight { get; set; }

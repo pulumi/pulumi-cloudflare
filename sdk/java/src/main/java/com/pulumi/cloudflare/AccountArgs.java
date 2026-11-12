@@ -36,14 +36,14 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Account name
+     * Account name, limited to 65 UTF-8 bytes.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Account name
+     * @return Account name, limited to 65 UTF-8 bytes.
      * 
      */
     public Output<String> name() {
@@ -81,6 +81,7 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
      * Available values: &#34;standard&#34;, &#34;enterprise&#34;.
      * 
      * @deprecated The &#39;type&#39; field should no longer be set through the API.
@@ -91,7 +92,8 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> type;
 
     /**
-     * @return Available values: &#34;standard&#34;, &#34;enterprise&#34;.
+     * @return the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
+     * Available values: &#34;standard&#34;, &#34;enterprise&#34;.
      * 
      * @deprecated The &#39;type&#39; field should no longer be set through the API.
      * 
@@ -167,7 +169,7 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Account name
+         * @param name Account name, limited to 65 UTF-8 bytes.
          * 
          * @return builder
          * 
@@ -178,7 +180,7 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Account name
+         * @param name Account name, limited to 65 UTF-8 bytes.
          * 
          * @return builder
          * 
@@ -230,7 +232,8 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Available values: &#34;standard&#34;, &#34;enterprise&#34;.
+         * @param type the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
+         * Available values: &#34;standard&#34;, &#34;enterprise&#34;.
          * 
          * @return builder
          * 
@@ -244,7 +247,8 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Available values: &#34;standard&#34;, &#34;enterprise&#34;.
+         * @param type the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
+         * Available values: &#34;standard&#34;, &#34;enterprise&#34;.
          * 
          * @return builder
          * 

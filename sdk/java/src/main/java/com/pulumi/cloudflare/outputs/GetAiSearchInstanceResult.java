@@ -71,7 +71,7 @@ public final class GetAiSearchInstanceResult {
      */
     private String id;
     /**
-     * @return Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
+     * @return Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances. When set, both vector and keyword are required.
      * 
      */
     private GetAiSearchInstanceIndexMethod indexMethod;
@@ -94,12 +94,16 @@ public final class GetAiSearchInstanceResult {
      */
     private String rewriteModel;
     private Boolean rewriteQuery;
+    /**
+     * @return Minimum similarity score a chunk must reach to be returned. Defaults to 0.4.
+     * 
+     */
     private Double scoreThreshold;
     private String source;
     private GetAiSearchInstanceSourceParams sourceParams;
     private String status;
     /**
-     * @return Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+     * @return Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). Defaults to 86400 (24h).
      * Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
      * 
      */
@@ -196,7 +200,7 @@ public final class GetAiSearchInstanceResult {
         return this.id;
     }
     /**
-     * @return Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
+     * @return Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances. When set, both vector and keyword are required.
      * 
      */
     public GetAiSearchInstanceIndexMethod indexMethod() {
@@ -251,6 +255,10 @@ public final class GetAiSearchInstanceResult {
     public Boolean rewriteQuery() {
         return this.rewriteQuery;
     }
+    /**
+     * @return Minimum similarity score a chunk must reach to be returned. Defaults to 0.4.
+     * 
+     */
     public Double scoreThreshold() {
         return this.scoreThreshold;
     }
@@ -264,7 +272,7 @@ public final class GetAiSearchInstanceResult {
         return this.status;
     }
     /**
-     * @return Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+     * @return Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). Defaults to 86400 (24h).
      * Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
      * 
      */

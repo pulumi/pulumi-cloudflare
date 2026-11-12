@@ -15,6 +15,14 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("containing")]
         public Inputs.GetOrganizationFilterContainingArgs? Containing { get; set; }
 
+        /// <summary>
+        /// Sort direction for the `OrderBy` field. Defaults to `Asc` when `OrderBy` is
+        /// specified.
+        /// Available values: "asc", "desc".
+        /// </summary>
+        [Input("direction")]
+        public string? Direction { get; set; }
+
         [Input("ids")]
         private List<string>? _ids;
 
@@ -28,8 +36,19 @@ namespace Pulumi.Cloudflare.Inputs
             set => _ids = value;
         }
 
+        [Input("member")]
+        public Inputs.GetOrganizationFilterMemberArgs? Member { get; set; }
+
         [Input("name")]
         public Inputs.GetOrganizationFilterNameArgs? Name { get; set; }
+
+        /// <summary>
+        /// Field to order results by. Currently supported values: `Name`.
+        /// When not specified, results are ordered by hierarchy.
+        /// Available values: "name".
+        /// </summary>
+        [Input("orderBy")]
+        public string? OrderBy { get; set; }
 
         /// <summary>
         /// The amount of items to return. Defaults to 10.

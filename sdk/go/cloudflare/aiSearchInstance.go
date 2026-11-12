@@ -47,7 +47,7 @@ type AiSearchInstance struct {
 	//
 	// Deprecated: This attribute is deprecated.
 	HybridSearchEnabled pulumi.BoolOutput `pulumi:"hybridSearchEnabled"`
-	// Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
+	// Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances. When set, both vector and keyword are required.
 	IndexMethod          AiSearchInstanceIndexMethodOutput          `pulumi:"indexMethod"`
 	IndexingOptions      AiSearchInstanceIndexingOptionsOutput      `pulumi:"indexingOptions"`
 	LastActivity         pulumi.StringOutput                        `pulumi:"lastActivity"`
@@ -61,26 +61,27 @@ type AiSearchInstance struct {
 	PublicEndpointParams AiSearchInstancePublicEndpointParamsOutput `pulumi:"publicEndpointParams"`
 	Reranking            pulumi.BoolOutput                          `pulumi:"reranking"`
 	RerankingModel       pulumi.StringOutput                        `pulumi:"rerankingModel"`
-	RetrievalOptions     AiSearchInstanceRetrievalOptionsPtrOutput  `pulumi:"retrievalOptions"`
+	RetrievalOptions     AiSearchInstanceRetrievalOptionsOutput     `pulumi:"retrievalOptions"`
 	// A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.
-	RewriteModel       pulumi.StringOutput                `pulumi:"rewriteModel"`
-	RewriteQuery       pulumi.BoolOutput                  `pulumi:"rewriteQuery"`
+	RewriteModel pulumi.StringOutput `pulumi:"rewriteModel"`
+	RewriteQuery pulumi.BoolOutput   `pulumi:"rewriteQuery"`
+	// Minimum similarity score a chunk must reach to be returned. Defaults to 0.4.
 	ScoreThreshold     pulumi.Float64Output               `pulumi:"scoreThreshold"`
 	Source             pulumi.StringPtrOutput             `pulumi:"source"`
 	SourceParams       AiSearchInstanceSourceParamsOutput `pulumi:"sourceParams"`
 	Status             pulumi.StringOutput                `pulumi:"status"`
 	Summarization      pulumi.BoolOutput                  `pulumi:"summarization"`
 	SummarizationModel pulumi.StringPtrOutput             `pulumi:"summarizationModel"`
-	// Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+	// Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). Defaults to 86400 (24h).
 	// Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
 	SyncInterval                   pulumi.Float64Output   `pulumi:"syncInterval"`
 	SystemPromptAisearch           pulumi.StringPtrOutput `pulumi:"systemPromptAisearch"`
 	SystemPromptIndexSummarization pulumi.StringPtrOutput `pulumi:"systemPromptIndexSummarization"`
 	SystemPromptRewriteQuery       pulumi.StringPtrOutput `pulumi:"systemPromptRewriteQuery"`
-	TokenId                        pulumi.StringPtrOutput `pulumi:"tokenId"`
+	TokenId                        pulumi.StringOutput    `pulumi:"tokenId"`
 	// Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
 	// Available values: "r2", "web-crawler".
-	Type pulumi.StringPtrOutput `pulumi:"type"`
+	Type pulumi.StringOutput `pulumi:"type"`
 }
 
 // NewAiSearchInstance registers a new resource with the given unique name, arguments, and options.
@@ -146,7 +147,7 @@ type aiSearchInstanceState struct {
 	//
 	// Deprecated: This attribute is deprecated.
 	HybridSearchEnabled *bool `pulumi:"hybridSearchEnabled"`
-	// Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
+	// Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances. When set, both vector and keyword are required.
 	IndexMethod          *AiSearchInstanceIndexMethod          `pulumi:"indexMethod"`
 	IndexingOptions      *AiSearchInstanceIndexingOptions      `pulumi:"indexingOptions"`
 	LastActivity         *string                               `pulumi:"lastActivity"`
@@ -162,15 +163,16 @@ type aiSearchInstanceState struct {
 	RerankingModel       *string                               `pulumi:"rerankingModel"`
 	RetrievalOptions     *AiSearchInstanceRetrievalOptions     `pulumi:"retrievalOptions"`
 	// A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.
-	RewriteModel       *string                       `pulumi:"rewriteModel"`
-	RewriteQuery       *bool                         `pulumi:"rewriteQuery"`
+	RewriteModel *string `pulumi:"rewriteModel"`
+	RewriteQuery *bool   `pulumi:"rewriteQuery"`
+	// Minimum similarity score a chunk must reach to be returned. Defaults to 0.4.
 	ScoreThreshold     *float64                      `pulumi:"scoreThreshold"`
 	Source             *string                       `pulumi:"source"`
 	SourceParams       *AiSearchInstanceSourceParams `pulumi:"sourceParams"`
 	Status             *string                       `pulumi:"status"`
 	Summarization      *bool                         `pulumi:"summarization"`
 	SummarizationModel *string                       `pulumi:"summarizationModel"`
-	// Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+	// Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). Defaults to 86400 (24h).
 	// Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
 	SyncInterval                   *float64 `pulumi:"syncInterval"`
 	SystemPromptAisearch           *string  `pulumi:"systemPromptAisearch"`
@@ -210,7 +212,7 @@ type AiSearchInstanceState struct {
 	//
 	// Deprecated: This attribute is deprecated.
 	HybridSearchEnabled pulumi.BoolPtrInput
-	// Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
+	// Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances. When set, both vector and keyword are required.
 	IndexMethod          AiSearchInstanceIndexMethodPtrInput
 	IndexingOptions      AiSearchInstanceIndexingOptionsPtrInput
 	LastActivity         pulumi.StringPtrInput
@@ -226,15 +228,16 @@ type AiSearchInstanceState struct {
 	RerankingModel       pulumi.StringPtrInput
 	RetrievalOptions     AiSearchInstanceRetrievalOptionsPtrInput
 	// A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.
-	RewriteModel       pulumi.StringPtrInput
-	RewriteQuery       pulumi.BoolPtrInput
+	RewriteModel pulumi.StringPtrInput
+	RewriteQuery pulumi.BoolPtrInput
+	// Minimum similarity score a chunk must reach to be returned. Defaults to 0.4.
 	ScoreThreshold     pulumi.Float64PtrInput
 	Source             pulumi.StringPtrInput
 	SourceParams       AiSearchInstanceSourceParamsPtrInput
 	Status             pulumi.StringPtrInput
 	Summarization      pulumi.BoolPtrInput
 	SummarizationModel pulumi.StringPtrInput
-	// Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+	// Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). Defaults to 86400 (24h).
 	// Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
 	SyncInterval                   pulumi.Float64PtrInput
 	SystemPromptAisearch           pulumi.StringPtrInput
@@ -280,25 +283,27 @@ type aiSearchInstanceArgs struct {
 	//
 	// Deprecated: This attribute is deprecated.
 	HybridSearchEnabled *bool `pulumi:"hybridSearchEnabled"`
-	// Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
+	// Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances. When set, both vector and keyword are required.
 	IndexMethod          *AiSearchInstanceIndexMethod          `pulumi:"indexMethod"`
 	IndexingOptions      *AiSearchInstanceIndexingOptions      `pulumi:"indexingOptions"`
 	MaxNumResults        *int                                  `pulumi:"maxNumResults"`
 	Metadata             *AiSearchInstanceMetadata             `pulumi:"metadata"`
+	Namespace            *string                               `pulumi:"namespace"`
 	Paused               *bool                                 `pulumi:"paused"`
 	PublicEndpointParams *AiSearchInstancePublicEndpointParams `pulumi:"publicEndpointParams"`
 	Reranking            *bool                                 `pulumi:"reranking"`
 	RerankingModel       *string                               `pulumi:"rerankingModel"`
 	RetrievalOptions     *AiSearchInstanceRetrievalOptions     `pulumi:"retrievalOptions"`
 	// A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.
-	RewriteModel       *string                       `pulumi:"rewriteModel"`
-	RewriteQuery       *bool                         `pulumi:"rewriteQuery"`
+	RewriteModel *string `pulumi:"rewriteModel"`
+	RewriteQuery *bool   `pulumi:"rewriteQuery"`
+	// Minimum similarity score a chunk must reach to be returned. Defaults to 0.4.
 	ScoreThreshold     *float64                      `pulumi:"scoreThreshold"`
 	Source             *string                       `pulumi:"source"`
 	SourceParams       *AiSearchInstanceSourceParams `pulumi:"sourceParams"`
 	Summarization      *bool                         `pulumi:"summarization"`
 	SummarizationModel *string                       `pulumi:"summarizationModel"`
-	// Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+	// Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). Defaults to 86400 (24h).
 	// Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
 	SyncInterval                   *float64 `pulumi:"syncInterval"`
 	SystemPromptAisearch           *string  `pulumi:"systemPromptAisearch"`
@@ -335,25 +340,27 @@ type AiSearchInstanceArgs struct {
 	//
 	// Deprecated: This attribute is deprecated.
 	HybridSearchEnabled pulumi.BoolPtrInput
-	// Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
+	// Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances. When set, both vector and keyword are required.
 	IndexMethod          AiSearchInstanceIndexMethodPtrInput
 	IndexingOptions      AiSearchInstanceIndexingOptionsPtrInput
 	MaxNumResults        pulumi.IntPtrInput
 	Metadata             AiSearchInstanceMetadataPtrInput
+	Namespace            pulumi.StringPtrInput
 	Paused               pulumi.BoolPtrInput
 	PublicEndpointParams AiSearchInstancePublicEndpointParamsPtrInput
 	Reranking            pulumi.BoolPtrInput
 	RerankingModel       pulumi.StringPtrInput
 	RetrievalOptions     AiSearchInstanceRetrievalOptionsPtrInput
 	// A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.
-	RewriteModel       pulumi.StringPtrInput
-	RewriteQuery       pulumi.BoolPtrInput
+	RewriteModel pulumi.StringPtrInput
+	RewriteQuery pulumi.BoolPtrInput
+	// Minimum similarity score a chunk must reach to be returned. Defaults to 0.4.
 	ScoreThreshold     pulumi.Float64PtrInput
 	Source             pulumi.StringPtrInput
 	SourceParams       AiSearchInstanceSourceParamsPtrInput
 	Summarization      pulumi.BoolPtrInput
 	SummarizationModel pulumi.StringPtrInput
-	// Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+	// Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). Defaults to 86400 (24h).
 	// Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
 	SyncInterval                   pulumi.Float64PtrInput
 	SystemPromptAisearch           pulumi.StringPtrInput
@@ -533,7 +540,7 @@ func (o AiSearchInstanceOutput) HybridSearchEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *AiSearchInstance) pulumi.BoolOutput { return v.HybridSearchEnabled }).(pulumi.BoolOutput)
 }
 
-// Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
+// Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances. When set, both vector and keyword are required.
 func (o AiSearchInstanceOutput) IndexMethod() AiSearchInstanceIndexMethodOutput {
 	return o.ApplyT(func(v *AiSearchInstance) AiSearchInstanceIndexMethodOutput { return v.IndexMethod }).(AiSearchInstanceIndexMethodOutput)
 }
@@ -586,8 +593,8 @@ func (o AiSearchInstanceOutput) RerankingModel() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiSearchInstance) pulumi.StringOutput { return v.RerankingModel }).(pulumi.StringOutput)
 }
 
-func (o AiSearchInstanceOutput) RetrievalOptions() AiSearchInstanceRetrievalOptionsPtrOutput {
-	return o.ApplyT(func(v *AiSearchInstance) AiSearchInstanceRetrievalOptionsPtrOutput { return v.RetrievalOptions }).(AiSearchInstanceRetrievalOptionsPtrOutput)
+func (o AiSearchInstanceOutput) RetrievalOptions() AiSearchInstanceRetrievalOptionsOutput {
+	return o.ApplyT(func(v *AiSearchInstance) AiSearchInstanceRetrievalOptionsOutput { return v.RetrievalOptions }).(AiSearchInstanceRetrievalOptionsOutput)
 }
 
 // A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.
@@ -599,6 +606,7 @@ func (o AiSearchInstanceOutput) RewriteQuery() pulumi.BoolOutput {
 	return o.ApplyT(func(v *AiSearchInstance) pulumi.BoolOutput { return v.RewriteQuery }).(pulumi.BoolOutput)
 }
 
+// Minimum similarity score a chunk must reach to be returned. Defaults to 0.4.
 func (o AiSearchInstanceOutput) ScoreThreshold() pulumi.Float64Output {
 	return o.ApplyT(func(v *AiSearchInstance) pulumi.Float64Output { return v.ScoreThreshold }).(pulumi.Float64Output)
 }
@@ -623,7 +631,7 @@ func (o AiSearchInstanceOutput) SummarizationModel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiSearchInstance) pulumi.StringPtrOutput { return v.SummarizationModel }).(pulumi.StringPtrOutput)
 }
 
-// Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+// Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). Defaults to 86400 (24h).
 // Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
 func (o AiSearchInstanceOutput) SyncInterval() pulumi.Float64Output {
 	return o.ApplyT(func(v *AiSearchInstance) pulumi.Float64Output { return v.SyncInterval }).(pulumi.Float64Output)
@@ -641,14 +649,14 @@ func (o AiSearchInstanceOutput) SystemPromptRewriteQuery() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v *AiSearchInstance) pulumi.StringPtrOutput { return v.SystemPromptRewriteQuery }).(pulumi.StringPtrOutput)
 }
 
-func (o AiSearchInstanceOutput) TokenId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AiSearchInstance) pulumi.StringPtrOutput { return v.TokenId }).(pulumi.StringPtrOutput)
+func (o AiSearchInstanceOutput) TokenId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AiSearchInstance) pulumi.StringOutput { return v.TokenId }).(pulumi.StringOutput)
 }
 
 // Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
 // Available values: "r2", "web-crawler".
-func (o AiSearchInstanceOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AiSearchInstance) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
+func (o AiSearchInstanceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *AiSearchInstance) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
 type AiSearchInstanceArrayOutput struct{ *pulumi.OutputState }

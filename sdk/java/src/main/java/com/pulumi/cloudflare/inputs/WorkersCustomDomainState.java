@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -46,6 +47,21 @@ public final class WorkersCustomDomainState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Whether the configured hostname is routable for the domain. If disabled, then requests to the configured hostname will not be routed to the configured Worker. If disabled, then preview routing must be enabled, and only subdomains of the configured hostname will be routable.
+     * 
+     */
+    @Import(name="enabled")
+    private @Nullable Output<Boolean> enabled;
+
+    /**
+     * @return Whether the configured hostname is routable for the domain. If disabled, then requests to the configured hostname will not be routed to the configured Worker. If disabled, then preview routing must be enabled, and only subdomains of the configured hostname will be routable.
+     * 
+     */
+    public Optional<Output<Boolean>> enabled() {
+        return Optional.ofNullable(this.enabled);
+    }
+
+    /**
      * Worker environment associated with the domain.
      * 
      * @deprecated This attribute is deprecated.
@@ -79,6 +95,21 @@ public final class WorkersCustomDomainState extends com.pulumi.resources.Resourc
      */
     public Optional<Output<String>> hostname() {
         return Optional.ofNullable(this.hostname);
+    }
+
+    /**
+     * Whether previews are routable for the domain. If enabled, previews will be routable as subdomains of the configured hostname. For example, if the configured hostname is `app.example.com`, then requests to `my-feature.app.example.com` will be routed to the preview with slug `my-feature`, if such a preview exists. If preview routing is disabled, then hostname routing must be enabled.
+     * 
+     */
+    @Import(name="previewsEnabled")
+    private @Nullable Output<Boolean> previewsEnabled;
+
+    /**
+     * @return Whether previews are routable for the domain. If enabled, previews will be routable as subdomains of the configured hostname. For example, if the configured hostname is `app.example.com`, then requests to `my-feature.app.example.com` will be routed to the preview with slug `my-feature`, if such a preview exists. If preview routing is disabled, then hostname routing must be enabled.
+     * 
+     */
+    public Optional<Output<Boolean>> previewsEnabled() {
+        return Optional.ofNullable(this.previewsEnabled);
     }
 
     /**
@@ -131,8 +162,10 @@ public final class WorkersCustomDomainState extends com.pulumi.resources.Resourc
     private WorkersCustomDomainState(WorkersCustomDomainState $) {
         this.accountId = $.accountId;
         this.certId = $.certId;
+        this.enabled = $.enabled;
         this.environment = $.environment;
         this.hostname = $.hostname;
+        this.previewsEnabled = $.previewsEnabled;
         this.service = $.service;
         this.zoneId = $.zoneId;
         this.zoneName = $.zoneName;
@@ -199,6 +232,27 @@ public final class WorkersCustomDomainState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param enabled Whether the configured hostname is routable for the domain. If disabled, then requests to the configured hostname will not be routed to the configured Worker. If disabled, then preview routing must be enabled, and only subdomains of the configured hostname will be routable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(@Nullable Output<Boolean> enabled) {
+            $.enabled = enabled;
+            return this;
+        }
+
+        /**
+         * @param enabled Whether the configured hostname is routable for the domain. If disabled, then requests to the configured hostname will not be routed to the configured Worker. If disabled, then preview routing must be enabled, and only subdomains of the configured hostname will be routable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(Boolean enabled) {
+            return enabled(Output.of(enabled));
+        }
+
+        /**
          * @param environment Worker environment associated with the domain.
          * 
          * @return builder
@@ -244,6 +298,27 @@ public final class WorkersCustomDomainState extends com.pulumi.resources.Resourc
          */
         public Builder hostname(String hostname) {
             return hostname(Output.of(hostname));
+        }
+
+        /**
+         * @param previewsEnabled Whether previews are routable for the domain. If enabled, previews will be routable as subdomains of the configured hostname. For example, if the configured hostname is `app.example.com`, then requests to `my-feature.app.example.com` will be routed to the preview with slug `my-feature`, if such a preview exists. If preview routing is disabled, then hostname routing must be enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder previewsEnabled(@Nullable Output<Boolean> previewsEnabled) {
+            $.previewsEnabled = previewsEnabled;
+            return this;
+        }
+
+        /**
+         * @param previewsEnabled Whether previews are routable for the domain. If enabled, previews will be routable as subdomains of the configured hostname. For example, if the configured hostname is `app.example.com`, then requests to `my-feature.app.example.com` will be routed to the preview with slug `my-feature`, if such a preview exists. If preview routing is disabled, then hostname routing must be enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder previewsEnabled(Boolean previewsEnabled) {
+            return previewsEnabled(Output.of(previewsEnabled));
         }
 
         /**

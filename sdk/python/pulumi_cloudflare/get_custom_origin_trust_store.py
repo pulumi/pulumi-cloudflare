@@ -129,7 +129,7 @@ class GetCustomOriginTrustStoreResult:
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> _builtins.str:
         """
-        When the certificate was last modified.
+        When the certificate was last modified. Only returned when uploading a certificate.
         """
         return pulumi.get(self, "updated_at")
 

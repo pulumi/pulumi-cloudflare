@@ -27,7 +27,7 @@ class TotalTlsArgs:
 
         :param pulumi.Input[_builtins.bool] enabled: If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
-        :param pulumi.Input[_builtins.str] certificate_authority: The Certificate Authority that Total TLS certificates will be issued through.
+        :param pulumi.Input[_builtins.str] certificate_authority: The Certificate Authority that Total TLS certificates will be issued through. Not returned in responses when Total TLS is disabled.
                Available values: "google", "lets*encrypt", "ssl*com".
         """
         pulumi.set(__self__, "enabled", enabled)
@@ -63,7 +63,7 @@ class TotalTlsArgs:
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The Certificate Authority that Total TLS certificates will be issued through.
+        The Certificate Authority that Total TLS certificates will be issued through. Not returned in responses when Total TLS is disabled.
         Available values: "google", "lets*encrypt", "ssl*com".
         """
         return pulumi.get(self, "certificate_authority")
@@ -83,10 +83,10 @@ class _TotalTlsState:
         """
         Input properties used for looking up and filtering TotalTls resources.
 
-        :param pulumi.Input[_builtins.str] certificate_authority: The Certificate Authority that Total TLS certificates will be issued through.
+        :param pulumi.Input[_builtins.str] certificate_authority: The Certificate Authority that Total TLS certificates will be issued through. Not returned in responses when Total TLS is disabled.
                Available values: "google", "lets*encrypt", "ssl*com".
         :param pulumi.Input[_builtins.bool] enabled: If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
-        :param pulumi.Input[_builtins.int] validity_period: The validity period in days for the certificates ordered via Total TLS.
+        :param pulumi.Input[_builtins.int] validity_period: The validity period in days for the certificates ordered via Total TLS. Not returned when Total TLS is disabled.
                Available values: 90.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
@@ -103,7 +103,7 @@ class _TotalTlsState:
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The Certificate Authority that Total TLS certificates will be issued through.
+        The Certificate Authority that Total TLS certificates will be issued through. Not returned in responses when Total TLS is disabled.
         Available values: "google", "lets*encrypt", "ssl*com".
         """
         return pulumi.get(self, "certificate_authority")
@@ -128,7 +128,7 @@ class _TotalTlsState:
     @pulumi.getter(name="validityPeriod")
     def validity_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The validity period in days for the certificates ordered via Total TLS.
+        The validity period in days for the certificates ordered via Total TLS. Not returned when Total TLS is disabled.
         Available values: 90.
         """
         return pulumi.get(self, "validity_period")
@@ -187,7 +187,7 @@ class TotalTls(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] certificate_authority: The Certificate Authority that Total TLS certificates will be issued through.
+        :param pulumi.Input[_builtins.str] certificate_authority: The Certificate Authority that Total TLS certificates will be issued through. Not returned in responses when Total TLS is disabled.
                Available values: "google", "lets*encrypt", "ssl*com".
         :param pulumi.Input[_builtins.bool] enabled: If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
@@ -279,10 +279,10 @@ class TotalTls(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] certificate_authority: The Certificate Authority that Total TLS certificates will be issued through.
+        :param pulumi.Input[_builtins.str] certificate_authority: The Certificate Authority that Total TLS certificates will be issued through. Not returned in responses when Total TLS is disabled.
                Available values: "google", "lets*encrypt", "ssl*com".
         :param pulumi.Input[_builtins.bool] enabled: If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
-        :param pulumi.Input[_builtins.int] validity_period: The validity period in days for the certificates ordered via Total TLS.
+        :param pulumi.Input[_builtins.int] validity_period: The validity period in days for the certificates ordered via Total TLS. Not returned when Total TLS is disabled.
                Available values: 90.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
@@ -314,7 +314,7 @@ class TotalTls(pulumi.CustomResource):
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The Certificate Authority that Total TLS certificates will be issued through.
+        The Certificate Authority that Total TLS certificates will be issued through. Not returned in responses when Total TLS is disabled.
         Available values: "google", "lets*encrypt", "ssl*com".
         """
         return pulumi.get(self, "certificate_authority")
@@ -331,7 +331,7 @@ class TotalTls(pulumi.CustomResource):
     @pulumi.getter(name="validityPeriod")
     def validity_period(self) -> pulumi.Output[_builtins.int]:
         """
-        The validity period in days for the certificates ordered via Total TLS.
+        The validity period in days for the certificates ordered via Total TLS. Not returned when Total TLS is disabled.
         Available values: 90.
         """
         return pulumi.get(self, "validity_period")

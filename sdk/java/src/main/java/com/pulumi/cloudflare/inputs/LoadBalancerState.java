@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.LoadBalancerAdaptiveRoutingArgs;
 import com.pulumi.cloudflare.inputs.LoadBalancerLocationStrategyArgs;
+import com.pulumi.cloudflare.inputs.LoadBalancerPoolSetArgs;
 import com.pulumi.cloudflare.inputs.LoadBalancerRandomSteeringArgs;
 import com.pulumi.cloudflare.inputs.LoadBalancerRuleArgs;
 import com.pulumi.cloudflare.inputs.LoadBalancerSessionAffinityAttributesArgs;
@@ -171,6 +172,21 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<String>>> networks() {
         return Optional.ofNullable(this.networks);
+    }
+
+    /**
+     * An optional list of pool sets, evaluated in array order with first match wins. Pool sets are independent from the standard steering fields (`regionPools` / `countryPools` / `popPools` / `defaultPools` / `steeringPolicy` / `randomSteering` / `fallbackPool` / `rules`). On a PATCH, an empty array (`pool_sets: []`) clears all pool sets, while omitting the field leaves existing pool sets unchanged.
+     * 
+     */
+    @Import(name="poolSets")
+    private @Nullable Output<List<LoadBalancerPoolSetArgs>> poolSets;
+
+    /**
+     * @return An optional list of pool sets, evaluated in array order with first match wins. Pool sets are independent from the standard steering fields (`regionPools` / `countryPools` / `popPools` / `defaultPools` / `steeringPolicy` / `randomSteering` / `fallbackPool` / `rules`). On a PATCH, an empty array (`pool_sets: []`) clears all pool sets, while omitting the field leaves existing pool sets unchanged.
+     * 
+     */
+    public Optional<Output<List<LoadBalancerPoolSetArgs>>> poolSets() {
+        return Optional.ofNullable(this.poolSets);
     }
 
     /**
@@ -353,6 +369,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         this.modifiedOn = $.modifiedOn;
         this.name = $.name;
         this.networks = $.networks;
+        this.poolSets = $.poolSets;
         this.popPools = $.popPools;
         this.proxied = $.proxied;
         this.randomSteering = $.randomSteering;
@@ -610,6 +627,37 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder networks(String... networks) {
             return networks(List.of(networks));
+        }
+
+        /**
+         * @param poolSets An optional list of pool sets, evaluated in array order with first match wins. Pool sets are independent from the standard steering fields (`regionPools` / `countryPools` / `popPools` / `defaultPools` / `steeringPolicy` / `randomSteering` / `fallbackPool` / `rules`). On a PATCH, an empty array (`pool_sets: []`) clears all pool sets, while omitting the field leaves existing pool sets unchanged.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder poolSets(@Nullable Output<List<LoadBalancerPoolSetArgs>> poolSets) {
+            $.poolSets = poolSets;
+            return this;
+        }
+
+        /**
+         * @param poolSets An optional list of pool sets, evaluated in array order with first match wins. Pool sets are independent from the standard steering fields (`regionPools` / `countryPools` / `popPools` / `defaultPools` / `steeringPolicy` / `randomSteering` / `fallbackPool` / `rules`). On a PATCH, an empty array (`pool_sets: []`) clears all pool sets, while omitting the field leaves existing pool sets unchanged.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder poolSets(List<LoadBalancerPoolSetArgs> poolSets) {
+            return poolSets(Output.of(poolSets));
+        }
+
+        /**
+         * @param poolSets An optional list of pool sets, evaluated in array order with first match wins. Pool sets are independent from the standard steering fields (`regionPools` / `countryPools` / `popPools` / `defaultPools` / `steeringPolicy` / `randomSteering` / `fallbackPool` / `rules`). On a PATCH, an empty array (`pool_sets: []`) clears all pool sets, while omitting the field leaves existing pool sets unchanged.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder poolSets(LoadBalancerPoolSetArgs... poolSets) {
+            return poolSets(List.of(poolSets));
         }
 
         /**

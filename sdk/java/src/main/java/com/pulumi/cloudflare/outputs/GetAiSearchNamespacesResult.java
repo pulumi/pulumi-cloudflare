@@ -17,6 +17,7 @@ public final class GetAiSearchNamespacesResult {
      * 
      */
     private String description;
+    private String id;
     private String name;
     private String publicEndpointId;
     private GetAiSearchNamespacesResultPublicEndpointParams publicEndpointParams;
@@ -31,6 +32,9 @@ public final class GetAiSearchNamespacesResult {
      */
     public String description() {
         return this.description;
+    }
+    public String id() {
+        return this.id;
     }
     public String name() {
         return this.name;
@@ -53,6 +57,7 @@ public final class GetAiSearchNamespacesResult {
     public static final class Builder {
         private String createdAt;
         private String description;
+        private String id;
         private String name;
         private String publicEndpointId;
         private GetAiSearchNamespacesResultPublicEndpointParams publicEndpointParams;
@@ -61,6 +66,7 @@ public final class GetAiSearchNamespacesResult {
     	      Objects.requireNonNull(defaults);
     	      this.createdAt = defaults.createdAt;
     	      this.description = defaults.description;
+    	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.publicEndpointId = defaults.publicEndpointId;
     	      this.publicEndpointParams = defaults.publicEndpointParams;
@@ -80,6 +86,14 @@ public final class GetAiSearchNamespacesResult {
               throw new MissingRequiredPropertyException("GetAiSearchNamespacesResult", "description");
             }
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder id(String id) {
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAiSearchNamespacesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -110,6 +124,7 @@ public final class GetAiSearchNamespacesResult {
             final var _resultValue = new GetAiSearchNamespacesResult();
             _resultValue.createdAt = createdAt;
             _resultValue.description = description;
+            _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.publicEndpointId = publicEndpointId;
             _resultValue.publicEndpointParams = publicEndpointParams;

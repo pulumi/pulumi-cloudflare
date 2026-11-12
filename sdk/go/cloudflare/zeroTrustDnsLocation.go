@@ -37,6 +37,7 @@ import (
 //				Name:                pulumi.String("Austin Office Location"),
 //				ClientDefault:       pulumi.Bool(false),
 //				DnsDestinationIpsId: pulumi.String("0e4a32c6-6fb8-4858-9296-98f51631e8e6"),
+//				Dns64Enabled:        pulumi.Bool(false),
 //				EcsSupport:          pulumi.Bool(false),
 //				Endpoints: &cloudflare.ZeroTrustDnsLocationEndpointsArgs{
 //					Doh: &cloudflare.ZeroTrustDnsLocationEndpointsDohArgs{
@@ -100,6 +101,8 @@ type ZeroTrustDnsLocation struct {
 	// Indicate whether this location is the default location.
 	ClientDefault pulumi.BoolOutput   `pulumi:"clientDefault"`
 	CreatedAt     pulumi.StringOutput `pulumi:"createdAt"`
+	// Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.
+	Dns64Enabled pulumi.BoolPtrOutput `pulumi:"dns64Enabled"`
 	// Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.
 	DnsDestinationIpsId pulumi.StringOutput `pulumi:"dnsDestinationIpsId"`
 	// Specify the UUID of the IPv6 block brought to the gateway so that this location's IPv6 address is allocated from the Bring Your Own IPv6 (BYOIPv6) block rather than the standard Cloudflare IPv6 block.
@@ -172,6 +175,8 @@ type zeroTrustDnsLocationState struct {
 	// Indicate whether this location is the default location.
 	ClientDefault *bool   `pulumi:"clientDefault"`
 	CreatedAt     *string `pulumi:"createdAt"`
+	// Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.
+	Dns64Enabled *bool `pulumi:"dns64Enabled"`
 	// Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.
 	DnsDestinationIpsId *string `pulumi:"dnsDestinationIpsId"`
 	// Specify the UUID of the IPv6 block brought to the gateway so that this location's IPv6 address is allocated from the Bring Your Own IPv6 (BYOIPv6) block rather than the standard Cloudflare IPv6 block.
@@ -203,6 +208,8 @@ type ZeroTrustDnsLocationState struct {
 	// Indicate whether this location is the default location.
 	ClientDefault pulumi.BoolPtrInput
 	CreatedAt     pulumi.StringPtrInput
+	// Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.
+	Dns64Enabled pulumi.BoolPtrInput
 	// Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.
 	DnsDestinationIpsId pulumi.StringPtrInput
 	// Specify the UUID of the IPv6 block brought to the gateway so that this location's IPv6 address is allocated from the Bring Your Own IPv6 (BYOIPv6) block rather than the standard Cloudflare IPv6 block.
@@ -243,6 +250,8 @@ type zeroTrustDnsLocationArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// Indicate whether this location is the default location.
 	ClientDefault *bool `pulumi:"clientDefault"`
+	// Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.
+	Dns64Enabled *bool `pulumi:"dns64Enabled"`
 	// Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.
 	DnsDestinationIpsId *string `pulumi:"dnsDestinationIpsId"`
 	// Indicate whether the location must resolve EDNS queries.
@@ -263,6 +272,8 @@ type ZeroTrustDnsLocationArgs struct {
 	AccountId pulumi.StringInput
 	// Indicate whether this location is the default location.
 	ClientDefault pulumi.BoolPtrInput
+	// Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.
+	Dns64Enabled pulumi.BoolPtrInput
 	// Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.
 	DnsDestinationIpsId pulumi.StringPtrInput
 	// Indicate whether the location must resolve EDNS queries.
@@ -376,6 +387,11 @@ func (o ZeroTrustDnsLocationOutput) ClientDefault() pulumi.BoolOutput {
 
 func (o ZeroTrustDnsLocationOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDnsLocation) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.
+func (o ZeroTrustDnsLocationOutput) Dns64Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDnsLocation) pulumi.BoolPtrOutput { return v.Dns64Enabled }).(pulumi.BoolPtrOutput)
 }
 
 // Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.

@@ -16,16 +16,14 @@ public final class AccessRuleConfigurationArgs extends com.pulumi.resources.Reso
     public static final AccessRuleConfigurationArgs Empty = new AccessRuleConfigurationArgs();
 
     /**
-     * The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
-     * Available values: &#34;ip&#34;, &#34;ip6&#34;, &#34;ipRange&#34;, &#34;asn&#34;, &#34;country&#34;.
+     * For `target: ip`: The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
      * 
      */
     @Import(name="target")
     private @Nullable Output<String> target;
 
     /**
-     * @return The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
-     * Available values: &#34;ip&#34;, &#34;ip6&#34;, &#34;ipRange&#34;, &#34;asn&#34;, &#34;country&#34;.
+     * @return For `target: ip`: The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
      * 
      */
     public Optional<Output<String>> target() {
@@ -33,14 +31,30 @@ public final class AccessRuleConfigurationArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The IP address to match. This address will be compared to the IP address of incoming requests.
+     * For `target: ip`: The IP address to match. This address will be compared to the IP address of incoming requests.
+     * 
+     * For `target: ip6`: The IPv6 address to match.
+     * 
+     * For `target: ipRange`: The IP address range to match. You can only use prefix lengths `/16` and `/24` for IPv4 ranges, and prefix lengths `/32`, `/48`, and `/64` for IPv6 ranges.
+     * 
+     * For `target: asn`: The AS number to match.
+     * 
+     * For `target: country`: The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country).
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return The IP address to match. This address will be compared to the IP address of incoming requests.
+     * @return For `target: ip`: The IP address to match. This address will be compared to the IP address of incoming requests.
+     * 
+     * For `target: ip6`: The IPv6 address to match.
+     * 
+     * For `target: ipRange`: The IP address range to match. You can only use prefix lengths `/16` and `/24` for IPv4 ranges, and prefix lengths `/32`, `/48`, and `/64` for IPv6 ranges.
+     * 
+     * For `target: asn`: The AS number to match.
+     * 
+     * For `target: country`: The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country).
      * 
      */
     public Optional<Output<String>> value() {
@@ -73,8 +87,7 @@ public final class AccessRuleConfigurationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param target The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
-         * Available values: &#34;ip&#34;, &#34;ip6&#34;, &#34;ipRange&#34;, &#34;asn&#34;, &#34;country&#34;.
+         * @param target For `target: ip`: The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
          * 
          * @return builder
          * 
@@ -85,8 +98,7 @@ public final class AccessRuleConfigurationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param target The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
-         * Available values: &#34;ip&#34;, &#34;ip6&#34;, &#34;ipRange&#34;, &#34;asn&#34;, &#34;country&#34;.
+         * @param target For `target: ip`: The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
          * 
          * @return builder
          * 
@@ -96,7 +108,15 @@ public final class AccessRuleConfigurationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param value The IP address to match. This address will be compared to the IP address of incoming requests.
+         * @param value For `target: ip`: The IP address to match. This address will be compared to the IP address of incoming requests.
+         * 
+         * For `target: ip6`: The IPv6 address to match.
+         * 
+         * For `target: ipRange`: The IP address range to match. You can only use prefix lengths `/16` and `/24` for IPv4 ranges, and prefix lengths `/32`, `/48`, and `/64` for IPv6 ranges.
+         * 
+         * For `target: asn`: The AS number to match.
+         * 
+         * For `target: country`: The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country).
          * 
          * @return builder
          * 
@@ -107,7 +127,15 @@ public final class AccessRuleConfigurationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param value The IP address to match. This address will be compared to the IP address of incoming requests.
+         * @param value For `target: ip`: The IP address to match. This address will be compared to the IP address of incoming requests.
+         * 
+         * For `target: ip6`: The IPv6 address to match.
+         * 
+         * For `target: ipRange`: The IP address range to match. You can only use prefix lengths `/16` and `/24` for IPv4 ranges, and prefix lengths `/32`, `/48`, and `/64` for IPv6 ranges.
+         * 
+         * For `target: asn`: The AS number to match.
+         * 
+         * For `target: country`: The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country).
          * 
          * @return builder
          * 

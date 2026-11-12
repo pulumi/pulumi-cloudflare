@@ -26,7 +26,6 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-        /// Available values: "smart", "targeted".
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }

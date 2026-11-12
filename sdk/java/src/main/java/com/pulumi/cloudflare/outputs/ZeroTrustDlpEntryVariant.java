@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZeroTrustDlpEntryVariant {
     /**
-     * @return A customer-facing explanation of what this predefined AI prompt topic represents.
+     * @return For `type: PromptTopic`: A customer-facing explanation of what this predefined AI prompt topic represents.
      * 
      */
     private @Nullable String description;
@@ -22,14 +22,14 @@ public final class ZeroTrustDlpEntryVariant {
      */
     private @Nullable String topicType;
     /**
-     * @return Available values: &#34;PromptTopic&#34;, &#34;General&#34;.
+     * @return Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;.
      * 
      */
     private @Nullable String type;
 
     private ZeroTrustDlpEntryVariant() {}
     /**
-     * @return A customer-facing explanation of what this predefined AI prompt topic represents.
+     * @return For `type: PromptTopic`: A customer-facing explanation of what this predefined AI prompt topic represents.
      * 
      */
     public Optional<String> description() {
@@ -43,7 +43,7 @@ public final class ZeroTrustDlpEntryVariant {
         return Optional.ofNullable(this.topicType);
     }
     /**
-     * @return Available values: &#34;PromptTopic&#34;, &#34;General&#34;.
+     * @return Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;.
      * 
      */
     public Optional<String> type() {

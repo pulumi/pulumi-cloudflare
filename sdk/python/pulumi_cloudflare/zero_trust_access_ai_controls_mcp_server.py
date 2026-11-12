@@ -42,9 +42,9 @@ class ZeroTrustAccessAiControlsMcpServerArgs:
         :param pulumi.Input[_builtins.str] name: Display name for the MCP server.
         :param pulumi.Input[_builtins.str] zero_trust_access_ai_controls_mcp_server_id: Unique identifier for the MCP server.
         :param pulumi.Input[_builtins.str] auth_credentials: Credential configuration for the upstream MCP server. For auth*type "bearer", either a raw token string (e.g. "sk-abc123"), which is wrapped server-side as `Authorization: Bearer <token>`, or a JSON-encoded object of the form `{"headers":{"Header-Name":"value",...}}` for custom or multiple static headers (e.g. Cloudflare Access service tokens: `{"headers":{"cf-access-client-id":"...","cf-access-client-secret":"..."}}`). For auth*type "oauth" with a pre-registered client, send a JSON-encoded object containing `auth_mode:"manual"`, `config.authorization_endpoint`, `config.token_endpoint`, and `registration_info.client_id`. Also provide `registration_info.redirect_uris` unless `is_shared_oauth_callback_enabled` is true. Optional fields include `config.issuer`, `config.revocation_endpoint`, `registration_info.scope`, and `registration_info.token_endpoint_auth_method`. Send the client secret in the separate `client_secret` field. Omit `auth_credentials` on update to preserve the existing configuration.
-        :param pulumi.Input[_builtins.str] client_secret: Pre-registered OAuth client*secret. Write-only - accepted on create/update when auth*credentials.auth*mode is 'manual'. Required when creating a manual OAuth server or converting an existing server to manual mode. Omit it on update to preserve the existing secret; provide it to rotate the secret. Stored AES-GCM-encrypted in server*oauth_secrets; never returned by read endpoints.
+        :param pulumi.Input[_builtins.str] client_secret: Provides 'client*secret' for a pre-registered OAuth client. This field is accepted on create or update only when 'auth*credentials.auth*mode' is 'manual'. It is required when creating an MCP server with manual OAuth credentials or changing an existing server to use manual OAuth credentials. Omit 'client*secret' on update to preserve the existing secret. Provide a new 'client_secret' to rotate the secret. The secret is never returned by read, create, or update requests.
         :param pulumi.Input[_builtins.str] description: Optional description of the MCP server.
-        :param pulumi.Input[_builtins.bool] is_shared_oauth_callback_enabled: When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true.
+        :param pulumi.Input[_builtins.bool] is_shared_oauth_callback_enabled: When true, per-user authorization uses the shared Cloudflare callback URL as the 'redirect*uri' instead of the portal callback URL. The default is false. Set 'is*shared*oauth*callback_enabled' to true to enable the shared Cloudflare callback URL for this MCP server.
         :param pulumi.Input[_builtins.bool] secure_web_gateway: Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs']]] updated_prompts: Server-wide prompt capability overrides.
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs']]] updated_tools: Server-wide tool capability overrides.
@@ -143,7 +143,7 @@ class ZeroTrustAccessAiControlsMcpServerArgs:
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Pre-registered OAuth client*secret. Write-only - accepted on create/update when auth*credentials.auth*mode is 'manual'. Required when creating a manual OAuth server or converting an existing server to manual mode. Omit it on update to preserve the existing secret; provide it to rotate the secret. Stored AES-GCM-encrypted in server*oauth_secrets; never returned by read endpoints.
+        Provides 'client*secret' for a pre-registered OAuth client. This field is accepted on create or update only when 'auth*credentials.auth*mode' is 'manual'. It is required when creating an MCP server with manual OAuth credentials or changing an existing server to use manual OAuth credentials. Omit 'client*secret' on update to preserve the existing secret. Provide a new 'client_secret' to rotate the secret. The secret is never returned by read, create, or update requests.
         """
         return pulumi.get(self, "client_secret")
 
@@ -167,7 +167,7 @@ class ZeroTrustAccessAiControlsMcpServerArgs:
     @pulumi.getter(name="isSharedOauthCallbackEnabled")
     def is_shared_oauth_callback_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true.
+        When true, per-user authorization uses the shared Cloudflare callback URL as the 'redirect*uri' instead of the portal callback URL. The default is false. Set 'is*shared*oauth*callback_enabled' to true to enable the shared Cloudflare callback URL for this MCP server.
         """
         return pulumi.get(self, "is_shared_oauth_callback_enabled")
 
@@ -234,6 +234,7 @@ class _ZeroTrustAccessAiControlsMcpServerState:
                  modified_by: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  prompts: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+                 registered_at: pulumi.Input[Optional[_builtins.str]] = None,
                  secure_web_gateway: pulumi.Input[Optional[_builtins.bool]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  tools: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
@@ -249,11 +250,12 @@ class _ZeroTrustAccessAiControlsMcpServerState:
                Available values: "oauth", "bearer", "unauthenticated".
         :param pulumi.Input[_builtins.str] authentication_status: Whether administrative authentication is required before capabilities can be synced. Manual OAuth is user-managed and has no administrative authentication flow.
                Available values: "not_required", "required", "connected", "stale", "manual".
-        :param pulumi.Input[_builtins.str] client_secret: Pre-registered OAuth client*secret. Write-only - accepted on create/update when auth*credentials.auth*mode is 'manual'. Required when creating a manual OAuth server or converting an existing server to manual mode. Omit it on update to preserve the existing secret; provide it to rotate the secret. Stored AES-GCM-encrypted in server*oauth_secrets; never returned by read endpoints.
+        :param pulumi.Input[_builtins.str] client_secret: Provides 'client*secret' for a pre-registered OAuth client. This field is accepted on create or update only when 'auth*credentials.auth*mode' is 'manual'. It is required when creating an MCP server with manual OAuth credentials or changing an existing server to use manual OAuth credentials. Omit 'client*secret' on update to preserve the existing secret. Provide a new 'client_secret' to rotate the secret. The secret is never returned by read, create, or update requests.
         :param pulumi.Input[_builtins.str] description: Optional description of the MCP server.
         :param pulumi.Input[_builtins.str] hostname: URL of the upstream MCP endpoint.
-        :param pulumi.Input[_builtins.bool] is_shared_oauth_callback_enabled: When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true.
+        :param pulumi.Input[_builtins.bool] is_shared_oauth_callback_enabled: When true, per-user authorization uses the shared Cloudflare callback URL as the 'redirect*uri' instead of the portal callback URL. The default is false. Set 'is*shared*oauth*callback_enabled' to true to enable the shared Cloudflare callback URL for this MCP server.
         :param pulumi.Input[_builtins.str] name: Display name for the MCP server.
+        :param pulumi.Input[_builtins.str] registered_at: Timestamp of the most recent successful admin OAuth registration.
         :param pulumi.Input[_builtins.bool] secure_web_gateway: Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs']]] updated_prompts: Server-wide prompt capability overrides.
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs']]] updated_tools: Server-wide tool capability overrides.
@@ -297,6 +299,8 @@ class _ZeroTrustAccessAiControlsMcpServerState:
             pulumi.set(__self__, "name", name)
         if prompts is not None:
             pulumi.set(__self__, "prompts", prompts)
+        if registered_at is not None:
+            pulumi.set(__self__, "registered_at", registered_at)
         if secure_web_gateway is not None:
             pulumi.set(__self__, "secure_web_gateway", secure_web_gateway)
         if status is not None:
@@ -373,7 +377,7 @@ class _ZeroTrustAccessAiControlsMcpServerState:
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Pre-registered OAuth client*secret. Write-only - accepted on create/update when auth*credentials.auth*mode is 'manual'. Required when creating a manual OAuth server or converting an existing server to manual mode. Omit it on update to preserve the existing secret; provide it to rotate the secret. Stored AES-GCM-encrypted in server*oauth_secrets; never returned by read endpoints.
+        Provides 'client*secret' for a pre-registered OAuth client. This field is accepted on create or update only when 'auth*credentials.auth*mode' is 'manual'. It is required when creating an MCP server with manual OAuth credentials or changing an existing server to use manual OAuth credentials. Omit 'client*secret' on update to preserve the existing secret. Provide a new 'client_secret' to rotate the secret. The secret is never returned by read, create, or update requests.
         """
         return pulumi.get(self, "client_secret")
 
@@ -445,7 +449,7 @@ class _ZeroTrustAccessAiControlsMcpServerState:
     @pulumi.getter(name="isSharedOauthCallbackEnabled")
     def is_shared_oauth_callback_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true.
+        When true, per-user authorization uses the shared Cloudflare callback URL as the 'redirect*uri' instead of the portal callback URL. The default is false. Set 'is*shared*oauth*callback_enabled' to true to enable the shared Cloudflare callback URL for this MCP server.
         """
         return pulumi.get(self, "is_shared_oauth_callback_enabled")
 
@@ -509,6 +513,18 @@ class _ZeroTrustAccessAiControlsMcpServerState:
     @prompts.setter
     def prompts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]):
         pulumi.set(self, "prompts", value)
+
+    @_builtins.property
+    @pulumi.getter(name="registeredAt")
+    def registered_at(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Timestamp of the most recent successful admin OAuth registration.
+        """
+        return pulumi.get(self, "registered_at")
+
+    @registered_at.setter
+    def registered_at(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "registered_at", value)
 
     @_builtins.property
     @pulumi.getter(name="secureWebGateway")
@@ -649,10 +665,10 @@ class ZeroTrustAccessAiControlsMcpServer(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] auth_credentials: Credential configuration for the upstream MCP server. For auth*type "bearer", either a raw token string (e.g. "sk-abc123"), which is wrapped server-side as `Authorization: Bearer <token>`, or a JSON-encoded object of the form `{"headers":{"Header-Name":"value",...}}` for custom or multiple static headers (e.g. Cloudflare Access service tokens: `{"headers":{"cf-access-client-id":"...","cf-access-client-secret":"..."}}`). For auth*type "oauth" with a pre-registered client, send a JSON-encoded object containing `auth_mode:"manual"`, `config.authorization_endpoint`, `config.token_endpoint`, and `registration_info.client_id`. Also provide `registration_info.redirect_uris` unless `is_shared_oauth_callback_enabled` is true. Optional fields include `config.issuer`, `config.revocation_endpoint`, `registration_info.scope`, and `registration_info.token_endpoint_auth_method`. Send the client secret in the separate `client_secret` field. Omit `auth_credentials` on update to preserve the existing configuration.
         :param pulumi.Input[_builtins.str] auth_type: Authentication method used to connect to the upstream MCP server.
                Available values: "oauth", "bearer", "unauthenticated".
-        :param pulumi.Input[_builtins.str] client_secret: Pre-registered OAuth client*secret. Write-only - accepted on create/update when auth*credentials.auth*mode is 'manual'. Required when creating a manual OAuth server or converting an existing server to manual mode. Omit it on update to preserve the existing secret; provide it to rotate the secret. Stored AES-GCM-encrypted in server*oauth_secrets; never returned by read endpoints.
+        :param pulumi.Input[_builtins.str] client_secret: Provides 'client*secret' for a pre-registered OAuth client. This field is accepted on create or update only when 'auth*credentials.auth*mode' is 'manual'. It is required when creating an MCP server with manual OAuth credentials or changing an existing server to use manual OAuth credentials. Omit 'client*secret' on update to preserve the existing secret. Provide a new 'client_secret' to rotate the secret. The secret is never returned by read, create, or update requests.
         :param pulumi.Input[_builtins.str] description: Optional description of the MCP server.
         :param pulumi.Input[_builtins.str] hostname: URL of the upstream MCP endpoint.
-        :param pulumi.Input[_builtins.bool] is_shared_oauth_callback_enabled: When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true.
+        :param pulumi.Input[_builtins.bool] is_shared_oauth_callback_enabled: When true, per-user authorization uses the shared Cloudflare callback URL as the 'redirect*uri' instead of the portal callback URL. The default is false. Set 'is*shared*oauth*callback_enabled' to true to enable the shared Cloudflare callback URL for this MCP server.
         :param pulumi.Input[_builtins.str] name: Display name for the MCP server.
         :param pulumi.Input[_builtins.bool] secure_web_gateway: Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs', 'ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgsDict', 'outputs.ZeroTrustAccessAiControlsMcpServerUpdatedPrompt']]]] updated_prompts: Server-wide prompt capability overrides.
@@ -782,6 +798,7 @@ class ZeroTrustAccessAiControlsMcpServer(pulumi.CustomResource):
             __props__.__dict__["modified_at"] = None
             __props__.__dict__["modified_by"] = None
             __props__.__dict__["prompts"] = None
+            __props__.__dict__["registered_at"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["tools"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["authCredentials", "clientSecret"])
@@ -815,6 +832,7 @@ class ZeroTrustAccessAiControlsMcpServer(pulumi.CustomResource):
             modified_by: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             prompts: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+            registered_at: pulumi.Input[Optional[_builtins.str]] = None,
             secure_web_gateway: pulumi.Input[Optional[_builtins.bool]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             tools: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
@@ -834,11 +852,12 @@ class ZeroTrustAccessAiControlsMcpServer(pulumi.CustomResource):
                Available values: "oauth", "bearer", "unauthenticated".
         :param pulumi.Input[_builtins.str] authentication_status: Whether administrative authentication is required before capabilities can be synced. Manual OAuth is user-managed and has no administrative authentication flow.
                Available values: "not_required", "required", "connected", "stale", "manual".
-        :param pulumi.Input[_builtins.str] client_secret: Pre-registered OAuth client*secret. Write-only - accepted on create/update when auth*credentials.auth*mode is 'manual'. Required when creating a manual OAuth server or converting an existing server to manual mode. Omit it on update to preserve the existing secret; provide it to rotate the secret. Stored AES-GCM-encrypted in server*oauth_secrets; never returned by read endpoints.
+        :param pulumi.Input[_builtins.str] client_secret: Provides 'client*secret' for a pre-registered OAuth client. This field is accepted on create or update only when 'auth*credentials.auth*mode' is 'manual'. It is required when creating an MCP server with manual OAuth credentials or changing an existing server to use manual OAuth credentials. Omit 'client*secret' on update to preserve the existing secret. Provide a new 'client_secret' to rotate the secret. The secret is never returned by read, create, or update requests.
         :param pulumi.Input[_builtins.str] description: Optional description of the MCP server.
         :param pulumi.Input[_builtins.str] hostname: URL of the upstream MCP endpoint.
-        :param pulumi.Input[_builtins.bool] is_shared_oauth_callback_enabled: When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true.
+        :param pulumi.Input[_builtins.bool] is_shared_oauth_callback_enabled: When true, per-user authorization uses the shared Cloudflare callback URL as the 'redirect*uri' instead of the portal callback URL. The default is false. Set 'is*shared*oauth*callback_enabled' to true to enable the shared Cloudflare callback URL for this MCP server.
         :param pulumi.Input[_builtins.str] name: Display name for the MCP server.
+        :param pulumi.Input[_builtins.str] registered_at: Timestamp of the most recent successful admin OAuth registration.
         :param pulumi.Input[_builtins.bool] secure_web_gateway: Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs', 'ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgsDict', 'outputs.ZeroTrustAccessAiControlsMcpServerUpdatedPrompt']]]] updated_prompts: Server-wide prompt capability overrides.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs', 'ZeroTrustAccessAiControlsMcpServerUpdatedToolArgsDict', 'outputs.ZeroTrustAccessAiControlsMcpServerUpdatedTool']]]] updated_tools: Server-wide tool capability overrides.
@@ -867,6 +886,7 @@ class ZeroTrustAccessAiControlsMcpServer(pulumi.CustomResource):
         __props__.__dict__["modified_by"] = modified_by
         __props__.__dict__["name"] = name
         __props__.__dict__["prompts"] = prompts
+        __props__.__dict__["registered_at"] = registered_at
         __props__.__dict__["secure_web_gateway"] = secure_web_gateway
         __props__.__dict__["status"] = status
         __props__.__dict__["tools"] = tools
@@ -897,6 +917,7 @@ class ZeroTrustAccessAiControlsMcpServer(pulumi.CustomResource):
             modified_by: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             prompts: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+            registered_at: pulumi.Input[Optional[_builtins.str]] = None,
             secure_web_gateway: pulumi.Input[Optional[_builtins.bool]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             tools: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
@@ -923,6 +944,7 @@ class ZeroTrustAccessAiControlsMcpServer(pulumi.CustomResource):
         __props__["modifiedBy"] = modified_by
         __props__["name"] = name
         __props__["prompts"] = prompts
+        __props__["registeredAt"] = registered_at
         __props__["secureWebGateway"] = secure_web_gateway
         __props__["status"] = status
         __props__["tools"] = tools
@@ -974,7 +996,7 @@ class ZeroTrustAccessAiControlsMcpServer(pulumi.CustomResource):
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Pre-registered OAuth client*secret. Write-only - accepted on create/update when auth*credentials.auth*mode is 'manual'. Required when creating a manual OAuth server or converting an existing server to manual mode. Omit it on update to preserve the existing secret; provide it to rotate the secret. Stored AES-GCM-encrypted in server*oauth_secrets; never returned by read endpoints.
+        Provides 'client*secret' for a pre-registered OAuth client. This field is accepted on create or update only when 'auth*credentials.auth*mode' is 'manual'. It is required when creating an MCP server with manual OAuth credentials or changing an existing server to use manual OAuth credentials. Omit 'client*secret' on update to preserve the existing secret. Provide a new 'client_secret' to rotate the secret. The secret is never returned by read, create, or update requests.
         """
         return pulumi.get(self, "client_secret")
 
@@ -1018,7 +1040,7 @@ class ZeroTrustAccessAiControlsMcpServer(pulumi.CustomResource):
     @pulumi.getter(name="isSharedOauthCallbackEnabled")
     def is_shared_oauth_callback_enabled(self) -> pulumi.Output[_builtins.bool]:
         """
-        When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true.
+        When true, per-user authorization uses the shared Cloudflare callback URL as the 'redirect*uri' instead of the portal callback URL. The default is false. Set 'is*shared*oauth*callback_enabled' to true to enable the shared Cloudflare callback URL for this MCP server.
         """
         return pulumi.get(self, "is_shared_oauth_callback_enabled")
 
@@ -1054,6 +1076,14 @@ class ZeroTrustAccessAiControlsMcpServer(pulumi.CustomResource):
     @pulumi.getter
     def prompts(self) -> pulumi.Output[Sequence[Mapping[str, _builtins.str]]]:
         return pulumi.get(self, "prompts")
+
+    @_builtins.property
+    @pulumi.getter(name="registeredAt")
+    def registered_at(self) -> pulumi.Output[_builtins.str]:
+        """
+        Timestamp of the most recent successful admin OAuth registration.
+        """
+        return pulumi.get(self, "registered_at")
 
     @_builtins.property
     @pulumi.getter(name="secureWebGateway")

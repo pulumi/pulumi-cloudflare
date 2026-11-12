@@ -99,6 +99,11 @@ type SpectrumApplication struct {
 	OriginPort pulumi.AnyOutput `pulumi:"originPort"`
 	// Optional Worker script tag (worker ID) to use as the application's origin. Only supported for TCP applications with traffic*type "worker"; mutually exclusive with origin*direct, origin*dns, origin*port, proxy*protocol, and argo*smart_routing. tls may only be "off" or "flexible".
 	OriginWorkerId pulumi.StringPtrOutput `pulumi:"originWorkerId"`
+	// Name of the Worker origin. Omitted when the Worker is not found or its name cannot be resolved.
+	OriginWorkerName pulumi.StringOutput `pulumi:"originWorkerName"`
+	// Lookup status of the Worker origin. Unknown indicates that its name could not be resolved. Only returned for Worker origins.
+	// Available values: "available", "notFound", "unknown".
+	OriginWorkerStatus pulumi.StringOutput `pulumi:"originWorkerStatus"`
 	// The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`.
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
 	// Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
@@ -178,6 +183,11 @@ type spectrumApplicationState struct {
 	OriginPort interface{} `pulumi:"originPort"`
 	// Optional Worker script tag (worker ID) to use as the application's origin. Only supported for TCP applications with traffic*type "worker"; mutually exclusive with origin*direct, origin*dns, origin*port, proxy*protocol, and argo*smart_routing. tls may only be "off" or "flexible".
 	OriginWorkerId *string `pulumi:"originWorkerId"`
+	// Name of the Worker origin. Omitted when the Worker is not found or its name cannot be resolved.
+	OriginWorkerName *string `pulumi:"originWorkerName"`
+	// Lookup status of the Worker origin. Unknown indicates that its name could not be resolved. Only returned for Worker origins.
+	// Available values: "available", "notFound", "unknown".
+	OriginWorkerStatus *string `pulumi:"originWorkerStatus"`
 	// The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`.
 	Protocol *string `pulumi:"protocol"`
 	// Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
@@ -219,6 +229,11 @@ type SpectrumApplicationState struct {
 	OriginPort pulumi.Input
 	// Optional Worker script tag (worker ID) to use as the application's origin. Only supported for TCP applications with traffic*type "worker"; mutually exclusive with origin*direct, origin*dns, origin*port, proxy*protocol, and argo*smart_routing. tls may only be "off" or "flexible".
 	OriginWorkerId pulumi.StringPtrInput
+	// Name of the Worker origin. Omitted when the Worker is not found or its name cannot be resolved.
+	OriginWorkerName pulumi.StringPtrInput
+	// Lookup status of the Worker origin. Unknown indicates that its name could not be resolved. Only returned for Worker origins.
+	// Available values: "available", "notFound", "unknown".
+	OriginWorkerStatus pulumi.StringPtrInput
 	// The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`.
 	Protocol pulumi.StringPtrInput
 	// Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
@@ -459,6 +474,17 @@ func (o SpectrumApplicationOutput) OriginPort() pulumi.AnyOutput {
 // Optional Worker script tag (worker ID) to use as the application's origin. Only supported for TCP applications with traffic*type "worker"; mutually exclusive with origin*direct, origin*dns, origin*port, proxy*protocol, and argo*smart_routing. tls may only be "off" or "flexible".
 func (o SpectrumApplicationOutput) OriginWorkerId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SpectrumApplication) pulumi.StringPtrOutput { return v.OriginWorkerId }).(pulumi.StringPtrOutput)
+}
+
+// Name of the Worker origin. Omitted when the Worker is not found or its name cannot be resolved.
+func (o SpectrumApplicationOutput) OriginWorkerName() pulumi.StringOutput {
+	return o.ApplyT(func(v *SpectrumApplication) pulumi.StringOutput { return v.OriginWorkerName }).(pulumi.StringOutput)
+}
+
+// Lookup status of the Worker origin. Unknown indicates that its name could not be resolved. Only returned for Worker origins.
+// Available values: "available", "notFound", "unknown".
+func (o SpectrumApplicationOutput) OriginWorkerStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *SpectrumApplication) pulumi.StringOutput { return v.OriginWorkerStatus }).(pulumi.StringOutput)
 }
 
 // The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`.

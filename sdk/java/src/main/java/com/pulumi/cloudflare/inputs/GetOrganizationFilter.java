@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.GetOrganizationFilterContaining;
+import com.pulumi.cloudflare.inputs.GetOrganizationFilterMember;
 import com.pulumi.cloudflare.inputs.GetOrganizationFilterName;
 import com.pulumi.cloudflare.inputs.GetOrganizationFilterParent;
 import com.pulumi.core.annotations.Import;
@@ -27,6 +28,25 @@ public final class GetOrganizationFilter extends com.pulumi.resources.InvokeArgs
     }
 
     /**
+     * Sort direction for the `orderBy` field. Defaults to `asc` when `orderBy` is
+     * specified.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    @Import(name="direction")
+    private @Nullable String direction;
+
+    /**
+     * @return Sort direction for the `orderBy` field. Defaults to `asc` when `orderBy` is
+     * specified.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    public Optional<String> direction() {
+        return Optional.ofNullable(this.direction);
+    }
+
+    /**
      * Only return organizations with the specified IDs (ex. id=foo&amp;id=bar). Send multiple elements
      * by repeating the query value.
      * 
@@ -43,11 +63,37 @@ public final class GetOrganizationFilter extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.ids);
     }
 
+    @Import(name="member")
+    private @Nullable GetOrganizationFilterMember member;
+
+    public Optional<GetOrganizationFilterMember> member() {
+        return Optional.ofNullable(this.member);
+    }
+
     @Import(name="name")
     private @Nullable GetOrganizationFilterName name;
 
     public Optional<GetOrganizationFilterName> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * Field to order results by. Currently supported values: `name`.
+     * When not specified, results are ordered by hierarchy.
+     * Available values: &#34;name&#34;.
+     * 
+     */
+    @Import(name="orderBy")
+    private @Nullable String orderBy;
+
+    /**
+     * @return Field to order results by. Currently supported values: `name`.
+     * When not specified, results are ordered by hierarchy.
+     * Available values: &#34;name&#34;.
+     * 
+     */
+    public Optional<String> orderBy() {
+        return Optional.ofNullable(this.orderBy);
     }
 
     /**
@@ -93,8 +139,11 @@ public final class GetOrganizationFilter extends com.pulumi.resources.InvokeArgs
 
     private GetOrganizationFilter(GetOrganizationFilter $) {
         this.containing = $.containing;
+        this.direction = $.direction;
         this.ids = $.ids;
+        this.member = $.member;
         this.name = $.name;
+        this.orderBy = $.orderBy;
         this.pageSize = $.pageSize;
         this.pageToken = $.pageToken;
         this.parent = $.parent;
@@ -124,6 +173,19 @@ public final class GetOrganizationFilter extends com.pulumi.resources.InvokeArgs
         }
 
         /**
+         * @param direction Sort direction for the `orderBy` field. Defaults to `asc` when `orderBy` is
+         * specified.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder direction(@Nullable String direction) {
+            $.direction = direction;
+            return this;
+        }
+
+        /**
          * @param ids Only return organizations with the specified IDs (ex. id=foo&amp;id=bar). Send multiple elements
          * by repeating the query value.
          * 
@@ -146,8 +208,26 @@ public final class GetOrganizationFilter extends com.pulumi.resources.InvokeArgs
             return ids(List.of(ids));
         }
 
+        public Builder member(@Nullable GetOrganizationFilterMember member) {
+            $.member = member;
+            return this;
+        }
+
         public Builder name(@Nullable GetOrganizationFilterName name) {
             $.name = name;
+            return this;
+        }
+
+        /**
+         * @param orderBy Field to order results by. Currently supported values: `name`.
+         * When not specified, results are ordered by hierarchy.
+         * Available values: &#34;name&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orderBy(@Nullable String orderBy) {
+            $.orderBy = orderBy;
             return this;
         }
 

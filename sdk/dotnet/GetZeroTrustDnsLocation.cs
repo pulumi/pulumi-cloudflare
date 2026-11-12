@@ -141,6 +141,7 @@ namespace Pulumi.Cloudflare
         public readonly string? AccountId;
         public readonly bool ClientDefault;
         public readonly string CreatedAt;
+        public readonly bool Dns64Enabled;
         public readonly string DnsDestinationIpsId;
         public readonly string DnsDestinationIpv6BlockId;
         public readonly string DohSubdomain;
@@ -164,6 +165,8 @@ namespace Pulumi.Cloudflare
             bool clientDefault,
 
             string createdAt,
+
+            bool dns64Enabled,
 
             string dnsDestinationIpsId,
 
@@ -198,6 +201,7 @@ namespace Pulumi.Cloudflare
             AccountId = accountId;
             ClientDefault = clientDefault;
             CreatedAt = createdAt;
+            Dns64Enabled = dns64Enabled;
             DnsDestinationIpsId = dnsDestinationIpsId;
             DnsDestinationIpv6BlockId = dnsDestinationIpv6BlockId;
             DohSubdomain = dohSubdomain;

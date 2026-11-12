@@ -23,14 +23,14 @@ public final class GetAiSearchInstancesPlainArgs extends com.pulumi.resources.In
     }
 
     /**
-     * Filter by exact Search for Agents hostname (case-insensitive).
+     * Return only instances with this exact Search for Agents hostname (case-insensitive).
      * 
      */
     @Import(name="hostname")
     private @Nullable String hostname;
 
     /**
-     * @return Filter by exact Search for Agents hostname (case-insensitive).
+     * @return Return only instances with this exact Search for Agents hostname (case-insensitive).
      * 
      */
     public Optional<String> hostname() {
@@ -52,17 +52,9 @@ public final class GetAiSearchInstancesPlainArgs extends com.pulumi.resources.In
         return Optional.ofNullable(this.maxItems);
     }
 
-    /**
-     * Filter by namespace.
-     * 
-     */
     @Import(name="namespace")
     private @Nullable String namespace;
 
-    /**
-     * @return Filter by namespace.
-     * 
-     */
     public Optional<String> namespace() {
         return Optional.ofNullable(this.namespace);
     }
@@ -152,7 +144,7 @@ public final class GetAiSearchInstancesPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param hostname Filter by exact Search for Agents hostname (case-insensitive).
+         * @param hostname Return only instances with this exact Search for Agents hostname (case-insensitive).
          * 
          * @return builder
          * 
@@ -173,12 +165,6 @@ public final class GetAiSearchInstancesPlainArgs extends com.pulumi.resources.In
             return this;
         }
 
-        /**
-         * @param namespace Filter by namespace.
-         * 
-         * @return builder
-         * 
-         */
         public Builder namespace(@Nullable String namespace) {
             $.namespace = namespace;
             return this;

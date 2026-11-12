@@ -10,29 +10,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptionsContentSelector {
-    /**
-     * @return Glob pattern to match against the page URL path. Uses standard glob syntax: * matches within a segment, ** crosses directories.
-     * 
-     */
     private String path;
-    /**
-     * @return CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, ). Must target a single element; if multiple elements match, the selector is ignored and the full page is used.
-     * 
-     */
     private String selector;
 
     private GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptionsContentSelector() {}
-    /**
-     * @return Glob pattern to match against the page URL path. Uses standard glob syntax: * matches within a segment, ** crosses directories.
-     * 
-     */
     public String path() {
         return this.path;
     }
-    /**
-     * @return CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, ). Must target a single element; if multiple elements match, the selector is ignored and the full page is used.
-     * 
-     */
     public String selector() {
         return this.selector;
     }

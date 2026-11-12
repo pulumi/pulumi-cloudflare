@@ -120,6 +120,21 @@ public final class ZeroTrustOrganizationState extends com.pulumi.resources.Resou
     }
 
     /**
+     * Whether creation of end user applications is disabled for this organization.
+     * 
+     */
+    @Import(name="disableEndUserAppCreation")
+    private @Nullable Output<Boolean> disableEndUserAppCreation;
+
+    /**
+     * @return Whether creation of end user applications is disabled for this organization.
+     * 
+     */
+    public Optional<Output<Boolean>> disableEndUserAppCreation() {
+        return Optional.ofNullable(this.disableEndUserAppCreation);
+    }
+
+    /**
      * Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
      * 
      */
@@ -361,6 +376,7 @@ public final class ZeroTrustOrganizationState extends com.pulumi.resources.Resou
         this.customPages = $.customPages;
         this.denyUnmatchedRequests = $.denyUnmatchedRequests;
         this.denyUnmatchedRequestsExemptedZoneNames = $.denyUnmatchedRequestsExemptedZoneNames;
+        this.disableEndUserAppCreation = $.disableEndUserAppCreation;
         this.isUiReadOnly = $.isUiReadOnly;
         this.loginDesign = $.loginDesign;
         this.mfaConfig = $.mfaConfig;
@@ -540,6 +556,27 @@ public final class ZeroTrustOrganizationState extends com.pulumi.resources.Resou
          */
         public Builder denyUnmatchedRequestsExemptedZoneNames(String... denyUnmatchedRequestsExemptedZoneNames) {
             return denyUnmatchedRequestsExemptedZoneNames(List.of(denyUnmatchedRequestsExemptedZoneNames));
+        }
+
+        /**
+         * @param disableEndUserAppCreation Whether creation of end user applications is disabled for this organization.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableEndUserAppCreation(@Nullable Output<Boolean> disableEndUserAppCreation) {
+            $.disableEndUserAppCreation = disableEndUserAppCreation;
+            return this;
+        }
+
+        /**
+         * @param disableEndUserAppCreation Whether creation of end user applications is disabled for this organization.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableEndUserAppCreation(Boolean disableEndUserAppCreation) {
+            return disableEndUserAppCreation(Output.of(disableEndUserAppCreation));
         }
 
         /**

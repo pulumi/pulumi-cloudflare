@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ZeroTrustDlpCustomEntryVariant
     {
         /// <summary>
-        /// A customer-facing explanation of what this predefined AI prompt topic represents.
+        /// For `type: PromptTopic`: A customer-facing explanation of what this predefined AI prompt topic represents.
         /// </summary>
         public readonly string? Description;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? TopicType;
         /// <summary>
-        /// Available values: "PromptTopic", "General".
+        /// Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "WordList".
         /// </summary>
         public readonly string? Type;
 

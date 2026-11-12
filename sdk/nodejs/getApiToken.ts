@@ -108,6 +108,18 @@ export interface GetApiTokenResult {
      * Token identifier tag.
      */
     readonly tokenId?: string;
+    /**
+     * The prefix of the token value, before the first underscore. Use it with
+     * `tokenSuffix` to identify a token. Only present for tokens created or
+     * rolled after this field was added.
+     */
+    readonly tokenPrefix: string;
+    /**
+     * The last 4 characters of the token value. Use it with `tokenPrefix` to
+     * identify a token. It is not unique. Only present for tokens created or
+     * rolled after this field was added.
+     */
+    readonly tokenSuffix: string;
 }
 /**
  * Accepted Permissions

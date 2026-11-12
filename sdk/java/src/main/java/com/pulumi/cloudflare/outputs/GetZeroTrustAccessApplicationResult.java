@@ -142,7 +142,7 @@ public final class GetZeroTrustAccessApplicationResult {
      */
     private String logoUrl;
     /**
-     * @return Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+     * @return Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, rdp, and infrastructure application types. For infrastructure applications, supported authenticators are `pivKey` and `sshFido2Key`; for other application types use `totp`, `biometrics`, or `securityKey`.
      * 
      */
     private GetZeroTrustAccessApplicationMfaConfig mfaConfig;
@@ -399,7 +399,7 @@ public final class GetZeroTrustAccessApplicationResult {
         return this.logoUrl;
     }
     /**
-     * @return Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+     * @return Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, rdp, and infrastructure application types. For infrastructure applications, supported authenticators are `pivKey` and `sshFido2Key`; for other application types use `totp`, `biometrics`, or `securityKey`.
      * 
      */
     public GetZeroTrustAccessApplicationMfaConfig mfaConfig() {

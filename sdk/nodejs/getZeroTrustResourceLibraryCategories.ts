@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Resource Library Read`
+ * - `Resource Library Write`
+ * - `Zero Trust Read`
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -42,7 +49,7 @@ export interface GetZeroTrustResourceLibraryCategoriesArgs {
      */
     maxItems?: number;
     /**
-     * Number of results to skip. Defaults to 0; negative values are clamped to 0.
+     * Number of results to skip. Defaults to 0; negative values are clamped to 0. Ignored when `cursor` is provided.
      */
     offset?: number;
 }
@@ -61,7 +68,7 @@ export interface GetZeroTrustResourceLibraryCategoriesResult {
      */
     readonly maxItems?: number;
     /**
-     * Number of results to skip. Defaults to 0; negative values are clamped to 0.
+     * Number of results to skip. Defaults to 0; negative values are clamped to 0. Ignored when `cursor` is provided.
      */
     readonly offset: number;
     /**
@@ -70,6 +77,13 @@ export interface GetZeroTrustResourceLibraryCategoriesResult {
     readonly results: outputs.GetZeroTrustResourceLibraryCategoriesResult[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Resource Library Read`
+ * - `Resource Library Write`
+ * - `Zero Trust Read`
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -105,7 +119,7 @@ export interface GetZeroTrustResourceLibraryCategoriesOutputArgs {
      */
     maxItems?: pulumi.Input<number | undefined>;
     /**
-     * Number of results to skip. Defaults to 0; negative values are clamped to 0.
+     * Number of results to skip. Defaults to 0; negative values are clamped to 0. Ignored when `cursor` is provided.
      */
     offset?: pulumi.Input<number | undefined>;
 }

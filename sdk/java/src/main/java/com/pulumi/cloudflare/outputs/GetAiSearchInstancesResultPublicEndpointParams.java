@@ -18,15 +18,7 @@ import java.util.Objects;
 public final class GetAiSearchInstancesResultPublicEndpointParams {
     private List<String> authorizedHosts;
     private GetAiSearchInstancesResultPublicEndpointParamsChatCompletionsEndpoint chatCompletionsEndpoint;
-    /**
-     * @return Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
-     * 
-     */
     private List<String> customDomains;
-    /**
-     * @return When false, the instance is reachable only via a registered custom domain and the default &#92;n&#92;n.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public*endpoint*params is replaced wholesale on update, so resend default*domain*enabled on every update to keep the default host off — omitting it resets to true.
-     * 
-     */
     private Boolean defaultDomainEnabled;
     private Boolean enabled;
     private GetAiSearchInstancesResultPublicEndpointParamsMcp mcp;
@@ -40,17 +32,9 @@ public final class GetAiSearchInstancesResultPublicEndpointParams {
     public GetAiSearchInstancesResultPublicEndpointParamsChatCompletionsEndpoint chatCompletionsEndpoint() {
         return this.chatCompletionsEndpoint;
     }
-    /**
-     * @return Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
-     * 
-     */
     public List<String> customDomains() {
         return this.customDomains;
     }
-    /**
-     * @return When false, the instance is reachable only via a registered custom domain and the default &#92;n&#92;n.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public*endpoint*params is replaced wholesale on update, so resend default*domain*enabled on every update to keep the default host off — omitting it resets to true.
-     * 
-     */
     public Boolean defaultDomainEnabled() {
         return this.defaultDomainEnabled;
     }

@@ -45,7 +45,7 @@ public final class AccessApplicationPolicy {
      */
     private @Nullable List<AccessApplicationPolicyInclude> includes;
     /**
-     * @return Configures multi-factor authentication (MFA) settings for this policy. For infrastructure applications only `sshPivKey` is a supported authenticator; for other application types use `totp`, `biometrics`, or `securityKey`.
+     * @return Configures multi-factor authentication (MFA) settings for this policy. For infrastructure applications, supported authenticators are `pivKey` and `sshFido2Key`; for other application types use `totp`, `biometrics`, or `securityKey`.
      * 
      */
     private @Nullable AccessApplicationPolicyMfaConfig mfaConfig;
@@ -103,7 +103,7 @@ public final class AccessApplicationPolicy {
         return this.includes == null ? List.of() : this.includes;
     }
     /**
-     * @return Configures multi-factor authentication (MFA) settings for this policy. For infrastructure applications only `sshPivKey` is a supported authenticator; for other application types use `totp`, `biometrics`, or `securityKey`.
+     * @return Configures multi-factor authentication (MFA) settings for this policy. For infrastructure applications, supported authenticators are `pivKey` and `sshFido2Key`; for other application types use `totp`, `biometrics`, or `securityKey`.
      * 
      */
     public Optional<AccessApplicationPolicyMfaConfig> mfaConfig() {

@@ -24,7 +24,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string DeadLetterQueue;
         public readonly string QueueName;
         /// <summary>
-        /// Name of a Worker
+        /// For `type: worker`: Name of a Worker
         /// </summary>
         public readonly string ScriptName;
         public readonly Outputs.GetQueueConsumerSettingsResult Settings;

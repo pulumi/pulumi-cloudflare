@@ -40,7 +40,7 @@ public final class GetLoadBalancerRule {
      */
     private GetLoadBalancerRuleOverrides overrides;
     /**
-     * @return The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.
+     * @return The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If all priorities are omitted or zero, the API assigns priorities based on the array order of the rules field.
      * 
      */
     private Integer priority;
@@ -87,7 +87,7 @@ public final class GetLoadBalancerRule {
         return this.overrides;
     }
     /**
-     * @return The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.
+     * @return The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If all priorities are omitted or zero, the API assigns priorities based on the array order of the rules field.
      * 
      */
     public Integer priority() {

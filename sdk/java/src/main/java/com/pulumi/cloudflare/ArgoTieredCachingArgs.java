@@ -15,7 +15,7 @@ public final class ArgoTieredCachingArgs extends com.pulumi.resources.ResourceAr
     public static final ArgoTieredCachingArgs Empty = new ArgoTieredCachingArgs();
 
     /**
-     * Enables Tiered Caching.
+     * Enables or disables Tiered Cache.
      * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
@@ -23,7 +23,7 @@ public final class ArgoTieredCachingArgs extends com.pulumi.resources.ResourceAr
     private Output<String> value;
 
     /**
-     * @return Enables Tiered Caching.
+     * @return Enables or disables Tiered Cache.
      * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
@@ -72,7 +72,7 @@ public final class ArgoTieredCachingArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param value Enables Tiered Caching.
+         * @param value Enables or disables Tiered Cache.
          * Available values: &#34;on&#34;, &#34;off&#34;.
          * 
          * @return builder
@@ -84,7 +84,7 @@ public final class ArgoTieredCachingArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param value Enables Tiered Caching.
+         * @param value Enables or disables Tiered Cache.
          * Available values: &#34;on&#34;, &#34;off&#34;.
          * 
          * @return builder

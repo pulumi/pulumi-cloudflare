@@ -14,6 +14,12 @@ import (
 
 // Accepted Permissions
 //
+// - `Individual Workers Admin`
+// - `Individual Workers Content Read-Only`
+// - `Individual Workers Editor`
+// - `Workers Admin`
+// - `Workers Content Read-Only`
+// - `Workers Editor`
 // - `Workers Scripts Read`
 // - `Workers Scripts Write`
 // - `Workers Tail Read`
@@ -79,7 +85,7 @@ import (
 //					"Counter": &cloudflare.WorkerVersionExportsArgs{
 //						Storage:   pulumi.String("sqlite"),
 //						Type:      pulumi.String("durable-object"),
-//						Container: "my-container",
+//						Container: pulumi.String("my-container"),
 //						State:     pulumi.String("created"),
 //					},
 //					"OldCounter": &cloudflare.WorkerVersionExportsArgs{
@@ -181,7 +187,9 @@ type WorkerVersion struct {
 	CacheOptions WorkerVersionCacheOptionsOutput `pulumi:"cacheOptions"`
 	// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
 	CompatibilityDate pulumi.StringPtrOutput `pulumi:"compatibilityDate"`
-	// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
+	// Enables or disables specific Workers runtime features, such as upcoming features or changes outside the `compatibilityDate`.
+	//
+	// Responses list only the flags this version sets explicitly and exclude behavior that `compatibilityDate` enables. Responses omit the field when the list is empty, so a missing field means the version sets zero flags.
 	CompatibilityFlags pulumi.StringArrayOutput `pulumi:"compatibilityFlags"`
 	// List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
 	Containers WorkerVersionContainerArrayOutput `pulumi:"containers"`
@@ -198,8 +206,8 @@ type WorkerVersion struct {
 	Exports WorkerVersionExportsMapOutput `pulumi:"exports"`
 	// Summary of the declarative exports reconciliation that ran on this upload. Populated only when the uploaded metadata included an `exports` block. Durable Object entries drive reconciliation; `type: worker` entries do not contribute to this summary.
 	ExportsReconciliation WorkerVersionExportsReconciliationOutput `pulumi:"exportsReconciliation"`
-	// Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
-	// Available values: "modules".
+	// Optional properties to include in the response. `modules` includes the `modules` property, which contains code and may add several megabytes to the response size. `modules,sourcemaps` also includes the version's source maps in `modules`.
+	// Available values: "modules", "modules,sourcemaps".
 	Include pulumi.StringPtrOutput `pulumi:"include"`
 	// Resource limits enforced at runtime.
 	Limits WorkerVersionLimitsOutput `pulumi:"limits"`
@@ -212,6 +220,10 @@ type WorkerVersion struct {
 	// Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
 	Migrations WorkerVersionMigrationsPtrOutput `pulumi:"migrations"`
 	// Code, sourcemaps, and other content used at runtime.
+	//
+	// Source maps use content type `application/source-map`. Responses include them only when requested with
+	// `include=modules,sourcemaps`. Workers stores the source map fields used to remap stack traces, so a returned
+	// source map is equivalent to the uploaded file but not byte-identical.
 	//
 	// This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
 	// [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
@@ -295,7 +307,9 @@ type workerVersionState struct {
 	CacheOptions *WorkerVersionCacheOptions `pulumi:"cacheOptions"`
 	// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
 	CompatibilityDate *string `pulumi:"compatibilityDate"`
-	// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
+	// Enables or disables specific Workers runtime features, such as upcoming features or changes outside the `compatibilityDate`.
+	//
+	// Responses list only the flags this version sets explicitly and exclude behavior that `compatibilityDate` enables. Responses omit the field when the list is empty, so a missing field means the version sets zero flags.
 	CompatibilityFlags []string `pulumi:"compatibilityFlags"`
 	// List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
 	Containers []WorkerVersionContainer `pulumi:"containers"`
@@ -312,8 +326,8 @@ type workerVersionState struct {
 	Exports map[string]WorkerVersionExports `pulumi:"exports"`
 	// Summary of the declarative exports reconciliation that ran on this upload. Populated only when the uploaded metadata included an `exports` block. Durable Object entries drive reconciliation; `type: worker` entries do not contribute to this summary.
 	ExportsReconciliation *WorkerVersionExportsReconciliation `pulumi:"exportsReconciliation"`
-	// Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
-	// Available values: "modules".
+	// Optional properties to include in the response. `modules` includes the `modules` property, which contains code and may add several megabytes to the response size. `modules,sourcemaps` also includes the version's source maps in `modules`.
+	// Available values: "modules", "modules,sourcemaps".
 	Include *string `pulumi:"include"`
 	// Resource limits enforced at runtime.
 	Limits *WorkerVersionLimits `pulumi:"limits"`
@@ -326,6 +340,10 @@ type workerVersionState struct {
 	// Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
 	Migrations *WorkerVersionMigrations `pulumi:"migrations"`
 	// Code, sourcemaps, and other content used at runtime.
+	//
+	// Source maps use content type `application/source-map`. Responses include them only when requested with
+	// `include=modules,sourcemaps`. Workers stores the source map fields used to remap stack traces, so a returned
+	// source map is equivalent to the uploaded file but not byte-identical.
 	//
 	// This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
 	// [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
@@ -374,7 +392,9 @@ type WorkerVersionState struct {
 	CacheOptions WorkerVersionCacheOptionsPtrInput
 	// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
 	CompatibilityDate pulumi.StringPtrInput
-	// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
+	// Enables or disables specific Workers runtime features, such as upcoming features or changes outside the `compatibilityDate`.
+	//
+	// Responses list only the flags this version sets explicitly and exclude behavior that `compatibilityDate` enables. Responses omit the field when the list is empty, so a missing field means the version sets zero flags.
 	CompatibilityFlags pulumi.StringArrayInput
 	// List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
 	Containers WorkerVersionContainerArrayInput
@@ -391,8 +411,8 @@ type WorkerVersionState struct {
 	Exports WorkerVersionExportsMapInput
 	// Summary of the declarative exports reconciliation that ran on this upload. Populated only when the uploaded metadata included an `exports` block. Durable Object entries drive reconciliation; `type: worker` entries do not contribute to this summary.
 	ExportsReconciliation WorkerVersionExportsReconciliationPtrInput
-	// Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
-	// Available values: "modules".
+	// Optional properties to include in the response. `modules` includes the `modules` property, which contains code and may add several megabytes to the response size. `modules,sourcemaps` also includes the version's source maps in `modules`.
+	// Available values: "modules", "modules,sourcemaps".
 	Include pulumi.StringPtrInput
 	// Resource limits enforced at runtime.
 	Limits WorkerVersionLimitsPtrInput
@@ -405,6 +425,10 @@ type WorkerVersionState struct {
 	// Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
 	Migrations WorkerVersionMigrationsPtrInput
 	// Code, sourcemaps, and other content used at runtime.
+	//
+	// Source maps use content type `application/source-map`. Responses include them only when requested with
+	// `include=modules,sourcemaps`. Workers stores the source map fields used to remap stack traces, so a returned
+	// source map is equivalent to the uploaded file but not byte-identical.
 	//
 	// This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
 	// [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
@@ -459,7 +483,9 @@ type workerVersionArgs struct {
 	CacheOptions *WorkerVersionCacheOptions `pulumi:"cacheOptions"`
 	// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
 	CompatibilityDate *string `pulumi:"compatibilityDate"`
-	// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
+	// Enables or disables specific Workers runtime features, such as upcoming features or changes outside the `compatibilityDate`.
+	//
+	// Responses list only the flags this version sets explicitly and exclude behavior that `compatibilityDate` enables. Responses omit the field when the list is empty, so a missing field means the version sets zero flags.
 	CompatibilityFlags []string `pulumi:"compatibilityFlags"`
 	// List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
 	Containers []WorkerVersionContainer `pulumi:"containers"`
@@ -472,8 +498,8 @@ type workerVersionArgs struct {
 	// `expecting-transfer`) are returned. `exports` and `migrations`
 	// are mutually exclusive on upload.
 	Exports map[string]WorkerVersionExports `pulumi:"exports"`
-	// Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
-	// Available values: "modules".
+	// Optional properties to include in the response. `modules` includes the `modules` property, which contains code and may add several megabytes to the response size. `modules,sourcemaps` also includes the version's source maps in `modules`.
+	// Available values: "modules", "modules,sourcemaps".
 	Include *string `pulumi:"include"`
 	// Resource limits enforced at runtime.
 	Limits *WorkerVersionLimits `pulumi:"limits"`
@@ -482,6 +508,10 @@ type workerVersionArgs struct {
 	// Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
 	Migrations *WorkerVersionMigrations `pulumi:"migrations"`
 	// Code, sourcemaps, and other content used at runtime.
+	//
+	// Source maps use content type `application/source-map`. Responses include them only when requested with
+	// `include=modules,sourcemaps`. Workers stores the source map fields used to remap stack traces, so a returned
+	// source map is equivalent to the uploaded file but not byte-identical.
 	//
 	// This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
 	// [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
@@ -519,7 +549,9 @@ type WorkerVersionArgs struct {
 	CacheOptions WorkerVersionCacheOptionsPtrInput
 	// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
 	CompatibilityDate pulumi.StringPtrInput
-	// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
+	// Enables or disables specific Workers runtime features, such as upcoming features or changes outside the `compatibilityDate`.
+	//
+	// Responses list only the flags this version sets explicitly and exclude behavior that `compatibilityDate` enables. Responses omit the field when the list is empty, so a missing field means the version sets zero flags.
 	CompatibilityFlags pulumi.StringArrayInput
 	// List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
 	Containers WorkerVersionContainerArrayInput
@@ -532,8 +564,8 @@ type WorkerVersionArgs struct {
 	// `expecting-transfer`) are returned. `exports` and `migrations`
 	// are mutually exclusive on upload.
 	Exports WorkerVersionExportsMapInput
-	// Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
-	// Available values: "modules".
+	// Optional properties to include in the response. `modules` includes the `modules` property, which contains code and may add several megabytes to the response size. `modules,sourcemaps` also includes the version's source maps in `modules`.
+	// Available values: "modules", "modules,sourcemaps".
 	Include pulumi.StringPtrInput
 	// Resource limits enforced at runtime.
 	Limits WorkerVersionLimitsPtrInput
@@ -542,6 +574,10 @@ type WorkerVersionArgs struct {
 	// Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
 	Migrations WorkerVersionMigrationsPtrInput
 	// Code, sourcemaps, and other content used at runtime.
+	//
+	// Source maps use content type `application/source-map`. Responses include them only when requested with
+	// `include=modules,sourcemaps`. Workers stores the source map fields used to remap stack traces, so a returned
+	// source map is equivalent to the uploaded file but not byte-identical.
 	//
 	// This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
 	// [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
@@ -692,7 +728,9 @@ func (o WorkerVersionOutput) CompatibilityDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkerVersion) pulumi.StringPtrOutput { return v.CompatibilityDate }).(pulumi.StringPtrOutput)
 }
 
-// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
+// Enables or disables specific Workers runtime features, such as upcoming features or changes outside the `compatibilityDate`.
+//
+// Responses list only the flags this version sets explicitly and exclude behavior that `compatibilityDate` enables. Responses omit the field when the list is empty, so a missing field means the version sets zero flags.
 func (o WorkerVersionOutput) CompatibilityFlags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkerVersion) pulumi.StringArrayOutput { return v.CompatibilityFlags }).(pulumi.StringArrayOutput)
 }
@@ -727,8 +765,8 @@ func (o WorkerVersionOutput) ExportsReconciliation() WorkerVersionExportsReconci
 	return o.ApplyT(func(v *WorkerVersion) WorkerVersionExportsReconciliationOutput { return v.ExportsReconciliation }).(WorkerVersionExportsReconciliationOutput)
 }
 
-// Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
-// Available values: "modules".
+// Optional properties to include in the response. `modules` includes the `modules` property, which contains code and may add several megabytes to the response size. `modules,sourcemaps` also includes the version's source maps in `modules`.
+// Available values: "modules", "modules,sourcemaps".
 func (o WorkerVersionOutput) Include() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkerVersion) pulumi.StringPtrOutput { return v.Include }).(pulumi.StringPtrOutput)
 }
@@ -759,6 +797,10 @@ func (o WorkerVersionOutput) Migrations() WorkerVersionMigrationsPtrOutput {
 }
 
 // Code, sourcemaps, and other content used at runtime.
+//
+// Source maps use content type `application/source-map`. Responses include them only when requested with
+// `include=modules,sourcemaps`. Workers stores the source map fields used to remap stack traces, so a returned
+// source map is equivalent to the uploaded file but not byte-identical.
 //
 // This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
 // [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure

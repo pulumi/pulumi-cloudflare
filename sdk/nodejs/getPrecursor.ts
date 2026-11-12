@@ -40,23 +40,25 @@ export interface GetPrecursorArgs {
  */
 export interface GetPrecursorResult {
     /**
-     * The zone-level Precursor enforcement mode applied to requests that do
-     * not match a more specific enforcement rule.
-     * Available values: "off", "min-friction", "max-security".
-     *
-     * @deprecated This attribute is deprecated.
-     */
-    readonly defaultMode: string;
-    /**
-     * The ordered list of enforcement rules for the zone.
-     *
-     * @deprecated This attribute is deprecated.
-     */
-    readonly enforcementRules: outputs.GetPrecursorEnforcementRule[];
-    /**
      * Identifier.
      */
     readonly id: string;
+    /**
+     * Controls Precursor detection for the zone. `off` disables detection,
+     * `monitor` records detections without affecting bot scores, and `arm`
+     * allows detections to affect bot scores.
+     * Available values: "off", "monitor", "arm".
+     */
+    readonly mode: string;
+    /**
+     * The ordered list of Precursor rules for the zone.
+     */
+    readonly rules: outputs.GetPrecursorRule[];
+    /**
+     * Whether Precursor shows an interstitial when it takes action on a
+     * request.
+     */
+    readonly showInterstitial: boolean;
     /**
      * Identifier.
      */

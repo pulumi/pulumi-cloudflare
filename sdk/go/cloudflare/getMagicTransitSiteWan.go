@@ -79,6 +79,10 @@ type LookupMagicTransitSiteWanResult struct {
 	Physport              int    `pulumi:"physport"`
 	// Priority of WAN for traffic loadbalancing.
 	Priority int `pulumi:"priority"`
+	// Provisioned download rate of the WAN circuit in kilobits per second.
+	ProvisionedDownloadKbps int `pulumi:"provisionedDownloadKbps"`
+	// Provisioned upload rate of the WAN circuit in kilobits per second.
+	ProvisionedUploadKbps int `pulumi:"provisionedUploadKbps"`
 	// Identifier
 	SiteId string `pulumi:"siteId"`
 	// (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
@@ -154,6 +158,16 @@ func (o LookupMagicTransitSiteWanResultOutput) Physport() pulumi.IntOutput {
 // Priority of WAN for traffic loadbalancing.
 func (o LookupMagicTransitSiteWanResultOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupMagicTransitSiteWanResult) int { return v.Priority }).(pulumi.IntOutput)
+}
+
+// Provisioned download rate of the WAN circuit in kilobits per second.
+func (o LookupMagicTransitSiteWanResultOutput) ProvisionedDownloadKbps() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupMagicTransitSiteWanResult) int { return v.ProvisionedDownloadKbps }).(pulumi.IntOutput)
+}
+
+// Provisioned upload rate of the WAN circuit in kilobits per second.
+func (o LookupMagicTransitSiteWanResultOutput) ProvisionedUploadKbps() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupMagicTransitSiteWanResult) int { return v.ProvisionedUploadKbps }).(pulumi.IntOutput)
 }
 
 // Identifier

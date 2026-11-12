@@ -19,7 +19,7 @@ public final class PipelineSinkFormatArgs extends com.pulumi.resources.ResourceA
     public static final PipelineSinkFormatArgs Empty = new PipelineSinkFormatArgs();
 
     /**
-     * Specifies the compression applied to JSON sink output.
+     * For `type: json`: Specifies the compression applied to JSON sink output.
      * Available values: &#34;uncompressed&#34;, &#34;gzip&#34;, &#34;snappy&#34;, &#34;zstd&#34;, &#34;lz4&#34;.
      * 
      */
@@ -27,7 +27,7 @@ public final class PipelineSinkFormatArgs extends com.pulumi.resources.ResourceA
     private @Nullable Output<String> compression;
 
     /**
-     * @return Specifies the compression applied to JSON sink output.
+     * @return For `type: json`: Specifies the compression applied to JSON sink output.
      * Available values: &#34;uncompressed&#34;, &#34;gzip&#34;, &#34;snappy&#34;, &#34;zstd&#34;, &#34;lz4&#34;.
      * 
      */
@@ -124,7 +124,7 @@ public final class PipelineSinkFormatArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param compression Specifies the compression applied to JSON sink output.
+         * @param compression For `type: json`: Specifies the compression applied to JSON sink output.
          * Available values: &#34;uncompressed&#34;, &#34;gzip&#34;, &#34;snappy&#34;, &#34;zstd&#34;, &#34;lz4&#34;.
          * 
          * @return builder
@@ -136,7 +136,7 @@ public final class PipelineSinkFormatArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param compression Specifies the compression applied to JSON sink output.
+         * @param compression For `type: json`: Specifies the compression applied to JSON sink output.
          * Available values: &#34;uncompressed&#34;, &#34;gzip&#34;, &#34;snappy&#34;, &#34;zstd&#34;, &#34;lz4&#34;.
          * 
          * @return builder

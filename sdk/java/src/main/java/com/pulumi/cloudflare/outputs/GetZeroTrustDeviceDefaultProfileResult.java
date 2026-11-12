@@ -63,6 +63,11 @@ public final class GetZeroTrustDeviceDefaultProfileResult {
      */
     private List<GetZeroTrustDeviceDefaultProfileDnsSearchSuffix> dnsSearchSuffixes;
     /**
+     * @return Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.
+     * 
+     */
+    private Boolean enableDeviceCredentialAuthentication;
+    /**
      * @return Whether the policy will be applied to matching devices.
      * 
      */
@@ -194,6 +199,13 @@ public final class GetZeroTrustDeviceDefaultProfileResult {
         return this.dnsSearchSuffixes;
     }
     /**
+     * @return Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.
+     * 
+     */
+    public Boolean enableDeviceCredentialAuthentication() {
+        return this.enableDeviceCredentialAuthentication;
+    }
+    /**
      * @return Whether the policy will be applied to matching devices.
      * 
      */
@@ -316,6 +328,7 @@ public final class GetZeroTrustDeviceDefaultProfileResult {
         private Boolean default_;
         private Boolean disableAutoFallback;
         private List<GetZeroTrustDeviceDefaultProfileDnsSearchSuffix> dnsSearchSuffixes;
+        private Boolean enableDeviceCredentialAuthentication;
         private Boolean enabled;
         private Boolean excludeOfficeIps;
         private List<GetZeroTrustDeviceDefaultProfileExclude> excludes;
@@ -345,6 +358,7 @@ public final class GetZeroTrustDeviceDefaultProfileResult {
     	      this.default_ = defaults.default_;
     	      this.disableAutoFallback = defaults.disableAutoFallback;
     	      this.dnsSearchSuffixes = defaults.dnsSearchSuffixes;
+    	      this.enableDeviceCredentialAuthentication = defaults.enableDeviceCredentialAuthentication;
     	      this.enabled = defaults.enabled;
     	      this.excludeOfficeIps = defaults.excludeOfficeIps;
     	      this.excludes = defaults.excludes;
@@ -436,6 +450,14 @@ public final class GetZeroTrustDeviceDefaultProfileResult {
         }
         public Builder dnsSearchSuffixes(GetZeroTrustDeviceDefaultProfileDnsSearchSuffix... dnsSearchSuffixes) {
             return dnsSearchSuffixes(List.of(dnsSearchSuffixes));
+        }
+        @CustomType.Setter
+        public Builder enableDeviceCredentialAuthentication(Boolean enableDeviceCredentialAuthentication) {
+            if (enableDeviceCredentialAuthentication == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDeviceDefaultProfileResult", "enableDeviceCredentialAuthentication");
+            }
+            this.enableDeviceCredentialAuthentication = enableDeviceCredentialAuthentication;
+            return this;
         }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
@@ -593,6 +615,7 @@ public final class GetZeroTrustDeviceDefaultProfileResult {
             _resultValue.default_ = default_;
             _resultValue.disableAutoFallback = disableAutoFallback;
             _resultValue.dnsSearchSuffixes = dnsSearchSuffixes;
+            _resultValue.enableDeviceCredentialAuthentication = enableDeviceCredentialAuthentication;
             _resultValue.enabled = enabled;
             _resultValue.excludeOfficeIps = excludeOfficeIps;
             _resultValue.excludes = excludes;

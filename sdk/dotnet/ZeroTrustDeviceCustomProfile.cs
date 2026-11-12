@@ -49,6 +49,7 @@ namespace Pulumi.Cloudflare
     ///                 Description = "Example internal domains",
     ///             },
     ///         },
+    ///         EnableDeviceCredentialAuthentication = false,
     ///         Enabled = true,
     ///         Excludes = new[]
     ///         {
@@ -74,6 +75,8 @@ namespace Pulumi.Cloudflare
     ///             {
     ///                 "198.51.100.1:2408",
     ///             },
+    ///             AllowManualOverride = true,
+    ///             Autoswitch = true,
     ///         },
     ///         Includes = new[]
     ///         {
@@ -183,6 +186,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("dnsSearchSuffixes")]
         public Output<ImmutableArray<Outputs.ZeroTrustDeviceCustomProfileDnsSearchSuffix>> DnsSearchSuffixes { get; private set; } = null!;
+
+        /// <summary>
+        /// Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.
+        /// </summary>
+        [Output("enableDeviceCredentialAuthentication")]
+        public Output<bool> EnableDeviceCredentialAuthentication { get; private set; } = null!;
 
         /// <summary>
         /// Whether the policy will be applied to matching devices.
@@ -423,6 +432,12 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
+        /// Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.
+        /// </summary>
+        [Input("enableDeviceCredentialAuthentication")]
+        public Input<bool>? EnableDeviceCredentialAuthentication { get; set; }
+
+        /// <summary>
         /// Whether the policy will be applied to matching devices.
         /// </summary>
         [Input("enabled")]
@@ -622,6 +637,12 @@ namespace Pulumi.Cloudflare
             get => _dnsSearchSuffixes ?? (_dnsSearchSuffixes = new InputList<Inputs.ZeroTrustDeviceCustomProfileDnsSearchSuffixGetArgs>());
             set => _dnsSearchSuffixes = value;
         }
+
+        /// <summary>
+        /// Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.
+        /// </summary>
+        [Input("enableDeviceCredentialAuthentication")]
+        public Input<bool>? EnableDeviceCredentialAuthentication { get; set; }
 
         /// <summary>
         /// Whether the policy will be applied to matching devices.

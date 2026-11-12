@@ -3,10 +3,13 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.GetAiSearchNamespaceFilter;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetAiSearchNamespacePlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -20,17 +23,25 @@ public final class GetAiSearchNamespacePlainArgs extends com.pulumi.resources.In
         return this.accountId;
     }
 
-    @Import(name="name", required=true)
-    private String name;
+    @Import(name="filter")
+    private @Nullable GetAiSearchNamespaceFilter filter;
 
-    public String name() {
-        return this.name;
+    public Optional<GetAiSearchNamespaceFilter> filter() {
+        return Optional.ofNullable(this.filter);
+    }
+
+    @Import(name="name")
+    private @Nullable String name;
+
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
 
     private GetAiSearchNamespacePlainArgs() {}
 
     private GetAiSearchNamespacePlainArgs(GetAiSearchNamespacePlainArgs $) {
         this.accountId = $.accountId;
+        this.filter = $.filter;
         this.name = $.name;
     }
 
@@ -57,7 +68,12 @@ public final class GetAiSearchNamespacePlainArgs extends com.pulumi.resources.In
             return this;
         }
 
-        public Builder name(String name) {
+        public Builder filter(@Nullable GetAiSearchNamespaceFilter filter) {
+            $.filter = filter;
+            return this;
+        }
+
+        public Builder name(@Nullable String name) {
             $.name = name;
             return this;
         }
@@ -65,9 +81,6 @@ public final class GetAiSearchNamespacePlainArgs extends com.pulumi.resources.In
         public GetAiSearchNamespacePlainArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetAiSearchNamespacePlainArgs", "accountId");
-            }
-            if ($.name == null) {
-                throw new MissingRequiredPropertyException("GetAiSearchNamespacePlainArgs", "name");
             }
             return $;
         }

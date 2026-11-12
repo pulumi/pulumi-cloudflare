@@ -13,6 +13,7 @@ export function getAiSearchInstance(args?: GetAiSearchInstanceArgs, opts?: pulum
         "accountId": args.accountId,
         "filter": args.filter,
         "id": args.id,
+        "namespace": args.namespace,
     }, opts);
 }
 
@@ -26,6 +27,7 @@ export interface GetAiSearchInstanceArgs {
      * The ID of this resource.
      */
     id?: string;
+    namespace?: string;
 }
 
 /**
@@ -72,7 +74,7 @@ export interface GetAiSearchInstanceResult {
      */
     readonly id: string;
     /**
-     * Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
+     * Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances. When set, both vector and keyword are required.
      */
     readonly indexMethod: outputs.GetAiSearchInstanceIndexMethod;
     readonly indexingOptions: outputs.GetAiSearchInstanceIndexingOptions;
@@ -93,12 +95,15 @@ export interface GetAiSearchInstanceResult {
      */
     readonly rewriteModel: string;
     readonly rewriteQuery: boolean;
+    /**
+     * Minimum similarity score a chunk must reach to be returned. Defaults to 0.4.
+     */
     readonly scoreThreshold: number;
     readonly source: string;
     readonly sourceParams: outputs.GetAiSearchInstanceSourceParams;
     readonly status: string;
     /**
-     * Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+     * Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). Defaults to 86400 (24h).
      * Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
      */
     readonly syncInterval: number;
@@ -116,6 +121,7 @@ export function getAiSearchInstanceOutput(args?: GetAiSearchInstanceOutputArgs, 
         "accountId": args.accountId,
         "filter": args.filter,
         "id": args.id,
+        "namespace": args.namespace,
     }, opts);
 }
 
@@ -129,4 +135,5 @@ export interface GetAiSearchInstanceOutputArgs {
      * The ID of this resource.
      */
     id?: pulumi.Input<string | undefined>;
+    namespace?: pulumi.Input<string | undefined>;
 }

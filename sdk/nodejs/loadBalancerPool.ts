@@ -33,8 +33,16 @@ import * as utilities from "./utilities";
  *         virtualNetworkId: "a5624d4e-044a-4ff0-b3e1-e2465353d4b4",
  *         weight: 0.6,
  *     }],
+ *     checkRegions: [
+ *         "WEU",
+ *         "ENAM",
+ *     ],
  *     description: "Primary data center - Provider XYZ",
  *     enabled: false,
+ *     healthSources: [
+ *         "regional",
+ *         "global",
+ *     ],
  *     latitude: 0,
  *     loadShedding: {
  *         defaultPercent: 0,
@@ -46,6 +54,10 @@ import * as utilities from "./utilities";
  *     minimumOrigins: 0,
  *     monitor: "monitor",
  *     monitorGroup: "monitor_group",
+ *     networks: [
+ *         "cloudflare",
+ *         "jdcloud",
+ *     ],
  *     notificationEmail: "someone@example.com,sometwo@example.com",
  *     notificationFilter: {
  *         origin: {

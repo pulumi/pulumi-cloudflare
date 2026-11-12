@@ -16,7 +16,7 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustDlpPredefinedProfileEntry {
     /**
-     * @return Only applies to custom word lists.
+     * @return For `type: exactData`: Only applies to custom word lists.
      * Determines if the words should be matched in a case-sensitive manner
      * Cannot be set to false if secret is true
      * 
@@ -25,26 +25,47 @@ public final class GetZeroTrustDlpPredefinedProfileEntry {
     private GetZeroTrustDlpPredefinedProfileEntryConfidence confidence;
     private String createdAt;
     /**
-     * @return Whether this entry is deprecated for new use. This is computed from the static catalog and
+     * @return For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
      * emitted only when true.
      * 
      */
     private Boolean deprecated;
+    /**
+     * @return For `type: customPromptTopic`: The optional description of the custom prompt topic entry.
+     * 
+     */
     private String description;
     private Boolean enabled;
+    /**
+     * @return The ID of this resource.
+     * 
+     */
     private String id;
+    /**
+     * @return The name of the predefined profile.
+     * 
+     */
     private String name;
     private GetZeroTrustDlpPredefinedProfileEntryPattern pattern;
     private String profileId;
     private Boolean secret;
     /**
-     * @return Available values: &#34;custom&#34;, &#34;custom*prompt*topic&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;, &#34;wordList&#34;.
+     * @return Available values: &#34;custom&#34;, &#34;customPromptTopic&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exactData&#34;, &#34;documentFingerprint&#34;, &#34;wordList&#34;.
      * 
      */
     private String type;
     private String updatedAt;
     /**
-     * @return A Predefined AI prompt classification topic entry.
+     * @return For `type: custom`: Validators this entry references, by id, at most 10. An empty list means the entry
+     * references none.
+     * 
+     * Returned by the entry endpoints. Not returned on entries embedded in other responses, such
+     * as profiles.
+     * 
+     */
+    private List<String> validatorIds;
+    /**
+     * @return For `type: predefined`: A Predefined AI prompt classification topic entry.
      * 
      */
     private GetZeroTrustDlpPredefinedProfileEntryVariant variant;
@@ -52,7 +73,7 @@ public final class GetZeroTrustDlpPredefinedProfileEntry {
 
     private GetZeroTrustDlpPredefinedProfileEntry() {}
     /**
-     * @return Only applies to custom word lists.
+     * @return For `type: exactData`: Only applies to custom word lists.
      * Determines if the words should be matched in a case-sensitive manner
      * Cannot be set to false if secret is true
      * 
@@ -67,22 +88,34 @@ public final class GetZeroTrustDlpPredefinedProfileEntry {
         return this.createdAt;
     }
     /**
-     * @return Whether this entry is deprecated for new use. This is computed from the static catalog and
+     * @return For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
      * emitted only when true.
      * 
      */
     public Boolean deprecated() {
         return this.deprecated;
     }
+    /**
+     * @return For `type: customPromptTopic`: The optional description of the custom prompt topic entry.
+     * 
+     */
     public String description() {
         return this.description;
     }
     public Boolean enabled() {
         return this.enabled;
     }
+    /**
+     * @return The ID of this resource.
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return The name of the predefined profile.
+     * 
+     */
     public String name() {
         return this.name;
     }
@@ -96,7 +129,7 @@ public final class GetZeroTrustDlpPredefinedProfileEntry {
         return this.secret;
     }
     /**
-     * @return Available values: &#34;custom&#34;, &#34;custom*prompt*topic&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;, &#34;wordList&#34;.
+     * @return Available values: &#34;custom&#34;, &#34;customPromptTopic&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exactData&#34;, &#34;documentFingerprint&#34;, &#34;wordList&#34;.
      * 
      */
     public String type() {
@@ -106,7 +139,18 @@ public final class GetZeroTrustDlpPredefinedProfileEntry {
         return this.updatedAt;
     }
     /**
-     * @return A Predefined AI prompt classification topic entry.
+     * @return For `type: custom`: Validators this entry references, by id, at most 10. An empty list means the entry
+     * references none.
+     * 
+     * Returned by the entry endpoints. Not returned on entries embedded in other responses, such
+     * as profiles.
+     * 
+     */
+    public List<String> validatorIds() {
+        return this.validatorIds;
+    }
+    /**
+     * @return For `type: predefined`: A Predefined AI prompt classification topic entry.
      * 
      */
     public GetZeroTrustDlpPredefinedProfileEntryVariant variant() {
@@ -138,6 +182,7 @@ public final class GetZeroTrustDlpPredefinedProfileEntry {
         private Boolean secret;
         private String type;
         private String updatedAt;
+        private List<String> validatorIds;
         private GetZeroTrustDlpPredefinedProfileEntryVariant variant;
         private List<String> wordLists;
         public Builder() {}
@@ -156,6 +201,7 @@ public final class GetZeroTrustDlpPredefinedProfileEntry {
     	      this.secret = defaults.secret;
     	      this.type = defaults.type;
     	      this.updatedAt = defaults.updatedAt;
+    	      this.validatorIds = defaults.validatorIds;
     	      this.variant = defaults.variant;
     	      this.wordLists = defaults.wordLists;
         }
@@ -265,6 +311,17 @@ public final class GetZeroTrustDlpPredefinedProfileEntry {
             return this;
         }
         @CustomType.Setter
+        public Builder validatorIds(List<String> validatorIds) {
+            if (validatorIds == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDlpPredefinedProfileEntry", "validatorIds");
+            }
+            this.validatorIds = validatorIds;
+            return this;
+        }
+        public Builder validatorIds(String... validatorIds) {
+            return validatorIds(List.of(validatorIds));
+        }
+        @CustomType.Setter
         public Builder variant(GetZeroTrustDlpPredefinedProfileEntryVariant variant) {
             if (variant == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustDlpPredefinedProfileEntry", "variant");
@@ -298,6 +355,7 @@ public final class GetZeroTrustDlpPredefinedProfileEntry {
             _resultValue.secret = secret;
             _resultValue.type = type;
             _resultValue.updatedAt = updatedAt;
+            _resultValue.validatorIds = validatorIds;
             _resultValue.variant = variant;
             _resultValue.wordLists = wordLists;
             return _resultValue;

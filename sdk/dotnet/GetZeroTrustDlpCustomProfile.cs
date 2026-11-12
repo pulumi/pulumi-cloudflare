@@ -132,7 +132,7 @@ namespace Pulumi.Cloudflare
         public readonly string? AccountId;
         public readonly bool AiContextEnabled;
         /// <summary>
-        /// Related DLP policies will trigger when the match count exceeds the number set.
+        /// For `type: custom`: Related DLP policies will trigger when the match count exceeds the number set.
         /// </summary>
         public readonly int AllowedMatchCount;
         /// <summary>
@@ -140,23 +140,23 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string ConfidenceThreshold;
         /// <summary>
-        /// Scan the context of predefined entries to only return matches surrounded by keywords.
+        /// For `type: custom`: Scan the context of predefined entries to only return matches surrounded by keywords.
         /// </summary>
         public readonly Outputs.GetZeroTrustDlpCustomProfileContextAwarenessResult ContextAwareness;
         /// <summary>
-        /// When the profile was created.
+        /// For `type: custom`: When the profile was created.
         /// </summary>
         public readonly string CreatedAt;
         /// <summary>
-        /// Data classes associated with this profile.
+        /// For `type: custom`: Data classes associated with this profile.
         /// </summary>
         public readonly ImmutableArray<string> DataClasses;
         /// <summary>
-        /// Data tags associated with this profile.
+        /// For `type: custom`: Data tags associated with this profile.
         /// </summary>
         public readonly ImmutableArray<string> DataTags;
         /// <summary>
-        /// The description of the profile.
+        /// For `type: custom` or `type: integration`: The description of the profile.
         /// </summary>
         public readonly string Description;
         public readonly ImmutableArray<Outputs.GetZeroTrustDlpCustomProfileEntryResult> Entries;
@@ -166,27 +166,15 @@ namespace Pulumi.Cloudflare
         public readonly string Id;
         public readonly string IntegrationId;
         /// <summary>
-        /// The name of the profile.
+        /// For `type: custom`: The name of the profile.
         /// </summary>
         public readonly string Name;
         public readonly bool OcrEnabled;
-        /// <summary>
-        /// Whether this profile can be accessed by anyone.
-        /// </summary>
         public readonly bool OpenAccess;
         public readonly string ProfileId;
-        /// <summary>
-        /// Sensitivity levels associated with this profile.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetZeroTrustDlpCustomProfileSensitivityLevelResult> SensitivityLevels;
         public readonly ImmutableArray<Outputs.GetZeroTrustDlpCustomProfileSharedEntryResult> SharedEntries;
-        /// <summary>
-        /// Available values: "custom", "predefined", "integration".
-        /// </summary>
         public readonly string Type;
-        /// <summary>
-        /// When the profile was lasted updated.
-        /// </summary>
         public readonly string UpdatedAt;
 
         [OutputConstructor]

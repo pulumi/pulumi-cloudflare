@@ -143,7 +143,7 @@ export class AccessApplication extends pulumi.CustomResource {
      */
     declare public readonly logoUrl: pulumi.Output<string | undefined>;
     /**
-     * Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+     * Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, rdp, and infrastructure application types. For infrastructure applications, supported authenticators are `pivKey` and `sshFido2Key`; for other application types use `totp`, `biometrics`, or `securityKey`.
      */
     declare public readonly mfaConfig: pulumi.Output<outputs.AccessApplicationMfaConfig | undefined>;
     /**
@@ -423,7 +423,7 @@ export interface AccessApplicationState {
      */
     logoUrl?: pulumi.Input<string | undefined>;
     /**
-     * Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+     * Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, rdp, and infrastructure application types. For infrastructure applications, supported authenticators are `pivKey` and `sshFido2Key`; for other application types use `totp`, `biometrics`, or `securityKey`.
      */
     mfaConfig?: pulumi.Input<inputs.AccessApplicationMfaConfig | undefined>;
     /**
@@ -592,7 +592,7 @@ export interface AccessApplicationArgs {
      */
     logoUrl?: pulumi.Input<string | undefined>;
     /**
-     * Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+     * Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, rdp, and infrastructure application types. For infrastructure applications, supported authenticators are `pivKey` and `sshFido2Key`; for other application types use `totp`, `biometrics`, or `securityKey`.
      */
     mfaConfig?: pulumi.Input<inputs.AccessApplicationMfaConfig | undefined>;
     /**

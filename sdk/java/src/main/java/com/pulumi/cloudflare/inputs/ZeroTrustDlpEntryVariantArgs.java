@@ -16,14 +16,14 @@ public final class ZeroTrustDlpEntryVariantArgs extends com.pulumi.resources.Res
     public static final ZeroTrustDlpEntryVariantArgs Empty = new ZeroTrustDlpEntryVariantArgs();
 
     /**
-     * A customer-facing explanation of what this predefined AI prompt topic represents.
+     * For `type: PromptTopic`: A customer-facing explanation of what this predefined AI prompt topic represents.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return A customer-facing explanation of what this predefined AI prompt topic represents.
+     * @return For `type: PromptTopic`: A customer-facing explanation of what this predefined AI prompt topic represents.
      * 
      */
     public Optional<Output<String>> description() {
@@ -46,14 +46,14 @@ public final class ZeroTrustDlpEntryVariantArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Available values: &#34;PromptTopic&#34;, &#34;General&#34;.
+     * Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Available values: &#34;PromptTopic&#34;, &#34;General&#34;.
+     * @return Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -87,7 +87,7 @@ public final class ZeroTrustDlpEntryVariantArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param description A customer-facing explanation of what this predefined AI prompt topic represents.
+         * @param description For `type: PromptTopic`: A customer-facing explanation of what this predefined AI prompt topic represents.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class ZeroTrustDlpEntryVariantArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param description A customer-facing explanation of what this predefined AI prompt topic represents.
+         * @param description For `type: PromptTopic`: A customer-facing explanation of what this predefined AI prompt topic represents.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class ZeroTrustDlpEntryVariantArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param type Available values: &#34;PromptTopic&#34;, &#34;General&#34;.
+         * @param type Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class ZeroTrustDlpEntryVariantArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param type Available values: &#34;PromptTopic&#34;, &#34;General&#34;.
+         * @param type Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;.
          * 
          * @return builder
          * 

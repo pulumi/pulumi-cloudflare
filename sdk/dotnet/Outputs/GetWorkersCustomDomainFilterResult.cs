@@ -14,6 +14,10 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetWorkersCustomDomainFilterResult
     {
         /// <summary>
+        /// Whether the configured hostname is routable for the domain.
+        /// </summary>
+        public readonly bool? Enabled;
+        /// <summary>
         /// Worker environment associated with the domain.
         /// </summary>
         public readonly string? Environment;
@@ -21,6 +25,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// Hostname of the domain.
         /// </summary>
         public readonly string? Hostname;
+        /// <summary>
+        /// Whether previews are routable for the domain.
+        /// </summary>
+        public readonly bool? PreviewsEnabled;
         /// <summary>
         /// Name of the Worker associated with the domain.
         /// </summary>
@@ -36,9 +44,13 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private GetWorkersCustomDomainFilterResult(
+            bool? enabled,
+
             string? environment,
 
             string? hostname,
+
+            bool? previewsEnabled,
 
             string? service,
 
@@ -46,8 +58,10 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? zoneName)
         {
+            Enabled = enabled;
             Environment = environment;
             Hostname = hostname;
+            PreviewsEnabled = previewsEnabled;
             Service = service;
             ZoneId = zoneId;
             ZoneName = zoneName;

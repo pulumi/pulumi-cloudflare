@@ -21,6 +21,8 @@ public final class GetPipelineSinkConfig {
     /**
      * @return R2 Bucket to write to
      * 
+     * The R2 Bucket that hosts this catalog
+     * 
      */
     private String bucket;
     /**
@@ -69,6 +71,8 @@ public final class GetPipelineSinkConfig {
     }
     /**
      * @return R2 Bucket to write to
+     * 
+     * The R2 Bucket that hosts this catalog
      * 
      */
     public String bucket() {

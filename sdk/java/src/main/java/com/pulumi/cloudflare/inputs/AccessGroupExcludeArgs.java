@@ -28,6 +28,7 @@ import com.pulumi.cloudflare.inputs.AccessGroupExcludeOidcArgs;
 import com.pulumi.cloudflare.inputs.AccessGroupExcludeOktaArgs;
 import com.pulumi.cloudflare.inputs.AccessGroupExcludeSamlArgs;
 import com.pulumi.cloudflare.inputs.AccessGroupExcludeServiceTokenArgs;
+import com.pulumi.cloudflare.inputs.AccessGroupExcludeServiceTokenTagArgs;
 import com.pulumi.cloudflare.inputs.AccessGroupExcludeUserRiskScoreArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -231,6 +232,13 @@ public final class AccessGroupExcludeArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.serviceToken);
     }
 
+    @Import(name="serviceTokenTag")
+    private @Nullable Output<AccessGroupExcludeServiceTokenTagArgs> serviceTokenTag;
+
+    public Optional<Output<AccessGroupExcludeServiceTokenTagArgs>> serviceTokenTag() {
+        return Optional.ofNullable(this.serviceTokenTag);
+    }
+
     @Import(name="userRiskScore")
     private @Nullable Output<AccessGroupExcludeUserRiskScoreArgs> userRiskScore;
 
@@ -266,6 +274,7 @@ public final class AccessGroupExcludeArgs extends com.pulumi.resources.ResourceA
         this.okta = $.okta;
         this.saml = $.saml;
         this.serviceToken = $.serviceToken;
+        this.serviceTokenTag = $.serviceTokenTag;
         this.userRiskScore = $.userRiskScore;
     }
 
@@ -534,6 +543,15 @@ public final class AccessGroupExcludeArgs extends com.pulumi.resources.ResourceA
 
         public Builder serviceToken(AccessGroupExcludeServiceTokenArgs serviceToken) {
             return serviceToken(Output.of(serviceToken));
+        }
+
+        public Builder serviceTokenTag(@Nullable Output<AccessGroupExcludeServiceTokenTagArgs> serviceTokenTag) {
+            $.serviceTokenTag = serviceTokenTag;
+            return this;
+        }
+
+        public Builder serviceTokenTag(AccessGroupExcludeServiceTokenTagArgs serviceTokenTag) {
+            return serviceTokenTag(Output.of(serviceTokenTag));
         }
 
         public Builder userRiskScore(@Nullable Output<AccessGroupExcludeUserRiskScoreArgs> userRiskScore) {

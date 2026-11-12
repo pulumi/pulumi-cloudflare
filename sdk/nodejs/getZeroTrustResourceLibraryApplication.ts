@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Resource Library Read`
+ * - `Resource Library Write`
+ * - `Zero Trust Read`
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -120,6 +127,13 @@ export interface GetZeroTrustResourceLibraryApplicationResult {
     readonly version: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Resource Library Read`
+ * - `Resource Library Write`
+ * - `Zero Trust Read`
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript

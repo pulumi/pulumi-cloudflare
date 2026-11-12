@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.cloudflare.outputs.GetWorkersCustomDomainsResult;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -19,7 +20,12 @@ public final class GetWorkersCustomDomainsInvokeResult {
      * @return Identifier.
      * 
      */
-    private @Nullable String accountId;
+    private String accountId;
+    /**
+     * @return Whether the configured hostname is routable for the domain.
+     * 
+     */
+    private @Nullable Boolean enabled;
     /**
      * @return Worker environment associated with the domain.
      * 
@@ -35,6 +41,11 @@ public final class GetWorkersCustomDomainsInvokeResult {
      * 
      */
     private @Nullable Integer maxItems;
+    /**
+     * @return Whether previews are routable for the domain.
+     * 
+     */
+    private @Nullable Boolean previewsEnabled;
     /**
      * @return The items returned by the data source
      * 
@@ -61,8 +72,15 @@ public final class GetWorkersCustomDomainsInvokeResult {
      * @return Identifier.
      * 
      */
-    public Optional<String> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public String accountId() {
+        return this.accountId;
+    }
+    /**
+     * @return Whether the configured hostname is routable for the domain.
+     * 
+     */
+    public Optional<Boolean> enabled() {
+        return Optional.ofNullable(this.enabled);
     }
     /**
      * @return Worker environment associated with the domain.
@@ -84,6 +102,13 @@ public final class GetWorkersCustomDomainsInvokeResult {
      */
     public Optional<Integer> maxItems() {
         return Optional.ofNullable(this.maxItems);
+    }
+    /**
+     * @return Whether previews are routable for the domain.
+     * 
+     */
+    public Optional<Boolean> previewsEnabled() {
+        return Optional.ofNullable(this.previewsEnabled);
     }
     /**
      * @return The items returned by the data source
@@ -123,10 +148,12 @@ public final class GetWorkersCustomDomainsInvokeResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String accountId;
+        private String accountId;
+        private @Nullable Boolean enabled;
         private @Nullable String environment;
         private @Nullable String hostname;
         private @Nullable Integer maxItems;
+        private @Nullable Boolean previewsEnabled;
         private List<GetWorkersCustomDomainsResult> results;
         private @Nullable String service;
         private @Nullable String zoneId;
@@ -135,9 +162,11 @@ public final class GetWorkersCustomDomainsInvokeResult {
         public Builder(GetWorkersCustomDomainsInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
+    	      this.enabled = defaults.enabled;
     	      this.environment = defaults.environment;
     	      this.hostname = defaults.hostname;
     	      this.maxItems = defaults.maxItems;
+    	      this.previewsEnabled = defaults.previewsEnabled;
     	      this.results = defaults.results;
     	      this.service = defaults.service;
     	      this.zoneId = defaults.zoneId;
@@ -145,9 +174,17 @@ public final class GetWorkersCustomDomainsInvokeResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(@Nullable String accountId) {
-
+        public Builder accountId(String accountId) {
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetWorkersCustomDomainsInvokeResult", "accountId");
+            }
             this.accountId = accountId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enabled(@Nullable Boolean enabled) {
+
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
@@ -166,6 +203,12 @@ public final class GetWorkersCustomDomainsInvokeResult {
         public Builder maxItems(@Nullable Integer maxItems) {
 
             this.maxItems = maxItems;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder previewsEnabled(@Nullable Boolean previewsEnabled) {
+
+            this.previewsEnabled = previewsEnabled;
             return this;
         }
         @CustomType.Setter
@@ -200,9 +243,11 @@ public final class GetWorkersCustomDomainsInvokeResult {
         public GetWorkersCustomDomainsInvokeResult build() {
             final var _resultValue = new GetWorkersCustomDomainsInvokeResult();
             _resultValue.accountId = accountId;
+            _resultValue.enabled = enabled;
             _resultValue.environment = environment;
             _resultValue.hostname = hostname;
             _resultValue.maxItems = maxItems;
+            _resultValue.previewsEnabled = previewsEnabled;
             _resultValue.results = results;
             _resultValue.service = service;
             _resultValue.zoneId = zoneId;

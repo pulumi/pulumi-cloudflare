@@ -38,6 +38,12 @@ public final class GetSharesInvokeResult {
      */
     private @Nullable Boolean includeResources;
     /**
+     * @return Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+     * Available values: &#34;api&#34;, &#34;mirror&#34;.
+     * 
+     */
+    private @Nullable String includeTagsFrom;
+    /**
      * @return Filter shares by kind.
      * Available values: &#34;sent&#34;, &#34;received&#34;.
      * 
@@ -113,6 +119,14 @@ public final class GetSharesInvokeResult {
         return Optional.ofNullable(this.includeResources);
     }
     /**
+     * @return Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+     * Available values: &#34;api&#34;, &#34;mirror&#34;.
+     * 
+     */
+    public Optional<String> includeTagsFrom() {
+        return Optional.ofNullable(this.includeTagsFrom);
+    }
+    /**
      * @return Filter shares by kind.
      * Available values: &#34;sent&#34;, &#34;received&#34;.
      * 
@@ -186,6 +200,7 @@ public final class GetSharesInvokeResult {
         private String direction;
         private @Nullable Boolean includeRecipientCounts;
         private @Nullable Boolean includeResources;
+        private @Nullable String includeTagsFrom;
         private @Nullable String kind;
         private @Nullable Integer maxItems;
         private String order;
@@ -201,6 +216,7 @@ public final class GetSharesInvokeResult {
     	      this.direction = defaults.direction;
     	      this.includeRecipientCounts = defaults.includeRecipientCounts;
     	      this.includeResources = defaults.includeResources;
+    	      this.includeTagsFrom = defaults.includeTagsFrom;
     	      this.kind = defaults.kind;
     	      this.maxItems = defaults.maxItems;
     	      this.order = defaults.order;
@@ -237,6 +253,12 @@ public final class GetSharesInvokeResult {
         public Builder includeResources(@Nullable Boolean includeResources) {
 
             this.includeResources = includeResources;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder includeTagsFrom(@Nullable String includeTagsFrom) {
+
+            this.includeTagsFrom = includeTagsFrom;
             return this;
         }
         @CustomType.Setter
@@ -306,6 +328,7 @@ public final class GetSharesInvokeResult {
             _resultValue.direction = direction;
             _resultValue.includeRecipientCounts = includeRecipientCounts;
             _resultValue.includeResources = includeResources;
+            _resultValue.includeTagsFrom = includeTagsFrom;
             _resultValue.kind = kind;
             _resultValue.maxItems = maxItems;
             _resultValue.order = order;

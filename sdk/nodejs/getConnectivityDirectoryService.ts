@@ -63,6 +63,9 @@ export interface GetConnectivityDirectoryServiceResult {
      * TLS settings for a connectivity service.
      */
     readonly tlsSettings: outputs.GetConnectivityDirectoryServiceTlsSettings;
+    /**
+     * Available values: "tcp", "http".
+     */
     readonly type: string;
     readonly updatedAt: string;
 }

@@ -46,9 +46,17 @@ public final class AiGatewayArgs extends com.pulumi.resources.ResourceArgs {
         return this.aiGatewayId;
     }
 
+    /**
+     * Require authentication for gateway access. New gateways must have authentication enabled. Once enabled, authentication cannot be disabled.
+     * 
+     */
     @Import(name="authentication")
     private @Nullable Output<Boolean> authentication;
 
+    /**
+     * @return Require authentication for gateway access. New gateways must have authentication enabled. Once enabled, authentication cannot be disabled.
+     * 
+     */
     public Optional<Output<Boolean>> authentication() {
         return Optional.ofNullable(this.authentication);
     }
@@ -236,9 +244,17 @@ public final class AiGatewayArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.spendLimits);
     }
 
+    /**
+     * Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it.
+     * 
+     */
     @Import(name="storeId")
     private @Nullable Output<String> storeId;
 
+    /**
+     * @return Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it.
+     * 
+     */
     public Optional<Output<String>> storeId() {
         return Optional.ofNullable(this.storeId);
     }
@@ -353,11 +369,23 @@ public final class AiGatewayArgs extends com.pulumi.resources.ResourceArgs {
             return aiGatewayId(Output.of(aiGatewayId));
         }
 
+        /**
+         * @param authentication Require authentication for gateway access. New gateways must have authentication enabled. Once enabled, authentication cannot be disabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder authentication(@Nullable Output<Boolean> authentication) {
             $.authentication = authentication;
             return this;
         }
 
+        /**
+         * @param authentication Require authentication for gateway access. New gateways must have authentication enabled. Once enabled, authentication cannot be disabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder authentication(Boolean authentication) {
             return authentication(Output.of(authentication));
         }
@@ -611,11 +639,23 @@ public final class AiGatewayArgs extends com.pulumi.resources.ResourceArgs {
             return spendLimits(Output.of(spendLimits));
         }
 
+        /**
+         * @param storeId Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it.
+         * 
+         * @return builder
+         * 
+         */
         public Builder storeId(@Nullable Output<String> storeId) {
             $.storeId = storeId;
             return this;
         }
 
+        /**
+         * @param storeId Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it.
+         * 
+         * @return builder
+         * 
+         */
         public Builder storeId(String storeId) {
             return storeId(Output.of(storeId));
         }

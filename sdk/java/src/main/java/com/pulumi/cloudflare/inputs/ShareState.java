@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.ShareExcludedRecipientArgs;
 import com.pulumi.cloudflare.inputs.ShareRecipientArgs;
 import com.pulumi.cloudflare.inputs.ShareResourceArgs;
 import com.pulumi.core.Output;
@@ -11,6 +12,7 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -81,14 +83,14 @@ public final class ShareState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When the share was created.
+     * When the object was created.
      * 
      */
     @Import(name="created")
     private @Nullable Output<String> created;
 
     /**
-     * @return When the share was created.
+     * @return When the object was created.
      * 
      */
     public Optional<Output<String>> created() {
@@ -126,6 +128,21 @@ public final class ShareState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Accounts to exclude from an organization-targeted share. Only allowed when `recipients` contains no account entries. The share owner cannot be excluded. Duplicate entries are ignored.
+     * 
+     */
+    @Import(name="excludedRecipients")
+    private @Nullable Output<List<ShareExcludedRecipientArgs>> excludedRecipients;
+
+    /**
+     * @return Accounts to exclude from an organization-targeted share. Only allowed when `recipients` contains no account entries. The share owner cannot be excluded. Duplicate entries are ignored.
+     * 
+     */
+    public Optional<Output<List<ShareExcludedRecipientArgs>>> excludedRecipients() {
+        return Optional.ofNullable(this.excludedRecipients);
+    }
+
+    /**
      * Include recipient counts in the response.
      * 
      */
@@ -156,6 +173,23 @@ public final class ShareState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+     * Available values: &#34;api&#34;, &#34;mirror&#34;.
+     * 
+     */
+    @Import(name="includeTagsFrom")
+    private @Nullable Output<String> includeTagsFrom;
+
+    /**
+     * @return Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+     * Available values: &#34;api&#34;, &#34;mirror&#34;.
+     * 
+     */
+    public Optional<Output<String>> includeTagsFrom() {
+        return Optional.ofNullable(this.includeTagsFrom);
+    }
+
+    /**
      * Available values: &#34;sent&#34;, &#34;received&#34;.
      * 
      */
@@ -171,14 +205,14 @@ public final class ShareState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When the share was modified.
+     * When the object was last modified.
      * 
      */
     @Import(name="modified")
     private @Nullable Output<String> modified;
 
     /**
-     * @return When the share was modified.
+     * @return When the object was last modified.
      * 
      */
     public Optional<Output<String>> modified() {
@@ -245,6 +279,21 @@ public final class ShareState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Tags associated with the share.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return Tags associated with the share.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
      * Available values: &#34;account&#34;, &#34;organization&#34;.
      * 
      */
@@ -269,8 +318,10 @@ public final class ShareState extends com.pulumi.resources.ResourceArgs {
         this.created = $.created;
         this.disassociatedRecipientCount = $.disassociatedRecipientCount;
         this.disassociatingRecipientCount = $.disassociatingRecipientCount;
+        this.excludedRecipients = $.excludedRecipients;
         this.includeRecipientCounts = $.includeRecipientCounts;
         this.includeResources = $.includeResources;
+        this.includeTagsFrom = $.includeTagsFrom;
         this.kind = $.kind;
         this.modified = $.modified;
         this.name = $.name;
@@ -278,6 +329,7 @@ public final class ShareState extends com.pulumi.resources.ResourceArgs {
         this.recipients = $.recipients;
         this.resources = $.resources;
         this.status = $.status;
+        this.tags = $.tags;
         this.targetType = $.targetType;
     }
 
@@ -384,7 +436,7 @@ public final class ShareState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param created When the share was created.
+         * @param created When the object was created.
          * 
          * @return builder
          * 
@@ -395,7 +447,7 @@ public final class ShareState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param created When the share was created.
+         * @param created When the object was created.
          * 
          * @return builder
          * 
@@ -447,6 +499,37 @@ public final class ShareState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param excludedRecipients Accounts to exclude from an organization-targeted share. Only allowed when `recipients` contains no account entries. The share owner cannot be excluded. Duplicate entries are ignored.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludedRecipients(@Nullable Output<List<ShareExcludedRecipientArgs>> excludedRecipients) {
+            $.excludedRecipients = excludedRecipients;
+            return this;
+        }
+
+        /**
+         * @param excludedRecipients Accounts to exclude from an organization-targeted share. Only allowed when `recipients` contains no account entries. The share owner cannot be excluded. Duplicate entries are ignored.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludedRecipients(List<ShareExcludedRecipientArgs> excludedRecipients) {
+            return excludedRecipients(Output.of(excludedRecipients));
+        }
+
+        /**
+         * @param excludedRecipients Accounts to exclude from an organization-targeted share. Only allowed when `recipients` contains no account entries. The share owner cannot be excluded. Duplicate entries are ignored.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludedRecipients(ShareExcludedRecipientArgs... excludedRecipients) {
+            return excludedRecipients(List.of(excludedRecipients));
+        }
+
+        /**
          * @param includeRecipientCounts Include recipient counts in the response.
          * 
          * @return builder
@@ -489,6 +572,29 @@ public final class ShareState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param includeTagsFrom Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+         * Available values: &#34;api&#34;, &#34;mirror&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeTagsFrom(@Nullable Output<String> includeTagsFrom) {
+            $.includeTagsFrom = includeTagsFrom;
+            return this;
+        }
+
+        /**
+         * @param includeTagsFrom Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+         * Available values: &#34;api&#34;, &#34;mirror&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeTagsFrom(String includeTagsFrom) {
+            return includeTagsFrom(Output.of(includeTagsFrom));
+        }
+
+        /**
          * @param kind Available values: &#34;sent&#34;, &#34;received&#34;.
          * 
          * @return builder
@@ -510,7 +616,7 @@ public final class ShareState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param modified When the share was modified.
+         * @param modified When the object was last modified.
          * 
          * @return builder
          * 
@@ -521,7 +627,7 @@ public final class ShareState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param modified When the share was modified.
+         * @param modified When the object was last modified.
          * 
          * @return builder
          * 
@@ -617,6 +723,27 @@ public final class ShareState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param tags Tags associated with the share.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags Tags associated with the share.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
         }
 
         /**

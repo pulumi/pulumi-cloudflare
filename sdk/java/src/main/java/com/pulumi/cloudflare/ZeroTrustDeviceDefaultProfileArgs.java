@@ -138,6 +138,21 @@ public final class ZeroTrustDeviceDefaultProfileArgs extends com.pulumi.resource
     }
 
     /**
+     * Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.
+     * 
+     */
+    @Import(name="enableDeviceCredentialAuthentication")
+    private @Nullable Output<Boolean> enableDeviceCredentialAuthentication;
+
+    /**
+     * @return Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.
+     * 
+     */
+    public Optional<Output<Boolean>> enableDeviceCredentialAuthentication() {
+        return Optional.ofNullable(this.enableDeviceCredentialAuthentication);
+    }
+
+    /**
      * Whether to add Microsoft IPs to Split Tunnel exclusions.
      * 
      */
@@ -350,6 +365,7 @@ public final class ZeroTrustDeviceDefaultProfileArgs extends com.pulumi.resource
         this.captivePortal = $.captivePortal;
         this.disableAutoFallback = $.disableAutoFallback;
         this.dnsSearchSuffixes = $.dnsSearchSuffixes;
+        this.enableDeviceCredentialAuthentication = $.enableDeviceCredentialAuthentication;
         this.excludeOfficeIps = $.excludeOfficeIps;
         this.excludes = $.excludes;
         this.globalAcceleration = $.globalAcceleration;
@@ -548,6 +564,27 @@ public final class ZeroTrustDeviceDefaultProfileArgs extends com.pulumi.resource
          */
         public Builder dnsSearchSuffixes(ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs... dnsSearchSuffixes) {
             return dnsSearchSuffixes(List.of(dnsSearchSuffixes));
+        }
+
+        /**
+         * @param enableDeviceCredentialAuthentication Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableDeviceCredentialAuthentication(@Nullable Output<Boolean> enableDeviceCredentialAuthentication) {
+            $.enableDeviceCredentialAuthentication = enableDeviceCredentialAuthentication;
+            return this;
+        }
+
+        /**
+         * @param enableDeviceCredentialAuthentication Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableDeviceCredentialAuthentication(Boolean enableDeviceCredentialAuthentication) {
+            return enableDeviceCredentialAuthentication(Output.of(enableDeviceCredentialAuthentication));
         }
 
         /**

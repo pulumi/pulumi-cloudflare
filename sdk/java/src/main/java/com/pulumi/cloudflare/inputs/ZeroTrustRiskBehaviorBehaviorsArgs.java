@@ -23,14 +23,14 @@ public final class ZeroTrustRiskBehaviorBehaviorsArgs extends com.pulumi.resourc
     }
 
     /**
-     * Available values: &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;.
+     * Available values: &#34;info&#34;, &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;.
      * 
      */
     @Import(name="riskLevel", required=true)
     private Output<String> riskLevel;
 
     /**
-     * @return Available values: &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;.
+     * @return Available values: &#34;info&#34;, &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;.
      * 
      */
     public Output<String> riskLevel() {
@@ -72,7 +72,7 @@ public final class ZeroTrustRiskBehaviorBehaviorsArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param riskLevel Available values: &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;.
+         * @param riskLevel Available values: &#34;info&#34;, &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ZeroTrustRiskBehaviorBehaviorsArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param riskLevel Available values: &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;.
+         * @param riskLevel Available values: &#34;info&#34;, &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;.
          * 
          * @return builder
          * 

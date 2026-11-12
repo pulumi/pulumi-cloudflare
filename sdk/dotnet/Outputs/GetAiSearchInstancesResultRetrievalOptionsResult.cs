@@ -13,12 +13,8 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetAiSearchInstancesResultRetrievalOptionsResult
     {
-        /// <summary>
-        /// Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric/datetime fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom*metadata field.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetAiSearchInstancesResultRetrievalOptionsBoostByResult> BoostBies;
         /// <summary>
-        /// Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.
         /// Available values: "and", "or".
         /// </summary>
         public readonly string KeywordMatchMode;

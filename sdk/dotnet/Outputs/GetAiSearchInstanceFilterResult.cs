@@ -14,13 +14,9 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetAiSearchInstanceFilterResult
     {
         /// <summary>
-        /// Filter by exact Search for Agents hostname (case-insensitive).
+        /// Return only instances with this exact Search for Agents hostname (case-insensitive).
         /// </summary>
         public readonly string? Hostname;
-        /// <summary>
-        /// Filter by namespace.
-        /// </summary>
-        public readonly string? Namespace;
         /// <summary>
         /// Field to order results by.
         /// Available values: "CreatedAt".
@@ -40,8 +36,6 @@ namespace Pulumi.Cloudflare.Outputs
         private GetAiSearchInstanceFilterResult(
             string? hostname,
 
-            string? @namespace,
-
             string orderBy,
 
             string orderByDirection,
@@ -49,7 +43,6 @@ namespace Pulumi.Cloudflare.Outputs
             string? search)
         {
             Hostname = hostname;
-            Namespace = @namespace;
             OrderBy = orderBy;
             OrderByDirection = orderByDirection;
             Search = search;

@@ -82,6 +82,8 @@ type LookupFlagshipFlagResult struct {
 	Id string `pulumi:"id"`
 	// Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
 	Key string `pulumi:"key"`
+	// Key-value metadata associated with the flag. Returned only when the flag has metadata.
+	Metadata interface{} `pulumi:"metadata"`
 	// Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `defaultVariation`.
 	Rules []GetFlagshipFlagRule `pulumi:"rules"`
 	// Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests.
@@ -170,6 +172,11 @@ func (o LookupFlagshipFlagResultOutput) Id() pulumi.StringOutput {
 // Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
 func (o LookupFlagshipFlagResultOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFlagshipFlagResult) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Key-value metadata associated with the flag. Returned only when the flag has metadata.
+func (o LookupFlagshipFlagResultOutput) Metadata() pulumi.AnyOutput {
+	return o.ApplyT(func(v LookupFlagshipFlagResult) interface{} { return v.Metadata }).(pulumi.AnyOutput)
 }
 
 // Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `defaultVariation`.

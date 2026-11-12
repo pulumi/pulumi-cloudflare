@@ -64,6 +64,7 @@ type LookupEmailSecurityAllowPolicyResult struct {
 	AccountId          string                             `pulumi:"accountId"`
 	Comments           string                             `pulumi:"comments"`
 	CreatedAt          string                             `pulumi:"createdAt"`
+	ExpiresAt          string                             `pulumi:"expiresAt"`
 	Filter             *GetEmailSecurityAllowPolicyFilter `pulumi:"filter"`
 	Id                 string                             `pulumi:"id"`
 	IsAcceptableSender bool                               `pulumi:"isAcceptableSender"`
@@ -126,6 +127,10 @@ func (o LookupEmailSecurityAllowPolicyResultOutput) Comments() pulumi.StringOutp
 
 func (o LookupEmailSecurityAllowPolicyResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailSecurityAllowPolicyResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+func (o LookupEmailSecurityAllowPolicyResultOutput) ExpiresAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEmailSecurityAllowPolicyResult) string { return v.ExpiresAt }).(pulumi.StringOutput)
 }
 
 func (o LookupEmailSecurityAllowPolicyResultOutput) Filter() GetEmailSecurityAllowPolicyFilterPtrOutput {

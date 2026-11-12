@@ -40,6 +40,8 @@ import (
 //				HttpsPort: pulumi.Int(8443),
 //				TlsSettings: &cloudflare.ConnectivityDirectoryServiceTlsSettingsArgs{
 //					CertVerificationMode: pulumi.String("verify_full"),
+//					CertificateAuthority: pulumi.String("705db030-8247-489b-80dd-0d6256e5950d"),
+//					ClientCertificate:    pulumi.String("a493fbb4-34bc-4218-a63c-61a9323ac725"),
 //				},
 //			})
 //			if err != nil {

@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  * 
  *                 )))
  *             .resourceAccountId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .resourceId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .resourceId("0a679032-bbb2-4b7e-9acc-dd5c5cb27a17")
  *             .resourceType("custom-ruleset")
  *             .build());
  * 
@@ -81,14 +81,14 @@ public class ShareResource extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     /**
-     * When the share was created.
+     * When the object was created.
      * 
      */
     @Export(name="created", refs={String.class}, tree="[0]")
     private Output<String> created;
 
     /**
-     * @return When the share was created.
+     * @return When the object was created.
      * 
      */
     public Output<String> created() {
@@ -109,42 +109,42 @@ public class ShareResource extends com.pulumi.resources.CustomResource {
         return this.meta;
     }
     /**
-     * When the share was modified.
+     * When the object was last modified.
      * 
      */
     @Export(name="modified", refs={String.class}, tree="[0]")
     private Output<String> modified;
 
     /**
-     * @return When the share was modified.
+     * @return When the object was last modified.
      * 
      */
     public Output<String> modified() {
         return this.modified;
     }
     /**
-     * Account identifier.
+     * The account that owns the resource. Must match the `accountId` in the path.
      * 
      */
     @Export(name="resourceAccountId", refs={String.class}, tree="[0]")
     private Output<String> resourceAccountId;
 
     /**
-     * @return Account identifier.
+     * @return The account that owns the resource. Must match the `accountId` in the path.
      * 
      */
     public Output<String> resourceAccountId() {
         return this.resourceAccountId;
     }
     /**
-     * Share Resource identifier.
+     * Identifier assigned by the service that owns the shared resource.
      * 
      */
     @Export(name="resourceId", refs={String.class}, tree="[0]")
     private Output<String> resourceId;
 
     /**
-     * @return Share Resource identifier.
+     * @return Identifier assigned by the service that owns the shared resource.
      * 
      */
     public Output<String> resourceId() {

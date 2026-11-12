@@ -12,7 +12,7 @@ import java.util.Objects;
 public final class GetAccountDnsSettingsZoneDefaultsNameservers {
     /**
      * @return Nameserver type
-     * Available values: &#34;cloudflare.standard&#34;, &#34;cloudflare.standard.random&#34;, &#34;custom.account&#34;, &#34;custom.tenant&#34;.
+     * Available values: &#34;cloudflare.standard&#34;, &#34;cloudflare.advanced&#34;, &#34;cloudflare.standard.random&#34;, &#34;custom.account&#34;, &#34;custom.tenant&#34;.
      * 
      */
     private String type;
@@ -20,7 +20,7 @@ public final class GetAccountDnsSettingsZoneDefaultsNameservers {
     private GetAccountDnsSettingsZoneDefaultsNameservers() {}
     /**
      * @return Nameserver type
-     * Available values: &#34;cloudflare.standard&#34;, &#34;cloudflare.standard.random&#34;, &#34;custom.account&#34;, &#34;custom.tenant&#34;.
+     * Available values: &#34;cloudflare.standard&#34;, &#34;cloudflare.advanced&#34;, &#34;cloudflare.standard.random&#34;, &#34;custom.account&#34;, &#34;custom.tenant&#34;.
      * 
      */
     public String type() {

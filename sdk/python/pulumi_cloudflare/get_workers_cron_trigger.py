@@ -89,6 +89,14 @@ def get_workers_cron_trigger(account_id: Optional[_builtins.str] = None,
     """
     Accepted Permissions
 
+    - `Individual Workers Admin`
+    - `Individual Workers Content Read-Only`
+    - `Individual Workers Editor`
+    - `Individual Workers Metadata Read-Only`
+    - `Workers Admin`
+    - `Workers Content Read-Only`
+    - `Workers Editor`
+    - `Workers Metadata Read-Only`
     - `Workers Scripts Read`
     - `Workers Scripts Write`
 
@@ -123,6 +131,14 @@ def get_workers_cron_trigger_output(account_id: pulumi.Input[Optional[Optional[_
     """
     Accepted Permissions
 
+    - `Individual Workers Admin`
+    - `Individual Workers Content Read-Only`
+    - `Individual Workers Editor`
+    - `Individual Workers Metadata Read-Only`
+    - `Workers Admin`
+    - `Workers Content Read-Only`
+    - `Workers Editor`
+    - `Workers Metadata Read-Only`
     - `Workers Scripts Read`
     - `Workers Scripts Write`
 

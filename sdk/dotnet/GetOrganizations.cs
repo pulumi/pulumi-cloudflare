@@ -17,6 +17,10 @@ namespace Pulumi.Cloudflare
         /// - `User Details Read`
         /// - `User Details Write`
         /// 
+        /// User API tokens can list and create Organizations, but reading, updating, or deleting an Organization requires a Global API key and your registered email address. The `cloudflare.Organization` Terraform resource therefore requires a Global API key for its full lifecycle.
+        /// 
+        /// See [Organizations authentication limitations](https://developers.cloudflare.com/fundamentals/organizations/limitations/#api-authentication) for credential compatibility by operation. Each endpoint’s **Security** section lists its supported authentication methods, with **Accepted Permissions** where applicable.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -39,12 +43,18 @@ namespace Pulumi.Cloudflare
         ///             Organization = "organization",
         ///             User = "user",
         ///         },
+        ///         Direction = "asc",
+        ///         Member = new Cloudflare.Inputs.GetOrganizationsMemberInputArgs
+        ///         {
+        ///             Email = "email",
+        ///         },
         ///         Name = new Cloudflare.Inputs.GetOrganizationsNameInputArgs
         ///         {
         ///             Contains = "contains",
         ///             EndsWith = "endsWith",
         ///             StartsWith = "startsWith",
         ///         },
+        ///         OrderBy = "name",
         ///         PageSize = 0,
         ///         PageToken = "page_token",
         ///         Parent = new Cloudflare.Inputs.GetOrganizationsParentInputArgs
@@ -65,6 +75,10 @@ namespace Pulumi.Cloudflare
         /// - `User Details Read`
         /// - `User Details Write`
         /// 
+        /// User API tokens can list and create Organizations, but reading, updating, or deleting an Organization requires a Global API key and your registered email address. The `cloudflare.Organization` Terraform resource therefore requires a Global API key for its full lifecycle.
+        /// 
+        /// See [Organizations authentication limitations](https://developers.cloudflare.com/fundamentals/organizations/limitations/#api-authentication) for credential compatibility by operation. Each endpoint’s **Security** section lists its supported authentication methods, with **Accepted Permissions** where applicable.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,12 +101,18 @@ namespace Pulumi.Cloudflare
         ///             Organization = "organization",
         ///             User = "user",
         ///         },
+        ///         Direction = "asc",
+        ///         Member = new Cloudflare.Inputs.GetOrganizationsMemberInputArgs
+        ///         {
+        ///             Email = "email",
+        ///         },
         ///         Name = new Cloudflare.Inputs.GetOrganizationsNameInputArgs
         ///         {
         ///             Contains = "contains",
         ///             EndsWith = "endsWith",
         ///             StartsWith = "startsWith",
         ///         },
+        ///         OrderBy = "name",
         ///         PageSize = 0,
         ///         PageToken = "page_token",
         ///         Parent = new Cloudflare.Inputs.GetOrganizationsParentInputArgs
@@ -113,6 +133,10 @@ namespace Pulumi.Cloudflare
         /// - `User Details Read`
         /// - `User Details Write`
         /// 
+        /// User API tokens can list and create Organizations, but reading, updating, or deleting an Organization requires a Global API key and your registered email address. The `cloudflare.Organization` Terraform resource therefore requires a Global API key for its full lifecycle.
+        /// 
+        /// See [Organizations authentication limitations](https://developers.cloudflare.com/fundamentals/organizations/limitations/#api-authentication) for credential compatibility by operation. Each endpoint’s **Security** section lists its supported authentication methods, with **Accepted Permissions** where applicable.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -135,12 +159,18 @@ namespace Pulumi.Cloudflare
         ///             Organization = "organization",
         ///             User = "user",
         ///         },
+        ///         Direction = "asc",
+        ///         Member = new Cloudflare.Inputs.GetOrganizationsMemberInputArgs
+        ///         {
+        ///             Email = "email",
+        ///         },
         ///         Name = new Cloudflare.Inputs.GetOrganizationsNameInputArgs
         ///         {
         ///             Contains = "contains",
         ///             EndsWith = "endsWith",
         ///             StartsWith = "startsWith",
         ///         },
+        ///         OrderBy = "name",
         ///         PageSize = 0,
         ///         PageToken = "page_token",
         ///         Parent = new Cloudflare.Inputs.GetOrganizationsParentInputArgs
@@ -162,6 +192,14 @@ namespace Pulumi.Cloudflare
         [Input("containing")]
         public Inputs.GetOrganizationsContainingArgs? Containing { get; set; }
 
+        /// <summary>
+        /// Sort direction for the `OrderBy` field. Defaults to `Asc` when `OrderBy` is
+        /// specified.
+        /// Available values: "asc", "desc".
+        /// </summary>
+        [Input("direction")]
+        public string? Direction { get; set; }
+
         [Input("ids")]
         private List<string>? _ids;
 
@@ -181,8 +219,19 @@ namespace Pulumi.Cloudflare
         [Input("maxItems")]
         public int? MaxItems { get; set; }
 
+        [Input("member")]
+        public Inputs.GetOrganizationsMemberArgs? Member { get; set; }
+
         [Input("name")]
         public Inputs.GetOrganizationsNameArgs? Name { get; set; }
+
+        /// <summary>
+        /// Field to order results by. Currently supported values: `Name`.
+        /// When not specified, results are ordered by hierarchy.
+        /// Available values: "name".
+        /// </summary>
+        [Input("orderBy")]
+        public string? OrderBy { get; set; }
 
         /// <summary>
         /// The amount of items to return. Defaults to 10.
@@ -211,6 +260,14 @@ namespace Pulumi.Cloudflare
         [Input("containing")]
         public Input<Inputs.GetOrganizationsContainingInputArgs>? Containing { get; set; }
 
+        /// <summary>
+        /// Sort direction for the `OrderBy` field. Defaults to `Asc` when `OrderBy` is
+        /// specified.
+        /// Available values: "asc", "desc".
+        /// </summary>
+        [Input("direction")]
+        public Input<string>? Direction { get; set; }
+
         [Input("ids")]
         private InputList<string>? _ids;
 
@@ -230,8 +287,19 @@ namespace Pulumi.Cloudflare
         [Input("maxItems")]
         public Input<int>? MaxItems { get; set; }
 
+        [Input("member")]
+        public Input<Inputs.GetOrganizationsMemberInputArgs>? Member { get; set; }
+
         [Input("name")]
         public Input<Inputs.GetOrganizationsNameInputArgs>? Name { get; set; }
+
+        /// <summary>
+        /// Field to order results by. Currently supported values: `Name`.
+        /// When not specified, results are ordered by hierarchy.
+        /// Available values: "name".
+        /// </summary>
+        [Input("orderBy")]
+        public Input<string>? OrderBy { get; set; }
 
         /// <summary>
         /// The amount of items to return. Defaults to 10.
@@ -261,6 +329,12 @@ namespace Pulumi.Cloudflare
     {
         public readonly Outputs.GetOrganizationsContainingResult? Containing;
         /// <summary>
+        /// Sort direction for the `OrderBy` field. Defaults to `Asc` when `OrderBy` is
+        /// specified.
+        /// Available values: "asc", "desc".
+        /// </summary>
+        public readonly string? Direction;
+        /// <summary>
         /// Only return organizations with the specified IDs (ex. id=foo&amp;id=bar). Send multiple elements
         /// by repeating the query value.
         /// </summary>
@@ -269,7 +343,14 @@ namespace Pulumi.Cloudflare
         /// Max items to fetch, default: 1000
         /// </summary>
         public readonly int? MaxItems;
+        public readonly Outputs.GetOrganizationsMemberResult? Member;
         public readonly Outputs.GetOrganizationsNameResult? Name;
+        /// <summary>
+        /// Field to order results by. Currently supported values: `Name`.
+        /// When not specified, results are ordered by hierarchy.
+        /// Available values: "name".
+        /// </summary>
+        public readonly string? OrderBy;
         /// <summary>
         /// The amount of items to return. Defaults to 10.
         /// </summary>
@@ -286,11 +367,17 @@ namespace Pulumi.Cloudflare
         private GetOrganizationsResult(
             Outputs.GetOrganizationsContainingResult? containing,
 
+            string? direction,
+
             ImmutableArray<string> ids,
 
             int? maxItems,
 
+            Outputs.GetOrganizationsMemberResult? member,
+
             Outputs.GetOrganizationsNameResult? name,
+
+            string? orderBy,
 
             int? pageSize,
 
@@ -301,9 +388,12 @@ namespace Pulumi.Cloudflare
             ImmutableArray<Outputs.GetOrganizationsResultResult> results)
         {
             Containing = containing;
+            Direction = direction;
             Ids = ids;
             MaxItems = maxItems;
+            Member = member;
             Name = name;
+            OrderBy = orderBy;
             PageSize = pageSize;
             PageToken = pageToken;
             Parent = parent;

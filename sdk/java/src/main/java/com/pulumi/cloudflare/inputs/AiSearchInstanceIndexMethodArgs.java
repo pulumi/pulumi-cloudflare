@@ -5,9 +5,10 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class AiSearchInstanceIndexMethodArgs extends com.pulumi.resources.ResourceArgs {
@@ -18,30 +19,30 @@ public final class AiSearchInstanceIndexMethodArgs extends com.pulumi.resources.
      * Enable keyword (BM25) storage backend.
      * 
      */
-    @Import(name="keyword", required=true)
-    private Output<Boolean> keyword;
+    @Import(name="keyword")
+    private @Nullable Output<Boolean> keyword;
 
     /**
      * @return Enable keyword (BM25) storage backend.
      * 
      */
-    public Output<Boolean> keyword() {
-        return this.keyword;
+    public Optional<Output<Boolean>> keyword() {
+        return Optional.ofNullable(this.keyword);
     }
 
     /**
      * Enable vector (embedding) storage backend.
      * 
      */
-    @Import(name="vector", required=true)
-    private Output<Boolean> vector;
+    @Import(name="vector")
+    private @Nullable Output<Boolean> vector;
 
     /**
      * @return Enable vector (embedding) storage backend.
      * 
      */
-    public Output<Boolean> vector() {
-        return this.vector;
+    public Optional<Output<Boolean>> vector() {
+        return Optional.ofNullable(this.vector);
     }
 
     private AiSearchInstanceIndexMethodArgs() {}
@@ -75,7 +76,7 @@ public final class AiSearchInstanceIndexMethodArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder keyword(Output<Boolean> keyword) {
+        public Builder keyword(@Nullable Output<Boolean> keyword) {
             $.keyword = keyword;
             return this;
         }
@@ -96,7 +97,7 @@ public final class AiSearchInstanceIndexMethodArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder vector(Output<Boolean> vector) {
+        public Builder vector(@Nullable Output<Boolean> vector) {
             $.vector = vector;
             return this;
         }
@@ -112,12 +113,6 @@ public final class AiSearchInstanceIndexMethodArgs extends com.pulumi.resources.
         }
 
         public AiSearchInstanceIndexMethodArgs build() {
-            if ($.keyword == null) {
-                throw new MissingRequiredPropertyException("AiSearchInstanceIndexMethodArgs", "keyword");
-            }
-            if ($.vector == null) {
-                throw new MissingRequiredPropertyException("AiSearchInstanceIndexMethodArgs", "vector");
-            }
             return $;
         }
     }

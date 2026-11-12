@@ -55,6 +55,7 @@ import (
 type CertificateAuthoritiesHostnameAssociations struct {
 	pulumi.CustomResourceState
 
+	// Unordered set of hostnames. Hostnames are stored as lowercase punycode.
 	Hostnames pulumi.StringArrayOutput `pulumi:"hostnames"`
 	// The UUID for a certificate that was uploaded to the mTLS Certificate Management endpoint. If no mtls*certificate*id is given, the hostnames will be associated to your active Cloudflare Managed CA.
 	MtlsCertificateId pulumi.StringPtrOutput `pulumi:"mtlsCertificateId"`
@@ -95,6 +96,7 @@ func GetCertificateAuthoritiesHostnameAssociations(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CertificateAuthoritiesHostnameAssociations resources.
 type certificateAuthoritiesHostnameAssociationsState struct {
+	// Unordered set of hostnames. Hostnames are stored as lowercase punycode.
 	Hostnames []string `pulumi:"hostnames"`
 	// The UUID for a certificate that was uploaded to the mTLS Certificate Management endpoint. If no mtls*certificate*id is given, the hostnames will be associated to your active Cloudflare Managed CA.
 	MtlsCertificateId *string `pulumi:"mtlsCertificateId"`
@@ -103,6 +105,7 @@ type certificateAuthoritiesHostnameAssociationsState struct {
 }
 
 type CertificateAuthoritiesHostnameAssociationsState struct {
+	// Unordered set of hostnames. Hostnames are stored as lowercase punycode.
 	Hostnames pulumi.StringArrayInput
 	// The UUID for a certificate that was uploaded to the mTLS Certificate Management endpoint. If no mtls*certificate*id is given, the hostnames will be associated to your active Cloudflare Managed CA.
 	MtlsCertificateId pulumi.StringPtrInput
@@ -121,6 +124,7 @@ func CertificateAuthoritiesHostnameAssociationsExists(ctx *pulumi.Context,
 }
 
 type certificateAuthoritiesHostnameAssociationsArgs struct {
+	// Unordered set of hostnames. Hostnames are stored as lowercase punycode.
 	Hostnames []string `pulumi:"hostnames"`
 	// The UUID for a certificate that was uploaded to the mTLS Certificate Management endpoint. If no mtls*certificate*id is given, the hostnames will be associated to your active Cloudflare Managed CA.
 	MtlsCertificateId *string `pulumi:"mtlsCertificateId"`
@@ -130,6 +134,7 @@ type certificateAuthoritiesHostnameAssociationsArgs struct {
 
 // The set of arguments for constructing a CertificateAuthoritiesHostnameAssociations resource.
 type CertificateAuthoritiesHostnameAssociationsArgs struct {
+	// Unordered set of hostnames. Hostnames are stored as lowercase punycode.
 	Hostnames pulumi.StringArrayInput
 	// The UUID for a certificate that was uploaded to the mTLS Certificate Management endpoint. If no mtls*certificate*id is given, the hostnames will be associated to your active Cloudflare Managed CA.
 	MtlsCertificateId pulumi.StringPtrInput
@@ -224,6 +229,7 @@ func (o CertificateAuthoritiesHostnameAssociationsOutput) ToCertificateAuthoriti
 	return o
 }
 
+// Unordered set of hostnames. Hostnames are stored as lowercase punycode.
 func (o CertificateAuthoritiesHostnameAssociationsOutput) Hostnames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CertificateAuthoritiesHostnameAssociations) pulumi.StringArrayOutput { return v.Hostnames }).(pulumi.StringArrayOutput)
 }

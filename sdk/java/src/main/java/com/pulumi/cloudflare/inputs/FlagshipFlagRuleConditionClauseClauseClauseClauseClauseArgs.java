@@ -5,82 +5,56 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class FlagshipFlagRuleConditionClauseClauseClauseClauseClauseArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final FlagshipFlagRuleConditionClauseClauseClauseClauseClauseArgs Empty = new FlagshipFlagRuleConditionClauseClauseClauseClauseClauseArgs();
 
-    @Import(name="attribute")
-    private @Nullable Output<String> attribute;
+    @Import(name="attribute", required=true)
+    private Output<String> attribute;
 
-    public Optional<Output<String>> attribute() {
-        return Optional.ofNullable(this.attribute);
-    }
-
-    @Import(name="clauses")
-    private @Nullable Output<List<String>> clauses;
-
-    public Optional<Output<List<String>>> clauses() {
-        return Optional.ofNullable(this.clauses);
-    }
-
-    /**
-     * Available values: &#34;AND&#34;, &#34;OR&#34;.
-     * 
-     */
-    @Import(name="logicalOperator")
-    private @Nullable Output<String> logicalOperator;
-
-    /**
-     * @return Available values: &#34;AND&#34;, &#34;OR&#34;.
-     * 
-     */
-    public Optional<Output<String>> logicalOperator() {
-        return Optional.ofNullable(this.logicalOperator);
+    public Output<String> attribute() {
+        return this.attribute;
     }
 
     /**
      * Available values: &#34;equals&#34;, &#34;not*equals&#34;, &#34;greater*than&#34;, &#34;less*than&#34;, &#34;greater*than*or*equals&#34;, &#34;less*than*or*equals&#34;, &#34;contains&#34;, &#34;starts*with&#34;, &#34;ends*with&#34;, &#34;in&#34;, &#34;not*in&#34;, &#34;has&#34;, &#34;notHas&#34;.
      * 
      */
-    @Import(name="operator")
-    private @Nullable Output<String> operator;
+    @Import(name="operator", required=true)
+    private Output<String> operator;
 
     /**
      * @return Available values: &#34;equals&#34;, &#34;not*equals&#34;, &#34;greater*than&#34;, &#34;less*than&#34;, &#34;greater*than*or*equals&#34;, &#34;less*than*or*equals&#34;, &#34;contains&#34;, &#34;starts*with&#34;, &#34;ends*with&#34;, &#34;in&#34;, &#34;not*in&#34;, &#34;has&#34;, &#34;notHas&#34;.
      * 
      */
-    public Optional<Output<String>> operator() {
-        return Optional.ofNullable(this.operator);
+    public Output<String> operator() {
+        return this.operator;
     }
 
     /**
      * Value to compare against the context attribute. Must be an array for `in` and `notIn`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
      * 
      */
-    @Import(name="value")
-    private @Nullable Output<String> value;
+    @Import(name="value", required=true)
+    private Output<String> value;
 
     /**
      * @return Value to compare against the context attribute. Must be an array for `in` and `notIn`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
      * 
      */
-    public Optional<Output<String>> value() {
-        return Optional.ofNullable(this.value);
+    public Output<String> value() {
+        return this.value;
     }
 
     private FlagshipFlagRuleConditionClauseClauseClauseClauseClauseArgs() {}
 
     private FlagshipFlagRuleConditionClauseClauseClauseClauseClauseArgs(FlagshipFlagRuleConditionClauseClauseClauseClauseClauseArgs $) {
         this.attribute = $.attribute;
-        this.clauses = $.clauses;
-        this.logicalOperator = $.logicalOperator;
         this.operator = $.operator;
         this.value = $.value;
     }
@@ -103,7 +77,7 @@ public final class FlagshipFlagRuleConditionClauseClauseClauseClauseClauseArgs e
             $ = new FlagshipFlagRuleConditionClauseClauseClauseClauseClauseArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder attribute(@Nullable Output<String> attribute) {
+        public Builder attribute(Output<String> attribute) {
             $.attribute = attribute;
             return this;
         }
@@ -112,47 +86,13 @@ public final class FlagshipFlagRuleConditionClauseClauseClauseClauseClauseArgs e
             return attribute(Output.of(attribute));
         }
 
-        public Builder clauses(@Nullable Output<List<String>> clauses) {
-            $.clauses = clauses;
-            return this;
-        }
-
-        public Builder clauses(List<String> clauses) {
-            return clauses(Output.of(clauses));
-        }
-
-        public Builder clauses(String... clauses) {
-            return clauses(List.of(clauses));
-        }
-
-        /**
-         * @param logicalOperator Available values: &#34;AND&#34;, &#34;OR&#34;.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder logicalOperator(@Nullable Output<String> logicalOperator) {
-            $.logicalOperator = logicalOperator;
-            return this;
-        }
-
-        /**
-         * @param logicalOperator Available values: &#34;AND&#34;, &#34;OR&#34;.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder logicalOperator(String logicalOperator) {
-            return logicalOperator(Output.of(logicalOperator));
-        }
-
         /**
          * @param operator Available values: &#34;equals&#34;, &#34;not*equals&#34;, &#34;greater*than&#34;, &#34;less*than&#34;, &#34;greater*than*or*equals&#34;, &#34;less*than*or*equals&#34;, &#34;contains&#34;, &#34;starts*with&#34;, &#34;ends*with&#34;, &#34;in&#34;, &#34;not*in&#34;, &#34;has&#34;, &#34;notHas&#34;.
          * 
          * @return builder
          * 
          */
-        public Builder operator(@Nullable Output<String> operator) {
+        public Builder operator(Output<String> operator) {
             $.operator = operator;
             return this;
         }
@@ -173,7 +113,7 @@ public final class FlagshipFlagRuleConditionClauseClauseClauseClauseClauseArgs e
          * @return builder
          * 
          */
-        public Builder value(@Nullable Output<String> value) {
+        public Builder value(Output<String> value) {
             $.value = value;
             return this;
         }
@@ -189,6 +129,15 @@ public final class FlagshipFlagRuleConditionClauseClauseClauseClauseClauseArgs e
         }
 
         public FlagshipFlagRuleConditionClauseClauseClauseClauseClauseArgs build() {
+            if ($.attribute == null) {
+                throw new MissingRequiredPropertyException("FlagshipFlagRuleConditionClauseClauseClauseClauseClauseArgs", "attribute");
+            }
+            if ($.operator == null) {
+                throw new MissingRequiredPropertyException("FlagshipFlagRuleConditionClauseClauseClauseClauseClauseArgs", "operator");
+            }
+            if ($.value == null) {
+                throw new MissingRequiredPropertyException("FlagshipFlagRuleConditionClauseClauseClauseClauseClauseArgs", "value");
+            }
             return $;
         }
     }

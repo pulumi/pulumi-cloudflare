@@ -72,9 +72,11 @@ type LookupOriginCaCertificateResult struct {
 	// Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
 	// Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
 	RequestType string `pulumi:"requestType"`
-	// The number of days for which the certificate should be valid.
+	// The number of days for which the certificate was requested to be valid. Only returned in the Create Certificate response, where it echoes the requested value. Not returned when getting or listing certificates.
 	// Available values: 7, 30, 90, 365, 730, 1095, 5475.
 	RequestedValidity float64 `pulumi:"requestedValidity"`
+	// When the certificate was revoked.
+	RevokedAt string `pulumi:"revokedAt"`
 }
 
 func LookupOriginCaCertificateOutput(ctx *pulumi.Context, args LookupOriginCaCertificateOutputArgs, opts ...pulumi.InvokeOption) LookupOriginCaCertificateResultOutput {
@@ -149,10 +151,15 @@ func (o LookupOriginCaCertificateResultOutput) RequestType() pulumi.StringOutput
 	return o.ApplyT(func(v LookupOriginCaCertificateResult) string { return v.RequestType }).(pulumi.StringOutput)
 }
 
-// The number of days for which the certificate should be valid.
+// The number of days for which the certificate was requested to be valid. Only returned in the Create Certificate response, where it echoes the requested value. Not returned when getting or listing certificates.
 // Available values: 7, 30, 90, 365, 730, 1095, 5475.
 func (o LookupOriginCaCertificateResultOutput) RequestedValidity() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupOriginCaCertificateResult) float64 { return v.RequestedValidity }).(pulumi.Float64Output)
+}
+
+// When the certificate was revoked.
+func (o LookupOriginCaCertificateResultOutput) RevokedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOriginCaCertificateResult) string { return v.RevokedAt }).(pulumi.StringOutput)
 }
 
 func init() {

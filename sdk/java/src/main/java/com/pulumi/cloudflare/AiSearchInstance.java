@@ -197,14 +197,14 @@ public class AiSearchInstance extends com.pulumi.resources.CustomResource {
         return this.hybridSearchEnabled;
     }
     /**
-     * Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
+     * Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances. When set, both vector and keyword are required.
      * 
      */
     @Export(name="indexMethod", refs={AiSearchInstanceIndexMethod.class}, tree="[0]")
     private Output<AiSearchInstanceIndexMethod> indexMethod;
 
     /**
-     * @return Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
+     * @return Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances. When set, both vector and keyword are required.
      * 
      */
     public Output<AiSearchInstanceIndexMethod> indexMethod() {
@@ -283,10 +283,10 @@ public class AiSearchInstance extends com.pulumi.resources.CustomResource {
         return this.rerankingModel;
     }
     @Export(name="retrievalOptions", refs={AiSearchInstanceRetrievalOptions.class}, tree="[0]")
-    private Output</* @Nullable */ AiSearchInstanceRetrievalOptions> retrievalOptions;
+    private Output<AiSearchInstanceRetrievalOptions> retrievalOptions;
 
-    public Output<Optional<AiSearchInstanceRetrievalOptions>> retrievalOptions() {
-        return Codegen.optional(this.retrievalOptions);
+    public Output<AiSearchInstanceRetrievalOptions> retrievalOptions() {
+        return this.retrievalOptions;
     }
     /**
      * A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.
@@ -308,9 +308,17 @@ public class AiSearchInstance extends com.pulumi.resources.CustomResource {
     public Output<Boolean> rewriteQuery() {
         return this.rewriteQuery;
     }
+    /**
+     * Minimum similarity score a chunk must reach to be returned. Defaults to 0.4.
+     * 
+     */
     @Export(name="scoreThreshold", refs={Double.class}, tree="[0]")
     private Output<Double> scoreThreshold;
 
+    /**
+     * @return Minimum similarity score a chunk must reach to be returned. Defaults to 0.4.
+     * 
+     */
     public Output<Double> scoreThreshold() {
         return this.scoreThreshold;
     }
@@ -345,7 +353,7 @@ public class AiSearchInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.summarizationModel);
     }
     /**
-     * Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+     * Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). Defaults to 86400 (24h).
      * Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
      * 
      */
@@ -353,7 +361,7 @@ public class AiSearchInstance extends com.pulumi.resources.CustomResource {
     private Output<Double> syncInterval;
 
     /**
-     * @return Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+     * @return Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). Defaults to 86400 (24h).
      * Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
      * 
      */
@@ -379,10 +387,10 @@ public class AiSearchInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.systemPromptRewriteQuery);
     }
     @Export(name="tokenId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> tokenId;
+    private Output<String> tokenId;
 
-    public Output<Optional<String>> tokenId() {
-        return Codegen.optional(this.tokenId);
+    public Output<String> tokenId() {
+        return this.tokenId;
     }
     /**
      * Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
@@ -390,15 +398,15 @@ public class AiSearchInstance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> type;
+    private Output<String> type;
 
     /**
      * @return Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
      * Available values: &#34;r2&#34;, &#34;web-crawler&#34;.
      * 
      */
-    public Output<Optional<String>> type() {
-        return Codegen.optional(this.type);
+    public Output<String> type() {
+        return this.type;
     }
 
     /**

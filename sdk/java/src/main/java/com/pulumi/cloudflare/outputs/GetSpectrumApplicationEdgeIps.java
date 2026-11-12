@@ -12,26 +12,25 @@ import java.util.Objects;
 @CustomType
 public final class GetSpectrumApplicationEdgeIps {
     /**
-     * @return The IP versions supported for inbound connections on Spectrum anycast IPs.
+     * @return For `type: dynamic`: The IP versions supported for inbound connections on Spectrum anycast IPs.
      * Available values: &#34;all&#34;, &#34;ipv4&#34;, &#34;ipv6&#34;.
      * 
      */
     private String connectivity;
     /**
-     * @return The array of customer owned IPs we broadcast via anycast for this hostname and application.
+     * @return For `type: static`: The array of customer owned IPs we broadcast via anycast for this hostname and application.
      * 
      */
     private List<String> ips;
     /**
-     * @return The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.
-     * Available values: &#34;dynamic&#34;, &#34;static&#34;.
+     * @return For `type: dynamic`: The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.
      * 
      */
     private String type;
 
     private GetSpectrumApplicationEdgeIps() {}
     /**
-     * @return The IP versions supported for inbound connections on Spectrum anycast IPs.
+     * @return For `type: dynamic`: The IP versions supported for inbound connections on Spectrum anycast IPs.
      * Available values: &#34;all&#34;, &#34;ipv4&#34;, &#34;ipv6&#34;.
      * 
      */
@@ -39,15 +38,14 @@ public final class GetSpectrumApplicationEdgeIps {
         return this.connectivity;
     }
     /**
-     * @return The array of customer owned IPs we broadcast via anycast for this hostname and application.
+     * @return For `type: static`: The array of customer owned IPs we broadcast via anycast for this hostname and application.
      * 
      */
     public List<String> ips() {
         return this.ips;
     }
     /**
-     * @return The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.
-     * Available values: &#34;dynamic&#34;, &#34;static&#34;.
+     * @return For `type: dynamic`: The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.
      * 
      */
     public String type() {

@@ -16,26 +16,6 @@ namespace Pulumi.Cloudflare
         /// 
         /// - `Zone Settings Read`
         /// - `Zone Settings Write`
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Cloudflare = Pulumi.Cloudflare;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var exampleObservatoryScheduledTest = Cloudflare.GetObservatoryScheduledTest.Invoke(new()
-        ///     {
-        ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         Url = "example.com",
-        ///         Region = "us-central1",
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetObservatoryScheduledTestResult> InvokeAsync(GetObservatoryScheduledTestArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetObservatoryScheduledTestResult>("cloudflare:index/getObservatoryScheduledTest:getObservatoryScheduledTest", args ?? new GetObservatoryScheduledTestArgs(), options.WithDefaults());
@@ -45,26 +25,6 @@ namespace Pulumi.Cloudflare
         /// 
         /// - `Zone Settings Read`
         /// - `Zone Settings Write`
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Cloudflare = Pulumi.Cloudflare;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var exampleObservatoryScheduledTest = Cloudflare.GetObservatoryScheduledTest.Invoke(new()
-        ///     {
-        ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         Url = "example.com",
-        ///         Region = "us-central1",
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetObservatoryScheduledTestResult> Invoke(GetObservatoryScheduledTestInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetObservatoryScheduledTestResult>("cloudflare:index/getObservatoryScheduledTest:getObservatoryScheduledTest", args ?? new GetObservatoryScheduledTestInvokeArgs(), options.WithDefaults());
@@ -74,26 +34,6 @@ namespace Pulumi.Cloudflare
         /// 
         /// - `Zone Settings Read`
         /// - `Zone Settings Write`
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Cloudflare = Pulumi.Cloudflare;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var exampleObservatoryScheduledTest = Cloudflare.GetObservatoryScheduledTest.Invoke(new()
-        ///     {
-        ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         Url = "example.com",
-        ///         Region = "us-central1",
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetObservatoryScheduledTestResult> Invoke(GetObservatoryScheduledTestInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetObservatoryScheduledTestResult>("cloudflare:index/getObservatoryScheduledTest:getObservatoryScheduledTest", args ?? new GetObservatoryScheduledTestInvokeArgs(), options.WithDefaults());

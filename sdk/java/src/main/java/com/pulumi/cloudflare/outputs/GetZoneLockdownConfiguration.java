@@ -11,28 +11,30 @@ import java.util.Objects;
 @CustomType
 public final class GetZoneLockdownConfiguration {
     /**
-     * @return The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.
-     * Available values: &#34;ip&#34;, &#34;ipRange&#34;.
+     * @return For `target: ip`: The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.
      * 
      */
     private String target;
     /**
-     * @return The IP address to match. This address will be compared to the IP address of incoming requests.
+     * @return For `target: ip`: The IP address to match. This address will be compared to the IP address of incoming requests.
+     * 
+     * For `target: ipRange`: The IP address range to match. You can only use prefix lengths `/16` and `/24`.
      * 
      */
     private String value;
 
     private GetZoneLockdownConfiguration() {}
     /**
-     * @return The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.
-     * Available values: &#34;ip&#34;, &#34;ipRange&#34;.
+     * @return For `target: ip`: The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.
      * 
      */
     public String target() {
         return this.target;
     }
     /**
-     * @return The IP address to match. This address will be compared to the IP address of incoming requests.
+     * @return For `target: ip`: The IP address to match. This address will be compared to the IP address of incoming requests.
+     * 
+     * For `target: ipRange`: The IP address range to match. You can only use prefix lengths `/16` and `/24`.
      * 
      */
     public String value() {

@@ -98,6 +98,9 @@ export class HyperdriveConfig extends pulumi.CustomResource {
      * Defines the creation time of the Hyperdrive configuration.
      */
     declare public /*out*/ readonly createdOn: pulumi.Output<string>;
+    /**
+     * Selects a PlanetScale database and provisions credentials managed by Cloudflare when creating a Hyperdrive configuration. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. The selection is returned as read-only metadata and cannot be changed with replace or update operations.
+     */
     declare public readonly integration: pulumi.Output<string | undefined>;
     /**
      * Defines the last modified time of the Hyperdrive configuration.
@@ -184,6 +187,9 @@ export interface HyperdriveConfigState {
      * Defines the creation time of the Hyperdrive configuration.
      */
     createdOn?: pulumi.Input<string | undefined>;
+    /**
+     * Selects a PlanetScale database and provisions credentials managed by Cloudflare when creating a Hyperdrive configuration. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. The selection is returned as read-only metadata and cannot be changed with replace or update operations.
+     */
     integration?: pulumi.Input<string | undefined>;
     /**
      * Defines the last modified time of the Hyperdrive configuration.
@@ -220,6 +226,9 @@ export interface HyperdriveConfigArgs {
      */
     accountId: pulumi.Input<string>;
     caching?: pulumi.Input<inputs.HyperdriveConfigCaching | undefined>;
+    /**
+     * Selects a PlanetScale database and provisions credentials managed by Cloudflare when creating a Hyperdrive configuration. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. The selection is returned as read-only metadata and cannot be changed with replace or update operations.
+     */
     integration?: pulumi.Input<string | undefined>;
     /**
      * mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.

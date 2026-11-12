@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *             .accountId("account_id")
  *             .behaviors(Map.of("foo", ZeroTrustRiskBehaviorBehaviorsArgs.builder()
  *                 .enabled(true)
- *                 .riskLevel("low")
+ *                 .riskLevel("info")
  *                 .build()))
  *             .build());
  * 

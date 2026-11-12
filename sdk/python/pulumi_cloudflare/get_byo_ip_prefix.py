@@ -26,7 +26,7 @@ class GetByoIpPrefixResult:
     """
     A collection of values returned by getByoIpPrefix.
     """
-    def __init__(__self__, account_id=None, advertised=None, advertised_modified_at=None, approved=None, asn=None, cidr=None, created_at=None, delegate_loa_creation=None, description=None, id=None, irr_validation_state=None, loa_document_id=None, modified_at=None, on_demand_enabled=None, on_demand_locked=None, ownership_validation_state=None, ownership_validation_token=None, prefix_id=None, rpki_validation_state=None):
+    def __init__(__self__, account_id=None, advertised=None, advertised_modified_at=None, approved=None, asn=None, asn_ownership_validation_state=None, aspa_validation_state=None, cidr=None, created_at=None, delegate_loa_creation=None, description=None, id=None, irr_validation_state=None, loa_document_id=None, modified_at=None, on_demand_enabled=None, on_demand_locked=None, ownership_validation_state=None, ownership_validation_token=None, prefix_id=None, rpki_validation_state=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -42,6 +42,12 @@ class GetByoIpPrefixResult:
         if asn and not isinstance(asn, int):
             raise TypeError("Expected argument 'asn' to be a int")
         pulumi.set(__self__, "asn", asn)
+        if asn_ownership_validation_state and not isinstance(asn_ownership_validation_state, str):
+            raise TypeError("Expected argument 'asn_ownership_validation_state' to be a str")
+        pulumi.set(__self__, "asn_ownership_validation_state", asn_ownership_validation_state)
+        if aspa_validation_state and not isinstance(aspa_validation_state, str):
+            raise TypeError("Expected argument 'aspa_validation_state' to be a str")
+        pulumi.set(__self__, "aspa_validation_state", aspa_validation_state)
         if cidr and not isinstance(cidr, str):
             raise TypeError("Expected argument 'cidr' to be a str")
         pulumi.set(__self__, "cidr", cidr)
@@ -115,7 +121,7 @@ class GetByoIpPrefixResult:
     @pulumi.getter
     def approved(self) -> _builtins.str:
         """
-        Approval state of the prefix (P = pending, V = active).
+        Approval state of the prefix (P = pending, V = approved). Approval does not advertise the prefix or activate traffic.
         """
         return pulumi.get(self, "approved")
 
@@ -123,9 +129,27 @@ class GetByoIpPrefixResult:
     @pulumi.getter
     def asn(self) -> _builtins.int:
         """
-        Autonomous System Number (ASN) the prefix will be advertised under.
+        Autonomous System Number (ASN) the prefix will be advertised under. Use 13335 for Cloudflare's ASN, or your own ASN as an integer without the AS prefix. The IRR route and RPKI ROA must authorize this ASN.
         """
         return pulumi.get(self, "asn")
+
+    @_builtins.property
+    @pulumi.getter(name="asnOwnershipValidationState")
+    def asn_ownership_validation_state(self) -> _builtins.str:
+        """
+        State of ASN ownership validation for a customer-owned Autonomous System Number (ASN). Returned when an ASN ownership validation result exists. Omitted when validation does not apply, such as for Cloudflare-owned ASNs. Verification is reused for prefixes with the same account and ASN. Refer to [ASN ownership validation states](https://developers.cloudflare.com/byoip/troubleshooting/prefix-validation/#asn-ownership-validation) for state meanings and resolutions.
+        Available values: "pending", "valid", "missing", "invalid".
+        """
+        return pulumi.get(self, "asn_ownership_validation_state")
+
+    @_builtins.property
+    @pulumi.getter(name="aspaValidationState")
+    def aspa_validation_state(self) -> _builtins.str:
+        """
+        State of Autonomous System Provider Authorization (ASPA) validation for a customer-owned ASN. Returned when an ASPA validation result exists. Publishing an ASPA is optional. A published ASPA must authorize AS13335 as a provider. An invalid result blocks approval. If omitted, no ASPA validation result is available. Omission does not indicate successful validation or confirm that no ASPA exists. Refer to [ASPA validation states](https://developers.cloudflare.com/byoip/troubleshooting/prefix-validation/#aspa-validation) for state meanings and resolutions, and [ASPA authorization](https://developers.cloudflare.com/byoip/concepts/route-filtering-rpki/#aspa-authorization) for publication guidance.
+        Available values: "pending", "valid", "invalid".
+        """
+        return pulumi.get(self, "aspa_validation_state")
 
     @_builtins.property
     @pulumi.getter
@@ -215,7 +239,7 @@ class GetByoIpPrefixResult:
     @pulumi.getter(name="ownershipValidationToken")
     def ownership_validation_token(self) -> _builtins.str:
         """
-        Token provided to demonstrate ownership of the prefix.
+        Token used to verify ownership of the prefix and, when applicable, its ASN. Use the same token for both checks. Refer to the [BYOIP onboarding guide](https://developers.cloudflare.com/byoip/get-started/) for verification instructions.
         """
         return pulumi.get(self, "ownership_validation_token")
 
@@ -247,6 +271,8 @@ class AwaitableGetByoIpPrefixResult(GetByoIpPrefixResult):
             advertised_modified_at=self.advertised_modified_at,
             approved=self.approved,
             asn=self.asn,
+            asn_ownership_validation_state=self.asn_ownership_validation_state,
+            aspa_validation_state=self.aspa_validation_state,
             cidr=self.cidr,
             created_at=self.created_at,
             delegate_loa_creation=self.delegate_loa_creation,
@@ -302,6 +328,8 @@ def get_byo_ip_prefix(account_id: Optional[_builtins.str] = None,
         advertised_modified_at=pulumi.get(__ret__, 'advertised_modified_at'),
         approved=pulumi.get(__ret__, 'approved'),
         asn=pulumi.get(__ret__, 'asn'),
+        asn_ownership_validation_state=pulumi.get(__ret__, 'asn_ownership_validation_state'),
+        aspa_validation_state=pulumi.get(__ret__, 'aspa_validation_state'),
         cidr=pulumi.get(__ret__, 'cidr'),
         created_at=pulumi.get(__ret__, 'created_at'),
         delegate_loa_creation=pulumi.get(__ret__, 'delegate_loa_creation'),
@@ -354,6 +382,8 @@ def get_byo_ip_prefix_output(account_id: pulumi.Input[Optional[Optional[_builtin
         advertised_modified_at=pulumi.get(__response__, 'advertised_modified_at'),
         approved=pulumi.get(__response__, 'approved'),
         asn=pulumi.get(__response__, 'asn'),
+        asn_ownership_validation_state=pulumi.get(__response__, 'asn_ownership_validation_state'),
+        aspa_validation_state=pulumi.get(__response__, 'aspa_validation_state'),
         cidr=pulumi.get(__response__, 'cidr'),
         created_at=pulumi.get(__response__, 'created_at'),
         delegate_loa_creation=pulumi.get(__response__, 'delegate_loa_creation'),

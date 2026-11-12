@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class PipelineSinkFormat
     {
         /// <summary>
-        /// Specifies the compression applied to JSON sink output.
+        /// For `type: json`: Specifies the compression applied to JSON sink output.
         /// Available values: "uncompressed", "gzip", "snappy", "zstd", "lz4".
         /// </summary>
         public readonly string? Compression;

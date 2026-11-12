@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -30,7 +31,7 @@ public final class GetZeroTrustAccessServiceTokenResult {
      */
     private String duration;
     /**
-     * @return Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+     * @return Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled. A service token reported as leaked is disabled automatically and cannot be re-enabled until its secret is rotated; attempting to do so returns a 409. Defaults to enabled when omitted on create.
      * 
      */
     private Boolean enabled;
@@ -42,6 +43,21 @@ public final class GetZeroTrustAccessServiceTokenResult {
      */
     private String id;
     /**
+     * @return Where the leaked `clientSecret` was found, if provided by the reporter. Omitted if the token has not been reported as leaked.
+     * 
+     */
+    private String leakReportUrl;
+    /**
+     * @return When a secret scanning partner reported this service token&#39;s `clientSecret` as leaked. A leaked service token is disabled and must be rotated before it can be re-enabled. Cleared once the secret is rotated. Omitted if the token has not been reported as leaked.
+     * 
+     */
+    private String leakReportedAt;
+    /**
+     * @return The secret scanning partner that reported the leak. Omitted if the token has not been reported as leaked.
+     * 
+     */
+    private String leakReporter;
+    /**
      * @return The name of the service token.
      * 
      */
@@ -51,6 +67,11 @@ public final class GetZeroTrustAccessServiceTokenResult {
      * 
      */
     private @Nullable String serviceTokenId;
+    /**
+     * @return Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.
+     * 
+     */
+    private Map<String,String> tags;
     /**
      * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
@@ -80,7 +101,7 @@ public final class GetZeroTrustAccessServiceTokenResult {
         return this.duration;
     }
     /**
-     * @return Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+     * @return Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled. A service token reported as leaked is disabled automatically and cannot be re-enabled until its secret is rotated; attempting to do so returns a 409. Defaults to enabled when omitted on create.
      * 
      */
     public Boolean enabled() {
@@ -100,6 +121,27 @@ public final class GetZeroTrustAccessServiceTokenResult {
         return this.id;
     }
     /**
+     * @return Where the leaked `clientSecret` was found, if provided by the reporter. Omitted if the token has not been reported as leaked.
+     * 
+     */
+    public String leakReportUrl() {
+        return this.leakReportUrl;
+    }
+    /**
+     * @return When a secret scanning partner reported this service token&#39;s `clientSecret` as leaked. A leaked service token is disabled and must be rotated before it can be re-enabled. Cleared once the secret is rotated. Omitted if the token has not been reported as leaked.
+     * 
+     */
+    public String leakReportedAt() {
+        return this.leakReportedAt;
+    }
+    /**
+     * @return The secret scanning partner that reported the leak. Omitted if the token has not been reported as leaked.
+     * 
+     */
+    public String leakReporter() {
+        return this.leakReporter;
+    }
+    /**
      * @return The name of the service token.
      * 
      */
@@ -112,6 +154,13 @@ public final class GetZeroTrustAccessServiceTokenResult {
      */
     public Optional<String> serviceTokenId() {
         return Optional.ofNullable(this.serviceTokenId);
+    }
+    /**
+     * @return Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.
+     * 
+     */
+    public Map<String,String> tags() {
+        return this.tags;
     }
     /**
      * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
@@ -137,8 +186,12 @@ public final class GetZeroTrustAccessServiceTokenResult {
         private String expiresAt;
         private @Nullable GetZeroTrustAccessServiceTokenFilter filter;
         private String id;
+        private String leakReportUrl;
+        private String leakReportedAt;
+        private String leakReporter;
         private String name;
         private @Nullable String serviceTokenId;
+        private Map<String,String> tags;
         private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetZeroTrustAccessServiceTokenResult defaults) {
@@ -150,8 +203,12 @@ public final class GetZeroTrustAccessServiceTokenResult {
     	      this.expiresAt = defaults.expiresAt;
     	      this.filter = defaults.filter;
     	      this.id = defaults.id;
+    	      this.leakReportUrl = defaults.leakReportUrl;
+    	      this.leakReportedAt = defaults.leakReportedAt;
+    	      this.leakReporter = defaults.leakReporter;
     	      this.name = defaults.name;
     	      this.serviceTokenId = defaults.serviceTokenId;
+    	      this.tags = defaults.tags;
     	      this.zoneId = defaults.zoneId;
         }
 
@@ -208,6 +265,30 @@ public final class GetZeroTrustAccessServiceTokenResult {
             return this;
         }
         @CustomType.Setter
+        public Builder leakReportUrl(String leakReportUrl) {
+            if (leakReportUrl == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessServiceTokenResult", "leakReportUrl");
+            }
+            this.leakReportUrl = leakReportUrl;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder leakReportedAt(String leakReportedAt) {
+            if (leakReportedAt == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessServiceTokenResult", "leakReportedAt");
+            }
+            this.leakReportedAt = leakReportedAt;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder leakReporter(String leakReporter) {
+            if (leakReporter == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessServiceTokenResult", "leakReporter");
+            }
+            this.leakReporter = leakReporter;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessServiceTokenResult", "name");
@@ -219,6 +300,14 @@ public final class GetZeroTrustAccessServiceTokenResult {
         public Builder serviceTokenId(@Nullable String serviceTokenId) {
 
             this.serviceTokenId = serviceTokenId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder tags(Map<String,String> tags) {
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessServiceTokenResult", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         @CustomType.Setter
@@ -236,8 +325,12 @@ public final class GetZeroTrustAccessServiceTokenResult {
             _resultValue.expiresAt = expiresAt;
             _resultValue.filter = filter;
             _resultValue.id = id;
+            _resultValue.leakReportUrl = leakReportUrl;
+            _resultValue.leakReportedAt = leakReportedAt;
+            _resultValue.leakReporter = leakReporter;
             _resultValue.name = name;
             _resultValue.serviceTokenId = serviceTokenId;
+            _resultValue.tags = tags;
             _resultValue.zoneId = zoneId;
             return _resultValue;
         }

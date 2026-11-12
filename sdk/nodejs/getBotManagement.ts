@@ -46,6 +46,10 @@ export interface GetBotManagementArgs {
  */
 export interface GetBotManagementResult {
     /**
+     * Configure blocking behavior for supported personal AI agents.
+     */
+    readonly aiAgents: outputs.GetBotManagementAiAgents;
+    /**
      * Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
      */
     readonly aiBotsMigrationOptOut: boolean;

@@ -55,6 +55,7 @@ namespace Pulumi.Cloudflare
     ///                 S11 = "FLAG",
     ///                 S12 = "FLAG",
     ///                 S13 = "FLAG",
+    ///                 S14 = "FLAG",
     ///                 S2 = "FLAG",
     ///                 S3 = "FLAG",
     ///                 S4 = "FLAG",
@@ -72,6 +73,7 @@ namespace Pulumi.Cloudflare
     ///                 S11 = "FLAG",
     ///                 S12 = "FLAG",
     ///                 S13 = "FLAG",
+    ///                 S14 = "FLAG",
     ///                 S2 = "FLAG",
     ///                 S3 = "FLAG",
     ///                 S4 = "FLAG",
@@ -180,6 +182,9 @@ namespace Pulumi.Cloudflare
         [Output("aiGatewayId")]
         public Output<string> AiGatewayId { get; private set; } = null!;
 
+        /// <summary>
+        /// Require authentication for gateway access. New gateways must have authentication enabled. Once enabled, authentication cannot be disabled.
+        /// </summary>
         [Output("authentication")]
         public Output<bool> Authentication { get; private set; } = null!;
 
@@ -203,6 +208,20 @@ namespace Pulumi.Cloudflare
 
         [Output("dlp")]
         public Output<Outputs.AiGatewayDlp?> Dlp { get; private set; } = null!;
+
+        /// <summary>
+        /// FedRAMP compliance level: fedramp-medium or fedramp-high.
+        /// Available values: "fedramp-medium", "fedramp-high".
+        /// </summary>
+        [Output("fedrampLevel")]
+        public Output<string> FedrampLevel { get; private set; } = null!;
+
+        /// <summary>
+        /// FedRAMP enforcement mode. "prefer" prioritizes compliant connectors but allows fallback. "require" strictly filters.
+        /// Available values: "prefer", "require".
+        /// </summary>
+        [Output("fedrampMode")]
+        public Output<string> FedrampMode { get; private set; } = null!;
 
         [Output("guardrails")]
         public Output<Outputs.AiGatewayGuardrails?> Guardrails { get; private set; } = null!;
@@ -268,6 +287,9 @@ namespace Pulumi.Cloudflare
         [Output("spendLimits")]
         public Output<Outputs.AiGatewaySpendLimits> SpendLimits { get; private set; } = null!;
 
+        /// <summary>
+        /// Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it.
+        /// </summary>
         [Output("storeId")]
         public Output<string> StoreId { get; private set; } = null!;
 
@@ -339,6 +361,9 @@ namespace Pulumi.Cloudflare
         [Input("aiGatewayId", required: true)]
         public Input<string> AiGatewayId { get; set; } = null!;
 
+        /// <summary>
+        /// Require authentication for gateway access. New gateways must have authentication enabled. Once enabled, authentication cannot be disabled.
+        /// </summary>
         [Input("authentication")]
         public Input<bool>? Authentication { get; set; }
 
@@ -423,6 +448,9 @@ namespace Pulumi.Cloudflare
         [Input("spendLimits")]
         public Input<Inputs.AiGatewaySpendLimitsArgs>? SpendLimits { get; set; }
 
+        /// <summary>
+        /// Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it.
+        /// </summary>
         [Input("storeId")]
         public Input<string>? StoreId { get; set; }
 
@@ -456,6 +484,9 @@ namespace Pulumi.Cloudflare
         [Input("aiGatewayId")]
         public Input<string>? AiGatewayId { get; set; }
 
+        /// <summary>
+        /// Require authentication for gateway access. New gateways must have authentication enabled. Once enabled, authentication cannot be disabled.
+        /// </summary>
         [Input("authentication")]
         public Input<bool>? Authentication { get; set; }
 
@@ -479,6 +510,20 @@ namespace Pulumi.Cloudflare
 
         [Input("dlp")]
         public Input<Inputs.AiGatewayDlpGetArgs>? Dlp { get; set; }
+
+        /// <summary>
+        /// FedRAMP compliance level: fedramp-medium or fedramp-high.
+        /// Available values: "fedramp-medium", "fedramp-high".
+        /// </summary>
+        [Input("fedrampLevel")]
+        public Input<string>? FedrampLevel { get; set; }
+
+        /// <summary>
+        /// FedRAMP enforcement mode. "prefer" prioritizes compliant connectors but allows fallback. "require" strictly filters.
+        /// Available values: "prefer", "require".
+        /// </summary>
+        [Input("fedrampMode")]
+        public Input<string>? FedrampMode { get; set; }
 
         [Input("guardrails")]
         public Input<Inputs.AiGatewayGuardrailsGetArgs>? Guardrails { get; set; }
@@ -549,6 +594,9 @@ namespace Pulumi.Cloudflare
         [Input("spendLimits")]
         public Input<Inputs.AiGatewaySpendLimitsGetArgs>? SpendLimits { get; set; }
 
+        /// <summary>
+        /// Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it.
+        /// </summary>
         [Input("storeId")]
         public Input<string>? StoreId { get; set; }
 

@@ -61,33 +61,31 @@ type LookupZeroTrustDlpPredefinedEntryArgs struct {
 // A collection of values returned by getZeroTrustDlpPredefinedEntry.
 type LookupZeroTrustDlpPredefinedEntryResult struct {
 	AccountId *string `pulumi:"accountId"`
-	// Only applies to custom word lists.
+	// For `type: exactData`: Only applies to custom word lists.
 	// Determines if the words should be matched in a case-sensitive manner
 	// Cannot be set to false if secret is true
 	CaseSensitive bool                                     `pulumi:"caseSensitive"`
 	Confidence    GetZeroTrustDlpPredefinedEntryConfidence `pulumi:"confidence"`
 	CreatedAt     string                                   `pulumi:"createdAt"`
-	// Whether this entry is deprecated for new use. This is computed from the static catalog and
+	// For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
 	// emitted only when true.
-	Deprecated  bool   `pulumi:"deprecated"`
-	Description string `pulumi:"description"`
-	Enabled     bool   `pulumi:"enabled"`
-	EntryId     string `pulumi:"entryId"`
-	// The ID of this resource.
-	Id        string                                  `pulumi:"id"`
-	Name      string                                  `pulumi:"name"`
-	Pattern   GetZeroTrustDlpPredefinedEntryPattern   `pulumi:"pattern"`
-	ProfileId string                                  `pulumi:"profileId"`
-	Profiles  []GetZeroTrustDlpPredefinedEntryProfile `pulumi:"profiles"`
-	Secret    bool                                    `pulumi:"secret"`
-	// Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
-	Type      string `pulumi:"type"`
-	UpdatedAt string `pulumi:"updatedAt"`
-	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
-	UploadStatus string `pulumi:"uploadStatus"`
-	// A Predefined AI prompt classification topic entry.
-	Variant   GetZeroTrustDlpPredefinedEntryVariant `pulumi:"variant"`
-	WordLists []string                              `pulumi:"wordLists"`
+	Deprecated bool `pulumi:"deprecated"`
+	// For `type: customPromptTopic`: The optional description of the custom prompt topic entry.
+	Description  string                                  `pulumi:"description"`
+	Enabled      bool                                    `pulumi:"enabled"`
+	EntryId      string                                  `pulumi:"entryId"`
+	Id           string                                  `pulumi:"id"`
+	Name         string                                  `pulumi:"name"`
+	Pattern      GetZeroTrustDlpPredefinedEntryPattern   `pulumi:"pattern"`
+	ProfileId    string                                  `pulumi:"profileId"`
+	Profiles     []GetZeroTrustDlpPredefinedEntryProfile `pulumi:"profiles"`
+	Secret       bool                                    `pulumi:"secret"`
+	Type         string                                  `pulumi:"type"`
+	UpdatedAt    string                                  `pulumi:"updatedAt"`
+	UploadStatus string                                  `pulumi:"uploadStatus"`
+	ValidatorIds []string                                `pulumi:"validatorIds"`
+	Variant      GetZeroTrustDlpPredefinedEntryVariant   `pulumi:"variant"`
+	WordLists    []string                                `pulumi:"wordLists"`
 }
 
 func LookupZeroTrustDlpPredefinedEntryOutput(ctx *pulumi.Context, args LookupZeroTrustDlpPredefinedEntryOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustDlpPredefinedEntryResultOutput {
@@ -124,7 +122,7 @@ func (o LookupZeroTrustDlpPredefinedEntryResultOutput) AccountId() pulumi.String
 	return o.ApplyT(func(v LookupZeroTrustDlpPredefinedEntryResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// Only applies to custom word lists.
+// For `type: exactData`: Only applies to custom word lists.
 // Determines if the words should be matched in a case-sensitive manner
 // Cannot be set to false if secret is true
 func (o LookupZeroTrustDlpPredefinedEntryResultOutput) CaseSensitive() pulumi.BoolOutput {
@@ -141,12 +139,13 @@ func (o LookupZeroTrustDlpPredefinedEntryResultOutput) CreatedAt() pulumi.String
 	return o.ApplyT(func(v LookupZeroTrustDlpPredefinedEntryResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Whether this entry is deprecated for new use. This is computed from the static catalog and
+// For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
 // emitted only when true.
 func (o LookupZeroTrustDlpPredefinedEntryResultOutput) Deprecated() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpPredefinedEntryResult) bool { return v.Deprecated }).(pulumi.BoolOutput)
 }
 
+// For `type: customPromptTopic`: The optional description of the custom prompt topic entry.
 func (o LookupZeroTrustDlpPredefinedEntryResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpPredefinedEntryResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -159,7 +158,6 @@ func (o LookupZeroTrustDlpPredefinedEntryResultOutput) EntryId() pulumi.StringOu
 	return o.ApplyT(func(v LookupZeroTrustDlpPredefinedEntryResult) string { return v.EntryId }).(pulumi.StringOutput)
 }
 
-// The ID of this resource.
 func (o LookupZeroTrustDlpPredefinedEntryResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpPredefinedEntryResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -188,7 +186,6 @@ func (o LookupZeroTrustDlpPredefinedEntryResultOutput) Secret() pulumi.BoolOutpu
 	return o.ApplyT(func(v LookupZeroTrustDlpPredefinedEntryResult) bool { return v.Secret }).(pulumi.BoolOutput)
 }
 
-// Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
 func (o LookupZeroTrustDlpPredefinedEntryResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpPredefinedEntryResult) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -197,12 +194,14 @@ func (o LookupZeroTrustDlpPredefinedEntryResultOutput) UpdatedAt() pulumi.String
 	return o.ApplyT(func(v LookupZeroTrustDlpPredefinedEntryResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
-// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
 func (o LookupZeroTrustDlpPredefinedEntryResultOutput) UploadStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpPredefinedEntryResult) string { return v.UploadStatus }).(pulumi.StringOutput)
 }
 
-// A Predefined AI prompt classification topic entry.
+func (o LookupZeroTrustDlpPredefinedEntryResultOutput) ValidatorIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupZeroTrustDlpPredefinedEntryResult) []string { return v.ValidatorIds }).(pulumi.StringArrayOutput)
+}
+
 func (o LookupZeroTrustDlpPredefinedEntryResultOutput) Variant() GetZeroTrustDlpPredefinedEntryVariantOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpPredefinedEntryResult) GetZeroTrustDlpPredefinedEntryVariant {
 		return v.Variant

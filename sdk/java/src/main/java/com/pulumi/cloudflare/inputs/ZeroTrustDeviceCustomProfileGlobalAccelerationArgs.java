@@ -10,11 +10,28 @@ import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ZeroTrustDeviceCustomProfileGlobalAccelerationArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ZeroTrustDeviceCustomProfileGlobalAccelerationArgs Empty = new ZeroTrustDeviceCustomProfileGlobalAccelerationArgs();
+
+    /**
+     * Whether WARP users may manually override the automatic Global Acceleration decision. Defaults to true when not provided.
+     * 
+     */
+    @Import(name="allowManualOverride")
+    private @Nullable Output<Boolean> allowManualOverride;
+
+    /**
+     * @return Whether WARP users may manually override the automatic Global Acceleration decision. Defaults to true when not provided.
+     * 
+     */
+    public Optional<Output<Boolean>> allowManualOverride() {
+        return Optional.ofNullable(this.allowManualOverride);
+    }
 
     /**
      * IP:port entries for the API endpoints.
@@ -29,6 +46,21 @@ public final class ZeroTrustDeviceCustomProfileGlobalAccelerationArgs extends co
      */
     public Output<List<String>> apiEndpoints() {
         return this.apiEndpoints;
+    }
+
+    /**
+     * Automatically switch Global Acceleration regions based on device location. Defaults to false when not provided.
+     * 
+     */
+    @Import(name="autoswitch")
+    private @Nullable Output<Boolean> autoswitch;
+
+    /**
+     * @return Automatically switch Global Acceleration regions based on device location. Defaults to false when not provided.
+     * 
+     */
+    public Optional<Output<Boolean>> autoswitch() {
+        return Optional.ofNullable(this.autoswitch);
     }
 
     /**
@@ -79,7 +111,9 @@ public final class ZeroTrustDeviceCustomProfileGlobalAccelerationArgs extends co
     private ZeroTrustDeviceCustomProfileGlobalAccelerationArgs() {}
 
     private ZeroTrustDeviceCustomProfileGlobalAccelerationArgs(ZeroTrustDeviceCustomProfileGlobalAccelerationArgs $) {
+        this.allowManualOverride = $.allowManualOverride;
         this.apiEndpoints = $.apiEndpoints;
+        this.autoswitch = $.autoswitch;
         this.enabled = $.enabled;
         this.masqueEndpoints = $.masqueEndpoints;
         this.wireguardEndpoints = $.wireguardEndpoints;
@@ -101,6 +135,27 @@ public final class ZeroTrustDeviceCustomProfileGlobalAccelerationArgs extends co
 
         public Builder(ZeroTrustDeviceCustomProfileGlobalAccelerationArgs defaults) {
             $ = new ZeroTrustDeviceCustomProfileGlobalAccelerationArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param allowManualOverride Whether WARP users may manually override the automatic Global Acceleration decision. Defaults to true when not provided.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowManualOverride(@Nullable Output<Boolean> allowManualOverride) {
+            $.allowManualOverride = allowManualOverride;
+            return this;
+        }
+
+        /**
+         * @param allowManualOverride Whether WARP users may manually override the automatic Global Acceleration decision. Defaults to true when not provided.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowManualOverride(Boolean allowManualOverride) {
+            return allowManualOverride(Output.of(allowManualOverride));
         }
 
         /**
@@ -132,6 +187,27 @@ public final class ZeroTrustDeviceCustomProfileGlobalAccelerationArgs extends co
          */
         public Builder apiEndpoints(String... apiEndpoints) {
             return apiEndpoints(List.of(apiEndpoints));
+        }
+
+        /**
+         * @param autoswitch Automatically switch Global Acceleration regions based on device location. Defaults to false when not provided.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoswitch(@Nullable Output<Boolean> autoswitch) {
+            $.autoswitch = autoswitch;
+            return this;
+        }
+
+        /**
+         * @param autoswitch Automatically switch Global Acceleration regions based on device location. Defaults to false when not provided.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoswitch(Boolean autoswitch) {
+            return autoswitch(Output.of(autoswitch));
         }
 
         /**

@@ -109,6 +109,21 @@ public final class AiGatewayGuardrailsPromptArgs extends com.pulumi.resources.Re
      * Available values: &#34;FLAG&#34;, &#34;BLOCK&#34;.
      * 
      */
+    @Import(name="s14")
+    private @Nullable Output<String> s14;
+
+    /**
+     * @return Available values: &#34;FLAG&#34;, &#34;BLOCK&#34;.
+     * 
+     */
+    public Optional<Output<String>> s14() {
+        return Optional.ofNullable(this.s14);
+    }
+
+    /**
+     * Available values: &#34;FLAG&#34;, &#34;BLOCK&#34;.
+     * 
+     */
     @Import(name="s2")
     private @Nullable Output<String> s2;
 
@@ -234,6 +249,7 @@ public final class AiGatewayGuardrailsPromptArgs extends com.pulumi.resources.Re
         this.s11 = $.s11;
         this.s12 = $.s12;
         this.s13 = $.s13;
+        this.s14 = $.s14;
         this.s2 = $.s2;
         this.s3 = $.s3;
         this.s4 = $.s4;
@@ -386,6 +402,27 @@ public final class AiGatewayGuardrailsPromptArgs extends com.pulumi.resources.Re
          */
         public Builder s13(String s13) {
             return s13(Output.of(s13));
+        }
+
+        /**
+         * @param s14 Available values: &#34;FLAG&#34;, &#34;BLOCK&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder s14(@Nullable Output<String> s14) {
+            $.s14 = s14;
+            return this;
+        }
+
+        /**
+         * @param s14 Available values: &#34;FLAG&#34;, &#34;BLOCK&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder s14(String s14) {
+            return s14(Output.of(s14));
         }
 
         /**

@@ -16,14 +16,14 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
     public static final R2BucketSippySourceArgs Empty = new R2BucketSippySourceArgs();
 
     /**
-     * Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
+     * For `r2_bucket_sippy_provider: aws` or `r2_bucket_sippy_provider: s3`: Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
      * 
      */
     @Import(name="accessKeyId")
     private @Nullable Output<String> accessKeyId;
 
     /**
-     * @return Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
+     * @return For `r2_bucket_sippy_provider: aws` or `r2_bucket_sippy_provider: s3`: Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
      * 
      */
     public Optional<Output<String>> accessKeyId() {
@@ -31,14 +31,14 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Access key for the Azure Storage account. Mutually exclusive with sasToken.
+     * For `r2_bucket_sippy_provider: azure`: Access key for the Azure Storage account. Mutually exclusive with sasToken.
      * 
      */
     @Import(name="accountKey")
     private @Nullable Output<String> accountKey;
 
     /**
-     * @return Access key for the Azure Storage account. Mutually exclusive with sasToken.
+     * @return For `r2_bucket_sippy_provider: azure`: Access key for the Azure Storage account. Mutually exclusive with sasToken.
      * 
      */
     public Optional<Output<String>> accountKey() {
@@ -46,14 +46,14 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Name of the Azure Storage account.
+     * For `r2_bucket_sippy_provider: azure`: Name of the Azure Storage account.
      * 
      */
     @Import(name="accountName")
     private @Nullable Output<String> accountName;
 
     /**
-     * @return Name of the Azure Storage account.
+     * @return For `r2_bucket_sippy_provider: azure`: Name of the Azure Storage account.
      * 
      */
     public Optional<Output<String>> accountName() {
@@ -61,14 +61,14 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Name of the AWS S3 bucket.
+     * For `r2_bucket_sippy_provider: aws`: Name of the AWS S3 bucket.
      * 
      */
     @Import(name="bucket")
     private @Nullable Output<String> bucket;
 
     /**
-     * @return Name of the AWS S3 bucket.
+     * @return For `r2_bucket_sippy_provider: aws`: Name of the AWS S3 bucket.
      * 
      */
     public Optional<Output<String>> bucket() {
@@ -76,14 +76,14 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * URL to the S3-compatible API of the bucket.
+     * For `r2_bucket_sippy_provider: s3`: URL to the S3-compatible API of the bucket.
      * 
      */
     @Import(name="bucketUrl")
     private @Nullable Output<String> bucketUrl;
 
     /**
-     * @return URL to the S3-compatible API of the bucket.
+     * @return For `r2_bucket_sippy_provider: s3`: URL to the S3-compatible API of the bucket.
      * 
      */
     public Optional<Output<String>> bucketUrl() {
@@ -91,14 +91,14 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Client email of an IAM credential (ideally scoped to a single GCS bucket).
+     * For `r2_bucket_sippy_provider: gcs`: Client email of an IAM credential (ideally scoped to a single GCS bucket).
      * 
      */
     @Import(name="clientEmail")
     private @Nullable Output<String> clientEmail;
 
     /**
-     * @return Client email of an IAM credential (ideally scoped to a single GCS bucket).
+     * @return For `r2_bucket_sippy_provider: gcs`: Client email of an IAM credential (ideally scoped to a single GCS bucket).
      * 
      */
     public Optional<Output<String>> clientEmail() {
@@ -121,14 +121,14 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Name of the Azure Blob Storage container.
+     * For `r2_bucket_sippy_provider: azure`: Name of the Azure Blob Storage container.
      * 
      */
     @Import(name="container")
     private @Nullable Output<String> container;
 
     /**
-     * @return Name of the Azure Blob Storage container.
+     * @return For `r2_bucket_sippy_provider: azure`: Name of the Azure Blob Storage container.
      * 
      */
     public Optional<Output<String>> container() {
@@ -136,14 +136,14 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Private Key of an IAM credential (ideally scoped to a single GCS bucket).
+     * For `r2_bucket_sippy_provider: gcs`: Private Key of an IAM credential (ideally scoped to a single GCS bucket).
      * 
      */
     @Import(name="privateKey")
     private @Nullable Output<String> privateKey;
 
     /**
-     * @return Private Key of an IAM credential (ideally scoped to a single GCS bucket).
+     * @return For `r2_bucket_sippy_provider: gcs`: Private Key of an IAM credential (ideally scoped to a single GCS bucket).
      * 
      */
     public Optional<Output<String>> privateKey() {
@@ -151,14 +151,14 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * AWS region containing the source S3 bucket.
+     * For `r2_bucket_sippy_provider: aws`: AWS region containing the source S3 bucket.
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return AWS region containing the source S3 bucket.
+     * @return For `r2_bucket_sippy_provider: aws`: AWS region containing the source S3 bucket.
      * 
      */
     public Optional<Output<String>> region() {
@@ -166,14 +166,14 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Shared Access Signature token for the Azure Storage account. Mutually exclusive with accountKey.
+     * For `r2_bucket_sippy_provider: azure`: Shared Access Signature token for the Azure Storage account. Mutually exclusive with accountKey.
      * 
      */
     @Import(name="sasToken")
     private @Nullable Output<String> sasToken;
 
     /**
-     * @return Shared Access Signature token for the Azure Storage account. Mutually exclusive with accountKey.
+     * @return For `r2_bucket_sippy_provider: azure`: Shared Access Signature token for the Azure Storage account. Mutually exclusive with accountKey.
      * 
      */
     public Optional<Output<String>> sasToken() {
@@ -181,14 +181,14 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
+     * For `r2_bucket_sippy_provider: aws` or `r2_bucket_sippy_provider: s3`: Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
      * 
      */
     @Import(name="secretAccessKey")
     private @Nullable Output<String> secretAccessKey;
 
     /**
-     * @return Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
+     * @return For `r2_bucket_sippy_provider: aws` or `r2_bucket_sippy_provider: s3`: Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
      * 
      */
     public Optional<Output<String>> secretAccessKey() {
@@ -231,7 +231,7 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param accessKeyId Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
+         * @param accessKeyId For `r2_bucket_sippy_provider: aws` or `r2_bucket_sippy_provider: s3`: Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param accessKeyId Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
+         * @param accessKeyId For `r2_bucket_sippy_provider: aws` or `r2_bucket_sippy_provider: s3`: Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param accountKey Access key for the Azure Storage account. Mutually exclusive with sasToken.
+         * @param accountKey For `r2_bucket_sippy_provider: azure`: Access key for the Azure Storage account. Mutually exclusive with sasToken.
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param accountKey Access key for the Azure Storage account. Mutually exclusive with sasToken.
+         * @param accountKey For `r2_bucket_sippy_provider: azure`: Access key for the Azure Storage account. Mutually exclusive with sasToken.
          * 
          * @return builder
          * 
@@ -273,7 +273,7 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param accountName Name of the Azure Storage account.
+         * @param accountName For `r2_bucket_sippy_provider: azure`: Name of the Azure Storage account.
          * 
          * @return builder
          * 
@@ -284,7 +284,7 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param accountName Name of the Azure Storage account.
+         * @param accountName For `r2_bucket_sippy_provider: azure`: Name of the Azure Storage account.
          * 
          * @return builder
          * 
@@ -294,7 +294,7 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param bucket Name of the AWS S3 bucket.
+         * @param bucket For `r2_bucket_sippy_provider: aws`: Name of the AWS S3 bucket.
          * 
          * @return builder
          * 
@@ -305,7 +305,7 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param bucket Name of the AWS S3 bucket.
+         * @param bucket For `r2_bucket_sippy_provider: aws`: Name of the AWS S3 bucket.
          * 
          * @return builder
          * 
@@ -315,7 +315,7 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param bucketUrl URL to the S3-compatible API of the bucket.
+         * @param bucketUrl For `r2_bucket_sippy_provider: s3`: URL to the S3-compatible API of the bucket.
          * 
          * @return builder
          * 
@@ -326,7 +326,7 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param bucketUrl URL to the S3-compatible API of the bucket.
+         * @param bucketUrl For `r2_bucket_sippy_provider: s3`: URL to the S3-compatible API of the bucket.
          * 
          * @return builder
          * 
@@ -336,7 +336,7 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param clientEmail Client email of an IAM credential (ideally scoped to a single GCS bucket).
+         * @param clientEmail For `r2_bucket_sippy_provider: gcs`: Client email of an IAM credential (ideally scoped to a single GCS bucket).
          * 
          * @return builder
          * 
@@ -347,7 +347,7 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param clientEmail Client email of an IAM credential (ideally scoped to a single GCS bucket).
+         * @param clientEmail For `r2_bucket_sippy_provider: gcs`: Client email of an IAM credential (ideally scoped to a single GCS bucket).
          * 
          * @return builder
          * 
@@ -378,7 +378,7 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param container Name of the Azure Blob Storage container.
+         * @param container For `r2_bucket_sippy_provider: azure`: Name of the Azure Blob Storage container.
          * 
          * @return builder
          * 
@@ -389,7 +389,7 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param container Name of the Azure Blob Storage container.
+         * @param container For `r2_bucket_sippy_provider: azure`: Name of the Azure Blob Storage container.
          * 
          * @return builder
          * 
@@ -399,7 +399,7 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param privateKey Private Key of an IAM credential (ideally scoped to a single GCS bucket).
+         * @param privateKey For `r2_bucket_sippy_provider: gcs`: Private Key of an IAM credential (ideally scoped to a single GCS bucket).
          * 
          * @return builder
          * 
@@ -410,7 +410,7 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param privateKey Private Key of an IAM credential (ideally scoped to a single GCS bucket).
+         * @param privateKey For `r2_bucket_sippy_provider: gcs`: Private Key of an IAM credential (ideally scoped to a single GCS bucket).
          * 
          * @return builder
          * 
@@ -420,7 +420,7 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param region AWS region containing the source S3 bucket.
+         * @param region For `r2_bucket_sippy_provider: aws`: AWS region containing the source S3 bucket.
          * 
          * @return builder
          * 
@@ -431,7 +431,7 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param region AWS region containing the source S3 bucket.
+         * @param region For `r2_bucket_sippy_provider: aws`: AWS region containing the source S3 bucket.
          * 
          * @return builder
          * 
@@ -441,7 +441,7 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sasToken Shared Access Signature token for the Azure Storage account. Mutually exclusive with accountKey.
+         * @param sasToken For `r2_bucket_sippy_provider: azure`: Shared Access Signature token for the Azure Storage account. Mutually exclusive with accountKey.
          * 
          * @return builder
          * 
@@ -452,7 +452,7 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sasToken Shared Access Signature token for the Azure Storage account. Mutually exclusive with accountKey.
+         * @param sasToken For `r2_bucket_sippy_provider: azure`: Shared Access Signature token for the Azure Storage account. Mutually exclusive with accountKey.
          * 
          * @return builder
          * 
@@ -462,7 +462,7 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param secretAccessKey Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
+         * @param secretAccessKey For `r2_bucket_sippy_provider: aws` or `r2_bucket_sippy_provider: s3`: Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
          * 
          * @return builder
          * 
@@ -473,7 +473,7 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param secretAccessKey Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
+         * @param secretAccessKey For `r2_bucket_sippy_provider: aws` or `r2_bucket_sippy_provider: s3`: Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
          * 
          * @return builder
          * 

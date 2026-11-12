@@ -17,6 +17,11 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string CreatedOn;
         public readonly string Id;
         public readonly ImmutableDictionary<string, double> Instances;
+        /// <summary>
+        /// Jurisdiction where instances of this workflow run and store data. Set when the workflow is created and cannot be changed.
+        /// Available values: "eu", "fedramp", "us".
+        /// </summary>
+        public readonly string Jurisdiction;
         public readonly string ModifiedOn;
         public readonly string Name;
         public readonly ImmutableArray<Outputs.GetWorkflowsResultScheduleResult> Schedules;
@@ -37,6 +42,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableDictionary<string, double> instances,
 
+            string jurisdiction,
+
             string modifiedOn,
 
             string name,
@@ -53,6 +60,7 @@ namespace Pulumi.Cloudflare.Outputs
             CreatedOn = createdOn;
             Id = id;
             Instances = instances;
+            Jurisdiction = jurisdiction;
             ModifiedOn = modifiedOn;
             Name = name;
             Schedules = schedules;

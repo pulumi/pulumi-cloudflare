@@ -9,6 +9,14 @@ import * as utilities from "./utilities";
 /**
  * Accepted Permissions
  *
+ * - `Individual Workers Admin`
+ * - `Individual Workers Content Read-Only`
+ * - `Individual Workers Editor`
+ * - `Individual Workers Metadata Read-Only`
+ * - `Workers Admin`
+ * - `Workers Content Read-Only`
+ * - `Workers Editor`
+ * - `Workers Metadata Read-Only`
  * - `Workers Scripts Read`
  * - `Workers Scripts Write`
  * - `Workers Tail Read`
@@ -96,6 +104,14 @@ export interface GetWorkersDeploymentsResult {
 /**
  * Accepted Permissions
  *
+ * - `Individual Workers Admin`
+ * - `Individual Workers Content Read-Only`
+ * - `Individual Workers Editor`
+ * - `Individual Workers Metadata Read-Only`
+ * - `Workers Admin`
+ * - `Workers Content Read-Only`
+ * - `Workers Editor`
+ * - `Workers Metadata Read-Only`
  * - `Workers Scripts Read`
  * - `Workers Scripts Write`
  * - `Workers Tail Read`

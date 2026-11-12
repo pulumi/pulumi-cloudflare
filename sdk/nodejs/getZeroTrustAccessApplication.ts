@@ -149,7 +149,7 @@ export interface GetZeroTrustAccessApplicationResult {
      */
     readonly logoUrl: string;
     /**
-     * Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+     * Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, rdp, and infrastructure application types. For infrastructure applications, supported authenticators are `pivKey` and `sshFido2Key`; for other application types use `totp`, `biometrics`, or `securityKey`.
      */
     readonly mfaConfig: outputs.GetZeroTrustAccessApplicationMfaConfig;
     /**

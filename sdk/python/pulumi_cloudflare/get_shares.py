@@ -27,7 +27,7 @@ class GetSharesResult:
     """
     A collection of values returned by getShares.
     """
-    def __init__(__self__, account_id=None, direction=None, include_recipient_counts=None, include_resources=None, kind=None, max_items=None, order=None, resource_types=None, results=None, status=None, tags=None, target_type=None):
+    def __init__(__self__, account_id=None, direction=None, include_recipient_counts=None, include_resources=None, include_tags_from=None, kind=None, max_items=None, order=None, resource_types=None, results=None, status=None, tags=None, target_type=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -40,6 +40,9 @@ class GetSharesResult:
         if include_resources and not isinstance(include_resources, bool):
             raise TypeError("Expected argument 'include_resources' to be a bool")
         pulumi.set(__self__, "include_resources", include_resources)
+        if include_tags_from and not isinstance(include_tags_from, str):
+            raise TypeError("Expected argument 'include_tags_from' to be a str")
+        pulumi.set(__self__, "include_tags_from", include_tags_from)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -97,6 +100,15 @@ class GetSharesResult:
         Include resources in the response.
         """
         return pulumi.get(self, "include_resources")
+
+    @_builtins.property
+    @pulumi.getter(name="includeTagsFrom")
+    def include_tags_from(self) -> Optional[_builtins.str]:
+        """
+        Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+        Available values: "api", "mirror".
+        """
+        return pulumi.get(self, "include_tags_from")
 
     @_builtins.property
     @pulumi.getter
@@ -177,6 +189,7 @@ class AwaitableGetSharesResult(GetSharesResult):
             direction=self.direction,
             include_recipient_counts=self.include_recipient_counts,
             include_resources=self.include_resources,
+            include_tags_from=self.include_tags_from,
             kind=self.kind,
             max_items=self.max_items,
             order=self.order,
@@ -191,6 +204,7 @@ def get_shares(account_id: Optional[_builtins.str] = None,
                direction: Optional[_builtins.str] = None,
                include_recipient_counts: Optional[_builtins.bool] = None,
                include_resources: Optional[_builtins.bool] = None,
+               include_tags_from: Optional[_builtins.str] = None,
                kind: Optional[_builtins.str] = None,
                max_items: Optional[_builtins.int] = None,
                order: Optional[_builtins.str] = None,
@@ -200,6 +214,10 @@ def get_shares(account_id: Optional[_builtins.str] = None,
                target_type: Optional[_builtins.str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSharesResult:
     """
+    Accepted Permissions
+
+    - `Resource Sharing Read`
+
     ## Example Usage
 
     ```python
@@ -209,6 +227,7 @@ def get_shares(account_id: Optional[_builtins.str] = None,
     example_shares = cloudflare.get_shares(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         include_recipient_counts=True,
         include_resources=True,
+        include_tags_from="api",
         kind="sent",
         resource_types=["custom-ruleset"],
         status="active",
@@ -222,6 +241,8 @@ def get_shares(account_id: Optional[_builtins.str] = None,
            Available values: "asc", "desc".
     :param _builtins.bool include_recipient_counts: Include recipient counts in the response.
     :param _builtins.bool include_resources: Include resources in the response.
+    :param _builtins.str include_tags_from: Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+           Available values: "api", "mirror".
     :param _builtins.str kind: Filter shares by kind.
            Available values: "sent", "received".
     :param _builtins.int max_items: Max items to fetch, default: 1000
@@ -239,6 +260,7 @@ def get_shares(account_id: Optional[_builtins.str] = None,
     __args__['direction'] = direction
     __args__['includeRecipientCounts'] = include_recipient_counts
     __args__['includeResources'] = include_resources
+    __args__['includeTagsFrom'] = include_tags_from
     __args__['kind'] = kind
     __args__['maxItems'] = max_items
     __args__['order'] = order
@@ -254,6 +276,7 @@ def get_shares(account_id: Optional[_builtins.str] = None,
         direction=pulumi.get(__ret__, 'direction'),
         include_recipient_counts=pulumi.get(__ret__, 'include_recipient_counts'),
         include_resources=pulumi.get(__ret__, 'include_resources'),
+        include_tags_from=pulumi.get(__ret__, 'include_tags_from'),
         kind=pulumi.get(__ret__, 'kind'),
         max_items=pulumi.get(__ret__, 'max_items'),
         order=pulumi.get(__ret__, 'order'),
@@ -266,6 +289,7 @@ def get_shares_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
                       direction: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                       include_recipient_counts: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                       include_resources: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                      include_tags_from: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                       kind: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                       max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                       order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -275,6 +299,10 @@ def get_shares_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
                       target_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSharesResult]:
     """
+    Accepted Permissions
+
+    - `Resource Sharing Read`
+
     ## Example Usage
 
     ```python
@@ -284,6 +312,7 @@ def get_shares_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
     example_shares = cloudflare.get_shares(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         include_recipient_counts=True,
         include_resources=True,
+        include_tags_from="api",
         kind="sent",
         resource_types=["custom-ruleset"],
         status="active",
@@ -297,6 +326,8 @@ def get_shares_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
            Available values: "asc", "desc".
     :param _builtins.bool include_recipient_counts: Include recipient counts in the response.
     :param _builtins.bool include_resources: Include resources in the response.
+    :param _builtins.str include_tags_from: Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.
+           Available values: "api", "mirror".
     :param _builtins.str kind: Filter shares by kind.
            Available values: "sent", "received".
     :param _builtins.int max_items: Max items to fetch, default: 1000
@@ -314,6 +345,7 @@ def get_shares_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
     __args__['direction'] = direction
     __args__['includeRecipientCounts'] = include_recipient_counts
     __args__['includeResources'] = include_resources
+    __args__['includeTagsFrom'] = include_tags_from
     __args__['kind'] = kind
     __args__['maxItems'] = max_items
     __args__['order'] = order
@@ -328,6 +360,7 @@ def get_shares_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
         direction=pulumi.get(__response__, 'direction'),
         include_recipient_counts=pulumi.get(__response__, 'include_recipient_counts'),
         include_resources=pulumi.get(__response__, 'include_resources'),
+        include_tags_from=pulumi.get(__response__, 'include_tags_from'),
         kind=pulumi.get(__response__, 'kind'),
         max_items=pulumi.get(__response__, 'max_items'),
         order=pulumi.get(__response__, 'order'),

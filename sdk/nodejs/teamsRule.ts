@@ -36,9 +36,6 @@ import * as utilities from "./utilities";
  *             "X-Custom-Header-Name": ["somecustomvalue"],
  *         },
  *         allowChildBypass: false,
- *         auditSsh: {
- *             commandLogging: false,
- *         },
  *         bisoAdminControls: {
  *             copy: "remote_only",
  *             dcp: true,
@@ -90,6 +87,9 @@ import * as utilities from "./utilities";
  *         },
  *         forensicCopy: {
  *             enabled: true,
+ *         },
+ *         forward: {
+ *             workerId: "0123456789abcdef0123456789abcdef",
  *         },
  *         ignoreCnameCategoryMatches: true,
  *         insecureDisableDnssecValidation: false,
@@ -201,7 +201,7 @@ export class TeamsRule extends pulumi.CustomResource {
     declare public readonly accountId: pulumi.Output<string>;
     /**
      * Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
-     * Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
+     * Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect", "forward".
      */
     declare public readonly action: pulumi.Output<string>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
@@ -362,7 +362,7 @@ export interface TeamsRuleState {
     accountId?: pulumi.Input<string | undefined>;
     /**
      * Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
-     * Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
+     * Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect", "forward".
      */
     action?: pulumi.Input<string | undefined>;
     createdAt?: pulumi.Input<string | undefined>;
@@ -447,7 +447,7 @@ export interface TeamsRuleArgs {
     accountId: pulumi.Input<string>;
     /**
      * Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
-     * Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
+     * Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect", "forward".
      */
     action: pulumi.Input<string>;
     /**

@@ -37,6 +37,7 @@ import * as utilities from "./utilities";
  *     ],
  *     requestType: "origin-rsa",
  *     requestedValidity: 5475,
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  *
@@ -112,6 +113,14 @@ export class OriginCaCertificate extends pulumi.CustomResource {
      * Available values: 7, 30, 90, 365, 730, 1095, 5475.
      */
     declare public readonly requestedValidity: pulumi.Output<number>;
+    /**
+     * When the certificate was revoked.
+     */
+    declare public /*out*/ readonly revokedAt: pulumi.Output<string>;
+    /**
+     * Identifier of the zone whose keyless servers the certificate is for. Required when `requestType` is `keyless-certificate`; ignored otherwise.
+     */
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a OriginCaCertificate resource with the given unique name, arguments, and options.
@@ -132,6 +141,8 @@ export class OriginCaCertificate extends pulumi.CustomResource {
             resourceInputs["hostnames"] = state?.hostnames;
             resourceInputs["requestType"] = state?.requestType;
             resourceInputs["requestedValidity"] = state?.requestedValidity;
+            resourceInputs["revokedAt"] = state?.revokedAt;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as OriginCaCertificateArgs | undefined;
             if (args?.csr === undefined && !opts.urn) {
@@ -147,8 +158,10 @@ export class OriginCaCertificate extends pulumi.CustomResource {
             resourceInputs["hostnames"] = args?.hostnames;
             resourceInputs["requestType"] = args?.requestType;
             resourceInputs["requestedValidity"] = args?.requestedValidity;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["certificate"] = undefined /*out*/;
             resourceInputs["expiresOn"] = undefined /*out*/;
+            resourceInputs["revokedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(OriginCaCertificate.__pulumiType, name, resourceInputs, opts);
@@ -186,6 +199,14 @@ export interface OriginCaCertificateState {
      * Available values: 7, 30, 90, 365, 730, 1095, 5475.
      */
     requestedValidity?: pulumi.Input<number | undefined>;
+    /**
+     * When the certificate was revoked.
+     */
+    revokedAt?: pulumi.Input<string | undefined>;
+    /**
+     * Identifier of the zone whose keyless servers the certificate is for. Required when `requestType` is `keyless-certificate`; ignored otherwise.
+     */
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -211,4 +232,8 @@ export interface OriginCaCertificateArgs {
      * Available values: 7, 30, 90, 365, 730, 1095, 5475.
      */
     requestedValidity?: pulumi.Input<number | undefined>;
+    /**
+     * Identifier of the zone whose keyless servers the certificate is for. Required when `requestType` is `keyless-certificate`; ignored otherwise.
+     */
+    zoneId?: pulumi.Input<string | undefined>;
 }

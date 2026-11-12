@@ -5,24 +5,11 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetOriginCaCertificateFilter {
-    /**
-     * @return Limit to the number of records returned.
-     * 
-     */
-    private @Nullable Integer limit;
-    /**
-     * @return Offset the results.
-     * 
-     */
-    private @Nullable Integer offset;
     /**
      * @return Identifier.
      * 
@@ -30,20 +17,6 @@ public final class GetOriginCaCertificateFilter {
     private String zoneId;
 
     private GetOriginCaCertificateFilter() {}
-    /**
-     * @return Limit to the number of records returned.
-     * 
-     */
-    public Optional<Integer> limit() {
-        return Optional.ofNullable(this.limit);
-    }
-    /**
-     * @return Offset the results.
-     * 
-     */
-    public Optional<Integer> offset() {
-        return Optional.ofNullable(this.offset);
-    }
     /**
      * @return Identifier.
      * 
@@ -61,29 +34,13 @@ public final class GetOriginCaCertificateFilter {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Integer limit;
-        private @Nullable Integer offset;
         private String zoneId;
         public Builder() {}
         public Builder(GetOriginCaCertificateFilter defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.limit = defaults.limit;
-    	      this.offset = defaults.offset;
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
-        public Builder limit(@Nullable Integer limit) {
-
-            this.limit = limit;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder offset(@Nullable Integer offset) {
-
-            this.offset = offset;
-            return this;
-        }
         @CustomType.Setter
         public Builder zoneId(String zoneId) {
             if (zoneId == null) {
@@ -94,8 +51,6 @@ public final class GetOriginCaCertificateFilter {
         }
         public GetOriginCaCertificateFilter build() {
             final var _resultValue = new GetOriginCaCertificateFilter();
-            _resultValue.limit = limit;
-            _resultValue.offset = offset;
             _resultValue.zoneId = zoneId;
             return _resultValue;
         }

@@ -69,7 +69,7 @@ export class TotalTls extends pulumi.CustomResource {
     }
 
     /**
-     * The Certificate Authority that Total TLS certificates will be issued through.
+     * The Certificate Authority that Total TLS certificates will be issued through. Not returned in responses when Total TLS is disabled.
      * Available values: "google", "lets*encrypt", "ssl*com".
      */
     declare public readonly certificateAuthority: pulumi.Output<string | undefined>;
@@ -78,7 +78,7 @@ export class TotalTls extends pulumi.CustomResource {
      */
     declare public readonly enabled: pulumi.Output<boolean>;
     /**
-     * The validity period in days for the certificates ordered via Total TLS.
+     * The validity period in days for the certificates ordered via Total TLS. Not returned when Total TLS is disabled.
      * Available values: 90.
      */
     declare public /*out*/ readonly validityPeriod: pulumi.Output<number>;
@@ -127,7 +127,7 @@ export class TotalTls extends pulumi.CustomResource {
  */
 export interface TotalTlsState {
     /**
-     * The Certificate Authority that Total TLS certificates will be issued through.
+     * The Certificate Authority that Total TLS certificates will be issued through. Not returned in responses when Total TLS is disabled.
      * Available values: "google", "lets*encrypt", "ssl*com".
      */
     certificateAuthority?: pulumi.Input<string | undefined>;
@@ -136,7 +136,7 @@ export interface TotalTlsState {
      */
     enabled?: pulumi.Input<boolean | undefined>;
     /**
-     * The validity period in days for the certificates ordered via Total TLS.
+     * The validity period in days for the certificates ordered via Total TLS. Not returned when Total TLS is disabled.
      * Available values: 90.
      */
     validityPeriod?: pulumi.Input<number | undefined>;
@@ -151,7 +151,7 @@ export interface TotalTlsState {
  */
 export interface TotalTlsArgs {
     /**
-     * The Certificate Authority that Total TLS certificates will be issued through.
+     * The Certificate Authority that Total TLS certificates will be issued through. Not returned in responses when Total TLS is disabled.
      * Available values: "google", "lets*encrypt", "ssl*com".
      */
     certificateAuthority?: pulumi.Input<string | undefined>;

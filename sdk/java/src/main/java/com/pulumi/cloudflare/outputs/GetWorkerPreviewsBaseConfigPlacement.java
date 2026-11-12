@@ -24,7 +24,6 @@ public final class GetWorkerPreviewsBaseConfigPlacement {
     private String hostname;
     /**
      * @return Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: &#34;smart&#34;, &#34;targeted&#34;.
      * 
      */
     private String mode;
@@ -56,7 +55,6 @@ public final class GetWorkerPreviewsBaseConfigPlacement {
     }
     /**
      * @return Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-     * Available values: &#34;smart&#34;, &#34;targeted&#34;.
      * 
      */
     public String mode() {

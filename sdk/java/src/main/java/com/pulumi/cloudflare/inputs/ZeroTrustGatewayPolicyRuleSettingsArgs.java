@@ -3,13 +3,13 @@
 
 package com.pulumi.cloudflare.inputs;
 
-import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsAuditSshArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsBlockPageArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsCheckSessionArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsDnsResolversArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsEgressArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsForensicCopyArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsForwardArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsL4overrideArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsPayloadLogArgs;
@@ -60,21 +60,6 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
      */
     public Optional<Output<Boolean>> allowChildBypass() {
         return Optional.ofNullable(this.allowChildBypass);
-    }
-
-    /**
-     * Define the settings for the Audit SSH action. Settable only for `l4` rules with `auditSsh` action.
-     * 
-     */
-    @Import(name="auditSsh")
-    private @Nullable Output<ZeroTrustGatewayPolicyRuleSettingsAuditSshArgs> auditSsh;
-
-    /**
-     * @return Define the settings for the Audit SSH action. Settable only for `l4` rules with `auditSsh` action.
-     * 
-     */
-    public Optional<Output<ZeroTrustGatewayPolicyRuleSettingsAuditSshArgs>> auditSsh() {
-        return Optional.ofNullable(this.auditSsh);
     }
 
     /**
@@ -225,6 +210,21 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
      */
     public Optional<Output<ZeroTrustGatewayPolicyRuleSettingsForensicCopyArgs>> forensicCopy() {
         return Optional.ofNullable(this.forensicCopy);
+    }
+
+    /**
+     * Forward matching HTTP requests to a Worker. Required for `http` rules with the action set to `forward`.
+     * 
+     */
+    @Import(name="forward")
+    private @Nullable Output<ZeroTrustGatewayPolicyRuleSettingsForwardArgs> forward;
+
+    /**
+     * @return Forward matching HTTP requests to a Worker. Required for `http` rules with the action set to `forward`.
+     * 
+     */
+    public Optional<Output<ZeroTrustGatewayPolicyRuleSettingsForwardArgs>> forward() {
+        return Optional.ofNullable(this.forward);
     }
 
     /**
@@ -457,7 +457,6 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
     private ZeroTrustGatewayPolicyRuleSettingsArgs(ZeroTrustGatewayPolicyRuleSettingsArgs $) {
         this.addHeaders = $.addHeaders;
         this.allowChildBypass = $.allowChildBypass;
-        this.auditSsh = $.auditSsh;
         this.bisoAdminControls = $.bisoAdminControls;
         this.blockPage = $.blockPage;
         this.blockPageEnabled = $.blockPageEnabled;
@@ -468,6 +467,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
         this.dnsResolvers = $.dnsResolvers;
         this.egress = $.egress;
         this.forensicCopy = $.forensicCopy;
+        this.forward = $.forward;
         this.ignoreCnameCategoryMatches = $.ignoreCnameCategoryMatches;
         this.insecureDisableDnssecValidation = $.insecureDisableDnssecValidation;
         this.ipCategories = $.ipCategories;
@@ -543,27 +543,6 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
          */
         public Builder allowChildBypass(Boolean allowChildBypass) {
             return allowChildBypass(Output.of(allowChildBypass));
-        }
-
-        /**
-         * @param auditSsh Define the settings for the Audit SSH action. Settable only for `l4` rules with `auditSsh` action.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder auditSsh(@Nullable Output<ZeroTrustGatewayPolicyRuleSettingsAuditSshArgs> auditSsh) {
-            $.auditSsh = auditSsh;
-            return this;
-        }
-
-        /**
-         * @param auditSsh Define the settings for the Audit SSH action. Settable only for `l4` rules with `auditSsh` action.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder auditSsh(ZeroTrustGatewayPolicyRuleSettingsAuditSshArgs auditSsh) {
-            return auditSsh(Output.of(auditSsh));
         }
 
         /**
@@ -784,6 +763,27 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
          */
         public Builder forensicCopy(ZeroTrustGatewayPolicyRuleSettingsForensicCopyArgs forensicCopy) {
             return forensicCopy(Output.of(forensicCopy));
+        }
+
+        /**
+         * @param forward Forward matching HTTP requests to a Worker. Required for `http` rules with the action set to `forward`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forward(@Nullable Output<ZeroTrustGatewayPolicyRuleSettingsForwardArgs> forward) {
+            $.forward = forward;
+            return this;
+        }
+
+        /**
+         * @param forward Forward matching HTTP requests to a Worker. Required for `http` rules with the action set to `forward`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forward(ZeroTrustGatewayPolicyRuleSettingsForwardArgs forward) {
+            return forward(Output.of(forward));
         }
 
         /**

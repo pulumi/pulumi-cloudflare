@@ -82,7 +82,7 @@ type LookupZeroTrustAccessAiControlsMcpServerResult struct {
 	Hostname string `pulumi:"hostname"`
 	// Unique identifier for the MCP server.
 	Id string `pulumi:"id"`
-	// When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+	// When true, per-user authorization uses the shared Cloudflare callback URL as the 'redirect*uri' instead of the portal callback URL. The default is false. Set 'is*shared*oauth*callback_enabled' to true to enable the shared Cloudflare callback URL for this MCP server.
 	IsSharedOauthCallbackEnabled bool   `pulumi:"isSharedOauthCallbackEnabled"`
 	LastSuccessfulSync           string `pulumi:"lastSuccessfulSync"`
 	LastSynced                   string `pulumi:"lastSynced"`
@@ -91,6 +91,8 @@ type LookupZeroTrustAccessAiControlsMcpServerResult struct {
 	// Display name for the MCP server.
 	Name    string              `pulumi:"name"`
 	Prompts []map[string]string `pulumi:"prompts"`
+	// Timestamp of the most recent successful admin OAuth registration.
+	RegisteredAt string `pulumi:"registeredAt"`
 	// Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
 	SecureWebGateway bool `pulumi:"secureWebGateway"`
 	// Current sync state of the server
@@ -197,7 +199,7 @@ func (o LookupZeroTrustAccessAiControlsMcpServerResultOutput) Id() pulumi.String
 	return o.ApplyT(func(v LookupZeroTrustAccessAiControlsMcpServerResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+// When true, per-user authorization uses the shared Cloudflare callback URL as the 'redirect*uri' instead of the portal callback URL. The default is false. Set 'is*shared*oauth*callback_enabled' to true to enable the shared Cloudflare callback URL for this MCP server.
 func (o LookupZeroTrustAccessAiControlsMcpServerResultOutput) IsSharedOauthCallbackEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessAiControlsMcpServerResult) bool { return v.IsSharedOauthCallbackEnabled }).(pulumi.BoolOutput)
 }
@@ -225,6 +227,11 @@ func (o LookupZeroTrustAccessAiControlsMcpServerResultOutput) Name() pulumi.Stri
 
 func (o LookupZeroTrustAccessAiControlsMcpServerResultOutput) Prompts() pulumi.StringMapArrayOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessAiControlsMcpServerResult) []map[string]string { return v.Prompts }).(pulumi.StringMapArrayOutput)
+}
+
+// Timestamp of the most recent successful admin OAuth registration.
+func (o LookupZeroTrustAccessAiControlsMcpServerResultOutput) RegisteredAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessAiControlsMcpServerResult) string { return v.RegisteredAt }).(pulumi.StringOutput)
 }
 
 // Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.

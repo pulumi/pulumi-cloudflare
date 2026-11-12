@@ -52,6 +52,21 @@ public final class ZeroTrustDnsLocationArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.
+     * 
+     */
+    @Import(name="dns64Enabled")
+    private @Nullable Output<Boolean> dns64Enabled;
+
+    /**
+     * @return Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.
+     * 
+     */
+    public Optional<Output<Boolean>> dns64Enabled() {
+        return Optional.ofNullable(this.dns64Enabled);
+    }
+
+    /**
      * Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.
      * 
      */
@@ -146,6 +161,7 @@ public final class ZeroTrustDnsLocationArgs extends com.pulumi.resources.Resourc
     private ZeroTrustDnsLocationArgs(ZeroTrustDnsLocationArgs $) {
         this.accountId = $.accountId;
         this.clientDefault = $.clientDefault;
+        this.dns64Enabled = $.dns64Enabled;
         this.dnsDestinationIpsId = $.dnsDestinationIpsId;
         this.ecsSupport = $.ecsSupport;
         this.endpoints = $.endpoints;
@@ -212,6 +228,27 @@ public final class ZeroTrustDnsLocationArgs extends com.pulumi.resources.Resourc
          */
         public Builder clientDefault(Boolean clientDefault) {
             return clientDefault(Output.of(clientDefault));
+        }
+
+        /**
+         * @param dns64Enabled Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dns64Enabled(@Nullable Output<Boolean> dns64Enabled) {
+            $.dns64Enabled = dns64Enabled;
+            return this;
+        }
+
+        /**
+         * @param dns64Enabled Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dns64Enabled(Boolean dns64Enabled) {
+            return dns64Enabled(Output.of(dns64Enabled));
         }
 
         /**

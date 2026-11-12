@@ -149,6 +149,18 @@ export class ApiToken extends pulumi.CustomResource {
      */
     declare public readonly status: pulumi.Output<string>;
     /**
+     * The prefix of the token value, before the first underscore. Use it with
+     * `tokenSuffix` to identify a token. Only present for tokens created or
+     * rolled after this field was added.
+     */
+    declare public /*out*/ readonly tokenPrefix: pulumi.Output<string>;
+    /**
+     * The last 4 characters of the token value. Use it with `tokenPrefix` to
+     * identify a token. It is not unique. Only present for tokens created or
+     * rolled after this field was added.
+     */
+    declare public /*out*/ readonly tokenSuffix: pulumi.Output<string>;
+    /**
      * The token value.
      */
     declare public /*out*/ readonly value: pulumi.Output<string>;
@@ -178,6 +190,8 @@ export class ApiToken extends pulumi.CustomResource {
             resourceInputs["provisionerId"] = state?.provisionerId;
             resourceInputs["provisionerType"] = state?.provisionerType;
             resourceInputs["status"] = state?.status;
+            resourceInputs["tokenPrefix"] = state?.tokenPrefix;
+            resourceInputs["tokenSuffix"] = state?.tokenSuffix;
             resourceInputs["value"] = state?.value;
         } else {
             const args = argsOrState as ApiTokenArgs | undefined;
@@ -199,6 +213,8 @@ export class ApiToken extends pulumi.CustomResource {
             resourceInputs["modifiedOn"] = undefined /*out*/;
             resourceInputs["provisionerId"] = undefined /*out*/;
             resourceInputs["provisionerType"] = undefined /*out*/;
+            resourceInputs["tokenPrefix"] = undefined /*out*/;
+            resourceInputs["tokenSuffix"] = undefined /*out*/;
             resourceInputs["value"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -264,6 +280,18 @@ export interface ApiTokenState {
      * Available values: "active", "disabled", "expired".
      */
     status?: pulumi.Input<string | undefined>;
+    /**
+     * The prefix of the token value, before the first underscore. Use it with
+     * `tokenSuffix` to identify a token. Only present for tokens created or
+     * rolled after this field was added.
+     */
+    tokenPrefix?: pulumi.Input<string | undefined>;
+    /**
+     * The last 4 characters of the token value. Use it with `tokenPrefix` to
+     * identify a token. It is not unique. Only present for tokens created or
+     * rolled after this field was added.
+     */
+    tokenSuffix?: pulumi.Input<string | undefined>;
     /**
      * The token value.
      */

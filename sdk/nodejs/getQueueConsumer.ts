@@ -72,7 +72,7 @@ export interface GetQueueConsumerResult {
     readonly queueId: string;
     readonly queueName: string;
     /**
-     * Name of a Worker
+     * For `type: worker`: Name of a Worker
      */
     readonly scriptName: string;
     readonly settings: outputs.GetQueueConsumerSettings;

@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetAiSearchNamespaceResult',
@@ -27,7 +28,7 @@ class GetAiSearchNamespaceResult:
     """
     A collection of values returned by getAiSearchNamespace.
     """
-    def __init__(__self__, account_id=None, created_at=None, description=None, name=None, public_endpoint_id=None, public_endpoint_params=None):
+    def __init__(__self__, account_id=None, created_at=None, description=None, filter=None, id=None, name=None, public_endpoint_id=None, public_endpoint_params=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -37,6 +38,12 @@ class GetAiSearchNamespaceResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if filter and not isinstance(filter, dict):
+            raise TypeError("Expected argument 'filter' to be a dict")
+        pulumi.set(__self__, "filter", filter)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -67,6 +74,19 @@ class GetAiSearchNamespaceResult:
 
     @_builtins.property
     @pulumi.getter
+    def filter(self) -> Optional['outputs.GetAiSearchNamespaceFilterResult']:
+        return pulumi.get(self, "filter")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of this resource.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
     def name(self) -> _builtins.str:
         return pulumi.get(self, "name")
 
@@ -90,12 +110,15 @@ class AwaitableGetAiSearchNamespaceResult(GetAiSearchNamespaceResult):
             account_id=self.account_id,
             created_at=self.created_at,
             description=self.description,
+            filter=self.filter,
+            id=self.id,
             name=self.name,
             public_endpoint_id=self.public_endpoint_id,
             public_endpoint_params=self.public_endpoint_params)
 
 
 def get_ai_search_namespace(account_id: Optional[_builtins.str] = None,
+                            filter: Optional[Union['GetAiSearchNamespaceFilterArgs', 'GetAiSearchNamespaceFilterArgsDict', 'outputs.GetAiSearchNamespaceFilterResult']] = None,
                             name: Optional[_builtins.str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAiSearchNamespaceResult:
     """
@@ -103,6 +126,7 @@ def get_ai_search_namespace(account_id: Optional[_builtins.str] = None,
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['filter'] = filter
     __args__['name'] = name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getAiSearchNamespace:getAiSearchNamespace', __args__, opts=opts, typ=GetAiSearchNamespaceResult).value
@@ -111,17 +135,21 @@ def get_ai_search_namespace(account_id: Optional[_builtins.str] = None,
         account_id=pulumi.get(__ret__, 'account_id'),
         created_at=pulumi.get(__ret__, 'created_at'),
         description=pulumi.get(__ret__, 'description'),
+        filter=pulumi.get(__ret__, 'filter'),
+        id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         public_endpoint_id=pulumi.get(__ret__, 'public_endpoint_id'),
         public_endpoint_params=pulumi.get(__ret__, 'public_endpoint_params'))
 def get_ai_search_namespace_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                                   name: pulumi.Input[Optional[_builtins.str]] = None,
+                                   filter: pulumi.Input[Optional[Optional[Union['GetAiSearchNamespaceFilterArgs', 'GetAiSearchNamespaceFilterArgsDict', 'outputs.GetAiSearchNamespaceFilterResult']]]] = None,
+                                   name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiSearchNamespaceResult]:
     """
     Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['filter'] = filter
     __args__['name'] = name
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getAiSearchNamespace:getAiSearchNamespace', __args__, opts=opts, typ=GetAiSearchNamespaceResult)
@@ -129,6 +157,8 @@ def get_ai_search_namespace_output(account_id: pulumi.Input[Optional[_builtins.s
         account_id=pulumi.get(__response__, 'account_id'),
         created_at=pulumi.get(__response__, 'created_at'),
         description=pulumi.get(__response__, 'description'),
+        filter=pulumi.get(__response__, 'filter'),
+        id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
         public_endpoint_id=pulumi.get(__response__, 'public_endpoint_id'),
         public_endpoint_params=pulumi.get(__response__, 'public_endpoint_params')))

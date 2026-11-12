@@ -205,6 +205,44 @@ public final class ApiTokenState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The prefix of the token value, before the first underscore. Use it with
+     * `tokenSuffix` to identify a token. Only present for tokens created or
+     * rolled after this field was added.
+     * 
+     */
+    @Import(name="tokenPrefix")
+    private @Nullable Output<String> tokenPrefix;
+
+    /**
+     * @return The prefix of the token value, before the first underscore. Use it with
+     * `tokenSuffix` to identify a token. Only present for tokens created or
+     * rolled after this field was added.
+     * 
+     */
+    public Optional<Output<String>> tokenPrefix() {
+        return Optional.ofNullable(this.tokenPrefix);
+    }
+
+    /**
+     * The last 4 characters of the token value. Use it with `tokenPrefix` to
+     * identify a token. It is not unique. Only present for tokens created or
+     * rolled after this field was added.
+     * 
+     */
+    @Import(name="tokenSuffix")
+    private @Nullable Output<String> tokenSuffix;
+
+    /**
+     * @return The last 4 characters of the token value. Use it with `tokenPrefix` to
+     * identify a token. It is not unique. Only present for tokens created or
+     * rolled after this field was added.
+     * 
+     */
+    public Optional<Output<String>> tokenSuffix() {
+        return Optional.ofNullable(this.tokenSuffix);
+    }
+
+    /**
      * The token value.
      * 
      */
@@ -234,6 +272,8 @@ public final class ApiTokenState extends com.pulumi.resources.ResourceArgs {
         this.provisionerId = $.provisionerId;
         this.provisionerType = $.provisionerType;
         this.status = $.status;
+        this.tokenPrefix = $.tokenPrefix;
+        this.tokenSuffix = $.tokenSuffix;
         this.value = $.value;
     }
 
@@ -517,6 +557,56 @@ public final class ApiTokenState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param tokenPrefix The prefix of the token value, before the first underscore. Use it with
+         * `tokenSuffix` to identify a token. Only present for tokens created or
+         * rolled after this field was added.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tokenPrefix(@Nullable Output<String> tokenPrefix) {
+            $.tokenPrefix = tokenPrefix;
+            return this;
+        }
+
+        /**
+         * @param tokenPrefix The prefix of the token value, before the first underscore. Use it with
+         * `tokenSuffix` to identify a token. Only present for tokens created or
+         * rolled after this field was added.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tokenPrefix(String tokenPrefix) {
+            return tokenPrefix(Output.of(tokenPrefix));
+        }
+
+        /**
+         * @param tokenSuffix The last 4 characters of the token value. Use it with `tokenPrefix` to
+         * identify a token. It is not unique. Only present for tokens created or
+         * rolled after this field was added.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tokenSuffix(@Nullable Output<String> tokenSuffix) {
+            $.tokenSuffix = tokenSuffix;
+            return this;
+        }
+
+        /**
+         * @param tokenSuffix The last 4 characters of the token value. Use it with `tokenPrefix` to
+         * identify a token. It is not unique. Only present for tokens created or
+         * rolled after this field was added.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tokenSuffix(String tokenSuffix) {
+            return tokenSuffix(Output.of(tokenSuffix));
         }
 
         /**

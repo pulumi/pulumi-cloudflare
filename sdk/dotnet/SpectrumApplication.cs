@@ -135,6 +135,19 @@ namespace Pulumi.Cloudflare
         public Output<string?> OriginWorkerId { get; private set; } = null!;
 
         /// <summary>
+        /// Name of the Worker origin. Omitted when the Worker is not found or its name cannot be resolved.
+        /// </summary>
+        [Output("originWorkerName")]
+        public Output<string> OriginWorkerName { get; private set; } = null!;
+
+        /// <summary>
+        /// Lookup status of the Worker origin. Unknown indicates that its name could not be resolved. Only returned for Worker origins.
+        /// Available values: "available", "NotFound", "unknown".
+        /// </summary>
+        [Output("originWorkerStatus")]
+        public Output<string> OriginWorkerStatus { get; private set; } = null!;
+
+        /// <summary>
         /// The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`.
         /// </summary>
         [Output("protocol")]
@@ -391,6 +404,19 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("originWorkerId")]
         public Input<string>? OriginWorkerId { get; set; }
+
+        /// <summary>
+        /// Name of the Worker origin. Omitted when the Worker is not found or its name cannot be resolved.
+        /// </summary>
+        [Input("originWorkerName")]
+        public Input<string>? OriginWorkerName { get; set; }
+
+        /// <summary>
+        /// Lookup status of the Worker origin. Unknown indicates that its name could not be resolved. Only returned for Worker origins.
+        /// Available values: "available", "NotFound", "unknown".
+        /// </summary>
+        [Input("originWorkerStatus")]
+        public Input<string>? OriginWorkerStatus { get; set; }
 
         /// <summary>
         /// The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`.

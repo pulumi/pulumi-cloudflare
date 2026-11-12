@@ -44,6 +44,7 @@ import (
 //					ErrorRetention:   pulumi.Any("5 minutes"),
 //					SuccessRetention: pulumi.Any("5 minutes"),
 //				},
+//				Jurisdiction: pulumi.String("eu"),
 //				Limits: &cloudflare.WorkflowLimitsArgs{
 //					Steps: pulumi.Int(1),
 //				},
@@ -78,10 +79,13 @@ type Workflow struct {
 	DefaultRetention WorkflowDefaultRetentionPtrOutput `pulumi:"defaultRetention"`
 	Instances        pulumi.Float64MapOutput           `pulumi:"instances"`
 	IsDeleted        pulumi.Float64Output              `pulumi:"isDeleted"`
-	Limits           WorkflowLimitsPtrOutput           `pulumi:"limits"`
-	ModifiedOn       pulumi.StringOutput               `pulumi:"modifiedOn"`
-	Name             pulumi.StringOutput               `pulumi:"name"`
-	Schedules        WorkflowScheduleArrayOutput       `pulumi:"schedules"`
+	// Jurisdiction where instances of this workflow run and store data. Can only be set when the workflow is created and cannot be changed afterwards; omit it to keep the existing jurisdiction.
+	// Available values: "eu", "fedramp", "us".
+	Jurisdiction pulumi.StringPtrOutput      `pulumi:"jurisdiction"`
+	Limits       WorkflowLimitsPtrOutput     `pulumi:"limits"`
+	ModifiedOn   pulumi.StringOutput         `pulumi:"modifiedOn"`
+	Name         pulumi.StringOutput         `pulumi:"name"`
+	Schedules    WorkflowScheduleArrayOutput `pulumi:"schedules"`
 	// Whether the bound Worker was deleted, leaving this Workflow inactive.
 	ScriptDeleted     pulumi.BoolOutput    `pulumi:"scriptDeleted"`
 	ScriptName        pulumi.StringOutput  `pulumi:"scriptName"`
@@ -141,10 +145,13 @@ type workflowState struct {
 	DefaultRetention *WorkflowDefaultRetention `pulumi:"defaultRetention"`
 	Instances        map[string]float64        `pulumi:"instances"`
 	IsDeleted        *float64                  `pulumi:"isDeleted"`
-	Limits           *WorkflowLimits           `pulumi:"limits"`
-	ModifiedOn       *string                   `pulumi:"modifiedOn"`
-	Name             *string                   `pulumi:"name"`
-	Schedules        []WorkflowSchedule        `pulumi:"schedules"`
+	// Jurisdiction where instances of this workflow run and store data. Can only be set when the workflow is created and cannot be changed afterwards; omit it to keep the existing jurisdiction.
+	// Available values: "eu", "fedramp", "us".
+	Jurisdiction *string            `pulumi:"jurisdiction"`
+	Limits       *WorkflowLimits    `pulumi:"limits"`
+	ModifiedOn   *string            `pulumi:"modifiedOn"`
+	Name         *string            `pulumi:"name"`
+	Schedules    []WorkflowSchedule `pulumi:"schedules"`
 	// Whether the bound Worker was deleted, leaving this Workflow inactive.
 	ScriptDeleted     *bool    `pulumi:"scriptDeleted"`
 	ScriptName        *string  `pulumi:"scriptName"`
@@ -163,10 +170,13 @@ type WorkflowState struct {
 	DefaultRetention WorkflowDefaultRetentionPtrInput
 	Instances        pulumi.Float64MapInput
 	IsDeleted        pulumi.Float64PtrInput
-	Limits           WorkflowLimitsPtrInput
-	ModifiedOn       pulumi.StringPtrInput
-	Name             pulumi.StringPtrInput
-	Schedules        WorkflowScheduleArrayInput
+	// Jurisdiction where instances of this workflow run and store data. Can only be set when the workflow is created and cannot be changed afterwards; omit it to keep the existing jurisdiction.
+	// Available values: "eu", "fedramp", "us".
+	Jurisdiction pulumi.StringPtrInput
+	Limits       WorkflowLimitsPtrInput
+	ModifiedOn   pulumi.StringPtrInput
+	Name         pulumi.StringPtrInput
+	Schedules    WorkflowScheduleArrayInput
 	// Whether the bound Worker was deleted, leaving this Workflow inactive.
 	ScriptDeleted     pulumi.BoolPtrInput
 	ScriptName        pulumi.StringPtrInput
@@ -192,10 +202,13 @@ type workflowArgs struct {
 	Concurrency *WorkflowConcurrency `pulumi:"concurrency"`
 	// Default retention applied to instances of this version when they do not set their own retention.
 	DefaultRetention *WorkflowDefaultRetention `pulumi:"defaultRetention"`
-	Limits           *WorkflowLimits           `pulumi:"limits"`
-	Schedules        []WorkflowSchedule        `pulumi:"schedules"`
-	ScriptName       string                    `pulumi:"scriptName"`
-	WorkflowName     string                    `pulumi:"workflowName"`
+	// Jurisdiction where instances of this workflow run and store data. Can only be set when the workflow is created and cannot be changed afterwards; omit it to keep the existing jurisdiction.
+	// Available values: "eu", "fedramp", "us".
+	Jurisdiction *string            `pulumi:"jurisdiction"`
+	Limits       *WorkflowLimits    `pulumi:"limits"`
+	Schedules    []WorkflowSchedule `pulumi:"schedules"`
+	ScriptName   string             `pulumi:"scriptName"`
+	WorkflowName string             `pulumi:"workflowName"`
 }
 
 // The set of arguments for constructing a Workflow resource.
@@ -205,10 +218,13 @@ type WorkflowArgs struct {
 	Concurrency WorkflowConcurrencyPtrInput
 	// Default retention applied to instances of this version when they do not set their own retention.
 	DefaultRetention WorkflowDefaultRetentionPtrInput
-	Limits           WorkflowLimitsPtrInput
-	Schedules        WorkflowScheduleArrayInput
-	ScriptName       pulumi.StringInput
-	WorkflowName     pulumi.StringInput
+	// Jurisdiction where instances of this workflow run and store data. Can only be set when the workflow is created and cannot be changed afterwards; omit it to keep the existing jurisdiction.
+	// Available values: "eu", "fedramp", "us".
+	Jurisdiction pulumi.StringPtrInput
+	Limits       WorkflowLimitsPtrInput
+	Schedules    WorkflowScheduleArrayInput
+	ScriptName   pulumi.StringInput
+	WorkflowName pulumi.StringInput
 }
 
 func (WorkflowArgs) ElementType() reflect.Type {
@@ -325,6 +341,12 @@ func (o WorkflowOutput) Instances() pulumi.Float64MapOutput {
 
 func (o WorkflowOutput) IsDeleted() pulumi.Float64Output {
 	return o.ApplyT(func(v *Workflow) pulumi.Float64Output { return v.IsDeleted }).(pulumi.Float64Output)
+}
+
+// Jurisdiction where instances of this workflow run and store data. Can only be set when the workflow is created and cannot be changed afterwards; omit it to keep the existing jurisdiction.
+// Available values: "eu", "fedramp", "us".
+func (o WorkflowOutput) Jurisdiction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Workflow) pulumi.StringPtrOutput { return v.Jurisdiction }).(pulumi.StringPtrOutput)
 }
 
 func (o WorkflowOutput) Limits() WorkflowLimitsPtrOutput {

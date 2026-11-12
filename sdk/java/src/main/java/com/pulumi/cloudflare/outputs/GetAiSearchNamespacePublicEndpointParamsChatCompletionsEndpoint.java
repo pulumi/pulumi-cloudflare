@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpoint {
     /**
-     * @return Disable chat completions endpoint for this public endpoint
+     * @return Disable chat completions endpoint for this public endpoint.
      * 
      */
     private Boolean disabled;
 
     private GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpoint() {}
     /**
-     * @return Disable chat completions endpoint for this public endpoint
+     * @return Disable chat completions endpoint for this public endpoint.
      * 
      */
     public Boolean disabled() {

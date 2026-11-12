@@ -27,8 +27,11 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
-        [Input("name", required: true)]
-        public string Name { get; set; } = null!;
+        [Input("filter")]
+        public Inputs.GetAiSearchNamespaceFilterArgs? Filter { get; set; }
+
+        [Input("name")]
+        public string? Name { get; set; }
 
         public GetAiSearchNamespaceArgs()
         {
@@ -41,8 +44,11 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("filter")]
+        public Input<Inputs.GetAiSearchNamespaceFilterInputArgs>? Filter { get; set; }
+
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         public GetAiSearchNamespaceInvokeArgs()
         {
@@ -60,6 +66,11 @@ namespace Pulumi.Cloudflare
         /// Optional description for the namespace. Max 256 characters.
         /// </summary>
         public readonly string Description;
+        public readonly Outputs.GetAiSearchNamespaceFilterResult? Filter;
+        /// <summary>
+        /// The ID of this resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string Name;
         public readonly string PublicEndpointId;
         public readonly Outputs.GetAiSearchNamespacePublicEndpointParamsResult PublicEndpointParams;
@@ -72,6 +83,10 @@ namespace Pulumi.Cloudflare
 
             string description,
 
+            Outputs.GetAiSearchNamespaceFilterResult? filter,
+
+            string id,
+
             string name,
 
             string publicEndpointId,
@@ -81,6 +96,8 @@ namespace Pulumi.Cloudflare
             AccountId = accountId;
             CreatedAt = createdAt;
             Description = description;
+            Filter = filter;
+            Id = id;
             Name = name;
             PublicEndpointId = publicEndpointId;
             PublicEndpointParams = publicEndpointParams;

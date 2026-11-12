@@ -17,11 +17,26 @@ namespace Pulumi.Cloudflare.Outputs
         /// TLS certificate verification mode for the connection to the origin.
         /// </summary>
         public readonly string CertVerificationMode;
+        /// <summary>
+        /// UUID of the custom CA certificate or chain.
+        /// </summary>
+        public readonly string? CertificateAuthority;
+        /// <summary>
+        /// UUID of the mTLS client certificate and private key.
+        /// </summary>
+        public readonly string? ClientCertificate;
 
         [OutputConstructor]
-        private ConnectivityDirectoryServiceTlsSettings(string certVerificationMode)
+        private ConnectivityDirectoryServiceTlsSettings(
+            string certVerificationMode,
+
+            string? certificateAuthority,
+
+            string? clientCertificate)
         {
             CertVerificationMode = certVerificationMode;
+            CertificateAuthority = certificateAuthority;
+            ClientCertificate = clientCertificate;
         }
     }
 }

@@ -271,6 +271,42 @@ public class ApiToken extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
+     * The prefix of the token value, before the first underscore. Use it with
+     * `tokenSuffix` to identify a token. Only present for tokens created or
+     * rolled after this field was added.
+     * 
+     */
+    @Export(name="tokenPrefix", refs={String.class}, tree="[0]")
+    private Output<String> tokenPrefix;
+
+    /**
+     * @return The prefix of the token value, before the first underscore. Use it with
+     * `tokenSuffix` to identify a token. Only present for tokens created or
+     * rolled after this field was added.
+     * 
+     */
+    public Output<String> tokenPrefix() {
+        return this.tokenPrefix;
+    }
+    /**
+     * The last 4 characters of the token value. Use it with `tokenPrefix` to
+     * identify a token. It is not unique. Only present for tokens created or
+     * rolled after this field was added.
+     * 
+     */
+    @Export(name="tokenSuffix", refs={String.class}, tree="[0]")
+    private Output<String> tokenSuffix;
+
+    /**
+     * @return The last 4 characters of the token value. Use it with `tokenPrefix` to
+     * identify a token. It is not unique. Only present for tokens created or
+     * rolled after this field was added.
+     * 
+     */
+    public Output<String> tokenSuffix() {
+        return this.tokenSuffix;
+    }
+    /**
      * The token value.
      * 
      */

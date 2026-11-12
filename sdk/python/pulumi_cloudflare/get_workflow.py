@@ -28,7 +28,7 @@ class GetWorkflowResult:
     """
     A collection of values returned by getWorkflow.
     """
-    def __init__(__self__, account_id=None, class_name=None, created_on=None, filter=None, id=None, instances=None, modified_on=None, name=None, schedules=None, script_deleted=None, script_name=None, triggered_on=None, workflow_name=None):
+    def __init__(__self__, account_id=None, class_name=None, created_on=None, filter=None, id=None, instances=None, jurisdiction=None, modified_on=None, name=None, schedules=None, script_deleted=None, script_name=None, triggered_on=None, workflow_name=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -47,6 +47,9 @@ class GetWorkflowResult:
         if instances and not isinstance(instances, dict):
             raise TypeError("Expected argument 'instances' to be a dict")
         pulumi.set(__self__, "instances", instances)
+        if jurisdiction and not isinstance(jurisdiction, str):
+            raise TypeError("Expected argument 'jurisdiction' to be a str")
+        pulumi.set(__self__, "jurisdiction", jurisdiction)
         if modified_on and not isinstance(modified_on, str):
             raise TypeError("Expected argument 'modified_on' to be a str")
         pulumi.set(__self__, "modified_on", modified_on)
@@ -103,6 +106,15 @@ class GetWorkflowResult:
         return pulumi.get(self, "instances")
 
     @_builtins.property
+    @pulumi.getter
+    def jurisdiction(self) -> _builtins.str:
+        """
+        Jurisdiction where instances of this workflow run and store data. Set when the workflow is created and cannot be changed.
+        Available values: "eu", "fedramp", "us".
+        """
+        return pulumi.get(self, "jurisdiction")
+
+    @_builtins.property
     @pulumi.getter(name="modifiedOn")
     def modified_on(self) -> _builtins.str:
         return pulumi.get(self, "modified_on")
@@ -153,6 +165,7 @@ class AwaitableGetWorkflowResult(GetWorkflowResult):
             filter=self.filter,
             id=self.id,
             instances=self.instances,
+            jurisdiction=self.jurisdiction,
             modified_on=self.modified_on,
             name=self.name,
             schedules=self.schedules,
@@ -197,6 +210,7 @@ def get_workflow(account_id: Optional[_builtins.str] = None,
         filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
         instances=pulumi.get(__ret__, 'instances'),
+        jurisdiction=pulumi.get(__ret__, 'jurisdiction'),
         modified_on=pulumi.get(__ret__, 'modified_on'),
         name=pulumi.get(__ret__, 'name'),
         schedules=pulumi.get(__ret__, 'schedules'),
@@ -238,6 +252,7 @@ def get_workflow_output(account_id: pulumi.Input[Optional[Optional[_builtins.str
         filter=pulumi.get(__response__, 'filter'),
         id=pulumi.get(__response__, 'id'),
         instances=pulumi.get(__response__, 'instances'),
+        jurisdiction=pulumi.get(__response__, 'jurisdiction'),
         modified_on=pulumi.get(__response__, 'modified_on'),
         name=pulumi.get(__response__, 'name'),
         schedules=pulumi.get(__response__, 'schedules'),

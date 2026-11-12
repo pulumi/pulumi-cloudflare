@@ -19,7 +19,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<double>? Depth { get; set; }
 
         /// <summary>
-        /// Follow links that point outside the source domain. Must stay `False` — discover crawls are restricted to the zone you own.
+        /// Follow links that point outside the source domain. Must stay `False` because discover crawls only cover the zone you own.
         /// </summary>
         [Input("includeExternalLinks")]
         public Input<bool>? IncludeExternalLinks { get; set; }

@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Zone Observability Read`
+ * - `Zone Observability Write`
+ *
  * ## Example Usage
  *
  * ```typescript

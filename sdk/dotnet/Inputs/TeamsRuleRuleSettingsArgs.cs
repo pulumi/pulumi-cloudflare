@@ -31,12 +31,6 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<bool>? AllowChildBypass { get; set; }
 
         /// <summary>
-        /// Define the settings for the Audit SSH action. Settable only for `L4` rules with `AuditSsh` action.
-        /// </summary>
-        [Input("auditSsh")]
-        public Input<Inputs.TeamsRuleRuleSettingsAuditSshArgs>? AuditSsh { get; set; }
-
-        /// <summary>
         /// Configure browser isolation behavior. Settable only for `Http` rules with the action set to `Isolate`.
         /// </summary>
         [Input("bisoAdminControls")]
@@ -101,6 +95,12 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("forensicCopy")]
         public Input<Inputs.TeamsRuleRuleSettingsForensicCopyArgs>? ForensicCopy { get; set; }
+
+        /// <summary>
+        /// Forward matching HTTP requests to a Worker. Required for `Http` rules with the action set to `Forward`.
+        /// </summary>
+        [Input("forward")]
+        public Input<Inputs.TeamsRuleRuleSettingsForwardArgs>? Forward { get; set; }
 
         /// <summary>
         /// Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `Dns` and `DnsResolver` rules.

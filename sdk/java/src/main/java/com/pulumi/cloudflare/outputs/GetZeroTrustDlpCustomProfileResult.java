@@ -22,7 +22,7 @@ public final class GetZeroTrustDlpCustomProfileResult {
     private @Nullable String accountId;
     private Boolean aiContextEnabled;
     /**
-     * @return Related DLP policies will trigger when the match count exceeds the number set.
+     * @return For `type: custom`: Related DLP policies will trigger when the match count exceeds the number set.
      * 
      */
     private Integer allowedMatchCount;
@@ -32,7 +32,7 @@ public final class GetZeroTrustDlpCustomProfileResult {
      */
     private String confidenceThreshold;
     /**
-     * @return Scan the context of predefined entries to only return matches surrounded by keywords.
+     * @return For `type: custom`: Scan the context of predefined entries to only return matches surrounded by keywords.
      * 
      * @deprecated This attribute is deprecated.
      * 
@@ -40,22 +40,22 @@ public final class GetZeroTrustDlpCustomProfileResult {
     @Deprecated
     private GetZeroTrustDlpCustomProfileContextAwareness contextAwareness;
     /**
-     * @return When the profile was created.
+     * @return For `type: custom`: When the profile was created.
      * 
      */
     private String createdAt;
     /**
-     * @return Data classes associated with this profile.
+     * @return For `type: custom`: Data classes associated with this profile.
      * 
      */
     private List<String> dataClasses;
     /**
-     * @return Data tags associated with this profile.
+     * @return For `type: custom`: Data tags associated with this profile.
      * 
      */
     private List<String> dataTags;
     /**
-     * @return The description of the profile.
+     * @return For `type: custom` or `type: integration`: The description of the profile.
      * 
      */
     private String description;
@@ -72,32 +72,16 @@ public final class GetZeroTrustDlpCustomProfileResult {
     private String id;
     private String integrationId;
     /**
-     * @return The name of the profile.
+     * @return For `type: custom`: The name of the profile.
      * 
      */
     private String name;
     private Boolean ocrEnabled;
-    /**
-     * @return Whether this profile can be accessed by anyone.
-     * 
-     */
     private Boolean openAccess;
     private String profileId;
-    /**
-     * @return Sensitivity levels associated with this profile.
-     * 
-     */
     private List<GetZeroTrustDlpCustomProfileSensitivityLevel> sensitivityLevels;
     private List<GetZeroTrustDlpCustomProfileSharedEntry> sharedEntries;
-    /**
-     * @return Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;.
-     * 
-     */
     private String type;
-    /**
-     * @return When the profile was lasted updated.
-     * 
-     */
     private String updatedAt;
 
     private GetZeroTrustDlpCustomProfileResult() {}
@@ -108,7 +92,7 @@ public final class GetZeroTrustDlpCustomProfileResult {
         return this.aiContextEnabled;
     }
     /**
-     * @return Related DLP policies will trigger when the match count exceeds the number set.
+     * @return For `type: custom`: Related DLP policies will trigger when the match count exceeds the number set.
      * 
      */
     public Integer allowedMatchCount() {
@@ -122,7 +106,7 @@ public final class GetZeroTrustDlpCustomProfileResult {
         return this.confidenceThreshold;
     }
     /**
-     * @return Scan the context of predefined entries to only return matches surrounded by keywords.
+     * @return For `type: custom`: Scan the context of predefined entries to only return matches surrounded by keywords.
      * 
      * @deprecated This attribute is deprecated.
      * 
@@ -132,28 +116,28 @@ public final class GetZeroTrustDlpCustomProfileResult {
         return this.contextAwareness;
     }
     /**
-     * @return When the profile was created.
+     * @return For `type: custom`: When the profile was created.
      * 
      */
     public String createdAt() {
         return this.createdAt;
     }
     /**
-     * @return Data classes associated with this profile.
+     * @return For `type: custom`: Data classes associated with this profile.
      * 
      */
     public List<String> dataClasses() {
         return this.dataClasses;
     }
     /**
-     * @return Data tags associated with this profile.
+     * @return For `type: custom`: Data tags associated with this profile.
      * 
      */
     public List<String> dataTags() {
         return this.dataTags;
     }
     /**
-     * @return The description of the profile.
+     * @return For `type: custom` or `type: integration`: The description of the profile.
      * 
      */
     public String description() {
@@ -178,7 +162,7 @@ public final class GetZeroTrustDlpCustomProfileResult {
         return this.integrationId;
     }
     /**
-     * @return The name of the profile.
+     * @return For `type: custom`: The name of the profile.
      * 
      */
     public String name() {
@@ -187,37 +171,21 @@ public final class GetZeroTrustDlpCustomProfileResult {
     public Boolean ocrEnabled() {
         return this.ocrEnabled;
     }
-    /**
-     * @return Whether this profile can be accessed by anyone.
-     * 
-     */
     public Boolean openAccess() {
         return this.openAccess;
     }
     public String profileId() {
         return this.profileId;
     }
-    /**
-     * @return Sensitivity levels associated with this profile.
-     * 
-     */
     public List<GetZeroTrustDlpCustomProfileSensitivityLevel> sensitivityLevels() {
         return this.sensitivityLevels;
     }
     public List<GetZeroTrustDlpCustomProfileSharedEntry> sharedEntries() {
         return this.sharedEntries;
     }
-    /**
-     * @return Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;.
-     * 
-     */
     public String type() {
         return this.type;
     }
-    /**
-     * @return When the profile was lasted updated.
-     * 
-     */
     public String updatedAt() {
         return this.updatedAt;
     }

@@ -54,10 +54,6 @@ namespace Pulumi.Cloudflare
     ///                 } },
     ///             },
     ///             AllowChildBypass = false,
-    ///             AuditSsh = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsAuditSshArgs
-    ///             {
-    ///                 CommandLogging = false,
-    ///             },
     ///             BisoAdminControls = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs
     ///             {
     ///                 Copy = "remote_only",
@@ -124,6 +120,10 @@ namespace Pulumi.Cloudflare
     ///             ForensicCopy = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsForensicCopyArgs
     ///             {
     ///                 Enabled = true,
+    ///             },
+    ///             Forward = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsForwardArgs
+    ///             {
+    ///                 WorkerId = "0123456789abcdef0123456789abcdef",
     ///             },
     ///             IgnoreCnameCategoryMatches = true,
     ///             InsecureDisableDnssecValidation = false,
@@ -217,7 +217,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `True`.
-        /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "L4Override", "egress", "resolve", "quarantine", "redirect".
+        /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "L4Override", "egress", "resolve", "quarantine", "redirect", "forward".
         /// </summary>
         [Output("action")]
         public Output<string> Action { get; private set; } = null!;
@@ -388,7 +388,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `True`.
-        /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "L4Override", "egress", "resolve", "quarantine", "redirect".
+        /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "L4Override", "egress", "resolve", "quarantine", "redirect", "forward".
         /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
@@ -481,7 +481,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `True`.
-        /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "L4Override", "egress", "resolve", "quarantine", "redirect".
+        /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "L4Override", "egress", "resolve", "quarantine", "redirect", "forward".
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }

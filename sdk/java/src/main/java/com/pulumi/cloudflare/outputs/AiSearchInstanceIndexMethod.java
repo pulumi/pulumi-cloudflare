@@ -4,9 +4,10 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class AiSearchInstanceIndexMethod {
@@ -14,27 +15,27 @@ public final class AiSearchInstanceIndexMethod {
      * @return Enable keyword (BM25) storage backend.
      * 
      */
-    private Boolean keyword;
+    private @Nullable Boolean keyword;
     /**
      * @return Enable vector (embedding) storage backend.
      * 
      */
-    private Boolean vector;
+    private @Nullable Boolean vector;
 
     private AiSearchInstanceIndexMethod() {}
     /**
      * @return Enable keyword (BM25) storage backend.
      * 
      */
-    public Boolean keyword() {
-        return this.keyword;
+    public Optional<Boolean> keyword() {
+        return Optional.ofNullable(this.keyword);
     }
     /**
      * @return Enable vector (embedding) storage backend.
      * 
      */
-    public Boolean vector() {
-        return this.vector;
+    public Optional<Boolean> vector() {
+        return Optional.ofNullable(this.vector);
     }
 
     public static Builder builder() {
@@ -46,8 +47,8 @@ public final class AiSearchInstanceIndexMethod {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Boolean keyword;
-        private Boolean vector;
+        private @Nullable Boolean keyword;
+        private @Nullable Boolean vector;
         public Builder() {}
         public Builder(AiSearchInstanceIndexMethod defaults) {
     	      Objects.requireNonNull(defaults);
@@ -56,18 +57,14 @@ public final class AiSearchInstanceIndexMethod {
         }
 
         @CustomType.Setter
-        public Builder keyword(Boolean keyword) {
-            if (keyword == null) {
-              throw new MissingRequiredPropertyException("AiSearchInstanceIndexMethod", "keyword");
-            }
+        public Builder keyword(@Nullable Boolean keyword) {
+
             this.keyword = keyword;
             return this;
         }
         @CustomType.Setter
-        public Builder vector(Boolean vector) {
-            if (vector == null) {
-              throw new MissingRequiredPropertyException("AiSearchInstanceIndexMethod", "vector");
-            }
+        public Builder vector(@Nullable Boolean vector) {
+
             this.vector = vector;
             return this;
         }

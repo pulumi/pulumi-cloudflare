@@ -18,7 +18,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string CreatedOn;
         /// <summary>
-        /// User Group identifier tag.
+        /// Identifier of the user group.
         /// </summary>
         public readonly string Id;
         /// <summary>

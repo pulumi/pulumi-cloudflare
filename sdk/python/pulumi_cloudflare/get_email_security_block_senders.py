@@ -27,13 +27,16 @@ class GetEmailSecurityBlockSendersResult:
     """
     A collection of values returned by getEmailSecurityBlockSenders.
     """
-    def __init__(__self__, account_id=None, direction=None, max_items=None, order=None, pattern=None, pattern_type=None, results=None, search=None):
+    def __init__(__self__, account_id=None, direction=None, expired=None, max_items=None, order=None, pattern=None, pattern_type=None, results=None, search=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
         if direction and not isinstance(direction, str):
             raise TypeError("Expected argument 'direction' to be a str")
         pulumi.set(__self__, "direction", direction)
+        if expired and not isinstance(expired, bool):
+            raise TypeError("Expected argument 'expired' to be a bool")
+        pulumi.set(__self__, "expired", expired)
         if max_items and not isinstance(max_items, int):
             raise TypeError("Expected argument 'max_items' to be a int")
         pulumi.set(__self__, "max_items", max_items)
@@ -62,6 +65,11 @@ class GetEmailSecurityBlockSendersResult:
     @pulumi.getter
     def direction(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "direction")
+
+    @_builtins.property
+    @pulumi.getter
+    def expired(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "expired")
 
     @_builtins.property
     @pulumi.getter(name="maxItems")
@@ -102,6 +110,7 @@ class AwaitableGetEmailSecurityBlockSendersResult(GetEmailSecurityBlockSendersRe
         return GetEmailSecurityBlockSendersResult(
             account_id=self.account_id,
             direction=self.direction,
+            expired=self.expired,
             max_items=self.max_items,
             order=self.order,
             pattern=self.pattern,
@@ -112,6 +121,7 @@ class AwaitableGetEmailSecurityBlockSendersResult(GetEmailSecurityBlockSendersRe
 
 def get_email_security_block_senders(account_id: Optional[_builtins.str] = None,
                                      direction: Optional[_builtins.str] = None,
+                                     expired: Optional[_builtins.bool] = None,
                                      max_items: Optional[_builtins.int] = None,
                                      order: Optional[_builtins.str] = None,
                                      pattern: Optional[_builtins.str] = None,
@@ -132,6 +142,7 @@ def get_email_security_block_senders(account_id: Optional[_builtins.str] = None,
 
     example_email_security_block_senders = cloudflare.get_email_security_block_senders(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         direction="asc",
+        expired=True,
         order="pattern",
         pattern="pattern",
         pattern_type="EMAIL",
@@ -141,6 +152,7 @@ def get_email_security_block_senders(account_id: Optional[_builtins.str] = None,
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['direction'] = direction
+    __args__['expired'] = expired
     __args__['maxItems'] = max_items
     __args__['order'] = order
     __args__['pattern'] = pattern
@@ -152,6 +164,7 @@ def get_email_security_block_senders(account_id: Optional[_builtins.str] = None,
     return AwaitableGetEmailSecurityBlockSendersResult(
         account_id=pulumi.get(__ret__, 'account_id'),
         direction=pulumi.get(__ret__, 'direction'),
+        expired=pulumi.get(__ret__, 'expired'),
         max_items=pulumi.get(__ret__, 'max_items'),
         order=pulumi.get(__ret__, 'order'),
         pattern=pulumi.get(__ret__, 'pattern'),
@@ -160,6 +173,7 @@ def get_email_security_block_senders(account_id: Optional[_builtins.str] = None,
         search=pulumi.get(__ret__, 'search'))
 def get_email_security_block_senders_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
                                             direction: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                            expired: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                                             max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                             order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                             pattern: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -180,6 +194,7 @@ def get_email_security_block_senders_output(account_id: pulumi.Input[Optional[_b
 
     example_email_security_block_senders = cloudflare.get_email_security_block_senders(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         direction="asc",
+        expired=True,
         order="pattern",
         pattern="pattern",
         pattern_type="EMAIL",
@@ -189,6 +204,7 @@ def get_email_security_block_senders_output(account_id: pulumi.Input[Optional[_b
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['direction'] = direction
+    __args__['expired'] = expired
     __args__['maxItems'] = max_items
     __args__['order'] = order
     __args__['pattern'] = pattern
@@ -199,6 +215,7 @@ def get_email_security_block_senders_output(account_id: pulumi.Input[Optional[_b
     return __ret__.apply(lambda __response__: GetEmailSecurityBlockSendersResult(
         account_id=pulumi.get(__response__, 'account_id'),
         direction=pulumi.get(__response__, 'direction'),
+        expired=pulumi.get(__response__, 'expired'),
         max_items=pulumi.get(__response__, 'max_items'),
         order=pulumi.get(__response__, 'order'),
         pattern=pulumi.get(__response__, 'pattern'),

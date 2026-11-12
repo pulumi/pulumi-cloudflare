@@ -84,6 +84,9 @@ namespace Pulumi.Cloudflare
         [Output("createdOn")]
         public Output<string> CreatedOn { get; private set; } = null!;
 
+        /// <summary>
+        /// Selects a PlanetScale database and provisions credentials managed by Cloudflare when creating a Hyperdrive configuration. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. The selection is returned as read-only metadata and cannot be changed with replace or update operations.
+        /// </summary>
         [Output("integration")]
         public Output<string?> Integration { get; private set; } = null!;
 
@@ -178,6 +181,9 @@ namespace Pulumi.Cloudflare
         [Input("caching")]
         public Input<Inputs.HyperdriveConfigCachingArgs>? Caching { get; set; }
 
+        /// <summary>
+        /// Selects a PlanetScale database and provisions credentials managed by Cloudflare when creating a Hyperdrive configuration. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. The selection is returned as read-only metadata and cannot be changed with replace or update operations.
+        /// </summary>
         [Input("integration")]
         public Input<string>? Integration { get; set; }
 
@@ -228,6 +234,9 @@ namespace Pulumi.Cloudflare
         [Input("createdOn")]
         public Input<string>? CreatedOn { get; set; }
 
+        /// <summary>
+        /// Selects a PlanetScale database and provisions credentials managed by Cloudflare when creating a Hyperdrive configuration. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. The selection is returned as read-only metadata and cannot be changed with replace or update operations.
+        /// </summary>
         [Input("integration")]
         public Input<string>? Integration { get; set; }
 

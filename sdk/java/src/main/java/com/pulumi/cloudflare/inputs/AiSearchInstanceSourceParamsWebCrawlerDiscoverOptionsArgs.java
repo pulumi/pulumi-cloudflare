@@ -33,14 +33,14 @@ public final class AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsArgs ext
     }
 
     /**
-     * Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own.
+     * Follow links that point outside the source domain. Must stay `false` because discover crawls only cover the zone you own.
      * 
      */
     @Import(name="includeExternalLinks")
     private @Nullable Output<Boolean> includeExternalLinks;
 
     /**
-     * @return Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own.
+     * @return Follow links that point outside the source domain. Must stay `false` because discover crawls only cover the zone you own.
      * 
      */
     public Optional<Output<Boolean>> includeExternalLinks() {
@@ -160,7 +160,7 @@ public final class AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsArgs ext
         }
 
         /**
-         * @param includeExternalLinks Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own.
+         * @param includeExternalLinks Follow links that point outside the source domain. Must stay `false` because discover crawls only cover the zone you own.
          * 
          * @return builder
          * 
@@ -171,7 +171,7 @@ public final class AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsArgs ext
         }
 
         /**
-         * @param includeExternalLinks Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own.
+         * @param includeExternalLinks Follow links that point outside the source domain. Must stay `false` because discover crawls only cover the zone you own.
          * 
          * @return builder
          * 

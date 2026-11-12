@@ -10,6 +10,7 @@ export function getAiSearchNamespace(args: GetAiSearchNamespaceArgs, opts?: pulu
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAiSearchNamespace:getAiSearchNamespace", {
         "accountId": args.accountId,
+        "filter": args.filter,
         "name": args.name,
     }, opts);
 }
@@ -19,7 +20,8 @@ export function getAiSearchNamespace(args: GetAiSearchNamespaceArgs, opts?: pulu
  */
 export interface GetAiSearchNamespaceArgs {
     accountId: string;
-    name: string;
+    filter?: inputs.GetAiSearchNamespaceFilter;
+    name?: string;
 }
 
 /**
@@ -32,6 +34,11 @@ export interface GetAiSearchNamespaceResult {
      * Optional description for the namespace. Max 256 characters.
      */
     readonly description: string;
+    readonly filter?: outputs.GetAiSearchNamespaceFilter;
+    /**
+     * The ID of this resource.
+     */
+    readonly id: string;
     readonly name: string;
     readonly publicEndpointId: string;
     readonly publicEndpointParams: outputs.GetAiSearchNamespacePublicEndpointParams;
@@ -40,6 +47,7 @@ export function getAiSearchNamespaceOutput(args: GetAiSearchNamespaceOutputArgs,
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAiSearchNamespace:getAiSearchNamespace", {
         "accountId": args.accountId,
+        "filter": args.filter,
         "name": args.name,
     }, opts);
 }
@@ -49,5 +57,6 @@ export function getAiSearchNamespaceOutput(args: GetAiSearchNamespaceOutputArgs,
  */
 export interface GetAiSearchNamespaceOutputArgs {
     accountId: pulumi.Input<string>;
-    name: pulumi.Input<string>;
+    filter?: pulumi.Input<inputs.GetAiSearchNamespaceFilterArgs | undefined>;
+    name?: pulumi.Input<string | undefined>;
 }

@@ -23,7 +23,6 @@ import * as utilities from "./utilities";
  *     enforceDnsOnly: false,
  *     zoneDefaults: {
  *         flattenAllCnames: false,
- *         foundationDns: false,
  *         internalDns: {
  *             referenceZoneId: "reference_zone_id",
  *         },

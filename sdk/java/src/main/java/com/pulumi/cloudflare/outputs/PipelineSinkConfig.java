@@ -24,6 +24,8 @@ public final class PipelineSinkConfig {
     /**
      * @return R2 Bucket to write to
      * 
+     * The R2 Bucket that hosts this catalog
+     * 
      */
     private String bucket;
     private @Nullable PipelineSinkConfigCredentials credentials;
@@ -78,6 +80,8 @@ public final class PipelineSinkConfig {
     }
     /**
      * @return R2 Bucket to write to
+     * 
+     * The R2 Bucket that hosts this catalog
      * 
      */
     public String bucket() {

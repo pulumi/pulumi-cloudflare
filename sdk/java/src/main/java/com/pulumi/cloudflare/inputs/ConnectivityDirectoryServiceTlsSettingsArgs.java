@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ConnectivityDirectoryServiceTlsSettingsArgs extends com.pulumi.resources.ResourceArgs {
@@ -29,10 +31,42 @@ public final class ConnectivityDirectoryServiceTlsSettingsArgs extends com.pulum
         return this.certVerificationMode;
     }
 
+    /**
+     * UUID of the custom CA certificate or chain.
+     * 
+     */
+    @Import(name="certificateAuthority")
+    private @Nullable Output<String> certificateAuthority;
+
+    /**
+     * @return UUID of the custom CA certificate or chain.
+     * 
+     */
+    public Optional<Output<String>> certificateAuthority() {
+        return Optional.ofNullable(this.certificateAuthority);
+    }
+
+    /**
+     * UUID of the mTLS client certificate and private key.
+     * 
+     */
+    @Import(name="clientCertificate")
+    private @Nullable Output<String> clientCertificate;
+
+    /**
+     * @return UUID of the mTLS client certificate and private key.
+     * 
+     */
+    public Optional<Output<String>> clientCertificate() {
+        return Optional.ofNullable(this.clientCertificate);
+    }
+
     private ConnectivityDirectoryServiceTlsSettingsArgs() {}
 
     private ConnectivityDirectoryServiceTlsSettingsArgs(ConnectivityDirectoryServiceTlsSettingsArgs $) {
         this.certVerificationMode = $.certVerificationMode;
+        this.certificateAuthority = $.certificateAuthority;
+        this.clientCertificate = $.clientCertificate;
     }
 
     public static Builder builder() {
@@ -72,6 +106,48 @@ public final class ConnectivityDirectoryServiceTlsSettingsArgs extends com.pulum
          */
         public Builder certVerificationMode(String certVerificationMode) {
             return certVerificationMode(Output.of(certVerificationMode));
+        }
+
+        /**
+         * @param certificateAuthority UUID of the custom CA certificate or chain.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificateAuthority(@Nullable Output<String> certificateAuthority) {
+            $.certificateAuthority = certificateAuthority;
+            return this;
+        }
+
+        /**
+         * @param certificateAuthority UUID of the custom CA certificate or chain.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificateAuthority(String certificateAuthority) {
+            return certificateAuthority(Output.of(certificateAuthority));
+        }
+
+        /**
+         * @param clientCertificate UUID of the mTLS client certificate and private key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientCertificate(@Nullable Output<String> clientCertificate) {
+            $.clientCertificate = clientCertificate;
+            return this;
+        }
+
+        /**
+         * @param clientCertificate UUID of the mTLS client certificate and private key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientCertificate(String clientCertificate) {
+            return clientCertificate(Output.of(clientCertificate));
         }
 
         public ConnectivityDirectoryServiceTlsSettingsArgs build() {

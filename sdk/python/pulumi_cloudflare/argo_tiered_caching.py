@@ -24,7 +24,7 @@ class ArgoTieredCachingArgs:
         """
         The set of arguments for constructing a ArgoTieredCaching resource.
 
-        :param pulumi.Input[_builtins.str] value: Enables Tiered Caching.
+        :param pulumi.Input[_builtins.str] value: Enables or disables Tiered Cache.
                Available values: "on", "off".
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
@@ -35,7 +35,7 @@ class ArgoTieredCachingArgs:
     @pulumi.getter
     def value(self) -> pulumi.Input[_builtins.str]:
         """
-        Enables Tiered Caching.
+        Enables or disables Tiered Cache.
         Available values: "on", "off".
         """
         return pulumi.get(self, "value")
@@ -69,7 +69,7 @@ class _ArgoTieredCachingState:
 
         :param pulumi.Input[_builtins.bool] editable: Whether the setting is editable.
         :param pulumi.Input[_builtins.str] modified_on: Last time this setting was modified.
-        :param pulumi.Input[_builtins.str] value: Enables Tiered Caching.
+        :param pulumi.Input[_builtins.str] value: Enables or disables Tiered Cache.
                Available values: "on", "off".
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
@@ -110,7 +110,7 @@ class _ArgoTieredCachingState:
     @pulumi.getter
     def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Enables Tiered Caching.
+        Enables or disables Tiered Cache.
         Available values: "on", "off".
         """
         return pulumi.get(self, "value")
@@ -162,7 +162,7 @@ class ArgoTieredCaching(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] value: Enables Tiered Caching.
+        :param pulumi.Input[_builtins.str] value: Enables or disables Tiered Cache.
                Available values: "on", "off".
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
@@ -248,7 +248,7 @@ class ArgoTieredCaching(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] editable: Whether the setting is editable.
         :param pulumi.Input[_builtins.str] modified_on: Last time this setting was modified.
-        :param pulumi.Input[_builtins.str] value: Enables Tiered Caching.
+        :param pulumi.Input[_builtins.str] value: Enables or disables Tiered Cache.
                Available values: "on", "off".
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
@@ -296,7 +296,7 @@ class ArgoTieredCaching(pulumi.CustomResource):
     @pulumi.getter
     def value(self) -> pulumi.Output[_builtins.str]:
         """
-        Enables Tiered Caching.
+        Enables or disables Tiered Cache.
         Available values: "on", "off".
         """
         return pulumi.get(self, "value")

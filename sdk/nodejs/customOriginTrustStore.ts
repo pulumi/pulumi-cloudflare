@@ -93,7 +93,7 @@ export class CustomOriginTrustStore extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
-     * When the certificate was last modified.
+     * When the certificate was last modified. Only returned when uploading a certificate.
      */
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
@@ -174,7 +174,7 @@ export interface CustomOriginTrustStoreState {
      */
     status?: pulumi.Input<string | undefined>;
     /**
-     * When the certificate was last modified.
+     * When the certificate was last modified. Only returned when uploading a certificate.
      */
     updatedAt?: pulumi.Input<string | undefined>;
     /**

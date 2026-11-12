@@ -36,6 +36,7 @@ namespace Pulumi.Cloudflare
     ///         PatternType = "EMAIL",
     ///         VerifySender = true,
     ///         Comments = "Trust all messages send from test@example.com",
+    ///         ExpiresAt = "2027-01-01T00:00:00Z",
     ///         IsRecipient = false,
     ///         IsSender = true,
     ///         IsSpoof = false,
@@ -64,6 +65,12 @@ namespace Pulumi.Cloudflare
 
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `Null` to clear the expiration.
+        /// </summary>
+        [Output("expiresAt")]
+        public Output<string?> ExpiresAt { get; private set; } = null!;
 
         /// <summary>
         /// Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply.
@@ -114,7 +121,7 @@ namespace Pulumi.Cloudflare
         public Output<string> ModifiedAt { get; private set; } = null!;
 
         /// <summary>
-        /// The pattern value to match. The format depends on `PatternType`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+        /// The pattern value to match. The format depends on `PatternType`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents. The API also rejects a pattern that equals a domain onboarded to the account, ignoring case.
         /// </summary>
         [Output("pattern")]
         public Output<string> Pattern { get; private set; } = null!;
@@ -192,6 +199,12 @@ namespace Pulumi.Cloudflare
         public Input<string>? Comments { get; set; }
 
         /// <summary>
+        /// Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `Null` to clear the expiration.
+        /// </summary>
+        [Input("expiresAt")]
+        public Input<string>? ExpiresAt { get; set; }
+
+        /// <summary>
         /// Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply.
         /// </summary>
         [Input("isAcceptableSender", required: true)]
@@ -231,7 +244,7 @@ namespace Pulumi.Cloudflare
         public Input<bool> IsTrustedSender { get; set; } = null!;
 
         /// <summary>
-        /// The pattern value to match. The format depends on `PatternType`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+        /// The pattern value to match. The format depends on `PatternType`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents. The API also rejects a pattern that equals a domain onboarded to the account, ignoring case.
         /// </summary>
         [Input("pattern", required: true)]
         public Input<string> Pattern { get; set; } = null!;
@@ -272,6 +285,12 @@ namespace Pulumi.Cloudflare
 
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
+
+        /// <summary>
+        /// Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `Null` to clear the expiration.
+        /// </summary>
+        [Input("expiresAt")]
+        public Input<string>? ExpiresAt { get; set; }
 
         /// <summary>
         /// Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply.
@@ -322,7 +341,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? ModifiedAt { get; set; }
 
         /// <summary>
-        /// The pattern value to match. The format depends on `PatternType`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+        /// The pattern value to match. The format depends on `PatternType`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents. The API also rejects a pattern that equals a domain onboarded to the account, ignoring case.
         /// </summary>
         [Input("pattern")]
         public Input<string>? Pattern { get; set; }

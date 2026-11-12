@@ -27,7 +27,7 @@ class GetZeroTrustOrganizationResult:
     """
     A collection of values returned by getZeroTrustOrganization.
     """
-    def __init__(__self__, account_id=None, allow_authenticate_via_warp=None, auth_domain=None, auto_redirect_to_identity=None, custom_pages=None, deny_unmatched_requests=None, deny_unmatched_requests_exempted_zone_names=None, is_ui_read_only=None, login_design=None, mfa_config=None, mfa_piv_key_requirements=None, mfa_required_for_all_apps=None, name=None, service_token_inactivity=None, session_duration=None, strict_service_token_auth=None, trusted_accounts=None, ui_read_only_toggle_reason=None, user_seat_expiration_inactive_time=None, warp_auth_non_browser401=None, warp_auth_session_duration=None, zone_id=None):
+    def __init__(__self__, account_id=None, allow_authenticate_via_warp=None, auth_domain=None, auto_redirect_to_identity=None, custom_pages=None, deny_unmatched_requests=None, deny_unmatched_requests_exempted_zone_names=None, disable_end_user_app_creation=None, is_ui_read_only=None, login_design=None, mfa_config=None, mfa_piv_key_requirements=None, mfa_required_for_all_apps=None, name=None, service_token_inactivity=None, session_duration=None, strict_service_token_auth=None, trusted_accounts=None, ui_read_only_toggle_reason=None, user_seat_expiration_inactive_time=None, warp_auth_non_browser401=None, warp_auth_session_duration=None, zone_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -49,6 +49,9 @@ class GetZeroTrustOrganizationResult:
         if deny_unmatched_requests_exempted_zone_names and not isinstance(deny_unmatched_requests_exempted_zone_names, list):
             raise TypeError("Expected argument 'deny_unmatched_requests_exempted_zone_names' to be a list")
         pulumi.set(__self__, "deny_unmatched_requests_exempted_zone_names", deny_unmatched_requests_exempted_zone_names)
+        if disable_end_user_app_creation and not isinstance(disable_end_user_app_creation, bool):
+            raise TypeError("Expected argument 'disable_end_user_app_creation' to be a bool")
+        pulumi.set(__self__, "disable_end_user_app_creation", disable_end_user_app_creation)
         if is_ui_read_only and not isinstance(is_ui_read_only, bool):
             raise TypeError("Expected argument 'is_ui_read_only' to be a bool")
         pulumi.set(__self__, "is_ui_read_only", is_ui_read_only)
@@ -147,6 +150,14 @@ class GetZeroTrustOrganizationResult:
         Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
         """
         return pulumi.get(self, "deny_unmatched_requests_exempted_zone_names")
+
+    @_builtins.property
+    @pulumi.getter(name="disableEndUserAppCreation")
+    def disable_end_user_app_creation(self) -> _builtins.bool:
+        """
+        Whether creation of end user applications is disabled for this organization.
+        """
+        return pulumi.get(self, "disable_end_user_app_creation")
 
     @_builtins.property
     @pulumi.getter(name="isUiReadOnly")
@@ -279,6 +290,7 @@ class AwaitableGetZeroTrustOrganizationResult(GetZeroTrustOrganizationResult):
             custom_pages=self.custom_pages,
             deny_unmatched_requests=self.deny_unmatched_requests,
             deny_unmatched_requests_exempted_zone_names=self.deny_unmatched_requests_exempted_zone_names,
+            disable_end_user_app_creation=self.disable_end_user_app_creation,
             is_ui_read_only=self.is_ui_read_only,
             login_design=self.login_design,
             mfa_config=self.mfa_config,
@@ -334,6 +346,7 @@ def get_zero_trust_organization(account_id: Optional[_builtins.str] = None,
         custom_pages=pulumi.get(__ret__, 'custom_pages'),
         deny_unmatched_requests=pulumi.get(__ret__, 'deny_unmatched_requests'),
         deny_unmatched_requests_exempted_zone_names=pulumi.get(__ret__, 'deny_unmatched_requests_exempted_zone_names'),
+        disable_end_user_app_creation=pulumi.get(__ret__, 'disable_end_user_app_creation'),
         is_ui_read_only=pulumi.get(__ret__, 'is_ui_read_only'),
         login_design=pulumi.get(__ret__, 'login_design'),
         mfa_config=pulumi.get(__ret__, 'mfa_config'),
@@ -386,6 +399,7 @@ def get_zero_trust_organization_output(account_id: pulumi.Input[Optional[Optiona
         custom_pages=pulumi.get(__response__, 'custom_pages'),
         deny_unmatched_requests=pulumi.get(__response__, 'deny_unmatched_requests'),
         deny_unmatched_requests_exempted_zone_names=pulumi.get(__response__, 'deny_unmatched_requests_exempted_zone_names'),
+        disable_end_user_app_creation=pulumi.get(__response__, 'disable_end_user_app_creation'),
         is_ui_read_only=pulumi.get(__response__, 'is_ui_read_only'),
         login_design=pulumi.get(__response__, 'login_design'),
         mfa_config=pulumi.get(__response__, 'mfa_config'),

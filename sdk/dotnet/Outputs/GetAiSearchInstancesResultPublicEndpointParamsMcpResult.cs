@@ -14,9 +14,6 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetAiSearchInstancesResultPublicEndpointParamsMcpResult
     {
         public readonly string Description;
-        /// <summary>
-        /// Disable MCP endpoint for this public endpoint
-        /// </summary>
         public readonly bool Disabled;
 
         [OutputConstructor]

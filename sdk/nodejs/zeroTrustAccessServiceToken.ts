@@ -23,6 +23,9 @@ import * as utilities from "./utilities";
  *     duration: "60m",
  *     enabled: true,
  *     previousClientSecretExpiresAt: "2014-01-01T05:20:00.12345Z",
+ *     tags: {
+ *         environment: "production",
+ *     },
  * });
  * ```
  *
@@ -84,7 +87,7 @@ export class ZeroTrustAccessServiceToken extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly clientSecret: pulumi.Output<string>;
     /**
-     * A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`.
+     * A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`. If the service token was reported as leaked, `previousClientSecretExpiresAt` is not required, may not be in the future, and the previous secret is discarded immediately.
      */
     declare public readonly clientSecretVersion: pulumi.Output<number>;
     /**
@@ -92,18 +95,34 @@ export class ZeroTrustAccessServiceToken extends pulumi.CustomResource {
      */
     declare public readonly duration: pulumi.Output<string>;
     /**
-     * Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+     * Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled. A service token reported as leaked is disabled automatically and cannot be re-enabled until its secret is rotated; attempting to do so returns a 409. Defaults to enabled when omitted on create.
      */
     declare public readonly enabled: pulumi.Output<boolean>;
     declare public /*out*/ readonly expiresAt: pulumi.Output<string>;
+    /**
+     * Where the leaked `clientSecret` was found, if provided by the reporter. Omitted if the token has not been reported as leaked.
+     */
+    declare public /*out*/ readonly leakReportUrl: pulumi.Output<string>;
+    /**
+     * When a secret scanning partner reported this service token's `clientSecret` as leaked. A leaked service token is disabled and must be rotated before it can be re-enabled. Cleared once the secret is rotated. Omitted if the token has not been reported as leaked.
+     */
+    declare public /*out*/ readonly leakReportedAt: pulumi.Output<string>;
+    /**
+     * The secret scanning partner that reported the leak. Omitted if the token has not been reported as leaked.
+     */
+    declare public /*out*/ readonly leakReporter: pulumi.Output<string>;
     /**
      * The name of the service token.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+     * The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise. Rotating a service token that was reported as leaked discards the previous secret entirely, so no grace period can be set.
      */
     declare public readonly previousClientSecretExpiresAt: pulumi.Output<string | undefined>;
+    /**
+     * Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.
+     */
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
@@ -129,8 +148,12 @@ export class ZeroTrustAccessServiceToken extends pulumi.CustomResource {
             resourceInputs["duration"] = state?.duration;
             resourceInputs["enabled"] = state?.enabled;
             resourceInputs["expiresAt"] = state?.expiresAt;
+            resourceInputs["leakReportUrl"] = state?.leakReportUrl;
+            resourceInputs["leakReportedAt"] = state?.leakReportedAt;
+            resourceInputs["leakReporter"] = state?.leakReporter;
             resourceInputs["name"] = state?.name;
             resourceInputs["previousClientSecretExpiresAt"] = state?.previousClientSecretExpiresAt;
+            resourceInputs["tags"] = state?.tags;
             resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as ZeroTrustAccessServiceTokenArgs | undefined;
@@ -143,10 +166,14 @@ export class ZeroTrustAccessServiceToken extends pulumi.CustomResource {
             resourceInputs["enabled"] = args?.enabled;
             resourceInputs["name"] = args?.name;
             resourceInputs["previousClientSecretExpiresAt"] = args?.previousClientSecretExpiresAt;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["clientId"] = undefined /*out*/;
             resourceInputs["clientSecret"] = undefined /*out*/;
             resourceInputs["expiresAt"] = undefined /*out*/;
+            resourceInputs["leakReportUrl"] = undefined /*out*/;
+            resourceInputs["leakReportedAt"] = undefined /*out*/;
+            resourceInputs["leakReporter"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "cloudflare:index/accessServiceToken:AccessServiceToken" }] };
@@ -174,7 +201,7 @@ export interface ZeroTrustAccessServiceTokenState {
      */
     clientSecret?: pulumi.Input<string | undefined>;
     /**
-     * A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`.
+     * A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`. If the service token was reported as leaked, `previousClientSecretExpiresAt` is not required, may not be in the future, and the previous secret is discarded immediately.
      */
     clientSecretVersion?: pulumi.Input<number | undefined>;
     /**
@@ -182,18 +209,34 @@ export interface ZeroTrustAccessServiceTokenState {
      */
     duration?: pulumi.Input<string | undefined>;
     /**
-     * Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+     * Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled. A service token reported as leaked is disabled automatically and cannot be re-enabled until its secret is rotated; attempting to do so returns a 409. Defaults to enabled when omitted on create.
      */
     enabled?: pulumi.Input<boolean | undefined>;
     expiresAt?: pulumi.Input<string | undefined>;
+    /**
+     * Where the leaked `clientSecret` was found, if provided by the reporter. Omitted if the token has not been reported as leaked.
+     */
+    leakReportUrl?: pulumi.Input<string | undefined>;
+    /**
+     * When a secret scanning partner reported this service token's `clientSecret` as leaked. A leaked service token is disabled and must be rotated before it can be re-enabled. Cleared once the secret is rotated. Omitted if the token has not been reported as leaked.
+     */
+    leakReportedAt?: pulumi.Input<string | undefined>;
+    /**
+     * The secret scanning partner that reported the leak. Omitted if the token has not been reported as leaked.
+     */
+    leakReporter?: pulumi.Input<string | undefined>;
     /**
      * The name of the service token.
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+     * The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise. Rotating a service token that was reported as leaked discards the previous secret entirely, so no grace period can be set.
      */
     previousClientSecretExpiresAt?: pulumi.Input<string | undefined>;
+    /**
+     * Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
@@ -209,7 +252,7 @@ export interface ZeroTrustAccessServiceTokenArgs {
      */
     accountId?: pulumi.Input<string | undefined>;
     /**
-     * A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`.
+     * A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`. If the service token was reported as leaked, `previousClientSecretExpiresAt` is not required, may not be in the future, and the previous secret is discarded immediately.
      */
     clientSecretVersion?: pulumi.Input<number | undefined>;
     /**
@@ -217,7 +260,7 @@ export interface ZeroTrustAccessServiceTokenArgs {
      */
     duration?: pulumi.Input<string | undefined>;
     /**
-     * Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+     * Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled. A service token reported as leaked is disabled automatically and cannot be re-enabled until its secret is rotated; attempting to do so returns a 409. Defaults to enabled when omitted on create.
      */
     enabled?: pulumi.Input<boolean | undefined>;
     /**
@@ -225,9 +268,13 @@ export interface ZeroTrustAccessServiceTokenArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+     * The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise. Rotating a service token that was reported as leaked discards the previous secret entirely, so no grace period can be set.
      */
     previousClientSecretExpiresAt?: pulumi.Input<string | undefined>;
+    /**
+     * Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */

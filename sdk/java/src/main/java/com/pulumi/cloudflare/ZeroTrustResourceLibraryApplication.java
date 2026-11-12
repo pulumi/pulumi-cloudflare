@@ -18,6 +18,13 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Resource Library Read`
+ * - `Resource Library Write`
+ * - `Zero Trust Read`
+ * - `Zero Trust Write`
+ * 
  * ## Example Usage
  * 
  * <pre>

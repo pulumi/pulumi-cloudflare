@@ -90,9 +90,9 @@ export class EmailRoutingSettings extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
-     * Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+     * Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. When omitted, preserves the existing setting.
      */
-    declare public readonly supportSubaddress: pulumi.Output<boolean | undefined>;
+    declare public readonly supportSubaddress: pulumi.Output<boolean>;
     /**
      * Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
      *
@@ -176,7 +176,7 @@ export interface EmailRoutingSettingsState {
      */
     status?: pulumi.Input<string | undefined>;
     /**
-     * Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+     * Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. When omitted, preserves the existing setting.
      */
     supportSubaddress?: pulumi.Input<boolean | undefined>;
     /**
@@ -196,7 +196,7 @@ export interface EmailRoutingSettingsState {
  */
 export interface EmailRoutingSettingsArgs {
     /**
-     * Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+     * Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. When omitted, preserves the existing setting.
      */
     supportSubaddress?: pulumi.Input<boolean | undefined>;
     /**

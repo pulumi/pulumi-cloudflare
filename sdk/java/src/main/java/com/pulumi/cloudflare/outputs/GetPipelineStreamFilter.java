@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,10 +13,22 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetPipelineStreamFilter {
     /**
+     * @return Sort direction.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    private String direction;
+    /**
      * @return Filters streams by name (case-insensitive substring).
      * 
      */
     private @Nullable String name;
+    /**
+     * @return Sorts streams by this field. Defaults to `createdAt`.
+     * Available values: &#34;name&#34;, &#34;createdAt&#34;.
+     * 
+     */
+    private @Nullable String orderBy;
     /**
      * @return Specifies the public ID of the pipeline.
      * 
@@ -24,11 +37,27 @@ public final class GetPipelineStreamFilter {
 
     private GetPipelineStreamFilter() {}
     /**
+     * @return Sort direction.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    public String direction() {
+        return this.direction;
+    }
+    /**
      * @return Filters streams by name (case-insensitive substring).
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
+    }
+    /**
+     * @return Sorts streams by this field. Defaults to `createdAt`.
+     * Available values: &#34;name&#34;, &#34;createdAt&#34;.
+     * 
+     */
+    public Optional<String> orderBy() {
+        return Optional.ofNullable(this.orderBy);
     }
     /**
      * @return Specifies the public ID of the pipeline.
@@ -47,19 +76,37 @@ public final class GetPipelineStreamFilter {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String direction;
         private @Nullable String name;
+        private @Nullable String orderBy;
         private @Nullable String pipelineId;
         public Builder() {}
         public Builder(GetPipelineStreamFilter defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.direction = defaults.direction;
     	      this.name = defaults.name;
+    	      this.orderBy = defaults.orderBy;
     	      this.pipelineId = defaults.pipelineId;
         }
 
         @CustomType.Setter
+        public Builder direction(String direction) {
+            if (direction == null) {
+              throw new MissingRequiredPropertyException("GetPipelineStreamFilter", "direction");
+            }
+            this.direction = direction;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
 
             this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder orderBy(@Nullable String orderBy) {
+
+            this.orderBy = orderBy;
             return this;
         }
         @CustomType.Setter
@@ -70,7 +117,9 @@ public final class GetPipelineStreamFilter {
         }
         public GetPipelineStreamFilter build() {
             final var _resultValue = new GetPipelineStreamFilter();
+            _resultValue.direction = direction;
             _resultValue.name = name;
+            _resultValue.orderBy = orderBy;
             _resultValue.pipelineId = pipelineId;
             return _resultValue;
         }

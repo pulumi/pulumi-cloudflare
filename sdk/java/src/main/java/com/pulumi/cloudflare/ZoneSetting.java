@@ -40,6 +40,7 @@ import javax.annotation.Nullable;
  * | `alwaysUseHttps` | `&#34;on&#34;` / `&#34;off&#34;` | Reply to all requests for URLs that use &#34;http&#34; with a 301 redirect to the equ... |
  * | `automaticHttpsRewrites` | `&#34;on&#34;` / `&#34;off&#34;` | Enable the Automatic HTTPS Rewrites feature for this zone. |
  * | `automaticPlatformOptimization` | Object | [Automatic Platform Optimization for WordPress](https://developers.cloudflare... |
+ * | `avif` | `&#34;on&#34;` / `&#34;off&#34;` | When the client requesting the image supports the AVIF image codec, and AVIF ... |
  * | `brotli` | `&#34;on&#34;` / `&#34;off&#34;` | When the client requesting an asset supports the Brotli compression algorithm... |
  * | `browserCacheTtl` | Number | Browser Cache TTL (in seconds) specifies how long Cloudflare-cached resources... |
  * | `browserCheck` | `&#34;on&#34;` / `&#34;off&#34;` | Browser Integrity Check is similar to Bad Behavior and looks for common HTTP ... |
@@ -468,14 +469,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/zoneSetting:ZoneSetting")
 public class ZoneSetting extends com.pulumi.resources.CustomResource {
     /**
-     * Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).
+     * For `id: 0rtt` or `id: advancedDdos` or `id: alwaysOnline` or `id: alwaysUseHttps` or `id: automaticHttpsRewrites` or `id: brotli` or `id: browserCacheTtl` or `id: browserCheck` or `id: cacheLevel` or `id: challengeTtl` or `id: chinaNetworkEnabled` or `id: contentConverter` or `id: ciphers` or `id: cnameFlattening` or `id: developmentMode` or `id: earlyHints` or `id: edgeCacheTtl` or `id: emailObfuscation` or `id: h2Prioritization` or `id: hotlinkProtection` or `id: http2` or `id: http3` or `id: imageResizing` or `id: ipGeolocation` or `id: ipv6` or `id: maxUpload` or `id: minTlsVersion` or `id: mirage` or `id: nel` or `id: opportunisticEncryption` or `id: opportunisticOnion` or `id: orangeToOrange` or `id: originErrorPagePassThru` or `id: polish` or `id: prefetchPreload` or `id: preRender` or `id: privacyPass` or `id: proxyReadTimeout` or `id: pseudoIpv4` or `id: redirectsForAiTraining` or `id: replaceInsecureJs` or `id: responseBuffering` or `id: rocketLoader` or `id: automaticPlatformOptimization` or `id: searchForAgents` or `id: securityHeader` or `id: securityLevel` or `id: serverSideExclude` or `id: sha1Support` or `id: sortQueryStringForCache` or `id: ssl` or `id: tls12Only` or `id: tls13` or `id: tlsClientAuth` or `id: transformations` or `id: transformationsAllowedOrigins` or `id: trueClientIpHeader` or `id: waf` or `id: webmcpEnabled` or `id: webmcpMcpUrl` or `id: webmcpPacks` or `id: webp` or `id: avif` or `id: websockets`: Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).
      * 
      */
     @Export(name="editable", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> editable;
 
     /**
-     * @return Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).
+     * @return For `id: 0rtt` or `id: advancedDdos` or `id: alwaysOnline` or `id: alwaysUseHttps` or `id: automaticHttpsRewrites` or `id: brotli` or `id: browserCacheTtl` or `id: browserCheck` or `id: cacheLevel` or `id: challengeTtl` or `id: chinaNetworkEnabled` or `id: contentConverter` or `id: ciphers` or `id: cnameFlattening` or `id: developmentMode` or `id: earlyHints` or `id: edgeCacheTtl` or `id: emailObfuscation` or `id: h2Prioritization` or `id: hotlinkProtection` or `id: http2` or `id: http3` or `id: imageResizing` or `id: ipGeolocation` or `id: ipv6` or `id: maxUpload` or `id: minTlsVersion` or `id: mirage` or `id: nel` or `id: opportunisticEncryption` or `id: opportunisticOnion` or `id: orangeToOrange` or `id: originErrorPagePassThru` or `id: polish` or `id: prefetchPreload` or `id: preRender` or `id: privacyPass` or `id: proxyReadTimeout` or `id: pseudoIpv4` or `id: redirectsForAiTraining` or `id: replaceInsecureJs` or `id: responseBuffering` or `id: rocketLoader` or `id: automaticPlatformOptimization` or `id: searchForAgents` or `id: securityHeader` or `id: securityLevel` or `id: serverSideExclude` or `id: sha1Support` or `id: sortQueryStringForCache` or `id: ssl` or `id: tls12Only` or `id: tls13` or `id: tlsClientAuth` or `id: transformations` or `id: transformationsAllowedOrigins` or `id: trueClientIpHeader` or `id: waf` or `id: webmcpEnabled` or `id: webmcpMcpUrl` or `id: webmcpPacks` or `id: webp` or `id: avif` or `id: websockets`: Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).
      * 
      */
     public Output<Boolean> editable() {
@@ -496,14 +497,14 @@ public class ZoneSetting extends com.pulumi.resources.CustomResource {
         return this.enabled;
     }
     /**
-     * last time this setting was modified.
+     * For `id: 0rtt` or `id: advancedDdos` or `id: alwaysOnline` or `id: alwaysUseHttps` or `id: automaticHttpsRewrites` or `id: brotli` or `id: browserCacheTtl` or `id: browserCheck` or `id: cacheLevel` or `id: challengeTtl` or `id: chinaNetworkEnabled` or `id: contentConverter` or `id: ciphers` or `id: cnameFlattening` or `id: developmentMode` or `id: earlyHints` or `id: edgeCacheTtl` or `id: emailObfuscation` or `id: h2Prioritization` or `id: hotlinkProtection` or `id: http2` or `id: http3` or `id: imageResizing` or `id: ipGeolocation` or `id: ipv6` or `id: maxUpload` or `id: minTlsVersion` or `id: mirage` or `id: nel` or `id: opportunisticEncryption` or `id: opportunisticOnion` or `id: orangeToOrange` or `id: originErrorPagePassThru` or `id: polish` or `id: prefetchPreload` or `id: preRender` or `id: privacyPass` or `id: proxyReadTimeout` or `id: pseudoIpv4` or `id: redirectsForAiTraining` or `id: replaceInsecureJs` or `id: responseBuffering` or `id: rocketLoader` or `id: automaticPlatformOptimization` or `id: searchForAgents` or `id: securityHeader` or `id: securityLevel` or `id: serverSideExclude` or `id: sha1Support` or `id: sortQueryStringForCache` or `id: ssl` or `id: tls12Only` or `id: tls13` or `id: tlsClientAuth` or `id: transformations` or `id: transformationsAllowedOrigins` or `id: trueClientIpHeader` or `id: waf` or `id: webmcpEnabled` or `id: webmcpMcpUrl` or `id: webmcpPacks` or `id: webp` or `id: avif` or `id: websockets`: last time this setting was modified.
      * 
      */
     @Export(name="modifiedOn", refs={String.class}, tree="[0]")
     private Output<String> modifiedOn;
 
     /**
-     * @return last time this setting was modified.
+     * @return For `id: 0rtt` or `id: advancedDdos` or `id: alwaysOnline` or `id: alwaysUseHttps` or `id: automaticHttpsRewrites` or `id: brotli` or `id: browserCacheTtl` or `id: browserCheck` or `id: cacheLevel` or `id: challengeTtl` or `id: chinaNetworkEnabled` or `id: contentConverter` or `id: ciphers` or `id: cnameFlattening` or `id: developmentMode` or `id: earlyHints` or `id: edgeCacheTtl` or `id: emailObfuscation` or `id: h2Prioritization` or `id: hotlinkProtection` or `id: http2` or `id: http3` or `id: imageResizing` or `id: ipGeolocation` or `id: ipv6` or `id: maxUpload` or `id: minTlsVersion` or `id: mirage` or `id: nel` or `id: opportunisticEncryption` or `id: opportunisticOnion` or `id: orangeToOrange` or `id: originErrorPagePassThru` or `id: polish` or `id: prefetchPreload` or `id: preRender` or `id: privacyPass` or `id: proxyReadTimeout` or `id: pseudoIpv4` or `id: redirectsForAiTraining` or `id: replaceInsecureJs` or `id: responseBuffering` or `id: rocketLoader` or `id: automaticPlatformOptimization` or `id: searchForAgents` or `id: securityHeader` or `id: securityLevel` or `id: serverSideExclude` or `id: sha1Support` or `id: sortQueryStringForCache` or `id: ssl` or `id: tls12Only` or `id: tls13` or `id: tlsClientAuth` or `id: transformations` or `id: transformationsAllowedOrigins` or `id: trueClientIpHeader` or `id: waf` or `id: webmcpEnabled` or `id: webmcpMcpUrl` or `id: webmcpPacks` or `id: webp` or `id: avif` or `id: websockets`: last time this setting was modified.
      * 
      */
     public Output<String> modifiedOn() {
@@ -524,7 +525,7 @@ public class ZoneSetting extends com.pulumi.resources.CustomResource {
         return this.settingId;
     }
     /**
-     * Value of the zone setting.
+     * For `id: developmentMode`: Value of the zone setting.
      * Notes: The interval (in seconds) from when development mode expires (positive integer) or last expired (negative integer) for the domain. If development mode has never been enabled, this value is false.
      * 
      */
@@ -532,7 +533,7 @@ public class ZoneSetting extends com.pulumi.resources.CustomResource {
     private Output<Double> timeRemaining;
 
     /**
-     * @return Value of the zone setting.
+     * @return For `id: developmentMode`: Value of the zone setting.
      * Notes: The interval (in seconds) from when development mode expires (positive integer) or last expired (negative integer) for the domain. If development mode has never been enabled, this value is false.
      * 
      */

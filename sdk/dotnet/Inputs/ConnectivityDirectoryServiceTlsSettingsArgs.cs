@@ -18,6 +18,18 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("certVerificationMode", required: true)]
         public Input<string> CertVerificationMode { get; set; } = null!;
 
+        /// <summary>
+        /// UUID of the custom CA certificate or chain.
+        /// </summary>
+        [Input("certificateAuthority")]
+        public Input<string>? CertificateAuthority { get; set; }
+
+        /// <summary>
+        /// UUID of the mTLS client certificate and private key.
+        /// </summary>
+        [Input("clientCertificate")]
+        public Input<string>? ClientCertificate { get; set; }
+
         public ConnectivityDirectoryServiceTlsSettingsArgs()
         {
         }

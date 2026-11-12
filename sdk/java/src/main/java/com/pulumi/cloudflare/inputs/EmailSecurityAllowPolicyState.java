@@ -46,6 +46,21 @@ public final class EmailSecurityAllowPolicyState extends com.pulumi.resources.Re
     }
 
     /**
+     * Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration.
+     * 
+     */
+    @Import(name="expiresAt")
+    private @Nullable Output<String> expiresAt;
+
+    /**
+     * @return Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration.
+     * 
+     */
+    public Optional<Output<String>> expiresAt() {
+        return Optional.ofNullable(this.expiresAt);
+    }
+
+    /**
      * Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply.
      * 
      */
@@ -189,14 +204,14 @@ public final class EmailSecurityAllowPolicyState extends com.pulumi.resources.Re
     }
 
     /**
-     * The pattern value to match. The format depends on `patternType`: a valid email address for EMAIL (e.g. `user{@literal @}example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+     * The pattern value to match. The format depends on `patternType`: a valid email address for EMAIL (e.g. `user{@literal @}example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents. The API also rejects a pattern that equals a domain onboarded to the account, ignoring case.
      * 
      */
     @Import(name="pattern")
     private @Nullable Output<String> pattern;
 
     /**
-     * @return The pattern value to match. The format depends on `patternType`: a valid email address for EMAIL (e.g. `user{@literal @}example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+     * @return The pattern value to match. The format depends on `patternType`: a valid email address for EMAIL (e.g. `user{@literal @}example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents. The API also rejects a pattern that equals a domain onboarded to the account, ignoring case.
      * 
      */
     public Optional<Output<String>> pattern() {
@@ -249,6 +264,7 @@ public final class EmailSecurityAllowPolicyState extends com.pulumi.resources.Re
         this.accountId = $.accountId;
         this.comments = $.comments;
         this.createdAt = $.createdAt;
+        this.expiresAt = $.expiresAt;
         this.isAcceptableSender = $.isAcceptableSender;
         this.isExemptRecipient = $.isExemptRecipient;
         this.isRecipient = $.isRecipient;
@@ -318,6 +334,27 @@ public final class EmailSecurityAllowPolicyState extends com.pulumi.resources.Re
 
         public Builder createdAt(String createdAt) {
             return createdAt(Output.of(createdAt));
+        }
+
+        /**
+         * @param expiresAt Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expiresAt(@Nullable Output<String> expiresAt) {
+            $.expiresAt = expiresAt;
+            return this;
+        }
+
+        /**
+         * @param expiresAt Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expiresAt(String expiresAt) {
+            return expiresAt(Output.of(expiresAt));
         }
 
         /**
@@ -510,7 +547,7 @@ public final class EmailSecurityAllowPolicyState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param pattern The pattern value to match. The format depends on `patternType`: a valid email address for EMAIL (e.g. `user{@literal @}example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+         * @param pattern The pattern value to match. The format depends on `patternType`: a valid email address for EMAIL (e.g. `user{@literal @}example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents. The API also rejects a pattern that equals a domain onboarded to the account, ignoring case.
          * 
          * @return builder
          * 
@@ -521,7 +558,7 @@ public final class EmailSecurityAllowPolicyState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param pattern The pattern value to match. The format depends on `patternType`: a valid email address for EMAIL (e.g. `user{@literal @}example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+         * @param pattern The pattern value to match. The format depends on `patternType`: a valid email address for EMAIL (e.g. `user{@literal @}example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents. The API also rejects a pattern that equals a domain onboarded to the account, ignoring case.
          * 
          * @return builder
          * 

@@ -56,7 +56,7 @@ import (
 type CtAlerting struct {
 	pulumi.CustomResourceState
 
-	// Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma.
+	// Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. Omitted from responses when no addresses are configured.
 	Emails pulumi.StringArrayOutput `pulumi:"emails"`
 	// Whether CT alerting is enabled for the zone.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
@@ -100,7 +100,7 @@ func GetCtAlerting(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CtAlerting resources.
 type ctAlertingState struct {
-	// Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma.
+	// Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. Omitted from responses when no addresses are configured.
 	Emails []string `pulumi:"emails"`
 	// Whether CT alerting is enabled for the zone.
 	Enabled *bool `pulumi:"enabled"`
@@ -109,7 +109,7 @@ type ctAlertingState struct {
 }
 
 type CtAlertingState struct {
-	// Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma.
+	// Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. Omitted from responses when no addresses are configured.
 	Emails pulumi.StringArrayInput
 	// Whether CT alerting is enabled for the zone.
 	Enabled pulumi.BoolPtrInput
@@ -128,7 +128,7 @@ func CtAlertingExists(ctx *pulumi.Context,
 }
 
 type ctAlertingArgs struct {
-	// Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma.
+	// Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. Omitted from responses when no addresses are configured.
 	Emails []string `pulumi:"emails"`
 	// Whether CT alerting is enabled for the zone.
 	Enabled bool `pulumi:"enabled"`
@@ -138,7 +138,7 @@ type ctAlertingArgs struct {
 
 // The set of arguments for constructing a CtAlerting resource.
 type CtAlertingArgs struct {
-	// Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma.
+	// Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. Omitted from responses when no addresses are configured.
 	Emails pulumi.StringArrayInput
 	// Whether CT alerting is enabled for the zone.
 	Enabled pulumi.BoolInput
@@ -233,7 +233,7 @@ func (o CtAlertingOutput) ToCtAlertingOutputWithContext(ctx context.Context) CtA
 	return o
 }
 
-// Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma.
+// Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. Omitted from responses when no addresses are configured.
 func (o CtAlertingOutput) Emails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CtAlerting) pulumi.StringArrayOutput { return v.Emails }).(pulumi.StringArrayOutput)
 }

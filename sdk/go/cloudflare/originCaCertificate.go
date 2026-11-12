@@ -54,6 +54,7 @@ import (
 //				},
 //				RequestType:       pulumi.String("origin-rsa"),
 //				RequestedValidity: pulumi.Float64(5475),
+//				ZoneId:            pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //			})
 //			if err != nil {
 //				return err
@@ -87,6 +88,10 @@ type OriginCaCertificate struct {
 	// The number of days for which the certificate should be valid.
 	// Available values: 7, 30, 90, 365, 730, 1095, 5475.
 	RequestedValidity pulumi.Float64Output `pulumi:"requestedValidity"`
+	// When the certificate was revoked.
+	RevokedAt pulumi.StringOutput `pulumi:"revokedAt"`
+	// Identifier of the zone whose keyless servers the certificate is for. Required when `requestType` is `keyless-certificate`; ignored otherwise.
+	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
 // NewOriginCaCertificate registers a new resource with the given unique name, arguments, and options.
@@ -143,6 +148,10 @@ type originCaCertificateState struct {
 	// The number of days for which the certificate should be valid.
 	// Available values: 7, 30, 90, 365, 730, 1095, 5475.
 	RequestedValidity *float64 `pulumi:"requestedValidity"`
+	// When the certificate was revoked.
+	RevokedAt *string `pulumi:"revokedAt"`
+	// Identifier of the zone whose keyless servers the certificate is for. Required when `requestType` is `keyless-certificate`; ignored otherwise.
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 type OriginCaCertificateState struct {
@@ -161,6 +170,10 @@ type OriginCaCertificateState struct {
 	// The number of days for which the certificate should be valid.
 	// Available values: 7, 30, 90, 365, 730, 1095, 5475.
 	RequestedValidity pulumi.Float64PtrInput
+	// When the certificate was revoked.
+	RevokedAt pulumi.StringPtrInput
+	// Identifier of the zone whose keyless servers the certificate is for. Required when `requestType` is `keyless-certificate`; ignored otherwise.
+	ZoneId pulumi.StringPtrInput
 }
 
 func (OriginCaCertificateState) ElementType() reflect.Type {
@@ -185,6 +198,8 @@ type originCaCertificateArgs struct {
 	// The number of days for which the certificate should be valid.
 	// Available values: 7, 30, 90, 365, 730, 1095, 5475.
 	RequestedValidity *float64 `pulumi:"requestedValidity"`
+	// Identifier of the zone whose keyless servers the certificate is for. Required when `requestType` is `keyless-certificate`; ignored otherwise.
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a OriginCaCertificate resource.
@@ -200,6 +215,8 @@ type OriginCaCertificateArgs struct {
 	// The number of days for which the certificate should be valid.
 	// Available values: 7, 30, 90, 365, 730, 1095, 5475.
 	RequestedValidity pulumi.Float64PtrInput
+	// Identifier of the zone whose keyless servers the certificate is for. Required when `requestType` is `keyless-certificate`; ignored otherwise.
+	ZoneId pulumi.StringPtrInput
 }
 
 func (OriginCaCertificateArgs) ElementType() reflect.Type {
@@ -320,6 +337,16 @@ func (o OriginCaCertificateOutput) RequestType() pulumi.StringOutput {
 // Available values: 7, 30, 90, 365, 730, 1095, 5475.
 func (o OriginCaCertificateOutput) RequestedValidity() pulumi.Float64Output {
 	return o.ApplyT(func(v *OriginCaCertificate) pulumi.Float64Output { return v.RequestedValidity }).(pulumi.Float64Output)
+}
+
+// When the certificate was revoked.
+func (o OriginCaCertificateOutput) RevokedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *OriginCaCertificate) pulumi.StringOutput { return v.RevokedAt }).(pulumi.StringOutput)
+}
+
+// Identifier of the zone whose keyless servers the certificate is for. Required when `requestType` is `keyless-certificate`; ignored otherwise.
+func (o OriginCaCertificateOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OriginCaCertificate) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 type OriginCaCertificateArrayOutput struct{ *pulumi.OutputState }

@@ -12,9 +12,8 @@ import java.util.Objects;
 @CustomType
 public final class GetWorkersScriptsResultExports {
     /**
-     * @return Cache override for this entrypoint. It applies only to
-     * `type: worker` entries and overrides the Worker&#39;s global
-     * `cache_options.enabled` for that entrypoint.
+     * @return For `type: worker`: Cache override for this entrypoint. Overrides the Worker&#39;s
+     * global `cache_options.enabled` for this entrypoint only.
      * 
      */
     private GetWorkersScriptsResultExportsCache cache;
@@ -26,38 +25,43 @@ public final class GetWorkersScriptsResultExports {
      */
     private String renamedTo;
     /**
-     * @return Lifecycle state of the export entry. Defaults to `created`
-     * (a normal, live export) when omitted.
+     * @return For `state: created`: Live export. May be omitted; defaults to `created`.
      * 
      */
     private String state;
     /**
-     * @return Storage backend for a `type: durable-object` export. Required
-     * for live Durable Object entries (`created` and
-     * `expecting-transfer`). `sqlite` selects SQLite-backed storage;
-     * `legacy-kv` selects the legacy key-value storage.
+     * @return For `type: durable-object` and `state: created`: Durable Object storage backend. `sqlite` is the recommended (and
+     * only) backend for new namespaces. `legacy-kv` is accepted only for
+     * a class whose namespace already exists as KV-backed; the `exports`
+     * flow never provisions a new `legacy-kv` namespace.
+     * 
+     * For `type: durable-object` and `state: expecting-transfer`: Durable Object storage backend. `sqlite` is the recommended (and
+     * only) backend for new namespaces. `legacy-kv` is accepted only for
+     * a class whose namespace already exists as KV-backed; the `exports`
+     * flow never provisions a new `legacy-kv` namespace.
      * Available values: &#34;sqlite&#34;, &#34;legacy-kv&#34;.
      * 
      */
     private String storage;
     /**
-     * @return Source script for a `state: expecting-transfer` entry. The
-     * namespace on this script is materialised from the source
-     * script&#39;s data via the pending-transfer flow. Present on reads
-     * for `expecting-transfer` entries.
+     * @return For `state: expecting-transfer`: The source script name to receive the namespace from. Must be
+     * in the same account and dispatch-namespace context. Present on
+     * reads for `expecting-transfer` entries.
      * 
      */
     private String transferFrom;
     /**
-     * @return Destination script for a `state: transferred` tombstone. Must
-     * reference a script in the same account; cross-dispatch-namespace
-     * transfers are rejected. Write-only: never present in GET
-     * responses.
+     * @return For `state: transferred`: The destination script name. Must be in the same account and
+     * the same dispatch-namespace context (or both non-dispatch).
+     * Cross-dispatch-namespace transfers are rejected. Write-only:
+     * never present in GET responses.
      * 
      */
     private String transferredTo;
     /**
-     * @return The kind of export.
+     * @return For `type: worker`: Marks this entry as a Worker entrypoint export.
+     * 
+     * For `type: durable-object`: Marks this entry as a Durable Object export.
      * Available values: &#34;worker&#34;, &#34;durable-object&#34;.
      * 
      */
@@ -65,9 +69,8 @@ public final class GetWorkersScriptsResultExports {
 
     private GetWorkersScriptsResultExports() {}
     /**
-     * @return Cache override for this entrypoint. It applies only to
-     * `type: worker` entries and overrides the Worker&#39;s global
-     * `cache_options.enabled` for that entrypoint.
+     * @return For `type: worker`: Cache override for this entrypoint. Overrides the Worker&#39;s
+     * global `cache_options.enabled` for this entrypoint only.
      * 
      */
     public GetWorkersScriptsResultExportsCache cache() {
@@ -83,18 +86,22 @@ public final class GetWorkersScriptsResultExports {
         return this.renamedTo;
     }
     /**
-     * @return Lifecycle state of the export entry. Defaults to `created`
-     * (a normal, live export) when omitted.
+     * @return For `state: created`: Live export. May be omitted; defaults to `created`.
      * 
      */
     public String state() {
         return this.state;
     }
     /**
-     * @return Storage backend for a `type: durable-object` export. Required
-     * for live Durable Object entries (`created` and
-     * `expecting-transfer`). `sqlite` selects SQLite-backed storage;
-     * `legacy-kv` selects the legacy key-value storage.
+     * @return For `type: durable-object` and `state: created`: Durable Object storage backend. `sqlite` is the recommended (and
+     * only) backend for new namespaces. `legacy-kv` is accepted only for
+     * a class whose namespace already exists as KV-backed; the `exports`
+     * flow never provisions a new `legacy-kv` namespace.
+     * 
+     * For `type: durable-object` and `state: expecting-transfer`: Durable Object storage backend. `sqlite` is the recommended (and
+     * only) backend for new namespaces. `legacy-kv` is accepted only for
+     * a class whose namespace already exists as KV-backed; the `exports`
+     * flow never provisions a new `legacy-kv` namespace.
      * Available values: &#34;sqlite&#34;, &#34;legacy-kv&#34;.
      * 
      */
@@ -102,27 +109,28 @@ public final class GetWorkersScriptsResultExports {
         return this.storage;
     }
     /**
-     * @return Source script for a `state: expecting-transfer` entry. The
-     * namespace on this script is materialised from the source
-     * script&#39;s data via the pending-transfer flow. Present on reads
-     * for `expecting-transfer` entries.
+     * @return For `state: expecting-transfer`: The source script name to receive the namespace from. Must be
+     * in the same account and dispatch-namespace context. Present on
+     * reads for `expecting-transfer` entries.
      * 
      */
     public String transferFrom() {
         return this.transferFrom;
     }
     /**
-     * @return Destination script for a `state: transferred` tombstone. Must
-     * reference a script in the same account; cross-dispatch-namespace
-     * transfers are rejected. Write-only: never present in GET
-     * responses.
+     * @return For `state: transferred`: The destination script name. Must be in the same account and
+     * the same dispatch-namespace context (or both non-dispatch).
+     * Cross-dispatch-namespace transfers are rejected. Write-only:
+     * never present in GET responses.
      * 
      */
     public String transferredTo() {
         return this.transferredTo;
     }
     /**
-     * @return The kind of export.
+     * @return For `type: worker`: Marks this entry as a Worker entrypoint export.
+     * 
+     * For `type: durable-object`: Marks this entry as a Durable Object export.
      * Available values: &#34;worker&#34;, &#34;durable-object&#34;.
      * 
      */

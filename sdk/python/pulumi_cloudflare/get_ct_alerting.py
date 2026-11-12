@@ -44,7 +44,7 @@ class GetCtAlertingResult:
     @pulumi.getter
     def emails(self) -> Sequence[_builtins.str]:
         """
-        Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma.
+        Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. Omitted from responses when no addresses are configured.
         """
         return pulumi.get(self, "emails")
 

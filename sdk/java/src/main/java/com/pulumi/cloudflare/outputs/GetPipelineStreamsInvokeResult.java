@@ -21,6 +21,12 @@ public final class GetPipelineStreamsInvokeResult {
      */
     private @Nullable String accountId;
     /**
+     * @return Sort direction.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    private String direction;
+    /**
      * @return Max items to fetch, default: 1000
      * 
      */
@@ -30,6 +36,12 @@ public final class GetPipelineStreamsInvokeResult {
      * 
      */
     private @Nullable String name;
+    /**
+     * @return Sorts streams by this field. Defaults to `createdAt`.
+     * Available values: &#34;name&#34;, &#34;createdAt&#34;.
+     * 
+     */
+    private @Nullable String orderBy;
     /**
      * @return Specifies the public ID of the pipeline.
      * 
@@ -50,6 +62,14 @@ public final class GetPipelineStreamsInvokeResult {
         return Optional.ofNullable(this.accountId);
     }
     /**
+     * @return Sort direction.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    public String direction() {
+        return this.direction;
+    }
+    /**
      * @return Max items to fetch, default: 1000
      * 
      */
@@ -62,6 +82,14 @@ public final class GetPipelineStreamsInvokeResult {
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
+    }
+    /**
+     * @return Sorts streams by this field. Defaults to `createdAt`.
+     * Available values: &#34;name&#34;, &#34;createdAt&#34;.
+     * 
+     */
+    public Optional<String> orderBy() {
+        return Optional.ofNullable(this.orderBy);
     }
     /**
      * @return Specifies the public ID of the pipeline.
@@ -88,16 +116,20 @@ public final class GetPipelineStreamsInvokeResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String accountId;
+        private String direction;
         private @Nullable Integer maxItems;
         private @Nullable String name;
+        private @Nullable String orderBy;
         private @Nullable String pipelineId;
         private List<GetPipelineStreamsResult> results;
         public Builder() {}
         public Builder(GetPipelineStreamsInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
+    	      this.direction = defaults.direction;
     	      this.maxItems = defaults.maxItems;
     	      this.name = defaults.name;
+    	      this.orderBy = defaults.orderBy;
     	      this.pipelineId = defaults.pipelineId;
     	      this.results = defaults.results;
         }
@@ -106,6 +138,14 @@ public final class GetPipelineStreamsInvokeResult {
         public Builder accountId(@Nullable String accountId) {
 
             this.accountId = accountId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder direction(String direction) {
+            if (direction == null) {
+              throw new MissingRequiredPropertyException("GetPipelineStreamsInvokeResult", "direction");
+            }
+            this.direction = direction;
             return this;
         }
         @CustomType.Setter
@@ -118,6 +158,12 @@ public final class GetPipelineStreamsInvokeResult {
         public Builder name(@Nullable String name) {
 
             this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder orderBy(@Nullable String orderBy) {
+
+            this.orderBy = orderBy;
             return this;
         }
         @CustomType.Setter
@@ -140,8 +186,10 @@ public final class GetPipelineStreamsInvokeResult {
         public GetPipelineStreamsInvokeResult build() {
             final var _resultValue = new GetPipelineStreamsInvokeResult();
             _resultValue.accountId = accountId;
+            _resultValue.direction = direction;
             _resultValue.maxItems = maxItems;
             _resultValue.name = name;
+            _resultValue.orderBy = orderBy;
             _resultValue.pipelineId = pipelineId;
             _resultValue.results = results;
             return _resultValue;

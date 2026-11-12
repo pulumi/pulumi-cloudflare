@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustDlpCustomEntryVariant {
     /**
-     * @return A customer-facing explanation of what this predefined AI prompt topic represents.
+     * @return For `type: PromptTopic`: A customer-facing explanation of what this predefined AI prompt topic represents.
      * 
      */
     private String description;
@@ -28,7 +28,7 @@ public final class GetZeroTrustDlpCustomEntryVariant {
 
     private GetZeroTrustDlpCustomEntryVariant() {}
     /**
-     * @return A customer-facing explanation of what this predefined AI prompt topic represents.
+     * @return For `type: PromptTopic`: A customer-facing explanation of what this predefined AI prompt topic represents.
      * 
      */
     public String description() {

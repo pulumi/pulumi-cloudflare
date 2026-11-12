@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetOrganizationFilterContaining;
+import com.pulumi.cloudflare.outputs.GetOrganizationFilterMember;
 import com.pulumi.cloudflare.outputs.GetOrganizationFilterName;
 import com.pulumi.cloudflare.outputs.GetOrganizationFilterParent;
 import com.pulumi.core.annotations.CustomType;
@@ -18,12 +19,27 @@ import javax.annotation.Nullable;
 public final class GetOrganizationFilter {
     private @Nullable GetOrganizationFilterContaining containing;
     /**
+     * @return Sort direction for the `orderBy` field. Defaults to `asc` when `orderBy` is
+     * specified.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    private @Nullable String direction;
+    /**
      * @return Only return organizations with the specified IDs (ex. id=foo&amp;id=bar). Send multiple elements
      * by repeating the query value.
      * 
      */
     private @Nullable List<String> ids;
+    private @Nullable GetOrganizationFilterMember member;
     private @Nullable GetOrganizationFilterName name;
+    /**
+     * @return Field to order results by. Currently supported values: `name`.
+     * When not specified, results are ordered by hierarchy.
+     * Available values: &#34;name&#34;.
+     * 
+     */
+    private @Nullable String orderBy;
     /**
      * @return The amount of items to return. Defaults to 10.
      * 
@@ -42,6 +58,15 @@ public final class GetOrganizationFilter {
         return Optional.ofNullable(this.containing);
     }
     /**
+     * @return Sort direction for the `orderBy` field. Defaults to `asc` when `orderBy` is
+     * specified.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    public Optional<String> direction() {
+        return Optional.ofNullable(this.direction);
+    }
+    /**
      * @return Only return organizations with the specified IDs (ex. id=foo&amp;id=bar). Send multiple elements
      * by repeating the query value.
      * 
@@ -49,8 +74,20 @@ public final class GetOrganizationFilter {
     public List<String> ids() {
         return this.ids == null ? List.of() : this.ids;
     }
+    public Optional<GetOrganizationFilterMember> member() {
+        return Optional.ofNullable(this.member);
+    }
     public Optional<GetOrganizationFilterName> name() {
         return Optional.ofNullable(this.name);
+    }
+    /**
+     * @return Field to order results by. Currently supported values: `name`.
+     * When not specified, results are ordered by hierarchy.
+     * Available values: &#34;name&#34;.
+     * 
+     */
+    public Optional<String> orderBy() {
+        return Optional.ofNullable(this.orderBy);
     }
     /**
      * @return The amount of items to return. Defaults to 10.
@@ -81,8 +118,11 @@ public final class GetOrganizationFilter {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable GetOrganizationFilterContaining containing;
+        private @Nullable String direction;
         private @Nullable List<String> ids;
+        private @Nullable GetOrganizationFilterMember member;
         private @Nullable GetOrganizationFilterName name;
+        private @Nullable String orderBy;
         private @Nullable Integer pageSize;
         private @Nullable String pageToken;
         private @Nullable GetOrganizationFilterParent parent;
@@ -90,8 +130,11 @@ public final class GetOrganizationFilter {
         public Builder(GetOrganizationFilter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.containing = defaults.containing;
+    	      this.direction = defaults.direction;
     	      this.ids = defaults.ids;
+    	      this.member = defaults.member;
     	      this.name = defaults.name;
+    	      this.orderBy = defaults.orderBy;
     	      this.pageSize = defaults.pageSize;
     	      this.pageToken = defaults.pageToken;
     	      this.parent = defaults.parent;
@@ -104,6 +147,12 @@ public final class GetOrganizationFilter {
             return this;
         }
         @CustomType.Setter
+        public Builder direction(@Nullable String direction) {
+
+            this.direction = direction;
+            return this;
+        }
+        @CustomType.Setter
         public Builder ids(@Nullable List<String> ids) {
 
             this.ids = ids;
@@ -113,9 +162,21 @@ public final class GetOrganizationFilter {
             return ids(List.of(ids));
         }
         @CustomType.Setter
+        public Builder member(@Nullable GetOrganizationFilterMember member) {
+
+            this.member = member;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(@Nullable GetOrganizationFilterName name) {
 
             this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder orderBy(@Nullable String orderBy) {
+
+            this.orderBy = orderBy;
             return this;
         }
         @CustomType.Setter
@@ -139,8 +200,11 @@ public final class GetOrganizationFilter {
         public GetOrganizationFilter build() {
             final var _resultValue = new GetOrganizationFilter();
             _resultValue.containing = containing;
+            _resultValue.direction = direction;
             _resultValue.ids = ids;
+            _resultValue.member = member;
             _resultValue.name = name;
+            _resultValue.orderBy = orderBy;
             _resultValue.pageSize = pageSize;
             _resultValue.pageToken = pageToken;
             _resultValue.parent = parent;

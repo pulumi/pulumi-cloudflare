@@ -84,7 +84,7 @@ export interface GetCustomOriginTrustStoreResult {
      */
     readonly status: string;
     /**
-     * When the certificate was last modified.
+     * When the certificate was last modified. Only returned when uploading a certificate.
      */
     readonly updatedAt: string;
     /**

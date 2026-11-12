@@ -135,6 +135,15 @@ export class SpectrumApplication extends pulumi.CustomResource {
      */
     declare public readonly originWorkerId: pulumi.Output<string | undefined>;
     /**
+     * Name of the Worker origin. Omitted when the Worker is not found or its name cannot be resolved.
+     */
+    declare public /*out*/ readonly originWorkerName: pulumi.Output<string>;
+    /**
+     * Lookup status of the Worker origin. Unknown indicates that its name could not be resolved. Only returned for Worker origins.
+     * Available values: "available", "notFound", "unknown".
+     */
+    declare public /*out*/ readonly originWorkerStatus: pulumi.Output<string>;
+    /**
      * The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`.
      */
     declare public readonly protocol: pulumi.Output<string>;
@@ -185,6 +194,8 @@ export class SpectrumApplication extends pulumi.CustomResource {
             resourceInputs["originDns"] = state?.originDns;
             resourceInputs["originPort"] = state?.originPort;
             resourceInputs["originWorkerId"] = state?.originWorkerId;
+            resourceInputs["originWorkerName"] = state?.originWorkerName;
+            resourceInputs["originWorkerStatus"] = state?.originWorkerStatus;
             resourceInputs["protocol"] = state?.protocol;
             resourceInputs["proxyProtocol"] = state?.proxyProtocol;
             resourceInputs["tls"] = state?.tls;
@@ -218,6 +229,8 @@ export class SpectrumApplication extends pulumi.CustomResource {
             resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
+            resourceInputs["originWorkerName"] = undefined /*out*/;
+            resourceInputs["originWorkerStatus"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SpectrumApplication.__pulumiType, name, resourceInputs, opts);
@@ -271,6 +284,15 @@ export interface SpectrumApplicationState {
      * Optional Worker script tag (worker ID) to use as the application's origin. Only supported for TCP applications with traffic*type "worker"; mutually exclusive with origin*direct, origin*dns, origin*port, proxy*protocol, and argo*smart_routing. tls may only be "off" or "flexible".
      */
     originWorkerId?: pulumi.Input<string | undefined>;
+    /**
+     * Name of the Worker origin. Omitted when the Worker is not found or its name cannot be resolved.
+     */
+    originWorkerName?: pulumi.Input<string | undefined>;
+    /**
+     * Lookup status of the Worker origin. Unknown indicates that its name could not be resolved. Only returned for Worker origins.
+     * Available values: "available", "notFound", "unknown".
+     */
+    originWorkerStatus?: pulumi.Input<string | undefined>;
     /**
      * The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`.
      */

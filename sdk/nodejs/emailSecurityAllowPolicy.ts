@@ -26,6 +26,7 @@ import * as utilities from "./utilities";
  *     patternType: "EMAIL",
  *     verifySender: true,
  *     comments: "Trust all messages send from test@example.com",
+ *     expiresAt: "2027-01-01T00:00:00Z",
  *     isRecipient: false,
  *     isSender: true,
  *     isSpoof: false,
@@ -84,6 +85,10 @@ export class EmailSecurityAllowPolicy extends pulumi.CustomResource {
     declare public readonly comments: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
+     * Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration.
+     */
+    declare public readonly expiresAt: pulumi.Output<string | undefined>;
+    /**
      * Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply.
      */
     declare public readonly isAcceptableSender: pulumi.Output<boolean>;
@@ -122,7 +127,7 @@ export class EmailSecurityAllowPolicy extends pulumi.CustomResource {
     declare public /*out*/ readonly lastModified: pulumi.Output<string>;
     declare public /*out*/ readonly modifiedAt: pulumi.Output<string>;
     /**
-     * The pattern value to match. The format depends on `patternType`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+     * The pattern value to match. The format depends on `patternType`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents. The API also rejects a pattern that equals a domain onboarded to the account, ignoring case.
      */
     declare public readonly pattern: pulumi.Output<string>;
     /**
@@ -155,6 +160,7 @@ export class EmailSecurityAllowPolicy extends pulumi.CustomResource {
             resourceInputs["accountId"] = state?.accountId;
             resourceInputs["comments"] = state?.comments;
             resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["expiresAt"] = state?.expiresAt;
             resourceInputs["isAcceptableSender"] = state?.isAcceptableSender;
             resourceInputs["isExemptRecipient"] = state?.isExemptRecipient;
             resourceInputs["isRecipient"] = state?.isRecipient;
@@ -195,6 +201,7 @@ export class EmailSecurityAllowPolicy extends pulumi.CustomResource {
             }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["comments"] = args?.comments;
+            resourceInputs["expiresAt"] = args?.expiresAt;
             resourceInputs["isAcceptableSender"] = args?.isAcceptableSender;
             resourceInputs["isExemptRecipient"] = args?.isExemptRecipient;
             resourceInputs["isRecipient"] = args?.isRecipient;
@@ -224,6 +231,10 @@ export interface EmailSecurityAllowPolicyState {
     accountId?: pulumi.Input<string | undefined>;
     comments?: pulumi.Input<string | undefined>;
     createdAt?: pulumi.Input<string | undefined>;
+    /**
+     * Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration.
+     */
+    expiresAt?: pulumi.Input<string | undefined>;
     /**
      * Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply.
      */
@@ -263,7 +274,7 @@ export interface EmailSecurityAllowPolicyState {
     lastModified?: pulumi.Input<string | undefined>;
     modifiedAt?: pulumi.Input<string | undefined>;
     /**
-     * The pattern value to match. The format depends on `patternType`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+     * The pattern value to match. The format depends on `patternType`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents. The API also rejects a pattern that equals a domain onboarded to the account, ignoring case.
      */
     pattern?: pulumi.Input<string | undefined>;
     /**
@@ -290,6 +301,10 @@ export interface EmailSecurityAllowPolicyArgs {
      */
     accountId: pulumi.Input<string>;
     comments?: pulumi.Input<string | undefined>;
+    /**
+     * Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration.
+     */
+    expiresAt?: pulumi.Input<string | undefined>;
     /**
      * Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply.
      */
@@ -322,7 +337,7 @@ export interface EmailSecurityAllowPolicyArgs {
      */
     isTrustedSender: pulumi.Input<boolean>;
     /**
-     * The pattern value to match. The format depends on `patternType`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+     * The pattern value to match. The format depends on `patternType`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents. The API also rejects a pattern that equals a domain onboarded to the account, ignoring case.
      */
     pattern: pulumi.Input<string>;
     /**

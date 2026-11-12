@@ -9,6 +9,14 @@ import * as utilities from "./utilities";
 /**
  * Accepted Permissions
  *
+ * - `Individual Workers Admin`
+ * - `Individual Workers Content Read-Only`
+ * - `Individual Workers Editor`
+ * - `Individual Workers Metadata Read-Only`
+ * - `Workers Admin`
+ * - `Workers Content Read-Only`
+ * - `Workers Editor`
+ * - `Workers Metadata Read-Only`
  * - `Workers Scripts Read`
  * - `Workers Scripts Write`
  * - `Workers Tail Read`
@@ -29,6 +37,9 @@ import * as utilities from "./utilities";
  *     }],
  *     annotations: {
  *         workersMessage: "Deploy bug fix.",
+ *     },
+ *     codeUpdateStrategy: {
+ *         mode: "immediate",
  *     },
  * });
  * ```
@@ -82,8 +93,15 @@ export class WorkersDeployment extends pulumi.CustomResource {
      * Identifier.
      */
     declare public readonly accountId: pulumi.Output<string>;
+    /**
+     * Metadata attached to the deployment.
+     */
     declare public readonly annotations: pulumi.Output<outputs.WorkersDeploymentAnnotations>;
     declare public /*out*/ readonly authorEmail: pulumi.Output<string>;
+    /**
+     * Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+     */
+    declare public readonly codeUpdateStrategy: pulumi.Output<outputs.WorkersDeploymentCodeUpdateStrategy | undefined>;
     declare public /*out*/ readonly createdOn: pulumi.Output<string>;
     /**
      * If set to true, the deployment will be created even if normally blocked by something such rolling back to an older version when a secret has changed.
@@ -95,6 +113,7 @@ export class WorkersDeployment extends pulumi.CustomResource {
     declare public readonly scriptName: pulumi.Output<string>;
     declare public /*out*/ readonly source: pulumi.Output<string>;
     /**
+     * Strategy for routing traffic across the listed versions. `percentage` splits traffic according to each version's `percentage`.
      * Available values: "percentage".
      */
     declare public readonly strategy: pulumi.Output<string>;
@@ -119,6 +138,7 @@ export class WorkersDeployment extends pulumi.CustomResource {
             resourceInputs["accountId"] = state?.accountId;
             resourceInputs["annotations"] = state?.annotations;
             resourceInputs["authorEmail"] = state?.authorEmail;
+            resourceInputs["codeUpdateStrategy"] = state?.codeUpdateStrategy;
             resourceInputs["createdOn"] = state?.createdOn;
             resourceInputs["force"] = state?.force;
             resourceInputs["scriptName"] = state?.scriptName;
@@ -141,6 +161,7 @@ export class WorkersDeployment extends pulumi.CustomResource {
             }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["codeUpdateStrategy"] = args?.codeUpdateStrategy;
             resourceInputs["force"] = args?.force;
             resourceInputs["scriptName"] = args?.scriptName;
             resourceInputs["strategy"] = args?.strategy;
@@ -162,8 +183,15 @@ export interface WorkersDeploymentState {
      * Identifier.
      */
     accountId?: pulumi.Input<string | undefined>;
+    /**
+     * Metadata attached to the deployment.
+     */
     annotations?: pulumi.Input<inputs.WorkersDeploymentAnnotations | undefined>;
     authorEmail?: pulumi.Input<string | undefined>;
+    /**
+     * Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+     */
+    codeUpdateStrategy?: pulumi.Input<inputs.WorkersDeploymentCodeUpdateStrategy | undefined>;
     createdOn?: pulumi.Input<string | undefined>;
     /**
      * If set to true, the deployment will be created even if normally blocked by something such rolling back to an older version when a secret has changed.
@@ -175,6 +203,7 @@ export interface WorkersDeploymentState {
     scriptName?: pulumi.Input<string | undefined>;
     source?: pulumi.Input<string | undefined>;
     /**
+     * Strategy for routing traffic across the listed versions. `percentage` splits traffic according to each version's `percentage`.
      * Available values: "percentage".
      */
     strategy?: pulumi.Input<string | undefined>;
@@ -192,7 +221,14 @@ export interface WorkersDeploymentArgs {
      * Identifier.
      */
     accountId: pulumi.Input<string>;
+    /**
+     * Metadata attached to the deployment.
+     */
     annotations?: pulumi.Input<inputs.WorkersDeploymentAnnotations | undefined>;
+    /**
+     * Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+     */
+    codeUpdateStrategy?: pulumi.Input<inputs.WorkersDeploymentCodeUpdateStrategy | undefined>;
     /**
      * If set to true, the deployment will be created even if normally blocked by something such rolling back to an older version when a secret has changed.
      */
@@ -202,6 +238,7 @@ export interface WorkersDeploymentArgs {
      */
     scriptName: pulumi.Input<string>;
     /**
+     * Strategy for routing traffic across the listed versions. `percentage` splits traffic according to each version's `percentage`.
      * Available values: "percentage".
      */
     strategy: pulumi.Input<string>;

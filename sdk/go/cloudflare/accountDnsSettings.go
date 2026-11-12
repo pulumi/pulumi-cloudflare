@@ -36,7 +36,6 @@ import (
 //				EnforceDnsOnly: pulumi.Bool(false),
 //				ZoneDefaults: &cloudflare.AccountDnsSettingsZoneDefaultsArgs{
 //					FlattenAllCnames: pulumi.Bool(false),
-//					FoundationDns:    pulumi.Bool(false),
 //					InternalDns: &cloudflare.AccountDnsSettingsZoneDefaultsInternalDnsArgs{
 //						ReferenceZoneId: pulumi.String("reference_zone_id"),
 //					},

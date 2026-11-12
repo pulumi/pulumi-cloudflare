@@ -28,10 +28,13 @@ import * as utilities from "./utilities";
  *     loadBalanceInnerFlows: true,
  *     name: "name",
  *     priority: 0,
+ *     provisionedDownloadKbps: 500,
+ *     provisionedUploadKbps: 100,
  *     staticAddressing: {
  *         address: "192.0.2.0/24",
  *         gatewayAddress: "192.0.2.1",
  *         secondaryAddress: "192.0.2.0/24",
+ *         secondaryGatewayAddress: "192.0.2.1",
  *     },
  *     vlanTag: 42,
  * });
@@ -96,11 +99,19 @@ export class MagicTransitSiteWan extends pulumi.CustomResource {
     declare public readonly physport: pulumi.Output<number>;
     declare public readonly priority: pulumi.Output<number | undefined>;
     /**
+     * Provisioned download rate of the WAN circuit in kilobits per second.
+     */
+    declare public readonly provisionedDownloadKbps: pulumi.Output<number | undefined>;
+    /**
+     * Provisioned upload rate of the WAN circuit in kilobits per second.
+     */
+    declare public readonly provisionedUploadKbps: pulumi.Output<number | undefined>;
+    /**
      * Identifier
      */
     declare public readonly siteId: pulumi.Output<string>;
     /**
-     * (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
+     * Static addressing configuration for a WAN. Omit to use DHCP. Submit secondary*address when the site is in high availability mode.
      */
     declare public readonly staticAddressing: pulumi.Output<outputs.MagicTransitSiteWanStaticAddressing | undefined>;
     /**
@@ -127,6 +138,8 @@ export class MagicTransitSiteWan extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["physport"] = state?.physport;
             resourceInputs["priority"] = state?.priority;
+            resourceInputs["provisionedDownloadKbps"] = state?.provisionedDownloadKbps;
+            resourceInputs["provisionedUploadKbps"] = state?.provisionedUploadKbps;
             resourceInputs["siteId"] = state?.siteId;
             resourceInputs["staticAddressing"] = state?.staticAddressing;
             resourceInputs["vlanTag"] = state?.vlanTag;
@@ -147,6 +160,8 @@ export class MagicTransitSiteWan extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["physport"] = args?.physport;
             resourceInputs["priority"] = args?.priority;
+            resourceInputs["provisionedDownloadKbps"] = args?.provisionedDownloadKbps;
+            resourceInputs["provisionedUploadKbps"] = args?.provisionedUploadKbps;
             resourceInputs["siteId"] = args?.siteId;
             resourceInputs["staticAddressing"] = args?.staticAddressing;
             resourceInputs["vlanTag"] = args?.vlanTag;
@@ -174,11 +189,19 @@ export interface MagicTransitSiteWanState {
     physport?: pulumi.Input<number | undefined>;
     priority?: pulumi.Input<number | undefined>;
     /**
+     * Provisioned download rate of the WAN circuit in kilobits per second.
+     */
+    provisionedDownloadKbps?: pulumi.Input<number | undefined>;
+    /**
+     * Provisioned upload rate of the WAN circuit in kilobits per second.
+     */
+    provisionedUploadKbps?: pulumi.Input<number | undefined>;
+    /**
      * Identifier
      */
     siteId?: pulumi.Input<string | undefined>;
     /**
-     * (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
+     * Static addressing configuration for a WAN. Omit to use DHCP. Submit secondary*address when the site is in high availability mode.
      */
     staticAddressing?: pulumi.Input<inputs.MagicTransitSiteWanStaticAddressing | undefined>;
     /**
@@ -205,11 +228,19 @@ export interface MagicTransitSiteWanArgs {
     physport: pulumi.Input<number>;
     priority?: pulumi.Input<number | undefined>;
     /**
+     * Provisioned download rate of the WAN circuit in kilobits per second.
+     */
+    provisionedDownloadKbps?: pulumi.Input<number | undefined>;
+    /**
+     * Provisioned upload rate of the WAN circuit in kilobits per second.
+     */
+    provisionedUploadKbps?: pulumi.Input<number | undefined>;
+    /**
      * Identifier
      */
     siteId: pulumi.Input<string>;
     /**
-     * (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
+     * Static addressing configuration for a WAN. Omit to use DHCP. Submit secondary*address when the site is in high availability mode.
      */
     staticAddressing?: pulumi.Input<inputs.MagicTransitSiteWanStaticAddressing | undefined>;
     /**

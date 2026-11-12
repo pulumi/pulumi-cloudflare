@@ -7,20 +7,14 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class OrganizationParent {
     private String id;
-    private @Nullable String name;
 
     private OrganizationParent() {}
     public String id() {
         return this.id;
-    }
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
     }
 
     public static Builder builder() {
@@ -33,12 +27,10 @@ public final class OrganizationParent {
     @CustomType.Builder
     public static final class Builder {
         private String id;
-        private @Nullable String name;
         public Builder() {}
         public Builder(OrganizationParent defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
-    	      this.name = defaults.name;
         }
 
         @CustomType.Setter
@@ -49,16 +41,9 @@ public final class OrganizationParent {
             this.id = id;
             return this;
         }
-        @CustomType.Setter
-        public Builder name(@Nullable String name) {
-
-            this.name = name;
-            return this;
-        }
         public OrganizationParent build() {
             final var _resultValue = new OrganizationParent();
             _resultValue.id = id;
-            _resultValue.name = name;
             return _resultValue;
         }
     }

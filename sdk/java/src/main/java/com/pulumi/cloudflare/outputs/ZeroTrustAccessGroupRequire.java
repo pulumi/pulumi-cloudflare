@@ -28,6 +28,7 @@ import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireOidc;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireOkta;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireSaml;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireServiceToken;
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireServiceTokenTag;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireUserRiskScore;
 import com.pulumi.core.annotations.CustomType;
 import java.util.Objects;
@@ -69,6 +70,7 @@ public final class ZeroTrustAccessGroupRequire {
     private @Nullable ZeroTrustAccessGroupRequireOkta okta;
     private @Nullable ZeroTrustAccessGroupRequireSaml saml;
     private @Nullable ZeroTrustAccessGroupRequireServiceToken serviceToken;
+    private @Nullable ZeroTrustAccessGroupRequireServiceTokenTag serviceTokenTag;
     private @Nullable ZeroTrustAccessGroupRequireUserRiskScore userRiskScore;
 
     private ZeroTrustAccessGroupRequire() {}
@@ -155,6 +157,9 @@ public final class ZeroTrustAccessGroupRequire {
     public Optional<ZeroTrustAccessGroupRequireServiceToken> serviceToken() {
         return Optional.ofNullable(this.serviceToken);
     }
+    public Optional<ZeroTrustAccessGroupRequireServiceTokenTag> serviceTokenTag() {
+        return Optional.ofNullable(this.serviceTokenTag);
+    }
     public Optional<ZeroTrustAccessGroupRequireUserRiskScore> userRiskScore() {
         return Optional.ofNullable(this.userRiskScore);
     }
@@ -193,6 +198,7 @@ public final class ZeroTrustAccessGroupRequire {
         private @Nullable ZeroTrustAccessGroupRequireOkta okta;
         private @Nullable ZeroTrustAccessGroupRequireSaml saml;
         private @Nullable ZeroTrustAccessGroupRequireServiceToken serviceToken;
+        private @Nullable ZeroTrustAccessGroupRequireServiceTokenTag serviceTokenTag;
         private @Nullable ZeroTrustAccessGroupRequireUserRiskScore userRiskScore;
         public Builder() {}
         public Builder(ZeroTrustAccessGroupRequire defaults) {
@@ -222,6 +228,7 @@ public final class ZeroTrustAccessGroupRequire {
     	      this.okta = defaults.okta;
     	      this.saml = defaults.saml;
     	      this.serviceToken = defaults.serviceToken;
+    	      this.serviceTokenTag = defaults.serviceTokenTag;
     	      this.userRiskScore = defaults.userRiskScore;
         }
 
@@ -376,6 +383,12 @@ public final class ZeroTrustAccessGroupRequire {
             return this;
         }
         @CustomType.Setter
+        public Builder serviceTokenTag(@Nullable ZeroTrustAccessGroupRequireServiceTokenTag serviceTokenTag) {
+
+            this.serviceTokenTag = serviceTokenTag;
+            return this;
+        }
+        @CustomType.Setter
         public Builder userRiskScore(@Nullable ZeroTrustAccessGroupRequireUserRiskScore userRiskScore) {
 
             this.userRiskScore = userRiskScore;
@@ -408,6 +421,7 @@ public final class ZeroTrustAccessGroupRequire {
             _resultValue.okta = okta;
             _resultValue.saml = saml;
             _resultValue.serviceToken = serviceToken;
+            _resultValue.serviceTokenTag = serviceTokenTag;
             _resultValue.userRiskScore = userRiskScore;
             return _resultValue;
         }

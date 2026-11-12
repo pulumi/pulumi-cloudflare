@@ -51,6 +51,7 @@ class AiGatewayArgs:
         The set of arguments for constructing a AiGateway resource.
 
         :param pulumi.Input[_builtins.str] ai_gateway_id: Unique identifier of the AI Gateway within the account.
+        :param pulumi.Input[_builtins.bool] authentication: Require authentication for gateway access. New gateways must have authentication enabled. Once enabled, authentication cannot be disabled.
         :param pulumi.Input[_builtins.bool] byok_only: Requires customer-provided provider credentials and prevents fallback to Unified Billing.
         :param pulumi.Input[_builtins.str] log_management_strategy: Available values: "STOP*INSERTING", "DELETE*OLDEST".
         :param pulumi.Input[_builtins.str] rate_limiting_technique: Available values: "fixed", "sliding".
@@ -58,6 +59,7 @@ class AiGatewayArgs:
                Available values: "constant", "linear", "exponential".
         :param pulumi.Input[_builtins.int] retry_delay: Delay between retry attempts in milliseconds (0-60000)
         :param pulumi.Input[_builtins.int] retry_max_attempts: Maximum number of retry attempts for failed requests (1-5)
+        :param pulumi.Input[_builtins.str] store_id: Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it.
         :param pulumi.Input[_builtins.str] workers_ai_billing_mode: Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
                Available values: "postpaid", "unified".
         """
@@ -176,6 +178,9 @@ class AiGatewayArgs:
     @_builtins.property
     @pulumi.getter
     def authentication(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Require authentication for gateway access. New gateways must have authentication enabled. Once enabled, authentication cannot be disabled.
+        """
         return pulumi.get(self, "authentication")
 
     @authentication.setter
@@ -330,6 +335,9 @@ class AiGatewayArgs:
     @_builtins.property
     @pulumi.getter(name="storeId")
     def store_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it.
+        """
         return pulumi.get(self, "store_id")
 
     @store_id.setter
@@ -380,6 +388,8 @@ class _AiGatewayState:
                  collect_logs: pulumi.Input[Optional[_builtins.bool]] = None,
                  created_at: pulumi.Input[Optional[_builtins.str]] = None,
                  dlp: pulumi.Input[Optional['AiGatewayDlpArgs']] = None,
+                 fedramp_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 fedramp_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  guardrails: pulumi.Input[Optional['AiGatewayGuardrailsArgs']] = None,
                  is_default: pulumi.Input[Optional[_builtins.bool]] = None,
                  log_classification: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -404,13 +414,19 @@ class _AiGatewayState:
         Input properties used for looking up and filtering AiGateway resources.
 
         :param pulumi.Input[_builtins.str] ai_gateway_id: Unique identifier of the AI Gateway within the account.
+        :param pulumi.Input[_builtins.bool] authentication: Require authentication for gateway access. New gateways must have authentication enabled. Once enabled, authentication cannot be disabled.
         :param pulumi.Input[_builtins.bool] byok_only: Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+        :param pulumi.Input[_builtins.str] fedramp_level: FedRAMP compliance level: fedramp-medium or fedramp-high.
+               Available values: "fedramp-medium", "fedramp-high".
+        :param pulumi.Input[_builtins.str] fedramp_mode: FedRAMP enforcement mode. "prefer" prioritizes compliant connectors but allows fallback. "require" strictly filters.
+               Available values: "prefer", "require".
         :param pulumi.Input[_builtins.str] log_management_strategy: Available values: "STOP*INSERTING", "DELETE*OLDEST".
         :param pulumi.Input[_builtins.str] rate_limiting_technique: Available values: "fixed", "sliding".
         :param pulumi.Input[_builtins.str] retry_backoff: Backoff strategy for retry delays
                Available values: "constant", "linear", "exponential".
         :param pulumi.Input[_builtins.int] retry_delay: Delay between retry attempts in milliseconds (0-60000)
         :param pulumi.Input[_builtins.int] retry_max_attempts: Maximum number of retry attempts for failed requests (1-5)
+        :param pulumi.Input[_builtins.str] store_id: Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it.
         :param pulumi.Input[_builtins.str] workers_ai_billing_mode: Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
                Available values: "postpaid", "unified".
         """
@@ -432,6 +448,10 @@ class _AiGatewayState:
             pulumi.set(__self__, "created_at", created_at)
         if dlp is not None:
             pulumi.set(__self__, "dlp", dlp)
+        if fedramp_level is not None:
+            pulumi.set(__self__, "fedramp_level", fedramp_level)
+        if fedramp_mode is not None:
+            pulumi.set(__self__, "fedramp_mode", fedramp_mode)
         if guardrails is not None:
             pulumi.set(__self__, "guardrails", guardrails)
         if is_default is not None:
@@ -497,6 +517,9 @@ class _AiGatewayState:
     @_builtins.property
     @pulumi.getter
     def authentication(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Require authentication for gateway access. New gateways must have authentication enabled. Once enabled, authentication cannot be disabled.
+        """
         return pulumi.get(self, "authentication")
 
     @authentication.setter
@@ -559,6 +582,32 @@ class _AiGatewayState:
     @dlp.setter
     def dlp(self, value: pulumi.Input[Optional['AiGatewayDlpArgs']]):
         pulumi.set(self, "dlp", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fedrampLevel")
+    def fedramp_level(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        FedRAMP compliance level: fedramp-medium or fedramp-high.
+        Available values: "fedramp-medium", "fedramp-high".
+        """
+        return pulumi.get(self, "fedramp_level")
+
+    @fedramp_level.setter
+    def fedramp_level(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "fedramp_level", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fedrampMode")
+    def fedramp_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        FedRAMP enforcement mode. "prefer" prioritizes compliant connectors but allows fallback. "require" strictly filters.
+        Available values: "prefer", "require".
+        """
+        return pulumi.get(self, "fedramp_mode")
+
+    @fedramp_mode.setter
+    def fedramp_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "fedramp_mode", value)
 
     @_builtins.property
     @pulumi.getter
@@ -723,6 +772,9 @@ class _AiGatewayState:
     @_builtins.property
     @pulumi.getter(name="storeId")
     def store_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it.
+        """
         return pulumi.get(self, "store_id")
 
     @store_id.setter
@@ -829,6 +881,7 @@ class AiGateway(pulumi.CustomResource):
                     "s11": "FLAG",
                     "s12": "FLAG",
                     "s13": "FLAG",
+                    "s14": "FLAG",
                     "s2": "FLAG",
                     "s3": "FLAG",
                     "s4": "FLAG",
@@ -845,6 +898,7 @@ class AiGateway(pulumi.CustomResource):
                     "s11": "FLAG",
                     "s12": "FLAG",
                     "s13": "FLAG",
+                    "s14": "FLAG",
                     "s2": "FLAG",
                     "s3": "FLAG",
                     "s4": "FLAG",
@@ -917,6 +971,7 @@ class AiGateway(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] ai_gateway_id: Unique identifier of the AI Gateway within the account.
+        :param pulumi.Input[_builtins.bool] authentication: Require authentication for gateway access. New gateways must have authentication enabled. Once enabled, authentication cannot be disabled.
         :param pulumi.Input[_builtins.bool] byok_only: Requires customer-provided provider credentials and prevents fallback to Unified Billing.
         :param pulumi.Input[_builtins.str] log_management_strategy: Available values: "STOP*INSERTING", "DELETE*OLDEST".
         :param pulumi.Input[_builtins.str] rate_limiting_technique: Available values: "fixed", "sliding".
@@ -924,6 +979,7 @@ class AiGateway(pulumi.CustomResource):
                Available values: "constant", "linear", "exponential".
         :param pulumi.Input[_builtins.int] retry_delay: Delay between retry attempts in milliseconds (0-60000)
         :param pulumi.Input[_builtins.int] retry_max_attempts: Maximum number of retry attempts for failed requests (1-5)
+        :param pulumi.Input[_builtins.str] store_id: Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it.
         :param pulumi.Input[_builtins.str] workers_ai_billing_mode: Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
                Available values: "postpaid", "unified".
         """
@@ -968,6 +1024,7 @@ class AiGateway(pulumi.CustomResource):
                     "s11": "FLAG",
                     "s12": "FLAG",
                     "s13": "FLAG",
+                    "s14": "FLAG",
                     "s2": "FLAG",
                     "s3": "FLAG",
                     "s4": "FLAG",
@@ -984,6 +1041,7 @@ class AiGateway(pulumi.CustomResource):
                     "s11": "FLAG",
                     "s12": "FLAG",
                     "s13": "FLAG",
+                    "s14": "FLAG",
                     "s2": "FLAG",
                     "s3": "FLAG",
                     "s4": "FLAG",
@@ -1144,6 +1202,8 @@ class AiGateway(pulumi.CustomResource):
             __props__.__dict__["workers_ai_billing_mode"] = workers_ai_billing_mode
             __props__.__dict__["zdr"] = zdr
             __props__.__dict__["created_at"] = None
+            __props__.__dict__["fedramp_level"] = None
+            __props__.__dict__["fedramp_mode"] = None
             __props__.__dict__["is_default"] = None
             __props__.__dict__["modified_at"] = None
         super(AiGateway, __self__).__init__(
@@ -1165,6 +1225,8 @@ class AiGateway(pulumi.CustomResource):
             collect_logs: pulumi.Input[Optional[_builtins.bool]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             dlp: pulumi.Input[Optional[Union['AiGatewayDlpArgs', 'AiGatewayDlpArgsDict', 'outputs.AiGatewayDlp']]] = None,
+            fedramp_level: pulumi.Input[Optional[_builtins.str]] = None,
+            fedramp_mode: pulumi.Input[Optional[_builtins.str]] = None,
             guardrails: pulumi.Input[Optional[Union['AiGatewayGuardrailsArgs', 'AiGatewayGuardrailsArgsDict', 'outputs.AiGatewayGuardrails']]] = None,
             is_default: pulumi.Input[Optional[_builtins.bool]] = None,
             log_classification: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1193,13 +1255,19 @@ class AiGateway(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] ai_gateway_id: Unique identifier of the AI Gateway within the account.
+        :param pulumi.Input[_builtins.bool] authentication: Require authentication for gateway access. New gateways must have authentication enabled. Once enabled, authentication cannot be disabled.
         :param pulumi.Input[_builtins.bool] byok_only: Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+        :param pulumi.Input[_builtins.str] fedramp_level: FedRAMP compliance level: fedramp-medium or fedramp-high.
+               Available values: "fedramp-medium", "fedramp-high".
+        :param pulumi.Input[_builtins.str] fedramp_mode: FedRAMP enforcement mode. "prefer" prioritizes compliant connectors but allows fallback. "require" strictly filters.
+               Available values: "prefer", "require".
         :param pulumi.Input[_builtins.str] log_management_strategy: Available values: "STOP*INSERTING", "DELETE*OLDEST".
         :param pulumi.Input[_builtins.str] rate_limiting_technique: Available values: "fixed", "sliding".
         :param pulumi.Input[_builtins.str] retry_backoff: Backoff strategy for retry delays
                Available values: "constant", "linear", "exponential".
         :param pulumi.Input[_builtins.int] retry_delay: Delay between retry attempts in milliseconds (0-60000)
         :param pulumi.Input[_builtins.int] retry_max_attempts: Maximum number of retry attempts for failed requests (1-5)
+        :param pulumi.Input[_builtins.str] store_id: Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it.
         :param pulumi.Input[_builtins.str] workers_ai_billing_mode: Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
                Available values: "postpaid", "unified".
         """
@@ -1216,6 +1284,8 @@ class AiGateway(pulumi.CustomResource):
         __props__.__dict__["collect_logs"] = collect_logs
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["dlp"] = dlp
+        __props__.__dict__["fedramp_level"] = fedramp_level
+        __props__.__dict__["fedramp_mode"] = fedramp_mode
         __props__.__dict__["guardrails"] = guardrails
         __props__.__dict__["is_default"] = is_default
         __props__.__dict__["log_classification"] = log_classification
@@ -1250,6 +1320,8 @@ class AiGateway(pulumi.CustomResource):
             collect_logs: pulumi.Input[Optional[_builtins.bool]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             dlp: pulumi.Input[Optional[Union['AiGatewayDlpArgs', 'AiGatewayDlpArgsDict', 'outputs.AiGatewayDlp']]] = None,
+            fedramp_level: pulumi.Input[Optional[_builtins.str]] = None,
+            fedramp_mode: pulumi.Input[Optional[_builtins.str]] = None,
             guardrails: pulumi.Input[Optional[Union['AiGatewayGuardrailsArgs', 'AiGatewayGuardrailsArgsDict', 'outputs.AiGatewayGuardrails']]] = None,
             is_default: pulumi.Input[Optional[_builtins.bool]] = None,
             log_classification: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1280,6 +1352,8 @@ class AiGateway(pulumi.CustomResource):
         __props__["collectLogs"] = collect_logs
         __props__["createdAt"] = created_at
         __props__["dlp"] = dlp
+        __props__["fedrampLevel"] = fedramp_level
+        __props__["fedrampMode"] = fedramp_mode
         __props__["guardrails"] = guardrails
         __props__["isDefault"] = is_default
         __props__["logClassification"] = log_classification
@@ -1318,6 +1392,9 @@ class AiGateway(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def authentication(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Require authentication for gateway access. New gateways must have authentication enabled. Once enabled, authentication cannot be disabled.
+        """
         return pulumi.get(self, "authentication")
 
     @_builtins.property
@@ -1352,6 +1429,24 @@ class AiGateway(pulumi.CustomResource):
     @pulumi.getter
     def dlp(self) -> pulumi.Output[Optional['outputs.AiGatewayDlp']]:
         return pulumi.get(self, "dlp")
+
+    @_builtins.property
+    @pulumi.getter(name="fedrampLevel")
+    def fedramp_level(self) -> pulumi.Output[_builtins.str]:
+        """
+        FedRAMP compliance level: fedramp-medium or fedramp-high.
+        Available values: "fedramp-medium", "fedramp-high".
+        """
+        return pulumi.get(self, "fedramp_level")
+
+    @_builtins.property
+    @pulumi.getter(name="fedrampMode")
+    def fedramp_mode(self) -> pulumi.Output[_builtins.str]:
+        """
+        FedRAMP enforcement mode. "prefer" prioritizes compliant connectors but allows fallback. "require" strictly filters.
+        Available values: "prefer", "require".
+        """
+        return pulumi.get(self, "fedramp_mode")
 
     @_builtins.property
     @pulumi.getter
@@ -1452,6 +1547,9 @@ class AiGateway(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="storeId")
     def store_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it.
+        """
         return pulumi.get(self, "store_id")
 
     @_builtins.property

@@ -31,12 +31,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetWorkersCustomDomains(ctx, &cloudflare.LookupWorkersCustomDomainsArgs{
-//				AccountId:   pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
-//				Environment: pulumi.StringRef("production"),
-//				Hostname:    pulumi.StringRef("app.example.com"),
-//				Service:     pulumi.StringRef("my-worker"),
-//				ZoneId:      pulumi.StringRef("593c9c94de529bbbfaac7c53ced0447d"),
-//				ZoneName:    pulumi.StringRef("example.com"),
+//				AccountId:       "023e105f4ecef8ad9ca31a8372d0c353",
+//				Enabled:         pulumi.BoolRef(true),
+//				Environment:     pulumi.StringRef("production"),
+//				Hostname:        pulumi.StringRef("app.example.com"),
+//				PreviewsEnabled: pulumi.BoolRef(false),
+//				Service:         pulumi.StringRef("my-worker"),
+//				ZoneId:          pulumi.StringRef("593c9c94de529bbbfaac7c53ced0447d"),
+//				ZoneName:        pulumi.StringRef("example.com"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -59,13 +61,17 @@ func LookupWorkersCustomDomains(ctx *pulumi.Context, args *LookupWorkersCustomDo
 // A collection of arguments for invoking getWorkersCustomDomains.
 type LookupWorkersCustomDomainsArgs struct {
 	// Identifier.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
+	// Whether the configured hostname is routable for the domain.
+	Enabled *bool `pulumi:"enabled"`
 	// Worker environment associated with the domain.
 	Environment *string `pulumi:"environment"`
 	// Hostname of the domain.
 	Hostname *string `pulumi:"hostname"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
+	// Whether previews are routable for the domain.
+	PreviewsEnabled *bool `pulumi:"previewsEnabled"`
 	// Name of the Worker associated with the domain.
 	Service *string `pulumi:"service"`
 	// ID of the zone containing the domain hostname.
@@ -77,13 +83,17 @@ type LookupWorkersCustomDomainsArgs struct {
 // A collection of values returned by getWorkersCustomDomains.
 type LookupWorkersCustomDomainsResult struct {
 	// Identifier.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
+	// Whether the configured hostname is routable for the domain.
+	Enabled *bool `pulumi:"enabled"`
 	// Worker environment associated with the domain.
 	Environment *string `pulumi:"environment"`
 	// Hostname of the domain.
 	Hostname *string `pulumi:"hostname"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
+	// Whether previews are routable for the domain.
+	PreviewsEnabled *bool `pulumi:"previewsEnabled"`
 	// The items returned by the data source
 	Results []GetWorkersCustomDomainsResult `pulumi:"results"`
 	// Name of the Worker associated with the domain.
@@ -102,13 +112,17 @@ func LookupWorkersCustomDomainsOutput(ctx *pulumi.Context, args LookupWorkersCus
 // A collection of arguments for invoking getWorkersCustomDomains.
 type LookupWorkersCustomDomainsOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	AccountId pulumi.StringInput `pulumi:"accountId"`
+	// Whether the configured hostname is routable for the domain.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// Worker environment associated with the domain.
 	Environment pulumi.StringPtrInput `pulumi:"environment"`
 	// Hostname of the domain.
 	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
+	// Whether previews are routable for the domain.
+	PreviewsEnabled pulumi.BoolPtrInput `pulumi:"previewsEnabled"`
 	// Name of the Worker associated with the domain.
 	Service pulumi.StringPtrInput `pulumi:"service"`
 	// ID of the zone containing the domain hostname.
@@ -137,8 +151,13 @@ func (o LookupWorkersCustomDomainsResultOutput) ToLookupWorkersCustomDomainsResu
 }
 
 // Identifier.
-func (o LookupWorkersCustomDomainsResultOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupWorkersCustomDomainsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o LookupWorkersCustomDomainsResultOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkersCustomDomainsResult) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// Whether the configured hostname is routable for the domain.
+func (o LookupWorkersCustomDomainsResultOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupWorkersCustomDomainsResult) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
 // Worker environment associated with the domain.
@@ -154,6 +173,11 @@ func (o LookupWorkersCustomDomainsResultOutput) Hostname() pulumi.StringPtrOutpu
 // Max items to fetch, default: 1000
 func (o LookupWorkersCustomDomainsResultOutput) MaxItems() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupWorkersCustomDomainsResult) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
+}
+
+// Whether previews are routable for the domain.
+func (o LookupWorkersCustomDomainsResultOutput) PreviewsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupWorkersCustomDomainsResult) *bool { return v.PreviewsEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // The items returned by the data source

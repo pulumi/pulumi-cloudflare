@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AiSearchNamespacePublicEndpointParamsSearchEndpoint {
     /**
-     * @return Disable search endpoint for this public endpoint
+     * @return Disable search endpoint for this public endpoint.
      * 
      */
     private @Nullable Boolean disabled;
 
     private AiSearchNamespacePublicEndpointParamsSearchEndpoint() {}
     /**
-     * @return Disable search endpoint for this public endpoint
+     * @return Disable search endpoint for this public endpoint.
      * 
      */
     public Optional<Boolean> disabled() {

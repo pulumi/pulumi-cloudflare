@@ -21,11 +21,6 @@ public final class GetAccountDnsSettingsZoneDefaults {
      */
     private Boolean flattenAllCnames;
     /**
-     * @return Whether to enable Foundation DNS Advanced Nameservers on the zone.
-     * 
-     */
-    private Boolean foundationDns;
-    /**
      * @return Settings for this internal zone.
      * 
      */
@@ -69,13 +64,6 @@ public final class GetAccountDnsSettingsZoneDefaults {
      */
     public Boolean flattenAllCnames() {
         return this.flattenAllCnames;
-    }
-    /**
-     * @return Whether to enable Foundation DNS Advanced Nameservers on the zone.
-     * 
-     */
-    public Boolean foundationDns() {
-        return this.foundationDns;
     }
     /**
      * @return Settings for this internal zone.
@@ -138,7 +126,6 @@ public final class GetAccountDnsSettingsZoneDefaults {
     @CustomType.Builder
     public static final class Builder {
         private Boolean flattenAllCnames;
-        private Boolean foundationDns;
         private GetAccountDnsSettingsZoneDefaultsInternalDns internalDns;
         private Boolean multiProvider;
         private GetAccountDnsSettingsZoneDefaultsNameservers nameservers;
@@ -150,7 +137,6 @@ public final class GetAccountDnsSettingsZoneDefaults {
         public Builder(GetAccountDnsSettingsZoneDefaults defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.flattenAllCnames = defaults.flattenAllCnames;
-    	      this.foundationDns = defaults.foundationDns;
     	      this.internalDns = defaults.internalDns;
     	      this.multiProvider = defaults.multiProvider;
     	      this.nameservers = defaults.nameservers;
@@ -166,14 +152,6 @@ public final class GetAccountDnsSettingsZoneDefaults {
               throw new MissingRequiredPropertyException("GetAccountDnsSettingsZoneDefaults", "flattenAllCnames");
             }
             this.flattenAllCnames = flattenAllCnames;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder foundationDns(Boolean foundationDns) {
-            if (foundationDns == null) {
-              throw new MissingRequiredPropertyException("GetAccountDnsSettingsZoneDefaults", "foundationDns");
-            }
-            this.foundationDns = foundationDns;
             return this;
         }
         @CustomType.Setter
@@ -235,7 +213,6 @@ public final class GetAccountDnsSettingsZoneDefaults {
         public GetAccountDnsSettingsZoneDefaults build() {
             final var _resultValue = new GetAccountDnsSettingsZoneDefaults();
             _resultValue.flattenAllCnames = flattenAllCnames;
-            _resultValue.foundationDns = foundationDns;
             _resultValue.internalDns = internalDns;
             _resultValue.multiProvider = multiProvider;
             _resultValue.nameservers = nameservers;

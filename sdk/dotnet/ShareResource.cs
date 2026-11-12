@@ -29,7 +29,7 @@ namespace Pulumi.Cloudflare
     ///         {
     ///         }),
     ///         ResourceAccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-    ///         ResourceId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         ResourceId = "0a679032-bbb2-4b7e-9acc-dd5c5cb27a17",
     ///         ResourceType = "custom-ruleset",
     ///     });
     /// 
@@ -52,7 +52,7 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// When the share was created.
+        /// When the object was created.
         /// </summary>
         [Output("created")]
         public Output<string> Created { get; private set; } = null!;
@@ -64,19 +64,19 @@ namespace Pulumi.Cloudflare
         public Output<string> Meta { get; private set; } = null!;
 
         /// <summary>
-        /// When the share was modified.
+        /// When the object was last modified.
         /// </summary>
         [Output("modified")]
         public Output<string> Modified { get; private set; } = null!;
 
         /// <summary>
-        /// Account identifier.
+        /// The account that owns the resource. Must match the `AccountId` in the path.
         /// </summary>
         [Output("resourceAccountId")]
         public Output<string> ResourceAccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Share Resource identifier.
+        /// Identifier assigned by the service that owns the shared resource.
         /// </summary>
         [Output("resourceId")]
         public Output<string> ResourceId { get; private set; } = null!;
@@ -166,13 +166,13 @@ namespace Pulumi.Cloudflare
         public Input<string> Meta { get; set; } = null!;
 
         /// <summary>
-        /// Account identifier.
+        /// The account that owns the resource. Must match the `AccountId` in the path.
         /// </summary>
         [Input("resourceAccountId", required: true)]
         public Input<string> ResourceAccountId { get; set; } = null!;
 
         /// <summary>
-        /// Share Resource identifier.
+        /// Identifier assigned by the service that owns the shared resource.
         /// </summary>
         [Input("resourceId", required: true)]
         public Input<string> ResourceId { get; set; } = null!;
@@ -205,7 +205,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// When the share was created.
+        /// When the object was created.
         /// </summary>
         [Input("created")]
         public Input<string>? Created { get; set; }
@@ -217,19 +217,19 @@ namespace Pulumi.Cloudflare
         public Input<string>? Meta { get; set; }
 
         /// <summary>
-        /// When the share was modified.
+        /// When the object was last modified.
         /// </summary>
         [Input("modified")]
         public Input<string>? Modified { get; set; }
 
         /// <summary>
-        /// Account identifier.
+        /// The account that owns the resource. Must match the `AccountId` in the path.
         /// </summary>
         [Input("resourceAccountId")]
         public Input<string>? ResourceAccountId { get; set; }
 
         /// <summary>
-        /// Share Resource identifier.
+        /// Identifier assigned by the service that owns the shared resource.
         /// </summary>
         [Input("resourceId")]
         public Input<string>? ResourceId { get; set; }

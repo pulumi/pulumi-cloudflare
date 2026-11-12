@@ -95,6 +95,14 @@ type LookupApiTokenResult struct {
 	Status string `pulumi:"status"`
 	// Token identifier tag.
 	TokenId *string `pulumi:"tokenId"`
+	// The prefix of the token value, before the first underscore. Use it with
+	// `tokenSuffix` to identify a token. Only present for tokens created or
+	// rolled after this field was added.
+	TokenPrefix string `pulumi:"tokenPrefix"`
+	// The last 4 characters of the token value. Use it with `tokenPrefix` to
+	// identify a token. It is not unique. Only present for tokens created or
+	// rolled after this field was added.
+	TokenSuffix string `pulumi:"tokenSuffix"`
 }
 
 func LookupApiTokenOutput(ctx *pulumi.Context, args LookupApiTokenOutputArgs, opts ...pulumi.InvokeOption) LookupApiTokenResultOutput {
@@ -206,6 +214,20 @@ func (o LookupApiTokenResultOutput) Status() pulumi.StringOutput {
 // Token identifier tag.
 func (o LookupApiTokenResultOutput) TokenId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApiTokenResult) *string { return v.TokenId }).(pulumi.StringPtrOutput)
+}
+
+// The prefix of the token value, before the first underscore. Use it with
+// `tokenSuffix` to identify a token. Only present for tokens created or
+// rolled after this field was added.
+func (o LookupApiTokenResultOutput) TokenPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiTokenResult) string { return v.TokenPrefix }).(pulumi.StringOutput)
+}
+
+// The last 4 characters of the token value. Use it with `tokenPrefix` to
+// identify a token. It is not unique. Only present for tokens created or
+// rolled after this field was added.
+func (o LookupApiTokenResultOutput) TokenSuffix() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiTokenResult) string { return v.TokenSuffix }).(pulumi.StringOutput)
 }
 
 func init() {

@@ -18,7 +18,7 @@ public final class TotalTlsState extends com.pulumi.resources.ResourceArgs {
     public static final TotalTlsState Empty = new TotalTlsState();
 
     /**
-     * The Certificate Authority that Total TLS certificates will be issued through.
+     * The Certificate Authority that Total TLS certificates will be issued through. Not returned in responses when Total TLS is disabled.
      * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
      * 
      */
@@ -26,7 +26,7 @@ public final class TotalTlsState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> certificateAuthority;
 
     /**
-     * @return The Certificate Authority that Total TLS certificates will be issued through.
+     * @return The Certificate Authority that Total TLS certificates will be issued through. Not returned in responses when Total TLS is disabled.
      * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
      * 
      */
@@ -50,7 +50,7 @@ public final class TotalTlsState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The validity period in days for the certificates ordered via Total TLS.
+     * The validity period in days for the certificates ordered via Total TLS. Not returned when Total TLS is disabled.
      * Available values: 90.
      * 
      */
@@ -58,7 +58,7 @@ public final class TotalTlsState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Integer> validityPeriod;
 
     /**
-     * @return The validity period in days for the certificates ordered via Total TLS.
+     * @return The validity period in days for the certificates ordered via Total TLS. Not returned when Total TLS is disabled.
      * Available values: 90.
      * 
      */
@@ -109,7 +109,7 @@ public final class TotalTlsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificateAuthority The Certificate Authority that Total TLS certificates will be issued through.
+         * @param certificateAuthority The Certificate Authority that Total TLS certificates will be issued through. Not returned in responses when Total TLS is disabled.
          * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
          * 
          * @return builder
@@ -121,7 +121,7 @@ public final class TotalTlsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificateAuthority The Certificate Authority that Total TLS certificates will be issued through.
+         * @param certificateAuthority The Certificate Authority that Total TLS certificates will be issued through. Not returned in responses when Total TLS is disabled.
          * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
          * 
          * @return builder
@@ -153,7 +153,7 @@ public final class TotalTlsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param validityPeriod The validity period in days for the certificates ordered via Total TLS.
+         * @param validityPeriod The validity period in days for the certificates ordered via Total TLS. Not returned when Total TLS is disabled.
          * Available values: 90.
          * 
          * @return builder
@@ -165,7 +165,7 @@ public final class TotalTlsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param validityPeriod The validity period in days for the certificates ordered via Total TLS.
+         * @param validityPeriod The validity period in days for the certificates ordered via Total TLS. Not returned when Total TLS is disabled.
          * Available values: 90.
          * 
          * @return builder

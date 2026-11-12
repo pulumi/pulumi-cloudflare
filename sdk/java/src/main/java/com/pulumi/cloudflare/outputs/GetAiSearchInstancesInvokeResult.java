@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 public final class GetAiSearchInstancesInvokeResult {
     private @Nullable String accountId;
     /**
-     * @return Filter by exact Search for Agents hostname (case-insensitive).
+     * @return Return only instances with this exact Search for Agents hostname (case-insensitive).
      * 
      */
     private @Nullable String hostname;
@@ -26,11 +26,7 @@ public final class GetAiSearchInstancesInvokeResult {
      * 
      */
     private @Nullable Integer maxItems;
-    /**
-     * @return Filter by namespace.
-     * 
-     */
-    private @Nullable String namespace;
+    private String namespace;
     /**
      * @return Field to order results by.
      * Available values: &#34;createdAt&#34;.
@@ -59,7 +55,7 @@ public final class GetAiSearchInstancesInvokeResult {
         return Optional.ofNullable(this.accountId);
     }
     /**
-     * @return Filter by exact Search for Agents hostname (case-insensitive).
+     * @return Return only instances with this exact Search for Agents hostname (case-insensitive).
      * 
      */
     public Optional<String> hostname() {
@@ -72,12 +68,8 @@ public final class GetAiSearchInstancesInvokeResult {
     public Optional<Integer> maxItems() {
         return Optional.ofNullable(this.maxItems);
     }
-    /**
-     * @return Filter by namespace.
-     * 
-     */
-    public Optional<String> namespace() {
-        return Optional.ofNullable(this.namespace);
+    public String namespace() {
+        return this.namespace;
     }
     /**
      * @return Field to order results by.
@@ -122,7 +114,7 @@ public final class GetAiSearchInstancesInvokeResult {
         private @Nullable String accountId;
         private @Nullable String hostname;
         private @Nullable Integer maxItems;
-        private @Nullable String namespace;
+        private String namespace;
         private String orderBy;
         private String orderByDirection;
         private List<GetAiSearchInstancesResult> results;
@@ -159,8 +151,10 @@ public final class GetAiSearchInstancesInvokeResult {
             return this;
         }
         @CustomType.Setter
-        public Builder namespace(@Nullable String namespace) {
-
+        public Builder namespace(String namespace) {
+            if (namespace == null) {
+              throw new MissingRequiredPropertyException("GetAiSearchInstancesInvokeResult", "namespace");
+            }
             this.namespace = namespace;
             return this;
         }

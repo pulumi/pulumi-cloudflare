@@ -17,6 +17,7 @@ public final class GetEmailSecurityAllowPolicyResult {
     private String accountId;
     private String comments;
     private String createdAt;
+    private String expiresAt;
     private @Nullable GetEmailSecurityAllowPolicyFilter filter;
     private String id;
     private Boolean isAcceptableSender;
@@ -62,6 +63,9 @@ public final class GetEmailSecurityAllowPolicyResult {
     }
     public String createdAt() {
         return this.createdAt;
+    }
+    public String expiresAt() {
+        return this.expiresAt;
     }
     public Optional<GetEmailSecurityAllowPolicyFilter> filter() {
         return Optional.ofNullable(this.filter);
@@ -141,6 +145,7 @@ public final class GetEmailSecurityAllowPolicyResult {
         private String accountId;
         private String comments;
         private String createdAt;
+        private String expiresAt;
         private @Nullable GetEmailSecurityAllowPolicyFilter filter;
         private String id;
         private Boolean isAcceptableSender;
@@ -162,6 +167,7 @@ public final class GetEmailSecurityAllowPolicyResult {
     	      this.accountId = defaults.accountId;
     	      this.comments = defaults.comments;
     	      this.createdAt = defaults.createdAt;
+    	      this.expiresAt = defaults.expiresAt;
     	      this.filter = defaults.filter;
     	      this.id = defaults.id;
     	      this.isAcceptableSender = defaults.isAcceptableSender;
@@ -201,6 +207,14 @@ public final class GetEmailSecurityAllowPolicyResult {
               throw new MissingRequiredPropertyException("GetEmailSecurityAllowPolicyResult", "createdAt");
             }
             this.createdAt = createdAt;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder expiresAt(String expiresAt) {
+            if (expiresAt == null) {
+              throw new MissingRequiredPropertyException("GetEmailSecurityAllowPolicyResult", "expiresAt");
+            }
+            this.expiresAt = expiresAt;
             return this;
         }
         @CustomType.Setter
@@ -324,6 +338,7 @@ public final class GetEmailSecurityAllowPolicyResult {
             _resultValue.accountId = accountId;
             _resultValue.comments = comments;
             _resultValue.createdAt = createdAt;
+            _resultValue.expiresAt = expiresAt;
             _resultValue.filter = filter;
             _resultValue.id = id;
             _resultValue.isAcceptableSender = isAcceptableSender;

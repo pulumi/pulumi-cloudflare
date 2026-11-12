@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.WorkersDeploymentArgs;
 import com.pulumi.cloudflare.inputs.WorkersDeploymentState;
 import com.pulumi.cloudflare.outputs.WorkersDeploymentAnnotations;
+import com.pulumi.cloudflare.outputs.WorkersDeploymentCodeUpdateStrategy;
 import com.pulumi.cloudflare.outputs.WorkersDeploymentVersion;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -21,6 +22,14 @@ import javax.annotation.Nullable;
 /**
  * Accepted Permissions
  * 
+ * - `Individual Workers Admin`
+ * - `Individual Workers Content Read-Only`
+ * - `Individual Workers Editor`
+ * - `Individual Workers Metadata Read-Only`
+ * - `Workers Admin`
+ * - `Workers Content Read-Only`
+ * - `Workers Editor`
+ * - `Workers Metadata Read-Only`
  * - `Workers Scripts Read`
  * - `Workers Scripts Write`
  * - `Workers Tail Read`
@@ -38,6 +47,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.WorkersDeploymentArgs;
  * import com.pulumi.cloudflare.inputs.WorkersDeploymentVersionArgs;
  * import com.pulumi.cloudflare.inputs.WorkersDeploymentAnnotationsArgs;
+ * import com.pulumi.cloudflare.inputs.WorkersDeploymentCodeUpdateStrategyArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -61,6 +71,9 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .annotations(WorkersDeploymentAnnotationsArgs.builder()
  *                 .workersMessage("Deploy bug fix.")
+ *                 .build())
+ *             .codeUpdateStrategy(WorkersDeploymentCodeUpdateStrategyArgs.builder()
+ *                 .mode("immediate")
  *                 .build())
  *             .build());
  * 
@@ -92,9 +105,17 @@ public class WorkersDeployment extends com.pulumi.resources.CustomResource {
     public Output<String> accountId() {
         return this.accountId;
     }
+    /**
+     * Metadata attached to the deployment.
+     * 
+     */
     @Export(name="annotations", refs={WorkersDeploymentAnnotations.class}, tree="[0]")
     private Output<WorkersDeploymentAnnotations> annotations;
 
+    /**
+     * @return Metadata attached to the deployment.
+     * 
+     */
     public Output<WorkersDeploymentAnnotations> annotations() {
         return this.annotations;
     }
@@ -103,6 +124,20 @@ public class WorkersDeployment extends com.pulumi.resources.CustomResource {
 
     public Output<String> authorEmail() {
         return this.authorEmail;
+    }
+    /**
+     * Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+     * 
+     */
+    @Export(name="codeUpdateStrategy", refs={WorkersDeploymentCodeUpdateStrategy.class}, tree="[0]")
+    private Output</* @Nullable */ WorkersDeploymentCodeUpdateStrategy> codeUpdateStrategy;
+
+    /**
+     * @return Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.
+     * 
+     */
+    public Output<Optional<WorkersDeploymentCodeUpdateStrategy>> codeUpdateStrategy() {
+        return Codegen.optional(this.codeUpdateStrategy);
     }
     @Export(name="createdOn", refs={String.class}, tree="[0]")
     private Output<String> createdOn;
@@ -145,6 +180,7 @@ public class WorkersDeployment extends com.pulumi.resources.CustomResource {
         return this.source;
     }
     /**
+     * Strategy for routing traffic across the listed versions. `percentage` splits traffic according to each version&#39;s `percentage`.
      * Available values: &#34;percentage&#34;.
      * 
      */
@@ -152,7 +188,8 @@ public class WorkersDeployment extends com.pulumi.resources.CustomResource {
     private Output<String> strategy;
 
     /**
-     * @return Available values: &#34;percentage&#34;.
+     * @return Strategy for routing traffic across the listed versions. `percentage` splits traffic according to each version&#39;s `percentage`.
+     * Available values: &#34;percentage&#34;.
      * 
      */
     public Output<String> strategy() {

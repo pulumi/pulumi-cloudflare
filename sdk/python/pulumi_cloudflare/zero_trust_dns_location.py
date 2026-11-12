@@ -24,6 +24,7 @@ class ZeroTrustDnsLocationArgs:
                  account_id: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
                  client_default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dns64_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  dns_destination_ips_id: pulumi.Input[Optional[_builtins.str]] = None,
                  ecs_support: pulumi.Input[Optional[_builtins.bool]] = None,
                  endpoints: pulumi.Input[Optional['ZeroTrustDnsLocationEndpointsArgs']] = None,
@@ -35,6 +36,7 @@ class ZeroTrustDnsLocationArgs:
         :param pulumi.Input[_builtins.str] account_id: Specify the Cloudflare account identifier.
         :param pulumi.Input[_builtins.str] name: Specify the location name.
         :param pulumi.Input[_builtins.bool] client_default: Indicate whether this location is the default location.
+        :param pulumi.Input[_builtins.bool] dns64_enabled: Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.
         :param pulumi.Input[_builtins.str] dns_destination_ips_id: Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.
         :param pulumi.Input[_builtins.bool] ecs_support: Indicate whether the location must resolve EDNS queries.
         :param pulumi.Input['ZeroTrustDnsLocationEndpointsArgs'] endpoints: Configure the destination endpoints for this location.
@@ -45,6 +47,8 @@ class ZeroTrustDnsLocationArgs:
         pulumi.set(__self__, "name", name)
         if client_default is not None:
             pulumi.set(__self__, "client_default", client_default)
+        if dns64_enabled is not None:
+            pulumi.set(__self__, "dns64_enabled", dns64_enabled)
         if dns_destination_ips_id is not None:
             pulumi.set(__self__, "dns_destination_ips_id", dns_destination_ips_id)
         if ecs_support is not None:
@@ -91,6 +95,18 @@ class ZeroTrustDnsLocationArgs:
     @client_default.setter
     def client_default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "client_default", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dns64Enabled")
+    def dns64_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.
+        """
+        return pulumi.get(self, "dns64_enabled")
+
+    @dns64_enabled.setter
+    def dns64_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "dns64_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsDestinationIpsId")
@@ -159,6 +175,7 @@ class _ZeroTrustDnsLocationState:
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  client_default: pulumi.Input[Optional[_builtins.bool]] = None,
                  created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns64_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  dns_destination_ips_id: pulumi.Input[Optional[_builtins.str]] = None,
                  dns_destination_ipv6_block_id: pulumi.Input[Optional[_builtins.str]] = None,
                  doh_subdomain: pulumi.Input[Optional[_builtins.str]] = None,
@@ -176,6 +193,7 @@ class _ZeroTrustDnsLocationState:
 
         :param pulumi.Input[_builtins.str] account_id: Specify the Cloudflare account identifier.
         :param pulumi.Input[_builtins.bool] client_default: Indicate whether this location is the default location.
+        :param pulumi.Input[_builtins.bool] dns64_enabled: Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.
         :param pulumi.Input[_builtins.str] dns_destination_ips_id: Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.
         :param pulumi.Input[_builtins.str] dns_destination_ipv6_block_id: Specify the UUID of the IPv6 block brought to the gateway so that this location's IPv6 address is allocated from the Bring Your Own IPv6 (BYOIPv6) block rather than the standard Cloudflare IPv6 block.
         :param pulumi.Input[_builtins.str] doh_subdomain: Specify the DNS over HTTPS domain that receives DNS requests. Gateway automatically generates this value.
@@ -194,6 +212,8 @@ class _ZeroTrustDnsLocationState:
             pulumi.set(__self__, "client_default", client_default)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
+        if dns64_enabled is not None:
+            pulumi.set(__self__, "dns64_enabled", dns64_enabled)
         if dns_destination_ips_id is not None:
             pulumi.set(__self__, "dns_destination_ips_id", dns_destination_ips_id)
         if dns_destination_ipv6_block_id is not None:
@@ -251,6 +271,18 @@ class _ZeroTrustDnsLocationState:
     @created_at.setter
     def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dns64Enabled")
+    def dns64_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.
+        """
+        return pulumi.get(self, "dns64_enabled")
+
+    @dns64_enabled.setter
+    def dns64_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "dns64_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsDestinationIpsId")
@@ -402,6 +434,7 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  client_default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dns64_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  dns_destination_ips_id: pulumi.Input[Optional[_builtins.str]] = None,
                  ecs_support: pulumi.Input[Optional[_builtins.bool]] = None,
                  endpoints: pulumi.Input[Optional[Union['ZeroTrustDnsLocationEndpointsArgs', 'ZeroTrustDnsLocationEndpointsArgsDict', 'outputs.ZeroTrustDnsLocationEndpoints']]] = None,
@@ -427,6 +460,7 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
             name="Austin Office Location",
             client_default=False,
             dns_destination_ips_id="0e4a32c6-6fb8-4858-9296-98f51631e8e6",
+            dns64_enabled=False,
             ecs_support=False,
             endpoints={
                 "doh": {
@@ -472,6 +506,7 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Specify the Cloudflare account identifier.
         :param pulumi.Input[_builtins.bool] client_default: Indicate whether this location is the default location.
+        :param pulumi.Input[_builtins.bool] dns64_enabled: Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.
         :param pulumi.Input[_builtins.str] dns_destination_ips_id: Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.
         :param pulumi.Input[_builtins.bool] ecs_support: Indicate whether the location must resolve EDNS queries.
         :param pulumi.Input[Union['ZeroTrustDnsLocationEndpointsArgs', 'ZeroTrustDnsLocationEndpointsArgsDict', 'outputs.ZeroTrustDnsLocationEndpoints']] endpoints: Configure the destination endpoints for this location.
@@ -503,6 +538,7 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
             name="Austin Office Location",
             client_default=False,
             dns_destination_ips_id="0e4a32c6-6fb8-4858-9296-98f51631e8e6",
+            dns64_enabled=False,
             ecs_support=False,
             endpoints={
                 "doh": {
@@ -561,6 +597,7 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  client_default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dns64_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  dns_destination_ips_id: pulumi.Input[Optional[_builtins.str]] = None,
                  ecs_support: pulumi.Input[Optional[_builtins.bool]] = None,
                  endpoints: pulumi.Input[Optional[Union['ZeroTrustDnsLocationEndpointsArgs', 'ZeroTrustDnsLocationEndpointsArgsDict', 'outputs.ZeroTrustDnsLocationEndpoints']]] = None,
@@ -580,6 +617,7 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["client_default"] = client_default
+            __props__.__dict__["dns64_enabled"] = dns64_enabled
             __props__.__dict__["dns_destination_ips_id"] = dns_destination_ips_id
             __props__.__dict__["ecs_support"] = ecs_support
             __props__.__dict__["endpoints"] = endpoints
@@ -610,6 +648,7 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             client_default: pulumi.Input[Optional[_builtins.bool]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            dns64_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             dns_destination_ips_id: pulumi.Input[Optional[_builtins.str]] = None,
             dns_destination_ipv6_block_id: pulumi.Input[Optional[_builtins.str]] = None,
             doh_subdomain: pulumi.Input[Optional[_builtins.str]] = None,
@@ -631,6 +670,7 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Specify the Cloudflare account identifier.
         :param pulumi.Input[_builtins.bool] client_default: Indicate whether this location is the default location.
+        :param pulumi.Input[_builtins.bool] dns64_enabled: Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.
         :param pulumi.Input[_builtins.str] dns_destination_ips_id: Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.
         :param pulumi.Input[_builtins.str] dns_destination_ipv6_block_id: Specify the UUID of the IPv6 block brought to the gateway so that this location's IPv6 address is allocated from the Bring Your Own IPv6 (BYOIPv6) block rather than the standard Cloudflare IPv6 block.
         :param pulumi.Input[_builtins.str] doh_subdomain: Specify the DNS over HTTPS domain that receives DNS requests. Gateway automatically generates this value.
@@ -650,6 +690,7 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["client_default"] = client_default
         __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["dns64_enabled"] = dns64_enabled
         __props__.__dict__["dns_destination_ips_id"] = dns_destination_ips_id
         __props__.__dict__["dns_destination_ipv6_block_id"] = dns_destination_ipv6_block_id
         __props__.__dict__["doh_subdomain"] = doh_subdomain
@@ -670,6 +711,7 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             client_default: pulumi.Input[Optional[_builtins.bool]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            dns64_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             dns_destination_ips_id: pulumi.Input[Optional[_builtins.str]] = None,
             dns_destination_ipv6_block_id: pulumi.Input[Optional[_builtins.str]] = None,
             doh_subdomain: pulumi.Input[Optional[_builtins.str]] = None,
@@ -686,6 +728,7 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
         __props__["accountId"] = account_id
         __props__["clientDefault"] = client_default
         __props__["createdAt"] = created_at
+        __props__["dns64Enabled"] = dns64_enabled
         __props__["dnsDestinationIpsId"] = dns_destination_ips_id
         __props__["dnsDestinationIpv6BlockId"] = dns_destination_ipv6_block_id
         __props__["dohSubdomain"] = doh_subdomain
@@ -720,6 +763,14 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="dns64Enabled")
+    def dns64_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.
+        """
+        return pulumi.get(self, "dns64_enabled")
 
     @_builtins.property
     @pulumi.getter(name="dnsDestinationIpsId")

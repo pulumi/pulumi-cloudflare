@@ -28,7 +28,7 @@ class GetEmailSecurityAllowPolicyResult:
     """
     A collection of values returned by getEmailSecurityAllowPolicy.
     """
-    def __init__(__self__, account_id=None, comments=None, created_at=None, filter=None, id=None, is_acceptable_sender=None, is_exempt_recipient=None, is_recipient=None, is_regex=None, is_sender=None, is_spoof=None, is_trusted_sender=None, last_modified=None, modified_at=None, pattern=None, pattern_type=None, policy_id=None, verify_sender=None):
+    def __init__(__self__, account_id=None, comments=None, created_at=None, expires_at=None, filter=None, id=None, is_acceptable_sender=None, is_exempt_recipient=None, is_recipient=None, is_regex=None, is_sender=None, is_spoof=None, is_trusted_sender=None, last_modified=None, modified_at=None, pattern=None, pattern_type=None, policy_id=None, verify_sender=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -38,6 +38,9 @@ class GetEmailSecurityAllowPolicyResult:
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
+        if expires_at and not isinstance(expires_at, str):
+            raise TypeError("Expected argument 'expires_at' to be a str")
+        pulumi.set(__self__, "expires_at", expires_at)
         if filter and not isinstance(filter, dict):
             raise TypeError("Expected argument 'filter' to be a dict")
         pulumi.set(__self__, "filter", filter)
@@ -98,6 +101,11 @@ class GetEmailSecurityAllowPolicyResult:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> _builtins.str:
         return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> _builtins.str:
+        return pulumi.get(self, "expires_at")
 
     @_builtins.property
     @pulumi.getter
@@ -188,6 +196,7 @@ class AwaitableGetEmailSecurityAllowPolicyResult(GetEmailSecurityAllowPolicyResu
             account_id=self.account_id,
             comments=self.comments,
             created_at=self.created_at,
+            expires_at=self.expires_at,
             filter=self.filter,
             id=self.id,
             is_acceptable_sender=self.is_acceptable_sender,
@@ -236,6 +245,7 @@ def get_email_security_allow_policy(account_id: Optional[_builtins.str] = None,
         account_id=pulumi.get(__ret__, 'account_id'),
         comments=pulumi.get(__ret__, 'comments'),
         created_at=pulumi.get(__ret__, 'created_at'),
+        expires_at=pulumi.get(__ret__, 'expires_at'),
         filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
         is_acceptable_sender=pulumi.get(__ret__, 'is_acceptable_sender'),
@@ -281,6 +291,7 @@ def get_email_security_allow_policy_output(account_id: pulumi.Input[Optional[_bu
         account_id=pulumi.get(__response__, 'account_id'),
         comments=pulumi.get(__response__, 'comments'),
         created_at=pulumi.get(__response__, 'created_at'),
+        expires_at=pulumi.get(__response__, 'expires_at'),
         filter=pulumi.get(__response__, 'filter'),
         id=pulumi.get(__response__, 'id'),
         is_acceptable_sender=pulumi.get(__response__, 'is_acceptable_sender'),

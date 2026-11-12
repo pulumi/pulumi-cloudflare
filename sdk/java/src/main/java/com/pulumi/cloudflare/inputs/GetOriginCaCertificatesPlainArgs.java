@@ -17,21 +17,6 @@ public final class GetOriginCaCertificatesPlainArgs extends com.pulumi.resources
     public static final GetOriginCaCertificatesPlainArgs Empty = new GetOriginCaCertificatesPlainArgs();
 
     /**
-     * Limit to the number of records returned.
-     * 
-     */
-    @Import(name="limit")
-    private @Nullable Integer limit;
-
-    /**
-     * @return Limit to the number of records returned.
-     * 
-     */
-    public Optional<Integer> limit() {
-        return Optional.ofNullable(this.limit);
-    }
-
-    /**
      * Max items to fetch, default: 1000
      * 
      */
@@ -44,21 +29,6 @@ public final class GetOriginCaCertificatesPlainArgs extends com.pulumi.resources
      */
     public Optional<Integer> maxItems() {
         return Optional.ofNullable(this.maxItems);
-    }
-
-    /**
-     * Offset the results.
-     * 
-     */
-    @Import(name="offset")
-    private @Nullable Integer offset;
-
-    /**
-     * @return Offset the results.
-     * 
-     */
-    public Optional<Integer> offset() {
-        return Optional.ofNullable(this.offset);
     }
 
     /**
@@ -79,9 +49,7 @@ public final class GetOriginCaCertificatesPlainArgs extends com.pulumi.resources
     private GetOriginCaCertificatesPlainArgs() {}
 
     private GetOriginCaCertificatesPlainArgs(GetOriginCaCertificatesPlainArgs $) {
-        this.limit = $.limit;
         this.maxItems = $.maxItems;
-        this.offset = $.offset;
         this.zoneId = $.zoneId;
     }
 
@@ -104,17 +72,6 @@ public final class GetOriginCaCertificatesPlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param limit Limit to the number of records returned.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder limit(@Nullable Integer limit) {
-            $.limit = limit;
-            return this;
-        }
-
-        /**
          * @param maxItems Max items to fetch, default: 1000
          * 
          * @return builder
@@ -122,17 +79,6 @@ public final class GetOriginCaCertificatesPlainArgs extends com.pulumi.resources
          */
         public Builder maxItems(@Nullable Integer maxItems) {
             $.maxItems = maxItems;
-            return this;
-        }
-
-        /**
-         * @param offset Offset the results.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder offset(@Nullable Integer offset) {
-            $.offset = offset;
             return this;
         }
 

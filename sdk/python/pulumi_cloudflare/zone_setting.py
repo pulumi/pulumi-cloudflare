@@ -99,11 +99,11 @@ class _ZoneSettingState:
         """
         Input properties used for looking up and filtering ZoneSetting resources.
 
-        :param pulumi.Input[_builtins.bool] editable: Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).
+        :param pulumi.Input[_builtins.bool] editable: For `id: 0rtt` or `id: advanced_ddos` or `id: always_online` or `id: always_use_https` or `id: automatic_https_rewrites` or `id: brotli` or `id: browser_cache_ttl` or `id: browser_check` or `id: cache_level` or `id: challenge_ttl` or `id: china_network_enabled` or `id: content_converter` or `id: ciphers` or `id: cname_flattening` or `id: development_mode` or `id: early_hints` or `id: edge_cache_ttl` or `id: email_obfuscation` or `id: h2_prioritization` or `id: hotlink_protection` or `id: http2` or `id: http3` or `id: image_resizing` or `id: ip_geolocation` or `id: ipv6` or `id: max_upload` or `id: min_tls_version` or `id: mirage` or `id: nel` or `id: opportunistic_encryption` or `id: opportunistic_onion` or `id: orange_to_orange` or `id: origin_error_page_pass_thru` or `id: polish` or `id: prefetch_preload` or `id: pre_render` or `id: privacy_pass` or `id: proxy_read_timeout` or `id: pseudo_ipv4` or `id: redirects_for_ai_training` or `id: replace_insecure_js` or `id: response_buffering` or `id: rocket_loader` or `id: automatic_platform_optimization` or `id: search_for_agents` or `id: security_header` or `id: security_level` or `id: server_side_exclude` or `id: sha1_support` or `id: sort_query_string_for_cache` or `id: ssl` or `id: tls_1_2_only` or `id: tls_1_3` or `id: tls_client_auth` or `id: transformations` or `id: transformations_allowed_origins` or `id: true_client_ip_header` or `id: waf` or `id: webmcp_enabled` or `id: webmcp_mcp_url` or `id: webmcp_packs` or `id: webp` or `id: avif` or `id: websockets`: Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).
         :param pulumi.Input[_builtins.bool] enabled: ssl-recommender enrollment setting.
-        :param pulumi.Input[_builtins.str] modified_on: last time this setting was modified.
+        :param pulumi.Input[_builtins.str] modified_on: For `id: 0rtt` or `id: advanced_ddos` or `id: always_online` or `id: always_use_https` or `id: automatic_https_rewrites` or `id: brotli` or `id: browser_cache_ttl` or `id: browser_check` or `id: cache_level` or `id: challenge_ttl` or `id: china_network_enabled` or `id: content_converter` or `id: ciphers` or `id: cname_flattening` or `id: development_mode` or `id: early_hints` or `id: edge_cache_ttl` or `id: email_obfuscation` or `id: h2_prioritization` or `id: hotlink_protection` or `id: http2` or `id: http3` or `id: image_resizing` or `id: ip_geolocation` or `id: ipv6` or `id: max_upload` or `id: min_tls_version` or `id: mirage` or `id: nel` or `id: opportunistic_encryption` or `id: opportunistic_onion` or `id: orange_to_orange` or `id: origin_error_page_pass_thru` or `id: polish` or `id: prefetch_preload` or `id: pre_render` or `id: privacy_pass` or `id: proxy_read_timeout` or `id: pseudo_ipv4` or `id: redirects_for_ai_training` or `id: replace_insecure_js` or `id: response_buffering` or `id: rocket_loader` or `id: automatic_platform_optimization` or `id: search_for_agents` or `id: security_header` or `id: security_level` or `id: server_side_exclude` or `id: sha1_support` or `id: sort_query_string_for_cache` or `id: ssl` or `id: tls_1_2_only` or `id: tls_1_3` or `id: tls_client_auth` or `id: transformations` or `id: transformations_allowed_origins` or `id: true_client_ip_header` or `id: waf` or `id: webmcp_enabled` or `id: webmcp_mcp_url` or `id: webmcp_packs` or `id: webp` or `id: avif` or `id: websockets`: last time this setting was modified.
         :param pulumi.Input[_builtins.str] setting_id: Setting name
-        :param pulumi.Input[_builtins.float] time_remaining: Value of the zone setting.
+        :param pulumi.Input[_builtins.float] time_remaining: For `id: development_mode`: Value of the zone setting.
                Notes: The interval (in seconds) from when development mode expires (positive integer) or last expired (negative integer) for the domain. If development mode has never been enabled, this value is false.
         :param Any value: Current value of the zone setting.
         :param pulumi.Input[_builtins.str] zone_id: Identifier
@@ -127,7 +127,7 @@ class _ZoneSettingState:
     @pulumi.getter
     def editable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).
+        For `id: 0rtt` or `id: advanced_ddos` or `id: always_online` or `id: always_use_https` or `id: automatic_https_rewrites` or `id: brotli` or `id: browser_cache_ttl` or `id: browser_check` or `id: cache_level` or `id: challenge_ttl` or `id: china_network_enabled` or `id: content_converter` or `id: ciphers` or `id: cname_flattening` or `id: development_mode` or `id: early_hints` or `id: edge_cache_ttl` or `id: email_obfuscation` or `id: h2_prioritization` or `id: hotlink_protection` or `id: http2` or `id: http3` or `id: image_resizing` or `id: ip_geolocation` or `id: ipv6` or `id: max_upload` or `id: min_tls_version` or `id: mirage` or `id: nel` or `id: opportunistic_encryption` or `id: opportunistic_onion` or `id: orange_to_orange` or `id: origin_error_page_pass_thru` or `id: polish` or `id: prefetch_preload` or `id: pre_render` or `id: privacy_pass` or `id: proxy_read_timeout` or `id: pseudo_ipv4` or `id: redirects_for_ai_training` or `id: replace_insecure_js` or `id: response_buffering` or `id: rocket_loader` or `id: automatic_platform_optimization` or `id: search_for_agents` or `id: security_header` or `id: security_level` or `id: server_side_exclude` or `id: sha1_support` or `id: sort_query_string_for_cache` or `id: ssl` or `id: tls_1_2_only` or `id: tls_1_3` or `id: tls_client_auth` or `id: transformations` or `id: transformations_allowed_origins` or `id: true_client_ip_header` or `id: waf` or `id: webmcp_enabled` or `id: webmcp_mcp_url` or `id: webmcp_packs` or `id: webp` or `id: avif` or `id: websockets`: Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).
         """
         return pulumi.get(self, "editable")
 
@@ -151,7 +151,7 @@ class _ZoneSettingState:
     @pulumi.getter(name="modifiedOn")
     def modified_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        last time this setting was modified.
+        For `id: 0rtt` or `id: advanced_ddos` or `id: always_online` or `id: always_use_https` or `id: automatic_https_rewrites` or `id: brotli` or `id: browser_cache_ttl` or `id: browser_check` or `id: cache_level` or `id: challenge_ttl` or `id: china_network_enabled` or `id: content_converter` or `id: ciphers` or `id: cname_flattening` or `id: development_mode` or `id: early_hints` or `id: edge_cache_ttl` or `id: email_obfuscation` or `id: h2_prioritization` or `id: hotlink_protection` or `id: http2` or `id: http3` or `id: image_resizing` or `id: ip_geolocation` or `id: ipv6` or `id: max_upload` or `id: min_tls_version` or `id: mirage` or `id: nel` or `id: opportunistic_encryption` or `id: opportunistic_onion` or `id: orange_to_orange` or `id: origin_error_page_pass_thru` or `id: polish` or `id: prefetch_preload` or `id: pre_render` or `id: privacy_pass` or `id: proxy_read_timeout` or `id: pseudo_ipv4` or `id: redirects_for_ai_training` or `id: replace_insecure_js` or `id: response_buffering` or `id: rocket_loader` or `id: automatic_platform_optimization` or `id: search_for_agents` or `id: security_header` or `id: security_level` or `id: server_side_exclude` or `id: sha1_support` or `id: sort_query_string_for_cache` or `id: ssl` or `id: tls_1_2_only` or `id: tls_1_3` or `id: tls_client_auth` or `id: transformations` or `id: transformations_allowed_origins` or `id: true_client_ip_header` or `id: waf` or `id: webmcp_enabled` or `id: webmcp_mcp_url` or `id: webmcp_packs` or `id: webp` or `id: avif` or `id: websockets`: last time this setting was modified.
         """
         return pulumi.get(self, "modified_on")
 
@@ -175,7 +175,7 @@ class _ZoneSettingState:
     @pulumi.getter(name="timeRemaining")
     def time_remaining(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
-        Value of the zone setting.
+        For `id: development_mode`: Value of the zone setting.
         Notes: The interval (in seconds) from when development mode expires (positive integer) or last expired (negative integer) for the domain. If development mode has never been enabled, this value is false.
         """
         return pulumi.get(self, "time_remaining")
@@ -244,6 +244,7 @@ class ZoneSetting(pulumi.CustomResource):
         | `always_use_https` | `"on"` / `"off"` | Reply to all requests for URLs that use "http" with a 301 redirect to the equ... |
         | `automatic_https_rewrites` | `"on"` / `"off"` | Enable the Automatic HTTPS Rewrites feature for this zone. |
         | `automatic_platform_optimization` | Object | [Automatic Platform Optimization for WordPress](https://developers.cloudflare... |
+        | `avif` | `"on"` / `"off"` | When the client requesting the image supports the AVIF image codec, and AVIF ... |
         | `brotli` | `"on"` / `"off"` | When the client requesting an asset supports the Brotli compression algorithm... |
         | `browser_cache_ttl` | Number | Browser Cache TTL (in seconds) specifies how long Cloudflare-cached resources... |
         | `browser_check` | `"on"` / `"off"` | Browser Integrity Check is similar to Bad Behavior and looks for common HTTP ... |
@@ -535,6 +536,7 @@ class ZoneSetting(pulumi.CustomResource):
         | `always_use_https` | `"on"` / `"off"` | Reply to all requests for URLs that use "http" with a 301 redirect to the equ... |
         | `automatic_https_rewrites` | `"on"` / `"off"` | Enable the Automatic HTTPS Rewrites feature for this zone. |
         | `automatic_platform_optimization` | Object | [Automatic Platform Optimization for WordPress](https://developers.cloudflare... |
+        | `avif` | `"on"` / `"off"` | When the client requesting the image supports the AVIF image codec, and AVIF ... |
         | `brotli` | `"on"` / `"off"` | When the client requesting an asset supports the Brotli compression algorithm... |
         | `browser_cache_ttl` | Number | Browser Cache TTL (in seconds) specifies how long Cloudflare-cached resources... |
         | `browser_check` | `"on"` / `"off"` | Browser Integrity Check is similar to Bad Behavior and looks for common HTTP ... |
@@ -854,11 +856,11 @@ class ZoneSetting(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] editable: Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).
+        :param pulumi.Input[_builtins.bool] editable: For `id: 0rtt` or `id: advanced_ddos` or `id: always_online` or `id: always_use_https` or `id: automatic_https_rewrites` or `id: brotli` or `id: browser_cache_ttl` or `id: browser_check` or `id: cache_level` or `id: challenge_ttl` or `id: china_network_enabled` or `id: content_converter` or `id: ciphers` or `id: cname_flattening` or `id: development_mode` or `id: early_hints` or `id: edge_cache_ttl` or `id: email_obfuscation` or `id: h2_prioritization` or `id: hotlink_protection` or `id: http2` or `id: http3` or `id: image_resizing` or `id: ip_geolocation` or `id: ipv6` or `id: max_upload` or `id: min_tls_version` or `id: mirage` or `id: nel` or `id: opportunistic_encryption` or `id: opportunistic_onion` or `id: orange_to_orange` or `id: origin_error_page_pass_thru` or `id: polish` or `id: prefetch_preload` or `id: pre_render` or `id: privacy_pass` or `id: proxy_read_timeout` or `id: pseudo_ipv4` or `id: redirects_for_ai_training` or `id: replace_insecure_js` or `id: response_buffering` or `id: rocket_loader` or `id: automatic_platform_optimization` or `id: search_for_agents` or `id: security_header` or `id: security_level` or `id: server_side_exclude` or `id: sha1_support` or `id: sort_query_string_for_cache` or `id: ssl` or `id: tls_1_2_only` or `id: tls_1_3` or `id: tls_client_auth` or `id: transformations` or `id: transformations_allowed_origins` or `id: true_client_ip_header` or `id: waf` or `id: webmcp_enabled` or `id: webmcp_mcp_url` or `id: webmcp_packs` or `id: webp` or `id: avif` or `id: websockets`: Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).
         :param pulumi.Input[_builtins.bool] enabled: ssl-recommender enrollment setting.
-        :param pulumi.Input[_builtins.str] modified_on: last time this setting was modified.
+        :param pulumi.Input[_builtins.str] modified_on: For `id: 0rtt` or `id: advanced_ddos` or `id: always_online` or `id: always_use_https` or `id: automatic_https_rewrites` or `id: brotli` or `id: browser_cache_ttl` or `id: browser_check` or `id: cache_level` or `id: challenge_ttl` or `id: china_network_enabled` or `id: content_converter` or `id: ciphers` or `id: cname_flattening` or `id: development_mode` or `id: early_hints` or `id: edge_cache_ttl` or `id: email_obfuscation` or `id: h2_prioritization` or `id: hotlink_protection` or `id: http2` or `id: http3` or `id: image_resizing` or `id: ip_geolocation` or `id: ipv6` or `id: max_upload` or `id: min_tls_version` or `id: mirage` or `id: nel` or `id: opportunistic_encryption` or `id: opportunistic_onion` or `id: orange_to_orange` or `id: origin_error_page_pass_thru` or `id: polish` or `id: prefetch_preload` or `id: pre_render` or `id: privacy_pass` or `id: proxy_read_timeout` or `id: pseudo_ipv4` or `id: redirects_for_ai_training` or `id: replace_insecure_js` or `id: response_buffering` or `id: rocket_loader` or `id: automatic_platform_optimization` or `id: search_for_agents` or `id: security_header` or `id: security_level` or `id: server_side_exclude` or `id: sha1_support` or `id: sort_query_string_for_cache` or `id: ssl` or `id: tls_1_2_only` or `id: tls_1_3` or `id: tls_client_auth` or `id: transformations` or `id: transformations_allowed_origins` or `id: true_client_ip_header` or `id: waf` or `id: webmcp_enabled` or `id: webmcp_mcp_url` or `id: webmcp_packs` or `id: webp` or `id: avif` or `id: websockets`: last time this setting was modified.
         :param pulumi.Input[_builtins.str] setting_id: Setting name
-        :param pulumi.Input[_builtins.float] time_remaining: Value of the zone setting.
+        :param pulumi.Input[_builtins.float] time_remaining: For `id: development_mode`: Value of the zone setting.
                Notes: The interval (in seconds) from when development mode expires (positive integer) or last expired (negative integer) for the domain. If development mode has never been enabled, this value is false.
         :param Any value: Current value of the zone setting.
         :param pulumi.Input[_builtins.str] zone_id: Identifier
@@ -900,7 +902,7 @@ class ZoneSetting(pulumi.CustomResource):
     @pulumi.getter
     def editable(self) -> pulumi.Output[_builtins.bool]:
         """
-        Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).
+        For `id: 0rtt` or `id: advanced_ddos` or `id: always_online` or `id: always_use_https` or `id: automatic_https_rewrites` or `id: brotli` or `id: browser_cache_ttl` or `id: browser_check` or `id: cache_level` or `id: challenge_ttl` or `id: china_network_enabled` or `id: content_converter` or `id: ciphers` or `id: cname_flattening` or `id: development_mode` or `id: early_hints` or `id: edge_cache_ttl` or `id: email_obfuscation` or `id: h2_prioritization` or `id: hotlink_protection` or `id: http2` or `id: http3` or `id: image_resizing` or `id: ip_geolocation` or `id: ipv6` or `id: max_upload` or `id: min_tls_version` or `id: mirage` or `id: nel` or `id: opportunistic_encryption` or `id: opportunistic_onion` or `id: orange_to_orange` or `id: origin_error_page_pass_thru` or `id: polish` or `id: prefetch_preload` or `id: pre_render` or `id: privacy_pass` or `id: proxy_read_timeout` or `id: pseudo_ipv4` or `id: redirects_for_ai_training` or `id: replace_insecure_js` or `id: response_buffering` or `id: rocket_loader` or `id: automatic_platform_optimization` or `id: search_for_agents` or `id: security_header` or `id: security_level` or `id: server_side_exclude` or `id: sha1_support` or `id: sort_query_string_for_cache` or `id: ssl` or `id: tls_1_2_only` or `id: tls_1_3` or `id: tls_client_auth` or `id: transformations` or `id: transformations_allowed_origins` or `id: true_client_ip_header` or `id: waf` or `id: webmcp_enabled` or `id: webmcp_mcp_url` or `id: webmcp_packs` or `id: webp` or `id: avif` or `id: websockets`: Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).
         """
         return pulumi.get(self, "editable")
 
@@ -916,7 +918,7 @@ class ZoneSetting(pulumi.CustomResource):
     @pulumi.getter(name="modifiedOn")
     def modified_on(self) -> pulumi.Output[_builtins.str]:
         """
-        last time this setting was modified.
+        For `id: 0rtt` or `id: advanced_ddos` or `id: always_online` or `id: always_use_https` or `id: automatic_https_rewrites` or `id: brotli` or `id: browser_cache_ttl` or `id: browser_check` or `id: cache_level` or `id: challenge_ttl` or `id: china_network_enabled` or `id: content_converter` or `id: ciphers` or `id: cname_flattening` or `id: development_mode` or `id: early_hints` or `id: edge_cache_ttl` or `id: email_obfuscation` or `id: h2_prioritization` or `id: hotlink_protection` or `id: http2` or `id: http3` or `id: image_resizing` or `id: ip_geolocation` or `id: ipv6` or `id: max_upload` or `id: min_tls_version` or `id: mirage` or `id: nel` or `id: opportunistic_encryption` or `id: opportunistic_onion` or `id: orange_to_orange` or `id: origin_error_page_pass_thru` or `id: polish` or `id: prefetch_preload` or `id: pre_render` or `id: privacy_pass` or `id: proxy_read_timeout` or `id: pseudo_ipv4` or `id: redirects_for_ai_training` or `id: replace_insecure_js` or `id: response_buffering` or `id: rocket_loader` or `id: automatic_platform_optimization` or `id: search_for_agents` or `id: security_header` or `id: security_level` or `id: server_side_exclude` or `id: sha1_support` or `id: sort_query_string_for_cache` or `id: ssl` or `id: tls_1_2_only` or `id: tls_1_3` or `id: tls_client_auth` or `id: transformations` or `id: transformations_allowed_origins` or `id: true_client_ip_header` or `id: waf` or `id: webmcp_enabled` or `id: webmcp_mcp_url` or `id: webmcp_packs` or `id: webp` or `id: avif` or `id: websockets`: last time this setting was modified.
         """
         return pulumi.get(self, "modified_on")
 
@@ -932,7 +934,7 @@ class ZoneSetting(pulumi.CustomResource):
     @pulumi.getter(name="timeRemaining")
     def time_remaining(self) -> pulumi.Output[_builtins.float]:
         """
-        Value of the zone setting.
+        For `id: development_mode`: Value of the zone setting.
         Notes: The interval (in seconds) from when development mode expires (positive integer) or last expired (negative integer) for the domain. If development mode has never been enabled, this value is false.
         """
         return pulumi.get(self, "time_remaining")

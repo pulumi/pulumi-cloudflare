@@ -60,7 +60,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string EidLastSeen;
         /// <summary>
-        /// Enabled.
+        /// Whether the rule is enabled. This is a computed, read-only value. It is false for deprecated Kolide posture rules that still use the IssueCount input, and true otherwise.
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
@@ -72,7 +72,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> ExtendedKeyUsages;
         /// <summary>
-        /// List ID.
+        /// API UUID.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -99,16 +99,20 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string NetworkStatus;
         /// <summary>
         /// Operating system.
+        /// 
+        /// Operating System.
         /// Available values: "windows", "linux", "mac", "android", "ios", "chromeos".
         /// </summary>
         public readonly string OperatingSystem;
         /// <summary>
         /// Agent operational state.
-        /// Available values: "na", "partially*disabled", "auto*fully*disabled", "fully*disabled", "auto*partially*disabled", "disabled*error", "db*corruption".
+        /// Available values: "na", "PartiallyDisabled", "AutoFullyDisabled", "FullyDisabled", "AutoPartiallyDisabled", "DisabledError", "DbCorruption".
         /// </summary>
         public readonly string OperationalState;
         /// <summary>
         /// Operator.
+        /// 
+        /// Operator to evaluate RiskLevel or eid_last_seen.
         /// Available values: "&lt;", "&lt;=", "&gt;", "&gt;=", "==".
         /// </summary>
         public readonly string Operator;
@@ -134,6 +138,8 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string Overall;
         /// <summary>
         /// File path.
+        /// 
+        /// Path for the application.
         /// </summary>
         public readonly string Path;
         /// <summary>
@@ -185,6 +191,8 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly double UpdateWindowDays;
         /// <summary>
         /// Version of OS.
+        /// 
+        /// Version.
         /// </summary>
         public readonly string Version;
         /// <summary>

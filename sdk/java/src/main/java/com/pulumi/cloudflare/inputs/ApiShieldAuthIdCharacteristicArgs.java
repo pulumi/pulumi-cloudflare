@@ -15,14 +15,14 @@ public final class ApiShieldAuthIdCharacteristicArgs extends com.pulumi.resource
     public static final ApiShieldAuthIdCharacteristicArgs Empty = new ApiShieldAuthIdCharacteristicArgs();
 
     /**
-     * The name of the characteristic field, i.e., the header or cookie name.
+     * For `type: header` or `type: cookie`: The name of the characteristic field, i.e., the header or cookie name.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the characteristic field, i.e., the header or cookie name.
+     * @return For `type: header` or `type: cookie`: The name of the characteristic field, i.e., the header or cookie name.
      * 
      */
     public Output<String> name() {
@@ -72,7 +72,7 @@ public final class ApiShieldAuthIdCharacteristicArgs extends com.pulumi.resource
         }
 
         /**
-         * @param name The name of the characteristic field, i.e., the header or cookie name.
+         * @param name For `type: header` or `type: cookie`: The name of the characteristic field, i.e., the header or cookie name.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ApiShieldAuthIdCharacteristicArgs extends com.pulumi.resource
         }
 
         /**
-         * @param name The name of the characteristic field, i.e., the header or cookie name.
+         * @param name For `type: header` or `type: cookie`: The name of the characteristic field, i.e., the header or cookie name.
          * 
          * @return builder
          * 

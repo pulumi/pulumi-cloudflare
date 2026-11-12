@@ -31,6 +31,23 @@ public final class GetPipelineSinksPlainArgs extends com.pulumi.resources.Invoke
     }
 
     /**
+     * Sort direction.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    @Import(name="direction")
+    private @Nullable String direction;
+
+    /**
+     * @return Sort direction.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    public Optional<String> direction() {
+        return Optional.ofNullable(this.direction);
+    }
+
+    /**
      * Max items to fetch, default: 1000
      * 
      */
@@ -60,6 +77,23 @@ public final class GetPipelineSinksPlainArgs extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Sorts sinks by this field. Defaults to `createdAt`.
+     * Available values: &#34;name&#34;, &#34;createdAt&#34;.
+     * 
+     */
+    @Import(name="orderBy")
+    private @Nullable String orderBy;
+
+    /**
+     * @return Sorts sinks by this field. Defaults to `createdAt`.
+     * Available values: &#34;name&#34;, &#34;createdAt&#34;.
+     * 
+     */
+    public Optional<String> orderBy() {
+        return Optional.ofNullable(this.orderBy);
+    }
+
     @Import(name="pipelineId")
     private @Nullable String pipelineId;
 
@@ -71,8 +105,10 @@ public final class GetPipelineSinksPlainArgs extends com.pulumi.resources.Invoke
 
     private GetPipelineSinksPlainArgs(GetPipelineSinksPlainArgs $) {
         this.accountId = $.accountId;
+        this.direction = $.direction;
         this.maxItems = $.maxItems;
         this.name = $.name;
+        this.orderBy = $.orderBy;
         this.pipelineId = $.pipelineId;
     }
 
@@ -106,6 +142,18 @@ public final class GetPipelineSinksPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
+         * @param direction Sort direction.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder direction(@Nullable String direction) {
+            $.direction = direction;
+            return this;
+        }
+
+        /**
          * @param maxItems Max items to fetch, default: 1000
          * 
          * @return builder
@@ -124,6 +172,18 @@ public final class GetPipelineSinksPlainArgs extends com.pulumi.resources.Invoke
          */
         public Builder name(@Nullable String name) {
             $.name = name;
+            return this;
+        }
+
+        /**
+         * @param orderBy Sorts sinks by this field. Defaults to `createdAt`.
+         * Available values: &#34;name&#34;, &#34;createdAt&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orderBy(@Nullable String orderBy) {
+            $.orderBy = orderBy;
             return this;
         }
 

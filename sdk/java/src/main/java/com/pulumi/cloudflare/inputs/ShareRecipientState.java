@@ -55,14 +55,14 @@ public final class ShareRecipientState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * When the share was created.
+     * When the object was created.
      * 
      */
     @Import(name="created")
     private @Nullable Output<String> created;
 
     /**
-     * @return When the share was created.
+     * @return When the object was created.
      * 
      */
     public Optional<Output<String>> created() {
@@ -85,33 +85,18 @@ public final class ShareRecipientState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * When the share was modified.
+     * When the object was last modified.
      * 
      */
     @Import(name="modified")
     private @Nullable Output<String> modified;
 
     /**
-     * @return When the share was modified.
+     * @return When the object was last modified.
      * 
      */
     public Optional<Output<String>> modified() {
         return Optional.ofNullable(this.modified);
-    }
-
-    /**
-     * Organization identifier.
-     * 
-     */
-    @Import(name="organizationId")
-    private @Nullable Output<String> organizationId;
-
-    /**
-     * @return Organization identifier.
-     * 
-     */
-    public Optional<Output<String>> organizationId() {
-        return Optional.ofNullable(this.organizationId);
     }
 
     /**
@@ -159,7 +144,6 @@ public final class ShareRecipientState extends com.pulumi.resources.ResourceArgs
         this.created = $.created;
         this.includeResources = $.includeResources;
         this.modified = $.modified;
-        this.organizationId = $.organizationId;
         this.recipientAccountId = $.recipientAccountId;
         this.resources = $.resources;
         this.shareId = $.shareId;
@@ -232,7 +216,7 @@ public final class ShareRecipientState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param created When the share was created.
+         * @param created When the object was created.
          * 
          * @return builder
          * 
@@ -243,7 +227,7 @@ public final class ShareRecipientState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param created When the share was created.
+         * @param created When the object was created.
          * 
          * @return builder
          * 
@@ -274,7 +258,7 @@ public final class ShareRecipientState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param modified When the share was modified.
+         * @param modified When the object was last modified.
          * 
          * @return builder
          * 
@@ -285,34 +269,13 @@ public final class ShareRecipientState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param modified When the share was modified.
+         * @param modified When the object was last modified.
          * 
          * @return builder
          * 
          */
         public Builder modified(String modified) {
             return modified(Output.of(modified));
-        }
-
-        /**
-         * @param organizationId Organization identifier.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder organizationId(@Nullable Output<String> organizationId) {
-            $.organizationId = organizationId;
-            return this;
-        }
-
-        /**
-         * @param organizationId Organization identifier.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder organizationId(String organizationId) {
-            return organizationId(Output.of(organizationId));
         }
 
         /**

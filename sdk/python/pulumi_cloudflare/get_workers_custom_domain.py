@@ -28,7 +28,7 @@ class GetWorkersCustomDomainResult:
     """
     A collection of values returned by getWorkersCustomDomain.
     """
-    def __init__(__self__, account_id=None, cert_id=None, domain_id=None, environment=None, filter=None, hostname=None, id=None, service=None, zone_id=None, zone_name=None):
+    def __init__(__self__, account_id=None, cert_id=None, domain_id=None, enabled=None, environment=None, filter=None, hostname=None, id=None, previews_enabled=None, service=None, zone_id=None, zone_name=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -38,6 +38,9 @@ class GetWorkersCustomDomainResult:
         if domain_id and not isinstance(domain_id, str):
             raise TypeError("Expected argument 'domain_id' to be a str")
         pulumi.set(__self__, "domain_id", domain_id)
+        if enabled and not isinstance(enabled, bool):
+            raise TypeError("Expected argument 'enabled' to be a bool")
+        pulumi.set(__self__, "enabled", enabled)
         if environment and not isinstance(environment, str):
             raise TypeError("Expected argument 'environment' to be a str")
         pulumi.set(__self__, "environment", environment)
@@ -50,6 +53,9 @@ class GetWorkersCustomDomainResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if previews_enabled and not isinstance(previews_enabled, bool):
+            raise TypeError("Expected argument 'previews_enabled' to be a bool")
+        pulumi.set(__self__, "previews_enabled", previews_enabled)
         if service and not isinstance(service, str):
             raise TypeError("Expected argument 'service' to be a str")
         pulumi.set(__self__, "service", service)
@@ -62,7 +68,7 @@ class GetWorkersCustomDomainResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[_builtins.str]:
+    def account_id(self) -> _builtins.str:
         """
         Identifier.
         """
@@ -83,6 +89,14 @@ class GetWorkersCustomDomainResult:
         ID of the domain.
         """
         return pulumi.get(self, "domain_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether the configured hostname is routable for the domain. If disabled, then requests to the configured hostname will not be routed to the configured Worker. If disabled, then preview routing must be enabled, and only subdomains of the configured hostname will be routable.
+        """
+        return pulumi.get(self, "enabled")
 
     @_builtins.property
     @pulumi.getter
@@ -113,6 +127,14 @@ class GetWorkersCustomDomainResult:
         ID of the domain.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="previewsEnabled")
+    def previews_enabled(self) -> _builtins.bool:
+        """
+        Whether previews are routable for the domain. If enabled, previews will be routable as subdomains of the configured hostname. For example, if the configured hostname is `app.example.com`, then requests to `my-feature.app.example.com` will be routed to the preview with slug `my-feature`, if such a preview exists. If preview routing is disabled, then hostname routing must be enabled.
+        """
+        return pulumi.get(self, "previews_enabled")
 
     @_builtins.property
     @pulumi.getter
@@ -148,10 +170,12 @@ class AwaitableGetWorkersCustomDomainResult(GetWorkersCustomDomainResult):
             account_id=self.account_id,
             cert_id=self.cert_id,
             domain_id=self.domain_id,
+            enabled=self.enabled,
             environment=self.environment,
             filter=self.filter,
             hostname=self.hostname,
             id=self.id,
+            previews_enabled=self.previews_enabled,
             service=self.service,
             zone_id=self.zone_id,
             zone_name=self.zone_name)
@@ -192,14 +216,16 @@ def get_workers_custom_domain(account_id: Optional[_builtins.str] = None,
         account_id=pulumi.get(__ret__, 'account_id'),
         cert_id=pulumi.get(__ret__, 'cert_id'),
         domain_id=pulumi.get(__ret__, 'domain_id'),
+        enabled=pulumi.get(__ret__, 'enabled'),
         environment=pulumi.get(__ret__, 'environment'),
         filter=pulumi.get(__ret__, 'filter'),
         hostname=pulumi.get(__ret__, 'hostname'),
         id=pulumi.get(__ret__, 'id'),
+        previews_enabled=pulumi.get(__ret__, 'previews_enabled'),
         service=pulumi.get(__ret__, 'service'),
         zone_id=pulumi.get(__ret__, 'zone_id'),
         zone_name=pulumi.get(__ret__, 'zone_name'))
-def get_workers_custom_domain_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+def get_workers_custom_domain_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
                                      domain_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                      filter: pulumi.Input[Optional[Optional[Union['GetWorkersCustomDomainFilterArgs', 'GetWorkersCustomDomainFilterArgsDict', 'outputs.GetWorkersCustomDomainFilterResult']]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkersCustomDomainResult]:
@@ -233,10 +259,12 @@ def get_workers_custom_domain_output(account_id: pulumi.Input[Optional[Optional[
         account_id=pulumi.get(__response__, 'account_id'),
         cert_id=pulumi.get(__response__, 'cert_id'),
         domain_id=pulumi.get(__response__, 'domain_id'),
+        enabled=pulumi.get(__response__, 'enabled'),
         environment=pulumi.get(__response__, 'environment'),
         filter=pulumi.get(__response__, 'filter'),
         hostname=pulumi.get(__response__, 'hostname'),
         id=pulumi.get(__response__, 'id'),
+        previews_enabled=pulumi.get(__response__, 'previews_enabled'),
         service=pulumi.get(__response__, 'service'),
         zone_id=pulumi.get(__response__, 'zone_id'),
         zone_name=pulumi.get(__response__, 'zone_name')))

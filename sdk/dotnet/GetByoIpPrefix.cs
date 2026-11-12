@@ -166,13 +166,23 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string AdvertisedModifiedAt;
         /// <summary>
-        /// Approval state of the prefix (P = pending, V = active).
+        /// Approval state of the prefix (P = pending, V = approved). Approval does not advertise the prefix or activate traffic.
         /// </summary>
         public readonly string Approved;
         /// <summary>
-        /// Autonomous System Number (ASN) the prefix will be advertised under.
+        /// Autonomous System Number (ASN) the prefix will be advertised under. Use 13335 for Cloudflare's ASN, or your own ASN as an integer without the AS prefix. The IRR route and RPKI ROA must authorize this ASN.
         /// </summary>
         public readonly int Asn;
+        /// <summary>
+        /// State of ASN ownership validation for a customer-owned Autonomous System Number (ASN). Returned when an ASN ownership validation result exists. Omitted when validation does not apply, such as for Cloudflare-owned ASNs. Verification is reused for prefixes with the same account and ASN. Refer to [ASN ownership validation states](https://developers.cloudflare.com/byoip/troubleshooting/prefix-validation/#asn-ownership-validation) for state meanings and resolutions.
+        /// Available values: "pending", "valid", "missing", "invalid".
+        /// </summary>
+        public readonly string AsnOwnershipValidationState;
+        /// <summary>
+        /// State of Autonomous System Provider Authorization (ASPA) validation for a customer-owned ASN. Returned when an ASPA validation result exists. Publishing an ASPA is optional. A published ASPA must authorize AS13335 as a provider. An invalid result blocks approval. If omitted, no ASPA validation result is available. Omission does not indicate successful validation or confirm that no ASPA exists. Refer to [ASPA validation states](https://developers.cloudflare.com/byoip/troubleshooting/prefix-validation/#aspa-validation) for state meanings and resolutions, and [ASPA authorization](https://developers.cloudflare.com/byoip/concepts/route-filtering-rpki/#aspa-authorization) for publication guidance.
+        /// Available values: "pending", "valid", "invalid".
+        /// </summary>
+        public readonly string AspaValidationState;
         /// <summary>
         /// IP Prefix in Classless Inter-Domain Routing format.
         /// </summary>
@@ -212,7 +222,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string OwnershipValidationState;
         /// <summary>
-        /// Token provided to demonstrate ownership of the prefix.
+        /// Token used to verify ownership of the prefix and, when applicable, its ASN. Use the same token for both checks. Refer to the [BYOIP onboarding guide](https://developers.cloudflare.com/byoip/get-started/) for verification instructions.
         /// </summary>
         public readonly string OwnershipValidationToken;
         /// <summary>
@@ -235,6 +245,10 @@ namespace Pulumi.Cloudflare
             string approved,
 
             int asn,
+
+            string asnOwnershipValidationState,
+
+            string aspaValidationState,
 
             string cidr,
 
@@ -269,6 +283,8 @@ namespace Pulumi.Cloudflare
             AdvertisedModifiedAt = advertisedModifiedAt;
             Approved = approved;
             Asn = asn;
+            AsnOwnershipValidationState = asnOwnershipValidationState;
+            AspaValidationState = aspaValidationState;
             Cidr = cidr;
             CreatedAt = createdAt;
             DelegateLoaCreation = delegateLoaCreation;

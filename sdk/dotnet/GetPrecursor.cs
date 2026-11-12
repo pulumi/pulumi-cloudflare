@@ -112,19 +112,25 @@ namespace Pulumi.Cloudflare
     public sealed class GetPrecursorResult
     {
         /// <summary>
-        /// The zone-level Precursor enforcement mode applied to requests that do
-        /// not match a more specific enforcement rule.
-        /// Available values: "off", "min-friction", "max-security".
-        /// </summary>
-        public readonly string DefaultMode;
-        /// <summary>
-        /// The ordered list of enforcement rules for the zone.
-        /// </summary>
-        public readonly ImmutableArray<Outputs.GetPrecursorEnforcementRuleResult> EnforcementRules;
-        /// <summary>
         /// Identifier.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Controls Precursor detection for the zone. `Off` disables detection,
+        /// `Monitor` records detections without affecting bot scores, and `Arm`
+        /// allows detections to affect bot scores.
+        /// Available values: "off", "monitor", "arm".
+        /// </summary>
+        public readonly string Mode;
+        /// <summary>
+        /// The ordered list of Precursor rules for the zone.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetPrecursorRuleResult> Rules;
+        /// <summary>
+        /// Whether Precursor shows an interstitial when it takes action on a
+        /// request.
+        /// </summary>
+        public readonly bool ShowInterstitial;
         /// <summary>
         /// Identifier.
         /// </summary>
@@ -132,17 +138,20 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetPrecursorResult(
-            string defaultMode,
-
-            ImmutableArray<Outputs.GetPrecursorEnforcementRuleResult> enforcementRules,
-
             string id,
+
+            string mode,
+
+            ImmutableArray<Outputs.GetPrecursorRuleResult> rules,
+
+            bool showInterstitial,
 
             string zoneId)
         {
-            DefaultMode = defaultMode;
-            EnforcementRules = enforcementRules;
             Id = id;
+            Mode = mode;
+            Rules = rules;
+            ShowInterstitial = showInterstitial;
             ZoneId = zoneId;
         }
     }

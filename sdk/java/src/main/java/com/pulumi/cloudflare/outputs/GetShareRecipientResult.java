@@ -29,7 +29,7 @@ public final class GetShareRecipientResult {
      */
     private String associationStatus;
     /**
-     * @return When the share was created.
+     * @return When the object was created.
      * 
      */
     private String created;
@@ -44,7 +44,7 @@ public final class GetShareRecipientResult {
      */
     private @Nullable Boolean includeResources;
     /**
-     * @return When the share was modified.
+     * @return When the object was last modified.
      * 
      */
     private String modified;
@@ -79,7 +79,7 @@ public final class GetShareRecipientResult {
         return this.associationStatus;
     }
     /**
-     * @return When the share was created.
+     * @return When the object was created.
      * 
      */
     public String created() {
@@ -100,7 +100,7 @@ public final class GetShareRecipientResult {
         return Optional.ofNullable(this.includeResources);
     }
     /**
-     * @return When the share was modified.
+     * @return When the object was last modified.
      * 
      */
     public String modified() {

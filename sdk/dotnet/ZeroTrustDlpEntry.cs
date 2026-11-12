@@ -37,6 +37,10 @@ namespace Pulumi.Cloudflare
     ///         },
     ///         Description = "description",
     ///         ProfileId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+    ///         ValidatorIds = new[]
+    ///         {
+    ///             "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+    ///         },
     ///     });
     /// 
     /// });
@@ -55,7 +59,7 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Only applies to custom word lists.
+        /// For `type: ExactData`: Only applies to custom word lists.
         /// Determines if the words should be matched in a case-sensitive manner
         /// Cannot be set to false if secret is true
         /// </summary>
@@ -69,7 +73,7 @@ namespace Pulumi.Cloudflare
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Whether this entry is deprecated for new use. This is computed from the static catalog and
+        /// For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
         /// emitted only when true.
         /// </summary>
         [Output("deprecated")]
@@ -112,7 +116,13 @@ namespace Pulumi.Cloudflare
         public Output<string> UploadStatus { get; private set; } = null!;
 
         /// <summary>
-        /// A Predefined AI prompt classification topic entry.
+        /// Validators the new entry should reference, by id, at most 10.
+        /// </summary>
+        [Output("validatorIds")]
+        public Output<ImmutableArray<string>> ValidatorIds { get; private set; } = null!;
+
+        /// <summary>
+        /// For `type: predefined`: A Predefined AI prompt classification topic entry.
         /// </summary>
         [Output("variant")]
         public Output<Outputs.ZeroTrustDlpEntryVariant> Variant { get; private set; } = null!;
@@ -190,6 +200,18 @@ namespace Pulumi.Cloudflare
         [Input("type")]
         public Input<string>? Type { get; set; }
 
+        [Input("validatorIds")]
+        private InputList<string>? _validatorIds;
+
+        /// <summary>
+        /// Validators the new entry should reference, by id, at most 10.
+        /// </summary>
+        public InputList<string> ValidatorIds
+        {
+            get => _validatorIds ?? (_validatorIds = new InputList<string>());
+            set => _validatorIds = value;
+        }
+
         public ZeroTrustDlpEntryArgs()
         {
         }
@@ -202,7 +224,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Only applies to custom word lists.
+        /// For `type: ExactData`: Only applies to custom word lists.
         /// Determines if the words should be matched in a case-sensitive manner
         /// Cannot be set to false if secret is true
         /// </summary>
@@ -216,7 +238,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// Whether this entry is deprecated for new use. This is computed from the static catalog and
+        /// For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
         /// emitted only when true.
         /// </summary>
         [Input("deprecated")]
@@ -263,8 +285,20 @@ namespace Pulumi.Cloudflare
         [Input("uploadStatus")]
         public Input<string>? UploadStatus { get; set; }
 
+        [Input("validatorIds")]
+        private InputList<string>? _validatorIds;
+
         /// <summary>
-        /// A Predefined AI prompt classification topic entry.
+        /// Validators the new entry should reference, by id, at most 10.
+        /// </summary>
+        public InputList<string> ValidatorIds
+        {
+            get => _validatorIds ?? (_validatorIds = new InputList<string>());
+            set => _validatorIds = value;
+        }
+
+        /// <summary>
+        /// For `type: predefined`: A Predefined AI prompt classification topic entry.
         /// </summary>
         [Input("variant")]
         public Input<Inputs.ZeroTrustDlpEntryVariantGetArgs>? Variant { get; set; }

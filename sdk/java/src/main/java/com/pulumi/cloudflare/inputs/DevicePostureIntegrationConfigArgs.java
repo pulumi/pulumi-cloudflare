@@ -33,12 +33,16 @@ public final class DevicePostureIntegrationConfigArgs extends com.pulumi.resourc
     /**
      * If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `apiUrl`.
      * 
+     * This secret will be passed in the `CF-Access-Client-Secret` header when hitting the `apiUrl`.
+     * 
      */
     @Import(name="accessClientSecret")
     private @Nullable Output<String> accessClientSecret;
 
     /**
      * @return If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `apiUrl`.
+     * 
+     * This secret will be passed in the `CF-Access-Client-Secret` header when hitting the `apiUrl`.
      * 
      */
     public Optional<Output<String>> accessClientSecret() {
@@ -48,12 +52,32 @@ public final class DevicePostureIntegrationConfigArgs extends com.pulumi.resourc
     /**
      * The Workspace One API URL provided in the Workspace One Admin Dashboard.
      * 
+     * The Crowdstrike API URL.
+     * 
+     * The Uptycs API URL.
+     * 
+     * The Tanium API URL.
+     * 
+     * The SentinelOne S2S API URL.
+     * 
+     * The Custom Device Posture Integration  API URL.
+     * 
      */
     @Import(name="apiUrl")
     private @Nullable Output<String> apiUrl;
 
     /**
      * @return The Workspace One API URL provided in the Workspace One Admin Dashboard.
+     * 
+     * The Crowdstrike API URL.
+     * 
+     * The Uptycs API URL.
+     * 
+     * The Tanium API URL.
+     * 
+     * The SentinelOne S2S API URL.
+     * 
+     * The Custom Device Posture Integration  API URL.
      * 
      */
     public Optional<Output<String>> apiUrl() {
@@ -78,12 +102,24 @@ public final class DevicePostureIntegrationConfigArgs extends com.pulumi.resourc
     /**
      * The Workspace One client ID provided in the Workspace One Admin Dashboard.
      * 
+     * The Crowdstrike client ID.
+     * 
+     * The Intune client ID.
+     * 
+     * The Kolide client ID.
+     * 
      */
     @Import(name="clientId")
     private @Nullable Output<String> clientId;
 
     /**
      * @return The Workspace One client ID provided in the Workspace One Admin Dashboard.
+     * 
+     * The Crowdstrike client ID.
+     * 
+     * The Intune client ID.
+     * 
+     * The Kolide client ID.
      * 
      */
     public Optional<Output<String>> clientId() {
@@ -108,12 +144,36 @@ public final class DevicePostureIntegrationConfigArgs extends com.pulumi.resourc
     /**
      * The Workspace One client secret provided in the Workspace One Admin Dashboard.
      * 
+     * The Crowdstrike client secret.
+     * 
+     * The Uptycs client secret.
+     * 
+     * The Intune client secret.
+     * 
+     * The Kolide client secret.
+     * 
+     * The Tanium client secret.
+     * 
+     * The SentinelOne S2S client secret.
+     * 
      */
     @Import(name="clientSecret")
     private @Nullable Output<String> clientSecret;
 
     /**
      * @return The Workspace One client secret provided in the Workspace One Admin Dashboard.
+     * 
+     * The Crowdstrike client secret.
+     * 
+     * The Uptycs client secret.
+     * 
+     * The Intune client secret.
+     * 
+     * The Kolide client secret.
+     * 
+     * The Tanium client secret.
+     * 
+     * The SentinelOne S2S client secret.
      * 
      */
     public Optional<Output<String>> clientSecret() {
@@ -123,12 +183,20 @@ public final class DevicePostureIntegrationConfigArgs extends com.pulumi.resourc
     /**
      * The Crowdstrike customer ID.
      * 
+     * The Uptycs customer ID.
+     * 
+     * The Intune customer ID.
+     * 
      */
     @Import(name="customerId")
     private @Nullable Output<String> customerId;
 
     /**
      * @return The Crowdstrike customer ID.
+     * 
+     * The Uptycs customer ID.
+     * 
+     * The Intune customer ID.
      * 
      */
     public Optional<Output<String>> customerId() {
@@ -190,6 +258,8 @@ public final class DevicePostureIntegrationConfigArgs extends com.pulumi.resourc
         /**
          * @param accessClientSecret If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `apiUrl`.
          * 
+         * This secret will be passed in the `CF-Access-Client-Secret` header when hitting the `apiUrl`.
+         * 
          * @return builder
          * 
          */
@@ -201,6 +271,8 @@ public final class DevicePostureIntegrationConfigArgs extends com.pulumi.resourc
         /**
          * @param accessClientSecret If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `apiUrl`.
          * 
+         * This secret will be passed in the `CF-Access-Client-Secret` header when hitting the `apiUrl`.
+         * 
          * @return builder
          * 
          */
@@ -210,6 +282,16 @@ public final class DevicePostureIntegrationConfigArgs extends com.pulumi.resourc
 
         /**
          * @param apiUrl The Workspace One API URL provided in the Workspace One Admin Dashboard.
+         * 
+         * The Crowdstrike API URL.
+         * 
+         * The Uptycs API URL.
+         * 
+         * The Tanium API URL.
+         * 
+         * The SentinelOne S2S API URL.
+         * 
+         * The Custom Device Posture Integration  API URL.
          * 
          * @return builder
          * 
@@ -221,6 +303,16 @@ public final class DevicePostureIntegrationConfigArgs extends com.pulumi.resourc
 
         /**
          * @param apiUrl The Workspace One API URL provided in the Workspace One Admin Dashboard.
+         * 
+         * The Crowdstrike API URL.
+         * 
+         * The Uptycs API URL.
+         * 
+         * The Tanium API URL.
+         * 
+         * The SentinelOne S2S API URL.
+         * 
+         * The Custom Device Posture Integration  API URL.
          * 
          * @return builder
          * 
@@ -253,6 +345,12 @@ public final class DevicePostureIntegrationConfigArgs extends com.pulumi.resourc
         /**
          * @param clientId The Workspace One client ID provided in the Workspace One Admin Dashboard.
          * 
+         * The Crowdstrike client ID.
+         * 
+         * The Intune client ID.
+         * 
+         * The Kolide client ID.
+         * 
          * @return builder
          * 
          */
@@ -263,6 +361,12 @@ public final class DevicePostureIntegrationConfigArgs extends com.pulumi.resourc
 
         /**
          * @param clientId The Workspace One client ID provided in the Workspace One Admin Dashboard.
+         * 
+         * The Crowdstrike client ID.
+         * 
+         * The Intune client ID.
+         * 
+         * The Kolide client ID.
          * 
          * @return builder
          * 
@@ -295,6 +399,18 @@ public final class DevicePostureIntegrationConfigArgs extends com.pulumi.resourc
         /**
          * @param clientSecret The Workspace One client secret provided in the Workspace One Admin Dashboard.
          * 
+         * The Crowdstrike client secret.
+         * 
+         * The Uptycs client secret.
+         * 
+         * The Intune client secret.
+         * 
+         * The Kolide client secret.
+         * 
+         * The Tanium client secret.
+         * 
+         * The SentinelOne S2S client secret.
+         * 
          * @return builder
          * 
          */
@@ -306,6 +422,18 @@ public final class DevicePostureIntegrationConfigArgs extends com.pulumi.resourc
         /**
          * @param clientSecret The Workspace One client secret provided in the Workspace One Admin Dashboard.
          * 
+         * The Crowdstrike client secret.
+         * 
+         * The Uptycs client secret.
+         * 
+         * The Intune client secret.
+         * 
+         * The Kolide client secret.
+         * 
+         * The Tanium client secret.
+         * 
+         * The SentinelOne S2S client secret.
+         * 
          * @return builder
          * 
          */
@@ -315,6 +443,10 @@ public final class DevicePostureIntegrationConfigArgs extends com.pulumi.resourc
 
         /**
          * @param customerId The Crowdstrike customer ID.
+         * 
+         * The Uptycs customer ID.
+         * 
+         * The Intune customer ID.
          * 
          * @return builder
          * 
@@ -326,6 +458,10 @@ public final class DevicePostureIntegrationConfigArgs extends com.pulumi.resourc
 
         /**
          * @param customerId The Crowdstrike customer ID.
+         * 
+         * The Uptycs customer ID.
+         * 
+         * The Intune customer ID.
          * 
          * @return builder
          * 

@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetAiSearchNamespacesResultPublicEndpointParamsSearchEndpoint {
     /**
-     * @return Disable search endpoint for this public endpoint
+     * @return Disable search endpoint for this public endpoint.
      * 
      */
     private Boolean disabled;
 
     private GetAiSearchNamespacesResultPublicEndpointParamsSearchEndpoint() {}
     /**
-     * @return Disable search endpoint for this public endpoint
+     * @return Disable search endpoint for this public endpoint.
      * 
      */
     public Boolean disabled() {

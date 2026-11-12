@@ -31,6 +31,7 @@ import * as utilities from "./utilities";
  *         errorRetention: "5 minutes",
  *         successRetention: "5 minutes",
  *     },
+ *     jurisdiction: "eu",
  *     limits: {
  *         steps: 1,
  *     },
@@ -95,6 +96,11 @@ export class Workflow extends pulumi.CustomResource {
     declare public readonly defaultRetention: pulumi.Output<outputs.WorkflowDefaultRetention | undefined>;
     declare public /*out*/ readonly instances: pulumi.Output<{[key: string]: number}>;
     declare public /*out*/ readonly isDeleted: pulumi.Output<number>;
+    /**
+     * Jurisdiction where instances of this workflow run and store data. Can only be set when the workflow is created and cannot be changed afterwards; omit it to keep the existing jurisdiction.
+     * Available values: "eu", "fedramp", "us".
+     */
+    declare public readonly jurisdiction: pulumi.Output<string | undefined>;
     declare public readonly limits: pulumi.Output<outputs.WorkflowLimits | undefined>;
     declare public /*out*/ readonly modifiedOn: pulumi.Output<string>;
     declare public /*out*/ readonly name: pulumi.Output<string>;
@@ -129,6 +135,7 @@ export class Workflow extends pulumi.CustomResource {
             resourceInputs["defaultRetention"] = state?.defaultRetention;
             resourceInputs["instances"] = state?.instances;
             resourceInputs["isDeleted"] = state?.isDeleted;
+            resourceInputs["jurisdiction"] = state?.jurisdiction;
             resourceInputs["limits"] = state?.limits;
             resourceInputs["modifiedOn"] = state?.modifiedOn;
             resourceInputs["name"] = state?.name;
@@ -157,6 +164,7 @@ export class Workflow extends pulumi.CustomResource {
             resourceInputs["className"] = args?.className;
             resourceInputs["concurrency"] = args?.concurrency;
             resourceInputs["defaultRetention"] = args?.defaultRetention;
+            resourceInputs["jurisdiction"] = args?.jurisdiction;
             resourceInputs["limits"] = args?.limits;
             resourceInputs["schedules"] = args?.schedules;
             resourceInputs["scriptName"] = args?.scriptName;
@@ -190,6 +198,11 @@ export interface WorkflowState {
     defaultRetention?: pulumi.Input<inputs.WorkflowDefaultRetention | undefined>;
     instances?: pulumi.Input<{[key: string]: pulumi.Input<number>} | undefined>;
     isDeleted?: pulumi.Input<number | undefined>;
+    /**
+     * Jurisdiction where instances of this workflow run and store data. Can only be set when the workflow is created and cannot be changed afterwards; omit it to keep the existing jurisdiction.
+     * Available values: "eu", "fedramp", "us".
+     */
+    jurisdiction?: pulumi.Input<string | undefined>;
     limits?: pulumi.Input<inputs.WorkflowLimits | undefined>;
     modifiedOn?: pulumi.Input<string | undefined>;
     name?: pulumi.Input<string | undefined>;
@@ -216,6 +229,11 @@ export interface WorkflowArgs {
      * Default retention applied to instances of this version when they do not set their own retention.
      */
     defaultRetention?: pulumi.Input<inputs.WorkflowDefaultRetention | undefined>;
+    /**
+     * Jurisdiction where instances of this workflow run and store data. Can only be set when the workflow is created and cannot be changed afterwards; omit it to keep the existing jurisdiction.
+     * Available values: "eu", "fedramp", "us".
+     */
+    jurisdiction?: pulumi.Input<string | undefined>;
     limits?: pulumi.Input<inputs.WorkflowLimits | undefined>;
     schedules?: pulumi.Input<pulumi.Input<inputs.WorkflowSchedule>[] | undefined>;
     scriptName: pulumi.Input<string>;

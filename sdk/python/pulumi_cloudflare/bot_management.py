@@ -22,6 +22,7 @@ __all__ = ['BotManagementArgs', 'BotManagement']
 class BotManagementArgs:
     def __init__(__self__, *,
                  zone_id: pulumi.Input[_builtins.str],
+                 ai_agents: pulumi.Input[Optional['BotManagementAiAgentsArgs']] = None,
                  ai_bots_migration_opt_out: pulumi.Input[Optional[_builtins.bool]] = None,
                  ai_bots_protection: pulumi.Input[Optional[_builtins.str]] = None,
                  ai_training: pulumi.Input[Optional[_builtins.str]] = None,
@@ -47,6 +48,7 @@ class BotManagementArgs:
         The set of arguments for constructing a BotManagement resource.
 
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
+        :param pulumi.Input['BotManagementAiAgentsArgs'] ai_agents: Configure blocking behavior for supported personal AI agents.
         :param pulumi.Input[_builtins.bool] ai_bots_migration_opt_out: Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
         :param pulumi.Input[_builtins.str] ai_bots_protection: Enable rule to block AI Scrapers and Crawlers.
                Available values: "block", "disabled", "only*on*ad_pages".
@@ -82,6 +84,8 @@ class BotManagementArgs:
         :param pulumi.Input[_builtins.bool] suppress_session_score: Whether to disable tracking the highest bot score for a session in the Bot Management cookie.
         """
         pulumi.set(__self__, "zone_id", zone_id)
+        if ai_agents is not None:
+            pulumi.set(__self__, "ai_agents", ai_agents)
         if ai_bots_migration_opt_out is not None:
             pulumi.set(__self__, "ai_bots_migration_opt_out", ai_bots_migration_opt_out)
         if ai_bots_protection is not None:
@@ -136,6 +140,18 @@ class BotManagementArgs:
     @zone_id.setter
     def zone_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "zone_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="aiAgents")
+    def ai_agents(self) -> pulumi.Input[Optional['BotManagementAiAgentsArgs']]:
+        """
+        Configure blocking behavior for supported personal AI agents.
+        """
+        return pulumi.get(self, "ai_agents")
+
+    @ai_agents.setter
+    def ai_agents(self, value: pulumi.Input[Optional['BotManagementAiAgentsArgs']]):
+        pulumi.set(self, "ai_agents", value)
 
     @_builtins.property
     @pulumi.getter(name="aiBotsMigrationOptOut")
@@ -405,6 +421,7 @@ class BotManagementArgs:
 @pulumi.input_type
 class _BotManagementState:
     def __init__(__self__, *,
+                 ai_agents: pulumi.Input[Optional['BotManagementAiAgentsArgs']] = None,
                  ai_bots_migration_opt_out: pulumi.Input[Optional[_builtins.bool]] = None,
                  ai_bots_protection: pulumi.Input[Optional[_builtins.str]] = None,
                  ai_training: pulumi.Input[Optional[_builtins.str]] = None,
@@ -432,6 +449,7 @@ class _BotManagementState:
         """
         Input properties used for looking up and filtering BotManagement resources.
 
+        :param pulumi.Input['BotManagementAiAgentsArgs'] ai_agents: Configure blocking behavior for supported personal AI agents.
         :param pulumi.Input[_builtins.bool] ai_bots_migration_opt_out: Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
         :param pulumi.Input[_builtins.str] ai_bots_protection: Enable rule to block AI Scrapers and Crawlers.
                Available values: "block", "disabled", "only*on*ad_pages".
@@ -469,6 +487,8 @@ class _BotManagementState:
         :param pulumi.Input[_builtins.bool] using_latest_model: A read-only field that indicates whether the zone currently is running the latest ML model.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
+        if ai_agents is not None:
+            pulumi.set(__self__, "ai_agents", ai_agents)
         if ai_bots_migration_opt_out is not None:
             pulumi.set(__self__, "ai_bots_migration_opt_out", ai_bots_migration_opt_out)
         if ai_bots_protection is not None:
@@ -517,6 +537,18 @@ class _BotManagementState:
             pulumi.set(__self__, "using_latest_model", using_latest_model)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
+
+    @_builtins.property
+    @pulumi.getter(name="aiAgents")
+    def ai_agents(self) -> pulumi.Input[Optional['BotManagementAiAgentsArgs']]:
+        """
+        Configure blocking behavior for supported personal AI agents.
+        """
+        return pulumi.get(self, "ai_agents")
+
+    @ai_agents.setter
+    def ai_agents(self, value: pulumi.Input[Optional['BotManagementAiAgentsArgs']]):
+        pulumi.set(self, "ai_agents", value)
 
     @_builtins.property
     @pulumi.getter(name="aiBotsMigrationOptOut")
@@ -825,6 +857,7 @@ class BotManagement(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 ai_agents: pulumi.Input[Optional[Union['BotManagementAiAgentsArgs', 'BotManagementAiAgentsArgsDict', 'outputs.BotManagementAiAgents']]] = None,
                  ai_bots_migration_opt_out: pulumi.Input[Optional[_builtins.bool]] = None,
                  ai_bots_protection: pulumi.Input[Optional[_builtins.str]] = None,
                  ai_training: pulumi.Input[Optional[_builtins.str]] = None,
@@ -862,6 +895,13 @@ class BotManagement(pulumi.CustomResource):
 
         example_bot_management = cloudflare.BotManagement("example_bot_management",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            ai_agents={
+                "anthropic_agent": "block",
+                "google_agent": "block",
+                "instinct": "block",
+                "muse": "block",
+                "openai_agent": "block",
+            },
             ai_bots_migration_opt_out=False,
             ai_bots_protection="block",
             aisearch="block",
@@ -886,6 +926,7 @@ class BotManagement(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['BotManagementAiAgentsArgs', 'BotManagementAiAgentsArgsDict', 'outputs.BotManagementAiAgents']] ai_agents: Configure blocking behavior for supported personal AI agents.
         :param pulumi.Input[_builtins.bool] ai_bots_migration_opt_out: Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
         :param pulumi.Input[_builtins.str] ai_bots_protection: Enable rule to block AI Scrapers and Crawlers.
                Available values: "block", "disabled", "only*on*ad_pages".
@@ -941,6 +982,13 @@ class BotManagement(pulumi.CustomResource):
 
         example_bot_management = cloudflare.BotManagement("example_bot_management",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            ai_agents={
+                "anthropic_agent": "block",
+                "google_agent": "block",
+                "instinct": "block",
+                "muse": "block",
+                "openai_agent": "block",
+            },
             ai_bots_migration_opt_out=False,
             ai_bots_protection="block",
             aisearch="block",
@@ -978,6 +1026,7 @@ class BotManagement(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 ai_agents: pulumi.Input[Optional[Union['BotManagementAiAgentsArgs', 'BotManagementAiAgentsArgsDict', 'outputs.BotManagementAiAgents']]] = None,
                  ai_bots_migration_opt_out: pulumi.Input[Optional[_builtins.bool]] = None,
                  ai_bots_protection: pulumi.Input[Optional[_builtins.str]] = None,
                  ai_training: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1009,6 +1058,7 @@ class BotManagement(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = BotManagementArgs.__new__(BotManagementArgs)
 
+            __props__.__dict__["ai_agents"] = ai_agents
             __props__.__dict__["ai_bots_migration_opt_out"] = ai_bots_migration_opt_out
             __props__.__dict__["ai_bots_protection"] = ai_bots_protection
             __props__.__dict__["ai_training"] = ai_training
@@ -1045,6 +1095,7 @@ class BotManagement(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            ai_agents: pulumi.Input[Optional[Union['BotManagementAiAgentsArgs', 'BotManagementAiAgentsArgsDict', 'outputs.BotManagementAiAgents']]] = None,
             ai_bots_migration_opt_out: pulumi.Input[Optional[_builtins.bool]] = None,
             ai_bots_protection: pulumi.Input[Optional[_builtins.str]] = None,
             ai_training: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1076,6 +1127,7 @@ class BotManagement(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['BotManagementAiAgentsArgs', 'BotManagementAiAgentsArgsDict', 'outputs.BotManagementAiAgents']] ai_agents: Configure blocking behavior for supported personal AI agents.
         :param pulumi.Input[_builtins.bool] ai_bots_migration_opt_out: Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
         :param pulumi.Input[_builtins.str] ai_bots_protection: Enable rule to block AI Scrapers and Crawlers.
                Available values: "block", "disabled", "only*on*ad_pages".
@@ -1117,6 +1169,7 @@ class BotManagement(pulumi.CustomResource):
 
         __props__ = _BotManagementState.__new__(_BotManagementState)
 
+        __props__.__dict__["ai_agents"] = ai_agents
         __props__.__dict__["ai_bots_migration_opt_out"] = ai_bots_migration_opt_out
         __props__.__dict__["ai_bots_protection"] = ai_bots_protection
         __props__.__dict__["ai_training"] = ai_training
@@ -1146,6 +1199,7 @@ class BotManagement(pulumi.CustomResource):
     @staticmethod
     def exists(id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            ai_agents: pulumi.Input[Optional[Union['BotManagementAiAgentsArgs', 'BotManagementAiAgentsArgsDict', 'outputs.BotManagementAiAgents']]] = None,
             ai_bots_migration_opt_out: pulumi.Input[Optional[_builtins.bool]] = None,
             ai_bots_protection: pulumi.Input[Optional[_builtins.str]] = None,
             ai_training: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1171,6 +1225,7 @@ class BotManagement(pulumi.CustomResource):
             using_latest_model: pulumi.Input[Optional[_builtins.bool]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
+        __props__["aiAgents"] = ai_agents
         __props__["aiBotsMigrationOptOut"] = ai_bots_migration_opt_out
         __props__["aiBotsProtection"] = ai_bots_protection
         __props__["aiTraining"] = ai_training
@@ -1196,6 +1251,14 @@ class BotManagement(pulumi.CustomResource):
         __props__["usingLatestModel"] = using_latest_model
         __props__["zoneId"] = zone_id
         return pulumi.runtime.exists_resource(None, 'cloudflare:index/botManagement:BotManagement', id, __props__, opts or pulumi.ResourceOptions())
+
+    @_builtins.property
+    @pulumi.getter(name="aiAgents")
+    def ai_agents(self) -> pulumi.Output['outputs.BotManagementAiAgents']:
+        """
+        Configure blocking behavior for supported personal AI agents.
+        """
+        return pulumi.get(self, "ai_agents")
 
     @_builtins.property
     @pulumi.getter(name="aiBotsMigrationOptOut")

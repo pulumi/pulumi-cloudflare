@@ -46,7 +46,7 @@ export interface GetZeroTrustDlpIntegrationEntryArgs {
 export interface GetZeroTrustDlpIntegrationEntryResult {
     readonly accountId?: string;
     /**
-     * Only applies to custom word lists.
+     * For `type: exactData`: Only applies to custom word lists.
      * Determines if the words should be matched in a case-sensitive manner
      * Cannot be set to false if secret is true
      */
@@ -54,34 +54,26 @@ export interface GetZeroTrustDlpIntegrationEntryResult {
     readonly confidence: outputs.GetZeroTrustDlpIntegrationEntryConfidence;
     readonly createdAt: string;
     /**
-     * Whether this entry is deprecated for new use. This is computed from the static catalog and
+     * For `type: predefined`: Whether this entry is deprecated for new use. This is computed from the static catalog and
      * emitted only when true.
      */
     readonly deprecated: boolean;
+    /**
+     * For `type: customPromptTopic`: The optional description of the custom prompt topic entry.
+     */
     readonly description: string;
     readonly enabled: boolean;
     readonly entryId: string;
-    /**
-     * The ID of this resource.
-     */
     readonly id: string;
     readonly name: string;
     readonly pattern: outputs.GetZeroTrustDlpIntegrationEntryPattern;
     readonly profileId: string;
     readonly profiles: outputs.GetZeroTrustDlpIntegrationEntryProfile[];
     readonly secret: boolean;
-    /**
-     * Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
-     */
     readonly type: string;
     readonly updatedAt: string;
-    /**
-     * Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
-     */
     readonly uploadStatus: string;
-    /**
-     * A Predefined AI prompt classification topic entry.
-     */
+    readonly validatorIds: string[];
     readonly variant: outputs.GetZeroTrustDlpIntegrationEntryVariant;
     readonly wordLists: string[];
 }

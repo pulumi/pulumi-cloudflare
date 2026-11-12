@@ -51,7 +51,8 @@ import (
 //						Description: pulumi.String("Example internal domains"),
 //					},
 //				},
-//				Enabled: pulumi.Bool(true),
+//				EnableDeviceCredentialAuthentication: pulumi.Bool(false),
+//				Enabled:                              pulumi.Bool(true),
 //				Excludes: cloudflare.ZeroTrustDeviceCustomProfileExcludeArray{
 //					&cloudflare.ZeroTrustDeviceCustomProfileExcludeArgs{
 //						Address:     pulumi.String("192.0.2.0/24"),
@@ -70,6 +71,8 @@ import (
 //					WireguardEndpoints: pulumi.StringArray{
 //						pulumi.String("198.51.100.1:2408"),
 //					},
+//					AllowManualOverride: pulumi.Bool(true),
+//					Autoswitch:          pulumi.Bool(true),
 //				},
 //				Includes: cloudflare.ZeroTrustDeviceCustomProfileIncludeArray{
 //					&cloudflare.ZeroTrustDeviceCustomProfileIncludeArgs{
@@ -137,6 +140,8 @@ type ZeroTrustDeviceCustomProfile struct {
 	DisableAutoFallback pulumi.BoolOutput `pulumi:"disableAutoFallback"`
 	// List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
 	DnsSearchSuffixes ZeroTrustDeviceCustomProfileDnsSearchSuffixArrayOutput `pulumi:"dnsSearchSuffixes"`
+	// Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.
+	EnableDeviceCredentialAuthentication pulumi.BoolOutput `pulumi:"enableDeviceCredentialAuthentication"`
 	// Whether the policy will be applied to matching devices.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// Whether to add Microsoft IPs to Split Tunnel exclusions.
@@ -248,6 +253,8 @@ type zeroTrustDeviceCustomProfileState struct {
 	DisableAutoFallback *bool `pulumi:"disableAutoFallback"`
 	// List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
 	DnsSearchSuffixes []ZeroTrustDeviceCustomProfileDnsSearchSuffix `pulumi:"dnsSearchSuffixes"`
+	// Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.
+	EnableDeviceCredentialAuthentication *bool `pulumi:"enableDeviceCredentialAuthentication"`
 	// Whether the policy will be applied to matching devices.
 	Enabled *bool `pulumi:"enabled"`
 	// Whether to add Microsoft IPs to Split Tunnel exclusions.
@@ -315,6 +322,8 @@ type ZeroTrustDeviceCustomProfileState struct {
 	DisableAutoFallback pulumi.BoolPtrInput
 	// List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
 	DnsSearchSuffixes ZeroTrustDeviceCustomProfileDnsSearchSuffixArrayInput
+	// Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.
+	EnableDeviceCredentialAuthentication pulumi.BoolPtrInput
 	// Whether the policy will be applied to matching devices.
 	Enabled pulumi.BoolPtrInput
 	// Whether to add Microsoft IPs to Split Tunnel exclusions.
@@ -390,6 +399,8 @@ type zeroTrustDeviceCustomProfileArgs struct {
 	DisableAutoFallback *bool `pulumi:"disableAutoFallback"`
 	// List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
 	DnsSearchSuffixes []ZeroTrustDeviceCustomProfileDnsSearchSuffix `pulumi:"dnsSearchSuffixes"`
+	// Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.
+	EnableDeviceCredentialAuthentication *bool `pulumi:"enableDeviceCredentialAuthentication"`
 	// Whether the policy will be applied to matching devices.
 	Enabled *bool `pulumi:"enabled"`
 	// Whether to add Microsoft IPs to Split Tunnel exclusions.
@@ -451,6 +462,8 @@ type ZeroTrustDeviceCustomProfileArgs struct {
 	DisableAutoFallback pulumi.BoolPtrInput
 	// List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
 	DnsSearchSuffixes ZeroTrustDeviceCustomProfileDnsSearchSuffixArrayInput
+	// Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.
+	EnableDeviceCredentialAuthentication pulumi.BoolPtrInput
 	// Whether the policy will be applied to matching devices.
 	Enabled pulumi.BoolPtrInput
 	// Whether to add Microsoft IPs to Split Tunnel exclusions.
@@ -634,6 +647,11 @@ func (o ZeroTrustDeviceCustomProfileOutput) DnsSearchSuffixes() ZeroTrustDeviceC
 	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) ZeroTrustDeviceCustomProfileDnsSearchSuffixArrayOutput {
 		return v.DnsSearchSuffixes
 	}).(ZeroTrustDeviceCustomProfileDnsSearchSuffixArrayOutput)
+}
+
+// Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.
+func (o ZeroTrustDeviceCustomProfileOutput) EnableDeviceCredentialAuthentication() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.BoolOutput { return v.EnableDeviceCredentialAuthentication }).(pulumi.BoolOutput)
 }
 
 // Whether the policy will be applied to matching devices.

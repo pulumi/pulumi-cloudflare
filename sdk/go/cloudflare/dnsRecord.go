@@ -73,7 +73,7 @@ type DnsRecord struct {
 	Content pulumi.StringOutput `pulumi:"content"`
 	// When the record was created.
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
-	// Components of a MX record.
+	// For `type: CAA`: Components of a CAA record.
 	Data DnsRecordDataPtrOutput `pulumi:"data"`
 	// Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 	IncludeShadowMetadata pulumi.BoolOutput `pulumi:"includeShadowMetadata"`
@@ -85,7 +85,7 @@ type DnsRecord struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
 	Priority pulumi.Float64PtrOutput `pulumi:"priority"`
-	// Enables private network routing to the origin.
+	// For `type: A` or `type: AAAA`: Enables private network routing to the origin.
 	PrivateRouting pulumi.BoolPtrOutput `pulumi:"privateRouting"`
 	// Whether the record can be proxied by Cloudflare or not.
 	Proxiable pulumi.BoolOutput `pulumi:"proxiable"`
@@ -162,7 +162,7 @@ type dnsRecordState struct {
 	Content *string `pulumi:"content"`
 	// When the record was created.
 	CreatedOn *string `pulumi:"createdOn"`
-	// Components of a MX record.
+	// For `type: CAA`: Components of a CAA record.
 	Data *DnsRecordData `pulumi:"data"`
 	// Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 	IncludeShadowMetadata *bool `pulumi:"includeShadowMetadata"`
@@ -174,7 +174,7 @@ type dnsRecordState struct {
 	Name *string `pulumi:"name"`
 	// Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
 	Priority *float64 `pulumi:"priority"`
-	// Enables private network routing to the origin.
+	// For `type: A` or `type: AAAA`: Enables private network routing to the origin.
 	PrivateRouting *bool `pulumi:"privateRouting"`
 	// Whether the record can be proxied by Cloudflare or not.
 	Proxiable *bool `pulumi:"proxiable"`
@@ -204,7 +204,7 @@ type DnsRecordState struct {
 	Content pulumi.StringPtrInput
 	// When the record was created.
 	CreatedOn pulumi.StringPtrInput
-	// Components of a MX record.
+	// For `type: CAA`: Components of a CAA record.
 	Data DnsRecordDataPtrInput
 	// Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 	IncludeShadowMetadata pulumi.BoolPtrInput
@@ -216,7 +216,7 @@ type DnsRecordState struct {
 	Name pulumi.StringPtrInput
 	// Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
 	Priority pulumi.Float64PtrInput
-	// Enables private network routing to the origin.
+	// For `type: A` or `type: AAAA`: Enables private network routing to the origin.
 	PrivateRouting pulumi.BoolPtrInput
 	// Whether the record can be proxied by Cloudflare or not.
 	Proxiable pulumi.BoolPtrInput
@@ -252,7 +252,7 @@ type dnsRecordArgs struct {
 	Comment *string `pulumi:"comment"`
 	// A valid IPv4 address.
 	Content *string `pulumi:"content"`
-	// Components of a MX record.
+	// For `type: CAA`: Components of a CAA record.
 	Data *DnsRecordData `pulumi:"data"`
 	// Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 	IncludeShadowMetadata *bool `pulumi:"includeShadowMetadata"`
@@ -260,7 +260,7 @@ type dnsRecordArgs struct {
 	Name string `pulumi:"name"`
 	// Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
 	Priority *float64 `pulumi:"priority"`
-	// Enables private network routing to the origin.
+	// For `type: A` or `type: AAAA`: Enables private network routing to the origin.
 	PrivateRouting *bool `pulumi:"privateRouting"`
 	// Whether the record is receiving the performance and security benefits of Cloudflare.
 	Proxied *bool `pulumi:"proxied"`
@@ -283,7 +283,7 @@ type DnsRecordArgs struct {
 	Comment pulumi.StringPtrInput
 	// A valid IPv4 address.
 	Content pulumi.StringPtrInput
-	// Components of a MX record.
+	// For `type: CAA`: Components of a CAA record.
 	Data DnsRecordDataPtrInput
 	// Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 	IncludeShadowMetadata pulumi.BoolPtrInput
@@ -291,7 +291,7 @@ type DnsRecordArgs struct {
 	Name pulumi.StringInput
 	// Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
 	Priority pulumi.Float64PtrInput
-	// Enables private network routing to the origin.
+	// For `type: A` or `type: AAAA`: Enables private network routing to the origin.
 	PrivateRouting pulumi.BoolPtrInput
 	// Whether the record is receiving the performance and security benefits of Cloudflare.
 	Proxied pulumi.BoolPtrInput
@@ -415,7 +415,7 @@ func (o DnsRecordOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *DnsRecord) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
-// Components of a MX record.
+// For `type: CAA`: Components of a CAA record.
 func (o DnsRecordOutput) Data() DnsRecordDataPtrOutput {
 	return o.ApplyT(func(v *DnsRecord) DnsRecordDataPtrOutput { return v.Data }).(DnsRecordDataPtrOutput)
 }
@@ -445,7 +445,7 @@ func (o DnsRecordOutput) Priority() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *DnsRecord) pulumi.Float64PtrOutput { return v.Priority }).(pulumi.Float64PtrOutput)
 }
 
-// Enables private network routing to the origin.
+// For `type: A` or `type: AAAA`: Enables private network routing to the origin.
 func (o DnsRecordOutput) PrivateRouting() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DnsRecord) pulumi.BoolPtrOutput { return v.PrivateRouting }).(pulumi.BoolPtrOutput)
 }

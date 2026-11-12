@@ -136,14 +136,14 @@ public class QueueConsumer extends com.pulumi.resources.CustomResource {
         return this.queueName;
     }
     /**
-     * Name of a Worker
+     * For `type: worker`: Name of a Worker
      * 
      */
     @Export(name="scriptName", refs={String.class}, tree="[0]")
     private Output<String> scriptName;
 
     /**
-     * @return Name of a Worker
+     * @return For `type: worker`: Name of a Worker
      * 
      */
     public Output<String> scriptName() {

@@ -24,8 +24,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getWorkersCustomDomain(args?: GetWorkersCustomDomainArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkersCustomDomainResult> {
-    args = args || {};
+export function getWorkersCustomDomain(args: GetWorkersCustomDomainArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkersCustomDomainResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getWorkersCustomDomain:getWorkersCustomDomain", {
         "accountId": args.accountId,
@@ -41,7 +40,7 @@ export interface GetWorkersCustomDomainArgs {
     /**
      * Identifier.
      */
-    accountId?: string;
+    accountId: string;
     /**
      * ID of the domain.
      */
@@ -56,7 +55,7 @@ export interface GetWorkersCustomDomainResult {
     /**
      * Identifier.
      */
-    readonly accountId?: string;
+    readonly accountId: string;
     /**
      * ID of the TLS certificate issued for the domain.
      */
@@ -65,6 +64,10 @@ export interface GetWorkersCustomDomainResult {
      * ID of the domain.
      */
     readonly domainId?: string;
+    /**
+     * Whether the configured hostname is routable for the domain. If disabled, then requests to the configured hostname will not be routed to the configured Worker. If disabled, then preview routing must be enabled, and only subdomains of the configured hostname will be routable.
+     */
+    readonly enabled: boolean;
     /**
      * Worker environment associated with the domain.
      *
@@ -80,6 +83,10 @@ export interface GetWorkersCustomDomainResult {
      * ID of the domain.
      */
     readonly id: string;
+    /**
+     * Whether previews are routable for the domain. If enabled, previews will be routable as subdomains of the configured hostname. For example, if the configured hostname is `app.example.com`, then requests to `my-feature.app.example.com` will be routed to the preview with slug `my-feature`, if such a preview exists. If preview routing is disabled, then hostname routing must be enabled.
+     */
+    readonly previewsEnabled: boolean;
     /**
      * Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
      */
@@ -111,8 +118,7 @@ export interface GetWorkersCustomDomainResult {
  * });
  * ```
  */
-export function getWorkersCustomDomainOutput(args?: GetWorkersCustomDomainOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkersCustomDomainResult> {
-    args = args || {};
+export function getWorkersCustomDomainOutput(args: GetWorkersCustomDomainOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkersCustomDomainResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getWorkersCustomDomain:getWorkersCustomDomain", {
         "accountId": args.accountId,
@@ -128,7 +134,7 @@ export interface GetWorkersCustomDomainOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * ID of the domain.
      */

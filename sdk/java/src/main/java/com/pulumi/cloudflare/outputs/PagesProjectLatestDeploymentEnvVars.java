@@ -17,7 +17,7 @@ public final class PagesProjectLatestDeploymentEnvVars {
      */
     private @Nullable String type;
     /**
-     * @return Environment variable value.
+     * @return For `type: plainText`: Environment variable value.
      * 
      */
     private @Nullable String value;
@@ -31,7 +31,7 @@ public final class PagesProjectLatestDeploymentEnvVars {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return Environment variable value.
+     * @return For `type: plainText`: Environment variable value.
      * 
      */
     public Optional<String> value() {

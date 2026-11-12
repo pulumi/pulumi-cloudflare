@@ -13,14 +13,15 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZoneLockdownConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The configuration target. You must set the target to `Ip` when specifying an IP address in the Zone Lockdown rule.
-        /// Available values: "ip", "IpRange".
+        /// For `target: ip`: The configuration target. You must set the target to `Ip` when specifying an IP address in the Zone Lockdown rule.
         /// </summary>
         [Input("target")]
         public Input<string>? Target { get; set; }
 
         /// <summary>
-        /// The IP address to match. This address will be compared to the IP address of incoming requests.
+        /// For `target: ip`: The IP address to match. This address will be compared to the IP address of incoming requests.
+        /// 
+        /// For `target: IpRange`: The IP address range to match. You can only use prefix lengths `/16` and `/24`.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

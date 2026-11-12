@@ -14,28 +14,13 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetOriginCaCertificateFilterResult
     {
         /// <summary>
-        /// Limit to the number of records returned.
-        /// </summary>
-        public readonly int? Limit;
-        /// <summary>
-        /// Offset the results.
-        /// </summary>
-        public readonly int? Offset;
-        /// <summary>
         /// Identifier.
         /// </summary>
         public readonly string ZoneId;
 
         [OutputConstructor]
-        private GetOriginCaCertificateFilterResult(
-            int? limit,
-
-            int? offset,
-
-            string zoneId)
+        private GetOriginCaCertificateFilterResult(string zoneId)
         {
-            Limit = limit;
-            Offset = offset;
             ZoneId = zoneId;
         }
     }

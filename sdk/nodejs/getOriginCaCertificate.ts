@@ -74,10 +74,14 @@ export interface GetOriginCaCertificateResult {
      */
     readonly requestType: string;
     /**
-     * The number of days for which the certificate should be valid.
+     * The number of days for which the certificate was requested to be valid. Only returned in the Create Certificate response, where it echoes the requested value. Not returned when getting or listing certificates.
      * Available values: 7, 30, 90, 365, 730, 1095, 5475.
      */
     readonly requestedValidity: number;
+    /**
+     * When the certificate was revoked.
+     */
+    readonly revokedAt: string;
 }
 /**
  * ## Example Usage

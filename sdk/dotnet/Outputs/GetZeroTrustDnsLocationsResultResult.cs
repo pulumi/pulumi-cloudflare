@@ -19,6 +19,10 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly bool ClientDefault;
         public readonly string CreatedAt;
         /// <summary>
+        /// Enable DNS64 synthesis for DNS queries matched to this location. When updating a location, omitting this field resets it to false.
+        /// </summary>
+        public readonly bool Dns64Enabled;
+        /// <summary>
         /// Indicate the identifier of the pair of IPv4 addresses assigned to this location.
         /// </summary>
         public readonly string DnsDestinationIpsId;
@@ -71,6 +75,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string createdAt,
 
+            bool dns64Enabled,
+
             string dnsDestinationIpsId,
 
             string dnsDestinationIpv6BlockId,
@@ -99,6 +105,7 @@ namespace Pulumi.Cloudflare.Outputs
         {
             ClientDefault = clientDefault;
             CreatedAt = createdAt;
+            Dns64Enabled = dns64Enabled;
             DnsDestinationIpsId = dnsDestinationIpsId;
             DnsDestinationIpv6BlockId = dnsDestinationIpv6BlockId;
             DohSubdomain = dohSubdomain;

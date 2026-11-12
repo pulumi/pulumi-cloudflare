@@ -36,11 +36,14 @@ namespace Pulumi.Cloudflare
     ///         LoadBalanceInnerFlows = true,
     ///         Name = "name",
     ///         Priority = 0,
+    ///         ProvisionedDownloadKbps = 500,
+    ///         ProvisionedUploadKbps = 100,
     ///         StaticAddressing = new Cloudflare.Inputs.MagicTransitSiteWanStaticAddressingArgs
     ///         {
     ///             Address = "192.0.2.0/24",
     ///             GatewayAddress = "192.0.2.1",
     ///             SecondaryAddress = "192.0.2.0/24",
+    ///             SecondaryGatewayAddress = "192.0.2.1",
     ///         },
     ///         VlanTag = 42,
     ///     });
@@ -83,13 +86,25 @@ namespace Pulumi.Cloudflare
         public Output<int?> Priority { get; private set; } = null!;
 
         /// <summary>
+        /// Provisioned download rate of the WAN circuit in kilobits per second.
+        /// </summary>
+        [Output("provisionedDownloadKbps")]
+        public Output<int?> ProvisionedDownloadKbps { get; private set; } = null!;
+
+        /// <summary>
+        /// Provisioned upload rate of the WAN circuit in kilobits per second.
+        /// </summary>
+        [Output("provisionedUploadKbps")]
+        public Output<int?> ProvisionedUploadKbps { get; private set; } = null!;
+
+        /// <summary>
         /// Identifier
         /// </summary>
         [Output("siteId")]
         public Output<string> SiteId { get; private set; } = null!;
 
         /// <summary>
-        /// (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
+        /// Static addressing configuration for a WAN. Omit to use DHCP. Submit secondary*address when the site is in high availability mode.
         /// </summary>
         [Output("staticAddressing")]
         public Output<Outputs.MagicTransitSiteWanStaticAddressing?> StaticAddressing { get; private set; } = null!;
@@ -172,13 +187,25 @@ namespace Pulumi.Cloudflare
         public Input<int>? Priority { get; set; }
 
         /// <summary>
+        /// Provisioned download rate of the WAN circuit in kilobits per second.
+        /// </summary>
+        [Input("provisionedDownloadKbps")]
+        public Input<int>? ProvisionedDownloadKbps { get; set; }
+
+        /// <summary>
+        /// Provisioned upload rate of the WAN circuit in kilobits per second.
+        /// </summary>
+        [Input("provisionedUploadKbps")]
+        public Input<int>? ProvisionedUploadKbps { get; set; }
+
+        /// <summary>
         /// Identifier
         /// </summary>
         [Input("siteId", required: true)]
         public Input<string> SiteId { get; set; } = null!;
 
         /// <summary>
-        /// (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
+        /// Static addressing configuration for a WAN. Omit to use DHCP. Submit secondary*address when the site is in high availability mode.
         /// </summary>
         [Input("staticAddressing")]
         public Input<Inputs.MagicTransitSiteWanStaticAddressingArgs>? StaticAddressing { get; set; }
@@ -223,13 +250,25 @@ namespace Pulumi.Cloudflare
         public Input<int>? Priority { get; set; }
 
         /// <summary>
+        /// Provisioned download rate of the WAN circuit in kilobits per second.
+        /// </summary>
+        [Input("provisionedDownloadKbps")]
+        public Input<int>? ProvisionedDownloadKbps { get; set; }
+
+        /// <summary>
+        /// Provisioned upload rate of the WAN circuit in kilobits per second.
+        /// </summary>
+        [Input("provisionedUploadKbps")]
+        public Input<int>? ProvisionedUploadKbps { get; set; }
+
+        /// <summary>
         /// Identifier
         /// </summary>
         [Input("siteId")]
         public Input<string>? SiteId { get; set; }
 
         /// <summary>
-        /// (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
+        /// Static addressing configuration for a WAN. Omit to use DHCP. Submit secondary*address when the site is in high availability mode.
         /// </summary>
         [Input("staticAddressing")]
         public Input<Inputs.MagicTransitSiteWanStaticAddressingGetArgs>? StaticAddressing { get; set; }

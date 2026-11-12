@@ -31,7 +31,7 @@ public final class AiSearchNamespacePublicEndpointParams {
     private @Nullable Boolean defaultDomainEnabled;
     private @Nullable Boolean enabled;
     /**
-     * @return Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account&#39;s multi-instance search limit.
+     * @return Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must reference an existing instance in this namespace, and the list must stay within the account&#39;s multi-instance search limit.
      * 
      */
     private @Nullable List<String> instancesAlloweds;
@@ -64,7 +64,7 @@ public final class AiSearchNamespacePublicEndpointParams {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account&#39;s multi-instance search limit.
+     * @return Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must reference an existing instance in this namespace, and the list must stay within the account&#39;s multi-instance search limit.
      * 
      */
     public List<String> instancesAlloweds() {

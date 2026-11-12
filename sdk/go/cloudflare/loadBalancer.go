@@ -17,6 +17,19 @@ import (
 // - `Load Balancers Read`
 // - `Load Balancers Write`
 //
+// ## Planning updates
+//
+// On an update, unchanged API defaults can retain their state values instead of
+// showing `(known after apply)`. This includes unset overrides in unchanged, named
+// rules. Removing a configured, non-default value still lets the API reset that
+// value; the plan does not retain the removed setting.
+//
+// `modifiedOn` remains unknown because it changes on every write. Other computed
+// values can remain unknown on creation, when a related setting changes, or when
+// the provider cannot determine a safe default. For example, changing session
+// affinity can change its default TTL, and an unconfigured DNS TTL remains unknown
+// for an unproxied load balancer.
+//
 // ## Example Usage
 //
 // ```go
@@ -59,7 +72,46 @@ import (
 //					PreferEcs: pulumi.String("always"),
 //				},
 //				Networks: pulumi.StringArray{
-//					pulumi.String("string"),
+//					pulumi.String("cloudflare"),
+//					pulumi.String("jdcloud"),
+//				},
+//				PoolSets: cloudflare.LoadBalancerPoolSetArray{
+//					&cloudflare.LoadBalancerPoolSetArgs{
+//						Disabled: pulumi.Bool(true),
+//						FixedResponse: &cloudflare.LoadBalancerPoolSetFixedResponseArgs{
+//							ContentType: pulumi.String("application/json"),
+//							Location:    pulumi.String("www.example.com"),
+//							MessageBody: pulumi.String("Testing Hello"),
+//							StatusCode:  pulumi.Int(0),
+//						},
+//						Match: &cloudflare.LoadBalancerPoolSetMatchArgs{
+//							Default: pulumi.Bool(true),
+//							Topology: &cloudflare.LoadBalancerPoolSetMatchTopologyArgs{
+//								Countries: pulumi.StringArray{
+//									pulumi.String("string"),
+//								},
+//								Pops: pulumi.StringArray{
+//									pulumi.String("string"),
+//								},
+//								Regions: pulumi.StringArray{
+//									pulumi.String("WNAM"),
+//								},
+//							},
+//						},
+//						Name: pulumi.String("wnam-primary"),
+//						Overrides: &cloudflare.LoadBalancerPoolSetOverridesArgs{
+//							FallbackPool:      pulumi.String("9290f38c5d07c2e2f4df57b1f61d4196"),
+//							PoolDefaultWeight: pulumi.Float64(0.2),
+//							PoolWeights: pulumi.Float64Map{
+//								"9290f38c5d07c2e2f4df57b1f61d4196": pulumi.Float64(0.5),
+//								"de90f38ced07c2e2f4df50b1f61d4194": pulumi.Float64(0.3),
+//							},
+//							Pools: pulumi.StringArray{
+//								pulumi.String("17b5962d775c646f3f9725cbc7a53df4"),
+//							},
+//							SteeringPolicy: pulumi.String("random"),
+//						},
+//					},
 //				},
 //				PopPools: pulumi.StringArrayMap{
 //					"LAX": pulumi.StringArray{
@@ -233,6 +285,8 @@ type LoadBalancer struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// List of networks where Load Balancer or Pool is enabled.
 	Networks pulumi.StringArrayOutput `pulumi:"networks"`
+	// An optional list of pool sets, evaluated in array order with first match wins. Pool sets are independent from the standard steering fields (`regionPools` / `countryPools` / `popPools` / `defaultPools` / `steeringPolicy` / `randomSteering` / `fallbackPool` / `rules`). On a PATCH, an empty array (`pool_sets: []`) clears all pool sets, while omitting the field leaves existing pool sets unchanged.
+	PoolSets LoadBalancerPoolSetArrayOutput `pulumi:"poolSets"`
 	// Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
 	PopPools pulumi.StringArrayMapOutput `pulumi:"popPools"`
 	// Whether the hostname should be gray clouded (false) or orange clouded (true).
@@ -320,6 +374,8 @@ type loadBalancerState struct {
 	Name *string `pulumi:"name"`
 	// List of networks where Load Balancer or Pool is enabled.
 	Networks []string `pulumi:"networks"`
+	// An optional list of pool sets, evaluated in array order with first match wins. Pool sets are independent from the standard steering fields (`regionPools` / `countryPools` / `popPools` / `defaultPools` / `steeringPolicy` / `randomSteering` / `fallbackPool` / `rules`). On a PATCH, an empty array (`pool_sets: []`) clears all pool sets, while omitting the field leaves existing pool sets unchanged.
+	PoolSets []LoadBalancerPoolSet `pulumi:"poolSets"`
 	// Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
 	PopPools map[string][]string `pulumi:"popPools"`
 	// Whether the hostname should be gray clouded (false) or orange clouded (true).
@@ -366,6 +422,8 @@ type LoadBalancerState struct {
 	Name pulumi.StringPtrInput
 	// List of networks where Load Balancer or Pool is enabled.
 	Networks pulumi.StringArrayInput
+	// An optional list of pool sets, evaluated in array order with first match wins. Pool sets are independent from the standard steering fields (`regionPools` / `countryPools` / `popPools` / `defaultPools` / `steeringPolicy` / `randomSteering` / `fallbackPool` / `rules`). On a PATCH, an empty array (`pool_sets: []`) clears all pool sets, while omitting the field leaves existing pool sets unchanged.
+	PoolSets LoadBalancerPoolSetArrayInput
 	// Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
 	PopPools pulumi.StringArrayMapInput
 	// Whether the hostname should be gray clouded (false) or orange clouded (true).
@@ -420,6 +478,8 @@ type loadBalancerArgs struct {
 	Name string `pulumi:"name"`
 	// List of networks where Load Balancer or Pool is enabled.
 	Networks []string `pulumi:"networks"`
+	// An optional list of pool sets, evaluated in array order with first match wins. Pool sets are independent from the standard steering fields (`regionPools` / `countryPools` / `popPools` / `defaultPools` / `steeringPolicy` / `randomSteering` / `fallbackPool` / `rules`). On a PATCH, an empty array (`pool_sets: []`) clears all pool sets, while omitting the field leaves existing pool sets unchanged.
+	PoolSets []LoadBalancerPoolSet `pulumi:"poolSets"`
 	// Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
 	PopPools map[string][]string `pulumi:"popPools"`
 	// Whether the hostname should be gray clouded (false) or orange clouded (true).
@@ -464,6 +524,8 @@ type LoadBalancerArgs struct {
 	Name pulumi.StringInput
 	// List of networks where Load Balancer or Pool is enabled.
 	Networks pulumi.StringArrayInput
+	// An optional list of pool sets, evaluated in array order with first match wins. Pool sets are independent from the standard steering fields (`regionPools` / `countryPools` / `popPools` / `defaultPools` / `steeringPolicy` / `randomSteering` / `fallbackPool` / `rules`). On a PATCH, an empty array (`pool_sets: []`) clears all pool sets, while omitting the field leaves existing pool sets unchanged.
+	PoolSets LoadBalancerPoolSetArrayInput
 	// Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
 	PopPools pulumi.StringArrayMapInput
 	// Whether the hostname should be gray clouded (false) or orange clouded (true).
@@ -626,6 +688,11 @@ func (o LoadBalancerOutput) Name() pulumi.StringOutput {
 // List of networks where Load Balancer or Pool is enabled.
 func (o LoadBalancerOutput) Networks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringArrayOutput { return v.Networks }).(pulumi.StringArrayOutput)
+}
+
+// An optional list of pool sets, evaluated in array order with first match wins. Pool sets are independent from the standard steering fields (`regionPools` / `countryPools` / `popPools` / `defaultPools` / `steeringPolicy` / `randomSteering` / `fallbackPool` / `rules`). On a PATCH, an empty array (`pool_sets: []`) clears all pool sets, while omitting the field leaves existing pool sets unchanged.
+func (o LoadBalancerOutput) PoolSets() LoadBalancerPoolSetArrayOutput {
+	return o.ApplyT(func(v *LoadBalancer) LoadBalancerPoolSetArrayOutput { return v.PoolSets }).(LoadBalancerPoolSetArrayOutput)
 }
 
 // Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.

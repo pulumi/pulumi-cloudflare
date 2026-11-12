@@ -31,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetWorkersCustomDomain(ctx, &cloudflare.LookupWorkersCustomDomainArgs{
-//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 //				DomainId:  pulumi.StringRef("dbe10b4bc17c295377eabd600e1787fd"),
 //			}, nil)
 //			if err != nil {
@@ -55,7 +55,7 @@ func LookupWorkersCustomDomain(ctx *pulumi.Context, args *LookupWorkersCustomDom
 // A collection of arguments for invoking getWorkersCustomDomain.
 type LookupWorkersCustomDomainArgs struct {
 	// Identifier.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// ID of the domain.
 	DomainId *string                       `pulumi:"domainId"`
 	Filter   *GetWorkersCustomDomainFilter `pulumi:"filter"`
@@ -64,11 +64,13 @@ type LookupWorkersCustomDomainArgs struct {
 // A collection of values returned by getWorkersCustomDomain.
 type LookupWorkersCustomDomainResult struct {
 	// Identifier.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// ID of the TLS certificate issued for the domain.
 	CertId string `pulumi:"certId"`
 	// ID of the domain.
 	DomainId *string `pulumi:"domainId"`
+	// Whether the configured hostname is routable for the domain. If disabled, then requests to the configured hostname will not be routed to the configured Worker. If disabled, then preview routing must be enabled, and only subdomains of the configured hostname will be routable.
+	Enabled bool `pulumi:"enabled"`
 	// Worker environment associated with the domain.
 	//
 	// Deprecated: This attribute is deprecated.
@@ -78,6 +80,8 @@ type LookupWorkersCustomDomainResult struct {
 	Hostname string `pulumi:"hostname"`
 	// ID of the domain.
 	Id string `pulumi:"id"`
+	// Whether previews are routable for the domain. If enabled, previews will be routable as subdomains of the configured hostname. For example, if the configured hostname is `app.example.com`, then requests to `my-feature.app.example.com` will be routed to the preview with slug `my-feature`, if such a preview exists. If preview routing is disabled, then hostname routing must be enabled.
+	PreviewsEnabled bool `pulumi:"previewsEnabled"`
 	// Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
 	Service string `pulumi:"service"`
 	// ID of the zone containing the domain hostname.
@@ -94,7 +98,7 @@ func LookupWorkersCustomDomainOutput(ctx *pulumi.Context, args LookupWorkersCust
 // A collection of arguments for invoking getWorkersCustomDomain.
 type LookupWorkersCustomDomainOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// ID of the domain.
 	DomainId pulumi.StringPtrInput                `pulumi:"domainId"`
 	Filter   GetWorkersCustomDomainFilterPtrInput `pulumi:"filter"`
@@ -120,8 +124,8 @@ func (o LookupWorkersCustomDomainResultOutput) ToLookupWorkersCustomDomainResult
 }
 
 // Identifier.
-func (o LookupWorkersCustomDomainResultOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupWorkersCustomDomainResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o LookupWorkersCustomDomainResultOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkersCustomDomainResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // ID of the TLS certificate issued for the domain.
@@ -132,6 +136,11 @@ func (o LookupWorkersCustomDomainResultOutput) CertId() pulumi.StringOutput {
 // ID of the domain.
 func (o LookupWorkersCustomDomainResultOutput) DomainId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkersCustomDomainResult) *string { return v.DomainId }).(pulumi.StringPtrOutput)
+}
+
+// Whether the configured hostname is routable for the domain. If disabled, then requests to the configured hostname will not be routed to the configured Worker. If disabled, then preview routing must be enabled, and only subdomains of the configured hostname will be routable.
+func (o LookupWorkersCustomDomainResultOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupWorkersCustomDomainResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 // Worker environment associated with the domain.
@@ -153,6 +162,11 @@ func (o LookupWorkersCustomDomainResultOutput) Hostname() pulumi.StringOutput {
 // ID of the domain.
 func (o LookupWorkersCustomDomainResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersCustomDomainResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Whether previews are routable for the domain. If enabled, previews will be routable as subdomains of the configured hostname. For example, if the configured hostname is `app.example.com`, then requests to `my-feature.app.example.com` will be routed to the preview with slug `my-feature`, if such a preview exists. If preview routing is disabled, then hostname routing must be enabled.
+func (o LookupWorkersCustomDomainResultOutput) PreviewsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupWorkersCustomDomainResult) bool { return v.PreviewsEnabled }).(pulumi.BoolOutput)
 }
 
 // Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.

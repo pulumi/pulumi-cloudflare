@@ -15,6 +15,16 @@ public final class GetConnectivityDirectoryServicesResultTlsSettings {
      * 
      */
     private String certVerificationMode;
+    /**
+     * @return UUID of the custom CA certificate or chain.
+     * 
+     */
+    private String certificateAuthority;
+    /**
+     * @return UUID of the mTLS client certificate and private key.
+     * 
+     */
+    private String clientCertificate;
 
     private GetConnectivityDirectoryServicesResultTlsSettings() {}
     /**
@@ -23,6 +33,20 @@ public final class GetConnectivityDirectoryServicesResultTlsSettings {
      */
     public String certVerificationMode() {
         return this.certVerificationMode;
+    }
+    /**
+     * @return UUID of the custom CA certificate or chain.
+     * 
+     */
+    public String certificateAuthority() {
+        return this.certificateAuthority;
+    }
+    /**
+     * @return UUID of the mTLS client certificate and private key.
+     * 
+     */
+    public String clientCertificate() {
+        return this.clientCertificate;
     }
 
     public static Builder builder() {
@@ -35,10 +59,14 @@ public final class GetConnectivityDirectoryServicesResultTlsSettings {
     @CustomType.Builder
     public static final class Builder {
         private String certVerificationMode;
+        private String certificateAuthority;
+        private String clientCertificate;
         public Builder() {}
         public Builder(GetConnectivityDirectoryServicesResultTlsSettings defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.certVerificationMode = defaults.certVerificationMode;
+    	      this.certificateAuthority = defaults.certificateAuthority;
+    	      this.clientCertificate = defaults.clientCertificate;
         }
 
         @CustomType.Setter
@@ -49,9 +77,27 @@ public final class GetConnectivityDirectoryServicesResultTlsSettings {
             this.certVerificationMode = certVerificationMode;
             return this;
         }
+        @CustomType.Setter
+        public Builder certificateAuthority(String certificateAuthority) {
+            if (certificateAuthority == null) {
+              throw new MissingRequiredPropertyException("GetConnectivityDirectoryServicesResultTlsSettings", "certificateAuthority");
+            }
+            this.certificateAuthority = certificateAuthority;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder clientCertificate(String clientCertificate) {
+            if (clientCertificate == null) {
+              throw new MissingRequiredPropertyException("GetConnectivityDirectoryServicesResultTlsSettings", "clientCertificate");
+            }
+            this.clientCertificate = clientCertificate;
+            return this;
+        }
         public GetConnectivityDirectoryServicesResultTlsSettings build() {
             final var _resultValue = new GetConnectivityDirectoryServicesResultTlsSettings();
             _resultValue.certVerificationMode = certVerificationMode;
+            _resultValue.certificateAuthority = certificateAuthority;
+            _resultValue.clientCertificate = clientCertificate;
             return _resultValue;
         }
     }

@@ -24,14 +24,14 @@ public final class AiSearchNamespacePublicEndpointParamsMcpArgs extends com.pulu
     }
 
     /**
-     * Disable MCP endpoint for this public endpoint
+     * Disable MCP endpoint for this public endpoint.
      * 
      */
     @Import(name="disabled")
     private @Nullable Output<Boolean> disabled;
 
     /**
-     * @return Disable MCP endpoint for this public endpoint
+     * @return Disable MCP endpoint for this public endpoint.
      * 
      */
     public Optional<Output<Boolean>> disabled() {
@@ -73,7 +73,7 @@ public final class AiSearchNamespacePublicEndpointParamsMcpArgs extends com.pulu
         }
 
         /**
-         * @param disabled Disable MCP endpoint for this public endpoint
+         * @param disabled Disable MCP endpoint for this public endpoint.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class AiSearchNamespacePublicEndpointParamsMcpArgs extends com.pulu
         }
 
         /**
-         * @param disabled Disable MCP endpoint for this public endpoint
+         * @param disabled Disable MCP endpoint for this public endpoint.
          * 
          * @return builder
          * 

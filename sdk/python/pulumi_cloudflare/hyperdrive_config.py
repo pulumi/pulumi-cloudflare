@@ -33,6 +33,7 @@ class HyperdriveConfigArgs:
 
         :param pulumi.Input[_builtins.str] account_id: Define configurations using a unique string identifier.
         :param pulumi.Input[_builtins.str] name: The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
+        :param pulumi.Input[_builtins.str] integration: Selects a PlanetScale database and provisions credentials managed by Cloudflare when creating a Hyperdrive configuration. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. The selection is returned as read-only metadata and cannot be changed with replace or update operations.
         :param pulumi.Input['HyperdriveConfigMtlsArgs'] mtls: mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
         :param pulumi.Input['HyperdriveConfigOriginArgs'] origin: Combines database connection fields with exactly one supported network location.
         :param pulumi.Input[_builtins.int] origin_connection_limit: The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
@@ -86,6 +87,9 @@ class HyperdriveConfigArgs:
     @_builtins.property
     @pulumi.getter
     def integration(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Selects a PlanetScale database and provisions credentials managed by Cloudflare when creating a Hyperdrive configuration. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. The selection is returned as read-only metadata and cannot be changed with replace or update operations.
+        """
         return pulumi.get(self, "integration")
 
     @integration.setter
@@ -147,6 +151,7 @@ class _HyperdriveConfigState:
 
         :param pulumi.Input[_builtins.str] account_id: Define configurations using a unique string identifier.
         :param pulumi.Input[_builtins.str] created_on: Defines the creation time of the Hyperdrive configuration.
+        :param pulumi.Input[_builtins.str] integration: Selects a PlanetScale database and provisions credentials managed by Cloudflare when creating a Hyperdrive configuration. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. The selection is returned as read-only metadata and cannot be changed with replace or update operations.
         :param pulumi.Input[_builtins.str] modified_on: Defines the last modified time of the Hyperdrive configuration.
         :param pulumi.Input['HyperdriveConfigMtlsArgs'] mtls: mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
         :param pulumi.Input[_builtins.str] name: The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
@@ -211,6 +216,9 @@ class _HyperdriveConfigState:
     @_builtins.property
     @pulumi.getter
     def integration(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Selects a PlanetScale database and provisions credentials managed by Cloudflare when creating a Hyperdrive configuration. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. The selection is returned as read-only metadata and cannot be changed with replace or update operations.
+        """
         return pulumi.get(self, "integration")
 
     @integration.setter
@@ -352,6 +360,7 @@ class HyperdriveConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Define configurations using a unique string identifier.
+        :param pulumi.Input[_builtins.str] integration: Selects a PlanetScale database and provisions credentials managed by Cloudflare when creating a Hyperdrive configuration. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. The selection is returned as read-only metadata and cannot be changed with replace or update operations.
         :param pulumi.Input[Union['HyperdriveConfigMtlsArgs', 'HyperdriveConfigMtlsArgsDict', 'outputs.HyperdriveConfigMtls']] mtls: mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
         :param pulumi.Input[_builtins.str] name: The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
         :param pulumi.Input[Union['HyperdriveConfigOriginArgs', 'HyperdriveConfigOriginArgsDict', 'outputs.HyperdriveConfigOrigin']] origin: Combines database connection fields with exactly one supported network location.
@@ -482,6 +491,7 @@ class HyperdriveConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Define configurations using a unique string identifier.
         :param pulumi.Input[_builtins.str] created_on: Defines the creation time of the Hyperdrive configuration.
+        :param pulumi.Input[_builtins.str] integration: Selects a PlanetScale database and provisions credentials managed by Cloudflare when creating a Hyperdrive configuration. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. The selection is returned as read-only metadata and cannot be changed with replace or update operations.
         :param pulumi.Input[_builtins.str] modified_on: Defines the last modified time of the Hyperdrive configuration.
         :param pulumi.Input[Union['HyperdriveConfigMtlsArgs', 'HyperdriveConfigMtlsArgsDict', 'outputs.HyperdriveConfigMtls']] mtls: mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
         :param pulumi.Input[_builtins.str] name: The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
@@ -555,6 +565,9 @@ class HyperdriveConfig(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def integration(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Selects a PlanetScale database and provisions credentials managed by Cloudflare when creating a Hyperdrive configuration. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. The selection is returned as read-only metadata and cannot be changed with replace or update operations.
+        """
         return pulumi.get(self, "integration")
 
     @_builtins.property

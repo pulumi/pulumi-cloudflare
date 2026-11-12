@@ -67,11 +67,14 @@ type LookupWorkflowResult struct {
 	CreatedOn string             `pulumi:"createdOn"`
 	Filter    *GetWorkflowFilter `pulumi:"filter"`
 	// The ID of this resource.
-	Id         string                `pulumi:"id"`
-	Instances  map[string]float64    `pulumi:"instances"`
-	ModifiedOn string                `pulumi:"modifiedOn"`
-	Name       string                `pulumi:"name"`
-	Schedules  []GetWorkflowSchedule `pulumi:"schedules"`
+	Id        string             `pulumi:"id"`
+	Instances map[string]float64 `pulumi:"instances"`
+	// Jurisdiction where instances of this workflow run and store data. Set when the workflow is created and cannot be changed.
+	// Available values: "eu", "fedramp", "us".
+	Jurisdiction string                `pulumi:"jurisdiction"`
+	ModifiedOn   string                `pulumi:"modifiedOn"`
+	Name         string                `pulumi:"name"`
+	Schedules    []GetWorkflowSchedule `pulumi:"schedules"`
 	// Whether the bound Worker was deleted, leaving this Workflow inactive.
 	ScriptDeleted bool    `pulumi:"scriptDeleted"`
 	ScriptName    string  `pulumi:"scriptName"`
@@ -133,6 +136,12 @@ func (o LookupWorkflowResultOutput) Id() pulumi.StringOutput {
 
 func (o LookupWorkflowResultOutput) Instances() pulumi.Float64MapOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) map[string]float64 { return v.Instances }).(pulumi.Float64MapOutput)
+}
+
+// Jurisdiction where instances of this workflow run and store data. Set when the workflow is created and cannot be changed.
+// Available values: "eu", "fedramp", "us".
+func (o LookupWorkflowResultOutput) Jurisdiction() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkflowResult) string { return v.Jurisdiction }).(pulumi.StringOutput)
 }
 
 func (o LookupWorkflowResultOutput) ModifiedOn() pulumi.StringOutput {

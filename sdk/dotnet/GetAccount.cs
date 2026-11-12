@@ -227,6 +227,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// Legacy account flags.
+        /// </summary>
+        public readonly Outputs.GetAccountLegacyFlagsResult LegacyFlags;
+        /// <summary>
         /// Parent container details
         /// </summary>
         public readonly Outputs.GetAccountManagedByResult ManagedBy;
@@ -253,6 +257,8 @@ namespace Pulumi.Cloudflare
 
             string id,
 
+            Outputs.GetAccountLegacyFlagsResult legacyFlags,
+
             Outputs.GetAccountManagedByResult managedBy,
 
             string name,
@@ -265,6 +271,7 @@ namespace Pulumi.Cloudflare
             CreatedOn = createdOn;
             Filter = filter;
             Id = id;
+            LegacyFlags = legacyFlags;
             ManagedBy = managedBy;
             Name = name;
             Settings = settings;

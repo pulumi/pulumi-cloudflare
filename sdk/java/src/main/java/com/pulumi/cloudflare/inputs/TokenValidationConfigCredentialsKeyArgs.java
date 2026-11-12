@@ -34,7 +34,7 @@ public final class TokenValidationConfigCredentialsKeyArgs extends com.pulumi.re
     }
 
     /**
-     * Curve
+     * For `alg: ES256` or `alg: ES384`: Curve
      * Available values: &#34;P-256&#34;, &#34;P-384&#34;.
      * 
      */
@@ -42,7 +42,7 @@ public final class TokenValidationConfigCredentialsKeyArgs extends com.pulumi.re
     private @Nullable Output<String> crv;
 
     /**
-     * @return Curve
+     * @return For `alg: ES256` or `alg: ES384`: Curve
      * Available values: &#34;P-256&#34;, &#34;P-384&#34;.
      * 
      */
@@ -51,14 +51,14 @@ public final class TokenValidationConfigCredentialsKeyArgs extends com.pulumi.re
     }
 
     /**
-     * RSA exponent
+     * For `alg: RS256` or `alg: RS384` or `alg: RS512` or `alg: PS256` or `alg: PS384` or `alg: PS512`: RSA exponent
      * 
      */
     @Import(name="e")
     private @Nullable Output<String> e;
 
     /**
-     * @return RSA exponent
+     * @return For `alg: RS256` or `alg: RS384` or `alg: RS512` or `alg: PS256` or `alg: PS384` or `alg: PS512`: RSA exponent
      * 
      */
     public Optional<Output<String>> e() {
@@ -66,14 +66,14 @@ public final class TokenValidationConfigCredentialsKeyArgs extends com.pulumi.re
     }
 
     /**
-     * Symmetric key material. Required for create and PUT update requests.
+     * For `alg: HS256` or `alg: HS384` or `alg: HS512`: Symmetric key material. Required for create and PUT update requests.
      * 
      */
     @Import(name="k")
     private @Nullable Output<String> k;
 
     /**
-     * @return Symmetric key material. Required for create and PUT update requests.
+     * @return For `alg: HS256` or `alg: HS384` or `alg: HS512`: Symmetric key material. Required for create and PUT update requests.
      * 
      */
     public Optional<Output<String>> k() {
@@ -113,14 +113,14 @@ public final class TokenValidationConfigCredentialsKeyArgs extends com.pulumi.re
     }
 
     /**
-     * RSA modulus
+     * For `alg: RS256` or `alg: RS384` or `alg: RS512` or `alg: PS256` or `alg: PS384` or `alg: PS512`: RSA modulus
      * 
      */
     @Import(name="n")
     private @Nullable Output<String> n;
 
     /**
-     * @return RSA modulus
+     * @return For `alg: RS256` or `alg: RS384` or `alg: RS512` or `alg: PS256` or `alg: PS384` or `alg: PS512`: RSA modulus
      * 
      */
     public Optional<Output<String>> n() {
@@ -128,14 +128,14 @@ public final class TokenValidationConfigCredentialsKeyArgs extends com.pulumi.re
     }
 
     /**
-     * X EC coordinate
+     * For `alg: ES256` or `alg: ES384`: X EC coordinate
      * 
      */
     @Import(name="x")
     private @Nullable Output<String> x;
 
     /**
-     * @return X EC coordinate
+     * @return For `alg: ES256` or `alg: ES384`: X EC coordinate
      * 
      */
     public Optional<Output<String>> x() {
@@ -143,14 +143,14 @@ public final class TokenValidationConfigCredentialsKeyArgs extends com.pulumi.re
     }
 
     /**
-     * Y EC coordinate
+     * For `alg: ES256` or `alg: ES384`: Y EC coordinate
      * 
      */
     @Import(name="y")
     private @Nullable Output<String> y;
 
     /**
-     * @return Y EC coordinate
+     * @return For `alg: ES256` or `alg: ES384`: Y EC coordinate
      * 
      */
     public Optional<Output<String>> y() {
@@ -213,7 +213,7 @@ public final class TokenValidationConfigCredentialsKeyArgs extends com.pulumi.re
         }
 
         /**
-         * @param crv Curve
+         * @param crv For `alg: ES256` or `alg: ES384`: Curve
          * Available values: &#34;P-256&#34;, &#34;P-384&#34;.
          * 
          * @return builder
@@ -225,7 +225,7 @@ public final class TokenValidationConfigCredentialsKeyArgs extends com.pulumi.re
         }
 
         /**
-         * @param crv Curve
+         * @param crv For `alg: ES256` or `alg: ES384`: Curve
          * Available values: &#34;P-256&#34;, &#34;P-384&#34;.
          * 
          * @return builder
@@ -236,7 +236,7 @@ public final class TokenValidationConfigCredentialsKeyArgs extends com.pulumi.re
         }
 
         /**
-         * @param e RSA exponent
+         * @param e For `alg: RS256` or `alg: RS384` or `alg: RS512` or `alg: PS256` or `alg: PS384` or `alg: PS512`: RSA exponent
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class TokenValidationConfigCredentialsKeyArgs extends com.pulumi.re
         }
 
         /**
-         * @param e RSA exponent
+         * @param e For `alg: RS256` or `alg: RS384` or `alg: RS512` or `alg: PS256` or `alg: PS384` or `alg: PS512`: RSA exponent
          * 
          * @return builder
          * 
@@ -257,7 +257,7 @@ public final class TokenValidationConfigCredentialsKeyArgs extends com.pulumi.re
         }
 
         /**
-         * @param k Symmetric key material. Required for create and PUT update requests.
+         * @param k For `alg: HS256` or `alg: HS384` or `alg: HS512`: Symmetric key material. Required for create and PUT update requests.
          * 
          * @return builder
          * 
@@ -268,7 +268,7 @@ public final class TokenValidationConfigCredentialsKeyArgs extends com.pulumi.re
         }
 
         /**
-         * @param k Symmetric key material. Required for create and PUT update requests.
+         * @param k For `alg: HS256` or `alg: HS384` or `alg: HS512`: Symmetric key material. Required for create and PUT update requests.
          * 
          * @return builder
          * 
@@ -322,7 +322,7 @@ public final class TokenValidationConfigCredentialsKeyArgs extends com.pulumi.re
         }
 
         /**
-         * @param n RSA modulus
+         * @param n For `alg: RS256` or `alg: RS384` or `alg: RS512` or `alg: PS256` or `alg: PS384` or `alg: PS512`: RSA modulus
          * 
          * @return builder
          * 
@@ -333,7 +333,7 @@ public final class TokenValidationConfigCredentialsKeyArgs extends com.pulumi.re
         }
 
         /**
-         * @param n RSA modulus
+         * @param n For `alg: RS256` or `alg: RS384` or `alg: RS512` or `alg: PS256` or `alg: PS384` or `alg: PS512`: RSA modulus
          * 
          * @return builder
          * 
@@ -343,7 +343,7 @@ public final class TokenValidationConfigCredentialsKeyArgs extends com.pulumi.re
         }
 
         /**
-         * @param x X EC coordinate
+         * @param x For `alg: ES256` or `alg: ES384`: X EC coordinate
          * 
          * @return builder
          * 
@@ -354,7 +354,7 @@ public final class TokenValidationConfigCredentialsKeyArgs extends com.pulumi.re
         }
 
         /**
-         * @param x X EC coordinate
+         * @param x For `alg: ES256` or `alg: ES384`: X EC coordinate
          * 
          * @return builder
          * 
@@ -364,7 +364,7 @@ public final class TokenValidationConfigCredentialsKeyArgs extends com.pulumi.re
         }
 
         /**
-         * @param y Y EC coordinate
+         * @param y For `alg: ES256` or `alg: ES384`: Y EC coordinate
          * 
          * @return builder
          * 
@@ -375,7 +375,7 @@ public final class TokenValidationConfigCredentialsKeyArgs extends com.pulumi.re
         }
 
         /**
-         * @param y Y EC coordinate
+         * @param y For `alg: ES256` or `alg: ES384`: Y EC coordinate
          * 
          * @return builder
          * 

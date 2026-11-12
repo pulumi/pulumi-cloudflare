@@ -19,6 +19,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Direction;
         /// <summary>
+        /// Filter to return only expired patterns (`True`) or only patterns that still apply (`False`). Omit to return both.
+        /// </summary>
+        public readonly bool? Expired;
+        /// <summary>
         /// Field to sort by.
         /// Available values: "pattern", "CreatedAt".
         /// </summary>
@@ -41,6 +45,8 @@ namespace Pulumi.Cloudflare.Outputs
         private GetEmailSecurityBlockSenderFilterResult(
             string? direction,
 
+            bool? expired,
+
             string? order,
 
             string? pattern,
@@ -50,6 +56,7 @@ namespace Pulumi.Cloudflare.Outputs
             string? search)
         {
             Direction = direction;
+            Expired = expired;
             Order = order;
             Pattern = pattern;
             PatternType = patternType;

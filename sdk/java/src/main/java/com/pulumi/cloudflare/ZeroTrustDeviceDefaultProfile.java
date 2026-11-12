@@ -72,6 +72,7 @@ import javax.annotation.Nullable;
  *                 .suffix("internal.corp")
  *                 .description("Example internal domains")
  *                 .build())
+ *             .enableDeviceCredentialAuthentication(false)
  *             .excludes(ZeroTrustDeviceDefaultProfileExcludeArgs.builder()
  *                 .address("192.0.2.0/24")
  *                 .description("Exclude testing domains from the tunnel")
@@ -82,6 +83,8 @@ import javax.annotation.Nullable;
  *                 .enabled(true)
  *                 .masqueEndpoints("198.51.100.1:443")
  *                 .wireguardEndpoints("198.51.100.1:2408")
+ *                 .allowManualOverride(true)
+ *                 .autoswitch(true)
  *                 .build())
  *             .includes(ZeroTrustDeviceDefaultProfileIncludeArgs.builder()
  *                 .address("192.0.2.0/24")
@@ -236,6 +239,20 @@ public class ZeroTrustDeviceDefaultProfile extends com.pulumi.resources.CustomRe
      */
     public Output<List<ZeroTrustDeviceDefaultProfileDnsSearchSuffix>> dnsSearchSuffixes() {
         return this.dnsSearchSuffixes;
+    }
+    /**
+     * Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.
+     * 
+     */
+    @Export(name="enableDeviceCredentialAuthentication", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> enableDeviceCredentialAuthentication;
+
+    /**
+     * @return Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.
+     * 
+     */
+    public Output<Boolean> enableDeviceCredentialAuthentication() {
+        return this.enableDeviceCredentialAuthentication;
     }
     /**
      * Whether the policy will be applied to matching devices.

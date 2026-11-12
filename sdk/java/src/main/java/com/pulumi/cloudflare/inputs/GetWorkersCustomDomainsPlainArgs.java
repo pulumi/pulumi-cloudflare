@@ -4,6 +4,8 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -19,15 +21,30 @@ public final class GetWorkersCustomDomainsPlainArgs extends com.pulumi.resources
      * Identifier.
      * 
      */
-    @Import(name="accountId")
-    private @Nullable String accountId;
+    @Import(name="accountId", required=true)
+    private String accountId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Optional<String> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public String accountId() {
+        return this.accountId;
+    }
+
+    /**
+     * Whether the configured hostname is routable for the domain.
+     * 
+     */
+    @Import(name="enabled")
+    private @Nullable Boolean enabled;
+
+    /**
+     * @return Whether the configured hostname is routable for the domain.
+     * 
+     */
+    public Optional<Boolean> enabled() {
+        return Optional.ofNullable(this.enabled);
     }
 
     /**
@@ -73,6 +90,21 @@ public final class GetWorkersCustomDomainsPlainArgs extends com.pulumi.resources
      */
     public Optional<Integer> maxItems() {
         return Optional.ofNullable(this.maxItems);
+    }
+
+    /**
+     * Whether previews are routable for the domain.
+     * 
+     */
+    @Import(name="previewsEnabled")
+    private @Nullable Boolean previewsEnabled;
+
+    /**
+     * @return Whether previews are routable for the domain.
+     * 
+     */
+    public Optional<Boolean> previewsEnabled() {
+        return Optional.ofNullable(this.previewsEnabled);
     }
 
     /**
@@ -124,9 +156,11 @@ public final class GetWorkersCustomDomainsPlainArgs extends com.pulumi.resources
 
     private GetWorkersCustomDomainsPlainArgs(GetWorkersCustomDomainsPlainArgs $) {
         this.accountId = $.accountId;
+        this.enabled = $.enabled;
         this.environment = $.environment;
         this.hostname = $.hostname;
         this.maxItems = $.maxItems;
+        this.previewsEnabled = $.previewsEnabled;
         this.service = $.service;
         this.zoneId = $.zoneId;
         this.zoneName = $.zoneName;
@@ -156,8 +190,19 @@ public final class GetWorkersCustomDomainsPlainArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder accountId(@Nullable String accountId) {
+        public Builder accountId(String accountId) {
             $.accountId = accountId;
+            return this;
+        }
+
+        /**
+         * @param enabled Whether the configured hostname is routable for the domain.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(@Nullable Boolean enabled) {
+            $.enabled = enabled;
             return this;
         }
 
@@ -195,6 +240,17 @@ public final class GetWorkersCustomDomainsPlainArgs extends com.pulumi.resources
         }
 
         /**
+         * @param previewsEnabled Whether previews are routable for the domain.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder previewsEnabled(@Nullable Boolean previewsEnabled) {
+            $.previewsEnabled = previewsEnabled;
+            return this;
+        }
+
+        /**
          * @param service Name of the Worker associated with the domain.
          * 
          * @return builder
@@ -228,6 +284,9 @@ public final class GetWorkersCustomDomainsPlainArgs extends com.pulumi.resources
         }
 
         public GetWorkersCustomDomainsPlainArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("GetWorkersCustomDomainsPlainArgs", "accountId");
+            }
             return $;
         }
     }

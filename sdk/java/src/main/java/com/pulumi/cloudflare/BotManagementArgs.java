@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare;
 
+import com.pulumi.cloudflare.inputs.BotManagementAiAgentsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -16,6 +17,21 @@ import javax.annotation.Nullable;
 public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final BotManagementArgs Empty = new BotManagementArgs();
+
+    /**
+     * Configure blocking behavior for supported personal AI agents.
+     * 
+     */
+    @Import(name="aiAgents")
+    private @Nullable Output<BotManagementAiAgentsArgs> aiAgents;
+
+    /**
+     * @return Configure blocking behavior for supported personal AI agents.
+     * 
+     */
+    public Optional<Output<BotManagementAiAgentsArgs>> aiAgents() {
+        return Optional.ofNullable(this.aiAgents);
+    }
 
     /**
      * Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
@@ -374,6 +390,7 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
     private BotManagementArgs() {}
 
     private BotManagementArgs(BotManagementArgs $) {
+        this.aiAgents = $.aiAgents;
         this.aiBotsMigrationOptOut = $.aiBotsMigrationOptOut;
         this.aiBotsProtection = $.aiBotsProtection;
         this.aiTraining = $.aiTraining;
@@ -414,6 +431,27 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(BotManagementArgs defaults) {
             $ = new BotManagementArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param aiAgents Configure blocking behavior for supported personal AI agents.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aiAgents(@Nullable Output<BotManagementAiAgentsArgs> aiAgents) {
+            $.aiAgents = aiAgents;
+            return this;
+        }
+
+        /**
+         * @param aiAgents Configure blocking behavior for supported personal AI agents.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aiAgents(BotManagementAiAgentsArgs aiAgents) {
+            return aiAgents(Output.of(aiAgents));
         }
 
         /**

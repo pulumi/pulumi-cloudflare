@@ -33,6 +33,16 @@ public final class GetMagicTransitSiteWansResult {
      */
     private Integer priority;
     /**
+     * @return Provisioned download rate of the WAN circuit in kilobits per second.
+     * 
+     */
+    private Integer provisionedDownloadKbps;
+    /**
+     * @return Provisioned upload rate of the WAN circuit in kilobits per second.
+     * 
+     */
+    private Integer provisionedUploadKbps;
+    /**
      * @return Identifier
      * 
      */
@@ -81,6 +91,20 @@ public final class GetMagicTransitSiteWansResult {
         return this.priority;
     }
     /**
+     * @return Provisioned download rate of the WAN circuit in kilobits per second.
+     * 
+     */
+    public Integer provisionedDownloadKbps() {
+        return this.provisionedDownloadKbps;
+    }
+    /**
+     * @return Provisioned upload rate of the WAN circuit in kilobits per second.
+     * 
+     */
+    public Integer provisionedUploadKbps() {
+        return this.provisionedUploadKbps;
+    }
+    /**
      * @return Identifier
      * 
      */
@@ -117,6 +141,8 @@ public final class GetMagicTransitSiteWansResult {
         private String name;
         private Integer physport;
         private Integer priority;
+        private Integer provisionedDownloadKbps;
+        private Integer provisionedUploadKbps;
         private String siteId;
         private GetMagicTransitSiteWansResultStaticAddressing staticAddressing;
         private Integer vlanTag;
@@ -129,6 +155,8 @@ public final class GetMagicTransitSiteWansResult {
     	      this.name = defaults.name;
     	      this.physport = defaults.physport;
     	      this.priority = defaults.priority;
+    	      this.provisionedDownloadKbps = defaults.provisionedDownloadKbps;
+    	      this.provisionedUploadKbps = defaults.provisionedUploadKbps;
     	      this.siteId = defaults.siteId;
     	      this.staticAddressing = defaults.staticAddressing;
     	      this.vlanTag = defaults.vlanTag;
@@ -183,6 +211,22 @@ public final class GetMagicTransitSiteWansResult {
             return this;
         }
         @CustomType.Setter
+        public Builder provisionedDownloadKbps(Integer provisionedDownloadKbps) {
+            if (provisionedDownloadKbps == null) {
+              throw new MissingRequiredPropertyException("GetMagicTransitSiteWansResult", "provisionedDownloadKbps");
+            }
+            this.provisionedDownloadKbps = provisionedDownloadKbps;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder provisionedUploadKbps(Integer provisionedUploadKbps) {
+            if (provisionedUploadKbps == null) {
+              throw new MissingRequiredPropertyException("GetMagicTransitSiteWansResult", "provisionedUploadKbps");
+            }
+            this.provisionedUploadKbps = provisionedUploadKbps;
+            return this;
+        }
+        @CustomType.Setter
         public Builder siteId(String siteId) {
             if (siteId == null) {
               throw new MissingRequiredPropertyException("GetMagicTransitSiteWansResult", "siteId");
@@ -214,6 +258,8 @@ public final class GetMagicTransitSiteWansResult {
             _resultValue.name = name;
             _resultValue.physport = physport;
             _resultValue.priority = priority;
+            _resultValue.provisionedDownloadKbps = provisionedDownloadKbps;
+            _resultValue.provisionedUploadKbps = provisionedUploadKbps;
             _resultValue.siteId = siteId;
             _resultValue.staticAddressing = staticAddressing;
             _resultValue.vlanTag = vlanTag;

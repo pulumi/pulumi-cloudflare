@@ -18,7 +18,7 @@ public final class GetUserGroupsResult {
      */
     private String createdOn;
     /**
-     * @return User Group identifier tag.
+     * @return Identifier of the user group.
      * 
      */
     private String id;
@@ -47,7 +47,7 @@ public final class GetUserGroupsResult {
         return this.createdOn;
     }
     /**
-     * @return User Group identifier tag.
+     * @return Identifier of the user group.
      * 
      */
     public String id() {

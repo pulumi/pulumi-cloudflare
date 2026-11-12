@@ -157,12 +157,16 @@ public final class AccessIdentityProviderConfigArgs extends com.pulumi.resources
     /**
      * Your OAuth Client Secret
      * 
+     * The client secret from the Duo Generic OIDC Relying Party metadata.
+     * 
      */
     @Import(name="clientSecret")
     private @Nullable Output<String> clientSecret;
 
     /**
      * @return Your OAuth Client Secret
+     * 
+     * The client secret from the Duo Generic OIDC Relying Party metadata.
      * 
      */
     public Optional<Output<String>> clientSecret() {
@@ -233,6 +237,13 @@ public final class AccessIdentityProviderConfigArgs extends com.pulumi.resources
      * Enable SAML assertion encryption. When enabled, the Identity Provider will encrypt
      * SAML assertions using the certificate from the assigned certificate set.
      * 
+     * To enable encryption:
+     * 1. Create a certificate set via POST to `/identity_providers/{id}/saml_certificate`
+     * 2. Set this field to `true` and include `samlCertificateSetId` in the PUT request
+     * 3. Configure the public certificate in your external Identity Provider
+     * 
+     * Note: Requires `samlCertificateSetId` to be set when `true`.
+     * 
      */
     @Import(name="enableEncryption")
     private @Nullable Output<Boolean> enableEncryption;
@@ -240,6 +251,13 @@ public final class AccessIdentityProviderConfigArgs extends com.pulumi.resources
     /**
      * @return Enable SAML assertion encryption. When enabled, the Identity Provider will encrypt
      * SAML assertions using the certificate from the assigned certificate set.
+     * 
+     * To enable encryption:
+     * 1. Create a certificate set via POST to `/identity_providers/{id}/saml_certificate`
+     * 2. Set this field to `true` and include `samlCertificateSetId` in the PUT request
+     * 3. Configure the public certificate in your external Identity Provider
+     * 
+     * Note: Requires `samlCertificateSetId` to be set when `true`.
      * 
      */
     public Optional<Output<Boolean>> enableEncryption() {
@@ -292,6 +310,8 @@ public final class AccessIdentityProviderConfigArgs extends com.pulumi.resources
     }
 
     /**
+     * The issuer URL from the Duo Generic OIDC Relying Party metadata.
+     * 
      * IdP Entity ID or Issuer URL
      * 
      */
@@ -299,7 +319,9 @@ public final class AccessIdentityProviderConfigArgs extends com.pulumi.resources
     private @Nullable Output<String> issuerUrl;
 
     /**
-     * @return IdP Entity ID or Issuer URL
+     * @return The issuer URL from the Duo Generic OIDC Relying Party metadata.
+     * 
+     * IdP Entity ID or Issuer URL
      * 
      */
     public Optional<Output<String>> issuerUrl() {
@@ -404,6 +426,8 @@ public final class AccessIdentityProviderConfigArgs extends com.pulumi.resources
 
     /**
      * Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn&#39;t presented with any interactive prompt. If the request can&#39;t be completed silently by using single-sign on, the Microsoft identity platform returns an interactionRequired error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
+     * 
+     * Configures the prompt behavior for Google authentication.
      * Available values: &#34;login&#34;, &#34;selectAccount&#34;, &#34;none&#34;, &#34;consent&#34;.
      * 
      */
@@ -412,6 +436,8 @@ public final class AccessIdentityProviderConfigArgs extends com.pulumi.resources
 
     /**
      * @return Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn&#39;t presented with any interactive prompt. If the request can&#39;t be completed silently by using single-sign on, the Microsoft identity platform returns an interactionRequired error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
+     * 
+     * Configures the prompt behavior for Google authentication.
      * Available values: &#34;login&#34;, &#34;selectAccount&#34;, &#34;none&#34;, &#34;consent&#34;.
      * 
      */
@@ -502,14 +528,14 @@ public final class AccessIdentityProviderConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * The tokenEndpoint URL of your IdP
+     * The tokenEndpoint URL of your IdP. Updates that change its origin (scheme, host, or port) require clientSecret in the request. Path-only changes do not require client_secret.
      * 
      */
     @Import(name="tokenUrl")
     private @Nullable Output<String> tokenUrl;
 
     /**
-     * @return The tokenEndpoint URL of your IdP
+     * @return The tokenEndpoint URL of your IdP. Updates that change its origin (scheme, host, or port) require clientSecret in the request. Path-only changes do not require client_secret.
      * 
      */
     public Optional<Output<String>> tokenUrl() {
@@ -800,6 +826,8 @@ public final class AccessIdentityProviderConfigArgs extends com.pulumi.resources
         /**
          * @param clientSecret Your OAuth Client Secret
          * 
+         * The client secret from the Duo Generic OIDC Relying Party metadata.
+         * 
          * @return builder
          * 
          */
@@ -810,6 +838,8 @@ public final class AccessIdentityProviderConfigArgs extends com.pulumi.resources
 
         /**
          * @param clientSecret Your OAuth Client Secret
+         * 
+         * The client secret from the Duo Generic OIDC Relying Party metadata.
          * 
          * @return builder
          * 
@@ -906,6 +936,13 @@ public final class AccessIdentityProviderConfigArgs extends com.pulumi.resources
          * @param enableEncryption Enable SAML assertion encryption. When enabled, the Identity Provider will encrypt
          * SAML assertions using the certificate from the assigned certificate set.
          * 
+         * To enable encryption:
+         * 1. Create a certificate set via POST to `/identity_providers/{id}/saml_certificate`
+         * 2. Set this field to `true` and include `samlCertificateSetId` in the PUT request
+         * 3. Configure the public certificate in your external Identity Provider
+         * 
+         * Note: Requires `samlCertificateSetId` to be set when `true`.
+         * 
          * @return builder
          * 
          */
@@ -917,6 +954,13 @@ public final class AccessIdentityProviderConfigArgs extends com.pulumi.resources
         /**
          * @param enableEncryption Enable SAML assertion encryption. When enabled, the Identity Provider will encrypt
          * SAML assertions using the certificate from the assigned certificate set.
+         * 
+         * To enable encryption:
+         * 1. Create a certificate set via POST to `/identity_providers/{id}/saml_certificate`
+         * 2. Set this field to `true` and include `samlCertificateSetId` in the PUT request
+         * 3. Configure the public certificate in your external Identity Provider
+         * 
+         * Note: Requires `samlCertificateSetId` to be set when `true`.
          * 
          * @return builder
          * 
@@ -1009,7 +1053,9 @@ public final class AccessIdentityProviderConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param issuerUrl IdP Entity ID or Issuer URL
+         * @param issuerUrl The issuer URL from the Duo Generic OIDC Relying Party metadata.
+         * 
+         * IdP Entity ID or Issuer URL
          * 
          * @return builder
          * 
@@ -1020,7 +1066,9 @@ public final class AccessIdentityProviderConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param issuerUrl IdP Entity ID or Issuer URL
+         * @param issuerUrl The issuer URL from the Duo Generic OIDC Relying Party metadata.
+         * 
+         * IdP Entity ID or Issuer URL
          * 
          * @return builder
          * 
@@ -1163,6 +1211,8 @@ public final class AccessIdentityProviderConfigArgs extends com.pulumi.resources
 
         /**
          * @param prompt Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn&#39;t presented with any interactive prompt. If the request can&#39;t be completed silently by using single-sign on, the Microsoft identity platform returns an interactionRequired error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
+         * 
+         * Configures the prompt behavior for Google authentication.
          * Available values: &#34;login&#34;, &#34;selectAccount&#34;, &#34;none&#34;, &#34;consent&#34;.
          * 
          * @return builder
@@ -1175,6 +1225,8 @@ public final class AccessIdentityProviderConfigArgs extends com.pulumi.resources
 
         /**
          * @param prompt Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn&#39;t presented with any interactive prompt. If the request can&#39;t be completed silently by using single-sign on, the Microsoft identity platform returns an interactionRequired error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
+         * 
+         * Configures the prompt behavior for Google authentication.
          * Available values: &#34;login&#34;, &#34;selectAccount&#34;, &#34;none&#34;, &#34;consent&#34;.
          * 
          * @return builder
@@ -1309,7 +1361,7 @@ public final class AccessIdentityProviderConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param tokenUrl The tokenEndpoint URL of your IdP
+         * @param tokenUrl The tokenEndpoint URL of your IdP. Updates that change its origin (scheme, host, or port) require clientSecret in the request. Path-only changes do not require client_secret.
          * 
          * @return builder
          * 
@@ -1320,7 +1372,7 @@ public final class AccessIdentityProviderConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param tokenUrl The tokenEndpoint URL of your IdP
+         * @param tokenUrl The tokenEndpoint URL of your IdP. Updates that change its origin (scheme, host, or port) require clientSecret in the request. Path-only changes do not require client_secret.
          * 
          * @return builder
          * 

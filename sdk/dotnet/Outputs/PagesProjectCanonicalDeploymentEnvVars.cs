@@ -18,7 +18,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// Environment variable value.
+        /// For `type: PlainText`: Environment variable value.
         /// </summary>
         public readonly string? Value;
 

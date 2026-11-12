@@ -12,32 +12,32 @@ import javax.annotation.Nullable;
 @CustomType
 public final class R2BucketSippySource {
     /**
-     * @return Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
+     * @return For `r2_bucket_sippy_provider: aws` or `r2_bucket_sippy_provider: s3`: Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
      * 
      */
     private @Nullable String accessKeyId;
     /**
-     * @return Access key for the Azure Storage account. Mutually exclusive with sasToken.
+     * @return For `r2_bucket_sippy_provider: azure`: Access key for the Azure Storage account. Mutually exclusive with sasToken.
      * 
      */
     private @Nullable String accountKey;
     /**
-     * @return Name of the Azure Storage account.
+     * @return For `r2_bucket_sippy_provider: azure`: Name of the Azure Storage account.
      * 
      */
     private @Nullable String accountName;
     /**
-     * @return Name of the AWS S3 bucket.
+     * @return For `r2_bucket_sippy_provider: aws`: Name of the AWS S3 bucket.
      * 
      */
     private @Nullable String bucket;
     /**
-     * @return URL to the S3-compatible API of the bucket.
+     * @return For `r2_bucket_sippy_provider: s3`: URL to the S3-compatible API of the bucket.
      * 
      */
     private @Nullable String bucketUrl;
     /**
-     * @return Client email of an IAM credential (ideally scoped to a single GCS bucket).
+     * @return For `r2_bucket_sippy_provider: gcs`: Client email of an IAM credential (ideally scoped to a single GCS bucket).
      * 
      */
     private @Nullable String clientEmail;
@@ -47,69 +47,69 @@ public final class R2BucketSippySource {
      */
     private @Nullable String cloudProvider;
     /**
-     * @return Name of the Azure Blob Storage container.
+     * @return For `r2_bucket_sippy_provider: azure`: Name of the Azure Blob Storage container.
      * 
      */
     private @Nullable String container;
     /**
-     * @return Private Key of an IAM credential (ideally scoped to a single GCS bucket).
+     * @return For `r2_bucket_sippy_provider: gcs`: Private Key of an IAM credential (ideally scoped to a single GCS bucket).
      * 
      */
     private @Nullable String privateKey;
     /**
-     * @return AWS region containing the source S3 bucket.
+     * @return For `r2_bucket_sippy_provider: aws`: AWS region containing the source S3 bucket.
      * 
      */
     private @Nullable String region;
     /**
-     * @return Shared Access Signature token for the Azure Storage account. Mutually exclusive with accountKey.
+     * @return For `r2_bucket_sippy_provider: azure`: Shared Access Signature token for the Azure Storage account. Mutually exclusive with accountKey.
      * 
      */
     private @Nullable String sasToken;
     /**
-     * @return Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
+     * @return For `r2_bucket_sippy_provider: aws` or `r2_bucket_sippy_provider: s3`: Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
      * 
      */
     private @Nullable String secretAccessKey;
 
     private R2BucketSippySource() {}
     /**
-     * @return Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
+     * @return For `r2_bucket_sippy_provider: aws` or `r2_bucket_sippy_provider: s3`: Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
      * 
      */
     public Optional<String> accessKeyId() {
         return Optional.ofNullable(this.accessKeyId);
     }
     /**
-     * @return Access key for the Azure Storage account. Mutually exclusive with sasToken.
+     * @return For `r2_bucket_sippy_provider: azure`: Access key for the Azure Storage account. Mutually exclusive with sasToken.
      * 
      */
     public Optional<String> accountKey() {
         return Optional.ofNullable(this.accountKey);
     }
     /**
-     * @return Name of the Azure Storage account.
+     * @return For `r2_bucket_sippy_provider: azure`: Name of the Azure Storage account.
      * 
      */
     public Optional<String> accountName() {
         return Optional.ofNullable(this.accountName);
     }
     /**
-     * @return Name of the AWS S3 bucket.
+     * @return For `r2_bucket_sippy_provider: aws`: Name of the AWS S3 bucket.
      * 
      */
     public Optional<String> bucket() {
         return Optional.ofNullable(this.bucket);
     }
     /**
-     * @return URL to the S3-compatible API of the bucket.
+     * @return For `r2_bucket_sippy_provider: s3`: URL to the S3-compatible API of the bucket.
      * 
      */
     public Optional<String> bucketUrl() {
         return Optional.ofNullable(this.bucketUrl);
     }
     /**
-     * @return Client email of an IAM credential (ideally scoped to a single GCS bucket).
+     * @return For `r2_bucket_sippy_provider: gcs`: Client email of an IAM credential (ideally scoped to a single GCS bucket).
      * 
      */
     public Optional<String> clientEmail() {
@@ -123,35 +123,35 @@ public final class R2BucketSippySource {
         return Optional.ofNullable(this.cloudProvider);
     }
     /**
-     * @return Name of the Azure Blob Storage container.
+     * @return For `r2_bucket_sippy_provider: azure`: Name of the Azure Blob Storage container.
      * 
      */
     public Optional<String> container() {
         return Optional.ofNullable(this.container);
     }
     /**
-     * @return Private Key of an IAM credential (ideally scoped to a single GCS bucket).
+     * @return For `r2_bucket_sippy_provider: gcs`: Private Key of an IAM credential (ideally scoped to a single GCS bucket).
      * 
      */
     public Optional<String> privateKey() {
         return Optional.ofNullable(this.privateKey);
     }
     /**
-     * @return AWS region containing the source S3 bucket.
+     * @return For `r2_bucket_sippy_provider: aws`: AWS region containing the source S3 bucket.
      * 
      */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
     /**
-     * @return Shared Access Signature token for the Azure Storage account. Mutually exclusive with accountKey.
+     * @return For `r2_bucket_sippy_provider: azure`: Shared Access Signature token for the Azure Storage account. Mutually exclusive with accountKey.
      * 
      */
     public Optional<String> sasToken() {
         return Optional.ofNullable(this.sasToken);
     }
     /**
-     * @return Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
+     * @return For `r2_bucket_sippy_provider: aws` or `r2_bucket_sippy_provider: s3`: Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
      * 
      */
     public Optional<String> secretAccessKey() {

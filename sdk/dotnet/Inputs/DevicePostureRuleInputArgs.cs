@@ -93,7 +93,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? EidLastSeen { get; set; }
 
         /// <summary>
-        /// Enabled.
+        /// Whether the rule is enabled. This is a computed, read-only value. It is false for deprecated Kolide posture rules that still use the IssueCount input, and true otherwise.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -117,7 +117,7 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// List ID.
+        /// API UUID.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
@@ -158,6 +158,8 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Operating system.
+        /// 
+        /// Operating System.
         /// Available values: "windows", "linux", "mac", "android", "ios", "chromeos".
         /// </summary>
         [Input("operatingSystem")]
@@ -165,13 +167,15 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Agent operational state.
-        /// Available values: "na", "partially*disabled", "auto*fully*disabled", "fully*disabled", "auto*partially*disabled", "disabled*error", "db*corruption".
+        /// Available values: "na", "PartiallyDisabled", "AutoFullyDisabled", "FullyDisabled", "AutoPartiallyDisabled", "DisabledError", "DbCorruption".
         /// </summary>
         [Input("operationalState")]
         public Input<string>? OperationalState { get; set; }
 
         /// <summary>
         /// Operator.
+        /// 
+        /// Operator to evaluate RiskLevel or eid_last_seen.
         /// Available values: "&lt;", "&lt;=", "&gt;", "&gt;=", "==".
         /// </summary>
         [Input("operator")]
@@ -209,6 +213,8 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// File path.
+        /// 
+        /// Path for the application.
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
@@ -290,6 +296,8 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Version of OS.
+        /// 
+        /// Version.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

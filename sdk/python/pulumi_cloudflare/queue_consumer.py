@@ -33,7 +33,7 @@ class QueueConsumerInitArgs:
         :param pulumi.Input[_builtins.str] account_id: A Resource identifier.
         :param pulumi.Input[_builtins.str] queue_id: A Resource identifier.
         :param pulumi.Input[_builtins.str] type: Available values: "worker", "http_pull", "notification".
-        :param pulumi.Input[_builtins.str] script_name: Name of a Worker
+        :param pulumi.Input[_builtins.str] script_name: For `type: worker`: Name of a Worker
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "queue_id", queue_id)
@@ -94,7 +94,7 @@ class QueueConsumerInitArgs:
     @pulumi.getter(name="scriptName")
     def script_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Name of a Worker
+        For `type: worker`: Name of a Worker
         """
         return pulumi.get(self, "script_name")
 
@@ -130,7 +130,7 @@ class _QueueConsumerState:
         :param pulumi.Input[_builtins.str] account_id: A Resource identifier.
         :param pulumi.Input[_builtins.str] consumer_id: A Resource identifier.
         :param pulumi.Input[_builtins.str] queue_id: A Resource identifier.
-        :param pulumi.Input[_builtins.str] script_name: Name of a Worker
+        :param pulumi.Input[_builtins.str] script_name: For `type: worker`: Name of a Worker
         :param pulumi.Input[_builtins.str] type: Available values: "worker", "http_pull", "notification".
         """
         if account_id is not None:
@@ -219,7 +219,7 @@ class _QueueConsumerState:
     @pulumi.getter(name="scriptName")
     def script_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Name of a Worker
+        For `type: worker`: Name of a Worker
         """
         return pulumi.get(self, "script_name")
 
@@ -300,7 +300,7 @@ class QueueConsumer(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: A Resource identifier.
         :param pulumi.Input[_builtins.str] queue_id: A Resource identifier.
-        :param pulumi.Input[_builtins.str] script_name: Name of a Worker
+        :param pulumi.Input[_builtins.str] script_name: For `type: worker`: Name of a Worker
         :param pulumi.Input[_builtins.str] type: Available values: "worker", "http_pull", "notification".
         """
         ...
@@ -417,7 +417,7 @@ class QueueConsumer(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: A Resource identifier.
         :param pulumi.Input[_builtins.str] consumer_id: A Resource identifier.
         :param pulumi.Input[_builtins.str] queue_id: A Resource identifier.
-        :param pulumi.Input[_builtins.str] script_name: Name of a Worker
+        :param pulumi.Input[_builtins.str] script_name: For `type: worker`: Name of a Worker
         :param pulumi.Input[_builtins.str] type: Available values: "worker", "http_pull", "notification".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -502,7 +502,7 @@ class QueueConsumer(pulumi.CustomResource):
     @pulumi.getter(name="scriptName")
     def script_name(self) -> pulumi.Output[_builtins.str]:
         """
-        Name of a Worker
+        For `type: worker`: Name of a Worker
         """
         return pulumi.get(self, "script_name")
 
