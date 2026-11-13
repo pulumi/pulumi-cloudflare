@@ -20,6 +20,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource/plugin"
 	pulumirpc "github.com/pulumi/pulumi/sdk/v3/proto/go"
 
+	provShim "github.com/cloudflare/terraform-provider-cloudflare/shim"
+
 	"github.com/pulumi/pulumi-cloudflare/provider/v6/pkg/version"
 )
 
@@ -186,8 +188,8 @@ func TestUserAgentHeader(t *testing.T) {
 
 			require.NotEmpty(t, userAgent, "the provider never called the API")
 			t.Logf("User-Agent: %s", userAgent)
-			assert.True(t, strings.HasPrefix(userAgent, "terraform-provider-cloudflare/"),
-				"expected %q to keep the upstream provider token", userAgent)
+			assert.True(t, strings.HasPrefix(userAgent, "terraform-provider-cloudflare/"+provShim.UpstreamVersion+" "),
+				"expected %q to lead with the upstream provider name and release version", userAgent)
 			// Regression guard: upstream formats the suffix with %q without our patch.
 			assert.NotContains(t, userAgent, `"`)
 			tt.assert(t, userAgent)
