@@ -6,10 +6,10 @@ Subject: [PATCH] expose providers
 
 diff --git a/shim/shim.go b/shim/shim.go
 new file mode 100644
-index 000000000000..5f45ebd868f2
+index 000000000000..2135a1a837a5
 --- /dev/null
 +++ b/shim/shim.go
-@@ -0,0 +1,12 @@
+@@ -0,0 +1,17 @@
 +package shim
 +
 +import (
@@ -18,7 +18,12 @@ index 000000000000..5f45ebd868f2
 +	"github.com/cloudflare/terraform-provider-cloudflare/internal"
 +)
 +
++// UpstreamVersion is the terraform-provider-cloudflare release this shim is built from.
++// Upstream sends it in the User-Agent and x-stainless-package-version headers, so it must
++// name a real upstream release. TestShimUpstreamVersionMatchesSubmodule in the Pulumi
++// provider fails when it drifts from the checked-out submodule.
++const UpstreamVersion = "5.29.0"
 +
 +func PFProvider() provider.Provider {
-+	return internal.NewProvider("pulumi")()
++	return internal.NewProvider(UpstreamVersion)()
 +}
