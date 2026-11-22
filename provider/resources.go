@@ -32,6 +32,7 @@ import (
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/info"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
+	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	pschema "github.com/pulumi/pulumi/pkg/v3/codegen/schema"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 
@@ -85,6 +86,12 @@ func Provider() info.Provider {
 		MetadataInfo:            tfbridge.NewProviderMetadata(metadata),
 		DocRules:                &info.DocRule{EditRules: docEditRules},
 		SchemaPostProcessor:     describeUserAgentOperatorSuffix,
+		PreConfigureCallback: func(vars resource.PropertyMap, _ shim.ResourceConfig) error {
+			if v, ok := vars["userAgentOperatorSuffix"]; ok && v.IsString() && v.StringValue() == "" {
+				delete(vars, "userAgentOperatorSuffix")
+			}
+			return nil
+		},
 		Config: map[string]*info.Schema{
 			"user_agent_operator_suffix": {
 				Default: &info.Default{ComputeDefault: pulumiUserAgentOperatorSuffix},
@@ -772,7 +779,7 @@ const userAgentOperatorSuffixEnvVar = "CLOUDFLARE_USER_AGENT_OPERATOR_SUFFIX"
 // User-Agent in place of `terraform/<version>`, which is meaningless under Pulumi. The bridge only
 // calls this when the user has not set the property, so explicit config always wins. Returning nil
 // here leaves the property unset; an explicitly empty value in config is passed through to
-// upstream, where patch 0002 treats it as unset. Either way the User-Agent falls back to
+// PreConfigureCallback so upstream treats it as unset. Either way the User-Agent falls back to
 // upstream's `terraform/<version>`.
 func pulumiUserAgentOperatorSuffix(context.Context, info.ComputeDefaultOptions) (any, error) {
 	if v, ok := os.LookupEnv(userAgentOperatorSuffixEnvVar); ok {
