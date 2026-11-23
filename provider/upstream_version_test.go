@@ -6,9 +6,8 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/stretchr/testify/require"
-
 	provShim "github.com/cloudflare/terraform-provider-cloudflare/shim"
+	"github.com/stretchr/testify/require"
 )
 
 func TestShimUpstreamVersionMatchesSubmodule(t *testing.T) {

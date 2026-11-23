@@ -9,6 +9,7 @@ import (
 	"strings"
 	"testing"
 
+	provShim "github.com/cloudflare/terraform-provider-cloudflare/shim"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"google.golang.org/protobuf/types/known/structpb"
@@ -19,8 +20,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource/plugin"
 	pulumirpc "github.com/pulumi/pulumi/sdk/v3/proto/go"
-
-	provShim "github.com/cloudflare/terraform-provider-cloudflare/shim"
 
 	"github.com/pulumi/pulumi-cloudflare/provider/v6/pkg/version"
 )
